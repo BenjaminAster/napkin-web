@@ -1,0 +1,891 @@
+\documentclass{book}
+%%fakesection Load packages
+
+
+
+
+\newcommand{\hint}{}
+\newcommand{\sol}{}
+% \newcommand{\tikzcd}{}
+\newcommand{\ar}{}
+\newcommand{\parttoc}{}
+% \renewcommand{\hline}{0}
+\usepackage[nameinlink]{cleveref}
+\usepackage{verbatim}
+\newenvironment{tikzcd}{\verbatim}{\endverbatim}
+\newenvironment{tikzpicture}{\verbatim}{\endverbatim}
+\newenvironment{asy}{\verbatim}{\endverbatim}
+\newenvironment{xymatrix}{\verbatim}{\endverbatim}
+\newenvironment{xycircle}{\verbatim}{\endverbatim}
+\newenvironment{bmatrix}{\verbatim}{\endverbatim}
+% \newenvironment{Qcircuit}{\verbatim}{\endverbatim}
+
+% \makeatletter % by ChatGPT
+% \def\Qcircuit#1{\texttt{\protected@edef\@temp{#1}\@temp}}  % Handle arbitrary text including special chars
+% \makeatother
+
+% \newcommand{\Qcircuit}[1]{\verb|#1|}
+
+% \usepackage{xparse}
+
+% \NewDocumentCommand{\Qcircuit}{ s m m m }{%
+%     % #1 (starred variant, unused)
+%     % #2 (column spacing, ignored)
+%     % #3 (row spacing, ignored)
+%     % #4 (content to be treated as text)
+%     \detokenize{#4}% Example: Print as typewriter text
+% }
+
+% \newcommand\Qcircuit[1][]{%
+%     % Ignore the optional parameters @C and @R
+%     \begingroup
+%     \catcode`\&=12 % Make & an ordinary character
+%     \catcode`\\=12 % Make \ an ordinary character
+%     \texttt{#1}% 
+%     \endgroup
+% }
+
+% \newcommand{\Qcircuit}[3]{\verb{#3}}
+
+% \usepackage{amsmath}
+% \usepackage{fancyvrb}
+
+% \makeatletter
+% \newcommand{\Qcircuit}{%
+%   \@ifnextchar @{\@Qcircuit}{}%
+% }
+% \def\@Qcircuit@C#1{%
+%   \@ifnextchar @{\@Qcircuit@R{#1}}{\@Qcircuit@R{#1}@R=0pt}%
+% }
+% \def\@Qcircuit@R#1@R#2{%
+%   \@ifnextchar\bgroup{\@Qcircuit@content{#1}{#2}}{\@Qcircuit@content{#1}{#2}{}}%
+% }
+% \def\@Qcircuit@content#1#2#3{%
+%   % Use the Verbatim environment from fancyvrb to treat the content as plain text
+%   \begin{Verbatim}[commandchars=\\\{\}]
+% #3
+%   \end{Verbatim}
+% }
+% \makeatother
+
+
+% \makeatletter
+% \newcommand{\Qcircuit}{%
+%   \@ifnextchar @{\@Qcircuit}{}%
+% }
+% \def\@Qcircuit@C#1{%
+%   \@ifnextchar @{\@Qcircuit@R{#1}}{\@Qcircuit@R{#1}@R=0pt}%
+% }
+% \def\@Qcircuit@R#1@R#2{%
+%   \@ifnextchar\bgroup{\@Qcircuit@content{#1}{#2}}{\@Qcircuit@content{#1}{#2}{}}%
+% }
+% \def\@Qcircuit@content#1#2#3{%
+%   % Use \scantokens to treat the content as plain text
+%   \scantokens{%
+%     \gdef\@tempcontent{#3}%
+%   }%
+%   \texttt{\@tempcontent}% Output the content as plain text
+% }
+% \makeatother
+
+\newcommand{\chart}{}
+% \newcommand{\endxy}{}
+\newcommand{\reqhalfcourse}{}
+\newcommand{\halfcourse}{}
+\newcommand{\prereqc}{}
+\newcommand{\coreqc}{}
+\newcommand{\odif}{}
+\newcommand{\pdv}{}
+\newcommand{\crefpairconjunction}{}
+
+
+\newcommand{\norm}[1]{\mathopen{\text{\char"2016}} #1 \mathclose{\text{\char"2016}}}
+
+
+
+% \usepackage{html}
+
+
+% ===== preamble.tex =====
+
+\usepackage{lmodern}
+\usepackage[pdfusetitle]{hyperref}
+% \ExplSyntaxOn
+% \sys_if_engine_luatex:T {
+% 	\usepackage{luatex85}
+% }
+% \sys_if_engine_pdftex:T {
+% 	\usepackage[T1]{fontenc}
+% }
+% \ExplSyntaxOff
+
+% These are evan.sty
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{textcomp}
+\usepackage{enumerate}
+\usepackage[textsize=scriptsize,shadow]{todonotes}
+\usepackage{mathtools}
+\usepackage{microtype}
+\usepackage[normalem]{ulem}
+\usepackage{stmaryrd}
+\usepackage{wasysym}
+\usepackage{multirow}
+
+%%fakesection evan.sty macros
+%Small commands
+%% Napkin commands
+\newcommand{\prototype}[1]{
+	\emph{{\color{red} Prototypical example for this section:} #1} \par\medskip
+}
+% \newenvironment{moral}{%
+% 	\begin{mdframed}[linecolor=green!70!black]%
+% 	\bfseries\color{green!50!black}}%
+% 	{\end{mdframed}}
+
+%%fakesection Links (hyperref loaded earlier implicitly)
+\hypersetup{
+	linkcolor={red!50!black},
+	citecolor={green!50!black},
+	urlcolor={blue!80!black},
+	pdfkeywords={napkin,math},
+	pdfsubject={web.evanchen.cc},
+	colorlinks,
+}
+
+\makeatletter
+\makeatother
+
+%%fakesection Page layout
+\renewcommand{\headfont}{}
+
+%%fakesection Fancy section and chapter heads
+\renewcommand*{\sectionformat}{\color{purple}\S\thesection\autodot\enskip}
+\renewcommand*{\subsectionformat}{\color{purple}\S\thesubsection\autodot\enskip}
+\newcommand{\problemhead}{A few harder problems to think about}
+\renewcommand{\thesubsection}{\thesection.\roman{subsection}}
+
+\renewcommand*{\chapterformat}{%
+\mbox{\scalebox{1.5}{\chapappifchapterprefix{\nobreakspace}}%
+\scalebox{2.718}{\color{purple}\thechapter\autodot}\enskip}}
+
+\renewcommand*{\partformat}{\color{purple}\scalebox{2.5}{\thepart}}
+
+%%fakesection Theorems
+\usepackage{thmtools}
+
+\theoremstyle{definition}
+\declaretheoremstyle[
+	headfont=\sffamily\bfseries\color{MidnightBlue},
+	mdframed={style=mdbluebox},
+	headpunct={\\[3pt]},
+	postheadspace={0pt}
+]{thmbluebox}
+
+\declaretheoremstyle[
+	headfont=\bfseries\color{RawSienna},
+	mdframed={style=mdredbox},
+	headpunct={\\[3pt]},
+	postheadspace={0pt},
+]{thmredbox}
+
+\declaretheoremstyle[
+	headfont=\bfseries\color{Green},
+	mdframed={style=mdgreenbox},
+	headpunct={\\[0pt]},
+	postheadspace={0pt},
+]{thmgreenbox}
+
+\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
+\declaretheorem[style=thmbluebox,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=thmbluebox,name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
+\declaretheorem[style=thmgreenbox,name=Moral,sibling=theorem]{moral}
+
+\declaretheoremstyle[
+	headfont=\bfseries\sffamily\color{ForestGreen!70!black},
+	bodyfont=\normalfont,
+	spaceabove=2pt,
+	spacebelow=1pt,
+	mdframed={style=mdgreenbox},
+	headpunct={ --- },
+]{thmgreenbox}
+\declaretheoremstyle[
+	headfont=\bfseries\sffamily\color{ForestGreen!70!black},
+	bodyfont=\normalfont,
+	spaceabove=2pt,
+	spacebelow=1pt,
+	mdframed={style=mdgreenbox},
+	headpunct={},
+]{thmgreenbox*}
+
+\declaretheoremstyle[
+	headfont=\bfseries,
+	bodyfont=\normalfont\small,
+	spaceabove=0pt,
+	spacebelow=0pt,
+	mdframed={style=mdblackbox}
+]{thmblackbox}
+
+\declaretheorem[name=Question,sibling=theorem,style=thmblackbox]{ques}
+\declaretheorem[name=Exercise,sibling=theorem,style=thmblackbox]{exercise}
+\declaretheorem[name=Remark,sibling=theorem,style=thmgreenbox]{remark}
+\declaretheorem[name=Remark,sibling=theorem,style=thmgreenbox*]{remark*}
+\declaretheorem[name=Step,style=thmgreenbox]{step} % only used in Lebesgue int
+
+\theoremstyle{definition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{abuse}[theorem]{Abuse of Notation}
+
+\newtheorem{problem}{Problem}[chapter]
+\renewcommand{\theproblem}{\thechapter\Alph{problem}}
+\newtheorem{sproblem}[problem]{Problem}
+\newtheorem{dproblem}[problem]{Problem}
+\renewcommand{\thesproblem}{\theproblem$^{\star}$}
+\renewcommand{\thedproblem}{\theproblem$^{\dagger}$}
+\newcommand{\listhack}{$\empty$\vspace{-2em}}
+
+%%fakesection Answers
+\renewcommand{\solutionextension}{out}
+\renewenvironment{answeritem}[1]{\item[\bfseries #1.]}{}
+
+%%fakesection Table of contents
+% First add ToC to ToC
+\makeatletter
+\usepackage{etoolbox}
+\pretocmd{\tableofcontents}{%
+	\if@openright\cleardoublepage\else\clearpage\fi
+	\pdfbookmark[0]{\contentsname}{toc}%
+}{}{}%
+\makeatother
+\setcounter{tocdepth}{1}
+
+%%fakesection Asymptote definitions
+\numberwithin{asy}{chapter}
+\renewcommand{\theasy}{\thechapter\Alph{asy}}
+\def\asydir{asy}
+
+%%fakesection Bibliography
+\renewcommand{\mkbibnamegiven}[1]{\textsc{#1}}
+\renewcommand{\mkbibnamefamily}[1]{\textsc{#1}}
+\renewcommand{\mkbibnameprefix}[1]{\textsc{#1}}
+\renewcommand{\mkbibnamesuffix}[1]{\textsc{#1}}
+\renewcommand{\finentrypunct}{}
+
+%%fakesection Mini ToC
+\setcounter{parttocdepth}{1}
+\renewcommand*{\partheadstartvskip}{\vspace*{20em}}
+\renewcommand*{\partheadendvskip}{}
+%\noptcrule
+\renewcommand\beforeparttoc{\noindent{\bfseries \Large Part \thepart: Contents}}
+%\hspace{\fill}\rule{0.95\linewidth}{2pt}\hspace{\fill}
+
+%%fakesection Misc haxx
+\pdfstringdefDisableCommands{\def\Spec{\text{Spec }}\def\sigma{σ}}
+
+% ===== macros.tex =====
+
+\newcommand{\cbrt}[1]{\sqrt[3]{#1}}
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceiling}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\mailto}[1]{\href{mailto:#1}{\texttt{#1}}}
+\newcommand{\ol}{\overline}
+\newcommand{\ul}{\underline}
+\newcommand{\wt}{\widetilde}
+\newcommand{\wh}{\widehat}
+\newcommand{\eps}{\varepsilon}
+%\renewcommand{\iff}{\Leftrightarrow}
+%\renewcommand{\implies}{\Rightarrow}
+\newcommand{\vocab}[1]{\textbf{\color{blue} #1}}
+\newcommand{\catname}{\mathsf}
+\newcommand{\hrulebar}{
+  \par\hspace{\fill}\rule{0.95\linewidth}{.7pt}\hspace{\fill}
+  \par\nointerlineskip \vspace{\baselineskip}
+}
+\newcommand{\half}{\frac{1}{2}}
+
+%More commands and math operators
+\DeclareMathOperator{\cis}{cis}
+\DeclareMathOperator*{\lcm}{lcm}
+\DeclareMathOperator*{\argmin}{arg min}
+\DeclareMathOperator*{\argmax}{arg max}
+
+%Convenient Environments
+\newenvironment{soln}{\begin{proof}[Solution]}{\end{proof}}
+\newenvironment{parlist}{\begin{inparaenum}[(i)]}{\end{inparaenum}}
+\newenvironment{gobble}{\setbox\z@\vbox\bgroup}{\egroup}
+
+%Inequalities
+\newcommand{\cycsum}{\sum_{\mathrm{cyc}}}
+\newcommand{\symsum}{\sum_{\mathrm{sym}}}
+\newcommand{\cycprod}{\prod_{\mathrm{cyc}}}
+\newcommand{\symprod}{\prod_{\mathrm{sym}}}
+
+%From H113 "Introduction to Abstract Algebra" at UC Berkeley
+\newcommand{\CC}{\mathbb C}
+\newcommand{\FF}{\mathbb F}
+\newcommand{\NN}{\mathbb N}
+\newcommand{\QQ}{\mathbb Q}
+\newcommand{\RR}{\mathbb R}
+\newcommand{\ZZ}{\mathbb Z}
+\newcommand{\charin}{\text{ char }}
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Inn}{Inn}
+\DeclareMathOperator{\Syl}{Syl}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL} % General linear group
+\DeclareMathOperator{\SL}{SL} % Special linear group
+
+%From Kiran Kedlaya's "Geometry Unbound"
+\newcommand{\abs}[1]{\left\lvert #1 \right\rvert}
+% \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
+\newcommand{\dang}{\measuredangle} %% Directed angle
+\newcommand{\ray}[1]{\overrightarrow{#1}}
+\newcommand{\seg}[1]{\overline{#1}}
+\newcommand{\arc}[1]{\wideparen{#1}}
+
+%From M275 "Topology" at SJSU
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\taking}[1]{\xrightarrow{#1}}
+\newcommand{\inv}{^{-1}}
+
+%From M170 "Introduction to Graph Theory" at SJSU
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\ord}{ord}
+%\newcommand{\defeq}{\overset{\mathrm{def}}{=}}
+\newcommand{\defeq}{\coloneqq}
+
+%From the USAMO .tex files
+\newcommand{\st}{^{\text{st}}}
+\newcommand{\nd}{^{\text{nd}}}
+\renewcommand{\th}{^{\text{th}}}
+\newcommand{\dg}{^\circ}
+\newcommand{\ii}{\item}
+
+% From Math 55 and Math 145 at Harvard
+\newenvironment{subproof}[1][Proof]{%
+\begin{proof}[#1] \renewcommand{\qedsymbol}{$\blacksquare$}}%
+{\end{proof}}
+
+\newcommand{\liff}{\leftrightarrow}
+\newcommand{\lthen}{\rightarrow}
+\newcommand{\opname}{\operatorname}
+\newcommand{\surjto}{\twoheadrightarrow}
+\newcommand{\injto}{\hookrightarrow}
+\newcommand{\On}{\mathrm{On}} % ordinals
+\DeclareMathOperator{\img}{im} % Image
+\DeclareMathOperator{\Img}{Im} % Image
+\DeclareMathOperator{\coker}{coker} % Cokernel
+\DeclareMathOperator{\Coker}{Coker} % Cokernel
+\DeclareMathOperator{\Ker}{Ker} % Kernel
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Spec}{Spec} % spectrum
+\DeclareMathOperator{\Tr}{Tr} % trace
+\DeclareMathOperator{\pr}{pr} % projection
+\DeclareMathOperator{\ext}{ext} % extension
+\DeclareMathOperator{\pred}{pred} % predecessor
+\DeclareMathOperator{\dom}{dom} % domain
+\DeclareMathOperator{\ran}{ran} % range
+\DeclareMathOperator{\Hom}{Hom} % homomorphism
+\DeclareMathOperator{\End}{End} % endomorphism
+
+% Things Lie
+\newcommand{\kg}{\mathfrak g}
+\newcommand{\kh}{\mathfrak h}
+\newcommand{\kn}{\mathfrak n}
+\newcommand{\ku}{\mathfrak u}
+\newcommand{\kz}{\mathfrak z}
+\DeclareMathOperator{\Ext}{Ext} % Ext functor
+\DeclareMathOperator{\Tor}{Tor} % Tor functor
+
+% More script letters etc.
+\newcommand{\SA}{\mathscr A}
+\newcommand{\SB}{\mathscr B}
+\newcommand{\SC}{\mathscr C}
+\newcommand{\SD}{\mathscr D}
+\newcommand{\SF}{\mathscr F}
+\newcommand{\SG}{\mathscr G}
+\newcommand{\SH}{\mathscr H}
+\newcommand{\OO}{\mathcal O}
+
+
+%%fakesection Napkin Macros
+\newcommand{\Zc}[1]{\ZZ/#1\ZZ}
+\newcommand{\Zcc}[1]{\ZZ/(#1)\ZZ}
+\newcommand{\Zm}[1]{(\ZZ/#1\ZZ)^\times}
+\newcommand{\EE}{\mathbb E}
+\newcommand{\TT}{\mathbb T}
+\newcommand{\im}{^{\text{img}}} % or ``?
+\newcommand{\pre}{^{\text{pre}}}
+\newcommand{\normalin}{\trianglelefteq}
+\newcommand{\triv}{\mathrm{triv}}
+\newcommand{\largeotimes}[1]{\mathop{\otimes}\limits_{#1}}
+\newcommand{\Mat}{\mathrm{Mat}}
+\newcommand{\PGL}[1]{\mathbf{PGL}_{#1}(\CC)}
+
+\DeclareMathOperator{\Stab}{Stab}
+\DeclareMathOperator{\FixPt}{FixPt}
+\DeclareMathOperator{\refl}{refl}
+\DeclareMathOperator{\Fun}{Fun}
+\DeclareMathOperator{\Irrep}{Irrep}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Classes}{Classes}
+\DeclareMathOperator{\Frac}{Frac}
+\newcommand{\FunCl}{\Fun_{\mathrm{class}}}
+\newcommand{\Homrep}{\Hom_{\mathrm{rep}}}
+\newcommand{\ab}{^\text{ab}} % abelianization
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\Wind}{\mathbf I}
+\newcommand{\Ctriv}{\CC_{\mathrm{triv}}}
+\newcommand{\Csign}{\CC_{\mathrm{sign}}}
+\DeclareMathOperator{\Alt}{Alt}
+
+% Riemann surface
+\DeclareMathOperator{\Div}{div} % divisor
+\DeclareMathOperator{\mult}{mult}
+
+% Alg geom macros
+\newcommand{\VV}{\mathcal V}
+\newcommand{\Vp}{\mathcal V_{\text{pr}}}
+\newcommand{\Aff}{\mathbb A}
+\newcommand{\II}{\mathcal I_{\text{rad}}}
+\newcommand{\RP}{\mathbb{RP}}
+\newcommand{\CP}{\mathbb{CP}}
+\newcommand{\Cl}{\mathrm{Cl}}
+\newcommand{\restrict}[1]{\bgroup\restriction_{#1}\egroup}
+\DeclareMathOperator{\Opens}{OpenSets}
+\DeclareMathOperator{\Proj}{Proj}
+\DeclareMathOperator{\res}{res}
+\newcommand{\km}{\mathfrak m}
+\newcommand{\sh}{^\mathrm{sh}}
+
+\renewcommand{\Re}{\opname{Re}}
+\renewcommand{\Im}{\opname{Im}}
+
+%% Category Theory macros
+\renewcommand{\AA}{\mathcal A}
+\newcommand{\BB}{\mathcal B}
+\newcommand{\obj}{\operatorname{obj}}
+\newcommand{\op}{^{\mathrm{op}}}
+
+% \newcommand\nattfm[5]{\xymatrix@C+2pc{#1 \rtwocell<4>^{#2}_{#4}{\; #3} & #5}}
+\newcommand{\nattfm}[5]{}
+
+%% Alg Top macros
+\DeclareMathOperator{\Cells}{Cells}
+\newcommand{\HdR}{H_{\mathrm{dR}}}
+
+%% Alg NT macros
+\newcommand{\ka}{\mathfrak a}
+\newcommand{\kb}{\mathfrak b}
+\newcommand{\kp}{\mathfrak p}
+\newcommand{\kq}{\mathfrak q}
+
+\newcommand{\Frob}{\mathrm{Frob}}
+\DeclareMathOperator{\Norm}{N}
+\DeclareMathOperator{\Ram}{Ram}
+\newcommand{\TrK}{\Tr_{K/\QQ}}
+\newcommand{\NK}{\Norm_{K/\QQ}}
+\newcommand{\kf}{\mathfrak f}
+\newcommand{\kP}{\mathfrak P}
+\newcommand{\kQ}{\mathfrak Q}
+
+%% Diff geo macros
+\newcommand{\ee}{\mathbf e}
+\newcommand{\fpartial}[2]{\frac{\partial #1}{\partial #2}}
+
+%% ST macros
+\newcommand{\CH}{\mathsf{CH}}
+\newcommand{\ZFC}{\mathsf{ZFC}}
+
+\newcommand{\Name}{\text{Name}}
+\newcommand{\Po}{\mathbb P}
+\newcommand{\nrank}{\opname{n-rank}} % ranks
+\newcommand{\PP}{\mathcal P}
+
+\newcommand{\EmptySet}{\mathrm{EmptySet}}
+\newcommand{\PowerSet}{\mathrm{PowerSet}}
+\newcommand{\Pairing}{\mathrm{Pairing}}
+\newcommand{\Infinity}{\mathrm{Infinity}}
+\newcommand{\Extensionality}{\mathrm{Extensionality}}
+\newcommand{\Foundation}{\mathrm{Foundation}}
+\newcommand{\Union}{\mathrm{Union}}
+\newcommand{\Comprehension}{\mathrm{Comprehension}}
+\newcommand{\Replacement}{\mathrm{Replacement}}
+
+\usepackage{mathrsfs}
+
+\newcommand\MM{\mathscr M}
+\newcommand\llex{<_{\text{lex}}}
+
+\DeclareMathOperator{\cof}{cof}
+
+%% Quantum macros
+\usepackage{braket}
+\newcommand{\cvec}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\pair}[2]{\begin{bmatrix} #1 \\ #2 \end{bmatrix}}
+\newcommand{\zup}{\ket\uparrow}
+\newcommand{\zdown}{\ket\downarrow}
+\newcommand{\xup}{\ket\rightarrow}
+\newcommand{\xdown}{\ket\leftarrow}
+\newcommand{\yup}{\ket\otimes}
+\newcommand{\ydown}{\ket\odot}
+\newcommand{\UCNOT}{U_{\mathrm{CNOT}}}
+\newcommand{\UQFT}{U_{\mathrm{QFT}}}
+
+%% Measure
+\DeclareMathOperator{\Var}{Var}
+\newcommand{\cme}{^\text{cm}}
+\newcommand{\asto}{\xrightarrow{\text{a.s.}}}
+
+%% Hot chili peppers
+% \reversemarginpar
+% \newcommand{\prechili}{\vspace*{0.3em}\hspace*{1.5em}}
+% \newcommand{\nochili}{\hspace*{1.5em}}
+% \newcommand{\chili}{\includegraphics[width=1.5em]{media/chili.png}}
+% \newcommand{\onechili}{\marginpar{\prechili\nochili\nochili\chili}}
+% \newcommand{\twochili}{\marginpar{\prechili\nochili\chili\chili}}
+% \newcommand{\threechili}{\marginpar{\prechili\chili\chili\chili}}
+
+\newcommand{\prechili}{}
+\newcommand{\nochili}{}
+\newcommand{\chili}{}
+\newcommand{\onechili}{}
+\newcommand{\twochili}{}
+\newcommand{\threechili}{}
+
+% ===== Qcircuit.tex =====
+
+%    Q-circuit version 2
+%    Copyright (C) 2004  Steve Flammia & Bryan Eastin
+%    Last modified on: 9/16/2011
+%
+%    This program is free software; you can redistribute it and/or modify
+%    it under the terms of the GNU General Public License as published by
+%    the Free Software Foundation; either version 2 of the License, or
+%    (at your option) any later version.
+%
+%    This program is distributed in the hope that it will be useful,
+%    but WITHOUT ANY WARRANTY; without even the implied warranty of
+%    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+%    GNU General Public License for more details.
+%
+%    You should have received a copy of the GNU General Public License
+%    along with this program; if not, write to the Free Software
+%    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+% Thanks to the Xy-pic guys, Kristoffer H Rose, Ross Moore, and Daniel Müllner,
+% for their help in making Qcircuit work with Xy-pic version 3.8.
+% Thanks also to Dave Clader, Andrew Childs, Rafael Possignolo, Tyson Williams,
+% Sergio Boixo, Cris Moore, Jonas Anderson, and Stephan Mertens for helping us test
+% and/or develop the new version.
+
+% Edit by Evan
+%\newcommand{\bra}[1]{{\left\langle{#1}\right\vert}}
+%\newcommand{\ket}[1]{{\left\vert{#1}\right\rangle}}
+
+    % Defines Dirac notation. %7/5/07 added extra braces so that the commands will work in subscripts.
+\newcommand{\qw}[1][-1]{\ar @{-} [0,#1]}
+    % Defines a wire that connects horizontally.  By default it connects to the object on the left of the current object.
+    % WARNING: Wire commands must appear after the gate in any given entry.
+\newcommand{\qwx}[1][-1]{\ar @{-} [#1,0]}
+    % Defines a wire that connects vertically.  By default it connects to the object above the current object.
+    % WARNING: Wire commands must appear after the gate in any given entry.
+\newcommand{\cw}[1][-1]{\ar @{=} [0,#1]}
+    % Defines a classical wire that connects horizontally.  By default it connects to the object on the left of the current object.
+    % WARNING: Wire commands must appear after the gate in any given entry.
+\newcommand{\cwx}[1][-1]{\ar @{=} [#1,0]}
+    % Defines a classical wire that connects vertically.  By default it connects to the object above the current object.
+    % WARNING: Wire commands must appear after the gate in any given entry.
+\newcommand{\gate}[1]{*+<.6em>{#1} \POS ="i","i"+UR;"i"+UL **\dir{-};"i"+DL **\dir{-};"i"+DR **\dir{-};"i"+UR **\dir{-},"i" \qw}
+    % Boxes the argument, making a gate.
+\newcommand{\meter}{*=<1.8em,1.4em>{\xy ="j","j"-<.778em,.322em>;{"j"+<.778em,-.322em> \ellipse ur,_{}},"j"-<0em,.4em>;p+<.5em,.9em> **\dir{-},"j"+<2.2em,2.2em>*{},"j"-<2.2em,2.2em>*{} \endxy} \POS ="i","i"+UR;"i"+UL **\dir{-};"i"+DL **\dir{-};"i"+DR **\dir{-};"i"+UR **\dir{-},"i" \qw}
+    % Inserts a measurement meter.
+    % In case you're wondering, the constants .778em and .322em specify
+    % one quarter of a circle with radius 1.1em.
+    % The points added at + and - <2.2em,2.2em> are there to stretch the
+    % canvas, ensuring that the size is unaffected by erratic spacing issues
+    % with the arc.
+\newcommand{\measure}[1]{*+[F-:<.9em>]{#1} \qw}
+    % Inserts a measurement bubble with user defined text.
+\newcommand{\measuretab}[1]{*{\xy*+<.6em>{#1}="e";"e"+UL;"e"+UR **\dir{-};"e"+DR **\dir{-};"e"+DL **\dir{-};"e"+LC-<.5em,0em> **\dir{-};"e"+UL **\dir{-} \endxy} \qw}
+    % Inserts a measurement tab with user defined text.
+\newcommand{\measureD}[1]{*{\xy*+=<0em,.1em>{#1}="e";"e"+UR+<0em,.25em>;"e"+UL+<-.5em,.25em> **\dir{-};"e"+DL+<-.5em,-.25em> **\dir{-};"e"+DR+<0em,-.25em> **\dir{-};{"e"+UR+<0em,.25em>\ellipse^{}};"e"+C:,+(0,1)*{} \endxy} \qw}
+    % Inserts a D-shaped measurement gate with user defined text.
+\newcommand{\multimeasure}[2]{*+<1em,.9em>{\hphantom{#2}} \qw \POS[0,0].[#1,0];p !C *{#2},p \drop\frm<.9em>{-}}
+    % Draws a multiple qubit measurement bubble starting at the current position and spanning #1 additional gates below.
+    % #2 gives the label for the gate.
+    % You must use an argument of the same width as #2 in \ghost for the wires to connect properly on the lower lines.
+\newcommand{\multimeasureD}[2]{*+<1em,.9em>{\hphantom{#2}} \POS [0,0]="i",[0,0].[#1,0]="e",!C *{#2},"e"+UR-<.8em,0em>;"e"+UL **\dir{-};"e"+DL **\dir{-};"e"+DR+<-.8em,0em> **\dir{-};{"e"+DR+<0em,.8em>\ellipse^{}};"e"+UR+<0em,-.8em> **\dir{-};{"e"+UR-<.8em,0em>\ellipse^{}},"i" \qw}
+    % Draws a multiple qubit D-shaped measurement gate starting at the current position and spanning #1 additional gates below.
+    % #2 gives the label for the gate.
+    % You must use an argument of the same width as #2 in \ghost for the wires to connect properly on the lower lines.
+\newcommand{\control}{*!<0em,.025em>-=-<.2em>{\bullet}}
+    % Inserts an unconnected control.
+\newcommand{\controlo}{*+<.01em>{\xy -<.095em>*\xycircle<.19em>{} \endxy}}
+    % Inserts a unconnected control-on-0.
+\newcommand{\ctrl}[1]{\control \qwx[#1] \qw}
+    % Inserts a control and connects it to the object #1 wires below.
+\newcommand{\ctrlo}[1]{\controlo \qwx[#1] \qw}
+    % Inserts a control-on-0 and connects it to the object #1 wires below.
+\newcommand{\targ}{*+<.02em,.02em>{\xy ="i","i"-<.39em,0em>;"i"+<.39em,0em> **\dir{-}, "i"-<0em,.39em>;"i"+<0em,.39em> **\dir{-},"i"*\xycircle<.4em>{} \endxy} \qw}
+    % Inserts a CNOT target.
+\newcommand{\qswap}{*=<0em>{\times} \qw}
+    % Inserts half a swap gate.
+    % Must be connected to the other swap with \qwx.
+\newcommand{\multigate}[2]{*+<1em,.9em>{\hphantom{#2}} \POS [0,0]="i",[0,0].[#1,0]="e",!C *{#2},"e"+UR;"e"+UL **\dir{-};"e"+DL **\dir{-};"e"+DR **\dir{-};"e"+UR **\dir{-},"i" \qw}
+    % Draws a multiple qubit gate starting at the current position and spanning #1 additional gates below.
+    % #2 gives the label for the gate.
+    % You must use an argument of the same width as #2 in \ghost for the wires to connect properly on the lower lines.
+\newcommand{\ghost}[1]{*+<1em,.9em>{\hphantom{#1}} \qw}
+    % Leaves space for \multigate on wires other than the one on which \multigate appears.  Without this command wires will cross your gate.
+    % #1 should match the second argument in the corresponding \multigate.
+\newcommand{\push}[1]{*{#1}}
+    % Inserts #1, overriding the default that causes entries to have zero size.  This command takes the place of a gate.
+    % Like a gate, it must precede any wire commands.
+    % \push is useful for forcing columns apart.
+    % NOTE: It might be useful to know that a gate is about 1.3 times the height of its contents.  I.e. \gate{M} is 1.3em tall.
+    % WARNING: \push must appear before any wire commands and may not appear in an entry with a gate or label.
+\newcommand{\gategroup}[6]{\POS"#1,#2"."#3,#2"."#1,#4"."#3,#4"!C*+<#5>\frm{#6}}
+    % Constructs a box or bracket enclosing the square block spanning rows #1-#3 and columns=#2-#4.
+    % The block is given a margin #5/2, so #5 should be a valid length.
+    % #6 can take the following arguments -- or . or _\} or ^\} or \{ or \} or _) or ^) or ( or ) where the first two options yield dashed and
+    % dotted boxes respectively, and the last eight options yield bottom, top, left, and right braces of the curly or normal variety.  See the Xy-pic reference manual for more options.
+    % \gategroup can appear at the end of any gate entry, but it's good form to pick either the last entry or one of the corner gates.
+    % BUG: \gategroup uses the four corner gates to determine the size of the bounding box.  Other gates may stick out of that box.  See \prop.
+
+\newcommand{\rstick}[1]{*!L!<-.5em,0em>=<0em>{#1}}
+    % Centers the left side of #1 in the cell.  Intended for lining up wire labels.  Note that non-gates have default size zero.
+\newcommand{\lstick}[1]{*!R!<.5em,0em>=<0em>{#1}}
+    % Centers the right side of #1 in the cell.  Intended for lining up wire labels.  Note that non-gates have default size zero.
+\newcommand{\ustick}[1]{*!D!<0em,-.5em>=<0em>{#1}}
+    % Centers the bottom of #1 in the cell.  Intended for lining up wire labels.  Note that non-gates have default size zero.
+\newcommand{\dstick}[1]{*!U!<0em,.5em>=<0em>{#1}}
+    % Centers the top of #1 in the cell.  Intended for lining up wire labels.  Note that non-gates have default size zero.
+% \newcommand{\Qcircuit}{\xymatrix @*=<0em>}
+%     % Defines \Qcircuit as an \xymatrix with entries of default size 0em.
+\newcommand{\link}[2]{\ar @{-} [#1,#2]}
+    % Draws a wire or connecting line to the element #1 rows down and #2 columns forward.
+\newcommand{\pureghost}[1]{*+<1em,.9em>{\hphantom{#1}}}
+    % Same as \ghost except it omits the wire leading to the left.
+
+
+% =====
+
+\begin{document}
+
+% \include{../latexml-in/calculus/limits}
+
+\title{An Infinitely Large Napkin}
+% \subtitle{\url{https://web.evanchen.cc/napkin.html}}
+% \author{Evan Chen}
+% \date{Version: \napkinversion}
+
+
+% \part{Quantum Algorithms}
+% \label{part:quantum}
+% \parttoc
+% \include{../external/venhance-napkin/tex/quantum/circuits}
+
+
+% \part{Starting Out}
+% \label{part:startout}
+% \parttoc
+% \setcounter{chapter}{-1} % sales pitch should be chapter 0
+% \include{../external/venhance-napkin/tex/frontmatter/salespitch}
+% \include{../external/venhance-napkin/tex/H113/grp-intro}
+% \include{../external/venhance-napkin/tex/topology/metric-top}
+
+% \part{Basic Abstract Algebra}
+% \label{part:absalg}
+% \parttoc
+% \include{../external/venhance-napkin/tex/H113/quotient}
+% \include{../external/venhance-napkin/tex/H113/ring-intro}
+% \include{../external/venhance-napkin/tex/H113/ring-flavors}
+
+% \part{Basic Topology}
+% \label{part:basictop}
+% \parttoc
+% \include{../external/venhance-napkin/tex/topology/metric-prop}
+% \include{../external/venhance-napkin/tex/topology/top-more}
+% \include{../external/venhance-napkin/tex/topology/compactness}
+
+\part{Linear Algebra}
+\label{part:linalg}
+\parttoc
+\include{../external/venhance-napkin/tex/linalg/vector-space}
+% \include{../external/venhance-napkin/tex/linalg/eigenvalues}
+% \include{../external/venhance-napkin/tex/linalg/dual-trace}
+% \include{../external/venhance-napkin/tex/linalg/dets}
+% \include{../external/venhance-napkin/tex/linalg/inner-form}
+% \include{../external/venhance-napkin/tex/linalg/fourier}
+% \include{../external/venhance-napkin/tex/linalg/transpose}
+
+% \part{More on Groups}
+% \label{part:groups}
+% \parttoc
+% \include{../external/venhance-napkin/tex/H113/action}
+% \include{../external/venhance-napkin/tex/H113/sylow}
+% \include{../external/venhance-napkin/tex/H113/structure}
+
+% \part{Representation Theory}
+% \label{part:repth}
+% \parttoc
+% \include{../external/venhance-napkin/tex/rep-theory/rep-alg}
+% \include{../external/venhance-napkin/tex/rep-theory/semisimple}
+% \include{../external/venhance-napkin/tex/rep-theory/characters}
+% \include{../external/venhance-napkin/tex/rep-theory/applications}
+
+% \part{Quantum Algorithms}
+% \label{part:quantum}
+% \parttoc
+% \include{../external/venhance-napkin/tex/quantum/vectors}
+% % \include{../external/venhance-napkin/tex/quantum/circuits}
+% \include{../external/venhance-napkin/tex/quantum/shor}
+
+% \part{Calculus 101}
+% \label{part:calc}
+% \parttoc
+% \include{../external/venhance-napkin/tex/calculus/limits}
+% \include{../external/venhance-napkin/tex/calculus/p-adic}
+% \include{../external/venhance-napkin/tex/calculus/differentiate}
+% \include{../external/venhance-napkin/tex/calculus/taylor}
+% \include{../external/venhance-napkin/tex/calculus/integrate}
+
+% \part{Complex Analysis}
+% \label{part:cmplxana}
+% \parttoc
+% \include{../external/venhance-napkin/tex/complex-ana/holomorphic}
+% \include{../external/venhance-napkin/tex/complex-ana/meromorphic}
+% \include{../external/venhance-napkin/tex/complex-ana/log}
+% \include{../external/venhance-napkin/tex/complex-ana/quintic}
+
+% \part{Measure Theory}
+% \label{part:measure}
+% \parttoc
+% \include{../external/venhance-napkin/tex/measure/measure-space}
+% \include{../external/venhance-napkin/tex/measure/caratheodory}
+% \include{../external/venhance-napkin/tex/measure/lebesgue-int}
+% \include{../external/venhance-napkin/tex/measure/swapsum}
+% \include{../external/venhance-napkin/tex/measure/pontryagin}
+
+% \part{Probability (TO DO)}
+% \label{part:prob}
+% \parttoc
+% \include{../external/venhance-napkin/tex/measure/randvar}
+% \include{../external/venhance-napkin/tex/measure/large-laws}
+% \include{../external/venhance-napkin/tex/measure/martingale} % To be written
+
+% \part{Differential Geometry}
+% \label{part:diffgeo}
+% \parttoc
+% \include{../external/venhance-napkin/tex/diffgeo/multivar} % missing sols
+% \include{../external/venhance-napkin/tex/diffgeo/forms}
+% \include{../external/venhance-napkin/tex/diffgeo/stokes} % sols
+% \include{../external/venhance-napkin/tex/diffgeo/manifolds}
+
+% \part{Riemann Surfaces}
+% \label{part:riemann}
+% \parttoc
+% \include{../external/venhance-napkin/tex/riemann-surface/complex-structure}
+% \include{../external/venhance-napkin/tex/riemann-surface/morphism}
+% \include{../external/venhance-napkin/tex/riemann-surface/affine-projective}
+% \include{../external/venhance-napkin/tex/riemann-surface/forms}
+% \include{../external/venhance-napkin/tex/riemann-surface/riemann-roch}
+% \include{../external/venhance-napkin/tex/riemann-surface/line-bundles}
+
+% \part{Algebraic NT I: Rings of Integers}
+% \label{part:algnt1}
+% \parttoc
+% \include{../external/venhance-napkin/tex/alg-NT/numfield}
+% \include{../external/venhance-napkin/tex/alg-NT/norm-trace}
+% \include{../external/venhance-napkin/tex/alg-NT/dedekind}
+% \include{../external/venhance-napkin/tex/alg-NT/classgrp}
+% \include{../external/venhance-napkin/tex/alg-NT/discriminant}
+% \include{../external/venhance-napkin/tex/alg-NT/pell}
+
+% \part{Algebraic NT II: Galois and Ramification Theory}
+% \label{part:algnt2}
+% \parttoc
+% \include{../external/venhance-napkin/tex/alg-NT/galois}
+% \include{../external/venhance-napkin/tex/alg-NT/finite-field}
+% \include{../external/venhance-napkin/tex/alg-NT/ramification} % missing probs
+% \include{../external/venhance-napkin/tex/alg-NT/frobenius}
+% \include{../external/venhance-napkin/tex/alg-NT/artin}
+
+% \part{Algebraic Topology I: Homotopy}
+% \label{part:algtop1}
+% \parttoc
+% \include{../external/venhance-napkin/tex/topology/constructions}
+% \include{../external/venhance-napkin/tex/topology/fundamental-group}
+% \include{../external/venhance-napkin/tex/topology/cover-project} % missing problems
+
+% \part{Category Theory}
+% \label{part:cats}
+% \parttoc
+% \include{../external/venhance-napkin/tex/cats/categories} % missing sols
+% \include{../external/venhance-napkin/tex/cats/functors} % missing sols
+% \include{../external/venhance-napkin/tex/cats/limits}
+% \include{../external/venhance-napkin/tex/cats/abelian}
+
+% \part{Algebraic Topology II: Homology}
+% \label{part:algtop2}
+% \parttoc
+% \include{../external/venhance-napkin/tex/homology/singular} % missing problems
+% \include{../external/venhance-napkin/tex/homology/long-exact}
+% \include{../external/venhance-napkin/tex/homology/excision}
+% \include{../external/venhance-napkin/tex/homology/cellular}
+% \include{../external/venhance-napkin/tex/homology/cohomology}
+% \include{../external/venhance-napkin/tex/homology/cup-product}
+
+% \part{Algebraic Geometry I: Classical Varieties}
+% \label{part:ag1}
+% \parttoc
+% \include{../external/venhance-napkin/tex/alg-geom/affine-var}
+% \include{../external/venhance-napkin/tex/alg-geom/zariski}
+% \include{../external/venhance-napkin/tex/alg-geom/proj-var} % missing problems
+% \include{../external/venhance-napkin/tex/alg-geom/bezout}
+% \include{../external/venhance-napkin/tex/alg-geom/quasi-proj}
+
+% \part{Algebraic Geometry II: Affine Schemes}
+% \label{part:ag2}
+% \parttoc
+% \include{../external/venhance-napkin/tex/alg-geom/sheaves}
+% \include{../external/venhance-napkin/tex/alg-geom/localization}
+% \include{../external/venhance-napkin/tex/alg-geom/spec-zariski}
+% \include{../external/venhance-napkin/tex/alg-geom/spec-sheaf}
+% \include{../external/venhance-napkin/tex/alg-geom/spec-examples}
+% \include{../external/venhance-napkin/tex/alg-geom/mor-scheme}
+
+% \part{Set Theory I: ZFC, Ordinals, and Cardinals}
+% \label{part:st1}
+% \parttoc
+% \include{../external/venhance-napkin/tex/set-theory/zorn-lemma}
+% \include{../external/venhance-napkin/tex/set-theory/zfc}
+% \include{../external/venhance-napkin/tex/set-theory/ordinal}
+% \include{../external/venhance-napkin/tex/set-theory/cardinal}
+
+% \part{Set Theory II: Model Theory and Forcing}
+% \label{part:st2}
+% \parttoc
+% \include{../external/venhance-napkin/tex/set-theory/models}
+% \include{../external/venhance-napkin/tex/set-theory/forcing}
+% \include{../external/venhance-napkin/tex/set-theory/CH}
+
+% \part{Appendix}
+
+% \include{tex/backmatter/references}
+% \include{tex/backmatter/hintsol}
+
+% \include{tex/backmatter/notation}
+% \include{tex/backmatter/sets-functions}
+
+\end{document}
