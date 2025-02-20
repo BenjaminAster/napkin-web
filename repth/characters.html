@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Characters</title>
+		<meta property="og:title" content="Characters" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../repth/semisimple-algebras.html">Previous chapter: Semisimple algebras</a><br />
+<a href="../repth/applications.html">Next chapter: Some applications</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 21 </span>Characters</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">Characters are basically the best thing ever.
+To every representation <math id="p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> of <math id="p1.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> we will attach a
+so-called character <math id="p1.m3" class="ltx_Math" alttext="\chi_{V}\colon A\to k" display="inline"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>A</mi><mo stretchy="false">→</mo><mi>k</mi></mrow></mrow></math>.
+It will turn out that the characters of irreps of <math id="p1.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>
+will determine the representation <math id="p1.m5" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> completely.
+Thus an irrep is just specified by a set of <math id="p1.m6" class="ltx_Math" alttext="\dim A" display="inline"><mrow><mo rspace="0.167em">dim</mo><mi>A</mi></mrow></math> numbers.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">21.1 </span>Definitions</h2>
+
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 21.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="V=(V,\rho)" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>ρ</mi><mo stretchy="false">)</mo></mrow></mrow></math> be a finite-dimensional representation of <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>.
+The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> character</span> <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\chi_{V}\colon A\to k" display="inline"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>A</mi><mo stretchy="false">→</mo><mi>k</mi></mrow></mrow></math> attached to
+<math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is defined by <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\chi_{V}=\operatorname{Tr}\circ\rho" display="inline"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>=</mo><mrow><mi>Tr</mi><mo lspace="0em" rspace="0.222em">∘</mo><mi>ρ</mi></mrow></mrow></math>, i.e.</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\chi_{V}(a)\coloneqq\operatorname{Tr}\left(\rho(a)\colon V\to V\right)." display="block"><mrow><mrow><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mrow><mi>ρ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Since <math id="S1.p1.m1" class="ltx_Math" alttext="\operatorname{Tr}" display="inline"><mi>Tr</mi></math> and <math id="S1.p1.m2" class="ltx_Math" alttext="\rho" display="inline"><mi>ρ</mi></math> are additive, this is a <math id="S1.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-linear map
+(but it is not multiplicative).
+Note also that <math id="S1.p1.m4" class="ltx_Math" alttext="\chi_{V\oplus W}=\chi_{V}+\chi_{W}" display="inline"><mrow><msub><mi>χ</mi><mrow><mi>V</mi><mo>⊕</mo><mi>W</mi></mrow></msub><mo>=</mo><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>+</mo><msub><mi>χ</mi><mi>W</mi></msub></mrow></mrow></math>
+for any representations <math id="S1.p1.m5" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="S1.p1.m6" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">We are especially interested in the case <math id="S1.p2.m1" class="ltx_Math" alttext="A=k[G]" display="inline"><mrow><mi>A</mi><mo>=</mo><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>, of course.
+As usual, we just have to specify <math id="S1.p2.m2" class="ltx_Math" alttext="\chi_{V}(g)" display="inline"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math> for each
+<math id="S1.p2.m3" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math> to get the whole map <math id="S1.p2.m4" class="ltx_Math" alttext="k[G]\to k" display="inline"><mrow><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mi>k</mi></mrow></math>.
+Thus we often think of <math id="S1.p2.m5" class="ltx_Math" alttext="\chi_{V}" display="inline"><msub><mi>χ</mi><mi>V</mi></msub></math> as a function <math id="S1.p2.m6" class="ltx_Math" alttext="G\to k" display="inline"><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>k</mi></mrow></math>,
+called a character of the group <math id="S1.p2.m7" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+Here is the case <math id="S1.p2.m8" class="ltx_Math" alttext="G=S_{3}" display="inline"><mrow><mi>G</mi><mo>=</mo><msub><mi>S</mi><mn>3</mn></msub></mrow></math>:</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 21.1.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Character table of <math id="S1.Thmtheorem2.m1" class="ltx_Math" alttext="S_{3}" display="inline"><msub><mi>S</mi><mn>3</mn></msub></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let’s consider the three irreps of <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="G=S_{3}" display="inline"><mrow><mi>G</mi><mo>=</mo><msub><mi>S</mi><mn>3</mn></msub></mrow></math> from before.
+For <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathbb{C}_{\text{triv}}" display="inline"><msub><mi>ℂ</mi><mtext>triv</mtext></msub></math> all traces are <math id="S1.Thmtheorem2.p1.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>;
+for <math id="S1.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\mathbb{C}_{\text{sign}}" display="inline"><msub><mi>ℂ</mi><mtext>sign</mtext></msub></math> the traces are <math id="S1.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\pm 1" display="inline"><mrow><mo>±</mo><mn>1</mn></mrow></math> depending on sign
+(obviously, for one-dimensional maps <math id="S1.Thmtheorem2.p1.m6" class="ltx_Math" alttext="k\to k" display="inline"><mrow><mi>k</mi><mo stretchy="false">→</mo><mi>k</mi></mrow></math> the trace “is”
+just the map itself).
+For <math id="S1.Thmtheorem2.p1.m7" class="ltx_Math" alttext="\operatorname{refl}_{0}" display="inline"><msub><mi>refl</mi><mn>0</mn></msub></math> we take a basis <math id="S1.Thmtheorem2.p1.m8" class="ltx_Math" alttext="(1,0,-1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math> and <math id="S1.Thmtheorem2.p1.m9" class="ltx_Math" alttext="(0,1,-1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math>, say,
+and compute the traces directly in this basis.</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\begin{array}[]{|r|rrrrrr|}\hline\cr\chi_{V}(g)&amp;\mathrm{id}&amp;(1\;2)&amp;(2\;3)&amp;(3\;%
+1)&amp;(1\;2\;3)&amp;(3\;2\;1)\\
+\hline\cr\mathbb{C}_{\mathrm{triv}}&amp;1&amp;1&amp;1&amp;1&amp;1&amp;1\\
+\mathbb{C}_{\mathrm{sign}}&amp;1&amp;-1&amp;-1&amp;-1&amp;1&amp;1\\
+\operatorname{refl}_{0}&amp;2&amp;0&amp;0&amp;0&amp;-1&amp;-1\\
+\hline\cr\end{array}" display="block"><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r" columnalign="right"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mi>id</mi></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo stretchy="false">(</mo><mn>1 2</mn><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo stretchy="false">(</mo><mn>2 3</mn><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo stretchy="false">(</mo><mn>3 1</mn><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo stretchy="false">(</mo><mn>1 2 3</mn><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_border_r" columnalign="right"><mrow><mo stretchy="false">(</mo><mn>3 2 1</mn><mo stretchy="false">)</mo></mrow></mtd></mtr><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r" columnalign="right"><msub><mi>ℂ</mi><mi>triv</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_border_r" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r" columnalign="right"><msub><mi>ℂ</mi><mi>sign</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_border_r" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_border_b ltx_border_l ltx_border_r" columnalign="right"><msub><mi>refl</mi><mn>0</mn></msub></mtd><mtd class="ltx_border_b" columnalign="right"><mn>2</mn></mtd><mtd class="ltx_border_b" columnalign="right"><mn>0</mn></mtd><mtd class="ltx_border_b" columnalign="right"><mn>0</mn></mtd><mtd class="ltx_border_b" columnalign="right"><mn>0</mn></mtd><mtd class="ltx_border_b" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_border_b ltx_border_r" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">The above table is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> character table</span> of the group <math id="S1.p3.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+The table above has certain mysterious properties,
+which we will prove as the chapter progresses.</p>
+<ol id="S1.I1" class="ltx_enumerate">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(I)</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The value of <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\chi_{V}(g)" display="inline"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math> only depends on the conjugacy class of <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(II)</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The number of rows equals the number of conjugacy classes.</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(III)</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The sum of the squares of any row is <math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="6" display="inline"><mn>6</mn></math> again!</p>
+</div>
+</li>
+<li id="S1.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(IV)</span> 
+<div id="S1.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">The “dot product” of any two rows is zero.</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 21.1.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">The name “character” for <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\chi_{V}\colon G\to k" display="inline"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>k</mi></mrow></mrow></math> is a bit of a misnomer.
+This <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\chi_{V}" display="inline"><msub><mi>χ</mi><mi>V</mi></msub></math> is not multiplicative in any way,
+as the above example shows: one can almost think of it as
+an element of <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="k^{\oplus|G|}" display="inline"><msup><mi>k</mi><mrow><mo rspace="0em">⊕</mo><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow></mrow></msup></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 21.1.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\chi_{V}(1_{A})=\dim V" display="inline"><mrow><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mn>1</mn><mi>A</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mi>V</mi></mrow></mrow></math>,
+so one can read the dimensions of the representations
+from the leftmost column of a character table.</span></p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">21.2 </span>The dual space modulo the commutator</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">For any algebra, we first observe that since <math id="S2.p1.m1" class="ltx_Math" alttext="\operatorname{Tr}(TS)=\operatorname{Tr}(ST)" display="inline"><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>T</mi><mo>⁢</mo><mi>S</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo>⁢</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+we have for any <math id="S2.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> that</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\chi_{V}(ab)=\chi_{V}(ba)." display="block"><mrow><mrow><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>b</mi><mo>⁢</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This explains observation (I) from earlier:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 21.2.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Deduce that if <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> and <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> are in the same conjugacy class of a
+group <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>, and <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is a representation of <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="k[G]" display="inline"><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math>,
+then <math id="S2.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\chi(g)=\chi(h)" display="inline"><mrow><mrow><mi>χ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>χ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Now, given our algebra <math id="S2.p2.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> we define the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> commutator</span> <math id="S2.p2.m2" class="ltx_Math" alttext="[A,A]" display="inline"><mrow><mo stretchy="false">[</mo><mi>A</mi><mo>,</mo><mi>A</mi><mo stretchy="false">]</mo></mrow></math>
+to be the <math id="S2.p2.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-vector subspace spanned by <math id="S2.p2.m4" class="ltx_Math" alttext="xy-yx" display="inline"><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>−</mo><mrow><mi>y</mi><mo>⁢</mo><mi>x</mi></mrow></mrow></math> for <math id="S2.p2.m5" class="ltx_Math" alttext="x,y\in A" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><mi>A</mi></mrow></math>.
+Thus <math id="S2.p2.m6" class="ltx_Math" alttext="[A,A]" display="inline"><mrow><mo stretchy="false">[</mo><mi>A</mi><mo>,</mo><mi>A</mi><mo stretchy="false">]</mo></mrow></math> is contained in the kernel of each <math id="S2.p2.m7" class="ltx_Math" alttext="\chi_{V}" display="inline"><msub><mi>χ</mi><mi>V</mi></msub></math>.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 21.2.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The space <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="A^{\text{ab}}\coloneqq A/[A,A]" display="inline"><mrow><msup><mi>A</mi><mtext>ab</mtext></msup><mo>≔</mo><mrow><mi>A</mi><mo>/</mo><mrow><mo stretchy="false">[</mo><mi>A</mi><mo>,</mo><mi>A</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> abelianization</span> of <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>.
+Each character of <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> can be viewed as a map <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="A^{\text{ab}}\to k" display="inline"><mrow><msup><mi>A</mi><mtext>ab</mtext></msup><mo stretchy="false">→</mo><mi>k</mi></mrow></math>, i.e. an element of <math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="(A^{\text{ab}})^{\vee}" display="inline"><msup><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mtext>ab</mtext></msup><mo stretchy="false">)</mo></mrow><mo>∨</mo></msup></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 21.2.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of abelianizations)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S2.I1" class="ltx_enumerate">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is commutative, then <math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="[A,A]=\{0\}" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>A</mi><mo>,</mo><mi>A</mi><mo stretchy="false">]</mo></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math>
+and <math id="S2.I1.i1.p1.m3" class="ltx_Math" alttext="A^{\text{ab}}=A" display="inline"><mrow><msup><mi>A</mi><mtext>ab</mtext></msup><mo>=</mo><mi>A</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="A=\mathrm{Mat}_{k}(d)" display="inline"><mrow><mi>A</mi><mo>=</mo><mrow><msub><mi>Mat</mi><mi>k</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, then <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="[A,A]" display="inline"><mrow><mo stretchy="false">[</mo><mi>A</mi><mo>,</mo><mi>A</mi><mo stretchy="false">]</mo></mrow></math> consists exactly
+of the <math id="S2.I1.i2.p1.m3" class="ltx_Math" alttext="d\times d" display="inline"><mrow><mi>d</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>d</mi></mrow></math> matrices of trace zero.
+(Proof: harmless exercise.)
+Consequently, <math id="S2.I1.i2.p1.m4" class="ltx_Math" alttext="A^{\text{ab}}" display="inline"><msup><mi>A</mi><mtext>ab</mtext></msup></math> is one-dimensional.</p>
+</div>
+</li>
+<li id="S2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S2.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S2.I1.i3.p1.m1" class="ltx_Math" alttext="A=k[G]" display="inline"><mrow><mi>A</mi><mo>=</mo><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+Then in <math id="S2.I1.i3.p1.m2" class="ltx_Math" alttext="A^{\text{ab}}" display="inline"><msup><mi>A</mi><mtext>ab</mtext></msup></math>, we identify <math id="S2.I1.i3.p1.m3" class="ltx_Math" alttext="gh" display="inline"><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi></mrow></math> and <math id="S2.I1.i3.p1.m4" class="ltx_Math" alttext="hg" display="inline"><mrow><mi>h</mi><mo>⁢</mo><mi>g</mi></mrow></math> for each <math id="S2.I1.i3.p1.m5" class="ltx_Math" alttext="g,h\in G" display="inline"><mrow><mrow><mi>g</mi><mo>,</mo><mi>h</mi></mrow><mo>∈</mo><mi>G</mi></mrow></math>;
+equivalently <math id="S2.I1.i3.p1.m6" class="ltx_Math" alttext="ghg^{-1}=h" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>=</mo><mi>h</mi></mrow></math>.
+So in other words, <math id="S2.I1.i3.p1.m7" class="ltx_Math" alttext="A^{\text{ab}}" display="inline"><msup><mi>A</mi><mtext>ab</mtext></msup></math> is isomorphic to the space of
+<math id="S2.I1.i3.p1.m8" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-linear combinations of the <em class="ltx_emph ltx_font_italic">conjugacy classes</em> of <math id="S2.I1.i3.p1.m9" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 21.2.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Warning)</span> — </span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">For a group <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>, the abelianization of <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is defined to be
+<math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="G/[G,G]" display="inline"><mrow><mi>G</mi><mo>/</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo>,</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math>, where <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="[G,G]" display="inline"><mrow><mo stretchy="false">[</mo><mi>G</mi><mo>,</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></math> is the subgroup generated by all the commutators.</p>
+</div>
+<div id="S2.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">When <math id="S2.Thmtheorem4.p2.m1" class="ltx_Math" alttext="A=k[G]" display="inline"><mrow><mi>A</mi><mo>=</mo><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>, the space <math id="S2.Thmtheorem4.p2.m2" class="ltx_Math" alttext="A^{\text{ab}}" display="inline"><msup><mi>A</mi><mtext>ab</mtext></msup></math> is not isomorphic to the group algebra
+<math id="S2.Thmtheorem4.p2.m3" class="ltx_Math" alttext="k[G/[G,G]]" display="inline"><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>G</mi><mo>/</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo>,</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow></math>! This is because, in the abelianization of the group <math id="S2.Thmtheorem4.p2.m4" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>,
+we identify <math id="S2.Thmtheorem4.p2.m5" class="ltx_Math" alttext="ghg^{-1}h^{-1}=1" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msup><mi>h</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>=</mo><mn>1</mn></mrow></math> for all <math id="S2.Thmtheorem4.p2.m6" class="ltx_Math" alttext="g,h\in G" display="inline"><mrow><mrow><mi>g</mi><mo>,</mo><mi>h</mi></mrow><mo>∈</mo><mi>G</mi></mrow></math>, which is not the same
+as <math id="S2.Thmtheorem4.p2.m7" class="ltx_Math" alttext="gh-hg" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi></mrow><mo>−</mo><mrow><mi>h</mi><mo>⁢</mo><mi>g</mi></mrow></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem4.p3" class="ltx_para">
+<p class="ltx_p">In fact, in the general case, <math id="S2.Thmtheorem4.p3.m1" class="ltx_Math" alttext="A^{\text{ab}}" display="inline"><msup><mi>A</mi><mtext>ab</mtext></msup></math> does not even inherit the structure of a
+<math id="S2.Thmtheorem4.p3.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-algebra from <math id="S2.Thmtheorem4.p3.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>, it can only get a <math id="S2.Thmtheorem4.p3.m4" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-vector space structure.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 21.2.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Character of representations of algebras)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> be an algebra over an algebraically closed field. Then</p>
+<ol id="S2.I2" class="ltx_enumerate">
+<li id="S2.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">Characters of pairwise non-isomorphic irreps are
+linearly independent in <math id="S2.I2.i1.p1.m1" class="ltx_Math" alttext="(A^{\text{ab}})^{\vee}" display="inline"><msup><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mtext>ab</mtext></msup><mo stretchy="false">)</mo></mrow><mo>∨</mo></msup></math>.</p>
+</div>
+</li>
+<li id="S2.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.I2.i2.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is finite-dimensional and semisimple,
+then the characters attached to irreps
+form a basis of <math id="S2.I2.i2.p1.m2" class="ltx_Math" alttext="(A^{\text{ab}})^{\vee}" display="inline"><msup><mrow><mo stretchy="false">(</mo><msup><mi>A</mi><mtext>ab</mtext></msup><mo stretchy="false">)</mo></mrow><mo>∨</mo></msup></math>.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">In particular, in (b) the number of irreps of <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> equals <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\dim A^{\text{ab}}" display="inline"><mrow><mo rspace="0.167em">dim</mo><msup><mi>A</mi><mtext>ab</mtext></msup></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Part (a) is more or less obvious by the density theorem:
+suppose there is a linear dependence, so that for every <math id="S2.p3.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> we have</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="c_{1}\chi_{V_{1}}(a)+c_{2}\chi_{V_{2}}(a)+\dots+c_{r}\chi_{V_{r}}(a)=0" display="block"><mrow><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>χ</mi><msub><mi>V</mi><mn>1</mn></msub></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><msub><mi>c</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>χ</mi><msub><mi>V</mi><mn>2</mn></msub></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>c</mi><mi>r</mi></msub><mo>⁢</mo><msub><mi>χ</mi><msub><mi>V</mi><mi>r</mi></msub></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for some integer <math id="S2.p3.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>.</p>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 21.2.6</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Deduce that <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="c_{1}=\dots=c_{r}=0" display="inline"><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>=</mo><mi mathvariant="normal">⋯</mi><mo>=</mo><msub><mi>c</mi><mi>r</mi></msub><mo>=</mo><mn>0</mn></mrow></math> from the density theorem.</span></p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">For part (b), assume there are <math id="S2.p4.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> irreps.
+We may assume that</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="A=\bigoplus_{i=1}^{r}\mathrm{Mat}(V_{i})" display="block"><mrow><mi>A</mi><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">⨁</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>r</mi></munderover><mrow><mi>Mat</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>V</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S2.p4.m2" class="ltx_Math" alttext="V_{1}" display="inline"><msub><mi>V</mi><mn>1</mn></msub></math>, …, <math id="S2.p4.m3" class="ltx_Math" alttext="V_{r}" display="inline"><msub><mi>V</mi><mi>r</mi></msub></math> are the irreps of <math id="S2.p4.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>.
+Since we have already showed the characters are linearly independent
+we need only show that <math id="S2.p4.m5" class="ltx_Math" alttext="\dim(A/[A,A])=r" display="inline"><mrow><mrow><mo rspace="0em">dim</mo><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo>/</mo><mrow><mo stretchy="false">[</mo><mi>A</mi><mo>,</mo><mi>A</mi><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>r</mi></mrow></math>,
+which follows from the observation earlier that each <math id="S2.p4.m6" class="ltx_Math" alttext="\mathrm{Mat}(V_{i})" display="inline"><mrow><mi>Mat</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>V</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+has a one-dimensional abelianization.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Since <math id="S2.p5.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> has <math id="S2.p5.m2" class="ltx_Math" alttext="\dim k[G]^{\text{ab}}" display="inline"><mrow><mo rspace="0.167em">dim</mo><mrow><mi>k</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow><mtext>ab</mtext></msup></mrow></mrow></math> conjugacy classes,
+this completes the proof of (II).</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">21.3 </span>Orthogonality of characters</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Now we specialize to the case of finite groups <math id="S3.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>, represented over <math id="S3.p1.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 21.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\operatorname{Classes}(G)" display="inline"><mrow><mi>Classes</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></math> denote the set of conjugacy classes of <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.</p>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">If <math id="S3.p2.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> has <math id="S3.p2.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> conjugacy classes, then it has <math id="S3.p2.m3" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> irreps.
+Each (finite-dimensional) representation <math id="S3.p2.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>, irreducible or not, gives a
+character <math id="S3.p2.m5" class="ltx_Math" alttext="\chi_{V}" display="inline"><msub><mi>χ</mi><mi>V</mi></msub></math>.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 21.3.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">From now on, we will often regard <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\chi_{V}" display="inline"><msub><mi>χ</mi><mi>V</mi></msub></math> as a function <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="G\to\mathbb{C}" display="inline"><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math>
+or as a function <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\operatorname{Classes}(G)\to\mathbb{C}" display="inline"><mrow><mrow><mi>Classes</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math>.
+So for example, we will write both <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\chi_{V}(g)" display="inline"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math> (for <math id="S3.Thmtheorem2.p1.m5" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>)
+and <math id="S3.Thmtheorem2.p1.m6" class="ltx_Math" alttext="\chi_{V}(C)" display="inline"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></mrow></math> (for a conjugacy class <math id="S3.Thmtheorem2.p1.m7" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>);
+the latter just means <math id="S3.Thmtheorem2.p1.m8" class="ltx_Math" alttext="\chi_{V}(g_{C})" display="inline"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>g</mi><mi>C</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> for any representative <math id="S3.Thmtheorem2.p1.m9" class="ltx_Math" alttext="g_{C}\in C" display="inline"><mrow><msub><mi>g</mi><mi>C</mi></msub><mo>∈</mo><mi>C</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 21.3.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\operatorname{Fun}_{\mathrm{class}}(G)" display="inline"><mrow><msub><mi>Fun</mi><mi>class</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></math> denote the set of functions <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\operatorname{Classes}(G)\to\mathbb{C}" display="inline"><mrow><mrow><mi>Classes</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math>
+viewed as a vector space over <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.
+We endow it with the inner form</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\left&lt;f_{1},f_{2}\right&gt;=\frac{1}{|G|}\sum_{g\in G}f_{1}(g)\overline{f_{2}(g)}." display="block"><mrow><mrow><mrow><mo>⟨</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo>⟩</mo></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow></mfrac><mo>⁢</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></munder><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mover accent="true"><mrow><msub><mi>f</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>¯</mo></mover></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">This is the same “dot product” that we mentioned at the beginning,
+when we looked at the character table of <math id="S3.p3.m1" class="ltx_Math" alttext="S_{3}" display="inline"><msub><mi>S</mi><mn>3</mn></msub></math>.
+We now aim to prove the following orthogonality theorem,
+which will imply (III) and (IV) from earlier.</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 21.3.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Orthogonality)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">For any finite-dimensional complex representations <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>
+of <math id="S3.Thmtheorem4.p1.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> we have</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\left&lt;\chi_{V},\chi_{W}\right&gt;=\dim\operatorname{Hom}_{\mathrm{rep}}(W,V)." display="block"><mrow><mrow><mrow><mo>⟨</mo><msub><mi>χ</mi><mi>V</mi></msub><mo>,</mo><msub><mi>χ</mi><mi>W</mi></msub><mo>⟩</mo></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mrow><msub><mi>Hom</mi><mi>rep</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In particular, if <math id="S3.Thmtheorem4.p1.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="S3.Thmtheorem4.p1.m5" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> are irreps then</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\left&lt;\chi_{V},\chi_{W}\right&gt;=\begin{cases}1&amp;V\cong W\\
+0&amp;\text{otherwise}.\end{cases}" display="block"><mrow><mrow><mo>⟨</mo><msub><mi>χ</mi><mi>V</mi></msub><mo>,</mo><msub><mi>χ</mi><mi>W</mi></msub><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mn>1</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>V</mi><mo>≅</mo><mi>W</mi></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>otherwise</mtext><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_corollary">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Corollary 21.3.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Irreps give an orthonormal basis)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">The characters associated to irreps
+form an <em class="ltx_emph ltx_font_italic">orthonormal</em> basis of <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\operatorname{Fun}_{\mathrm{class}}(G)" display="inline"><mrow><msub><mi>Fun</mi><mi>class</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">In order to prove this theorem, we have to define
+the dual representation and the tensor representation,
+which give a natural way to deal with the quantity <math id="S3.p4.m1" class="ltx_Math" alttext="\chi_{V}(g)\overline{\chi_{W}(g)}" display="inline"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mover accent="true"><mrow><msub><mi>χ</mi><mi>W</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>¯</mo></mover></mrow></math>.</p>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 21.3.6</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="V=(V,\rho)" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>ρ</mi><mo stretchy="false">)</mo></mrow></mrow></math> be a representation of <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> dual representation</span> <math id="S3.Thmtheorem6.p1.m3" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math> is the representation on <math id="S3.Thmtheorem6.p1.m4" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math>
+with the action of <math id="S3.Thmtheorem6.p1.m5" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> given as follows: for each <math id="S3.Thmtheorem6.p1.m6" class="ltx_Math" alttext="\xi\in V^{\vee}" display="inline"><mrow><mi>ξ</mi><mo>∈</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math>,
+the action of <math id="S3.Thmtheorem6.p1.m7" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> gives a <math id="S3.Thmtheorem6.p1.m8" class="ltx_Math" alttext="g\cdot\xi\in V^{\vee}" display="inline"><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>ξ</mi></mrow><mo>∈</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math> specified by</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="v\xmapsto{g\cdot\xi}\xi\left(\rho(g^{-1})(v)\right)." display="block"><mrow><mrow><mi>v</mi><mover accent="true"><mo stretchy="false">↦</mo><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>ξ</mi></mrow></mover><mrow><mi>ξ</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>ρ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.Thmtheorem7" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 21.3.7</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem7.p1.m1" class="ltx_Math" alttext="V=(V,\rho_{V})" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><msub><mi>ρ</mi><mi>V</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S3.Thmtheorem7.p1.m2" class="ltx_Math" alttext="W=(W,\rho_{W})" display="inline"><mrow><mi>W</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo>,</mo><msub><mi>ρ</mi><mi>W</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+be <em class="ltx_emph ltx_font_italic">group</em> representations of <math id="S3.Thmtheorem7.p1.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> tensor product</span> of <math id="S3.Thmtheorem7.p1.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="S3.Thmtheorem7.p1.m5" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> is the group representation
+on <math id="S3.Thmtheorem7.p1.m6" class="ltx_Math" alttext="V\otimes W" display="inline"><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi></mrow></math> with the action of <math id="S3.Thmtheorem7.p1.m7" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> given on pure tensors by</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="g\cdot(v\otimes w)=(\rho_{V}(g)(v))\otimes(\rho_{W}(g)(w))" display="block"><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mi>v</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>ρ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⊗</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>ρ</mi><mi>W</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which extends linearly to define the action of <math id="S3.Thmtheorem7.p1.m8" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> on all of <math id="S3.Thmtheorem7.p1.m9" class="ltx_Math" alttext="V\otimes W" display="inline"><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem8" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 21.3.8</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">Warning: the definition for tensors does <em class="ltx_emph ltx_font_italic">not</em> extend to algebras.
+We might hope that <math id="S3.Thmtheorem8.p1.m1" class="ltx_Math" alttext="a\cdot(v\otimes w)=(a\cdot v)\otimes(a\cdot w)" display="inline"><mrow><mrow><mi>a</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mi>v</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>v</mi></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⊗</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+would work, but this is not even linear in <math id="S3.Thmtheorem8.p1.m2" class="ltx_Math" alttext="a\in A" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>A</mi></mrow></math>
+(what happens if we take <math id="S3.Thmtheorem8.p1.m3" class="ltx_Math" alttext="a=2" display="inline"><mrow><mi>a</mi><mo>=</mo><mn>2</mn></mrow></math>, for example?).</p>
+</div>
+</div>
+<div id="S3.Thmtheorem9" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 21.3.9</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Character traces)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.Thmtheorem9.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="S3.Thmtheorem9.p1.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> are finite-dimensional representations of <math id="S3.Thmtheorem9.p1.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>,
+then for any <math id="S3.Thmtheorem9.p1.m4" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>.</p>
+<ol id="S3.I1" class="ltx_enumerate">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="\chi_{V\oplus W}(g)=\chi_{V}(g)+\chi_{W}(g)" display="inline"><mrow><mrow><msub><mi>χ</mi><mrow><mi>V</mi><mo>⊕</mo><mi>W</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><msub><mi>χ</mi><mi>W</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="\chi_{V\otimes W}(g)=\chi_{V}(g)\cdot\chi_{W}(g)" display="inline"><mrow><mrow><msub><mi>χ</mi><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><msub><mi>χ</mi><mi>W</mi></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S3.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I1.i3.p1.m1" class="ltx_Math" alttext="\chi_{V^{\vee}}(g)=\overline{\chi_{V}(g)}" display="inline"><mrow><mrow><msub><mi>χ</mi><msup><mi>V</mi><mo>∨</mo></msup></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mover accent="true"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>¯</mo></mover></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Parts (a) and (b) follow from the identities
+<math id="S3.p5.m1" class="ltx_Math" alttext="\operatorname{Tr}(S\oplus T)=\operatorname{Tr}(S)+\operatorname{Tr}(T)" display="inline"><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo>⊕</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>
+and <math id="S3.p5.m2" class="ltx_Math" alttext="\operatorname{Tr}(S\otimes T)=\operatorname{Tr}(S)\operatorname{Tr}(T)" display="inline"><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.
+However, part (c) is trickier.
+As <math id="S3.p5.m3" class="ltx_Math" alttext="(\rho(g))^{|G|}=\rho(g^{|G|})=\rho(1_{G})=\mathrm{id}_{V}" display="inline"><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>ρ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow></msup><mo>=</mo><mrow><mi>ρ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>g</mi><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ρ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mn>1</mn><mi>G</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>id</mi><mi>V</mi></msub></mrow></math>
+by Lagrange’s theorem, we can diagonalize <math id="S3.p5.m4" class="ltx_Math" alttext="\rho(g)" display="inline"><mrow><mi>ρ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+say with eigenvalues <math id="S3.p5.m5" class="ltx_Math" alttext="\lambda_{1}" display="inline"><msub><mi>λ</mi><mn>1</mn></msub></math>, …, <math id="S3.p5.m6" class="ltx_Math" alttext="\lambda_{n}" display="inline"><msub><mi>λ</mi><mi>n</mi></msub></math>
+which are <math id="S3.p5.m7" class="ltx_Math" alttext="|G|" display="inline"><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow></math>th roots of unity,
+corresponding to eigenvectors <math id="S3.p5.m8" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, …, <math id="S3.p5.m9" class="ltx_Math" alttext="e_{n}" display="inline"><msub><mi>e</mi><mi>n</mi></msub></math>.
+Then we see that in the basis <math id="S3.p5.m10" class="ltx_Math" alttext="e_{1}^{\vee}" display="inline"><msubsup><mi>e</mi><mn>1</mn><mo>∨</mo></msubsup></math>, …, <math id="S3.p5.m11" class="ltx_Math" alttext="e_{n}^{\vee}" display="inline"><msubsup><mi>e</mi><mi>n</mi><mo>∨</mo></msubsup></math>,
+the action of <math id="S3.p5.m12" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> on <math id="S3.p5.m13" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math> has eigenvalues
+<math id="S3.p5.m14" class="ltx_Math" alttext="\lambda_{1}^{-1}" display="inline"><msubsup><mi>λ</mi><mn>1</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></math>, <math id="S3.p5.m15" class="ltx_Math" alttext="\lambda_{2}^{-1}" display="inline"><msubsup><mi>λ</mi><mn>2</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></math>, …, <math id="S3.p5.m16" class="ltx_Math" alttext="\lambda_{n}^{-1}" display="inline"><msubsup><mi>λ</mi><mi>n</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></math>.
+So</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\chi_{V}(g)=\sum_{i=1}^{n}\lambda_{i}\quad\text{and}\quad\chi_{V^{\vee}}(g)=%
+\sum_{i=1}^{n}\lambda_{i}^{-1}=\sum_{i=1}^{n}\overline{\lambda_{i}}" display="block"><mrow><mrow><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>λ</mi><mi>i</mi></msub></mrow><mspace width="1em"></mspace><mtext>and</mtext></mrow></mrow><mspace width="1em"></mspace><mrow><mrow><msub><mi>χ</mi><msup><mi>V</mi><mo>∨</mo></msup></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msubsup><mi>λ</mi><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mover accent="true"><msub><mi>λ</mi><mi>i</mi></msub><mo>¯</mo></mover></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where the last step follows from the identity <math id="S3.p5.m17" class="ltx_Math" alttext="|z|=1\iff z^{-1}=\overline{z}" display="inline"><mrow><mrow><mrow><mo stretchy="false">|</mo><mi>z</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>1</mn></mrow><mo stretchy="false">⇔</mo><mrow><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mover accent="true"><mi>z</mi><mo>¯</mo></mover></mrow></mrow></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.Thmtheorem10" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 21.3.10</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Warning)</span> — </span>
+</h5>
+<div id="S3.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p">The identities (b) and (c) do not extend linearly to <math id="S3.Thmtheorem10.p1.m1" class="ltx_Math" alttext="\mathbb{C}[G]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math>,
+i.e. it is not true for example that <math id="S3.Thmtheorem10.p1.m2" class="ltx_Math" alttext="\chi_{V^{\vee}}(a)=\overline{\chi_{V}(a)}" display="inline"><mrow><mrow><msub><mi>χ</mi><msup><mi>V</mi><mo>∨</mo></msup></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mover accent="true"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>¯</mo></mover></mrow></math>
+if we think of <math id="S3.Thmtheorem10.p1.m3" class="ltx_Math" alttext="\chi_{V}" display="inline"><msub><mi>χ</mi><mi>V</mi></msub></math> as a map <math id="S3.Thmtheorem10.p1.m4" class="ltx_Math" alttext="\mathbb{C}[G]\to\mathbb{C}" display="inline"><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of orthogonality relation.</h5>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">The key point is that we can now reduce
+the sums of products to just a single character by</p>
+<div class="table-container"><table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="\chi_{V}(g)\overline{\chi_{W}(g)}=\chi_{V\otimes W^{\vee}}(g)." display="block"><mrow><mrow><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mover accent="true"><mrow><msub><mi>χ</mi><mi>W</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>¯</mo></mover></mrow><mo>=</mo><mrow><msub><mi>χ</mi><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>W</mi><mo>∨</mo></msup></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So we can rewrite the sum in question as just</p>
+<div class="table-container"><table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\left&lt;\chi_{V},\chi_{W}\right&gt;=\frac{1}{|G|}\sum_{g\in G}\chi_{V\otimes W^{%
+\vee}}(g)=\chi_{V\otimes W^{\vee}}\left(\frac{1}{|G|}\sum_{g\in G}g\right)." display="block"><mrow><mrow><mrow><mo>⟨</mo><msub><mi>χ</mi><mi>V</mi></msub><mo>,</mo><msub><mi>χ</mi><mi>W</mi></msub><mo>⟩</mo></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow></mfrac><mo>⁢</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></munder><mrow><msub><mi>χ</mi><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>W</mi><mo>∨</mo></msup></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo>=</mo><mrow><msub><mi>χ</mi><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>W</mi><mo>∨</mo></msup></mrow></msub><mo>⁢</mo><mrow><mo>(</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow></mfrac><mo>⁢</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></munder><mi>g</mi></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Let <math id="S3.p6.m1" class="ltx_Math" alttext="P\colon V\otimes W^{\vee}\to V\otimes W^{\vee}" display="inline"><mrow><mi>P</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>W</mi><mo>∨</mo></msup></mrow><mo stretchy="false">→</mo><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>W</mi><mo>∨</mo></msup></mrow></mrow></mrow></math> be the
+action of <math id="S3.p6.m2" class="ltx_Math" alttext="\frac{1}{|G|}\sum_{g\in G}g" display="inline"><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∑</mo><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></msub><mi>g</mi></mrow></mrow></math>,
+so we wish to find <math id="S3.p6.m3" class="ltx_Math" alttext="\operatorname{Tr}P" display="inline"><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><mi>P</mi></mrow></math>.</p>
+</div>
+<div id="S3.Thmtheorem11" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 21.3.11</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem11.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S3.Thmtheorem11.p1.m1" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> is idempotent.
+(Compute <math id="S3.Thmtheorem11.p1.m2" class="ltx_Math" alttext="P\circ P" display="inline"><mrow><mi>P</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>P</mi></mrow></math> directly.)</span></p>
+</div>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">Hence <math id="S3.p7.m1" class="ltx_Math" alttext="V\otimes W^{\vee}=\ker P\oplus\operatorname{im}P" display="inline"><mrow><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>W</mi><mo>∨</mo></msup></mrow><mo>=</mo><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>P</mi></mrow><mo>⊕</mo><mrow><mi>im</mi><mo lspace="0.167em">⁡</mo><mi>P</mi></mrow></mrow></mrow></math> (by <a href="../linalg/vector-spaces.html#prob:idempotent" title="Problem 9H (Idempotents are projection maps). ‣ 9.11 A few harder problems to think about ‣ Chapter 9 Vector spaces ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">9H</span></a>)
+and <math id="S3.p7.m2" class="ltx_Math" alttext="\operatorname{im}P" display="inline"><mrow><mi>im</mi><mo lspace="0.167em">⁡</mo><mi>P</mi></mrow></math> is the subspace of elements which are fixed under <math id="S3.p7.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+From this we deduce that</p>
+<div class="table-container"><table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\operatorname{Tr}P=\dim\operatorname{im}P=\dim\left\{x\in V\otimes W^{\vee}%
+\mid g\cdot x=x\;\forall g\in G\right\}." display="block"><mrow><mrow><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><mi>P</mi></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mrow><mi>im</mi><mo lspace="0.167em">⁡</mo><mi>P</mi></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0em">dim</mo><mrow><mo>{</mo><mrow><mi>x</mi><mo>∈</mo><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>W</mi><mo>∨</mo></msup></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow><mo>=</mo><mrow><mi>x</mi><mo lspace="0.447em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mi>g</mi></mrow></mrow><mo>∈</mo><mi>G</mi></mrow><mo>}</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Now, consider the natural isomorphism <math id="S3.p7.m4" class="ltx_Math" alttext="V\otimes W^{\vee}\to\operatorname{Hom}(W,V)" display="inline"><mrow><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>W</mi><mo>∨</mo></msup></mrow><mo stretchy="false">→</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S3.Thmtheorem12" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 21.3.12</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem12.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let <math id="S3.Thmtheorem12.p1.m1" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>.
+Show that under this isomorphism, <math id="S3.Thmtheorem12.p1.m2" class="ltx_Math" alttext="T\in\operatorname{Hom}(W,V)" display="inline"><mrow><mi>T</mi><mo>∈</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+satisfies <math id="S3.Thmtheorem12.p1.m3" class="ltx_Math" alttext="g\cdot T=T" display="inline"><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>T</mi></mrow><mo>=</mo><mi>T</mi></mrow></math> if and only if
+<math id="S3.Thmtheorem12.p1.m4" class="ltx_Math" alttext="T(g\cdot w)=g\cdot T(w)" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>T</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for each <math id="S3.Thmtheorem12.p1.m5" class="ltx_Math" alttext="w\in W" display="inline"><mrow><mi>w</mi><mo>∈</mo><mi>W</mi></mrow></math>.
+(This is just unwinding three or four definitions.)</span></p>
+</div>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">Consequently, <math id="S3.p8.m1" class="ltx_Math" alttext="\chi_{V\otimes W^{\vee}}(P)=\operatorname{Tr}P=\dim\operatorname{Hom}_{\mathrm%
+{rep}}(W,V)" display="inline"><mrow><mrow><msub><mi>χ</mi><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>W</mi><mo>∨</mo></msup></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>P</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><mi>P</mi></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mrow><msub><mi>Hom</mi><mi>rep</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo>,</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>
+as desired.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">The orthogonality relation gives us a fast and mechanical way to check
+whether a finite-dimensional representation <math id="S3.p9.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is irreducible.
+Namely, compute the traces <math id="S3.p9.m2" class="ltx_Math" alttext="\chi_{V}(g)" display="inline"><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math> for each <math id="S3.p9.m3" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>,
+and then check whether <math id="S3.p9.m4" class="ltx_Math" alttext="\left&lt;\chi_{V},\chi_{V}\right&gt;=1" display="inline"><mrow><mrow><mo>⟨</mo><msub><mi>χ</mi><mi>V</mi></msub><mo>,</mo><msub><mi>χ</mi><mi>V</mi></msub><mo>⟩</mo></mrow><mo>=</mo><mn>1</mn></mrow></math>.
+So, for example, we could have seen the three representations of
+<math id="S3.p9.m5" class="ltx_Math" alttext="S_{3}" display="inline"><msub><mi>S</mi><mn>3</mn></msub></math> that we found were irreps directly from the character table.
+Thus, we can now efficiently verify any time we have
+a complete set of irreps.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">21.4 </span>Examples of character tables</h2>
+
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 21.4.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Dihedral group on <math id="S4.Thmtheorem1.m1" class="ltx_Math" alttext="10" display="inline"><mn>10</mn></math> elements)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="D_{10}=\left&lt;r,s\mid r^{5}=s^{2}=1,rs=sr^{-1}\right&gt;" display="inline"><mrow><msub><mi>D</mi><mn>10</mn></msub><mo>=</mo><mrow><mo>⟨</mo><mrow><mi>r</mi><mo>,</mo><mi>s</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mi>r</mi><mn>5</mn></msup><mo>=</mo><msup><mi>s</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><mo>,</mo><mrow><mrow><mi>r</mi><mo>⁢</mo><mi>s</mi></mrow><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow></mrow><mo>⟩</mo></mrow></mrow></math>.
+Let <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\omega=\exp(\frac{2\pi i}{5})" display="inline"><mrow><mi>ω</mi><mo>=</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mfrac linethickness="0.6px"><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow><mn>5</mn></mfrac><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+We write four representations of <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="D_{10}" display="inline"><msub><mi>D</mi><mn>10</mn></msub></math>:</p>
+<ul id="S4.I1" class="ltx_itemize">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{C}_{\mathrm{triv}}" display="inline"><msub><mi>ℂ</mi><mi>triv</mi></msub></math>, all elements of <math id="S4.I1.i1.p1.m2" class="ltx_Math" alttext="D_{10}" display="inline"><msub><mi>D</mi><mn>10</mn></msub></math> act as the identity.</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{C}_{\mathrm{sign}}" display="inline"><msub><mi>ℂ</mi><mi>sign</mi></msub></math>, <math id="S4.I1.i2.p1.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> acts as the identity while <math id="S4.I1.i2.p1.m3" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> acts by negation.</p>
+</div>
+</li>
+<li id="S4.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i3.p1.m1" class="ltx_Math" alttext="V_{1}" display="inline"><msub><mi>V</mi><mn>1</mn></msub></math>, which is two-dimensional and given by
+<math id="S4.I1.i3.p1.m2" class="ltx_Math" alttext="r\mapsto\begin{bmatrix}\omega&amp;0\\
+0&amp;\omega^{4}\end{bmatrix}" display="inline"><mrow><mi>r</mi><mo stretchy="false">↦</mo><mrow><mo>[</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><mi>ω</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msup><mi>ω</mi><mn>4</mn></msup></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math>
+and <math id="S4.I1.i3.p1.m3" class="ltx_Math" alttext="s\mapsto\begin{bmatrix}0&amp;1\\
+1&amp;0\end{bmatrix}" display="inline"><mrow><mi>s</mi><mo stretchy="false">↦</mo><mrow><mo>[</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S4.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i4.p1.m1" class="ltx_Math" alttext="V_{2}" display="inline"><msub><mi>V</mi><mn>2</mn></msub></math>, which is two-dimensional and given by
+<math id="S4.I1.i4.p1.m2" class="ltx_Math" alttext="r\mapsto\begin{bmatrix}\omega^{2}&amp;0\\
+0&amp;\omega^{3}\end{bmatrix}" display="inline"><mrow><mi>r</mi><mo stretchy="false">↦</mo><mrow><mo>[</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><msup><mi>ω</mi><mn>2</mn></msup></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msup><mi>ω</mi><mn>3</mn></msup></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math>
+and <math id="S4.I1.i4.p1.m3" class="ltx_Math" alttext="s\mapsto\begin{bmatrix}0&amp;1\\
+1&amp;0\end{bmatrix}" display="inline"><mrow><mi>s</mi><mo stretchy="false">↦</mo><mrow><mo>[</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">We claim that these four representations are irreducible
+and pairwise non-isomorphic.
+We do so by writing the character table:</p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\begin{array}[]{|c|rccr|}\hline\cr D_{10}&amp;1&amp;r,r^{4}&amp;r^{2},r^{3}&amp;sr^{k}\\
+\hline\cr\mathbb{C}_{\mathrm{triv}}&amp;1&amp;1&amp;1&amp;1\\
+\mathbb{C}_{\mathrm{sign}}&amp;1&amp;1&amp;1&amp;-1\\
+V_{1}&amp;2&amp;\omega+\omega^{4}&amp;\omega^{2}+\omega^{3}&amp;0\\
+V_{2}&amp;2&amp;\omega^{2}+\omega^{3}&amp;\omega+\omega^{4}&amp;0\\
+\hline\cr\end{array}" display="block"><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>D</mi><mn>10</mn></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd><mrow><mi>r</mi><mo>,</mo><msup><mi>r</mi><mn>4</mn></msup></mrow></mtd><mtd><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>,</mo><msup><mi>r</mi><mn>3</mn></msup></mrow></mtd><mtd class="ltx_border_r" columnalign="right"><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mi>k</mi></msup></mrow></mtd></mtr><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>ℂ</mi><mi>triv</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd class="ltx_border_r" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>ℂ</mi><mi>sign</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd class="ltx_border_r" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>V</mi><mn>1</mn></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>2</mn></mtd><mtd><mrow><mi>ω</mi><mo>+</mo><msup><mi>ω</mi><mn>4</mn></msup></mrow></mtd><mtd><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>+</mo><msup><mi>ω</mi><mn>3</mn></msup></mrow></mtd><mtd class="ltx_border_r" columnalign="right"><mn>0</mn></mtd></mtr><mtr><mtd class="ltx_border_b ltx_border_l ltx_border_r"><msub><mi>V</mi><mn>2</mn></msub></mtd><mtd class="ltx_border_b" columnalign="right"><mn>2</mn></mtd><mtd class="ltx_border_b"><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>+</mo><msup><mi>ω</mi><mn>3</mn></msup></mrow></mtd><mtd class="ltx_border_b"><mrow><mi>ω</mi><mo>+</mo><msup><mi>ω</mi><mn>4</mn></msup></mrow></mtd><mtd class="ltx_border_b ltx_border_r" columnalign="right"><mn>0</mn></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Then a direct computation shows the orthogonality relations,
+hence we indeed have an orthonormal basis.
+For example, <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\left&lt;\mathbb{C}_{\mathrm{triv}},\mathbb{C}_{\mathrm{sign}}\right&gt;=1+2\cdot 1+%
+2\cdot 1+5\cdot(-1)=0" display="inline"><mrow><mrow><mo>⟨</mo><msub><mi>ℂ</mi><mi>triv</mi></msub><mo>,</mo><msub><mi>ℂ</mi><mi>sign</mi></msub><mo>⟩</mo></mrow><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>1</mn></mrow><mo>+</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>1</mn></mrow><mo>+</mo><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 21.4.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Character table of <math id="S4.Thmtheorem2.m1" class="ltx_Math" alttext="S_{4}" display="inline"><msub><mi>S</mi><mn>4</mn></msub></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We now have enough machinery to compute the character
+table of <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="S_{4}" display="inline"><msub><mi>S</mi><mn>4</mn></msub></math>, which has five conjugacy classes
+(corresponding to cycle types <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathrm{id}" display="inline"><mi>id</mi></math>, <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>, <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>, <math id="S4.Thmtheorem2.p1.m5" class="ltx_Math" alttext="4" display="inline"><mn>4</mn></math> and <math id="S4.Thmtheorem2.p1.m6" class="ltx_Math" alttext="2+2" display="inline"><mrow><mn>2</mn><mo>+</mo><mn>2</mn></mrow></math>).
+First of all, we note that it has two one-dimensional representations,
+<math id="S4.Thmtheorem2.p1.m7" class="ltx_Math" alttext="\mathbb{C}_{\mathrm{triv}}" display="inline"><msub><mi>ℂ</mi><mi>triv</mi></msub></math> and <math id="S4.Thmtheorem2.p1.m8" class="ltx_Math" alttext="\mathbb{C}_{\mathrm{sign}}" display="inline"><msub><mi>ℂ</mi><mi>sign</mi></msub></math>, and these are the only ones
+(because there are only two homomorphisms <math id="S4.Thmtheorem2.p1.m9" class="ltx_Math" alttext="S_{4}\to\mathbb{C}^{\times}" display="inline"><mrow><msub><mi>S</mi><mn>4</mn></msub><mo stretchy="false">→</mo><msup><mi>ℂ</mi><mo>×</mo></msup></mrow></math>).
+So thus far we have the table</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_math_unparsed" alttext="\begin{array}[]{|c|rrrrr|}\hline\cr S_{4}&amp;1&amp;(\bullet\;\bullet)&amp;(\bullet\;%
+\bullet\;\bullet)&amp;(\bullet\;\bullet\;\bullet\;\bullet)&amp;(\bullet\;\bullet)(%
+\bullet\;\bullet)\\
+\hline\cr\mathbb{C}_{\mathrm{triv}}&amp;1&amp;1&amp;1&amp;1&amp;1\\
+\mathbb{C}_{\mathrm{sign}}&amp;1&amp;-1&amp;1&amp;-1&amp;1\\
+\vdots&amp;\vrule\lx@intercol\hfil\vdots\hfil\lx@intercol\vrule\lx@intercol\end{array}" display="block"><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>S</mi><mn>4</mn></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0.113em">∙</mo><mo rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_border_r" columnalign="right"><mrow><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>ℂ</mi><mi>triv</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_border_r" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>ℂ</mi><mi>sign</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_border_r" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><mi mathvariant="normal">⋮</mi></mtd><mtd class="ltx_border_l ltx_border_r" columnspan="5"><mi mathvariant="normal">⋮</mi></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Note the columns represent <math id="S4.Thmtheorem2.p1.m10" class="ltx_Math" alttext="1+6+8+6+3=24" display="inline"><mrow><mrow><mn>1</mn><mo>+</mo><mn>6</mn><mo>+</mo><mn>8</mn><mo>+</mo><mn>6</mn><mo>+</mo><mn>3</mn></mrow><mo>=</mo><mn>24</mn></mrow></math> elements.</p>
+</div>
+<div id="S4.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">Now, the remaining three representations have dimensions
+<math id="S4.Thmtheorem2.p2.m1" class="ltx_Math" alttext="d_{1}" display="inline"><msub><mi>d</mi><mn>1</mn></msub></math>, <math id="S4.Thmtheorem2.p2.m2" class="ltx_Math" alttext="d_{2}" display="inline"><msub><mi>d</mi><mn>2</mn></msub></math>, <math id="S4.Thmtheorem2.p2.m3" class="ltx_Math" alttext="d_{3}" display="inline"><msub><mi>d</mi><mn>3</mn></msub></math> with</p>
+<div class="table-container"><table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="d_{1}^{2}+d_{2}^{2}+d_{3}^{2}=4!-2=22" display="block"><mrow><mrow><msubsup><mi>d</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>d</mi><mn>2</mn><mn>2</mn></msubsup><mo>+</mo><msubsup><mi>d</mi><mn>3</mn><mn>2</mn></msubsup></mrow><mo>=</mo><mrow><mrow><mn>4</mn><mo>!</mo></mrow><mo>−</mo><mn>2</mn></mrow><mo>=</mo><mn>22</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which has only <math id="S4.Thmtheorem2.p2.m4" class="ltx_Math" alttext="(d_{1},d_{2},d_{3})=(2,3,3)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>d</mi><mn>1</mn></msub><mo>,</mo><msub><mi>d</mi><mn>2</mn></msub><mo>,</mo><msub><mi>d</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mrow></math> and permutations.
+Now, we can take the <math id="S4.Thmtheorem2.p2.m5" class="ltx_Math" alttext="\operatorname{refl}_{0}" display="inline"><msub><mi>refl</mi><mn>0</mn></msub></math> representation</p>
+<div class="table-container"><table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="\left\{(w,x,y,z)\mid w+x+y+z=0\right\}" display="block"><mrow><mo>{</mo><mrow><mo stretchy="false">(</mo><mi>w</mi><mo>,</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>w</mi><mo>+</mo><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi></mrow><mo>=</mo><mn>0</mn></mrow><mo>}</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">with basis <math id="S4.Thmtheorem2.p2.m6" class="ltx_Math" alttext="(1,0,0,-1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math>, <math id="S4.Thmtheorem2.p2.m7" class="ltx_Math" alttext="(0,1,0,-1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo>,</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math> and <math id="S4.Thmtheorem2.p2.m8" class="ltx_Math" alttext="(0,0,1,-1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math>.
+This can be geometrically checked to be irreducible,
+but we can also do this numerically by computing the
+character directly (this is tedious):
+it comes out to have <math id="S4.Thmtheorem2.p2.m9" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>, <math id="S4.Thmtheorem2.p2.m10" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="S4.Thmtheorem2.p2.m11" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, <math id="S4.Thmtheorem2.p2.m12" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>, <math id="S4.Thmtheorem2.p2.m13" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>
+which indeed gives norm</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_math_unparsed" alttext="\left&lt;\chi_{\operatorname{refl}_{0}},\chi_{\operatorname{refl}_{0}}\right&gt;=%
+\frac{1}{4!}\left(\underbrace{3^{2}}_{\mathrm{id}}+\underbrace{6\cdot(1)^{2}}_%
+{(\bullet\;\bullet)}+\underbrace{8\cdot(0)^{2}}_{(\bullet\;\bullet\;\bullet)}+%
+\underbrace{6\cdot(-1)^{2}}_{(\bullet\;\bullet\;\bullet\;\bullet)}+\underbrace%
+{3\cdot(-1)^{2}}_{(\bullet\;\bullet)(\bullet\;\bullet)}\right)=1." display="block"><mrow><mrow><mrow><mo>⟨</mo><msub><mi>χ</mi><msub><mi>refl</mi><mn>0</mn></msub></msub><mo>,</mo><msub><mi>χ</mi><msub><mi>refl</mi><mn>0</mn></msub></msub><mo>⟩</mo></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>4</mn><mo>!</mo></mrow></mfrac><mo>⁢</mo><mrow><mo>(</mo><mrow><munder><munder accentunder="true"><msup><mn>3</mn><mn>2</mn></msup><mo>⏟</mo></munder><mi>id</mi></munder><mo>+</mo><munder><munder accentunder="true"><mrow><mn>6</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>⏟</mo></munder><mrow><mo stretchy="false">(</mo><mrow><mi></mi><mo lspace="0.222em" rspace="0.113em">∙</mo><mo rspace="0em">∙</mo></mrow><mo stretchy="false">)</mo></mrow></munder><mo>+</mo><munder><munder accentunder="true"><mrow><mn>8</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>⏟</mo></munder><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow></munder><mo>+</mo><munder><munder accentunder="true"><mrow><mn>6</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>⏟</mo></munder><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0.113em">∙</mo><mo rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow></munder><mo>+</mo><munder><munder accentunder="true"><mrow><mn>3</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>⏟</mo></munder><mrow><mrow><mo stretchy="false">(</mo><mrow><mi></mi><mo lspace="0.222em" rspace="0.113em">∙</mo><mo rspace="0em">∙</mo></mrow><mo stretchy="false">)</mo></mrow><mo>⁣</mo><mrow><mo stretchy="false">(</mo><mrow><mi></mi><mo lspace="0.222em" rspace="0.113em">∙</mo><mo rspace="0em">∙</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></munder></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Note that we can also tensor this with the sign representation,
+to get another irreducible representation
+(since <math id="S4.Thmtheorem2.p2.m14" class="ltx_Math" alttext="\mathbb{C}_{\mathrm{sign}}" display="inline"><msub><mi>ℂ</mi><mi>sign</mi></msub></math> has all traces <math id="S4.Thmtheorem2.p2.m15" class="ltx_Math" alttext="\pm 1" display="inline"><mrow><mo>±</mo><mn>1</mn></mrow></math>, the norm doesn’t change).
+Finally, we recover the final row using orthogonality
+(which we name <math id="S4.Thmtheorem2.p2.m16" class="ltx_Math" alttext="\mathbb{C}^{2}" display="inline"><msup><mi>ℂ</mi><mn>2</mn></msup></math>, for lack of a better name);
+hence the completed table is as follows.</p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_math_unparsed" alttext="\begin{array}[]{|c|rrrrr|}\hline\cr S_{4}&amp;1&amp;(\bullet\;\bullet)&amp;(\bullet\;%
+\bullet\;\bullet)&amp;(\bullet\;\bullet\;\bullet\;\bullet)&amp;(\bullet\;\bullet)(%
+\bullet\;\bullet)\\
+\hline\cr\mathbb{C}_{\mathrm{triv}}&amp;1&amp;1&amp;1&amp;1&amp;1\\
+\mathbb{C}_{\mathrm{sign}}&amp;1&amp;-1&amp;1&amp;-1&amp;1\\
+\mathbb{C}^{2}&amp;2&amp;0&amp;-1&amp;0&amp;2\\
+\operatorname{refl}_{0}&amp;3&amp;1&amp;0&amp;-1&amp;-1\\
+\operatorname{refl}_{0}\otimes\mathbb{C}_{\mathrm{sign}}&amp;3&amp;-1&amp;0&amp;1&amp;-1\\
+\hline\cr\end{array}" display="block"><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>S</mi><mn>4</mn></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0.113em">∙</mo><mo rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_border_r" columnalign="right"><mrow><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.113em">∙</mo><mo rspace="0em">∙</mo><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>ℂ</mi><mi>triv</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_border_r" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>ℂ</mi><mi>sign</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_border_r" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msup><mi>ℂ</mi><mn>2</mn></msup></mtd><mtd class="ltx_align_right" columnalign="right"><mn>2</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>0</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mn>0</mn></mtd><mtd class="ltx_border_r" columnalign="right"><mn>2</mn></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>refl</mi><mn>0</mn></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>3</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>0</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_border_r" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="ltx_border_b ltx_border_l ltx_border_r"><mrow><msub><mi>refl</mi><mn>0</mn></msub><mo lspace="0em" rspace="0.222em">⊗</mo><msub><mi>ℂ</mi><mi>sign</mi></msub></mrow></mtd><mtd class="ltx_border_b" columnalign="right"><mn>3</mn></mtd><mtd class="ltx_border_b" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_border_b" columnalign="right"><mn>0</mn></mtd><mtd class="ltx_border_b" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_border_b ltx_border_r" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">21.5 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_dproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 21A</span></span><span class="ltx_text ltx_font_bold"> </span>(Reading decompositions from characters)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> be a complex representation of a finite group <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+Let <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="V_{1}" display="inline"><msub><mi>V</mi><mn>1</mn></msub></math>, …, <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="V_{r}" display="inline"><msub><mi>V</mi><mi>r</mi></msub></math> be the complex irreps of <math id="Thmproblem1.p1.m5" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>
+and set <math id="Thmproblem1.p1.m6" class="ltx_Math" alttext="n_{i}=\left&lt;\chi_{W},\chi_{V_{i}}\right&gt;" display="inline"><mrow><msub><mi>n</mi><mi>i</mi></msub><mo>=</mo><mrow><mo>⟨</mo><msub><mi>χ</mi><mi>W</mi></msub><mo>,</mo><msub><mi>χ</mi><msub><mi>V</mi><mi>i</mi></msub></msub><mo>⟩</mo></mrow></mrow></math>.
+Prove that each <math id="Thmproblem1.p1.m7" class="ltx_Math" alttext="n_{i}" display="inline"><msub><mi>n</mi><mi>i</mi></msub></math> is a non-negative integer and</p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="W=\bigoplus_{i=1}^{r}V_{i}^{\oplus n_{i}}." display="block"><mrow><mrow><mi>W</mi><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">⨁</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>r</mi></munderover><msubsup><mi>V</mi><mi>i</mi><mrow><mo rspace="0em">⊕</mo><msub><mi>n</mi><mi>i</mi></msub></mrow></msubsup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Obvious.
+Let <math id="Thmproblem1.p1.m8" class="ltx_Math" alttext="W=\bigoplus V_{i}^{m_{i}}" display="inline"><mrow><mi>W</mi><mo rspace="0.111em">=</mo><mrow><mo>⨁</mo><msubsup><mi>V</mi><mi>i</mi><msub><mi>m</mi><mi>i</mi></msub></msubsup></mrow></mrow></math> (possible since <math id="Thmproblem1.p1.m9" class="ltx_Math" alttext="\mathbb{C}[G]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math> semisimple)
+thus <math id="Thmproblem1.p1.m10" class="ltx_Math" alttext="\chi_{W}=\sum_{i}m_{i}\chi_{V_{i}}" display="inline"><mrow><msub><mi>χ</mi><mi>W</mi></msub><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mi>i</mi></msub><mrow><msub><mi>m</mi><mi>i</mi></msub><mo>⁢</mo><msub><mi>χ</mi><msub><mi>V</mi><mi>i</mi></msub></msub></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 21B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Consider complex representations of <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="G=S_{4}" display="inline"><mrow><mi>G</mi><mo>=</mo><msub><mi>S</mi><mn>4</mn></msub></mrow></math>.
+The representation <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="\operatorname{refl}_{0}\otimes\operatorname{refl}_{0}" display="inline"><mrow><msub><mi>refl</mi><mn>0</mn></msub><mo lspace="0em" rspace="0.222em">⊗</mo><msub><mi>refl</mi><mn>0</mn></msub></mrow></math>
+is <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="9" display="inline"><mn>9</mn></math>-dimensional, so it is clearly reducible.
+Compute its decomposition in terms of the five
+irreducible representations.
+
+Use the previous problem, with <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="\chi_{W}=\chi_{\operatorname{refl}_{0}}^{2}" display="inline"><mrow><msub><mi>χ</mi><mi>W</mi></msub><mo>=</mo><msubsup><mi>χ</mi><msub><mi>refl</mi><mn>0</mn></msub><mn>2</mn></msubsup></mrow></math>.
+
+
+<math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="\mathbb{C}_{\mathrm{sign}}\oplus\mathbb{C}^{2}\oplus\operatorname{refl}_{0}%
+\oplus(\operatorname{refl}_{0}\otimes\mathbb{C}_{\mathrm{sign}})" display="inline"><mrow><msub><mi>ℂ</mi><mi>sign</mi></msub><mo>⊕</mo><msup><mi>ℂ</mi><mn>2</mn></msup><mo>⊕</mo><msub><mi>refl</mi><mn>0</mn></msub><mo lspace="0em">⊕</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>refl</mi><mn>0</mn></msub><mo lspace="0em" rspace="0.222em">⊗</mo><msub><mi>ℂ</mi><mi>sign</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 21C</span></span><span class="ltx_text ltx_font_bold"> </span>(Tensoring by one-dimensional irreps)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> be irreps of <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>, with <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="\dim W=1" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mi>W</mi></mrow><mo>=</mo><mn>1</mn></mrow></math>.
+Show that <math id="Thmproblem3.p1.m5" class="ltx_Math" alttext="V\otimes W" display="inline"><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi></mrow></math> is irreducible.
+
+Characters. Note that <math id="Thmproblem3.p1.m6" class="ltx_Math" alttext="|\chi_{W}|=1" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>χ</mi><mi>W</mi></msub><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>1</mn></mrow></math> everywhere.
+
+
+First, observe that <math id="Thmproblem3.p1.m7" class="ltx_Math" alttext="|\chi_{W}(g)|=1" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi>χ</mi><mi>W</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>1</mn></mrow></math> for all <math id="Thmproblem3.p1.m8" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>.</p>
+<div class="table-container"><table id="A5.S3.EGx60" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex22"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex22.m1" class="ltx_Math" alttext="\displaystyle\left&lt;\chi_{V\otimes W},\chi_{V\otimes W}\right&gt;" display="inline"><mrow><mo>⟨</mo><msub><mi>χ</mi><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi></mrow></msub><mo>,</mo><msub><mi>χ</mi><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi></mrow></msub><mo>⟩</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex22.m2" class="ltx_Math" alttext="\displaystyle=\left&lt;\chi_{V}\chi_{W},\chi_{V}\chi_{W}\right&gt;" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>⟨</mo><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><msub><mi>χ</mi><mi>W</mi></msub></mrow><mo>,</mo><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><msub><mi>χ</mi><mi>W</mi></msub></mrow><mo>⟩</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex23"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex23.m1" class="ltx_Math" alttext="\displaystyle=\frac{1}{|G|}\sum_{g\in G}\left\lvert\chi_{V}(g)\right\rvert^{2}%
+\left\lvert\chi_{W}(g)\right\rvert^{2}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow></mfrac></mstyle><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></munder></mstyle><mrow><msup><mrow><mo>|</mo><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mn>2</mn></msup><mo>⁢</mo><msup><mrow><mo>|</mo><mrow><msub><mi>χ</mi><mi>W</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mn>2</mn></msup></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex24"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex24.m1" class="ltx_Math" alttext="\displaystyle=\frac{1}{|G|}\sum_{g\in G}\left\lvert\chi_{V}(g)\right\rvert^{2}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow></mfrac></mstyle><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></munder></mstyle><msup><mrow><mo>|</mo><mrow><msub><mi>χ</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mn>2</mn></msup></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex25"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex25.m1" class="ltx_Math" alttext="\displaystyle=\left&lt;\chi_{V},\chi_{V}\right&gt;=1." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo>⟨</mo><msub><mi>χ</mi><mi>V</mi></msub><mo>,</mo><msub><mi>χ</mi><mi>V</mi></msub><mo>⟩</mo></mrow><mo>=</mo><mn>1</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 21D</span></span><span class="ltx_text ltx_font_bold"> </span>(Quaternions)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Compute the character table of the quaternion group <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="Q_{8}" display="inline"><msub><mi>Q</mi><mn>8</mn></msub></math>.
+
+There are five conjugacy classes, <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>
+and <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="\pm i" display="inline"><mrow><mo>±</mo><mi>i</mi></mrow></math>, <math id="Thmproblem4.p1.m5" class="ltx_Math" alttext="\pm j" display="inline"><mrow><mo>±</mo><mi>j</mi></mrow></math>, <math id="Thmproblem4.p1.m6" class="ltx_Math" alttext="\pm k" display="inline"><mrow><mo>±</mo><mi>k</mi></mrow></math>.
+Given four of the representations, orthogonality
+can give you the fifth one.
+
+
+The table is given by</p>
+<div class="table-container"><table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="\begin{array}[]{|c|rrrrr|}\hline\cr Q_{8}&amp;1&amp;-1&amp;\pm i&amp;\pm j&amp;\pm k\\
+\hline\cr\mathbb{C}_{\mathrm{triv}}&amp;1&amp;1&amp;1&amp;1&amp;1\\
+\mathbb{C}_{i}&amp;1&amp;1&amp;1&amp;-1&amp;-1\\
+\mathbb{C}_{j}&amp;1&amp;1&amp;-1&amp;1&amp;-1\\
+\mathbb{C}_{k}&amp;1&amp;1&amp;-1&amp;-1&amp;1\\
+\mathbb{C}^{2}&amp;2&amp;-2&amp;0&amp;0&amp;0\\
+\hline\cr\end{array}" display="block"><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>Q</mi><mn>8</mn></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>±</mo><mi>i</mi></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>±</mo><mi>j</mi></mrow></mtd><mtd class="ltx_border_r" columnalign="right"><mrow><mo>±</mo><mi>k</mi></mrow></mtd></mtr><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>ℂ</mi><mi>triv</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_border_r" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>ℂ</mi><mi>i</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_border_r" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>ℂ</mi><mi>j</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_border_r" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="ltx_border_l ltx_border_r"><msub><mi>ℂ</mi><mi>k</mi></msub></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_border_r" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_border_b ltx_border_l ltx_border_r"><msup><mi>ℂ</mi><mn>2</mn></msup></mtd><mtd class="ltx_border_b" columnalign="right"><mn>2</mn></mtd><mtd class="ltx_border_b" columnalign="right"><mrow><mo>−</mo><mn>2</mn></mrow></mtd><mtd class="ltx_border_b" columnalign="right"><mn>0</mn></mtd><mtd class="ltx_border_b" columnalign="right"><mn>0</mn></mtd><mtd class="ltx_border_b ltx_border_r" columnalign="right"><mn>0</mn></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The one-dimensional representations (first four rows)
+follows by considering the homomorphism <math id="Thmproblem4.p1.m7" class="ltx_Math" alttext="Q_{8}\to\mathbb{C}^{\times}" display="inline"><mrow><msub><mi>Q</mi><mn>8</mn></msub><mo stretchy="false">→</mo><msup><mi>ℂ</mi><mo>×</mo></msup></mrow></math>.
+The last row is two-dimensional and can be recovered
+by using the orthogonality formula.</p>
+</div>
+</div>
+<div id="prob:second_orthog" class="ltx_theorem ltx_theorem_sproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 21E</span></span><span class="ltx_text ltx_font_bold"> </span>(Second orthogonality formula)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem5.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem5.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem5.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p2.m1" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> and <math id="Thmproblem5.p2.m2" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> be elements of a finite group <math id="Thmproblem5.p2.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>,
+and let <math id="Thmproblem5.p2.m4" class="ltx_Math" alttext="V_{1}" display="inline"><msub><mi>V</mi><mn>1</mn></msub></math>, …, <math id="Thmproblem5.p2.m5" class="ltx_Math" alttext="V_{r}" display="inline"><msub><mi>V</mi><mi>r</mi></msub></math> be the irreps of <math id="Thmproblem5.p2.m6" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+Prove that</p>
+<div class="table-container"><table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="\sum_{i=1}^{r}\chi_{V_{i}}(g)\overline{\chi_{V_{i}}(h)}=\begin{cases}|C_{G}(g)%
+|&amp;\text{if $g$ and $h$ are conjugates}\\
+0&amp;\text{otherwise}.\end{cases}" display="block"><mrow><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>r</mi></munderover><mrow><msub><mi>χ</mi><msub><mi>V</mi><mi>i</mi></msub></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mover accent="true"><mrow><msub><mi>χ</mi><msub><mi>V</mi><mi>i</mi></msub></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo></mrow></mrow><mo>¯</mo></mover></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mo stretchy="false">|</mo><mrow><msub><mi>C</mi><mi>G</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>if </mtext><mi>g</mi><mtext> and </mtext><mi>h</mi><mtext> are conjugates</mtext></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>otherwise</mtext><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Here, <math id="Thmproblem5.p2.m7" class="ltx_Math" alttext="C_{G}(g)=\left\{x\in G:xg=gx\right\}" display="inline"><mrow><mrow><msub><mi>C</mi><mi>G</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mrow><mi>x</mi><mo>∈</mo><mi>G</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>g</mi></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mi>x</mi></mrow></mrow><mo>}</mo></mrow></mrow></math>
+is the centralizer of <math id="Thmproblem5.p2.m8" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>.
+
+Construct two square <math id="Thmproblem5.p2.m9" class="ltx_Math" alttext="r\times r" display="inline"><mrow><mi>r</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>r</mi></mrow></math> matrices <math id="Thmproblem5.p2.m10" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> and <math id="Thmproblem5.p2.m11" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>
+such that <math id="Thmproblem5.p2.m12" class="ltx_Math" alttext="AB" display="inline"><mrow><mi>A</mi><mo>⁢</mo><mi>B</mi></mrow></math> is the identity by the first orthogonality.
+Then use <math id="Thmproblem5.p2.m13" class="ltx_Math" alttext="BA" display="inline"><mrow><mi>B</mi><mo>⁢</mo><mi>A</mi></mrow></math> to prove the second orthogonaliy relation.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../repth/semisimple-algebras.html">Previous chapter: Semisimple algebras</a><br />
+<a href="../repth/applications.html">Next chapter: Some applications</a>
+</nav>
+
+		</main>
+	</body>
+</html>

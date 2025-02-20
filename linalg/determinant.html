@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Determinant</title>
+		<meta property="og:title" content="Determinant" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../linalg/dual-space-trace.html">Previous chapter: Dual space and trace</a><br />
+<a href="../linalg/inner-product-spaces.html">Next chapter: Inner product spaces</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 12 </span>Determinant</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">The goal of this chapter is to give the basis-free
+definition of the determinant:
+that is, we’re going to define <math id="p1.m1" class="ltx_Math" alttext="\det T" display="inline"><mrow><mo rspace="0.167em">det</mo><mi>T</mi></mrow></math>
+for <math id="p1.m2" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> without making reference to the encoding for <math id="p1.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>.
+This will make it obvious that the determinant of a matrix
+does not depend on the choice of basis,
+and that several properties are vacuously true
+(e.g. that the determinant is multiplicative).</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">The determinant is only defined for finite-dimensional
+vector spaces, so if you want you can restrict
+your attention to finite-dimensional vector spaces for this chapter.
+On the other hand we do not need the
+ground field to be algebraically closed.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">12.1 </span>Wedge product</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="\bigwedge^{2}(\mathbb{R}^{2})" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> gives parallelograms.</em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">We’re now going to define something called the wedge product.
+It will look at first like the tensor product <math id="S1.p2.m1" class="ltx_Math" alttext="V\otimes V" display="inline"><mrow><mi>V</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>V</mi></mrow></math>,
+but we’ll have one extra relation.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">For simplicity, I’ll first define the wedge product <math id="S1.p3.m1" class="ltx_Math" alttext="\bigwedge^{2}(V)" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+But we will later replace <math id="S1.p3.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> with any <math id="S1.p3.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 12.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-vector space.
+The <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-wedge product <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\bigwedge^{2}(V)" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the abelian group
+generated by elements of the form <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="v\wedge w" display="inline"><mrow><mi>v</mi><mo>∧</mo><mi>w</mi></mrow></math> (where <math id="S1.Thmtheorem1.p1.m6" class="ltx_Math" alttext="v,w\in V" display="inline"><mrow><mrow><mi>v</mi><mo>,</mo><mi>w</mi></mrow><mo>∈</mo><mi>V</mi></mrow></math>),
+subject to the same relations</p>
+<div class="table-container"><table id="A5.S3.EGx26" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex1"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex1.m1" class="ltx_Math" alttext="\displaystyle(v_{1}+v_{2})\wedge w" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><msub><mi>v</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mi>w</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex1.m2" class="ltx_Math" alttext="\displaystyle=v_{1}\wedge w+v_{2}\wedge w" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>∧</mo><mi>w</mi></mrow><mo>+</mo><msub><mi>v</mi><mn>2</mn></msub></mrow><mo>∧</mo><mi>w</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex2"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex2.m1" class="ltx_Math" alttext="\displaystyle v\wedge(w_{1}+w_{2})" display="inline"><mrow><mi>v</mi><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>+</mo><msub><mi>w</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex2.m2" class="ltx_Math" alttext="\displaystyle=v\wedge w_{1}+v\wedge w_{2}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mrow><mi>v</mi><mo>∧</mo><msub><mi>w</mi><mn>1</mn></msub></mrow><mo>+</mo><mi>v</mi></mrow><mo>∧</mo><msub><mi>w</mi><mn>2</mn></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex3"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex3.m1" class="ltx_Math" alttext="\displaystyle(c\cdot v)\wedge w" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>c</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>v</mi></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mi>w</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex3.m2" class="ltx_Math" alttext="\displaystyle=v\wedge(c\cdot w)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>v</mi><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mi>c</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">plus two additional relations:</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="v\wedge v=0\quad\text{and}\quad v\wedge w=-w\wedge v." display="block"><mrow><mrow><mrow><mrow><mi>v</mi><mo>∧</mo><mi>v</mi></mrow><mo>=</mo><mrow><mn>0</mn><mspace width="1em"></mspace><mtext>and</mtext></mrow></mrow><mspace width="1em"></mspace><mrow><mrow><mi>v</mi><mo>∧</mo><mi>w</mi></mrow><mo>=</mo><mrow><mrow><mo>−</mo><mi>w</mi></mrow><mo>∧</mo><mi>v</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">As a vector space, its action is given by
+<math id="S1.Thmtheorem1.p1.m7" class="ltx_Math" alttext="c\cdot(v\wedge w)=(c\cdot v)\wedge w=v\wedge(c\cdot w)" display="inline"><mrow><mrow><mi>c</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mi>v</mi><mo>∧</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>c</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>v</mi></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mi>w</mi></mrow><mo>=</mo><mrow><mi>v</mi><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mi>c</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 12.1.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that the condition <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="v\wedge w=-(w\wedge v)" display="inline"><mrow><mrow><mi>v</mi><mo>∧</mo><mi>w</mi></mrow><mo>=</mo><mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mi>w</mi><mo>∧</mo><mi>v</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+is actually extraneous:
+you can derive it from the fact that <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="v\wedge v=0" display="inline"><mrow><mrow><mi>v</mi><mo>∧</mo><mi>v</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>.
+(Hint: expand <math id="S1.Thmtheorem2.p1.m3" class="ltx_Math" alttext="(v+w)\wedge(v+w)=0" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>v</mi><mo>+</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mi>v</mi><mo>+</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.)</span></p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">This looks almost exactly the same as the definition for a tensor product,
+with two subtle differences.
+The first is that we only have <math id="S1.p4.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> now, rather than <math id="S1.p4.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="S1.p4.m3" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>
+as with the tensor product.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>So maybe the wedge product
+might be more accurately called the “wedge power”!</span></span></span>
+Secondly, there is a new <em class="ltx_emph ltx_font_italic">mysterious</em> relation</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="v\wedge v=0\implies v\wedge w=-(w\wedge v)." display="block"><mrow><mrow><mrow><mi>v</mi><mo>∧</mo><mi>v</mi></mrow><mo>=</mo><mn>0</mn><mo stretchy="false">⟹</mo><mrow><mi>v</mi><mo>∧</mo><mi>w</mi></mrow><mo>=</mo><mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mi>w</mi><mo>∧</mo><mi>v</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">What’s that doing there?
+It seems kind of weird.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">I’ll give you a hint.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 12.1.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Wedge product explicit computation)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="V=\mathbb{R}^{2}" display="inline"><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math>, and let <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="v=ae_{1}+be_{2}" display="inline"><mrow><mi>v</mi><mo>=</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow></mrow></math>, <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="w=ce_{1}+de_{2}" display="inline"><mrow><mi>w</mi><mo>=</mo><mrow><mrow><mi>c</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow></mrow></math>.
+Now let’s compute <math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="v\wedge w" display="inline"><mrow><mi>v</mi><mo>∧</mo><mi>w</mi></mrow></math> in <math id="S1.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\bigwedge^{2}(V)" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+<div class="table-container"><table id="A5.S3.EGx27" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex6"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex6.m1" class="ltx_Math" alttext="\displaystyle v\wedge w" display="inline"><mrow><mi>v</mi><mo>∧</mo><mi>w</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex6.m2" class="ltx_Math" alttext="\displaystyle=(ae_{1}+be_{2})\wedge(ce_{1}+de_{2})" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>c</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex7.m1" class="ltx_Math" alttext="\displaystyle=ac(e_{1}\wedge e_{1})+bd(e_{2}\wedge e_{2})+ad(e_{1}\wedge e_{2}%
+)+bc(e_{2}\wedge e_{1})" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex8.m1" class="ltx_Math" alttext="\displaystyle=ad(e_{1}\wedge e_{2})+bc(e_{2}\wedge e_{1})" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex9"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex9.m1" class="ltx_Math" alttext="\displaystyle=(ad-bc)(e_{1}\wedge e_{2})." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi></mrow><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">What is <math id="S1.p6.m1" class="ltx_Math" alttext="ad-bc" display="inline"><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi></mrow><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow></math>? You might already recognize it:</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">You might know that the area of the parallelogram
+formed by <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math> and <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="w" display="inline"><mi>w</mi></math> is <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="ad-bc" display="inline"><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi></mrow><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">You might recognize it as the determinant of
+<math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\begin{bmatrix}a&amp;c\\
+b&amp;d\end{bmatrix}" display="inline"><mrow><mo>[</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><mi>a</mi></mtd><mtd><mi>c</mi></mtd></mtr><mtr><mtd><mi>b</mi></mtd><mtd><mi>d</mi></mtd></mtr></mtable><mo>]</mo></mrow></math>.
+In fact, you might even know that the determinant
+is meant to interpret hypervolumes.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S1.p7" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='170.07874pt' height='87.705947pt' viewBox='93.197768 130.791498 170.07874 87.705947'>
+<defs>
+<path id='asymptote-12-1-g0-0' d='M7.189089-2.50909C7.374543-2.50909 7.570907-2.50909 7.570907-2.727272S7.374543-2.945454 7.189089-2.945454H1.287272C1.101818-2.945454 .905454-2.945454 .905454-2.727272S1.101818-2.50909 1.287272-2.50909H7.189089Z'/>
+<path id='asymptote-12-1-g2-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-12-1-g2-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-12-1-g1-97' d='M4.06909-4.123635C3.872726-4.527271 3.556363-4.821817 3.065454-4.821817C1.78909-4.821817 .436364-3.218181 .436364-1.625454C.436364-.6 1.036363 .12 1.887272 .12C2.105454 .12 2.650908 .076364 3.305454-.698182C3.392726-.24 3.774544 .12 4.298181 .12C4.679999 .12 4.930908-.130909 5.105453-.48C5.290908-.872727 5.432726-1.538181 5.432726-1.56C5.432726-1.66909 5.334544-1.66909 5.301817-1.66909C5.192726-1.66909 5.181817-1.625454 5.149089-1.472727C4.963635-.763636 4.767271-.12 4.319999-.12C4.025453-.12 3.992726-.403636 3.992726-.621818C3.992726-.861818 4.014544-.949091 4.134544-1.429091C4.254544-1.887272 4.276362-1.996363 4.374544-2.410908L4.767271-3.938181C4.843635-4.243635 4.843635-4.265453 4.843635-4.30909C4.843635-4.494544 4.712726-4.603635 4.527271-4.603635C4.265453-4.603635 4.101817-4.363635 4.06909-4.123635ZM3.359999-1.298181C3.305454-1.101818 3.305454-1.08 3.141817-.894545C2.661817-.294545 2.214545-.12 1.90909-.12C1.363636-.12 1.210909-.72 1.210909-1.145454C1.210909-1.690909 1.56-3.032726 1.810909-3.534544C2.14909-4.178181 2.639999-4.581817 3.076363-4.581817C3.785453-4.581817 3.938181-3.687272 3.938181-3.621817S3.916363-3.490908 3.905453-3.436363L3.359999-1.298181Z'/>
+<path id='asymptote-12-1-g1-98' d='M2.607272-7.450907C2.607272-7.461816 2.607272-7.570907 2.465454-7.570907C2.214545-7.570907 1.418181-7.483634 1.134545-7.461816C1.047272-7.450907 .927272-7.439998 .927272-7.243634C.927272-7.112725 1.025454-7.112725 1.189091-7.112725C1.712727-7.112725 1.734545-7.036362 1.734545-6.927271C1.734545-6.850907 1.636363-6.479998 1.581818-6.250907L.687273-2.694545C.556363-2.14909 .512727-1.974545 .512727-1.592727C.512727-.556363 1.090909 .12 1.898181 .12C3.185454 .12 4.527271-1.505454 4.527271-3.076363C4.527271-4.06909 3.94909-4.821817 3.076363-4.821817C2.574545-4.821817 2.127272-4.505453 1.799999-4.167272L2.607272-7.450907ZM1.581818-3.327272C1.647272-3.567272 1.647272-3.58909 1.745454-3.70909C2.279999-4.418181 2.770908-4.581817 3.054545-4.581817C3.447272-4.581817 3.741817-4.254544 3.741817-3.556363C3.741817-2.912726 3.381817-1.658181 3.185454-1.243636C2.825454-.512727 2.323636-.12 1.898181-.12C1.527272-.12 1.167272-.414545 1.167272-1.221818C1.167272-1.429091 1.167272-1.636363 1.341818-2.323636L1.581818-3.327272Z'/>
+<path id='asymptote-12-1-g1-99' d='M4.319999-4.145453C4.145453-4.145453 3.992726-4.145453 3.839999-3.992726C3.665454-3.82909 3.643635-3.643635 3.643635-3.567272C3.643635-3.305454 3.839999-3.185454 4.047272-3.185454C4.363635-3.185454 4.658181-3.447272 4.658181-3.883635C4.658181-4.418181 4.145453-4.821817 3.370908-4.821817C1.898181-4.821817 .447273-3.261817 .447273-1.723636C.447273-.741818 1.08 .12 2.214545 .12C3.774544 .12 4.690908-1.036363 4.690908-1.167272C4.690908-1.232727 4.625453-1.309091 4.559999-1.309091C4.505453-1.309091 4.483635-1.287272 4.418181-1.2C3.556363-.12 2.367272-.12 2.236363-.12C1.54909-.12 1.254545-.654545 1.254545-1.309091C1.254545-1.756363 1.472727-2.814545 1.843636-3.490908C2.181818-4.112726 2.781817-4.581817 3.381817-4.581817C3.752726-4.581817 4.167272-4.439999 4.319999-4.145453Z'/>
+<path id='asymptote-12-1-g1-100' d='M5.629089-7.450907C5.629089-7.461816 5.629089-7.570907 5.487271-7.570907C5.323635-7.570907 4.287272-7.472725 4.101817-7.450907C4.014544-7.439998 3.94909-7.385452 3.94909-7.243634C3.94909-7.112725 4.047272-7.112725 4.210908-7.112725C4.734544-7.112725 4.756362-7.036362 4.756362-6.927271L4.723635-6.709089L4.06909-4.123635C3.872726-4.527271 3.556363-4.821817 3.065454-4.821817C1.78909-4.821817 .436364-3.218181 .436364-1.625454C.436364-.6 1.036363 .12 1.887272 .12C2.105454 .12 2.650908 .076364 3.305454-.698182C3.392726-.24 3.774544 .12 4.298181 .12C4.679999 .12 4.930908-.130909 5.105453-.48C5.290908-.872727 5.432726-1.538181 5.432726-1.56C5.432726-1.66909 5.334544-1.66909 5.301817-1.66909C5.192726-1.66909 5.181817-1.625454 5.149089-1.472727C4.963635-.763636 4.767271-.12 4.319999-.12C4.025453-.12 3.992726-.403636 3.992726-.621818C3.992726-.883636 4.014544-.96 4.058181-1.145454L5.629089-7.450907ZM3.359999-1.298181C3.305454-1.101818 3.305454-1.08 3.141817-.894545C2.661817-.294545 2.214545-.12 1.90909-.12C1.363636-.12 1.210909-.72 1.210909-1.145454C1.210909-1.690909 1.56-3.032726 1.810909-3.534544C2.14909-4.178181 2.639999-4.581817 3.076363-4.581817C3.785453-4.581817 3.938181-3.687272 3.938181-3.621817S3.916363-3.490908 3.905453-3.436363L3.359999-1.298181Z'/>
+<path id='asymptote-12-1-g1-101' d='M2.039999-2.519999C2.356363-2.519999 3.163635-2.541817 3.70909-2.770908C4.472726-3.098181 4.527271-3.741817 4.527271-3.894544C4.527271-4.374544 4.112726-4.821817 3.359999-4.821817C2.14909-4.821817 .501818-3.763635 .501818-1.854545C.501818-.741818 1.145454 .12 2.214545 .12C3.774544 .12 4.690908-1.036363 4.690908-1.167272C4.690908-1.232727 4.625453-1.309091 4.559999-1.309091C4.505453-1.309091 4.483635-1.287272 4.418181-1.2C3.556363-.12 2.367272-.12 2.236363-.12C1.385454-.12 1.287272-1.036363 1.287272-1.385454C1.287272-1.516363 1.298181-1.854545 1.461818-2.519999H2.039999ZM1.527272-2.759999C1.952727-4.418181 3.076363-4.581817 3.359999-4.581817C3.872726-4.581817 4.167272-4.265453 4.167272-3.894544C4.167272-2.759999 2.421818-2.759999 1.974545-2.759999H1.527272Z'/>
+<path id='asymptote-12-1-g1-118' d='M5.105453-4.058181C5.105453-4.647271 4.821817-4.821817 4.625453-4.821817C4.352726-4.821817 4.090908-4.538181 4.090908-4.298181C4.090908-4.156362 4.145453-4.090908 4.265453-3.970908C4.494544-3.752726 4.636362-3.46909 4.636362-3.076363C4.636362-2.618181 3.970908-.12 2.694545-.12C2.138181-.12 1.887272-.501818 1.887272-1.069091C1.887272-1.68 2.181818-2.476363 2.519999-3.381817C2.596363-3.567272 2.650908-3.719999 2.650908-3.927272C2.650908-4.418181 2.301818-4.821817 1.756363-4.821817C.730909-4.821817 .316364-3.239999 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.054545 .621818-3.22909C.938182-4.330908 1.407272-4.581817 1.723636-4.581817C1.810909-4.581817 1.996363-4.581817 1.996363-4.232726C1.996363-3.959999 1.887272-3.665454 1.810909-3.46909C1.330909-2.203636 1.189091-1.701818 1.189091-1.232727C1.189091-.054545 2.14909 .12 2.650908 .12C4.483635 .12 5.105453-3.490908 5.105453-4.058181Z'/>
+<path id='asymptote-12-1-g1-119' d='M5.039999-3.698181C5.094544-3.938181 5.203635-4.341817 5.203635-4.407271C5.203635-4.603635 5.050908-4.701817 4.887271-4.701817C4.756362-4.701817 4.559999-4.614544 4.483635-4.396362C4.450908-4.319999 3.938181-2.236363 3.861817-1.952727C3.785453-1.625454 3.763635-1.429091 3.763635-1.232727C3.763635-1.112727 3.763635-1.090909 3.774544-1.036363C3.523635-.458182 3.196363-.12 2.770908-.12C1.898181-.12 1.898181-.927272 1.898181-1.112727C1.898181-1.461818 1.952727-1.887272 2.465454-3.22909C2.585454-3.556363 2.650908-3.70909 2.650908-3.927272C2.650908-4.418181 2.290908-4.821817 1.756363-4.821817C.72-4.821817 .316364-3.239999 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.054545 .621818-3.22909C.916363-4.243635 1.341818-4.581817 1.723636-4.581817C1.821818-4.581817 1.996363-4.570908 1.996363-4.221817C1.996363-3.94909 1.876363-3.643635 1.799999-3.458181C1.32-2.170908 1.189091-1.66909 1.189091-1.254545C1.189091-.261818 1.919999 .12 2.738181 .12C2.923636 .12 3.436363 .12 3.872726-.643636C4.156362 .054545 4.90909 .12 5.236362 .12C6.054544 .12 6.534544-.567273 6.81818-1.221818C7.189089-2.072727 7.53818-3.534544 7.53818-4.058181C7.53818-4.658181 7.243634-4.821817 7.05818-4.821817C6.785453-4.821817 6.512725-4.538181 6.512725-4.298181C6.512725-4.156362 6.57818-4.090908 6.676362-4.003635C6.796362-3.883635 7.069089-3.599999 7.069089-3.076363C7.069089-2.705454 6.752725-1.636363 6.469089-1.08C6.185453-.501818 5.803635-.12 5.269089-.12C4.756362-.12 4.461817-.447273 4.461817-1.069091C4.461817-1.374545 4.538181-1.712727 4.581817-1.865454L5.039999-3.698181Z'/>
+<path id='asymptote-12-1-g3-43' d='M4.461817-2.50909H7.505452C7.65818-2.50909 7.865452-2.50909 7.865452-2.727272S7.65818-2.945454 7.505452-2.945454H4.461817V-5.999998C4.461817-6.152726 4.461817-6.359998 4.243635-6.359998S4.025453-6.152726 4.025453-5.999998V-2.945454H.970909C.818182-2.945454 .610909-2.945454 .610909-2.727272S.818182-2.50909 .970909-2.50909H4.025453V.545454C4.025453 .698182 4.025453 .905454 4.243635 .905454S4.461817 .698182 4.461817 .545454V-2.50909Z'/>
+<path id='asymptote-12-1-g3-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-12-1-g3-61' d='M7.494543-3.567272C7.65818-3.567272 7.865452-3.567272 7.865452-3.785453S7.65818-4.003635 7.505452-4.003635H.970909C.818182-4.003635 .610909-4.003635 .610909-3.785453S.818182-3.567272 .981818-3.567272H7.494543ZM7.505452-1.450909C7.65818-1.450909 7.865452-1.450909 7.865452-1.66909S7.65818-1.887272 7.494543-1.887272H.981818C.818182-1.887272 .610909-1.887272 .610909-1.66909S.818182-1.450909 .970909-1.450909H7.505452Z'/>
+</defs>
+<g id='asymptote-12-1-page1'>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<circle cx='36.9263' cy='77.2217' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='122.188826' y='217.041548' href='#asymptote-12-1-g3-48'/>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<circle cx='103.092' cy='60.6804' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='198.254516' y='201.107495' href='#asymptote-12-1-g1-118'/>
+<use x='206.964061' y='201.107495' href='#asymptote-12-1-g3-61'/>
+<use x='218.479184' y='201.107495' href='#asymptote-12-1-g1-97'/>
+<use x='224.245621' y='201.107495' href='#asymptote-12-1-g1-101'/>
+<use x='229.325184' y='202.743846' href='#asymptote-12-1-g2-49'/>
+<use x='236.481697' y='201.107495' href='#asymptote-12-1-g3-43'/>
+<use x='247.390771' y='201.107495' href='#asymptote-12-1-g1-98'/>
+<use x='252.072589' y='201.107495' href='#asymptote-12-1-g1-101'/>
+<use x='257.152152' y='202.743846' href='#asymptote-12-1-g2-50'/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<circle cx='70.0089' cy='27.5978' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='94.597484' y='154.243319' href='#asymptote-12-1-g1-119'/>
+<use x='105.731286' y='154.243319' href='#asymptote-12-1-g3-61'/>
+<use x='117.246409' y='154.243319' href='#asymptote-12-1-g1-99'/>
+<use x='121.967387' y='154.243319' href='#asymptote-12-1-g1-101'/>
+<use x='127.04695' y='155.879669' href='#asymptote-12-1-g2-49'/>
+<use x='134.203463' y='154.243319' href='#asymptote-12-1-g3-43'/>
+<use x='145.112537' y='154.243319' href='#asymptote-12-1-g1-100'/>
+<use x='150.790584' y='154.243319' href='#asymptote-12-1-g1-101'/>
+<use x='155.870146' y='155.879669' href='#asymptote-12-1-g2-50'/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<circle cx='136.174' cy='11.0565' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='231.213561' y='138.491035' href='#asymptote-12-1-g1-118'/>
+<use x='239.317057' y='138.491035' href='#asymptote-12-1-g3-43'/>
+<use x='250.226131' y='138.491035' href='#asymptote-12-1-g1-119'/>
+<g fill="var(--asymptote-color-00f)">
+<use x='162.338207' y='178.038958' href='#asymptote-12-1-g1-97'/>
+<use x='168.104644' y='178.038958' href='#asymptote-12-1-g1-100'/>
+<use x='176.206889' y='178.038958' href='#asymptote-12-1-g0-0'/>
+<use x='187.115963' y='178.038958' href='#asymptote-12-1-g1-98'/>
+<use x='191.797781' y='178.038958' href='#asymptote-12-1-g1-99'/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M36.9263 77.2217L103.092 60.6804L136.174 11.0565L70.0089 27.5978L36.9263 77.2217Z' fill="var(--asymptote-color-80ffff)" opacity='0.1'/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M92.5567 63.3141L40.1578 76.4139' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M99.8601 61.4883L92.0675 61.3572L93.0459 65.271L99.8601 61.4883Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M99.8601 61.4883L92.0675 61.3572L93.0459 65.271L99.8601 61.4883Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M63.9854 36.6331L38.7739 74.4502' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M68.1612 30.3693L62.307 35.5141L65.6638 37.752L68.1612 30.3693Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M68.1612 30.3693L62.307 35.5141L65.6638 37.752L68.1612 30.3693Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M130.151 20.0917L104.939 57.9089' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M134.327 13.828L128.472 18.9728L131.829 21.2107L134.327 13.828Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M134.327 13.828L128.472 18.9728L131.829 21.2107L134.327 13.828Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M125.639 13.6902L73.2404 26.7899' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M132.943 11.8643L125.15 11.7332L126.129 15.6471L132.943 11.8643Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(93.1978 130.791)scale(.996264)'>
+<path d='M132.943 11.8643L125.15 11.7332L126.129 15.6471L132.943 11.8643Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">This is absolutely no coincidence.
+The wedge product is designed to interpret signed areas.
+That is, <math id="S1.p8.m1" class="ltx_Math" alttext="v\wedge w" display="inline"><mrow><mi>v</mi><mo>∧</mo><mi>w</mi></mrow></math> is meant to interpret the area of the parallelogram
+formed by <math id="S1.p8.m2" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math> and <math id="S1.p8.m3" class="ltx_Math" alttext="w" display="inline"><mi>w</mi></math>.
+You can see why the condition <math id="S1.p8.m4" class="ltx_Math" alttext="(cv)\wedge w=v\wedge(cw)" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>c</mi><mo>⁢</mo><mi>v</mi></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mi>w</mi></mrow><mo>=</mo><mrow><mi>v</mi><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mi>c</mi><mo>⁢</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> would make sense now.
+And now of course you know why <math id="S1.p8.m5" class="ltx_Math" alttext="v\wedge v" display="inline"><mrow><mi>v</mi><mo>∧</mo><mi>v</mi></mrow></math> ought to be zero:
+it’s an area zero parallelogram!</p>
+</div>
+<div id="S1.p9" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold">miracle of wedge products</span> is that the only additional condition
+we need to add to the tensor product axioms is that <math id="S1.p9.m1" class="ltx_Math" alttext="v\wedge v=0" display="inline"><mrow><mrow><mi>v</mi><mo>∧</mo><mi>v</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>.
+Then suddenly, the wedge will do all our work of interpreting volumes for us.</p>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 12.1.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Side digression on definitions in mathematics)</span></span>
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">This “property-based” philosophy is a common trope in modern mathematics.
+You have some intuition about an object you wish to define,
+and then you write down a wishlist of properties that “should” follow.
+But then it turns out the properties are sufficient to work with,
+and so for the definition, you just define an abstract object
+satisfying all the properties on your wishlist.
+Thereafter the intuition plays no “official” role;
+it serves only as cheerleading motivation for the wishlist.</p>
+</div>
+<div id="S1.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">For wedge products,
+the wishlist has only the single property <math id="S1.Thmtheorem4.p2.m1" class="ltx_Math" alttext="v\wedge v=0" display="inline"><mrow><mrow><mi>v</mi><mo>∧</mo><mi>v</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.p10" class="ltx_para">
+<p class="ltx_p">In analog to earlier:</p>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 12.1.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Basis of <math id="S1.Thmtheorem5.m1" class="ltx_Math" alttext="\bigwedge^{2}(V)" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a vector space
+with basis <math id="S1.Thmtheorem5.p1.m2" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, …, <math id="S1.Thmtheorem5.p1.m3" class="ltx_Math" alttext="e_{n}" display="inline"><msub><mi>e</mi><mi>n</mi></msub></math>.
+Then a basis of <math id="S1.Thmtheorem5.p1.m4" class="ltx_Math" alttext="\bigwedge^{2}(V)" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> is</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="e_{i}\wedge e_{j}" display="block"><mrow><msub><mi>e</mi><mi>i</mi></msub><mo>∧</mo><msub><mi>e</mi><mi>j</mi></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S1.Thmtheorem5.p1.m5" class="ltx_Math" alttext="i&lt;j" display="inline"><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow></math>.
+Hence <math id="S1.Thmtheorem5.p1.m6" class="ltx_Math" alttext="\bigwedge^{2}(V)" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> has dimension <math id="S1.Thmtheorem5.p1.m7" class="ltx_Math" alttext="\binom{n}{2}" display="inline"><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>n</mi><mn>2</mn></mfrac><mo>)</mo></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S1.p11" class="ltx_para">
+<p class="ltx_p">Surprisingly slippery, and also omitted.
+(You can derive it from the corresponding theorem on tensor products.)
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S1.p12" class="ltx_para">
+<p class="ltx_p">Now I have the courage to define a multi-dimensional wedge product.
+It’s just the same thing with more wedges.</p>
+</div>
+<div id="S1.Thmtheorem6" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 12.1.6</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem6.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a vector space and <math id="S1.Thmtheorem6.p1.m2" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> a positive integer.
+The space <math id="S1.Thmtheorem6.p1.m3" class="ltx_Math" alttext="\bigwedge^{m}(V)" display="inline"><mrow><msup><mo>⋀</mo><mi>m</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> is generated by wedges of the form</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="v_{1}\wedge v_{2}\wedge\dots\wedge v_{m}" display="block"><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>v</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><msub><mi>v</mi><mi>m</mi></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">subject to relations</p>
+<div class="table-container"><table id="A5.S3.EGx28" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex12"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex12.m1" class="ltx_Math" alttext="\displaystyle\dots\wedge(v_{1}+v_{2})\wedge\dots" display="inline"><mrow><mi mathvariant="normal">⋯</mi><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><msub><mi>v</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex12.m2" class="ltx_Math" alttext="\displaystyle=(\dots\wedge v_{1}\wedge\dots)+(\dots\wedge v_{2}\wedge\dots)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">⋯</mi><mo>∧</mo><msub><mi>v</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">…</mi></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">⋯</mi><mo>∧</mo><msub><mi>v</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">…</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex13"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex13.m1" class="ltx_Math" alttext="\displaystyle\dots\wedge(cv_{1})\wedge v_{2}\wedge\dots" display="inline"><mrow><mi mathvariant="normal">⋯</mi><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>v</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><msub><mi>v</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex13.m2" class="ltx_Math" alttext="\displaystyle=\dots\wedge v_{1}\wedge(cv_{2})\wedge\dots" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi mathvariant="normal">⋯</mi><mo>∧</mo><msub><mi>v</mi><mn>1</mn></msub><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>v</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mi mathvariant="normal">…</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex14"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex14.m1" class="ltx_Math" alttext="\displaystyle\dots\wedge v\wedge v\wedge\dots" display="inline"><mrow><mi mathvariant="normal">⋯</mi><mo>∧</mo><mi>v</mi><mo>∧</mo><mi>v</mi><mo>∧</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex14.m2" class="ltx_Math" alttext="\displaystyle=0" display="inline"><mrow><mi></mi><mo>=</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex15"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex15.m1" class="ltx_Math" alttext="\displaystyle\dots\wedge v\wedge w\wedge\dots" display="inline"><mrow><mi mathvariant="normal">⋯</mi><mo>∧</mo><mi>v</mi><mo>∧</mo><mi>w</mi><mo>∧</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex15.m2" class="ltx_Math" alttext="\displaystyle=-(\dots\wedge w\wedge v\wedge\dots)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">⋯</mi><mo>∧</mo><mi>w</mi><mo>∧</mo><mi>v</mi><mo>∧</mo><mi mathvariant="normal">…</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">As a vector space</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="c\cdot(v_{1}\wedge v_{2}\wedge\dots\wedge v_{m})=(cv_{1})\wedge v_{2}\wedge%
+\dots\wedge v_{m}=v_{1}\wedge(cv_{2})\wedge\dots\wedge v_{m}=\dots." display="block"><mrow><mrow><mrow><mi>c</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>v</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><msub><mi>v</mi><mi>m</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>v</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><msub><mi>v</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><msub><mi>v</mi><mi>m</mi></msub></mrow><mo>=</mo><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>v</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><msub><mi>v</mi><mi>m</mi></msub></mrow><mo>=</mo><mi mathvariant="normal">…</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S1.p13" class="ltx_para">
+<p class="ltx_p">This definition is pretty wordy, but in English the three conditions say</p>
+<ul id="S1.I2" class="ltx_itemize">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">We should be able to add products like before,</p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">You can put constants onto any of the <math id="S1.I2.i2.p1.m1" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> components
+(as is directly pointed out in the “vector space” action), and</p>
+</div>
+</li>
+<li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">Switching any two <em class="ltx_emph ltx_font_italic">adjacent</em> wedges negates the whole wedge.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">So this is the natural generalization of <math id="S1.p13.m1" class="ltx_Math" alttext="\bigwedge^{2}(V)" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+You can convince yourself that any element of the form</p>
+<div class="table-container"><table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="\dots\wedge v\wedge\dots\wedge v\wedge\dots" display="block"><mrow><mi mathvariant="normal">⋯</mi><mo>∧</mo><mi>v</mi><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><mi>v</mi><mo>∧</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">should still be zero.</p>
+</div>
+<div id="S1.p14" class="ltx_para">
+<p class="ltx_p">Just like <math id="S1.p14.m1" class="ltx_Math" alttext="e_{1}\wedge e_{2}" display="inline"><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></math> was a basis earlier, we can find the basis
+for general <math id="S1.p14.m2" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> and <math id="S1.p14.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</p>
+</div>
+<div id="S1.Thmtheorem7" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 12.1.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Basis of the wedge product)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem7.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a vector space with basis <math id="S1.Thmtheorem7.p1.m2" class="ltx_Math" alttext="e_{1},\dots,e_{n}" display="inline"><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>e</mi><mi>n</mi></msub></mrow></math>.
+A basis for <math id="S1.Thmtheorem7.p1.m3" class="ltx_Math" alttext="\bigwedge^{m}(V)" display="inline"><mrow><msup><mo>⋀</mo><mi>m</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> consists of the elements</p>
+<div class="table-container"><table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="e_{i_{1}}\wedge e_{i_{2}}\wedge\dots\wedge e_{i_{m}}" display="block"><mrow><msub><mi>e</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>∧</mo><msub><mi>e</mi><msub><mi>i</mi><mn>2</mn></msub></msub><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><msub><mi>e</mi><msub><mi>i</mi><mi>m</mi></msub></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="1\leq i_{1}&lt;i_{2}&lt;\dots&lt;i_{m}\leq n." display="block"><mrow><mrow><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>i</mi><mn>2</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>m</mi></msub><mo>≤</mo><mi>n</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Hence <math id="S1.Thmtheorem7.p1.m4" class="ltx_Math" alttext="\bigwedge^{m}(V)" display="inline"><mrow><msup><mo>⋀</mo><mi>m</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> has dimension <math id="S1.Thmtheorem7.p1.m5" class="ltx_Math" alttext="\binom{n}{m}" display="inline"><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>n</mi><mi>m</mi></mfrac><mo>)</mo></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Sketch of proof.</h5>
+<div id="S1.p15" class="ltx_para">
+<p class="ltx_p">We knew earlier that <math id="S1.p15.m1" class="ltx_Math" alttext="e_{i_{1}}\otimes\dots\otimes e_{i_{m}}" display="inline"><mrow><msub><mi>e</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi mathvariant="normal">⋯</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>e</mi><msub><mi>i</mi><mi>m</mi></msub></msub></mrow></math>
+was a basis for the tensor product.
+Here we have the additional property that (a)
+if two basis elements re-appear then the whole thing becomes zero,
+thus we should assume the <math id="S1.p15.m2" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>’s are all distinct;
+and (b) we can shuffle around elements,
+and so we arbitrarily decide to put the basis elements
+in increasing order.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">12.2 </span>The determinant</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S2.p1.m1" class="ltx_Math" alttext="(ae_{1}+be_{2})\wedge(ce_{1}+de_{2})=(ad-bc)(e_{1}\wedge e_{2})" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>c</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi></mrow><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Now we’re ready to define the determinant.
+Suppose <math id="S2.p2.m1" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> is a square matrix.
+We claim that the map <math id="S2.p2.m2" class="ltx_Math" alttext="\bigwedge^{m}(V)\to\bigwedge^{m}(V)" display="inline"><mrow><mrow><msup><mo>⋀</mo><mi>m</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em" stretchy="false">→</mo><mrow><msup><mo rspace="0em">⋀</mo><mi>m</mi></msup><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> given on wedges by</p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="v_{1}\wedge v_{2}\wedge\dots\wedge v_{m}\mapsto T(v_{1})\wedge T(v_{2})\wedge%
+\dots\wedge T(v_{m})." display="block"><mrow><mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>v</mi><mn>2</mn></msub><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><msub><mi>v</mi><mi>m</mi></msub></mrow><mo stretchy="false">↦</mo><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and extending linearly to all of <math id="S2.p2.m3" class="ltx_Math" alttext="\bigwedge^{m}(V)" display="inline"><mrow><msup><mo>⋀</mo><mi>m</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a
+well-defined linear map
+(Here “well-defined” means that equivalent elements of the domain
+get mapped to equivalent elements of the codomain.
+This, and linearity, both follow from <math id="S2.p2.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> being a linear map.)
+We call that map <math id="S2.p2.m5" class="ltx_Math" alttext="\bigwedge^{m}(T)" display="inline"><mrow><msup><mo>⋀</mo><mi>m</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 12.2.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Example of <math id="S2.Thmtheorem1.m1" class="ltx_Math" alttext="\bigwedge^{m}(T)" display="inline"><mrow><msup><mo>⋀</mo><mi>m</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">In <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="V=\mathbb{R}^{4}" display="inline"><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>4</mn></msup></mrow></math> with standard basis <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="e_{2}" display="inline"><msub><mi>e</mi><mn>2</mn></msub></math>, <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="e_{3}" display="inline"><msub><mi>e</mi><mn>3</mn></msub></math>, <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="e_{4}" display="inline"><msub><mi>e</mi><mn>4</mn></msub></math>,
+let <math id="S2.Thmtheorem1.p1.m6" class="ltx_Math" alttext="T(e_{1})=e_{2}" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></math>, <math id="S2.Thmtheorem1.p1.m7" class="ltx_Math" alttext="T(e_{2})=2e_{3}" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></mrow></math>, <math id="S2.Thmtheorem1.p1.m8" class="ltx_Math" alttext="T(e_{3})=e_{3}" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></math> and <math id="S2.Thmtheorem1.p1.m9" class="ltx_Math" alttext="T(e_{4})=2e_{2}+e_{3}" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>4</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></mrow></math>.
+Then, for example, <math id="S2.Thmtheorem1.p1.m10" class="ltx_Math" alttext="\bigwedge^{2}(T)" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> sends</p>
+<div class="table-container"><table id="A5.S3.EGx29" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex21"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex21.m1" class="ltx_Math" alttext="\displaystyle(e_{1}\wedge e_{2})+(e_{3}\wedge e_{4})" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>3</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>4</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex21.m2" class="ltx_Math" alttext="\displaystyle\mapsto T(e_{1})\wedge T(e_{2})+T(e_{3})\wedge T(e_{4})" display="inline"><mrow><mi></mi><mo stretchy="false">↦</mo><mrow><mrow><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>∧</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>4</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex22"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex22.m1" class="ltx_Math" alttext="\displaystyle=e_{2}\wedge 2e_{3}+e_{3}\wedge(2e_{2}+e_{3})" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mrow><msub><mi>e</mi><mn>2</mn></msub><mo>∧</mo><mrow><mn>2</mn><mo>⁢</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></mrow><mo>+</mo><msub><mi>e</mi><mn>3</mn></msub></mrow><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><msub><mi>e</mi><mn>3</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex23"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex23.m1" class="ltx_Math" alttext="\displaystyle=2(e_{2}\wedge e_{3}+e_{3}\wedge e_{2})" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mrow><msub><mi>e</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>3</mn></msub></mrow><mo>+</mo><msub><mi>e</mi><mn>3</mn></msub></mrow><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex24"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex24.m1" class="ltx_Math" alttext="\displaystyle=0." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Now here’s something interesting.
+Suppose <math id="S2.p3.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> has dimension <math id="S2.p3.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, and let <math id="S2.p3.m3" class="ltx_Math" alttext="m=n" display="inline"><mrow><mi>m</mi><mo>=</mo><mi>n</mi></mrow></math>.
+Then <math id="S2.p3.m4" class="ltx_Math" alttext="\bigwedge^{n}(V)" display="inline"><mrow><msup><mo>⋀</mo><mi>n</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> has dimension <math id="S2.p3.m5" class="ltx_Math" alttext="\binom{n}{n}=1" display="inline"><mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>n</mi><mi>n</mi></mfrac><mo>)</mo></mrow><mo>=</mo><mn>1</mn></mrow></math> — it’s a one dimensional space!
+Hence <math id="S2.p3.m6" class="ltx_Math" alttext="\bigwedge^{n}(V)\cong k" display="inline"><mrow><mrow><msup><mo>⋀</mo><mi>n</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mi>k</mi></mrow></math>.</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">So <math id="S2.p4.m1" class="ltx_Math" alttext="\bigwedge^{n}(T)" display="inline"><mrow><msup><mo>⋀</mo><mi>n</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> can be thought of as a linear map from <math id="S2.p4.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> to <math id="S2.p4.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>.
+But we know that <em class="ltx_emph ltx_font_italic">a linear map from <math id="S2.p4.m4" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> to <math id="S2.p4.m5" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> is just multiplication by a constant</em>.
+Hence <math id="S2.p4.m6" class="ltx_Math" alttext="\bigwedge^{n}(T)" display="inline"><mrow><msup><mo>⋀</mo><mi>n</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> is multiplication by some constant.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 12.2.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math>, where <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is an <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional vector space.
+Then <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\bigwedge^{n}(T)" display="inline"><mrow><msup><mo>⋀</mo><mi>n</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> is multiplication by a constant <math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>;
+we define the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> determinant</span> of <math id="S2.Thmtheorem2.p1.m6" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> as <math id="S2.Thmtheorem2.p1.m7" class="ltx_Math" alttext="c=\det T" display="inline"><mrow><mi>c</mi><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">det</mo><mi>T</mi></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 12.2.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(The determinant of a <math id="S2.Thmtheorem3.m1" class="ltx_Math" alttext="2\times 2" display="inline"><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>2</mn></mrow></math> matrix)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="V=\mathbb{R}^{2}" display="inline"><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math> again with basis <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math> and <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="e_{2}" display="inline"><msub><mi>e</mi><mn>2</mn></msub></math>.
+Let</p>
+<div class="table-container"><table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="T=\begin{bmatrix}a&amp;c\\
+b&amp;d\end{bmatrix}." display="block"><mrow><mrow><mi>T</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>a</mi></mtd><mtd><mi>c</mi></mtd></mtr><mtr><mtd><mi>b</mi></mtd><mtd><mi>d</mi></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In other words, <math id="S2.Thmtheorem3.p1.m4" class="ltx_Math" alttext="T(e_{1})=ae_{1}+be_{2}" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow></mrow></math>
+and <math id="S2.Thmtheorem3.p1.m5" class="ltx_Math" alttext="T(e_{2})=ce_{1}+de_{2}" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>c</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p">Now let’s consider <math id="S2.Thmtheorem3.p2.m1" class="ltx_Math" alttext="\bigwedge^{2}(V)" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+It has a basis <math id="S2.Thmtheorem3.p2.m2" class="ltx_Math" alttext="e_{1}\wedge e_{2}" display="inline"><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></math>.
+Now <math id="S2.Thmtheorem3.p2.m3" class="ltx_Math" alttext="\bigwedge^{2}(T)" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> sends it to</p>
+<div class="table-container"><table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="e_{1}\wedge e_{2}\xmapsto{\bigwedge^{2}(T)}T(e_{1})\wedge T(e_{2})=(ae_{1}+be_%
+{2})\wedge(ce_{1}+de_{2})=(ad-bc)(e_{1}\wedge e_{2})." display="block"><mrow><mrow><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mover accent="true"><mo stretchy="false">↦</mo><mrow><mover><mo movablelimits="false">⋀</mo><mn>2</mn></mover><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mover><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>c</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi></mrow><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So <math id="S2.Thmtheorem3.p2.m4" class="ltx_Math" alttext="\bigwedge^{2}(T)\colon\bigwedge^{2}(V)\to\bigwedge^{2}(V)" display="inline"><mrow><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">:</mo><mrow><mrow><msup><mo rspace="0em">⋀</mo><mn>2</mn></msup><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em" stretchy="false">→</mo><mrow><msup><mo rspace="0em">⋀</mo><mn>2</mn></msup><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>
+is multiplication by <math id="S2.Thmtheorem3.p2.m5" class="ltx_Math" alttext="\det T=ad-bc" display="inline"><mrow><mrow><mo rspace="0.167em">det</mo><mi>T</mi></mrow><mo>=</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi></mrow><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow></mrow></math>,
+because it sent <math id="S2.Thmtheorem3.p2.m6" class="ltx_Math" alttext="e_{1}\wedge e_{2}" display="inline"><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></math> to
+<math id="S2.Thmtheorem3.p2.m7" class="ltx_Math" alttext="(ad-bc)(e_{1}\wedge e_{2})" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi></mrow><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">And that is the definition of a determinant.
+Once again, since we defined it in terms of <math id="S2.p5.m1" class="ltx_Math" alttext="\bigwedge^{n}(T)" display="inline"><mrow><msup><mo>⋀</mo><mi>n</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+this definition is totally independent of the choice of basis.
+In other words, the determinant can be defined based on <math id="S2.p5.m2" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> alone
+without any reference to matrices.</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 12.2.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Why does <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\bigwedge^{n}(S\circ T)=\bigwedge^{n}(S)\circ\bigwedge^{n}(T)" display="inline"><mrow><mrow><msup><mo>⋀</mo><mi>n</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mrow><mi>S</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msup><mo rspace="0em">⋀</mo><mi>n</mi></msup><mrow><mrow><mo stretchy="false">(</mo><mi>S</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.055em">∘</mo><mrow><msup><mo rspace="0em">⋀</mo><mi>n</mi></msup><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></math>?</span></p>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">In this way, we also get</p>
+<div class="table-container"><table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="\det(S\circ T)=\det(S)\det(T)" display="block"><mrow><mrow><mo movablelimits="false" rspace="0em">det</mo><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" movablelimits="false" rspace="0em">det</mo><mrow><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow><mo lspace="0.167em">⁢</mo><mrow><mo movablelimits="false" rspace="0em">det</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for free.</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">More generally if we replace <math id="S2.p7.m1" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> by <math id="S2.p7.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>,
+an write out the result of expanding</p>
+<div class="table-container"><table id="Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex28.m1" class="ltx_Math" alttext="\left(a_{11}e_{1}+a_{21}e_{2}+\cdots\right)\wedge\dots\wedge\left(a_{1n}e_{1}+%
+a_{2n}e_{2}+\dots+a_{nn}e_{n}\right)" display="block"><mrow><mrow><mo>(</mo><mrow><mrow><msub><mi>a</mi><mn>11</mn></msub><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><msub><mi>a</mi><mn>21</mn></msub><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow><mo>)</mo></mrow><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><mrow><mo>(</mo><mrow><mrow><msub><mi>a</mi><mrow><mn>1</mn><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><msub><mi>a</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mi>n</mi></mrow></msub><mo>⁢</mo><msub><mi>e</mi><mi>n</mi></msub></mrow></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">then you will get the formula</p>
+<div class="table-container"><table id="Ex29" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex29.m1" class="ltx_Math" alttext="\det(A)=\sum_{\sigma\in S_{n}}\operatorname{sgn}(\sigma)a_{1,\sigma(1)}a_{2,%
+\sigma(2)}\dots a_{n,\sigma(n)}" display="block"><mrow><mrow><mo movablelimits="false" rspace="0em">det</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>n</mi></msub></mrow></munder><mrow><mrow><mi>sgn</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msub><mi>a</mi><mrow><mn>1</mn><mo>,</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></msub><mo>⁢</mo><msub><mi>a</mi><mrow><mn>2</mn><mo>,</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></msub><mo>⁢</mo><mi mathvariant="normal">…</mi><mo>⁢</mo><msub><mi>a</mi><mrow><mi>n</mi><mo>,</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Leibniz formula</span> for determinants.
+American high school students will recognize it;
+this is (unfortunately) taught as the definition of the determinant,
+rather than a corollary of the better definition using wedge products.</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 12.2.5</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify that expanding the wedge product
+yields the Leibniz formula for <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="n=3" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow></math>.</span></p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">12.3 </span>Characteristic polynomials, and Cayley-Hamilton</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Let’s connect with the theory of eigenvalues.
+Take a map <math id="S3.p1.m1" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math>, where <math id="S3.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is <math id="S3.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional
+over an algebraically closed field,
+and suppose its eigenvalues
+are <math id="S3.p1.m4" class="ltx_Math" alttext="\lambda_{1}" display="inline"><msub><mi>λ</mi><mn>1</mn></msub></math>, <math id="S3.p1.m5" class="ltx_Math" alttext="\lambda_{2}" display="inline"><msub><mi>λ</mi><mn>2</mn></msub></math>, …, <math id="S3.p1.m6" class="ltx_Math" alttext="\lambda_{n}" display="inline"><msub><mi>λ</mi><mi>n</mi></msub></math> (with repetition).
+Then the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> characteristic polynomial</span> is given by</p>
+<div class="table-container"><table id="Ex30" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex30.m1" class="ltx_Math" alttext="p_{T}(X)=(X-\lambda_{1})(X-\lambda_{2})\dots(X-\lambda_{n})." display="block"><mrow><mrow><mrow><msub><mi>p</mi><mi>T</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>−</mo><msub><mi>λ</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>−</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi mathvariant="normal">…</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>−</mo><msub><mi>λ</mi><mi>n</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Note that if we’ve written <math id="S3.p1.m7" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> in Jordan form, that is,</p>
+<div class="table-container"><table id="Ex31" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex31.m1" class="ltx_Math" alttext="T=\begin{bmatrix}\lambda_{1}&amp;\ast&amp;0&amp;\dots&amp;0\\
+0&amp;\lambda_{2}&amp;\ast&amp;\dots&amp;0\\
+0&amp;0&amp;\lambda_{3}&amp;\dots&amp;0\\
+\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;0&amp;\dots&amp;\lambda_{n}\end{bmatrix}" display="block"><mrow><mi>T</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>λ</mi><mn>1</mn></msub></mtd><mtd><mo>∗</mo></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msub><mi>λ</mi><mn>2</mn></msub></mtd><mtd><mo>∗</mo></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><msub><mi>λ</mi><mn>3</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>λ</mi><mi>n</mi></msub></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">(here each <math id="S3.p1.m8" class="ltx_Math" alttext="\ast" display="inline"><mo>∗</mo></math> is either <math id="S3.p1.m9" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> or <math id="S3.p1.m10" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>),
+then we can hack together the definition</p>
+<div class="table-container"><table id="Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex32.m1" class="ltx_Math" alttext="p_{T}(X)\coloneqq\det\left(X\cdot\mathrm{id}_{n}-T\right)=\det\begin{bmatrix}X%
+-\lambda_{1}&amp;\ast&amp;0&amp;\dots&amp;0\\
+0&amp;X-\lambda_{2}&amp;\ast&amp;\dots&amp;0\\
+0&amp;0&amp;X-\lambda_{3}&amp;\dots&amp;0\\
+\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;0&amp;\dots&amp;X-\lambda_{n}\end{bmatrix}." display="block"><mrow><mrow><mrow><msub><mi>p</mi><mi>T</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">≔</mo><mrow><mo lspace="0.1389em" movablelimits="false" rspace="0em">det</mo><mrow><mo>(</mo><mrow><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mi>id</mi><mi>n</mi></msub></mrow><mo>−</mo><mi>T</mi></mrow><mo>)</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" movablelimits="false" rspace="0em">det</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><mi>X</mi><mo>−</mo><msub><mi>λ</mi><mn>1</mn></msub></mrow></mtd><mtd><mo>∗</mo></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mrow><mi>X</mi><mo>−</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow></mtd><mtd><mo>∗</mo></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mrow><mi>X</mi><mo>−</mo><msub><mi>λ</mi><mn>3</mn></msub></mrow></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mrow><mi>X</mi><mo>−</mo><msub><mi>λ</mi><mi>n</mi></msub></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The latter definition is what you’ll see in most
+linear algebra books because it lets you define the characteristic polynomial
+without mentioning the word “eigenvalue”
+(i.e. entirely in terms of arrays of numbers).
+I’ll admit it does have the merit that it means that given any matrix,
+it’s easy to compute the characteristic polynomial and hence
+compute the eigenvalues;
+but I still think the definition should be done in terms of
+eigenvalues to begin with.
+For instance the determinant definition obscures the following theorem,
+which is actually a complete triviality.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 12.3.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Cayley-Hamilton)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> be a map of finite-dimensional
+vector spaces over an algebraically closed field.
+Then for any <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math>,
+the map <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="p_{T}(T)" display="inline"><mrow><msub><mi>p</mi><mi>T</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the zero map.</p>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Here, by <math id="S3.p2.m1" class="ltx_Math" alttext="p_{T}(T)" display="inline"><mrow><msub><mi>p</mi><mi>T</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> we mean that if</p>
+<div class="table-container"><table id="Ex33" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex33.m1" class="ltx_Math" alttext="p_{T}(X)=X^{n}+c_{n-1}X^{n-1}+\dots+c_{0}" display="block"><mrow><mrow><msub><mi>p</mi><mi>T</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>X</mi><mi>n</mi></msup><mo>+</mo><mrow><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>⁢</mo><msup><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>c</mi><mn>0</mn></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">then</p>
+<div class="table-container"><table id="Ex34" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex34.m1" class="ltx_Math" alttext="p_{T}(T)=T^{n}+c_{n-1}T^{n-1}+\dots+c_{1}T+c_{0}I" display="block"><mrow><mrow><msub><mi>p</mi><mi>T</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>T</mi><mi>n</mi></msup><mo>+</mo><mrow><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>⁢</mo><msup><mi>T</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><mi>T</mi></mrow><mo>+</mo><mrow><msub><mi>c</mi><mn>0</mn></msub><mo>⁢</mo><mi>I</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is the zero map,
+where <math id="S3.p2.m2" class="ltx_Math" alttext="T^{k}" display="inline"><msup><mi>T</mi><mi>k</mi></msup></math> denotes <math id="S3.p2.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> applied <math id="S3.p2.m4" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> times.
+We saw this concept already when we proved
+that <math id="S3.p2.m5" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> had at least one nonzero eigenvector.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 12.3.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Example of Cayley-Hamilton using determinant definition)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="T=\begin{bmatrix}1&amp;2\\
+3&amp;4\end{bmatrix}" display="inline"><mrow><mi>T</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd><mtd><mn>2</mn></mtd></mtr><mtr><mtd><mn>3</mn></mtd><mtd><mn>4</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math>.
+Using the determinant definition of characteristic polynomial,
+we find that <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="p_{T}(X)=(X-1)(X-4)-(-2)(-3)=X^{2}-5X-2" display="inline"><mrow><mrow><msub><mi>p</mi><mi>T</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>−</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><msup><mi>X</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>5</mn><mo>⁢</mo><mi>X</mi></mrow><mo>−</mo><mn>2</mn></mrow></mrow></math>.
+Indeed, you can verify that</p>
+<div class="table-container"><table id="Ex35" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex35.m1" class="ltx_Math" alttext="T^{2}-5T-2=\begin{bmatrix}7&amp;10\\
+15&amp;22\end{bmatrix}-5\cdot\begin{bmatrix}1&amp;2\\
+3&amp;4\end{bmatrix}-2\cdot\begin{bmatrix}1&amp;0\\
+0&amp;1\end{bmatrix}=\begin{bmatrix}0&amp;0\\
+0&amp;0\end{bmatrix}." display="block"><mrow><mrow><mrow><msup><mi>T</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>5</mn><mo>⁢</mo><mi>T</mi></mrow><mo>−</mo><mn>2</mn></mrow><mo>=</mo><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>7</mn></mtd><mtd><mn>10</mn></mtd></mtr><mtr><mtd><mn>15</mn></mtd><mtd><mn>22</mn></mtd></mtr></mtable><mo>]</mo></mrow><mo>−</mo><mrow><mn>5</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd><mtd><mn>2</mn></mtd></mtr><mtr><mtd><mn>3</mn></mtd><mtd><mn>4</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo>−</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">If you define <math id="S3.p3.m1" class="ltx_Math" alttext="p_{T}" display="inline"><msub><mi>p</mi><mi>T</mi></msub></math> without the word eigenvalue,
+and adopt the evil view that matrices are arrays of numbers,
+then this looks like a complete miracle.
+(Indeed, just look at the terrible proofs on Wikipedia.)</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">But if you use the abstract viewpoint of <math id="S3.p4.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> as a linear map,
+then the theorem is almost obvious:</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Cayley-Hamilton.</h5>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Suppose we write <math id="S3.p5.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> in Jordan normal form as</p>
+<div class="table-container"><table id="Ex36" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex36.m1" class="ltx_Math" alttext="V=J_{1}\oplus\dots\oplus J_{m}" display="block"><mrow><mi>V</mi><mo>=</mo><mrow><msub><mi>J</mi><mn>1</mn></msub><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><msub><mi>J</mi><mi>m</mi></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S3.p5.m2" class="ltx_Math" alttext="J_{i}" display="inline"><msub><mi>J</mi><mi>i</mi></msub></math> has eigenvalue <math id="S3.p5.m3" class="ltx_Math" alttext="\lambda_{i}" display="inline"><msub><mi>λ</mi><mi>i</mi></msub></math> and dimension <math id="S3.p5.m4" class="ltx_Math" alttext="d_{i}" display="inline"><msub><mi>d</mi><mi>i</mi></msub></math>.
+By definition,</p>
+<div class="table-container"><table id="Ex37" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex37.m1" class="ltx_Math" alttext="p_{T}(T)=(T-\lambda_{1})^{d_{1}}(T-\lambda_{2})^{d_{2}}\dots(T-\lambda_{m})^{d%
+_{m}}." display="block"><mrow><mrow><mrow><msub><mi>p</mi><mi>T</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>T</mi><mo>−</mo><msub><mi>λ</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><msub><mi>d</mi><mn>1</mn></msub></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>T</mi><mo>−</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><msub><mi>d</mi><mn>2</mn></msub></msup><mo>⁢</mo><mi mathvariant="normal">…</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>T</mi><mo>−</mo><msub><mi>λ</mi><mi>m</mi></msub></mrow><mo stretchy="false">)</mo></mrow><msub><mi>d</mi><mi>m</mi></msub></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">By definition, <math id="S3.p5.m5" class="ltx_Math" alttext="(T-\lambda_{1})^{d_{1}}" display="inline"><msup><mrow><mo stretchy="false">(</mo><mrow><mi>T</mi><mo>−</mo><msub><mi>λ</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><msub><mi>d</mi><mn>1</mn></msub></msup></math> is the zero map on <math id="S3.p5.m6" class="ltx_Math" alttext="J_{1}" display="inline"><msub><mi>J</mi><mn>1</mn></msub></math>.
+So <math id="S3.p5.m7" class="ltx_Math" alttext="p_{T}(T)" display="inline"><mrow><msub><mi>p</mi><mi>T</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> is zero on <math id="S3.p5.m8" class="ltx_Math" alttext="J_{1}" display="inline"><msub><mi>J</mi><mn>1</mn></msub></math>.
+Similarly it’s zero on each of the other <math id="S3.p5.m9" class="ltx_Math" alttext="J_{i}" display="inline"><msub><mi>J</mi><mi>i</mi></msub></math>’s — end of story.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 12.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Tensoring up)</span> — </span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">The Cayley-Hamilton theorem holds without the hypothesis that
+<math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> is algebraically closed:
+because for example any real matrix can be regarded
+as a matrix with complex coefficients
+(a trick we’ve mentioned before).
+I’ll briefly hint at how you can use tensor products to formalize this idea.</p>
+</div>
+<div id="S3.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p">Let’s take the space <math id="S3.Thmtheorem3.p2.m1" class="ltx_Math" alttext="V=\mathbb{R}^{3}" display="inline"><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow></math>, with basis <math id="S3.Thmtheorem3.p2.m2" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, <math id="S3.Thmtheorem3.p2.m3" class="ltx_Math" alttext="e_{2}" display="inline"><msub><mi>e</mi><mn>2</mn></msub></math>, <math id="S3.Thmtheorem3.p2.m4" class="ltx_Math" alttext="e_{3}" display="inline"><msub><mi>e</mi><mn>3</mn></msub></math>.
+Thus objects in <math id="S3.Thmtheorem3.p2.m5" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> are of the form <math id="S3.Thmtheorem3.p2.m6" class="ltx_Math" alttext="r_{1}e_{1}+r_{2}e_{2}+r_{3}e_{3}" display="inline"><mrow><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><msub><mi>r</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><msub><mi>r</mi><mn>3</mn></msub><mo>⁢</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></mrow></math>
+where <math id="S3.Thmtheorem3.p2.m7" class="ltx_Math" alttext="r_{1}" display="inline"><msub><mi>r</mi><mn>1</mn></msub></math>, <math id="S3.Thmtheorem3.p2.m8" class="ltx_Math" alttext="r_{2}" display="inline"><msub><mi>r</mi><mn>2</mn></msub></math>, <math id="S3.Thmtheorem3.p2.m9" class="ltx_Math" alttext="r_{3}" display="inline"><msub><mi>r</mi><mn>3</mn></msub></math> are real numbers.
+We want to consider essentially the same vector space,
+but with complex coefficients <math id="S3.Thmtheorem3.p2.m10" class="ltx_Math" alttext="z_{i}" display="inline"><msub><mi>z</mi><mi>i</mi></msub></math> rather than real coefficients <math id="S3.Thmtheorem3.p2.m11" class="ltx_Math" alttext="r_{i}" display="inline"><msub><mi>r</mi><mi>i</mi></msub></math>.</p>
+</div>
+<div id="S3.Thmtheorem3.p3" class="ltx_para">
+<p class="ltx_p">So here’s what we do: view <math id="S3.Thmtheorem3.p3.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> as a <math id="S3.Thmtheorem3.p3.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>-vector space
+(with basis <math id="S3.Thmtheorem3.p3.m3" class="ltx_Math" alttext="\{1,i\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi>i</mi><mo stretchy="false">}</mo></mrow></math>, say)
+and consider the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> complexification</span></p>
+<div class="table-container"><table id="Ex38" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex38.m1" class="ltx_Math" alttext="V_{\mathbb{C}}\coloneqq\mathbb{C}\otimes_{\mathbb{R}}V." display="block"><mrow><mrow><msub><mi>V</mi><mi>ℂ</mi></msub><mo>≔</mo><mrow><mi>ℂ</mi><msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>ℝ</mi></msub><mi>V</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Then you can check that our elements are actually of the form</p>
+<div class="table-container"><table id="Ex39" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex39.m1" class="ltx_Math" alttext="z_{1}\otimes e_{1}+z_{2}\otimes e_{2}+z_{3}\otimes e_{3}." display="block"><mrow><mrow><mrow><msub><mi>z</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><msub><mi>z</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><msub><mi>z</mi><mn>3</mn></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Here, the tensor product is over <math id="S3.Thmtheorem3.p3.m4" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>,
+so we have <math id="S3.Thmtheorem3.p3.m5" class="ltx_Math" alttext="z\otimes re_{i}=(zr)\otimes e_{i}" display="inline"><mrow><mrow><mrow><mi>z</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>r</mi></mrow><mo>⁢</mo><msub><mi>e</mi><mi>i</mi></msub></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>⁢</mo><mi>r</mi></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⊗</mo><msub><mi>e</mi><mi>i</mi></msub></mrow></mrow></math> for <math id="S3.Thmtheorem3.p3.m6" class="ltx_Math" alttext="r\in\mathbb{R}" display="inline"><mrow><mi>r</mi><mo>∈</mo><mi>ℝ</mi></mrow></math>.
+Then <math id="S3.Thmtheorem3.p3.m7" class="ltx_Math" alttext="V_{\mathbb{C}}" display="inline"><msub><mi>V</mi><mi>ℂ</mi></msub></math> can be thought as a three-dimensional vector space over <math id="S3.Thmtheorem3.p3.m8" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>,
+with basis <math id="S3.Thmtheorem3.p3.m9" class="ltx_Math" alttext="1\otimes e_{i}" display="inline"><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>e</mi><mi>i</mi></msub></mrow></math> for <math id="S3.Thmtheorem3.p3.m10" class="ltx_Math" alttext="i\in\{1,2,3\}" display="inline"><mrow><mi>i</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">}</mo></mrow></mrow></math>.
+In this way, the tensor product lets us formalize the idea
+that we “fuse on” complex coefficients.</p>
+</div>
+<div id="S3.Thmtheorem3.p4" class="ltx_para">
+<p class="ltx_p">If <math id="S3.Thmtheorem3.p4.m1" class="ltx_Math" alttext="T\colon V\to W" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math> is a map, then <math id="S3.Thmtheorem3.p4.m2" class="ltx_Math" alttext="T_{\mathbb{C}}\colon V_{\mathbb{C}}\to W_{\mathbb{C}}" display="inline"><mrow><msub><mi>T</mi><mi>ℂ</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>V</mi><mi>ℂ</mi></msub><mo stretchy="false">→</mo><msub><mi>W</mi><mi>ℂ</mi></msub></mrow></mrow></math>
+is just the map <math id="S3.Thmtheorem3.p4.m3" class="ltx_Math" alttext="z\otimes v\mapsto z\otimes T(v)" display="inline"><mrow><mrow><mi>z</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>v</mi></mrow><mo stretchy="false">↦</mo><mrow><mrow><mi>z</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>T</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+You’ll see this written sometimes as <math id="S3.Thmtheorem3.p4.m4" class="ltx_Math" alttext="T_{\mathbb{C}}=\mathrm{id}\otimes T" display="inline"><mrow><msub><mi>T</mi><mi>ℂ</mi></msub><mo>=</mo><mrow><mi>id</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>T</mi></mrow></mrow></math>.
+One can then apply theorems to <math id="S3.Thmtheorem3.p4.m5" class="ltx_Math" alttext="T_{\mathbb{C}}" display="inline"><msub><mi>T</mi><mi>ℂ</mi></msub></math>
+and try to deduce the corresponding results on <math id="S3.Thmtheorem3.p4.m6" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>.</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">12.4 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 12A</span></span><span class="ltx_text ltx_font_bold"> </span>(Column operations)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Show that for any real numbers <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="x_{ij}" display="inline"><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub></math> (here <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="1\leq i,j\leq n" display="inline"><mrow><mrow><mn>1</mn><mo>≤</mo><mi>i</mi></mrow><mo>,</mo><mrow><mi>j</mi><mo>≤</mo><mi>n</mi></mrow></mrow></math>) we have</p>
+<div class="table-container"><table id="Ex40" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex40.m1" class="ltx_Math" alttext="\det\begin{bmatrix}x_{11}&amp;x_{12}&amp;\dots&amp;x_{1n}\\
+x_{21}&amp;x_{22}&amp;\dots&amp;x_{2n}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+x_{n1}&amp;x_{n2}&amp;\dots&amp;x_{nn}\\
+\end{bmatrix}=\det\begin{bmatrix}x_{11}+cx_{12}&amp;x_{12}&amp;\dots&amp;x_{1n}\\
+x_{21}+cx_{22}&amp;x_{22}&amp;\dots&amp;x_{2n}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+x_{n1}+cx_{n2}&amp;x_{n2}&amp;\dots&amp;x_{nn}\\
+\end{bmatrix}." display="block"><mrow><mrow><mrow><mo movablelimits="false" rspace="0em">det</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>x</mi><mn>11</mn></msub></mtd><mtd><msub><mi>x</mi><mn>12</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>x</mi><mrow><mn>1</mn><mo>⁢</mo><mi>n</mi></mrow></msub></mtd></mtr><mtr><mtd><msub><mi>x</mi><mn>21</mn></msub></mtd><mtd><msub><mi>x</mi><mn>22</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>x</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><msub><mi>x</mi><mrow><mi>n</mi><mo>⁢</mo><mn>1</mn></mrow></msub></mtd><mtd><msub><mi>x</mi><mrow><mi>n</mi><mo>⁢</mo><mn>2</mn></mrow></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>x</mi><mrow><mi>n</mi><mo>⁢</mo><mi>n</mi></mrow></msub></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" movablelimits="false" rspace="0em">det</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><msub><mi>x</mi><mn>11</mn></msub><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>x</mi><mn>12</mn></msub></mrow></mrow></mtd><mtd><msub><mi>x</mi><mn>12</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>x</mi><mrow><mn>1</mn><mo>⁢</mo><mi>n</mi></mrow></msub></mtd></mtr><mtr><mtd><mrow><msub><mi>x</mi><mn>21</mn></msub><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>x</mi><mn>22</mn></msub></mrow></mrow></mtd><mtd><msub><mi>x</mi><mn>22</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>x</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mrow><msub><mi>x</mi><mrow><mi>n</mi><mo>⁢</mo><mn>1</mn></mrow></msub><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>x</mi><mrow><mi>n</mi><mo>⁢</mo><mn>2</mn></mrow></msub></mrow></mrow></mtd><mtd><msub><mi>x</mi><mrow><mi>n</mi><mo>⁢</mo><mn>2</mn></mrow></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>x</mi><mrow><mi>n</mi><mo>⁢</mo><mi>n</mi></mrow></msub></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The point is that</p>
+<div class="table-container"><table id="Ex41" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex41.m1" class="ltx_Math" alttext="(v_{1}+cv_{2})\wedge v_{2}\dots\wedge v_{n}=v_{1}\wedge v_{2}\dots\wedge v_{n}%
++c(v_{2}\wedge v_{2}\dots\wedge v_{n})" display="block"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>v</mi><mn>2</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>⁢</mo><mi mathvariant="normal">⋯</mi></mrow><mo>∧</mo><msub><mi>v</mi><mi>n</mi></msub></mrow><mo>=</mo><mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>∧</mo><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>⁢</mo><mi mathvariant="normal">⋯</mi></mrow><mo>∧</mo><msub><mi>v</mi><mi>n</mi></msub></mrow><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>∧</mo><mrow><msub><mi>v</mi><mn>2</mn></msub><mo>⁢</mo><mi mathvariant="normal">⋯</mi></mrow><mo>∧</mo><msub><mi>v</mi><mi>n</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and the latter term is zero.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 12B</span></span><span class="ltx_text ltx_font_bold"> </span>(Determinant is product of eigenvalues)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be an <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional vector space
+over an algebraically closed field <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>.
+Let <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> be a linear map with
+eigenvalues <math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="\lambda_{1}" display="inline"><msub><mi>λ</mi><mn>1</mn></msub></math>, <math id="Thmproblem2.p1.m6" class="ltx_Math" alttext="\lambda_{2}" display="inline"><msub><mi>λ</mi><mn>2</mn></msub></math>, …, <math id="Thmproblem2.p1.m7" class="ltx_Math" alttext="\lambda_{n}" display="inline"><msub><mi>λ</mi><mi>n</mi></msub></math>
+(counted with algebraic multiplicity).
+Show that <math id="Thmproblem2.p1.m8" class="ltx_Math" alttext="\det T=\lambda_{1}\dots\lambda_{n}" display="inline"><mrow><mrow><mo rspace="0.167em">det</mo><mi>T</mi></mrow><mo>=</mo><mrow><msub><mi>λ</mi><mn>1</mn></msub><mo>⁢</mo><mi mathvariant="normal">…</mi><mo>⁢</mo><msub><mi>λ</mi><mi>n</mi></msub></mrow></mrow></math>.
+
+You can either do this by writing <math id="Thmproblem2.p1.m9" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> in matrix form,
+or you can use the wedge definition of <math id="Thmproblem2.p1.m10" class="ltx_Math" alttext="\det T" display="inline"><mrow><mo rspace="0.167em">det</mo><mi>T</mi></mrow></math>
+with the basis given by Jordan form.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 12C</span></span><span class="ltx_text ltx_font_bold"> </span>(Exponential matrix)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be an <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="n\times n" display="inline"><mrow><mi>n</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>n</mi></mrow></math> matrix with complex coefficients.
+We define the exponential map by</p>
+<div class="table-container"><table id="Ex42" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex42.m1" class="ltx_Math" alttext="\exp(X)=1+X+\frac{X^{2}}{2!}+\frac{X^{3}}{3!}+\cdots" display="block"><mrow><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mi>X</mi><mo>+</mo><mfrac linethickness="0.6px"><msup><mi>X</mi><mn>2</mn></msup><mrow><mn>2</mn><mo>!</mo></mrow></mfrac><mo>+</mo><mfrac linethickness="0.6px"><msup><mi>X</mi><mn>3</mn></msup><mrow><mn>3</mn><mo>!</mo></mrow></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">(take it for granted that this converges to some <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="n\times n" display="inline"><mrow><mi>n</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>n</mi></mrow></math> matrix).
+Prove that</p>
+<div class="table-container"><table id="Ex43" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex43.m1" class="ltx_Math" alttext="\det(\exp(X))=e^{\operatorname{Tr}X}." display="block"><mrow><mrow><mrow><mo movablelimits="false" rspace="0em">det</mo><mrow><mo stretchy="false">(</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>e</mi><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><mi>X</mi></mrow></msup></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This is actually immediate by taking any basis
+in which <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is upper-triangular!</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 12D</span></span><span class="ltx_text ltx_font_bold"> </span>(Extension to <a href="ch_vector_spaces.html#prob:equal_dimension" title="Problem 9B (Equal dimension vector spaces are usually isomorphisms). ‣ 9.11 A few harder problems to think about ‣ Chapter 9 Vector spaces ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">9B</span></a>)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> be a map of finite-dimensional vector spaces.
+Prove that <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is an isomorphism
+if and only if <math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="\det T\neq 0" display="inline"><mrow><mrow><mo rspace="0.167em">det</mo><mi>T</mi></mrow><mo>≠</mo><mn>0</mn></mrow></math>.
+
+You don’t need eigenvalues (though they could work also).
+In one direction, recall that (by <a href="ch_vector_spaces.html#prob:equal_dimension" title="Problem 9B (Equal dimension vector spaces are usually isomorphisms). ‣ 9.11 A few harder problems to think about ‣ Chapter 9 Vector spaces ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">9B</span></a>)
+we can replace “isomorphism” by “injective”.
+In the other, if <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is an isomorphism,
+let <math id="Thmproblem4.p1.m5" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> be the inverse map and look at <math id="Thmproblem4.p1.m6" class="ltx_Math" alttext="\det(S\circ T)" display="inline"><mrow><mo rspace="0em">det</mo><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
+
+
+Recall that (by <a href="ch_vector_spaces.html#prob:equal_dimension" title="Problem 9B (Equal dimension vector spaces are usually isomorphisms). ‣ 9.11 A few harder problems to think about ‣ Chapter 9 Vector spaces ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">9B</span></a>)
+we can replace “isomorphism” by “injective”.</p>
+</div>
+<div id="Thmproblem4.p2" class="ltx_para">
+<p class="ltx_p">If <math id="Thmproblem4.p2.m1" class="ltx_Math" alttext="T(v)=0" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> for any nonzero <math id="Thmproblem4.p2.m2" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math>,
+then by taking a basis for which <math id="Thmproblem4.p2.m3" class="ltx_Math" alttext="e_{1}=v" display="inline"><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>=</mo><mi>v</mi></mrow></math>,
+we find <math id="Thmproblem4.p2.m4" class="ltx_Math" alttext="\bigwedge^{n}(T)" display="inline"><mrow><msup><mo>⋀</mo><mi>n</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> will map <math id="Thmproblem4.p2.m5" class="ltx_Math" alttext="e_{1}\wedge\dots" display="inline"><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>∧</mo><mi mathvariant="normal">…</mi></mrow></math>
+to <math id="Thmproblem4.p2.m6" class="ltx_Math" alttext="0\wedge T(e_{2})\wedge\dots=0" display="inline"><mrow><mrow><mn>0</mn><mo>∧</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mi mathvariant="normal">⋯</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>,
+hence is the zero map, so <math id="Thmproblem4.p2.m7" class="ltx_Math" alttext="\det T=0" display="inline"><mrow><mrow><mo rspace="0.167em">det</mo><mi>T</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="Thmproblem4.p3" class="ltx_para">
+<p class="ltx_p">Conversely, if <math id="Thmproblem4.p3.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is an isomorphism,
+we let <math id="Thmproblem4.p3.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> denote the inverse map.
+Then <math id="Thmproblem4.p3.m3" class="ltx_Math" alttext="1=\det(\mathrm{id})=\det(S\circ T)=\det S\det T" display="inline"><mrow><mn>1</mn><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0em">det</mo><mrow><mo stretchy="false">(</mo><mi>id</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0em">det</mo><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">det</mo><mrow><mi>S</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">det</mo><mi>T</mi></mrow></mrow></mrow></mrow></math>,
+so <math id="Thmproblem4.p3.m4" class="ltx_Math" alttext="\det T\neq 0" display="inline"><mrow><mrow><mo rspace="0.167em">det</mo><mi>T</mi></mrow><mo>≠</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem5" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 12E</span></span><span class="ltx_text ltx_font_bold"> </span>(Based on Sweden 2010)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem5.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem5.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem5.p2" class="ltx_para">
+<p class="ltx_p">A herd of <math id="Thmproblem5.p2.m1" class="ltx_Math" alttext="1000" display="inline"><mn>1000</mn></math> cows of nonzero weight is given.
+Prove that we can remove one cow such that the remaining <math id="Thmproblem5.p2.m2" class="ltx_Math" alttext="999" display="inline"><mn>999</mn></math> cows
+cannot be partitioned into two sets with equal sum of weights.
+
+Consider <math id="Thmproblem5.p2.m3" class="ltx_Math" alttext="1000\times 1000" display="inline"><mrow><mn>1000</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>1000</mn></mrow></math> matrix <math id="Thmproblem5.p2.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+with entries <math id="Thmproblem5.p2.m5" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> on diagonal and <math id="Thmproblem5.p2.m6" class="ltx_Math" alttext="\pm 1" display="inline"><mrow><mo>±</mo><mn>1</mn></mrow></math> off-diagonal.
+Mod <math id="Thmproblem5.p2.m7" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>.
+
+
+We proceed by contradiction.
+Let <math id="Thmproblem5.p2.m8" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math> be a vector of length <math id="Thmproblem5.p2.m9" class="ltx_Math" alttext="1000" display="inline"><mn>1000</mn></math>
+whose entries are weight of cows.
+Assume the existence of a matrix <math id="Thmproblem5.p2.m10" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> such that <math id="Thmproblem5.p2.m11" class="ltx_Math" alttext="Mv=0" display="inline"><mrow><mrow><mi>M</mi><mo>⁢</mo><mi>v</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>,
+with entries <math id="Thmproblem5.p2.m12" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> on diagonal and <math id="Thmproblem5.p2.m13" class="ltx_Math" alttext="\pm 1" display="inline"><mrow><mo>±</mo><mn>1</mn></mrow></math> off-diagonal.
+But <math id="Thmproblem5.p2.m14" class="ltx_Math" alttext="\det M\pmod{2}" display="inline"><mrow><mrow><mo rspace="0.167em">det</mo><mi>M</mi></mrow><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is equal to the number of derangements
+of <math id="Thmproblem5.p2.m15" class="ltx_Math" alttext="\{1,\dots,1000\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mn>1000</mn><mo stretchy="false">}</mo></mrow></math>, which is odd.
+Thus <math id="Thmproblem5.p2.m16" class="ltx_Math" alttext="\det M" display="inline"><mrow><mo rspace="0.167em">det</mo><mi>M</mi></mrow></math> is odd and in particular not zero,
+so <math id="Thmproblem5.p2.m17" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is invertible.
+Thus <math id="Thmproblem5.p2.m18" class="ltx_Math" alttext="Mv=0\implies v=0" display="inline"><mrow><mrow><mi>M</mi><mo>⁢</mo><mi>v</mi></mrow><mo>=</mo><mn>0</mn><mo stretchy="false">⟹</mo><mi>v</mi><mo>=</mo><mn>0</mn></mrow></math>, contradiction.</p>
+</div>
+</div>
+<div id="Thmproblem6" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 12F</span></span><span class="ltx_text ltx_font_bold"> </span>(Putnam 2015)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem6.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem6.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem6.p1.g2" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem6.p2" class="ltx_para">
+<p class="ltx_p">Define <math id="Thmproblem6.p2.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> to be the set of real matrices
+<math id="Thmproblem6.p2.m2" class="ltx_Math" alttext="\left(\begin{smallmatrix}a&amp;b\\
+c&amp;d\end{smallmatrix}\right)" display="inline"><mrow><mo>(</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><mi>a</mi></mtd><mtd><mi>b</mi></mtd></mtr><mtr><mtd><mi>c</mi></mtd><mtd><mi>d</mi></mtd></mtr></mtable><mo>)</mo></mrow></math>
+such that <math id="Thmproblem6.p2.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, <math id="Thmproblem6.p2.m4" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>, <math id="Thmproblem6.p2.m5" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>, <math id="Thmproblem6.p2.m6" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> form
+an arithmetic progression in that order.
+Find all <math id="Thmproblem6.p2.m7" class="ltx_Math" alttext="M\in S" display="inline"><mrow><mi>M</mi><mo>∈</mo><mi>S</mi></mrow></math> such that for some integer <math id="Thmproblem6.p2.m8" class="ltx_Math" alttext="k&gt;1" display="inline"><mrow><mi>k</mi><mo>&gt;</mo><mn>1</mn></mrow></math>, <math id="Thmproblem6.p2.m9" class="ltx_Math" alttext="M^{k}\in S" display="inline"><mrow><msup><mi>M</mi><mi>k</mi></msup><mo>∈</mo><mi>S</mi></mrow></math>.
+
+There is a family of solutions other than just <math id="Thmproblem6.p2.m10" class="ltx_Math" alttext="a=b=c=d" display="inline"><mrow><mi>a</mi><mo>=</mo><mi>b</mi><mo>=</mo><mi>c</mi><mo>=</mo><mi>d</mi></mrow></math>.</p>
+</div>
+<div id="Thmproblem6.p3" class="ltx_para">
+<p class="ltx_p">One can solve the problem using Cayley-Hamilton.
+A more “bare-hands” approach is to
+show the matrix is invertible (unless <math id="Thmproblem6.p3.m1" class="ltx_Math" alttext="a=b=c=d" display="inline"><mrow><mi>a</mi><mo>=</mo><mi>b</mi><mo>=</mo><mi>c</mi><mo>=</mo><mi>d</mi></mrow></math>)
+and then diagonalize the matrix as
+<math id="Thmproblem6.p3.m2" class="ltx_Math" alttext="M=\begin{bmatrix}s&amp;-q\\
+-r&amp;p\end{bmatrix}\begin{bmatrix}\lambda_{1}&amp;0\\
+0&amp;\lambda_{2}\end{bmatrix}\begin{bmatrix}p&amp;q\\
+r&amp;s\end{bmatrix}=\begin{bmatrix}ps\lambda_{1}-qr\lambda_{2}&amp;qs(\lambda_{1}-%
+\lambda_{2})\\
+pr(\lambda_{2}-\lambda_{1})&amp;ps\lambda_{2}-qr\lambda_{1}\end{bmatrix}" display="inline"><mrow><mi>M</mi><mo>=</mo><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><mi>s</mi></mtd><mtd><mrow><mo>−</mo><mi>q</mi></mrow></mtd></mtr><mtr><mtd><mrow><mo>−</mo><mi>r</mi></mrow></mtd><mtd><mi>p</mi></mtd></mtr></mtable><mo>]</mo></mrow><mo>⁢</mo><mrow><mo>[</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><msub><mi>λ</mi><mn>1</mn></msub></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msub><mi>λ</mi><mn>2</mn></msub></mtd></mtr></mtable><mo>]</mo></mrow><mo>⁢</mo><mrow><mo>[</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><mi>p</mi></mtd><mtd><mi>q</mi></mtd></mtr><mtr><mtd><mi>r</mi></mtd><mtd><mi>s</mi></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd><mrow><mrow><mi>p</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><msub><mi>λ</mi><mn>1</mn></msub></mrow><mo>−</mo><mrow><mi>q</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow></mrow></mtd><mtd><mrow><mi>q</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>λ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mi>p</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>λ</mi><mn>2</mn></msub><mo>−</mo><msub><mi>λ</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mrow><mrow><mi>p</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow><mo>−</mo><mrow><mi>q</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><msub><mi>λ</mi><mn>1</mn></msub></mrow></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math>.
+
+
+The answer is</p>
+<div class="table-container"><table id="Ex44" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex44.m1" class="ltx_Math" alttext="\begin{bmatrix}t&amp;t\\
+t&amp;t\end{bmatrix}\quad\text{and}\quad\begin{bmatrix}-3t&amp;-t\\
+t&amp;3t\end{bmatrix}" display="block"><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>t</mi></mtd><mtd><mi>t</mi></mtd></mtr><mtr><mtd><mi>t</mi></mtd><mtd><mi>t</mi></mtd></mtr></mtable><mo>]</mo></mrow><mspace width="1em"></mspace><mtext>and</mtext><mspace width="1em"></mspace><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><mo>−</mo><mrow><mn>3</mn><mo>⁢</mo><mi>t</mi></mrow></mrow></mtd><mtd><mrow><mo>−</mo><mi>t</mi></mrow></mtd></mtr><mtr><mtd><mi>t</mi></mtd><mtd><mrow><mn>3</mn><mo>⁢</mo><mi>t</mi></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for <math id="Thmproblem6.p3.m3" class="ltx_Math" alttext="t\in\mathbb{R}" display="inline"><mrow><mi>t</mi><mo>∈</mo><mi>ℝ</mi></mrow></math>.
+These work by taking <math id="Thmproblem6.p3.m4" class="ltx_Math" alttext="k=3" display="inline"><mrow><mi>k</mi><mo>=</mo><mn>3</mn></mrow></math>.</p>
+</div>
+<div id="Thmproblem6.p4" class="ltx_para">
+<p class="ltx_p">Now to see these are the only ones, consider an arithmetic matrix</p>
+<div class="table-container"><table id="Ex45" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex45.m1" class="ltx_Math" alttext="M=\begin{bmatrix}a&amp;a+e\\
+a+2e&amp;a+3e\end{bmatrix}." display="block"><mrow><mrow><mi>M</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>a</mi></mtd><mtd><mrow><mi>a</mi><mo>+</mo><mi>e</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>a</mi><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>e</mi></mrow></mrow></mtd><mtd><mrow><mi>a</mi><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>e</mi></mrow></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">with <math id="Thmproblem6.p4.m1" class="ltx_Math" alttext="e\neq 0" display="inline"><mrow><mi>e</mi><mo>≠</mo><mn>0</mn></mrow></math>.
+Its characteristic polynomial is <math id="Thmproblem6.p4.m2" class="ltx_Math" alttext="t^{2}-(2a+3e)t-2e^{2}" display="inline"><mrow><msup><mi>t</mi><mn>2</mn></msup><mo>−</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>e</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>t</mi></mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>e</mi><mn>2</mn></msup></mrow></mrow></math>,
+with discriminant <math id="Thmproblem6.p4.m3" class="ltx_Math" alttext="(2a+3e)^{2}+8e^{2}" display="inline"><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>e</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><mrow><mn>8</mn><mo>⁢</mo><msup><mi>e</mi><mn>2</mn></msup></mrow></mrow></math>,
+so it has two distinct real roots; moreover, since <math id="Thmproblem6.p4.m4" class="ltx_Math" alttext="-2e^{2}\leq 0" display="inline"><mrow><mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>e</mi><mn>2</mn></msup></mrow></mrow><mo>≤</mo><mn>0</mn></mrow></math>
+either one of the roots is zero or they are of opposite signs.
+Now we can diagonalize <math id="Thmproblem6.p4.m5" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> by writing</p>
+<div class="table-container"><table id="Ex46" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex46.m1" class="ltx_Math" alttext="M=\begin{bmatrix}s&amp;-q\\
+-r&amp;p\end{bmatrix}\begin{bmatrix}\lambda_{1}&amp;0\\
+0&amp;\lambda_{2}\end{bmatrix}\begin{bmatrix}p&amp;q\\
+r&amp;s\end{bmatrix}=\begin{bmatrix}ps\lambda_{1}-qr\lambda_{2}&amp;qs(\lambda_{1}-%
+\lambda_{2})\\
+pr(\lambda_{2}-\lambda_{1})&amp;ps\lambda_{2}-qr\lambda_{1}\end{bmatrix}" display="block"><mrow><mi>M</mi><mo>=</mo><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>s</mi></mtd><mtd><mrow><mo>−</mo><mi>q</mi></mrow></mtd></mtr><mtr><mtd><mrow><mo>−</mo><mi>r</mi></mrow></mtd><mtd><mi>p</mi></mtd></mtr></mtable><mo>]</mo></mrow><mo>⁢</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>λ</mi><mn>1</mn></msub></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msub><mi>λ</mi><mn>2</mn></msub></mtd></mtr></mtable><mo>]</mo></mrow><mo>⁢</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>p</mi></mtd><mtd><mi>q</mi></mtd></mtr><mtr><mtd><mi>r</mi></mtd><mtd><mi>s</mi></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><mrow><mi>p</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><msub><mi>λ</mi><mn>1</mn></msub></mrow><mo>−</mo><mrow><mi>q</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow></mrow></mtd><mtd><mrow><mi>q</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>λ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mi>p</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>λ</mi><mn>2</mn></msub><mo>−</mo><msub><mi>λ</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mrow><mrow><mi>p</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow><mo>−</mo><mrow><mi>q</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><msub><mi>λ</mi><mn>1</mn></msub></mrow></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="Thmproblem6.p4.m6" class="ltx_Math" alttext="ps-qr=1" display="inline"><mrow><mrow><mrow><mi>p</mi><mo>⁢</mo><mi>s</mi></mrow><mo>−</mo><mrow><mi>q</mi><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>. By using the fact the diagonal entries have sum equalling
+the off-diagonal entries, we obtain that</p>
+<div class="table-container"><table id="Ex47" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex47.m1" class="ltx_Math" alttext="(ps-qr)(\lambda_{1}+\lambda_{2})=(qs-pr)(\lambda_{1}-\lambda_{2})\implies qs-%
+pr=\frac{\lambda_{1}+\lambda_{2}}{\lambda_{1}-\lambda_{2}}." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>p</mi><mo>⁢</mo><mi>s</mi></mrow><mo>−</mo><mrow><mi>q</mi><mo>⁢</mo><mi>r</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>λ</mi><mn>1</mn></msub><mo>+</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>q</mi><mo>⁢</mo><mi>s</mi></mrow><mo>−</mo><mrow><mi>p</mi><mo>⁢</mo><mi>r</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>λ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">⟹</mo><mrow><mrow><mi>q</mi><mo>⁢</mo><mi>s</mi></mrow><mo>−</mo><mrow><mi>p</mi><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>=</mo><mfrac linethickness="0.6px"><mrow><msub><mi>λ</mi><mn>1</mn></msub><mo>+</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow><mrow><msub><mi>λ</mi><mn>1</mn></msub><mo>−</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Now if <math id="Thmproblem6.p4.m7" class="ltx_Math" alttext="M^{k}\in S" display="inline"><mrow><msup><mi>M</mi><mi>k</mi></msup><mo>∈</mo><mi>S</mi></mrow></math> too then the same calculation gives</p>
+<div class="table-container"><table id="Ex48" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex48.m1" class="ltx_Math" alttext="qs-pr=\frac{\lambda_{1}^{k}+\lambda_{2}^{k}}{\lambda_{1}^{k}-\lambda_{2}^{k}}." display="block"><mrow><mrow><mrow><mrow><mi>q</mi><mo>⁢</mo><mi>s</mi></mrow><mo>−</mo><mrow><mi>p</mi><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>=</mo><mfrac linethickness="0.6px"><mrow><msubsup><mi>λ</mi><mn>1</mn><mi>k</mi></msubsup><mo>+</mo><msubsup><mi>λ</mi><mn>2</mn><mi>k</mi></msubsup></mrow><mrow><msubsup><mi>λ</mi><mn>1</mn><mi>k</mi></msubsup><mo>−</mo><msubsup><mi>λ</mi><mn>2</mn><mi>k</mi></msubsup></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Let <math id="Thmproblem6.p4.m8" class="ltx_Math" alttext="x=\lambda_{1}/\lambda_{2}&lt;0" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><msub><mi>λ</mi><mn>1</mn></msub><mo>/</mo><msub><mi>λ</mi><mn>2</mn></msub></mrow><mo>&lt;</mo><mn>0</mn></mrow></math> (since <math id="Thmproblem6.p4.m9" class="ltx_Math" alttext="-2e^{2}&lt;0" display="inline"><mrow><mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>e</mi><mn>2</mn></msup></mrow></mrow><mo>&lt;</mo><mn>0</mn></mrow></math>). We appropriately get</p>
+<div class="table-container"><table id="Ex49" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex49.m1" class="ltx_Math" alttext="\frac{x+1}{x-1}=\frac{x^{k}+1}{x^{k}-1}\implies\frac{2}{x-1}=\frac{2}{x^{k}-1}%
+\implies x=x^{k}\implies x=-1\text{ or }x=0" display="block"><mrow><mfrac linethickness="0.6px"><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac linethickness="0.6px"><mrow><msup><mi>x</mi><mi>k</mi></msup><mo>+</mo><mn>1</mn></mrow><mrow><msup><mi>x</mi><mi>k</mi></msup><mo>−</mo><mn>1</mn></mrow></mfrac><mo stretchy="false">⟹</mo><mfrac linethickness="0.6px"><mn>2</mn><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow></mfrac><mo>=</mo><mfrac linethickness="0.6px"><mn>2</mn><mrow><msup><mi>x</mi><mi>k</mi></msup><mo>−</mo><mn>1</mn></mrow></mfrac><mo stretchy="false">⟹</mo><mi>x</mi><mo>=</mo><msup><mi>x</mi><mi>k</mi></msup><mo stretchy="false">⟹</mo><mi>x</mi><mo>=</mo><mrow><mo>−</mo><mrow><mn>1</mn><mo>⁢</mo><mtext> or </mtext><mo>⁢</mo><mi>x</mi></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and <math id="Thmproblem6.p4.m10" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> odd. If <math id="Thmproblem6.p4.m11" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math> we get <math id="Thmproblem6.p4.m12" class="ltx_Math" alttext="e=0" display="inline"><mrow><mi>e</mi><mo>=</mo><mn>0</mn></mrow></math> and if <math id="Thmproblem6.p4.m13" class="ltx_Math" alttext="x=-1" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math> we get <math id="Thmproblem6.p4.m14" class="ltx_Math" alttext="2a+3e=0" display="inline"><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>e</mi></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>,
+which gives the curve of solutions that we claimed.</p>
+</div>
+<div id="Thmproblem6.p5" class="ltx_para">
+<p class="ltx_p">A slicker approach is by Cayley-Hamilton.
+Assume that <math id="Thmproblem6.p5.m1" class="ltx_Math" alttext="e\neq 0" display="inline"><mrow><mi>e</mi><mo>≠</mo><mn>0</mn></mrow></math>, so <math id="Thmproblem6.p5.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> has two distinct real eigenvalues as above.
+We have <math id="Thmproblem6.p5.m3" class="ltx_Math" alttext="M^{k}=cM+d\mathrm{id}" display="inline"><mrow><msup><mi>M</mi><mi>k</mi></msup><mo>=</mo><mrow><mrow><mi>c</mi><mo>⁢</mo><mi>M</mi></mrow><mo>+</mo><mrow><mi>d</mi><mo>⁢</mo><mi>id</mi></mrow></mrow></mrow></math> for some constants <math id="Thmproblem6.p5.m4" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math> and <math id="Thmproblem6.p5.m5" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math>
+(since <math id="Thmproblem6.p5.m6" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> satisfies some quadratic polynomial).
+Since <math id="Thmproblem6.p5.m7" class="ltx_Math" alttext="M\in S" display="inline"><mrow><mi>M</mi><mo>∈</mo><mi>S</mi></mrow></math>, <math id="Thmproblem6.p5.m8" class="ltx_Math" alttext="M^{k}\in S" display="inline"><mrow><msup><mi>M</mi><mi>k</mi></msup><mo>∈</mo><mi>S</mi></mrow></math> we obtain <math id="Thmproblem6.p5.m9" class="ltx_Math" alttext="d=0" display="inline"><mrow><mi>d</mi><mo>=</mo><mn>0</mn></mrow></math>.
+Thus <math id="Thmproblem6.p5.m10" class="ltx_Math" alttext="M^{k}=cM" display="inline"><mrow><msup><mi>M</mi><mi>k</mi></msup><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><mi>M</mi></mrow></mrow></math>, so it follows the eigenvalues of <math id="Thmproblem6.p5.m11" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> are negatives of each other.
+That means <math id="Thmproblem6.p5.m12" class="ltx_Math" alttext="\operatorname{Tr}M=0" display="inline"><mrow><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><mi>M</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>, and the rest is clear.</p>
+</div>
+</div>
+<div id="Thmproblem7" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 12G</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem7.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem7.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem7.p1.g2" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem7.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem7.p2.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a finite-dimensional vector space over <math id="Thmproblem7.p2.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> and <math id="Thmproblem7.p2.m3" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math>.
+Show that</p>
+<div class="table-container"><table id="Ex50" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex50.m1" class="ltx_Math" alttext="\det(a\cdot\mathrm{id}_{V}-T)=\sum_{n=0}^{\dim V}a^{\dim V-n}\cdot(-1)^{n}%
+\operatorname{Tr}\left(\bigwedge^{n}(T)\right)" display="block"><mrow><mrow><mo movablelimits="false" rspace="0em">det</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mi>id</mi><mi>V</mi></msub></mrow><mo>−</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mrow><mo rspace="0.167em">dim</mo><mi>V</mi></mrow></munderover><mrow><mrow><msup><mi>a</mi><mrow><mrow><mo rspace="0.167em">dim</mo><mi>V</mi></mrow><mo>−</mo><mi>n</mi></mrow></msup><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msup></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mover><mo lspace="0em" movablelimits="false" rspace="0em">⋀</mo><mi>n</mi></mover><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where the trace is taken by viewing <math id="Thmproblem7.p2.m4" class="ltx_Math" alttext="\bigwedge^{n}(T)\colon\bigwedge^{n}(V)\to\bigwedge^{n}(V)" display="inline"><mrow><mrow><msup><mo>⋀</mo><mi>n</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>T</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">:</mo><mrow><mrow><msup><mo rspace="0em">⋀</mo><mi>n</mi></msup><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em" stretchy="false">→</mo><mrow><msup><mo rspace="0em">⋀</mo><mi>n</mi></msup><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.
+
+Take bases, and do a fairly long calculation.
+
+
+
+
+Pick a basis <math id="Thmproblem7.p2.m5" class="ltx_Math" alttext="e_{1},\dots,e_{n}" display="inline"><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>e</mi><mi>n</mi></msub></mrow></math> of <math id="Thmproblem7.p2.m6" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+Let <math id="Thmproblem7.p2.m7" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> have matrix <math id="Thmproblem7.p2.m8" class="ltx_Math" alttext="(x_{ij})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo stretchy="false">)</mo></mrow></math>, and let <math id="Thmproblem7.p2.m9" class="ltx_Math" alttext="m=\dim V" display="inline"><mrow><mi>m</mi><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mi>V</mi></mrow></mrow></math>.
+Let <math id="Thmproblem7.p2.m10" class="ltx_Math" alttext="\delta_{ij}" display="inline"><msub><mi>δ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub></math> be the Kronecker delta.
+Also, let <math id="Thmproblem7.p2.m11" class="ltx_Math" alttext="\operatorname{Fix}(\sigma)" display="inline"><mrow><mi>Fix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow></math> denote the fixed points of a permutation <math id="Thmproblem7.p2.m12" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>
+and let <math id="Thmproblem7.p2.m13" class="ltx_Math" alttext="\operatorname{NoFix}(\sigma)" display="inline"><mrow><mi>NoFix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow></math> denote the non-fixed points.</p>
+</div>
+<div id="Thmproblem7.p3" class="ltx_para">
+<p class="ltx_p">Expanding then gives</p>
+<div class="table-container"><table id="A5.S3.EGx30" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex51"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex51.m1" class="ltx_Math" alttext="\displaystyle\qquad\det(a\cdot\mathrm{id}-T)" display="inline"><mrow><mo movablelimits="false" rspace="0em">det</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>id</mi></mrow><mo>−</mo><mi>T</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex52"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex52.m1" class="ltx_Math" alttext="\displaystyle=\sum_{\sigma\in S_{m}}\left(\operatorname{sign}(\sigma)\cdot%
+\prod_{i=1}^{m}\left(a\cdot\delta_{i\sigma(i)}-x_{i\sigma(i)}\right)\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>m</mi></msub></mrow></munder></mstyle><mrow><mo>(</mo><mrow><mrow><mi>sign</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover></mstyle><mrow><mo>(</mo><mrow><mrow><mi>a</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mi>δ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></msub></mrow><mo>−</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></msub></mrow><mo>)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex53"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex53.m1" class="ltx_Math" alttext="\displaystyle=\sum_{s=0}^{m}\sum_{1\leq i_{1}&lt;\dots&lt;i_{s}\leq m}\sum_{\begin{%
+subarray}{c}\sigma\in S_{m}\\
+\sigma\text{ fixes }i_{k}\end{subarray}}\left(\operatorname{sign}(\sigma)\cdot%
+\prod_{i=1}^{m}\left(a\cdot\delta_{i\sigma(i)}-x_{i\sigma(i)}\right)\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow><mi>m</mi></munderover></mstyle><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>s</mi></msub><mo>≤</mo><mi>m</mi></mrow></munder></mstyle><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>m</mi></msub></mrow></mtd></mtr><mtr><mtd><mrow><mi>σ</mi><mo>⁢</mo><mtext> fixes </mtext><mo>⁢</mo><msub><mi>i</mi><mi>k</mi></msub></mrow></mtd></mtr></mtable></munder></mstyle><mrow><mo>(</mo><mrow><mrow><mi>sign</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover></mstyle><mrow><mo>(</mo><mrow><mrow><mi>a</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mi>δ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></msub></mrow><mo>−</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></msub></mrow><mo>)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex54"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex54.m1" class="ltx_math_unparsed" alttext="\displaystyle=\sum_{s=0}^{m}\sum_{1\leq i_{1}&lt;\dots&lt;i_{s}\leq m}\sum_{\begin{%
+subarray}{c}\sigma\in S_{m}\\
+\sigma\text{ fixes }(i_{k})\end{subarray}}\left(\operatorname{sign}(\sigma)%
+\cdot\prod_{i\notin(i_{k})}-x_{i\sigma(i)}\prod_{i\in(i_{k})}^{n}\left(a\cdot-%
+x_{ii}\right)\right)" display="inline"><mrow><mo>=</mo><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow><mi>m</mi></munderover></mstyle><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>s</mi></msub><mo>≤</mo><mi>m</mi></mrow></munder></mstyle><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>m</mi></msub></mrow></mtd></mtr><mtr><mtd><mrow><mi>σ</mi><mo>⁢</mo><mtext> fixes </mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>i</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr></mtable></munder></mstyle><mrow><mo>(</mo><mi>sign</mi><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⋅</mo><mstyle displaystyle="true"><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∉</mo><mrow><mo stretchy="false">(</mo><msub><mi>i</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow></munder></mstyle><mo>−</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mstyle displaystyle="true"><munderover><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mrow><mo stretchy="false">(</mo><msub><mi>i</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mi>n</mi></munderover></mstyle><mrow><mo>(</mo><mi>a</mi><mo lspace="0.222em" rspace="0em">⋅</mo><mo lspace="0em">−</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mo>)</mo></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex55"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex55.m1" class="ltx_Math" alttext="\displaystyle=\sum_{\sigma\in S_{m}}\left(\operatorname{sign}(\sigma)\cdot%
+\prod_{i\in\operatorname{NoFix}(\sigma)}-x_{i\sigma(i)}\prod_{i\in%
+\operatorname{Fix}{\sigma}}\left(a-x_{ii}\right)\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>m</mi></msub></mrow></munder></mstyle><mrow><mo>(</mo><mrow><mrow><mrow><mi>sign</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mstyle displaystyle="true"><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mrow><mi>NoFix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></munder></mstyle></mrow><mo>−</mo><mrow><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mrow><mi>Fix</mi><mo lspace="0.167em">⁡</mo><mi>σ</mi></mrow></mrow></munder></mstyle><mrow><mo>(</mo><mrow><mi>a</mi><mo>−</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>i</mi></mrow></msub></mrow><mo>)</mo></mrow></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex56"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex56.m1" class="ltx_Math" alttext="\displaystyle=\sum_{\sigma\in S_{m}}\left(\operatorname{sign}(\sigma)\cdot%
+\left(\prod_{i\in\operatorname{NoFix}(\sigma)}-x_{i\sigma(i)}\right)\left(\sum%
+_{t=0}^{\left\lvert\operatorname{Fix}(\sigma)\right\rvert}a^{\left\lvert%
+\operatorname{Fix}(\sigma)\right\rvert-t}\cdot\sum_{i_{1}&lt;\dots&lt;i_{t}\in%
+\operatorname{Fix}(\sigma)}\prod_{k=1}^{t}-x_{i_{k}i_{k}}\right)\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>m</mi></msub></mrow></munder></mstyle><mrow><mo>(</mo><mrow><mrow><mrow><mi>sign</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mrow><mi>NoFix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></munder></mstyle><mo>−</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></msub></mrow><mo>)</mo></mrow></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><mrow><mo>|</mo><mrow><mi>Fix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow></munderover></mstyle><mrow><msup><mi>a</mi><mrow><mrow><mo>|</mo><mrow><mi>Fix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mo>−</mo><mi>t</mi></mrow></msup><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>t</mi></msub><mo>∈</mo><mrow><mi>Fix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></munder></mstyle><mstyle displaystyle="true"><munderover><mo movablelimits="false">∏</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>t</mi></munderover></mstyle></mrow></mrow></mrow><mo>−</mo><msub><mi>x</mi><mrow><msub><mi>i</mi><mi>k</mi></msub><mo>⁢</mo><msub><mi>i</mi><mi>k</mi></msub></mrow></msub></mrow><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex57"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex57.m1" class="ltx_Math" alttext="\displaystyle=\sum_{\sigma\in S_{m}}\left(\operatorname{sign}(\sigma)\left(%
+\sum_{t=0}^{\left\lvert\operatorname{Fix}(\sigma)\right\rvert}a^{m-t-\left%
+\lvert\operatorname{NoFix}(\sigma)\right\rvert}\sum_{\begin{subarray}{c}X%
+\subseteq\{1,\dots,m\}\\
+\operatorname{NoFix}(\sigma)\subseteq X\\
+X\text{ has exactly $t$ fixed}\end{subarray}}\prod_{i\in X}-x_{i\sigma(i)}%
+\right)\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>m</mi></msub></mrow></munder></mstyle><mrow><mo>(</mo><mrow><mrow><mi>sign</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow><mrow><mo>|</mo><mrow><mi>Fix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow></munderover></mstyle><mrow><msup><mi>a</mi><mrow><mi>m</mi><mo>−</mo><mi>t</mi><mo>−</mo><mrow><mo>|</mo><mrow><mi>NoFix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow></mrow></msup><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>X</mi><mo>⊆</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>m</mi><mo stretchy="false">}</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mi>NoFix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>X</mi></mrow></mtd></mtr><mtr><mtd><mrow><mi>X</mi><mo>⁢</mo><mrow><mtext> has exactly </mtext><mi>t</mi><mtext> fixed</mtext></mrow></mrow></mtd></mtr></mtable></munder></mstyle><mstyle displaystyle="true"><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mi>X</mi></mrow></munder></mstyle></mrow></mrow></mrow><mo>−</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></msub></mrow><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex58"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex58.m1" class="ltx_Math" alttext="\displaystyle=\sum_{n=0}^{m}a^{m-n}\left(\sum_{\sigma\in S_{m}}\operatorname{%
+sign}(\sigma)\sum_{\begin{subarray}{c}X\subseteq\{1,\dots,m\}\\
+\operatorname{NoFix}(\sigma)\subseteq X\\
+\left\lvert X\right\rvert=n\end{subarray}}\prod_{i\in X}-x_{i\sigma(i)}\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mi>m</mi></munderover></mstyle><mrow><msup><mi>a</mi><mrow><mi>m</mi><mo>−</mo><mi>n</mi></mrow></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>m</mi></msub></mrow></munder></mstyle><mrow><mrow><mi>sign</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>X</mi><mo>⊆</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>m</mi><mo stretchy="false">}</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mi>NoFix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>X</mi></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mo>|</mo><mi>X</mi><mo>|</mo></mrow><mo>=</mo><mi>n</mi></mrow></mtd></mtr></mtable></munder></mstyle><mstyle displaystyle="true"><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mi>X</mi></mrow></munder></mstyle></mrow></mrow></mrow><mo>−</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></msub></mrow><mo>)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex59"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex59.m1" class="ltx_Math" alttext="\displaystyle=\sum_{n=0}^{m}a^{m-n}(-1)^{n}\left(\sum_{\begin{subarray}{c}X%
+\subseteq\{1,\dots,m\}\\
+\left\lvert X\right\rvert=n\end{subarray}}\sum_{\begin{subarray}{c}\sigma\in S%
+_{m}\\
+\operatorname{NoFix}(\sigma)\subseteq X\end{subarray}}\operatorname{sign}(%
+\sigma)\prod_{i\in X}x_{i\sigma(i)}\right)." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mi>m</mi></munderover></mstyle><mrow><msup><mi>a</mi><mrow><mi>m</mi><mo>−</mo><mi>n</mi></mrow></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>X</mi><mo>⊆</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>m</mi><mo stretchy="false">}</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mo>|</mo><mi>X</mi><mo>|</mo></mrow><mo>=</mo><mi>n</mi></mrow></mtd></mtr></mtable></munder></mstyle><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>m</mi></msub></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mi>NoFix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>X</mi></mrow></mtd></mtr></mtable></munder></mstyle><mrow><mrow><mi>sign</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mi>X</mi></mrow></munder></mstyle><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></msub></mrow></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="Thmproblem7.p4" class="ltx_para">
+<p class="ltx_p">Hence it’s the same to show that</p>
+<div class="table-container"><table id="Ex60" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex60.m1" class="ltx_Math" alttext="\sum_{\begin{subarray}{c}X\subseteq\{1,\dots,m\}\\
+\left\lvert X\right\rvert=n\end{subarray}}\sum_{\begin{subarray}{c}\sigma\in S%
+_{m}\\
+\operatorname{NoFix}(\sigma)\subseteq X\end{subarray}}\operatorname{sign}(%
+\sigma)\prod_{i\in X}x_{i\sigma(i)}=\operatorname{Tr}_{\bigwedge^{n}(V)}\left(%
+\bigwedge^{n}(T)\right)" display="block"><mrow><mrow><munder><mo movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>X</mi><mo>⊆</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>m</mi><mo stretchy="false">}</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mo>|</mo><mi>X</mi><mo>|</mo></mrow><mo>=</mo><mi>n</mi></mrow></mtd></mtr></mtable></munder><mrow><munder><mo lspace="0.167em" movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mi>m</mi></msub></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mi>NoFix</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>X</mi></mrow></mtd></mtr></mtable></munder><mrow><mrow><mi>sign</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>σ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mrow><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mi>X</mi></mrow></munder><msub><mi>x</mi><mrow><mi>i</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></msub></mrow></mrow></mrow></mrow><mo>=</mo><mrow><msub><mi>Tr</mi><mrow><mstyle displaystyle="false"><msup><mo>⋀</mo><mi>n</mi></msup></mstyle><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>⁡</mo><mrow><mo>(</mo><mrow><mover><mo lspace="0em" movablelimits="false" rspace="0em">⋀</mo><mi>n</mi></mover><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">holds for every <math id="Thmproblem7.p4.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</p>
+</div>
+<div id="Thmproblem7.p5" class="ltx_para">
+<p class="ltx_p">We can expand the definition of trace as using basis elements as</p>
+<div class="table-container"><table id="A5.S3.EGx31" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex61"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex61.m1" class="ltx_Math" alttext="\displaystyle\operatorname{Tr}\left(\bigwedge^{n}(T)\right)" display="inline"><mrow><mi>Tr</mi><mo>⁡</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><mover><mo movablelimits="false">⋀</mo><mi>n</mi></mover></mstyle><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex61.m2" class="ltx_Math" alttext="\displaystyle=\sum_{1\leq i_{1}&lt;\dots&lt;i_{n}\leq m}\left(\bigwedge_{k=1}^{n}e_{%
+i_{k}}\right)^{\vee}\left(\bigwedge^{n}(T)\left(\bigwedge_{k=1}^{n}e_{i_{k}}%
+\right)\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>n</mi></msub><mo>≤</mo><mi>m</mi></mrow></munder></mstyle><mrow><msup><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">⋀</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover></mstyle><msub><mi>e</mi><msub><mi>i</mi><mi>k</mi></msub></msub></mrow><mo>)</mo></mrow><mo>∨</mo></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><mover><mo movablelimits="false">⋀</mo><mi>n</mi></mover></mstyle><mrow><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">⋀</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover></mstyle><msub><mi>e</mi><msub><mi>i</mi><mi>k</mi></msub></msub></mrow><mo>)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex62"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex62.m1" class="ltx_Math" alttext="\displaystyle=\sum_{1\leq i_{1}&lt;\dots&lt;i_{n}\leq m}\left(\bigwedge_{k=1}^{n}e_{%
+i_{k}}\right)^{\vee}\left(\bigwedge_{k=1}^{n}T(e_{i_{k}})\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>n</mi></msub><mo>≤</mo><mi>m</mi></mrow></munder></mstyle><mrow><msup><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">⋀</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover></mstyle><msub><mi>e</mi><msub><mi>i</mi><mi>k</mi></msub></msub></mrow><mo>)</mo></mrow><mo>∨</mo></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">⋀</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover></mstyle><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex63"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex63.m1" class="ltx_Math" alttext="\displaystyle=\sum_{1\leq i_{1}&lt;\dots&lt;i_{n}\leq m}\left(\bigwedge_{k=1}^{n}e_{%
+i_{k}}\right)^{\vee}\left(\bigwedge_{k=1}^{n}\left(\sum_{j=1}^{m}x_{i_{k}j}e_{%
+j}\right)\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>n</mi></msub><mo>≤</mo><mi>m</mi></mrow></munder></mstyle><mrow><msup><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">⋀</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover></mstyle><msub><mi>e</mi><msub><mi>i</mi><mi>k</mi></msub></msub></mrow><mo>)</mo></mrow><mo>∨</mo></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">⋀</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover></mstyle><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover></mstyle><mrow><msub><mi>x</mi><mrow><msub><mi>i</mi><mi>k</mi></msub><mo>⁢</mo><mi>j</mi></mrow></msub><mo>⁢</mo><msub><mi>e</mi><mi>j</mi></msub></mrow></mrow><mo>)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex64"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex64.m1" class="ltx_Math" alttext="\displaystyle=\sum_{1\leq i_{1}&lt;\dots&lt;i_{n}\leq m}\sum_{\pi\in S_{n}}%
+\operatorname{sign}(\pi)\prod_{k=1}^{n}x_{i_{\pi(k)}k}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mn>1</mn><mo>≤</mo><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi><mo>&lt;</mo><msub><mi>i</mi><mi>n</mi></msub><mo>≤</mo><mi>m</mi></mrow></munder></mstyle><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>π</mi><mo>∈</mo><msub><mi>S</mi><mi>n</mi></msub></mrow></munder></mstyle><mrow><mrow><mi>sign</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>π</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∏</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover></mstyle><msub><mi>x</mi><mrow><msub><mi>i</mi><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>⁢</mo><mi>k</mi></mrow></msub></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex65"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex65.m1" class="ltx_Math" alttext="\displaystyle=\sum_{\begin{subarray}{c}X\subseteq\{1,\dots,m\}\\
+\left\lvert X\right\rvert=n\end{subarray}}\sum_{\pi\in S_{X}}\operatorname{%
+sign}(\pi)\prod_{i\in X}x_{t\pi(t)}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>X</mi><mo>⊆</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>m</mi><mo stretchy="false">}</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mo>|</mo><mi>X</mi><mo>|</mo></mrow><mo>=</mo><mi>n</mi></mrow></mtd></mtr></mtable></munder></mstyle><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>π</mi><mo>∈</mo><msub><mi>S</mi><mi>X</mi></msub></mrow></munder></mstyle><mrow><mrow><mi>sign</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>π</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∏</mo><mrow><mi>i</mi><mo>∈</mo><mi>X</mi></mrow></munder></mstyle><msub><mi>x</mi><mrow><mi>t</mi><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></msub></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Hence it remains to show that the permutations over <math id="Thmproblem7.p5.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+are in bijection with the permutations over <math id="Thmproblem7.p5.m2" class="ltx_Math" alttext="S_{m}" display="inline"><msub><mi>S</mi><mi>m</mi></msub></math> which fix <math id="Thmproblem7.p5.m3" class="ltx_Math" alttext="\{1,\dots,m\}-X" display="inline"><mrow><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>m</mi><mo stretchy="false">}</mo></mrow><mo>−</mo><mi>X</mi></mrow></math>,
+which is clear, and moreover, the signs clearly coincide.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../linalg/dual-space-trace.html">Previous chapter: Dual space and trace</a><br />
+<a href="../linalg/inner-product-spaces.html">Next chapter: Inner product spaces</a>
+</nav>
+
+		</main>
+	</body>
+</html>

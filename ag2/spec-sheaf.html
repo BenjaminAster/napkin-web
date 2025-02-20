@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Affine schemes: the sheaf</title>
+		<meta property="og:title" content="Affine schemes: the sheaf" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../ag2/spec-zariski.html">Previous chapter: Affine schemes: the Zariski topology</a><br />
+<a href="../ag2/spec-examples.html">Next chapter: Interlude: eighteen examples of affine schemes</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 85 </span>Affine schemes: the sheaf</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">We now complete our definition of <math id="p1.m1" class="ltx_Math" alttext="X=\operatorname{Spec}A" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></mrow></math> by
+defining the sheaf <math id="p1.m2" class="ltx_Math" alttext="\mathcal{O}_{X}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub></math> on it, making it into a ringed space.
+This is done quickly in the first section.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">As before, our goal is:</p>
+</div>
+<div id="S0.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 85.0.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S0.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">The sheaf <math id="S0.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{X}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub></math> coincides with the sheaf of regular functions on
+affine varieties, so that we can apply our geometric intuition to <math id="S0.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math>
+when <math id="S0.Thmtheorem1.p1.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is an arbitrary ring.</p>
+</div>
+</div>
+<div id="p3" class="ltx_para">
+<p class="ltx_p">However, we will then spend the next several chapters
+trying to convince the reader to <em class="ltx_emph ltx_font_italic">forget</em>
+the definition we gave, in practice.
+This is because practically,
+the sections of the sheaves are best computed by not using
+the definition directly, but by using some other results.</p>
+</div>
+<div id="p4" class="ltx_para">
+<p class="ltx_p">Along the way we’ll develop some related theory:
+in computing the stalks we’ll find out the definition of a local ring,
+and in computing the sections we’ll find out about distinguished open sets.</p>
+</div>
+<div id="p5" class="ltx_para">
+<p class="ltx_p">A reminder once again: <a href="ch_spec_examples.html" title="Chapter 86 Interlude: eighteen examples of affine schemes ‣ Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Chapter</span> <span class="ltx_text ltx_ref_tag">86</span></a> has
+many more concrete examples.
+It’s not a bad idea to look through there for more examples
+if anything in this chapter trips you up.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">85.1 </span>A useless definition of the structure sheaf</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Still <math id="S1.p1.m1" class="ltx_Math" alttext="\mathbb{C}[x_{1},\dots,x_{n}]/I" display="inline"><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mi>I</mi></mrow></math>.</em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">We have now endowed <math id="S1.p2.m1" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math> with the Zariski topology,
+and so all that remains is to put a sheaf <math id="S1.p2.m2" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}A}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></msub></math> on it.
+To do this we want a notion of “regular functions” as before.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">This is easy to do since we have localizations on hand.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 85.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">First, let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math> be the pre-sheaf of “globally rational” functions:
+i.e. we define <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathscr{F}(U)" display="inline"><mrow><mi class="ltx_font_mathscript">ℱ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math> to be the localization</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\mathscr{F}(U)=\left\{\frac{f}{g}\mid f,g\in A\text{ and }g(\mathfrak{p})\neq 0%
+\;\forall\mathfrak{p}\in U\right\}=\left(A\setminus\bigcup_{\mathfrak{p}\in U}%
+\mathfrak{p}\right)^{-1}A." display="block"><mrow><mrow><mrow><mi class="ltx_font_mathscript">ℱ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mfrac linethickness="0.6px"><mi>f</mi><mi>g</mi></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo>∈</mo><mrow><mi>A</mi><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔭</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mrow><mn>0</mn><mo lspace="0.447em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mi>𝔭</mi></mrow></mrow><mo>∈</mo><mi>U</mi></mrow><mo>}</mo></mrow><mo>=</mo><mrow><msup><mrow><mo>(</mo><mrow><mi>A</mi><mo rspace="0.055em">∖</mo><mrow><munder><mo movablelimits="false">⋃</mo><mrow><mi>𝔭</mi><mo>∈</mo><mi>U</mi></mrow></munder><mi>𝔭</mi></mrow></mrow><mo>)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mi>A</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We now define the structure sheaf on <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math>.
+It is</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}A}=\mathscr{F}^{\mathrm{sh}}" display="block"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></msub><mo>=</mo><msup><mi class="ltx_font_mathscript">ℱ</mi><mi>sh</mi></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">i.e. the sheafification of the <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math> we just defined.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 85.1.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Compare this with the definition for <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{V}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub></math>
+with <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> a complex variety, and check that they essentially match.</span></p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">And thus, we have completed the transition to adulthood,
+with a complete definition of the affine scheme.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">If you really like compatible germs,
+you can write out the definition:</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 85.1.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> be a ring.
+Then <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math> is made into a ringed space by setting</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}A}(U)=\left\{(f_{\mathfrak{p}}\in A_{\mathfrak%
+{p}})_{\mathfrak{p}\in U}\text{ which are locally quotients}\right\}." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><msub><mi>f</mi><mi>𝔭</mi></msub><mo>∈</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mrow><mi>𝔭</mi><mo>∈</mo><mi>U</mi></mrow></msub><mo>⁢</mo><mtext> which are locally quotients</mtext></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">That is, it consists of sequence <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="(f_{\mathfrak{p}})_{\mathfrak{p}\in U}" display="inline"><msub><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mi>𝔭</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>𝔭</mi><mo>∈</mo><mi>U</mi></mrow></msub></math>, with
+each <math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="f_{\mathfrak{p}}\in A_{\mathfrak{p}}" display="inline"><mrow><msub><mi>f</mi><mi>𝔭</mi></msub><mo>∈</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math>, such that for every point <math id="S1.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math> there
+is an open neighborhood <math id="S1.Thmtheorem3.p1.m6" class="ltx_Math" alttext="U_{\mathfrak{p}}" display="inline"><msub><mi>U</mi><mi>𝔭</mi></msub></math> and an <math id="S1.Thmtheorem3.p1.m7" class="ltx_Math" alttext="f,g\in A" display="inline"><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo>∈</mo><mi>A</mi></mrow></math> such that
+<math id="S1.Thmtheorem3.p1.m8" class="ltx_Math" alttext="f_{\mathfrak{q}}=\frac{f}{g}\in A_{\mathfrak{q}}" display="inline"><mrow><msub><mi>f</mi><mi>𝔮</mi></msub><mo>=</mo><mfrac linethickness="0.6px"><mi>f</mi><mi>g</mi></mfrac><mo>∈</mo><msub><mi>A</mi><mi>𝔮</mi></msub></mrow></math> for all <math id="S1.Thmtheorem3.p1.m9" class="ltx_Math" alttext="\mathfrak{q}\in U_{\mathfrak{p}}" display="inline"><mrow><mi>𝔮</mi><mo>∈</mo><msub><mi>U</mi><mi>𝔭</mi></msub></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">We will now <span class="ltx_text ltx_font_bold">basically forget about this definition</span>,
+because we will never use it in practice.
+In the next two sections, we will show you:</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">that the stalks <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}A,\mathfrak{p}}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow><mo>,</mo><mi>𝔭</mi></mrow></msub></math> are just <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math>, and</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">that the sections <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}A}(U)" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+can be computed, for any open set <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>,
+by focusing only on the special case where <math id="S1.I1.i2.p1.m3" class="ltx_Math" alttext="U=D(f)" display="inline"><mrow><mi>U</mi><mo>=</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+is a distinguished open set.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">These two results will be good enough for all of our purposes,
+so we will be able to not use this definition.
+(Hence the lack of examples in this section.)</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">85.2 </span>The value of distinguished open sets (or: how to actually compute sections)</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S2.p1.m1" class="ltx_Math" alttext="D(x)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> in <math id="S2.p1.m2" class="ltx_Math" alttext="\operatorname{Spec}\mathbb{C}[x]" display="inline"><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is the punctured line.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">We will now really hammer in the importance of
+the distinguished open sets.
+The definition is analogous to before:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 85.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f\in\operatorname{Spec}A" display="inline"><mrow><mi>f</mi><mo>∈</mo><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></mrow></math>.
+Then <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="D(f)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the set of <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math> such that <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="f(\mathfrak{p})\neq 0" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔭</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow></math>,
+a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> distinguished open set</span>.</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Distinguished open sets will have three absolutely crucial properties,
+which build on each other.</p>
+</div>
+<section id="S2.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">85.2.i </span>A basis of the Zariski topology</h3>
+
+<div id="S2.SS1.p1" class="ltx_para">
+<p class="ltx_p">The first is a topological observation:</p>
+</div>
+<div id="thm:distinguished_base" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 85.2.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Distinguished open sets form a base)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The distinguished open sets <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="D(f)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+form a basis for the Zariski topology:
+any open set <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> is a union of distinguished open sets.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.SS1.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.SS1.p2.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> be an open set;
+suppose it is the complement of closed set <math id="S2.SS1.p2.m2" class="ltx_Math" alttext="V(I)" display="inline"><mrow><mi>V</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+Then verify that</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="U=\bigcup_{f\in I}D(f).\qed" display="block"><mrow><mrow><mi>U</mi><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">⋃</mo><mrow><mi>f</mi><mo>∈</mo><mi>I</mi></mrow></munder><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em" rspace="0.0835em">.</mo><mo class="ltx_mathvariant_italic" lspace="0.0835em" mathvariant="italic" separator="true"><sub title="End of proof">◻︎</sub></mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</section>
+<section id="S2.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">85.2.ii </span>Sections are computable</h3>
+
+<div id="S2.SS2.p1" class="ltx_para">
+<p class="ltx_p">The second critical fact is that the sections
+on distinguished open sets can be computed explicitly.</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 85.2.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Sections of <math id="S2.Thmtheorem3.m1" class="ltx_Math" alttext="D(f)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math> are localizations away from <math id="S2.Thmtheorem3.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> be a ring and <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="f\in A" display="inline"><mrow><mi>f</mi><mo>∈</mo><mi>A</mi></mrow></math>.
+Then</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}A}(D(f))\cong A[1/f]." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mn>1</mn><mo>/</mo><mi>f</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.SS2.p2" class="ltx_para">
+<p class="ltx_p">Omitted, but similar to
+<a href="../ag1/affine-varieties-ringed-spaces.html#thm:reg_func_distinguish_open" title="Theorem 78.6.1 (Regular functions on distinguished open sets) ‣ 78.6 Regular functions on distinguished open sets ‣ Chapter 78 Affine varieties as ringed spaces ‣ Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">78.6.1</span></a>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 85.2.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(The punctured line is isomorphic to a hyperbola)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The “hyperbola effect” appears again:</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}\mathbb{C}[x]}(D(x))=\mathbb{C}[x,x^{-1}]\cong%
+\mathbb{C}[x,y]/(xy-1)." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><msup><mi>x</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow><mo>≅</mo><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S2.SS2.p3" class="ltx_para">
+<p class="ltx_p">On a tangential note,
+we had better also note somewhere that <math id="S2.SS2.p3.m1" class="ltx_Math" alttext="\operatorname{Spec}A=D(1)" display="inline"><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow><mo>=</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+is itself distinguished open, so the global sections can be recovered.</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_corollary">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Corollary 85.2.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<math id="S2.Thmtheorem5.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is the ring of global sections)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">The ring of global sections of <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math> is <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.SS2.p4" class="ltx_para">
+<p class="ltx_p">By previous theorem, <math id="S2.SS2.p4.m1" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}A}(\operatorname{Spec}A)=\mathcal{O}_{%
+\operatorname{Spec}A}(D(1))=A[1/1]=A" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mn>1</mn><mo>/</mo><mn>1</mn></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mi>A</mi></mrow></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+</section>
+<section id="subsec:distinguished_open_affine" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">85.2.iii </span>They are affine</h3>
+
+<div id="S2.SS3.p1" class="ltx_para">
+<p class="ltx_p">We know <math id="S2.SS3.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{X}(D(f))=A[1/f]" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mn>1</mn><mo>/</mo><mi>f</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+In fact, if you draw <math id="S2.SS3.p1.m2" class="ltx_Math" alttext="\operatorname{Spec}A[1/f]" display="inline"><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mn>1</mn><mo>/</mo><mi>f</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></math>,
+you will find that it looks exactly like <math id="S2.SS3.p1.m3" class="ltx_Math" alttext="D(f)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+So the third final important fact is that
+<math id="S2.SS3.p1.m4" class="ltx_Math" alttext="D(f)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math> will actually be <em class="ltx_emph ltx_font_italic">isomorphic</em> to <math id="S2.SS3.p1.m5" class="ltx_Math" alttext="\operatorname{Spec}A[1/f]" display="inline"><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mn>1</mn><mo>/</mo><mi>f</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></math>
+(just like the line minus the origin is isomorphic to the hyperbola).
+We can’t make this precise yet,
+because we have not yet discussed morphisms of schemes,
+but it will be handy later (though not right away).</p>
+</div>
+</section>
+<section id="subsec:punctured_plane" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">85.2.iv </span>Classic example: the punctured plane</h3>
+
+<div id="S2.SS4.p1" class="ltx_para">
+<p class="ltx_p">We now give the classical example of a computation which shows
+how you can forget about sheafification,
+if you never liked it.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>This perspective is
+so useful that some sources, like Vakil <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:vakil</span>, §4.1]</cite>
+will <em class="ltx_emph ltx_font_italic">define</em> <math id="footnote1.m1" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}A}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></msub></math>
+by requiring <math id="footnote1.m2" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}A}(D(f))=A[1/f]" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mn>1</mn><mo>/</mo><mi>f</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>,
+rather than use sheafification as we did.</span></span></span>
+The idea is that:</p>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 85.2.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">We can compute any section <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{X}(U)" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math> in practice
+by using distinguished open sets and sheaf axioms.</p>
+</div>
+</div>
+<div id="S2.SS4.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.SS4.p2.m1" class="ltx_Math" alttext="X=\operatorname{Spec}\mathbb{C}[x,y]" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>,
+and consider the origin, i.e. the point <math id="S2.SS4.p2.m2" class="ltx_Math" alttext="\mathfrak{m}=(x,y)" display="inline"><mrow><mi>𝔪</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+This ideal is maximal, so it corresponds to a closed point,
+and we can consider the open set <math id="S2.SS4.p2.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>
+consisting of all the points other than <math id="S2.SS4.p2.m4" class="ltx_Math" alttext="\mathfrak{m}" display="inline"><mi>𝔪</mi></math>.
+We wish to compute <math id="S2.SS4.p2.m5" class="ltx_Math" alttext="\mathcal{O}_{X}(U)" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S2.SS4.p3" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='170.07874pt' height='170.07874pt' viewBox='141.448819 138.897638 170.07874 170.07874'>
+<defs>
+<clipPath id='asymptote-85-1-Clip1'>
+<path clip-rule='evenodd' d='M-.501875 171.218H171.218V-.501875H-.501875V171.218ZM89.1223 85.3583C89.1223 83.2794 87.4371 81.5942 85.3583 81.5942C83.2794 81.5942 81.5942 83.2794 81.5942 85.3583C81.5942 87.4371 83.2794 89.1223 85.3583 89.1223C87.4371 89.1223 89.1223 87.4371 89.1223 85.3583Z' transform='matrix(0.996264 0 0 0.996264 141.449 138.898)'/>
+</clipPath>
+<path id='asymptote-85-1-g0-109' d='M1.841096-4.120548V-4.60274C1.841096-4.613699 1.479452-4.986301 1.293151-5.172603L.076712-4.153425L.208219-4.021918L.679452-4.284932L.964384-4C.99726-3.309589 1.008219-2.630137 1.008219-1.939726C1.008219-1.512329 .986301-1.073973 .931507-.635616L1.468493 .241096L2.378082-.526027C1.819178-1.227397 1.841096-1.150685 1.841096-1.665753V-3.824658L2.509589-4.284932C2.882192-4.186301 3.386301-4.043836 3.660274-3.80274C3.70411-3.441096 3.715068-3.079452 3.715068-2.717808C3.715068-1.391781 3.660274-.931507 3.561644-.50411C3.758904-.284932 4.010959 0 4.153425 .284932L5.09589-.515068C4.613699-1.139726 4.547945-1.282192 4.547945-1.479452V-3.868493C4.778082-4.021918 5.008219-4.153425 5.260274-4.284932C5.589041-4.19726 6.312329-4.043836 6.356164-3.747945C6.378082-3.550685 6.389041-3.287671 6.389041-3.00274C6.389041-1.479452 6.334247-1.117808 6.268493-.657534C6.487671-.383562 6.805479 0 6.915068 .208219L8.29589-.964384L8.164384-1.150685C7.956164-.975342 7.868493-.942466 7.649315-.865753C7.49589-1.019178 7.364384-1.205479 7.243836-1.380822V-2.706849C7.243836-3.331507 7.243836-3.956164 7.287671-4.580822C6.893151-4.690411 6.389041-4.964384 5.961644-5.194521C5.512329-4.821918 5.030137-4.482192 4.547945-4.153425V-4.580822C4.087671-4.734247 3.649315-4.953425 3.232877-5.205479L1.841096-4.120548Z'/>
+<path id='asymptote-85-1-g2-59' d='M2.214545-.010909C2.214545-.730909 1.941818-1.156363 1.516363-1.156363C1.156363-1.156363 .938182-.883636 .938182-.578182C.938182-.283636 1.156363 0 1.516363 0C1.647272 0 1.78909-.043636 1.898181-.141818C1.930909-.163636 1.941818-.174545 1.952727-.174545S1.974545-.163636 1.974545-.010909C1.974545 .796363 1.592727 1.450909 1.232727 1.810909C1.112727 1.930909 1.112727 1.952727 1.112727 1.985454C1.112727 2.061818 1.167272 2.105454 1.221818 2.105454C1.341818 2.105454 2.214545 1.265454 2.214545-.010909Z'/>
+<path id='asymptote-85-1-g2-120' d='M3.643635-3.294545C3.70909-3.578181 3.959999-4.581817 4.723635-4.581817C4.77818-4.581817 5.039999-4.581817 5.269089-4.439999C4.963635-4.385453 4.745453-4.112726 4.745453-3.850908C4.745453-3.676363 4.865453-3.46909 5.159999-3.46909C5.399998-3.46909 5.749089-3.665454 5.749089-4.101817C5.749089-4.66909 5.105453-4.821817 4.734544-4.821817C4.101817-4.821817 3.719999-4.243635 3.58909-3.992726C3.316363-4.712726 2.727272-4.821817 2.410908-4.821817C1.276363-4.821817 .654545-3.414545 .654545-3.141817C.654545-3.032726 .763636-3.032726 .785454-3.032726C.872727-3.032726 .905454-3.054545 .927272-3.152726C1.298181-4.30909 2.018181-4.581817 2.38909-4.581817C2.596363-4.581817 2.978181-4.483635 2.978181-3.850908C2.978181-3.512726 2.792726-2.781817 2.38909-1.254545C2.214545-.578182 1.832727-.12 1.352727-.12C1.287272-.12 1.036363-.12 .807273-.261818C1.08-.316364 1.32-.545454 1.32-.850909C1.32-1.145454 1.08-1.232727 .916363-1.232727C.589091-1.232727 .316364-.949091 .316364-.6C.316364-.098182 .861818 .12 1.341818 .12C2.061818 .12 2.454545-.643636 2.487272-.709091C2.618181-.305454 3.010908 .12 3.665454 .12C4.78909 .12 5.410908-1.287272 5.410908-1.56C5.410908-1.66909 5.312726-1.66909 5.279999-1.66909C5.181817-1.66909 5.159999-1.625454 5.13818-1.54909C4.77818-.381818 4.036363-.12 3.687272-.12C3.261817-.12 3.087272-.469091 3.087272-.84C3.087272-1.08 3.152726-1.32 3.272726-1.799999L3.643635-3.294545Z'/>
+<path id='asymptote-85-1-g2-121' d='M5.301817-4.156362C5.345453-4.30909 5.345453-4.330908 5.345453-4.407271C5.345453-4.603635 5.192726-4.701817 5.02909-4.701817C4.919999-4.701817 4.745453-4.636362 4.647271-4.472726C4.625453-4.418181 4.538181-4.079999 4.494544-3.883635C4.418181-3.599999 4.341817-3.305454 4.276362-3.010908L3.785453-1.047272C3.741817-.883636 3.272726-.12 2.552727-.12C1.996363-.12 1.876363-.6 1.876363-1.003636C1.876363-1.505454 2.061818-2.181818 2.432727-3.141817C2.607272-3.58909 2.650908-3.70909 2.650908-3.927272C2.650908-4.418181 2.301818-4.821817 1.756363-4.821817C.72-4.821817 .316364-3.239999 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.054545 .621818-3.22909C.916363-4.254544 1.352727-4.581817 1.723636-4.581817C1.810909-4.581817 1.996363-4.581817 1.996363-4.232726C1.996363-3.959999 1.887272-3.676363 1.810909-3.46909C1.374545-2.312727 1.178181-1.690909 1.178181-1.178181C1.178181-.207273 1.865454 .12 2.50909 .12C2.934545 .12 3.305454-.065455 3.610908-.370909C3.46909 .196364 3.338181 .730909 2.901817 1.309091C2.618181 1.68 2.203636 1.996363 1.701818 1.996363C1.54909 1.996363 1.058182 1.963636 .872727 1.538181C1.047272 1.538181 1.189091 1.538181 1.341818 1.407272C1.450909 1.309091 1.56 1.167272 1.56 .96C1.56 .621818 1.265454 .578182 1.156363 .578182C.905454 .578182 .545454 .752727 .545454 1.287272C.545454 1.832727 1.025454 2.236363 1.701818 2.236363C2.825454 2.236363 3.94909 1.243636 4.254544 .010909L5.301817-4.156362Z'/>
+<path id='asymptote-85-1-g3-40' d='M3.610908 2.618181C3.610908 2.585454 3.610908 2.563636 3.425454 2.378181C2.061818 1.003636 1.712727-1.058182 1.712727-2.727272C1.712727-4.625453 2.127272-6.523635 3.46909-7.887271C3.610908-8.01818 3.610908-8.039998 3.610908-8.072725C3.610908-8.149089 3.567272-8.181816 3.501817-8.181816C3.392726-8.181816 2.410908-7.439998 1.767272-6.054544C1.210909-4.854544 1.08-3.643635 1.08-2.727272C1.08-1.876363 1.2-.556363 1.799999 .676363C2.454545 2.018181 3.392726 2.727272 3.501817 2.727272C3.567272 2.727272 3.610908 2.694545 3.610908 2.618181Z'/>
+<path id='asymptote-85-1-g3-41' d='M3.152726-2.727272C3.152726-3.578181 3.032726-4.89818 2.432727-6.130907C1.778181-7.472725 .84-8.181816 .730909-8.181816C.665454-8.181816 .621818-8.13818 .621818-8.072725C.621818-8.039998 .621818-8.01818 .829091-7.821816C1.898181-6.741816 2.519999-5.007271 2.519999-2.727272C2.519999-.861818 2.116363 1.058182 .763636 2.432727C.621818 2.563636 .621818 2.585454 .621818 2.618181C.621818 2.683636 .665454 2.727272 .730909 2.727272C.84 2.727272 1.821818 1.985454 2.465454 .6C3.021817-.6 3.152726-1.810909 3.152726-2.727272Z'/>
+<path id='asymptote-85-1-g3-61' d='M7.494543-3.567272C7.65818-3.567272 7.865452-3.567272 7.865452-3.785453S7.65818-4.003635 7.505452-4.003635H.970909C.818182-4.003635 .610909-4.003635 .610909-3.785453S.818182-3.567272 .981818-3.567272H7.494543ZM7.505452-1.450909C7.65818-1.450909 7.865452-1.450909 7.865452-1.66909S7.65818-1.887272 7.494543-1.887272H.981818C.818182-1.887272 .610909-1.887272 .610909-1.66909S.818182-1.450909 .970909-1.450909H7.505452Z'/>
+<path id='asymptote-85-1-g1-86' d='M2.945454-.938182C3.10909-2.279999 3.10909-3.261817 3.10909-3.425454C3.10909-4.199999 3.10909-7.450907 1.123636-7.450907C.752727-7.450907 .370909-7.145453 .370909-6.992725C.370909-6.916362 .425454-6.916362 .578182-6.905453C2.170908-6.763634 2.301818-4.265453 2.301818-3.032726C2.301818-1.930909 2.159999-.621818 2.02909 .109091C2.007272 .24 2.007272 .261818 2.007272 .305454C2.007272 .36 2.007272 .490909 2.083636 .490909C2.203636 .490909 4.843635-1.527272 6.229089-3.632726C6.785453-4.483635 7.199998-5.454544 7.199998-6.185453C7.199998-7.112725 6.589089-7.450907 6.141816-7.450907C5.825453-7.450907 5.672726-6.763634 5.672726-6.621816C5.672726-6.45818 5.727271-6.45818 5.85818-6.447271C6.589089-6.359998 6.719998-5.781817 6.719998-5.519998C6.719998-4.636362 4.821817-2.399999 2.945454-.938182Z'/>
+</defs>
+<g id='asymptote-85-1-page1'>
+<g clip-path='url(#asymptote-85-1-Clip1)'>
+<g transform='translate(141.449 138.898)scale(.996264)'>
+<path d='M85.3583 170.466V.250937' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-f00)" transform='matrix(0 -1 1 0 71.54 374.808)'>
+<use x='212.02274' y='148.907053' href='#asymptote-85-1-g1-86'/>
+<use x='219.604604' y='148.907053' href='#asymptote-85-1-g3-40'/>
+<use x='223.847042' y='148.907053' href='#asymptote-85-1-g2-120'/>
+<use x='230.081896' y='148.907053' href='#asymptote-85-1-g3-41'/>
+</g>
+<g transform='translate(141.449 138.898)scale(.996264)'>
+<path d='M.250937 85.3583H170.466' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='288.078838' y='235.377284' href='#asymptote-85-1-g1-86'/>
+<use x='295.660702' y='235.377284' href='#asymptote-85-1-g3-40'/>
+<use x='299.90314' y='235.377284' href='#asymptote-85-1-g2-121'/>
+<use x='305.643071' y='235.377284' href='#asymptote-85-1-g3-41'/>
+</g>
+<g transform='translate(141.449 138.898)scale(.996264)'>
+<path d='M0 170.717H170.717V0H0V170.717Z' fill="var(--asymptote-color-80ffff)" opacity='0.2'/>
+</g>
+</g>
+<g transform='translate(141.449 138.898)scale(.996264)'>
+<path d='M89.1223 85.3583C89.1223 83.2794 87.4371 81.5942 85.3583 81.5942C83.2794 81.5942 81.5942 83.2794 81.5942 85.3583C81.5942 87.4371 83.2794 89.1223 85.3583 89.1223C87.4371 89.1223 89.1223 87.4371 89.1223 85.3583Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='1.50562'/>
+</g>
+<g transform='translate(141.449 138.898)scale(.996264)'>
+<path d='M89.1223 85.3583C89.1223 83.2794 87.4371 81.5942 85.3583 81.5942C83.2794 81.5942 81.5942 83.2794 81.5942 85.3583C81.5942 87.4371 83.2794 89.1223 85.3583 89.1223C87.4371 89.1223 89.1223 87.4371 89.1223 85.3583Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='1.50562'/>
+</g>
+<g transform='translate(141.449 138.898)scale(.996264)'>
+<path d='M89.1223 85.3583C89.1223 83.2794 87.4371 81.5942 85.3583 81.5942C83.2794 81.5942 81.5942 83.2794 81.5942 85.3583C81.5942 87.4371 83.2794 89.1223 85.3583 89.1223C87.4371 89.1223 89.1223 87.4371 89.1223 85.3583Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='228.838541' y='218.803206' href='#asymptote-85-1-g0-109'/>
+<use x='240.271626' y='218.803206' href='#asymptote-85-1-g3-61'/>
+<use x='251.786749' y='218.803206' href='#asymptote-85-1-g3-40'/>
+<use x='256.029188' y='218.803206' href='#asymptote-85-1-g2-120'/>
+<use x='262.264041' y='218.803206' href='#asymptote-85-1-g2-59'/>
+<use x='267.112501' y='218.803206' href='#asymptote-85-1-g2-121'/>
+<use x='272.852432' y='218.803206' href='#asymptote-85-1-g3-41'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S2.SS4.p4" class="ltx_para">
+<p class="ltx_p">Unfortunately, <math id="S2.SS4.p4.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> is not distinguished open.
+But, we can compute it anyways by writing <math id="S2.SS4.p4.m2" class="ltx_Math" alttext="U=D(x)\cup D(y)" display="inline"><mrow><mi>U</mi><mo>=</mo><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∪</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>:
+conveniently, <math id="S2.SS4.p4.m3" class="ltx_Math" alttext="D(x)\cap D(y)=D(xy)" display="inline"><mrow><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∩</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+By the sheaf axioms,
+we have a pullback square</p>
+<svg id="S2.SS4.p4.pic1" class="ltx_picture ltx_centering" height="72.84" overflow="visible" version="1.1" width="353.2"><g transform="translate(0,72.84) matrix(1 0 0 -1 0 0) translate(176.6,0) translate(0,36.42)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -176.6 -36.42)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 60.86)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 15.44)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 46.22 0) translate(25.71,0) matrix(1.0 0.0 0.0 1.0 -19.75 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="39.51" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S2.SS4.p4.pic1.m1" class="ltx_Math" alttext="{\mathcal{O}_{X}(U)}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 159.37 0) translate(105.77,0) matrix(1.0 0.0 0.0 1.0 -66.6 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="133.2" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S2.SS4.p4.pic1.m2" class="ltx_Math" alttext="{\mathcal{O}_{X}(D(x))=\mathbb{C}[x,y,x^{-1}]}" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><msup><mi>x</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow></mrow></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 64.31)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(71.93,0) matrix(1.0 0.0 0.0 1.0 -65.97 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="131.95" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S2.SS4.p4.pic1.m3" class="ltx_Math" alttext="{\mathcal{O}_{X}(D(y))=\mathbb{C}[x,y,y^{-1}]}" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><msup><mi>y</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 143.86 0) translate(121.27,0) matrix(1.0 0.0 0.0 1.0 -82.11 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="164.21" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S2.SS4.p4.pic1.m4" class="ltx_Math" alttext="{\mathcal{O}_{X}(D(xy))=\mathbb{C}[x,y,x^{-1},y^{-1}].}" display="inline"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><msup><mi>x</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>,</mo><msup><mi>y</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M -78.68 15.91 L 9.33 15.91" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 9.33 15.91)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M -104.67 3.65 L -104.67 -14.33" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 -104.67 -14.33)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M 88.54 3.65 L 88.54 -14.33" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 88.54 -14.33)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M -32.46 -32.96 L -6.17 -32.96" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 -6.17 -32.96)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g></g></svg>
+<p class="ltx_p">In other words, <math id="S2.SS4.p4.m4" class="ltx_Math" alttext="\mathcal{O}_{X}(U)" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math> consists of pairs</p>
+<div class="table-container"><table id="A5.S3.EGx171" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex7.m1" class="ltx_Math" alttext="\displaystyle f" display="inline"><mi>f</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex7.m2" class="ltx_Math" alttext="\displaystyle\in\mathbb{C}[x,y,x^{-1}]" display="inline"><mrow><mi></mi><mo>∈</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><msup><mi>x</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex8.m1" class="ltx_Math" alttext="\displaystyle g" display="inline"><mi>g</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex8.m2" class="ltx_Math" alttext="\displaystyle\in\mathbb{C}[x,y,y^{-1}]" display="inline"><mrow><mi></mi><mo>∈</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><msup><mi>y</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which agree on the overlap:
+<math id="S2.SS4.p4.m5" class="ltx_Math" alttext="f=g" display="inline"><mrow><mi>f</mi><mo>=</mo><mi>g</mi></mrow></math> on <math id="S2.SS4.p4.m6" class="ltx_Math" alttext="D(x)\cap D(y)" display="inline"><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∩</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+Well, we can describe
+<math id="S2.SS4.p4.m7" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> as a polynomial with some <math id="S2.SS4.p4.m8" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>’s in the denominator, and
+<math id="S2.SS4.p4.m9" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> as a polynomial with some <math id="S2.SS4.p4.m10" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>’s in the denominator.
+If they match, the denominator is actually constant.
+Put crudely,</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\mathbb{C}[x,y,x^{-1}]\cap\mathbb{C}[x,y,y^{-1}]=\mathbb{C}[x,y]." display="block"><mrow><mrow><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><msup><mi>x</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow><mo>∩</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><msup><mi>y</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow></mrow><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In conclusion,</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\mathcal{O}_{X}(U)=\mathbb{C}[x,y]." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">That is, we get no additional functions.</p>
+</div>
+</section>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">85.3 </span>The stalks of the structure sheaf</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> The stalk of <math id="S3.p1.m1" class="ltx_Math" alttext="\operatorname{Spec}\mathbb{C}[x,y]" display="inline"><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></math> at <math id="S3.p1.m2" class="ltx_Math" alttext="\mathfrak{m}=(x,y)" display="inline"><mrow><mi>𝔪</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+are rational functions defined at the origin.</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Don’t worry, this one is easier than last section.</p>
+</div>
+<section id="S3.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">85.3.i </span>They are localizations</h3>
+
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 85.3.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Stalks of <math id="S3.Thmtheorem1.m1" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math> are <math id="S3.Thmtheorem1.m2" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> be a ring and let <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathfrak{p}\in\operatorname{Spec}A" display="inline"><mrow><mi>𝔭</mi><mo>∈</mo><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></mrow></math>.
+Then</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}A,\mathfrak{p}}\cong A_{\mathfrak{p}}." display="block"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow><mo>,</mo><mi>𝔭</mi></mrow></msub><mo>≅</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In particular <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math> is a locally ringed space.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.SS1.p1" class="ltx_para">
+<p class="ltx_p">Since sheafification preserved stalks,
+it’s enough to check it for <math id="S3.SS1.p1.m1" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math> the pre-sheaf
+of globally rational functions in our definition.
+The proof is basically the same as <a href="ch_sheaves_and_ringed_spaces.html#thm:stalks_affine_var" title="Theorem 82.3.8 (Stalks of 𝒪_𝑉) ‣ 82.3 Stalks and germs ‣ Chapter 82 Sheaves and ringed spaces ‣ Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">82.3.8</span></a>:
+there is an obvious map <math id="S3.SS1.p1.m2" class="ltx_Math" alttext="\mathscr{F}_{\mathfrak{p}}\to A_{\mathfrak{p}}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>𝔭</mi></msub><mo stretchy="false">→</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math> on germs by</p>
+<div class="table-container"><table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="\left(U,f/g\in\mathscr{F}(U)\right)\mapsto f/g\in A_{\mathfrak{p}}." display="block"><mrow><mrow><mrow><mo>(</mo><mrow><mrow><mi>U</mi><mo>,</mo><mrow><mi>f</mi><mo>/</mo><mi>g</mi></mrow></mrow><mo>∈</mo><mrow><mi class="ltx_font_mathscript">ℱ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow><mo stretchy="false">↦</mo><mrow><mi>f</mi><mo>/</mo><mi>g</mi></mrow><mo>∈</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">(Note the <math id="S3.SS1.p1.m3" class="ltx_Math" alttext="f/g" display="inline"><mrow><mi>f</mi><mo>/</mo><mi>g</mi></mrow></math> on the left lives in <math id="S3.SS1.p1.m4" class="ltx_Math" alttext="\mathscr{F}(U)" display="inline"><mrow><mi class="ltx_font_mathscript">ℱ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+but the one on the right lives in <math id="S3.SS1.p1.m5" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math>).
+We show injectivity and surjectivity:</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Injective: suppose <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="(U_{1},f_{1}/g_{1})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>U</mi><mn>1</mn></msub><mo>,</mo><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>/</mo><msub><mi>g</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow></math> and <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="(U_{2},f_{2}/g_{2})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>U</mi><mn>2</mn></msub><mo>,</mo><mrow><msub><mi>f</mi><mn>2</mn></msub><mo>/</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></math>
+are two germs with <math id="S3.I1.i1.p1.m3" class="ltx_Math" alttext="f_{1}/g_{1}=f_{2}/g_{2}\in A_{\mathfrak{p}}" display="inline"><mrow><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>/</mo><msub><mi>g</mi><mn>1</mn></msub></mrow><mo>=</mo><mrow><msub><mi>f</mi><mn>2</mn></msub><mo>/</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo>∈</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math>.
+This means <math id="S3.I1.i1.p1.m4" class="ltx_Math" alttext="h(g_{1}f_{2}-f_{2}g_{1})=0" display="inline"><mrow><mrow><mi>h</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>f</mi><mn>2</mn></msub></mrow><mo>−</mo><mrow><msub><mi>f</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>1</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> in <math id="S3.I1.i1.p1.m5" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>, for some nonzero <math id="S3.I1.i1.p1.m6" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math>.
+Then both germs identify with
+the germ <math id="S3.I1.i1.p1.m7" class="ltx_Math" alttext="(U_{1}\cap U_{2}\cap D(h),f_{1}/g_{1})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>∩</mo><msub><mi>U</mi><mn>2</mn></msub><mo>∩</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>h</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>,</mo><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>/</mo><msub><mi>g</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Surjective: let <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="U=D(g)" display="inline"><mrow><mi>U</mi><mo>=</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. <sub title="End of proof">◻︎</sub></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 85.3.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Denominators not divisible by <math id="S3.Thmtheorem2.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We have seen this example so many times
+that I will only write it in the new notation,
+and make no further comment:
+if <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="X=\operatorname{Spec}\mathbb{C}[x]" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> then</p>
+<div class="table-container"><table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\mathcal{O}_{\operatorname{Spec}X,(x)}=\mathbb{C}[x]_{(x)}=\left\{\frac{f}{g}%
+\mid g(0)\neq 0\right\}." display="block"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>X</mi></mrow><mo>,</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msub><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></msub></mrow><mo>=</mo><mrow><mo>{</mo><mfrac linethickness="0.6px"><mi>f</mi><mi>g</mi></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 85.3.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Denominators not divisible by <math id="S3.Thmtheorem3.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> or <math id="S3.Thmtheorem3.m2" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="X=\operatorname{Spec}\mathbb{C}[x,y]" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> and let <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\mathfrak{m}=(x,y)" display="inline"><mrow><mi>𝔪</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math> be the origin.
+Then</p>
+<div class="table-container"><table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\mathbb{C}[x,y]_{(x,y)}=\left\{\frac{f(x,y)}{g(x,y)}\mid g(0,0)\neq 0\right\}." display="block"><mrow><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><msub><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></msub></mrow><mo>=</mo><mrow><mo>{</mo><mfrac linethickness="0.6px"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.SS1.p2" class="ltx_para">
+<p class="ltx_p">If you want more examples,
+take any of the ones from <a href="ch_localization.html#sec:localize_prime_ideal" title="83.4 Localization at a prime ideal ‣ Chapter 83 Localization ‣ Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Section</span> <span class="ltx_text ltx_ref_tag">83.4</span></a>,
+and try to think about what they mean geometrically.</p>
+</div>
+</section>
+<section id="S3.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">85.3.ii </span>Motivating local rings: germs should package values</h3>
+
+<div id="S3.SS2.p1" class="ltx_para">
+<p class="ltx_p">Let’s return to our well-worn example <math id="S3.SS2.p1.m1" class="ltx_Math" alttext="X=\operatorname{Spec}\mathbb{C}[x,y]" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>
+and consider <math id="S3.SS2.p1.m2" class="ltx_Math" alttext="\mathfrak{m}=(x,y)" display="inline"><mrow><mi>𝔪</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math> the origin.
+The stalk was</p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\mathcal{O}_{X,\mathfrak{m}}=\mathbb{C}[x,y]_{(x,y)}=\left\{\frac{f(x,y)}{g(x,%
+y)}\mid g(0,0)\neq 0\right\}." display="block"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>X</mi><mo>,</mo><mi>𝔪</mi></mrow></msub><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msub><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></msub></mrow><mo>=</mo><mrow><mo>{</mo><mfrac linethickness="0.6px"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So let’s take some section like <math id="S3.SS2.p1.m3" class="ltx_Math" alttext="f=\frac{1}{xy+4}" display="inline"><mrow><mi>f</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mn>4</mn></mrow></mfrac></mrow></math>,
+which is a section of <math id="S3.SS2.p1.m4" class="ltx_Math" alttext="U=D(xy+4)" display="inline"><mrow><mi>U</mi><mo>=</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> (or some smaller open set,
+but we’ll just use this one for simplicity).
+We also have <math id="S3.SS2.p1.m5" class="ltx_Math" alttext="U\ni m" display="inline"><mrow><mi>U</mi><mo>∋</mo><mi>m</mi></mrow></math>, and so <math id="S3.SS2.p1.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> gives a germ at <math id="S3.SS2.p1.m7" class="ltx_Math" alttext="\mathfrak{m}" display="inline"><mi>𝔪</mi></math>.</p>
+</div>
+<div id="S3.SS2.p2" class="ltx_para">
+<p class="ltx_p">On the other hand, <math id="S3.SS2.p2.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> also has a value at <math id="S3.SS2.p2.m2" class="ltx_Math" alttext="\mathfrak{m}" display="inline"><mi>𝔪</mi></math>:
+it is <math id="S3.SS2.p2.m3" class="ltx_Math" alttext="f\pmod{\mathfrak{m}}=\frac{1}{4}" display="inline"><mrow><mrow><mi>f</mi><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mi>𝔪</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></mrow></math>.
+And in general, the ring of possible values of a section
+at the origin <math id="S3.SS2.p2.m4" class="ltx_Math" alttext="\mathfrak{m}" display="inline"><mi>𝔪</mi></math> is <math id="S3.SS2.p2.m5" class="ltx_Math" alttext="\mathbb{C}[x,y]/\mathfrak{m}\cong\mathbb{C}" display="inline"><mrow><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mi>𝔪</mi></mrow><mo>≅</mo><mi>ℂ</mi></mrow></math>.</p>
+</div>
+<div id="S3.SS2.p3" class="ltx_para">
+<p class="ltx_p">Now, you might recall that I pressed the point of view
+that a germ might be thought of as an “enriched value”.
+Then it makes sense that if you know the germ of a section <math id="S3.SS2.p3.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> at
+a point <math id="S3.SS2.p3.m2" class="ltx_Math" alttext="\mathfrak{m}" display="inline"><mi>𝔪</mi></math> — i.e., you know the “enriched value” —
+then you should be able to compute its value as well.
+What this means is that we ought to have some map</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="A_{\mathfrak{m}}\to A/\mathfrak{m}" display="block"><mrow><msub><mi>A</mi><mi>𝔪</mi></msub><mo stretchy="false">→</mo><mrow><mi>A</mi><mo>/</mo><mi>𝔪</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">sending germs to their associated values.</p>
+</div>
+<div id="S3.SS2.p4" class="ltx_para">
+<p class="ltx_p">Indeed you can, and this leads us to…</p>
+</div>
+</section>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">85.4 </span>Local rings and residue fields:
+linking germs to values</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> The residue field of <math id="S4.p1.m1" class="ltx_Math" alttext="\operatorname{Spec}\mathbb{C}[x,y]" display="inline"><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></math> at <math id="S4.p1.m2" class="ltx_Math" alttext="\mathfrak{m}=(x,y)" display="inline"><mrow><mi>𝔪</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+is <math id="S4.p1.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.</em></p>
+</div>
+<section id="S4.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">85.4.i </span>Localizations give local rings</h3>
+
+<div id="S4.SS1.p1" class="ltx_para">
+<p class="ltx_p">This notation is about to get really terrible, but bear with me.</p>
+</div>
+<div id="thm:stalks_local_ring" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 85.4.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Stalks are local rings)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> be a ring and <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math> any prime ideal.
+Then the localization <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math> has exactly one maximal ideal,
+given explicitly by</p>
+<div class="table-container"><table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="\mathfrak{p}A_{\mathfrak{p}}=\left\{\frac{f}{g}\mid f\in\mathfrak{p},\;g\notin%
+\mathfrak{p}\right\}." display="block"><mrow><mrow><mrow><mi>𝔭</mi><mo>⁢</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow><mo>=</mo><mrow><mo>{</mo><mfrac linethickness="0.6px"><mi>f</mi><mi>g</mi></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>f</mi><mo>∈</mo><mi>𝔭</mi></mrow><mo rspace="0.447em">,</mo><mrow><mi>g</mi><mo>∉</mo><mi>𝔭</mi></mrow></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S4.SS1.p2" class="ltx_para">
+<p class="ltx_p">The ideal <math id="S4.SS1.p2.m1" class="ltx_Math" alttext="\mathfrak{p}A_{\mathfrak{p}}" display="inline"><mrow><mi>𝔭</mi><mo>⁢</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math> thus captures the idea
+of “germs vanishing at <math id="S4.SS1.p2.m2" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math>”.<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>The notation <math id="footnote2.m1" class="ltx_Math" alttext="\mathfrak{p}A_{\mathfrak{p}}" display="inline"><mrow><mi>𝔭</mi><mo>⁢</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math> really means
+the set of <math id="footnote2.m2" class="ltx_Math" alttext="f\cdot h" display="inline"><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>h</mi></mrow></math> where <math id="footnote2.m3" class="ltx_Math" alttext="f\in\mathfrak{p}" display="inline"><mrow><mi>f</mi><mo>∈</mo><mi>𝔭</mi></mrow></math>
+(viewed as a subset of <math id="footnote2.m4" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math> by <math id="footnote2.m5" class="ltx_Math" alttext="f\mapsto\frac{f}{1}" display="inline"><mrow><mi>f</mi><mo stretchy="false">↦</mo><mfrac linethickness="0.6px"><mi>f</mi><mn>1</mn></mfrac></mrow></math>) and <math id="footnote2.m6" class="ltx_Math" alttext="h\in A_{\mathfrak{p}}" display="inline"><mrow><mi>h</mi><mo>∈</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math>.
+I personally find this is more confusing than helpful,
+so I’m footnoting it.</span></span></span></p>
+</div>
+<div id="S4.SS1.p3" class="ltx_para">
+<p class="ltx_p">Proof in a moment;
+for now let’s introduce some words so we can
+give our examples in the proper language.</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 85.4.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">A ring <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> with exactly one maximal ideal <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathfrak{m}" display="inline"><mi>𝔪</mi></math>
+will be called a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> local ring</span>.
+The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> residue field</span> is the quotient <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="A/\mathfrak{m}" display="inline"><mrow><mi>A</mi><mo>/</mo><mi>𝔪</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 85.4.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Are fields local rings?</span></p>
+</div>
+</div>
+<div id="S4.SS1.p4" class="ltx_para">
+<p class="ltx_p">Thus what we find is that:</p>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 85.4.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The stalks consist of the possible enriched values (germs);
+the residue field is the set of (un-enriched) values.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 85.4.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(The stalk at the origin of <math id="S4.Thmtheorem5.m1" class="ltx_Math" alttext="\operatorname{Spec}\mathbb{C}[x,y]" display="inline"><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Again set <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="A=\mathbb{C}[x,y]" display="inline"><mrow><mi>A</mi><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>, <math id="S4.Thmtheorem5.p1.m2" class="ltx_Math" alttext="X=\operatorname{Spec}A" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></mrow></math> and <math id="S4.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\mathfrak{p}=(x,y)" display="inline"><mrow><mi>𝔭</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+so that <math id="S4.Thmtheorem5.p1.m4" class="ltx_Math" alttext="\mathcal{O}_{X,\mathfrak{p}}=A_{\mathfrak{p}}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>X</mi><mo>,</mo><mi>𝔭</mi></mrow></msub><mo>=</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math>.
+(I switched to <math id="S4.Thmtheorem5.p1.m5" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math> for the origin,
+to avoid confusion with the maximal ideal <math id="S4.Thmtheorem5.p1.m6" class="ltx_Math" alttext="\mathfrak{p}A_{\mathfrak{p}}" display="inline"><mrow><mi>𝔭</mi><mo>⁢</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math>
+of the local ring <math id="S4.Thmtheorem5.p1.m7" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math>.)
+As we said many times already,
+<math id="S4.Thmtheorem5.p1.m8" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math> consists of rational functions not vanishing at the origin,
+such as <math id="S4.Thmtheorem5.p1.m9" class="ltx_Math" alttext="f=\frac{1}{xy+4}" display="inline"><mrow><mi>f</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mn>4</mn></mrow></mfrac></mrow></math>.</p>
+</div>
+<div id="S4.Thmtheorem5.p2" class="ltx_para">
+<p class="ltx_p">What is the unique maximal ideal <math id="S4.Thmtheorem5.p2.m1" class="ltx_Math" alttext="\mathfrak{p}A_{\mathfrak{p}}" display="inline"><mrow><mi>𝔭</mi><mo>⁢</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math>?
+Answer: it consists of the rational functions
+which <em class="ltx_emph ltx_font_italic">vanish</em> at the origin:
+for example, <math id="S4.Thmtheorem5.p2.m2" class="ltx_Math" alttext="\frac{x}{x^{2}+3y}" display="inline"><mfrac linethickness="0.6px"><mi>x</mi><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>y</mi></mrow></mrow></mfrac></math>, or <math id="S4.Thmtheorem5.p2.m3" class="ltx_Math" alttext="\frac{3x+5y}{2}" display="inline"><mfrac linethickness="0.6px"><mrow><mrow><mn>3</mn><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><mi>y</mi></mrow></mrow><mn>2</mn></mfrac></math>,
+or <math id="S4.Thmtheorem5.p2.m4" class="ltx_Math" alttext="\frac{-xy}{4(xy+4)}" display="inline"><mfrac linethickness="0.6px"><mrow><mo>−</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></mrow><mrow><mn>4</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></math>.
+If we allow ourselves to mod out by such functions,
+we get the residue field <math id="S4.Thmtheorem5.p2.m5" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>,
+and <math id="S4.Thmtheorem5.p2.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> will have the value <math id="S4.Thmtheorem5.p2.m7" class="ltx_Math" alttext="\frac{1}{4}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></math>, since</p>
+<div class="table-container"><table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="\frac{1}{xy+4}-{\underbrace{\frac{-xy}{4(xy+4)}}_{\text{vanishes at origin}}}=%
+\frac{1}{4}." display="block"><mrow><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mn>4</mn></mrow></mfrac><mo>−</mo><munder><munder accentunder="true"><mfrac linethickness="0.6px"><mrow><mo>−</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></mrow><mrow><mn>4</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>⏟</mo></munder><mtext>vanishes at origin</mtext></munder></mrow><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S4.Thmtheorem5.p3" class="ltx_para">
+<p class="ltx_p">More generally, suppose <math id="S4.Thmtheorem5.p3.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is any section of some open
+set containing <math id="S4.Thmtheorem5.p3.m2" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math>.
+Let <math id="S4.Thmtheorem5.p3.m3" class="ltx_Math" alttext="c\in\mathbb{C}" display="inline"><mrow><mi>c</mi><mo>∈</mo><mi>ℂ</mi></mrow></math> be the value <math id="S4.Thmtheorem5.p3.m4" class="ltx_Math" alttext="f(\mathfrak{p})" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔭</mi><mo stretchy="false">)</mo></mrow></mrow></math>, that is, <math id="S4.Thmtheorem5.p3.m5" class="ltx_Math" alttext="f\pmod{\mathfrak{p}}" display="inline"><mrow><mi>f</mi><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mi>𝔭</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
+Then <math id="S4.Thmtheorem5.p3.m6" class="ltx_Math" alttext="f-c" display="inline"><mrow><mi>f</mi><mo>−</mo><mi>c</mi></mrow></math> is going to be another section
+which vanishes at the origin <math id="S4.Thmtheorem5.p3.m7" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math>,
+so as promised, <math id="S4.Thmtheorem5.p3.m8" class="ltx_Math" alttext="f\equiv c\pmod{\mathfrak{p}A_{\mathfrak{p}}}" display="inline"><mrow><mi>f</mi><mo>≡</mo><mrow><mi>c</mi><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mrow><mi>𝔭</mi><mo>⁢</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.SS1.p5" class="ltx_para">
+<p class="ltx_p">Okay, we can write down a proof of the theorem now.</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of <a href="#thm:stalks_local_ring" title="Theorem 85.4.1 (Stalks are local rings) ‣ 85.4.i Localizations give local rings ‣ 85.4 Local rings and residue fields: linking germs to values ‣ Chapter 85 Affine schemes: the sheaf ‣ Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">85.4.1</span></a>.</h5>
+<div id="S4.SS1.p6" class="ltx_para">
+<p class="ltx_p">One may check that the set <math id="S4.SS1.p6.m1" class="ltx_Math" alttext="I=\mathfrak{p}A_{\mathfrak{p}}" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mi>𝔭</mi><mo>⁢</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></mrow></math> is an ideal of <math id="S4.SS1.p6.m2" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math>.
+Moreover, <math id="S4.SS1.p6.m3" class="ltx_Math" alttext="1\notin I" display="inline"><mrow><mn>1</mn><mo>∉</mo><mi>I</mi></mrow></math>, so <math id="S4.SS1.p6.m4" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is proper.</p>
+</div>
+<div id="S4.SS1.p7" class="ltx_para">
+<p class="ltx_p">To prove it is maximal and unique,
+it suffices to prove that any <math id="S4.SS1.p7.m1" class="ltx_Math" alttext="f\in A_{\mathfrak{p}}" display="inline"><mrow><mi>f</mi><mo>∈</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math> with <math id="S4.SS1.p7.m2" class="ltx_Math" alttext="f\notin I" display="inline"><mrow><mi>f</mi><mo>∉</mo><mi>I</mi></mrow></math>
+is a <em class="ltx_emph ltx_font_italic">unit</em> of <math id="S4.SS1.p7.m3" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math>.
+This will imply <math id="S4.SS1.p7.m4" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is maximal: there are no more non-units to add.
+It will also imply <math id="S4.SS1.p7.m5" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is the only maximal ideal:
+because any proper ideal can’t contain units, so is contained in <math id="S4.SS1.p7.m6" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>.</p>
+</div>
+<div id="S4.SS1.p8" class="ltx_para">
+<p class="ltx_p">This is actually easy.
+An element of <math id="S4.SS1.p8.m1" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math> not in <math id="S4.SS1.p8.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> must be <math id="S4.SS1.p8.m3" class="ltx_Math" alttext="x=\frac{f}{g}" display="inline"><mrow><mi>x</mi><mo>=</mo><mfrac linethickness="0.6px"><mi>f</mi><mi>g</mi></mfrac></mrow></math>
+for <math id="S4.SS1.p8.m4" class="ltx_Math" alttext="f,g\in A" display="inline"><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo>∈</mo><mi>A</mi></mrow></math> and <math id="S4.SS1.p8.m5" class="ltx_Math" alttext="f,g\notin\mathfrak{p}" display="inline"><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo>∉</mo><mi>𝔭</mi></mrow></math>.
+For such an element, <math id="S4.SS1.p8.m6" class="ltx_Math" alttext="x^{-1}=\frac{g}{f}\notin\mathfrak{p}" display="inline"><mrow><msup><mi>x</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>=</mo><mfrac linethickness="0.6px"><mi>g</mi><mi>f</mi></mfrac><mo>∉</mo><mi>𝔭</mi></mrow></math> too.
+So <math id="S4.SS1.p8.m7" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is a unit. End proof.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S4.SS1.p9" class="ltx_para">
+<p class="ltx_p">Even more generally:</p>
+</div>
+<div id="S4.Thmtheorem6" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 85.4.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S4.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">If a sheaf <math id="S4.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math> consists of “field-valued functions”,
+the stalk <math id="S4.Thmtheorem6.p1.m2" class="ltx_Math" alttext="\mathscr{F}_{p}" display="inline"><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>p</mi></msub></math> probably has a maximal ideal
+consisting of the germs vanishing at <math id="S4.Thmtheorem6.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem7" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 85.4.7</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Local rings in non-algebraic geometry sheaves)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Let’s go back to the example of <math id="S4.Thmtheorem7.p1.m1" class="ltx_Math" alttext="X=\mathbb{R}" display="inline"><mrow><mi>X</mi><mo>=</mo><mi>ℝ</mi></mrow></math> and <math id="S4.Thmtheorem7.p1.m2" class="ltx_Math" alttext="\mathscr{F}(U)" display="inline"><mrow><mi class="ltx_font_mathscript">ℱ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math> the smooth functions,
+and consider the stalk <math id="S4.Thmtheorem7.p1.m3" class="ltx_Math" alttext="\mathscr{F}_{p}" display="inline"><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>p</mi></msub></math>, where <math id="S4.Thmtheorem7.p1.m4" class="ltx_Math" alttext="p\in X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>X</mi></mrow></math>.
+Define the ideal <math id="S4.Thmtheorem7.p1.m5" class="ltx_Math" alttext="\mathfrak{m}_{p}" display="inline"><msub><mi>𝔪</mi><mi>p</mi></msub></math> to be the set of germs <math id="S4.Thmtheorem7.p1.m6" class="ltx_Math" alttext="(s,U)" display="inline"><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></math> for which <math id="S4.Thmtheorem7.p1.m7" class="ltx_Math" alttext="s(p)=0" display="inline"><mrow><mrow><mi>s</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S4.Thmtheorem7.p2" class="ltx_para">
+<p class="ltx_p">Then <math id="S4.Thmtheorem7.p2.m1" class="ltx_Math" alttext="\mathfrak{m}_{p}" display="inline"><msub><mi>𝔪</mi><mi>p</mi></msub></math> is maximal: we have an exact sequence</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="0\to\mathfrak{m}_{p}\to\mathscr{F}_{p}\xrightarrow{(s,U)\mapsto s(p)}\mathbb{R%
+}\to 0" display="block"><mrow><mn>0</mn><mo stretchy="false">→</mo><msub><mi>𝔪</mi><mi>p</mi></msub><mo stretchy="false">→</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>p</mi></msub><mover accent="true"><mo stretchy="false">→</mo><mrow><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>U</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mi>s</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mover><mi>ℝ</mi><mo stretchy="false">→</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and so <math id="S4.Thmtheorem7.p2.m2" class="ltx_Math" alttext="\mathscr{F}_{p}/\mathfrak{m}_{p}\cong\mathbb{R}" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>p</mi></msub><mo>/</mo><msub><mi>𝔪</mi><mi>p</mi></msub></mrow><mo>≅</mo><mi>ℝ</mi></mrow></math>, which is a field.</p>
+</div>
+<div id="S4.Thmtheorem7.p3" class="ltx_para">
+<p class="ltx_p">It remains to check there are no nonzero maximal ideals.
+Now note that if <math id="S4.Thmtheorem7.p3.m1" class="ltx_Math" alttext="s\notin\mathfrak{m}_{p}" display="inline"><mrow><mi>s</mi><mo>∉</mo><msub><mi>𝔪</mi><mi>p</mi></msub></mrow></math>,
+then <math id="S4.Thmtheorem7.p3.m2" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> is nonzero in some open neighborhood of <math id="S4.Thmtheorem7.p3.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+and one can construct the function <math id="S4.Thmtheorem7.p3.m4" class="ltx_Math" alttext="1/s" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>s</mi></mrow></math> on it.
+So <span class="ltx_text ltx_font_bold">every element of <math id="S4.Thmtheorem7.p3.m5" class="ltx_Math" alttext="\mathscr{F}_{p}\setminus\mathfrak{m}_{p}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>p</mi></msub><mo>∖</mo><msub><mi>𝔪</mi><mi>p</mi></msub></mrow></math> is a unit</span>;
+and again <math id="S4.Thmtheorem7.p3.m6" class="ltx_Math" alttext="\mathfrak{m}_{p}" display="inline"><msub><mi>𝔪</mi><mi>p</mi></msub></math> is in fact the only maximal ideal!</p>
+</div>
+<div id="S4.Thmtheorem7.p4" class="ltx_para">
+<p class="ltx_p">Thus the stalks of each of the following types of sheaves
+are local rings, too.</p>
+<ul id="S4.I1" class="ltx_itemize">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Sheaves of continuous real/complex functions on a topological space</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Sheaves of smooth functions on any manifold</p>
+</div>
+</li>
+<li id="S4.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">etc.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sec:convenient_square" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">85.4.ii </span>Computing values: a convenient square</h3>
+
+<div id="S4.SS2.p1" class="ltx_para">
+<p class="ltx_p">Very careful readers might have noticed something
+a little uncomfortable in our extended example with <math id="S4.SS2.p1.m1" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math>
+with <math id="S4.SS2.p1.m2" class="ltx_Math" alttext="A=\mathbb{C}[x,y]" display="inline"><mrow><mi>A</mi><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> and <math id="S4.SS2.p1.m3" class="ltx_Math" alttext="\mathfrak{p}=(x,y)" display="inline"><mrow><mi>𝔭</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math> the origin.
+Let’s consider <math id="S4.SS2.p1.m4" class="ltx_Math" alttext="f=\frac{1}{xy+4}" display="inline"><mrow><mi>f</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mn>4</mn></mrow></mfrac></mrow></math>.
+We took <math id="S4.SS2.p1.m5" class="ltx_Math" alttext="f\pmod{x,y}" display="inline"><mrow><mi>f</mi><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> in the original ring <math id="S4.SS2.p1.m6" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> in order
+to decide the value “should” be <math id="S4.SS2.p1.m7" class="ltx_Math" alttext="\frac{1}{4}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></math>.
+However, all our calculations actually
+took place not in the ring <math id="S4.SS2.p1.m8" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>, but instead in the ring <math id="S4.SS2.p1.m9" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math>.
+Does this cause issues?</p>
+</div>
+<div id="S4.SS2.p2" class="ltx_para">
+<p class="ltx_p">Thankfully, no, nothing goes wrong, even in a general ring <math id="S4.SS2.p2.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>.</p>
+</div>
+<div id="S4.Thmtheorem8" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 85.4.8</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">We let the quotient <math id="S4.Thmtheorem8.p1.m1" class="ltx_Math" alttext="A_{\mathfrak{p}}/\mathfrak{p}A_{\mathfrak{p}}" display="inline"><mrow><mrow><msub><mi>A</mi><mi>𝔭</mi></msub><mo>/</mo><mi>𝔭</mi></mrow><mo>⁢</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math>,
+i.e. the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> residue field</span> of the stalk of <math id="S4.Thmtheorem8.p1.m2" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math> at <math id="S4.Thmtheorem8.p1.m3" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math>,
+be denoted by <math id="S4.Thmtheorem8.p1.m4" class="ltx_Math" alttext="\kappa(\mathfrak{p})" display="inline"><mrow><mi>κ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔭</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.SS2.p3" class="ltx_para">
+<p class="ltx_p">Then the following is a special case of
+<a href="ch_localization.html#thm:localization_commute_quotient" title="Theorem 83.7.1 (Localization commutes with quotients) ‣ 83.7 Localization commutes with quotients ‣ Chapter 83 Localization ‣ Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">83.7.1</span></a>
+(localization commutes with quotients):</p>
+</div>
+<div id="S4.Thmtheorem9" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 85.4.9</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(The germ-to-value square)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem9.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> be a ring and <math id="S4.Thmtheorem9.p1.m2" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math> a prime ideal.
+The following diagram commutes:</p>
+<svg id="S4.Thmtheorem9.p1.pic1" class="ltx_picture ltx_centering" height="71.63" overflow="visible" version="1.1" width="132.72"><g transform="translate(0,71.63) matrix(1 0 0 -1 0 0) translate(65.95,0) translate(0,35.81)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -55.76 -35.81)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 59.65)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 14.52)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 8.84 0) translate(11.15,0) matrix(1.0 0.0 0.0 1.0 -5.19 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="10.38" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.Thmtheorem9.p1.pic1.m1" class="ltx_Math" alttext="{A}" display="inline"><mi>A</mi></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 45.84 0) translate(46.51,0) matrix(1.0 0.0 0.0 1.0 -7.34 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="14.68" height="12.63" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.Thmtheorem9.p1.pic1.m2" class="ltx_Math" alttext="{A_{\mathfrak{p}}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 63.1)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(19.99,0) matrix(1.0 0.0 0.0 1.0 -14.03 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="28.06" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.Thmtheorem9.p1.pic1.m3" class="ltx_Math" alttext="{A/\mathfrak{p}}" display="inline"><mrow><mi>A</mi><mo>/</mo><mi>𝔭</mi></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 39.97 0) translate(52.38,0) matrix(1.0 0.0 0.0 1.0 -13.21 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="26.42" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.Thmtheorem9.p1.pic1.m4" class="ltx_Math" alttext="{\kappa(\mathfrak{p})}" display="inline"><mrow><mi>κ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔭</mi><mo stretchy="false">)</mo></mrow></mrow></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M -24.35 16.23 L 16.65 16.23" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 16.65 16.23)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -16.14 19.49)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="61.88" height="6.73" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><span class="ltx_text ltx_markedasmath" style="font-size:70%;">localize</span></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -35.77 7.43 L -35.77 -13.73" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 -35.77 -13.73)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -62.97 -8.75)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="23.95" height="8.61" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.Thmtheorem9.p1.pic1.m6" class="ltx_Math" alttext="\scriptstyle{\bmod\mathfrak{p}}" display="inline"><mrow><mi></mi><mo>mod</mo><mi>𝔭</mi></mrow></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M 36.59 4.26 L 36.59 -13.73" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 36.59 -13.73)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 39.85 -10.34)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="23.95" height="8.61" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.Thmtheorem9.p1.pic1.m7" class="ltx_Math" alttext="\scriptstyle{\bmod\mathfrak{p}}" display="inline"><mrow><mi></mi><mo>mod</mo><mi>𝔭</mi></mrow></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -15.51 -32.36 L 10.78 -32.36" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 10.78 -32.36)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -13.79 -26.68)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="29.22" height="9.69" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.Thmtheorem9.p1.pic1.m8" class="ltx_Math" alttext="\scriptstyle{\operatorname{Frac}(-)}" display="inline"><mrow><mi>Frac</mi><mo>⁡</mo><mrow><mo maxsize="70%" minsize="70%">(</mo><mo lspace="0em" rspace="0em">−</mo><mo maxsize="70%" minsize="70%">)</mo></mrow></mrow></math></foreignObject></g></g></g></svg>
+<p class="ltx_p">In particular, <math id="S4.Thmtheorem9.p1.m3" class="ltx_Math" alttext="\kappa(\mathfrak{p})" display="inline"><mrow><mi>κ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔭</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+can also be described as <math id="S4.Thmtheorem9.p1.m4" class="ltx_Math" alttext="\operatorname{Frac}(A/\mathfrak{p})" display="inline"><mrow><mi>Frac</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo>/</mo><mi>𝔭</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.SS2.p4" class="ltx_para">
+<p class="ltx_p">So for example, if <math id="S4.SS2.p4.m1" class="ltx_Math" alttext="A=\mathbb{C}[x,y]" display="inline"><mrow><mi>A</mi><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> and <math id="S4.SS2.p4.m2" class="ltx_Math" alttext="\mathfrak{p}=(x,y)" display="inline"><mrow><mi>𝔭</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+then <math id="S4.SS2.p4.m3" class="ltx_Math" alttext="A/\mathfrak{p}=\mathbb{C}" display="inline"><mrow><mrow><mi>A</mi><mo>/</mo><mi>𝔭</mi></mrow><mo>=</mo><mi>ℂ</mi></mrow></math> and <math id="S4.SS2.p4.m4" class="ltx_Math" alttext="\operatorname{Frac}(A/\mathfrak{p})=\operatorname{Frac}(\mathbb{C})=\mathbb{C}" display="inline"><mrow><mrow><mi>Frac</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo>/</mo><mi>𝔭</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>Frac</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ℂ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>ℂ</mi></mrow></math>, as we expected.
+In practice, <math id="S4.SS2.p4.m5" class="ltx_Math" alttext="\operatorname{Frac}(A/\mathfrak{p})" display="inline"><mrow><mi>Frac</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo>/</mo><mi>𝔭</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is probably the easier way
+to compute <math id="S4.SS2.p4.m6" class="ltx_Math" alttext="\kappa(\mathfrak{p})" display="inline"><mrow><mi>κ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔭</mi><mo stretchy="false">)</mo></mrow></mrow></math> for any prime ideal <math id="S4.SS2.p4.m7" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math>.</p>
+</div>
+</section>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">85.5 </span>Recap</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">To recap the last two chapters, let <math id="S5.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> be a ring.</p>
+<ul id="S5.I1" class="ltx_itemize">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">We define <math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="X=\operatorname{Spec}A" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></mrow></math> to be the set of prime ideals of <math id="S5.I1.i1.p1.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>.</p>
+<ul id="S5.I1.i1.I1" class="ltx_itemize">
+<li id="S5.I1.i1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">–</span></span> 
+<div id="S5.I1.i1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The maximal ideals are the “closed points” we are used to,
+but the prime ideals are “generic points”.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">We equip <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math> with the Zariski topology by declaring
+<math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math> to be the closed sets, for ideals <math id="S5.I1.i2.p1.m3" class="ltx_Math" alttext="I\subseteq A" display="inline"><mrow><mi>I</mi><mo>⊆</mo><mi>A</mi></mrow></math>.</p>
+<ul id="S5.I1.i2.I1" class="ltx_itemize">
+<li id="S5.I1.i2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">–</span></span> 
+<div id="S5.I1.i2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The distinguished open sets <math id="S5.I1.i2.I1.i1.p1.m1" class="ltx_Math" alttext="D(f)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+form a topological basis.</p>
+</div>
+</li>
+<li id="S5.I1.i2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">–</span></span> 
+<div id="S5.I1.i2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The irreducible closed sets are exactly the closures of points.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li id="S5.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Finally, we defined a sheaf <math id="S5.I1.i3.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{X}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub></math>.
+We set up the definition such that</p>
+<ul id="S5.I1.i3.I1" class="ltx_itemize">
+<li id="S5.I1.i3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">–</span></span> 
+<div id="S5.I1.i3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i3.I1.i1.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{X}(D(f))=A[1/f]" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mn>1</mn><mo>/</mo><mi>f</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>:
+at distinguished open sets <math id="S5.I1.i3.I1.i1.p1.m2" class="ltx_Math" alttext="D(f)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+we get localizations too.</p>
+</div>
+</li>
+<li id="S5.I1.i3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">–</span></span> 
+<div id="S5.I1.i3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i3.I1.i2.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{X,\mathfrak{p}}=A_{\mathfrak{p}}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>X</mi><mo>,</mo><mi>𝔭</mi></mrow></msub><mo>=</mo><msub><mi>A</mi><mi>𝔭</mi></msub></mrow></math>:
+the stalks are localizations at a prime.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Since <math id="S5.I1.i3.p1.m2" class="ltx_Math" alttext="D(f)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a basis,
+these two properties lets us explicitly compute <math id="S5.I1.i3.p1.m3" class="ltx_Math" alttext="\mathcal{O}_{X}(U)" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+for any open set <math id="S5.I1.i3.p1.m4" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>,
+so we don’t have to resort to the definition using sheafification.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">85.6 </span>Functions are determined by germs, not values</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> The functions <math id="S6.p1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> and <math id="S6.p1.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> on <math id="S6.p1.m3" class="ltx_Math" alttext="\operatorname{Spec}\mathbb{C}[x]/(x^{2})" display="inline"><mrow><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math>.</em></p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">We close the chapter with a word of warning.
+In any ringed space, a section is determined by its germs;
+so that on <math id="S6.p2.m1" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math> a function <math id="S6.p2.m2" class="ltx_Math" alttext="f\in A" display="inline"><mrow><mi>f</mi><mo>∈</mo><mi>A</mi></mrow></math> is determined
+by its germ in each stalk <math id="S6.p2.m3" class="ltx_Math" alttext="A_{\mathfrak{p}}" display="inline"><msub><mi>A</mi><mi>𝔭</mi></msub></math>.
+However, we now will mention that an <math id="S6.p2.m4" class="ltx_Math" alttext="f\in A" display="inline"><mrow><mi>f</mi><mo>∈</mo><mi>A</mi></mrow></math> is <em class="ltx_emph ltx_font_italic">not</em>
+determined by its value <math id="S6.p2.m5" class="ltx_Math" alttext="f(\mathfrak{p})=f\pmod{\mathfrak{p}}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔭</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mi>𝔭</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> at each point.</p>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">The famous example is:</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 85.6.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(On the double point, all multiples of <math id="S6.Thmtheorem1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> are zero at all points)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">The space <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\operatorname{Spec}\mathbb{C}[x]/(x^{2})" display="inline"><mrow><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> has only one point, <math id="S6.Thmtheorem1.p1.m2" class="ltx_Math" alttext="(x)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></math>.
+The functions <math id="S6.Thmtheorem1.p1.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> and <math id="S6.Thmtheorem1.p1.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> (and for that matter <math id="S6.Thmtheorem1.p1.m5" class="ltx_Math" alttext="2x" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi></mrow></math>, <math id="S6.Thmtheorem1.p1.m6" class="ltx_Math" alttext="3x" display="inline"><mrow><mn>3</mn><mo>⁢</mo><mi>x</mi></mrow></math>, …)
+all vanish on it.
+This shows that functions are not determined uniquely
+by values in general.</p>
+</div>
+</div>
+<div id="S6.p4" class="ltx_para">
+<p class="ltx_p">Fortunately, we can explicitly characterize
+when this sort of “bad” behavior happens.
+Indeed, we want to see when <math id="S6.p4.m1" class="ltx_Math" alttext="f(\mathfrak{p})=g(\mathfrak{p})" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔭</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔭</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for every <math id="S6.p4.m2" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math>,
+or equivalently, <math id="S6.p4.m3" class="ltx_Math" alttext="h=f-g" display="inline"><mrow><mi>h</mi><mo>=</mo><mrow><mi>f</mi><mo>−</mo><mi>g</mi></mrow></mrow></math> vanishes on every prime ideal <math id="S6.p4.m4" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math>.
+This is equivalent to having</p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="h\in\bigcap_{\mathfrak{p}}\mathfrak{p}=\sqrt{(0)}" display="block"><mrow><mi>h</mi><mo rspace="0.111em">∈</mo><mrow><munder><mo movablelimits="false">⋂</mo><mi>𝔭</mi></munder><mi>𝔭</mi></mrow><mo>=</mo><msqrt><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></msqrt></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">the radical of the <em class="ltx_emph ltx_font_italic">zero</em> ideal.
+Thus in the prototype, the failure was caused by the fact that <math id="S6.p4.m5" class="ltx_Math" alttext="x^{n}=0" display="inline"><mrow><msup><mi>x</mi><mi>n</mi></msup><mo>=</mo><mn>0</mn></mrow></math>
+for some large <math id="S6.p4.m6" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</p>
+</div>
+<div id="S6.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 85.6.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">For a ring <math id="S6.Thmtheorem2.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>, the radical of the zero ideal, <math id="S6.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\sqrt{(0)}" display="inline"><msqrt><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></msqrt></math>,
+is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> nilradical</span> of <math id="S6.Thmtheorem2.p1.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>.
+Elements of the nilradical are called <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> nilpotents</span>.
+We say <math id="S6.Thmtheorem2.p1.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> reduced</span> if <math id="S6.Thmtheorem2.p1.m5" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> is the only nilpotent,
+i.e. <math id="S6.Thmtheorem2.p1.m6" class="ltx_Math" alttext="\sqrt{(0)}=(0)" display="inline"><mrow><msqrt><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></msqrt><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S6.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 85.6.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S6.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Are integral domains reduced?</span></p>
+</div>
+</div>
+<div id="S6.p5" class="ltx_para">
+<p class="ltx_p">Then our above discussion gives:</p>
+</div>
+<div id="S6.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 85.6.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Nilpotents are the only issue)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S6.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Two functions <math id="S6.Thmtheorem4.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S6.Thmtheorem4.p1.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> have the same value
+on all points of <math id="S6.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math> if and only if <math id="S6.Thmtheorem4.p1.m4" class="ltx_Math" alttext="f-g" display="inline"><mrow><mi>f</mi><mo>−</mo><mi>g</mi></mrow></math> is nilpotent.</p>
+</div>
+</div>
+<div id="S6.p6" class="ltx_para">
+<p class="ltx_p">In particular, when <math id="S6.p6.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is a reduced ring,
+even the values <math id="S6.p6.m2" class="ltx_Math" alttext="f(\mathfrak{p})" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔭</mi><mo stretchy="false">)</mo></mrow></mrow></math> as <math id="S6.p6.m3" class="ltx_Math" alttext="\mathfrak{p}\in\operatorname{Spec}A" display="inline"><mrow><mi>𝔭</mi><mo>∈</mo><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></mrow></math>
+are enough to determine <math id="S6.p6.m4" class="ltx_Math" alttext="f\in A" display="inline"><mrow><mi>f</mi><mo>∈</mo><mi>A</mi></mrow></math>.</p>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">85.7 </span>A few harder problems to think about</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p">As <a href="ch_spec_examples.html" title="Chapter 86 Interlude: eighteen examples of affine schemes ‣ Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Chapter</span> <span class="ltx_text ltx_ref_tag">86</span></a> contains many
+examples of affine schemes to train your intuition;
+it’s likely to be worth reading even before attempting these problems.</p>
+</div>
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_dproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 85A</span></span><span class="ltx_text ltx_font_bold"> </span>(Spectrums are quasicompact)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem1.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem1.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem1.p2" class="ltx_para">
+<p class="ltx_p">Show that <math id="Thmproblem1.p2.m1" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math> is quasicompact for any ring <math id="Thmproblem1.p2.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 85B</span></span><span class="ltx_text ltx_font_bold"> </span>(Punctured gyrotop, communicated by Aaron Pixton)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">The gyrotop is the scheme <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="X=\operatorname{Spec}\mathbb{C}[x,y,z]/(xy,z)" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>ℂ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+We let <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> denote the open subset obtained
+by deleting the closed point <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="\mathfrak{m}=(x,y,z)" display="inline"><mrow><mi>𝔪</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+Compute <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="\mathcal{O}_{X}(U)" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+
+<math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="k[x,y]\times k[z,z^{-1}]" display="inline"><mrow><mrow><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo rspace="0.055em" stretchy="false">]</mo></mrow></mrow><mo rspace="0.222em">×</mo><mi>k</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>z</mi><mo>,</mo><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow></math>.
+
+
+Let <math id="Thmproblem2.p1.m6" class="ltx_Math" alttext="V=D(x)\cup D(y)\subset U" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∪</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>⊂</mo><mi>U</mi></mrow></math> denote the punctured plane,
+so its complement <math id="Thmproblem2.p1.m7" class="ltx_Math" alttext="D(z)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></math> looks like a punctured line.
+Then <math id="Thmproblem2.p1.m8" class="ltx_Math" alttext="V\cap D(z)=\varnothing" display="inline"><mrow><mrow><mi>V</mi><mo>∩</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math> and the following diagram
+of restriction maps commutes</p>
+<svg id="Thmproblem2.p1.pic1" class="ltx_picture ltx_centering" height="170.58" overflow="visible" version="1.1" width="269.99"><g transform="translate(0,170.58) matrix(1 0 0 -1 0 0) translate(134.99,0) translate(0,85.29)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -134.99 -85.29)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 158.6)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 15.44)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 70.11 0) translate(74.13,0) matrix(1.0 0.0 0.0 1.0 -34.96 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="69.93" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem2.p1.pic1.m1" class="ltx_Math" alttext="{\mathcal{O}_{X}(X)=A}" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>A</mi></mrow></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 64.31)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 85.32 0) translate(58.92,0) matrix(1.0 0.0 0.0 1.0 -19.75 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="39.51" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem2.p1.pic1.m2" class="ltx_Math" alttext="{\mathcal{O}_{X}(U)}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 113.18)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(35.06,0) matrix(1.0 0.0 0.0 1.0 -29.1 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="58.2" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem2.p1.pic1.m3" class="ltx_Math" alttext="{\mathcal{O}_{X}(D(z))}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 185.17 0) translate(59.02,0) matrix(1.0 0.0 0.0 1.0 -19.85 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="39.7" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem2.p1.pic1.m4" class="ltx_Math" alttext="{\mathcal{O}_{X}(V)}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 162.05)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 74.66 0) translate(69.59,0) matrix(1.0 0.0 0.0 1.0 -30.42 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="60.84" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem2.p1.pic1.m5" class="ltx_Math" alttext="{\mathcal{O}_{X}(\varnothing)=0}" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M 9.25 52.52 L 9.25 34.54" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 9.25 34.54)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M -4.44 52.52 L -81.51 -16.46" style="fill:none"></path><g transform="matrix(-0.74516 -0.66689 0.66689 -0.74516 -81.51 -16.46)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M 21.78 52.52 L 92.11 -16.25" style="fill:none"></path><g transform="matrix(0.715 -0.69913 0.69913 0.715 92.11 -16.25)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M -16.74 4.29 L -66.75 -18.1" style="fill:none"></path><g transform="matrix(-0.91272 -0.40858 0.40858 -0.91272 -66.75 -18.1)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M 34.31 3.65 L 78.41 -17.9" style="fill:none"></path><g transform="matrix(0.89838 -0.43921 0.43921 0.89838 78.41 -17.9)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M -72.55 -45.22 L -23.94 -66.97" style="fill:none"></path><g transform="matrix(0.91278 -0.40845 0.40845 0.91278 -23.94 -66.97)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M 84.12 -45.22 L 40.03 -66.78" style="fill:none"></path><g transform="matrix(-0.89838 -0.43921 0.43921 -0.89838 40.03 -66.78)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g></g></svg>
+<p class="ltx_p">By sheaf axioms we should actually have</p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="\mathcal{O}_{X}(U)=\mathcal{O}_{X}(D(z))\times\mathcal{O}_{X}(V)." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">×</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We have <math id="Thmproblem2.p1.m9" class="ltx_Math" alttext="\mathcal{O}_{X}(D(z))=A_{z}=k[x,y,z,z^{-1}]/(xz,yz)\cong k[z,z^{-1}]" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>A</mi><mi>z</mi></msub><mo>=</mo><mrow><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo>,</mo><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>⁢</mo><mi>z</mi></mrow><mo>,</mo><mrow><mi>y</mi><mo>⁢</mo><mi>z</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>z</mi><mo>,</mo><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+On the other hand <math id="Thmproblem2.p1.m10" class="ltx_Math" alttext="\mathcal{O}_{X}(V)=k[x,y]" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> as shown in §4.4.1 of Vakil.
+So</p>
+<div class="table-container"><table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="\mathcal{O}_{X}(U)=k[x,y]\times k[z,z^{-1}]." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo rspace="0.055em" stretchy="false">]</mo></mrow></mrow><mo rspace="0.222em">×</mo><mi>k</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>z</mi><mo>,</mo><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 85C</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Show that a ring <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a local ring
+if and only of the following property is true:
+for any <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="x\in R" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>R</mi></mrow></math>,
+either <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> or <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="1-x" display="inline"><mrow><mn>1</mn><mo>−</mo><mi>x</mi></mrow></math> is a unit.</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 85D</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> be a local ring, and <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="\mathfrak{m}" display="inline"><mi>𝔪</mi></math> be its maximal ideal.
+Describe <math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="R_{\mathfrak{m}}" display="inline"><msub><mi>R</mi><mi>𝔪</mi></msub></math>.
+
+It’s isomorphic to <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>!</p>
+</div>
+</div>
+<div id="Thmproblem5" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 85E</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> be a ring, and <math id="Thmproblem5.p1.m2" class="ltx_Math" alttext="\mathfrak{m}" display="inline"><mi>𝔪</mi></math> a maximal ideal.
+Consider <math id="Thmproblem5.p1.m3" class="ltx_Math" alttext="\mathfrak{m}" display="inline"><mi>𝔪</mi></math> as a point of <math id="Thmproblem5.p1.m4" class="ltx_Math" alttext="\operatorname{Spec}A" display="inline"><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>A</mi></mrow></math>.
+Show that <math id="Thmproblem5.p1.m5" class="ltx_Math" alttext="\kappa(\mathfrak{m})\cong A/\mathfrak{m}" display="inline"><mrow><mrow><mi>κ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔪</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mi>A</mi><mo>/</mo><mi>𝔪</mi></mrow></mrow></math>.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../ag2/spec-zariski.html">Previous chapter: Affine schemes: the Zariski topology</a><br />
+<a href="../ag2/spec-examples.html">Next chapter: Interlude: eighteen examples of affine schemes</a>
+</nav>
+
+		</main>
+	</body>
+</html>

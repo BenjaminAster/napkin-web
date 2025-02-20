@@ -1,0 +1,1799 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Stopped martingales (TO DO)</title>
+		<meta property="og:title" content="Stopped martingales (TO DO)" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../prob/large-number-laws.html">Previous chapter: Large number laws (TO DO)</a><br />
+<a href="../diffgeo/multivar-calculus.html">Next chapter: Multivariable calculus done correctly</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 42 </span>Stopped martingales (TO DO)</h1>
+
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">42.1 </span>How to make money almost surely</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">We now take our newfound knowledge of measure theory to a casino.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Here’s the most classical example that shows up:
+a casino lets us play a game where we can bet any amount of
+on a fair coin flip, but with bad odds:
+we win <math id="S1.p2.m1" class="ltx_Math" alttext="\$n" display="inline"><mrow><mo rspace="0.167em">$</mo><mi>n</mi></mrow></math> if the coin is heads,
+but lose <math id="S1.p2.m2" class="ltx_Math" alttext="\$2n" display="inline"><mrow><mo rspace="0.167em">$</mo><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></mrow></math> if the coin is tails,
+for a value of <math id="S1.p2.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> of our choice.
+This seems like a game that no one in their right mind would want to play.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Well, if we have unbounded time and money,
+we actually can almost surely make a profit.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 42.1.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Being even greedier than 18th century France)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">In the game above, we start by betting <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\$1" display="inline"><mrow><mo rspace="0.167em">$</mo><mn>1</mn></mrow></math>.</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If we win, we leave having made <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\$1" display="inline"><mrow><mo rspace="0.167em">$</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If we lose, we then bet <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\$10" display="inline"><mrow><mo rspace="0.167em">$</mo><mn>10</mn></mrow></math> instead, and</p>
+<ul id="S1.I1.i2.I1" class="ltx_itemize">
+<li id="S1.I1.i2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">–</span></span> 
+<div id="S1.I1.i2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If we win, then we leave having made <math id="S1.I1.i2.I1.i1.p1.m1" class="ltx_Math" alttext="\$10-\$2=\$8" display="inline"><mrow><mrow><mrow><mo rspace="0.167em">$</mo><mn>10</mn></mrow><mo>−</mo><mrow><mo lspace="0em" rspace="0.167em">$</mo><mn>2</mn></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">$</mo><mn>8</mn></mrow></mrow></math>, and</p>
+</div>
+</li>
+<li id="S1.I1.i2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item"><span class="ltx_text ltx_font_bold">–</span></span> 
+<div id="S1.I1.i2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If we lose then we bet <math id="S1.I1.i2.I1.i2.p1.m1" class="ltx_Math" alttext="\$100" display="inline"><mrow><mo rspace="0.167em">$</mo><mn>100</mn></mrow></math> instead, and</p>
+<ul id="S1.I1.i2.I1.i2.I1" class="ltx_itemize">
+<li id="S1.I1.i2.I1.i2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">*</span> 
+<div id="S1.I1.i2.I1.i2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If we win, we leave having made <math id="S1.I1.i2.I1.i2.I1.i1.p1.m1" class="ltx_Math" alttext="\$1000-\$20-\$2=\$978" display="inline"><mrow><mrow><mrow><mo rspace="0.167em">$</mo><mn>1000</mn></mrow><mo>−</mo><mrow><mo lspace="0em" rspace="0.167em">$</mo><mn>20</mn></mrow><mo>−</mo><mrow><mo lspace="0em" rspace="0.167em">$</mo><mn>2</mn></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">$</mo><mn>978</mn></mrow></mrow></math>, and</p>
+</div>
+</li>
+<li id="S1.I1.i2.I1.i2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">*</span> 
+<div id="S1.I1.i2.I1.i2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If we lose then we bet <math id="S1.I1.i2.I1.i2.I1.i2.p1.m1" class="ltx_Math" alttext="\$1000" display="inline"><mrow><mo rspace="0.167em">$</mo><mn>1000</mn></mrow></math> instead, and so on…</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Since the coin will almost surely show heads eventually,
+we make money whenever that happens.
+In fact, the expected amount of time until a coin shows heads
+is only <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> flips! What could go wrong?</p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">This chapter will show that under sane conditions
+such as “finite time” or “finite money”,
+one cannot actually make money in this way — the <em class="ltx_emph ltx_font_italic">optional stopping theorem</em>.
+This will give us an excuse to define conditional probabilities,
+and then talk about martingales (which generalize the fair casino).</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">Once we realize that trying to extract money from Las Vegas is a lost cause,
+we will stop gambling and then return to solving math problems,
+by showing some tricky surprises,
+where problems that look like they have nothing to do with gambling
+can be solved by considering a suitable martingale.</p>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">In everything that follows, <math id="S1.p6.m1" class="ltx_Math" alttext="\Omega=(\Omega,\mathscr{A},\mu)" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mi class="ltx_font_mathscript">𝒜</mi><mo>,</mo><mi>μ</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a probability space.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">42.2 </span>Sub-<math id="S2.m1" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebras and filtrations</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S2.p1.m1" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra generated by a random variable, and coin flip filtration.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">We considered our <math id="S2.p2.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> as a space of worlds,
+equipped with a <math id="S2.p2.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra <math id="S2.p2.m3" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> that lets us integrate over <math id="S2.p2.m4" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>.
+However, it is a sad fact of life that at any given time,
+you only know partial information about the world.
+For example, at the time of writing,
+we know that the world did not end in 2012
+(see <a href="https://en.wikipedia.org/wiki/2012_phenomenon" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://en.wikipedia.org/wiki/2012_phenomenon</a>),
+but the fate of humanity in future years remains at slightly uncertain.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Let’s write this measure-theoretically: we could consider</p>
+<div class="table-container"><table id="A5.S3.EGx106" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex1"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex1.m1" class="ltx_Math" alttext="\displaystyle\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex1.m2" class="ltx_Math" alttext="\displaystyle=A\sqcup B" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>A</mi><mo>⊔</mo><mi>B</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex2"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex2.m1" class="ltx_Math" alttext="\displaystyle A" display="inline"><mi>A</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex2.m2" class="ltx_Math" alttext="\displaystyle=\left\{\omega\text{ for which world ends in $2012$}\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mrow><mi>ω</mi><mo>⁢</mo><mrow><mtext> for which world ends in </mtext><mn>2012</mn></mrow></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex3"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex3.m1" class="ltx_Math" alttext="\displaystyle B" display="inline"><mi>B</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex3.m2" class="ltx_Math" alttext="\displaystyle=\left\{\omega\text{ for which world does not end in $2012$}%
+\right\}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mrow><mi>ω</mi><mo>⁢</mo><mrow><mtext> for which world does not end in </mtext><mn>2012</mn></mrow></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We will assume that <math id="S2.p3.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> and <math id="S2.p3.m2" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> are measurable sets,
+that is, <math id="S2.p3.m3" class="ltx_Math" alttext="A,B\in\mathscr{A}" display="inline"><mrow><mrow><mi>A</mi><mo>,</mo><mi>B</mi></mrow><mo>∈</mo><mi class="ltx_font_mathscript">𝒜</mi></mrow></math>.
+That means we could have good fun arguing about what the values
+of <math id="S2.p3.m4" class="ltx_Math" alttext="\mu(A)" display="inline"><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S2.p3.m5" class="ltx_Math" alttext="\mu(B)" display="inline"><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow></math> should be
+(“a priori probability that the world ends in <math id="S2.p3.m6" class="ltx_Math" alttext="2012" display="inline"><mn>2012</mn></math>”),
+but let’s move on to a different silly example.</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">We will now introduce a new notion that
+we will need when we define conditional probabilities later.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 42.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\Omega=(\Omega,\mathscr{A},\mu)" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mi class="ltx_font_mathscript">𝒜</mi><mo>,</mo><mi>μ</mi><mo stretchy="false">)</mo></mrow></mrow></math> be a probability space.
+A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> sub-<math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra</span> <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math>
+on <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> is exactly what it sounds like:
+a <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra <math id="S2.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math> on the set <math id="S2.Thmtheorem1.p1.m7" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>
+such that each <math id="S2.Thmtheorem1.p1.m8" class="ltx_Math" alttext="A\in\mathscr{F}" display="inline"><mrow><mi>A</mi><mo>∈</mo><mi class="ltx_font_mathscript">ℱ</mi></mrow></math> is measurable
+(i.e., <math id="S2.Thmtheorem1.p1.m9" class="ltx_Math" alttext="\mathscr{F}\subseteq\mathscr{A}" display="inline"><mrow><mi class="ltx_font_mathscript">ℱ</mi><mo>⊆</mo><mi class="ltx_font_mathscript">𝒜</mi></mrow></math>).</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">The motivation is that <math id="S2.p5.m1" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math> is the <math id="S2.p5.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra of sets
+which let us ask questions about some piece of information.
+For example, in the 2012 example we gave above,
+we might take <math id="S2.p5.m3" class="ltx_Math" alttext="\mathscr{F}=\{\varnothing,A,B,\Omega\}" display="inline"><mrow><mi class="ltx_font_mathscript">ℱ</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo>,</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">}</mo></mrow></mrow></math>,
+which are the sets we care about if we are thinking only about 2012.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Here are some more serious examples.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 42.2.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of sub-<math id="S2.Thmtheorem2.m1" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebras)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S2.I1" class="ltx_enumerate">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="X\colon\Omega\to\{0,1,2\}" display="inline"><mrow><mi>X</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math> be a random
+variable taking on one of three values.
+If we’re interested in <math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> then we could define</p>
+<div class="table-container"><table id="A5.S3.EGx107" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex4.m1" class="ltx_Math" alttext="\displaystyle A" display="inline"><mi>A</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex4.m2" class="ltx_Math" alttext="\displaystyle=\{\omega\mid X(\omega)=1\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>ω</mi><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>X</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex5.m1" class="ltx_Math" alttext="\displaystyle B" display="inline"><mi>B</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex5.m2" class="ltx_Math" alttext="\displaystyle=\{\omega\mid X(\omega)=2\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>ω</mi><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>X</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>2</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex6"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex6.m1" class="ltx_Math" alttext="\displaystyle C" display="inline"><mi>C</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex6.m2" class="ltx_Math" alttext="\displaystyle=\{\omega\mid X(\omega)=3\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>ω</mi><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>X</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>3</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">then we could write</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\mathscr{F}=\left\{\varnothing,\;A,\;B,\;C,\;A\cup B,\;B\cup C,\;C\cup A,\;%
+\Omega\right\}." display="block"><mrow><mrow><mi class="ltx_font_mathscript">ℱ</mi><mo>=</mo><mrow><mo>{</mo><mi mathvariant="normal">∅</mi><mo rspace="0.447em">,</mo><mi>A</mi><mo rspace="0.447em">,</mo><mi>B</mi><mo rspace="0.447em">,</mo><mi>C</mi><mo rspace="0.447em">,</mo><mrow><mi>A</mi><mo>∪</mo><mi>B</mi></mrow><mo rspace="0.447em">,</mo><mrow><mi>B</mi><mo>∪</mo><mi>C</mi></mrow><mo rspace="0.447em">,</mo><mrow><mi>C</mi><mo>∪</mo><mi>A</mi></mrow><mo rspace="0.447em">,</mo><mi mathvariant="normal">Ω</mi><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This is a sub-<math id="S2.I1.i1.p1.m3" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra on <math id="S2.I1.i1.p1.m4" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math>
+that lets us ask questions about <math id="S2.I1.i1.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+like “what is the probability <math id="S2.I1.i1.p1.m6" class="ltx_Math" alttext="X\neq 3" display="inline"><mrow><mi>X</mi><mo>≠</mo><mn>3</mn></mrow></math>”, say.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Now suppose <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="Y\colon\Omega\to[0,1]" display="inline"><mrow><mi>Y</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></mrow></math> is another random variable.
+If we are interested in <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>,
+the <math id="S2.I1.i2.p1.m3" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math> that captures our curiosity is</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\mathscr{F}=\left\{Y^{\text{pre}}(B)\mid B\subseteq[0,1]\text{ is measurable }%
+\right\}." display="block"><mrow><mrow><mi class="ltx_font_mathscript">ℱ</mi><mo>=</mo><mrow><mo>{</mo><mrow><msup><mi>Y</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>B</mi><mo>⊆</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo>⁢</mo><mtext> is measurable </mtext></mrow></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">You might notice a trend here which we formalize now:</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 42.2.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="X\colon\Omega\to\mathbb{R}" display="inline"><mrow><mi>X</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> be a random variable.
+The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> sub-<math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra generated by <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math></span> is defined by</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\sigma(X)\coloneqq\left\{X^{\text{pre}}(B)\mid B\subseteq\mathbb{R}\text{ is %
+measurable }\right\}." display="block"><mrow><mrow><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mo>{</mo><mrow><msup><mi>X</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>B</mi><mo>⊆</mo><mrow><mi>ℝ</mi><mo>⁢</mo><mtext> is measurable </mtext></mrow></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">If <math id="S2.Thmtheorem3.p1.m4" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, … is a sequence (finite or infinite) of random variables,
+the sub-<math id="S2.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra generated by them
+is the smallest <math id="S2.Thmtheorem3.p1.m6" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra which contains <math id="S2.Thmtheorem3.p1.m7" class="ltx_Math" alttext="\sigma(X_{i})" display="inline"><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>X</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> for each <math id="S2.Thmtheorem3.p1.m8" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>.</p>
+</div>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Finally, we can put a lot of these together —
+since we’re talking about time, we learn more as we grow older,
+and this can be formalized.</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 42.2.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> filtration</span> on <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\Omega=(\Omega,\mathscr{A},\mu)" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mi class="ltx_font_mathscript">𝒜</mi><mo>,</mo><mi>μ</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+is a nested sequence<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>For convenience,
+we will restrict ourselves to <math id="footnote1.m1" class="ltx_Math" alttext="\mathbb{Z}_{\geq 0}" display="inline"><msub><mi>ℤ</mi><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></msub></math>-indexed
+filtrations, though really any index set is okay.</span></span></span></p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\mathscr{F}_{0}\subseteq\mathscr{F}_{1}\subseteq\mathscr{F}_{2}\subseteq\dots" display="block"><mrow><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>0</mn></msub><mo>⊆</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>1</mn></msub><mo>⊆</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>2</mn></msub><mo>⊆</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">of sub-<math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebras on <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 42.2.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Filtration)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Suppose you’re bored in an infinitely long class
+and start flipping a fair coin to pass the time.
+(Accordingly, we could let <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\Omega=\{H,T\}^{\infty}" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><msup><mrow><mo stretchy="false">{</mo><mi>H</mi><mo>,</mo><mi>T</mi><mo stretchy="false">}</mo></mrow><mi mathvariant="normal">∞</mi></msup></mrow></math>
+consist of infinite sequences of heads <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> and tails <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>.)
+We could let <math id="S2.Thmtheorem5.p1.m4" class="ltx_Math" alttext="\mathscr{F}_{n}" display="inline"><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>n</mi></msub></math> denote the sub-<math id="S2.Thmtheorem5.p1.m5" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra
+generated by the values of the first <math id="S2.Thmtheorem5.p1.m6" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> coin flips.
+So:</p>
+<ul id="S2.I2" class="ltx_itemize">
+<li id="S2.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I2.i1.p1.m1" class="ltx_Math" alttext="\mathscr{F}_{0}=\{\varnothing,\Omega\}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>0</mn></msub><mo>=</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">}</mo></mrow></mrow></math>,</p>
+</div>
+</li>
+<li id="S2.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I2.i2.p1.m1" class="ltx_Math" alttext="\mathscr{F}_{1}=\{\varnothing,\text{first flip $H$},\text{first flip $T$},\Omega\}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>1</mn></msub><mo>=</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mtext>first flip </mtext><mi>H</mi></mrow><mo>,</mo><mrow><mtext>first flip </mtext><mi>T</mi></mrow><mo>,</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">}</mo></mrow></mrow></math>,</p>
+</div>
+</li>
+<li id="S2.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I2.i3.p1.m1" class="ltx_Math" alttext="\mathscr{F}_{2}=\{\varnothing,\text{first flips $HH$},\text{second flip $T$},%
+\Omega,\text{first flip and second flip differ},\dots\}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>2</mn></msub><mo>=</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mtext>first flips </mtext><mrow><mi>H</mi><mo>⁢</mo><mi>H</mi></mrow></mrow><mo>,</mo><mrow><mtext>second flip </mtext><mi>T</mi></mrow><mo>,</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mtext>first flip and second flip differ</mtext><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i4.p1" class="ltx_para">
+<p class="ltx_p">and so on, with <math id="S2.I2.i4.p1.m1" class="ltx_Math" alttext="\mathscr{F}_{n}" display="inline"><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>n</mi></msub></math> being the measurable sets
+“determined” only by the first <math id="S2.I2.i4.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> coin flips.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 42.2.6</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">In the previous example, compute the cardinality <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="|\mathscr{F}_{n}|" display="inline"><mrow><mo stretchy="false">|</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>n</mi></msub><mo stretchy="false">|</mo></mrow></math> for each integer <math id="S2.Thmtheorem6.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</span></p>
+</div>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">More importantly,</p>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 42.2.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.Thmtheorem7.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <math id="S2.Thmtheorem7.p1.m2" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math>-measurable if <math id="S2.Thmtheorem7.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is determined only by the information given in <math id="S2.Thmtheorem7.p1.m4" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem8" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 42.2.8</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">In the example above, let <math id="S2.Thmtheorem8.p1.m1" class="ltx_Math" alttext="X_{3}" display="inline"><msub><mi>X</mi><mn>3</mn></msub></math> be the value of the third coin flip. Then:</p>
+<ul id="S2.I3" class="ltx_itemize">
+<li id="S2.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I3.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I3.i1.p1.m1" class="ltx_Math" alttext="X_{3}" display="inline"><msub><mi>X</mi><mn>3</mn></msub></math> is not <math id="S2.I3.i1.p1.m2" class="ltx_Math" alttext="\mathscr{F}_{2}" display="inline"><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>2</mn></msub></math>-measurable. (That is, we don’t know <math id="S2.I3.i1.p1.m3" class="ltx_Math" alttext="X_{3}" display="inline"><msub><mi>X</mi><mn>3</mn></msub></math> from the knowledge of the
+first <math id="S2.I3.i1.p1.m4" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> coin flips.)</p>
+</div>
+</li>
+<li id="S2.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">But it is <math id="S2.I3.i2.p1.m1" class="ltx_Math" alttext="\mathscr{F}_{3}" display="inline"><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>3</mn></msub></math>-measurable.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S2.Thmtheorem9" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 42.2.9</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check this! (Recall that a function is measurable if it lifts open sets to measurable sets.
+So you need to show e.g. <math id="S2.Thmtheorem9.p1.m1" class="ltx_Math" alttext="X_{3}^{\text{pre}}(\{H\})\notin\mathscr{F}_{2}" display="inline"><mrow><mrow><msubsup><mi>X</mi><mn>3</mn><mtext>pre</mtext></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">{</mo><mi>H</mi><mo stretchy="false">}</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>∉</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>2</mn></msub></mrow></math>.)</span></p>
+</div>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">So, not only can we formalize partial information about the world, we can also formalize what it
+means for something to only depend on that partial information.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">42.3 </span>Conditional expectation</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S3.p1.m1" class="ltx_Math" alttext="\mathbb{E}(X\mid X+Y)" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> for <math id="S3.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S3.p1.m3" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> distributed over <math id="S3.p1.m4" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math>.</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">We’ll need the definition of conditional probability to define a martingale,
+but this turns out to be surprisingly tricky.
+Let’s consider the following simple example to see why.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 42.3.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Why high-school methods aren’t enough here)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Suppose we have two independent random variables <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> distributed
+uniformly over <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> (so we may as well take <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\Omega=[0,1]^{2}" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mn>2</mn></msup></mrow></math>).
+We might try to ask the question:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p"><span class="ltx_text ltx_font_italic">“what is the expected value of <math id="S3.Thmtheorem1.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+given that <math id="S3.Thmtheorem1.p1.m6" class="ltx_Math" alttext="X+Y=0.6" display="inline"><mrow><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow><mo>=</mo><mn>0.6</mn></mrow></math>”?</span></p>
+</blockquote>
+<p class="ltx_p">Intuitively, we know the answer has to be <math id="S3.Thmtheorem1.p1.m7" class="ltx_Math" alttext="0.3" display="inline"><mn>0.3</mn></math>.
+However, if we try to write down a definition, we quickly run into trouble.
+Ideally we want to say something like</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\mathbb{E}[X\text{ given }X+Y=0.6]=\frac{\int_{S}X}{\int_{S}1}\text{ where }S=%
+\left\{\omega\in\Omega\mid X(\omega)+Y(\omega)=0.6\right\}." display="block"><mrow><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mrow><mi>X</mi><mo>⁢</mo><mtext> given </mtext><mo>⁢</mo><mi>X</mi></mrow><mo>+</mo><mi>Y</mi></mrow><mo>=</mo><mn>0.6</mn></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mrow><msub><mo>∫</mo><mi>S</mi></msub><mi>X</mi></mrow><mrow><msub><mo>∫</mo><mi>S</mi></msub><mn>1</mn></mrow></mfrac><mo>⁢</mo><mtext> where </mtext><mo>⁢</mo><mi>S</mi></mrow><mo>=</mo><mrow><mo>{</mo><mrow><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mrow><mi>X</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>Y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>0.6</mn></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The problem is that <math id="S3.Thmtheorem1.p1.m8" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is a set of measure zero,
+so we quickly run into <math id="S3.Thmtheorem1.p1.m9" class="ltx_Math" alttext="\frac{0}{0}" display="inline"><mfrac linethickness="0.6px"><mn>0</mn><mn>0</mn></mfrac></math>, meaning a definition
+of this shape will not work out.</p>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">The way that this is typically handled in measure theory
+is to use the notion of sub-<math id="S3.p3.m1" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra that we defined.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">But first, we should explain what <math id="S3.p4.m1" class="ltx_Math" alttext="\mathbb{E}(X\mid X+Y)" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> means first — why are we conditioning on
+another random variable instead of an event?</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">To motivate conditioning on a random variable, consider the following situation.
+Suppose that the weather tomorrow depends on the weather today and the random fluctuations.
+So we may have statements such as:</p>
+<div class="table-container"><table id="A5.S3.EGx108" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex12"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex12.m1" class="ltx_Math" alttext="\displaystyle\Pr(\text{it rains tomorrow}\mid\text{it rains today})" display="inline"><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mtext>it rains tomorrow</mtext><mo>∣</mo><mtext>it rains today</mtext></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex12.m2" class="ltx_Math" alttext="\displaystyle=0.6," display="inline"><mrow><mrow><mi></mi><mo>=</mo><mn>0.6</mn></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex13"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex13.m1" class="ltx_Math" alttext="\displaystyle\Pr(\text{it rains tomorrow}\mid\text{it doesn't rain today})" display="inline"><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mtext>it rains tomorrow</mtext><mo>∣</mo><mtext>it doesn’t rain today</mtext></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex13.m2" class="ltx_Math" alttext="\displaystyle=0.3." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mn>0.3</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This is the standard conditional probability: <math id="S3.p5.m1" class="ltx_Math" alttext="\Pr(A\mid B)=\frac{\Pr(A\wedge B)}{\Pr(B)}" display="inline"><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo>∣</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac linethickness="0.6px"><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>A</mi><mo>∧</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow></math>.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">Note that “the weather today” is itself a random variable.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p7.m1" class="ltx_Math" alttext="Z" display="inline"><mi>Z</mi></math> be the weather forecast tonight’s prediction of the probability, suppose it works as above.
+Then <math id="S3.p7.m2" class="ltx_Math" alttext="Z" display="inline"><mi>Z</mi></math> is a random real variable, defined by:</p>
+<div class="table-container"><table id="A5.S3.EGx109" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex14"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex14.m1" class="ltx_Math" alttext="\displaystyle Z" display="inline"><mi>Z</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex14.m2" class="ltx_Math" alttext="\displaystyle\colon\Omega\to\mathbb{R}" display="inline"><mrow><mi></mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex15"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex15.m1" class="ltx_Math" alttext="\displaystyle Z(\omega)" display="inline"><mrow><mi>Z</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex15.m2" class="ltx_Math" alttext="\displaystyle=\Pr(\text{it rains tomorrow}\mid\text{weather today}=\text{%
+weather today}(\omega))" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mtext>it rains tomorrow</mtext><mo>∣</mo><mtext>weather today</mtext></mrow><mo>=</mo><mrow><mtext>weather today</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">It would only be reasonable to write</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="Z=\Pr(\text{it rains tomorrow}\mid\text{weather today})." display="block"><mrow><mrow><mi>Z</mi><mo>=</mo><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mtext>it rains tomorrow</mtext><mo>∣</mo><mtext>weather today</mtext></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We’re conditioning on a random variable, and <math id="S3.p8.m1" class="ltx_Math" alttext="\Pr(\cdots\mid\cdots)" display="inline"><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">⋯</mi><mo>∣</mo><mi mathvariant="normal">⋯</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is itself a random variable
+instead of a single value in <math id="S3.p8.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>, but that’s perfectly okay.</p>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">Similarly, if <math id="S3.p9.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> is finite and every subset of it is measurable,
+for random real variables <math id="S3.p9.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S3.p9.m3" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>
+it would be sensible for us to define random real variable <math id="S3.p9.m4" class="ltx_Math" alttext="Z=\mathbb{E}(X\mid Y)" display="inline"><mrow><mi>Z</mi><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mi>Y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> by</p>
+<div class="table-container"><table id="A5.S3.EGx110" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex17"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex17.m1" class="ltx_Math" alttext="\displaystyle Z" display="inline"><mi>Z</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex17.m2" class="ltx_Math" alttext="\displaystyle\colon\Omega\to\mathbb{R}" display="inline"><mrow><mi></mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex18"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex18.m1" class="ltx_Math" alttext="\displaystyle Z(\omega)" display="inline"><mrow><mi>Z</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex18.m2" class="ltx_Math" alttext="\displaystyle=\mathbb{E}[X\mid Y=Y(\omega)]." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>X</mi><mo>∣</mo><mi>Y</mi></mrow><mo>=</mo><mrow><mi>Y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 42.3.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> be the result of rolling two dices. Then:</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{E}[X\mid X+Y=3]=1.5" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>X</mi><mo>∣</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></mrow><mo>=</mo><mn>3</mn></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mn>1.5</mn></mrow></math>, as you can easily calculate.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{E}(X\mid X+Y)" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is a random variable, which would takes the value
+<math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="1.5" display="inline"><mn>1.5</mn></math> in any world whether <math id="S3.I1.i2.p1.m3" class="ltx_Math" alttext="X+Y=3" display="inline"><mrow><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow><mo>=</mo><mn>3</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">More generally, we have in fact</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="\mathbb{E}(X\mid X+Y)=\frac{X+Y}{2}." display="block"><mrow><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac linethickness="0.6px"><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow><mn>2</mn></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Notice how the random variable <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\mathbb{E}(X\mid X+Y)" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> depends only on the value of <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="X+Y" display="inline"><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></math> — by
+definition.</p>
+</div>
+</div>
+<div id="S3.p10" class="ltx_para">
+<p class="ltx_p">Of course, as we explained earlier, this naive attempts will give us division-by-zero
+everywhere for the continuous case — so, enters the sub-<math id="S3.p10.m1" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra.</p>
+</div>
+<div id="prop:conditional_exp" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 42.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Conditional expectation definition)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="X\colon\Omega\to\mathbb{R}" display="inline"><mrow><mi>X</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> be an <em class="ltx_emph ltx_font_italic">absolutely integrable</em>
+random variable (meaning <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\mathbb{E}[|X|]&lt;\infty" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mo stretchy="false">|</mo><mi>X</mi><mo stretchy="false">|</mo></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow></math>)
+over a probability space <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>,
+and let <math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math> be a sub-<math id="S3.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra on it.</p>
+</div>
+<div id="S3.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p">Then there exists a function <math id="S3.Thmtheorem3.p2.m1" class="ltx_Math" alttext="\eta\colon\Omega\to\mathbb{R}" display="inline"><mrow><mi>η</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+satisfying the following two properties:</p>
+<ul id="S3.I2" class="ltx_itemize">
+<li id="S3.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I2.i1.p1.m1" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math> is <math id="S3.I2.i1.p1.m2" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math>-measurable (that is,
+measurable as a function <math id="S3.I2.i1.p1.m3" class="ltx_Math" alttext="(\Omega,\mathscr{F},\mu)\to\mathbb{R}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mi class="ltx_font_mathscript">ℱ</mi><mo>,</mo><mi>μ</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>); and</p>
+</div>
+</li>
+<li id="S3.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">for any set <math id="S3.I2.i2.p1.m1" class="ltx_Math" alttext="A\in\mathscr{F}" display="inline"><mrow><mi>A</mi><mo>∈</mo><mi class="ltx_font_mathscript">ℱ</mi></mrow></math> we have
+<math id="S3.I2.i2.p1.m2" class="ltx_Math" alttext="\mathbb{E}[\eta\cdot\mathbf{1}_{A}]=\mathbb{E}[X\cdot\mathbf{1}_{A}]" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>η</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><mi>A</mi></msub></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><mi>A</mi></msub></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Moreover, this random variable is unique up to almost sureness.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.p11" class="ltx_para">
+<p class="ltx_p">Omitted, but relevant buzzword used is “Radon-Nikodym derivative”.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 42.3.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math> be as in the previous proposition.</p>
+<ul id="S3.I3" class="ltx_itemize">
+<li id="S3.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">We denote <math id="S3.I3.i1.p1.m1" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math> by <math id="S3.I3.i1.p1.m2" class="ltx_Math" alttext="\mathbb{E}(X\mid\mathscr{F})" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mi class="ltx_font_mathscript">ℱ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>
+and call it the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> conditional expectation</span> of <math id="S3.I3.i1.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> with respect to <math id="S3.I3.i1.p1.m4" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math>.</p>
+</div>
+</li>
+<li id="S3.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.I3.i2.p1.m1" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> is a random variable then
+<math id="S3.I3.i2.p1.m2" class="ltx_Math" alttext="\mathbb{E}(X\mid Y)" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mi>Y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> denotes <math id="S3.I3.i2.p1.m3" class="ltx_Math" alttext="\mathbb{E}(X\mid\sigma(Y))" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math>,
+i.e. the conditional expectation of <math id="S3.I3.i2.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+with respect to the <math id="S3.I3.i2.p1.m5" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra generated by <math id="S3.I3.i2.p1.m6" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 42.3.5</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">As we can expect, <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\eta=\frac{X+Y}{2}" display="inline"><mrow><mi>η</mi><mo>=</mo><mfrac linethickness="0.6px"><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow><mn>2</mn></mfrac></mrow></math> satisfies the condition of <math id="S3.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\mathbb{E}(X\mid X+Y)" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> above.</p>
+</div>
+<div id="S3.Thmtheorem5.p2" class="ltx_para">
+<p class="ltx_p">The way to motivate doing all this is the following. We want to be able to say
+something like:</p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\mathbb{E}[X\mid X+Y=0.6]=\lim_{\varepsilon\to 0}\mathbb{E}[X\mid 0.6-%
+\varepsilon&lt;X+Y&lt;0.6+\varepsilon]" display="block"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>X</mi><mo>∣</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></mrow><mo>=</mo><mn>0.6</mn></mrow><mo stretchy="false">]</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0.167em">lim</mo><mrow><mi>ε</mi><mo stretchy="false">→</mo><mn>0</mn></mrow></munder><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>X</mi><mo>∣</mo><mrow><mn>0.6</mn><mo>−</mo><mi>ε</mi></mrow></mrow><mo>&lt;</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow><mo>&lt;</mo><mrow><mn>0.6</mn><mo>+</mo><mi>ε</mi></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Unfortunately, this setup does not work in general where <math id="S3.Thmtheorem5.p2.m1" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math> might not be
+generated by just one random real variable.
+Let’s see how the definition above helps us.</p>
+<ul id="S3.I4" class="ltx_itemize">
+<li id="S3.I4.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I4.i1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.I4.i1.p1.m1" class="ltx_Math" alttext="A=\{\omega\in\Omega\mid 0.6-\varepsilon&lt;X(\omega)+Y(\omega)&lt;0.6+\varepsilon\}" display="inline"><mrow><mi>A</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mn>0.6</mn><mo>−</mo><mi>ε</mi></mrow><mo>&lt;</mo><mrow><mrow><mi>X</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>Y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>&lt;</mo><mrow><mn>0.6</mn><mo>+</mo><mi>ε</mi></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></math>,
+this set certainly belongs to the sub-<math id="S3.I4.i1.p1.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra generated by <math id="S3.I4.i1.p1.m3" class="ltx_Math" alttext="X+Y" display="inline"><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></math>
+(because it is <math id="S3.I4.i1.p1.m4" class="ltx_Math" alttext="(X+Y)^{\text{pre}}((0.6-\varepsilon,0.6+\varepsilon))" display="inline"><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow><mo stretchy="false">)</mo></mrow><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">(</mo><mrow><mn>0.6</mn><mo>−</mo><mi>ε</mi></mrow><mo>,</mo><mrow><mn>0.6</mn><mo>+</mo><mi>ε</mi></mrow><mo stretchy="false">)</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math>).</p>
+</div>
+</li>
+<li id="S3.I4.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I4.i2.p1" class="ltx_para">
+<p class="ltx_p">Recall that <math id="S3.I4.i2.p1.m1" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math> is <math id="S3.I4.i2.p1.m2" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math>-measurable means <math id="S3.I4.i2.p1.m3" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math> only depends on the information in
+<math id="S3.I4.i2.p1.m4" class="ltx_Math" alttext="\mathscr{F}=\sigma(X+Y)" display="inline"><mrow><mi class="ltx_font_mathscript">ℱ</mi><mo>=</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, that is, on <math id="S3.I4.i2.p1.m5" class="ltx_Math" alttext="X+Y" display="inline"><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></math>. This makes sense.</p>
+</div>
+</li>
+<li id="S3.I4.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I4.i3.p1" class="ltx_para">
+<p class="ltx_p">Look at the right hand side:</p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="\mathbb{E}[X\mid 0.6-\varepsilon&lt;X+Y&lt;0.6+\varepsilon]=\mathbb{E}[X\cdot\mathbf%
+{1}_{A}]." display="block"><mrow><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>X</mi><mo>∣</mo><mrow><mn>0.6</mn><mo>−</mo><mi>ε</mi></mrow></mrow><mo>&lt;</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow><mo>&lt;</mo><mrow><mn>0.6</mn><mo>+</mo><mi>ε</mi></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><mi>A</mi></msub></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S3.I4.i3.p2" class="ltx_para">
+<p class="ltx_p">The law of total expectation says that <math id="S3.I4.i3.p2.m1" class="ltx_Math" alttext="\mathbb{E}[\mathbb{E}(X\mid Y)]=\mathbb{E}[X]" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mi>Y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+So, intuitively, the second property above simply requires
+this law to hold over all set <math id="S3.I4.i3.p2.m2" class="ltx_Math" alttext="A\in\mathscr{F}" display="inline"><mrow><mi>A</mi><mo>∈</mo><mi class="ltx_font_mathscript">ℱ</mi></mrow></math>.</p>
+</div>
+<div id="S3.I4.i3.p3" class="ltx_para">
+<p class="ltx_p">In our case, we have the following:</p>
+<div class="table-container"><table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="\mathbb{E}[\eta\mid 0.6-\varepsilon&lt;X+Y&lt;0.6+\varepsilon]=\mathbb{E}[X\mid 0.6-%
+\varepsilon&lt;X+Y&lt;0.6+\varepsilon]." display="block"><mrow><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>η</mi><mo>∣</mo><mrow><mn>0.6</mn><mo>−</mo><mi>ε</mi></mrow></mrow><mo>&lt;</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow><mo>&lt;</mo><mrow><mn>0.6</mn><mo>+</mo><mi>ε</mi></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>X</mi><mo>∣</mo><mrow><mn>0.6</mn><mo>−</mo><mi>ε</mi></mrow></mrow><mo>&lt;</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow><mo>&lt;</mo><mrow><mn>0.6</mn><mo>+</mo><mi>ε</mi></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S3.p12" class="ltx_para">
+<p class="ltx_p">More fine print:</p>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 42.3.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(This notation is terrible)</span> — </span>
+</h5>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">The notation <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\mathbb{E}(X\mid\mathscr{F})" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mi class="ltx_font_mathscript">ℱ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is admittedly confusing,
+since it is actually an entire function <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="\Omega\to\mathbb{R}" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>,
+rather than just a real number like <math id="S3.Thmtheorem6.p1.m3" class="ltx_Math" alttext="\mathbb{E}[X]" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow></mrow></math> — though, as you can see, it has its merits.
+For this reason I try to be careful to remember
+to use parentheses rather than square brackets
+for conditional expectations; not everyone does this.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem7" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 42.3.7</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">In addition, when we write <math id="S3.Thmtheorem7.p1.m1" class="ltx_Math" alttext="Y=\mathbb{E}(X\mid\mathscr{F})" display="inline"><mrow><mi>Y</mi><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mi class="ltx_font_mathscript">ℱ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+there is some abuse of notation happening here
+since <math id="S3.Thmtheorem7.p1.m2" class="ltx_Math" alttext="\mathbb{E}(X\mid\mathscr{F})" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>X</mi><mo>∣</mo><mi class="ltx_font_mathscript">ℱ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is defined only up to some reasonable uniqueness
+(i.e. up to measure zero changes).
+So this really means that
+“<math id="S3.Thmtheorem7.p1.m3" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> satisfies the hypothesis of <a href="#prop:conditional_exp" title="Proposition 42.3.3 (Conditional expectation definition) ‣ 42.3 Conditional expectation ‣ Chapter 42 Stopped martingales (TO DO) ‣ Part XI Probability (TO DO) ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Proposition</span> <span class="ltx_text ltx_ref_tag">42.3.3</span></a>”,
+but this is so pedantic that no one bothers.</p>
+</div>
+<div id="S3.Thmtheorem7.p2" class="ltx_para">
+<p class="ltx_p">For example, in the example above, if we change <math id="S3.Thmtheorem7.p2.m1" class="ltx_Math" alttext="\eta" display="inline"><mi>η</mi></math> to be</p>
+<div class="table-container"><table id="Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex23.m1" class="ltx_Math" alttext="\eta(\omega)=\begin{cases}0&amp;\text{if }X(\omega)+Y(\omega)=0.6\\
+\frac{X(\omega)+Y(\omega)}{2}&amp;\text{otherwise}\end{cases}" display="block"><mrow><mrow><mi>η</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mrow><mtext>if </mtext><mo>⁢</mo><mi>X</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>Y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>0.6</mn></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mstyle displaystyle="false"><mfrac linethickness="0.6px"><mrow><mrow><mi>X</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>Y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mn>2</mn></mfrac></mstyle></mtd><mtd class="ltx_align_left" columnalign="left"><mtext>otherwise</mtext></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">then <math id="S3.Thmtheorem7.p2.m2" class="ltx_Math" alttext="\mathbb{E}[\eta\cdot\mathbf{1}_{A}]=\mathbb{E}[X\cdot\mathbf{1}_{A}]" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>η</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><mi>A</mi></msub></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><mi>A</mi></msub></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math> still holds for every set <math id="S3.Thmtheorem7.p2.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>,
+but now it seems to be saying <math id="S3.Thmtheorem7.p2.m4" class="ltx_Math" alttext="\mathbb{E}[X\mid X+Y=0.6]=0" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>X</mi><mo>∣</mo><mrow><mi>X</mi><mo>+</mo><mi>Y</mi></mrow></mrow><mo>=</mo><mn>0.6</mn></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>?</p>
+</div>
+<div id="S3.Thmtheorem7.p3" class="ltx_para">
+<p class="ltx_p">Nevertheless, we must agree that we must sacrifice a measure zero set,
+since otherwise if we have</p>
+<div class="table-container"><table id="Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex24.m1" class="ltx_Math" alttext="T(\omega)=\begin{cases}1&amp;\text{if }Y(\omega)&gt;0.5\text{ or }(Y(\omega)=0.5\text%
+{ and }X(\omega)\in\mathbb{Q})\\
+0&amp;\text{otherwise}\end{cases}" display="block"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mn>1</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext>if </mtext><mo>⁢</mo><mi>Y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mrow><mn>0.5</mn><mo>⁢</mo><mtext> or </mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>Y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>0.5</mn><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>X</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>ℚ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mtext>otherwise</mtext></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">then it is certainly measurable (i.e. a random variable),
+<math id="S3.Thmtheorem7.p3.m1" class="ltx_Math" alttext="\mathbb{E}[T\mid Y=0.4]=0" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>T</mi><mo>∣</mo><mi>Y</mi></mrow><mo>=</mo><mn>0.4</mn></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> and <math id="S3.Thmtheorem7.p3.m2" class="ltx_Math" alttext="\mathbb{E}[T\mid Y=0.6]=1" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>T</mi><mo>∣</mo><mi>Y</mi></mrow><mo>=</mo><mn>0.6</mn></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>,
+but what is <math id="S3.Thmtheorem7.p3.m3" class="ltx_Math" alttext="\mathbb{E}[T\mid Y=0.5]" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mi>T</mi><mo>∣</mo><mi>Y</mi></mrow><mo>=</mo><mn>0.5</mn></mrow><mo stretchy="false">]</mo></mrow></mrow></math>?
+(You may argue it should be <math id="S3.Thmtheorem7.p3.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, but what if <math id="S3.Thmtheorem7.p3.m5" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> is changed to something more non-measurable?
+Besides, why should the conditional expectation change when we only modify <math id="S3.Thmtheorem7.p3.m6" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>
+on a probability-zero set anyway?)</p>
+</div>
+</div>
+<span id="todo9" class="ltx_note ltx_role_todo"><sup class="ltx_note_mark">9</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">9</sup><span class="ltx_note_type">todo: </span><span class="ltx_tag ltx_tag_note">9</span>properties</span></span></span>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">42.4 </span>Supermartingales</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Visiting a casino is a supermartingale, assuming house odds.</em></p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 42.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X_{0}" display="inline"><msub><mi>X</mi><mn>0</mn></msub></math>, <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, … be a sequence of random variables
+on a probability space <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>,
+and let <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\mathscr{F}_{0}\subseteq\mathscr{F}_{1}\subseteq\cdots" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>0</mn></msub><mo>⊆</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>1</mn></msub><mo>⊆</mo><mi mathvariant="normal">⋯</mi></mrow></math> be a filtration.</p>
+</div>
+<div id="S4.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">Then <math id="S4.Thmtheorem1.p2.m1" class="ltx_Math" alttext="(X_{n})_{n\geq 0}" display="inline"><msub><mrow><mo stretchy="false">(</mo><msub><mi>X</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></msub></math> is a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> supermartingale</span>
+with respect to <math id="S4.Thmtheorem1.p2.m2" class="ltx_Math" alttext="(\mathscr{F}_{n})_{n\geq 0}" display="inline"><msub><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></msub></math> if the following conditions hold:</p>
+<ul id="S4.I1" class="ltx_itemize">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> is absolutely integrable for every <math id="S4.I1.i1.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>;</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> is measurable with respect to <math id="S4.I1.i2.p1.m2" class="ltx_Math" alttext="\mathscr{F}_{n}" display="inline"><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>n</mi></msub></math>; and</p>
+</div>
+</li>
+<li id="S4.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">for each <math id="S4.I1.i3.p1.m1" class="ltx_Math" alttext="n=1,2,\dots" display="inline"><mrow><mi>n</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></math> the inequality</p>
+<div class="table-container"><table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="\mathbb{E}(X_{n}\mid\mathscr{F}_{n-1})\leq X_{n-1}" display="block"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>∣</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><msub><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">holds for all <math id="S4.I1.i3.p1.m2" class="ltx_Math" alttext="\omega\in\Omega" display="inline"><mrow><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S4.Thmtheorem1.p3" class="ltx_para">
+<p class="ltx_p">In a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> submartingale</span> the inequality <math id="S4.Thmtheorem1.p3.m1" class="ltx_Math" alttext="\leq" display="inline"><mo>≤</mo></math> is replaced with <math id="S4.Thmtheorem1.p3.m2" class="ltx_Math" alttext="\geq" display="inline"><mo>≥</mo></math>,
+and in a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> martingale</span> it is replaced by <math id="S4.Thmtheorem1.p3.m3" class="ltx_Math" alttext="=" display="inline"><mo>=</mo></math>.</p>
+</div>
+</div>
+<span id="todo10" class="ltx_note ltx_role_todo"><sup class="ltx_note_mark">10</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">10</sup><span class="ltx_note_type">todo: </span><span class="ltx_tag ltx_tag_note">10</span>what’s the etymology of the term?</span></span></span>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 42.4.2</span></span><span class="ltx_text ltx_font_bold"> </span>(No one uses that filtration thing anyways)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We will always take <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathscr{F}_{n}" display="inline"><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>n</mi></msub></math> to be the <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra
+generated by the previous variables <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="X_{0}" display="inline"><msub><mi>X</mi><mn>0</mn></msub></math>, <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, …, <math id="S4.Thmtheorem2.p1.m5" class="ltx_Math" alttext="X_{n-1}" display="inline"><msub><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></math>,
+and do so without further comment.
+Nonetheless, all the results that follow hold in the more general setting
+of a supermartingale with respect to some filtration.</p>
+</div>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">We will prove all our theorems for supermartingales;
+the analogous versions for submartingales can be obtained
+by replacing <math id="S4.p2.m1" class="ltx_Math" alttext="\leq" display="inline"><mo>≤</mo></math> with <math id="S4.p2.m2" class="ltx_Math" alttext="\geq" display="inline"><mo>≥</mo></math> everywhere
+(since <math id="S4.p2.m3" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> is a martingale iff <math id="S4.p2.m4" class="ltx_Math" alttext="-X_{n}" display="inline"><mrow><mo>−</mo><msub><mi>X</mi><mi>n</mi></msub></mrow></math> is a supermartingale)
+and for martingales by replacing <math id="S4.p2.m5" class="ltx_Math" alttext="\leq" display="inline"><mo>≤</mo></math> with <math id="S4.p2.m6" class="ltx_Math" alttext="=" display="inline"><mo>=</mo></math> everywhere
+(since <math id="S4.p2.m7" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> is a martingale iff it is both a supermartingale
+and a submartingale).</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Let’s give examples.</p>
+</div>
+<div id="ex:supermartingales" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 42.4.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Supermartingales)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S4.I2" class="ltx_enumerate">
+<li id="S4.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S4.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Random walks</span>:
+an ant starts at the position <math id="S4.I2.i1.p1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> on the number line.
+Every minute, it flips a fair coin and either
+walks one step left or one step right.
+If <math id="S4.I2.i1.p1.m2" class="ltx_Math" alttext="X_{t}" display="inline"><msub><mi>X</mi><mi>t</mi></msub></math> is the position at the <math id="S4.I2.i1.p1.m3" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math>th time,
+then <math id="S4.I2.i1.p1.m4" class="ltx_Math" alttext="X_{t}" display="inline"><msub><mi>X</mi><mi>t</mi></msub></math> is a martingale, because</p>
+<div class="table-container"><table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="\mathbb{E}(X_{t}\mid X_{0},\dots,X_{t-1})=\frac{(X_{t-1}+1)+(X_{t-1}-1)}{2}=X_%
+{t-1}." display="block"><mrow><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>X</mi><mi>t</mi></msub><mo>∣</mo><mrow><msub><mi>X</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>X</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac linethickness="0.6px"><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>X</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>X</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mn>2</mn></mfrac><mo>=</mo><msub><mi>X</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+<li id="S4.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S4.I2.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Casino game</span>:
+Consider a gambler using the strategy described
+at the beginning of the chapter.
+This is a martingale, since every bet the gambler makes
+has expected value <math id="S4.I2.i2.p1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>.</p>
+</div>
+</li>
+<li id="S4.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S4.I2.i3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Multiplying independent variables</span>:
+Let <math id="S4.I2.i3.p1.m1" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, <math id="S4.I2.i3.p1.m2" class="ltx_Math" alttext="X_{2}" display="inline"><msub><mi>X</mi><mn>2</mn></msub></math>, …, be independent (not necessarily
+identically distributed) integrable random variables with mean <math id="S4.I2.i3.p1.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.
+Then the sequence <math id="S4.I2.i3.p1.m4" class="ltx_Math" alttext="Y_{1}" display="inline"><msub><mi>Y</mi><mn>1</mn></msub></math>, <math id="S4.I2.i3.p1.m5" class="ltx_Math" alttext="Y_{2}" display="inline"><msub><mi>Y</mi><mn>2</mn></msub></math>, … defined by</p>
+<div class="table-container"><table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="Y_{n}\coloneqq X_{1}X_{2}\cdots X_{n}" display="block"><mrow><msub><mi>Y</mi><mi>n</mi></msub><mo>≔</mo><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>X</mi><mn>2</mn></msub><mo>⁢</mo><mi mathvariant="normal">⋯</mi><mo>⁢</mo><msub><mi>X</mi><mi>n</mi></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is a martingale; as
+<math id="S4.I2.i3.p1.m6" class="ltx_Math" alttext="\mathbb{E}(Y_{n}\mid Y_{1},\dots,Y_{n-1})=\mathbb{E}[Y_{n}]\cdot Y_{n-1}=Y_{n-1}" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>Y</mi><mi>n</mi></msub><mo>∣</mo><mrow><msub><mi>Y</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>Y</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>Y</mi><mi>n</mi></msub><mo rspace="0.055em" stretchy="false">]</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><msub><mi>Y</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo>=</mo><msub><mi>Y</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></math>.</p>
+</div>
+</li>
+<li id="S4.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S4.I2.i4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Iterated blackjack</span>:
+Suppose one shows up to a casino and plays
+infinitely many games of blackjack.
+If <math id="S4.I2.i4.p1.m1" class="ltx_Math" alttext="X_{t}" display="inline"><msub><mi>X</mi><mi>t</mi></msub></math> is their wealth at time <math id="S4.I2.i4.p1.m2" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math>, then <math id="S4.I2.i4.p1.m3" class="ltx_Math" alttext="X_{t}" display="inline"><msub><mi>X</mi><mi>t</mi></msub></math> is a supermartingale.
+This is because each game has negative expected value (house edge).</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 42.4.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Frivolous/inflamamtory example — real life is a supermartingale)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X_{t}" display="inline"><msub><mi>X</mi><mi>t</mi></msub></math> be your happiness on day <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math> of your life.
+Life has its ups and downs,
+so it is not the case that <math id="S4.Thmtheorem4.p1.m3" class="ltx_Math" alttext="X_{t}\leq X_{t-1}" display="inline"><mrow><msub><mi>X</mi><mi>t</mi></msub><mo>≤</mo><msub><mi>X</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></math> for every <math id="S4.Thmtheorem4.p1.m4" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math>.
+For example, you might win the lottery one day.</p>
+</div>
+<div id="S4.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">However, on any given day, many things can go wrong (e.g. zombie apocalypse),
+and by Murphy’s Law this is more likely than things going well.
+Also, as you get older, you have an increasing number of responsibilities
+and your health gradually begins to deteriorate.</p>
+</div>
+<div id="S4.Thmtheorem4.p3" class="ltx_para">
+<p class="ltx_p">Thus it seems that</p>
+<div class="table-container"><table id="Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex28.m1" class="ltx_Math" alttext="\mathbb{E}(X_{t}\mid X_{0},\dots,X_{t-1})\leq X_{t-1}" display="block"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>X</mi><mi>t</mi></msub><mo>∣</mo><mrow><msub><mi>X</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>X</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><msub><mi>X</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is a reasonable description of the future —
+<em class="ltx_emph ltx_font_italic">in expectation</em>, each successive day is
+slightly worse than the previous one.
+(In particular, if we set <math id="S4.Thmtheorem4.p3.m1" class="ltx_Math" alttext="X_{t}=-\infty" display="inline"><mrow><msub><mi>X</mi><mi>t</mi></msub><mo>=</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow></mrow></math> on death,
+then as long as you have a positive probability of dying,
+the displayed inequality is obviously true.)</p>
+</div>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Before going on, we will state without proof one useful result:
+if a martingale is bounded, then it will almost certainly converge.</p>
+</div>
+<div id="thm:doob_martingale_converge" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 42.4.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Doob’s martingale convergence theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="X_{0}" display="inline"><msub><mi>X</mi><mn>0</mn></msub></math>, … be a supermartingale on a
+probability space <math id="S4.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> such that</p>
+<div class="table-container"><table id="Ex29" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex29.m1" class="ltx_Math" alttext="\sup_{n\in\mathbb{Z}_{\geq 0}}\mathbb{E}\left[\left\lvert X_{n}\right\rvert%
+\right]&lt;\infty." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">sup</mo><mrow><mi>n</mi><mo>∈</mo><msub><mi>ℤ</mi><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></msub></mrow></munder><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo>[</mo><mrow><mo>|</mo><msub><mi>X</mi><mi>n</mi></msub><mo>|</mo></mrow><mo>]</mo></mrow></mrow></mrow><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Then, there exists a random variable <math id="S4.Thmtheorem5.p1.m3" class="ltx_Math" alttext="X_{\infty}\colon\Omega\to\mathbb{R}" display="inline"><mrow><msub><mi>X</mi><mi mathvariant="normal">∞</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+such that</p>
+<div class="table-container"><table id="Ex30" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex30.m1" class="ltx_Math" alttext="X_{n}\xrightarrow{\text{a.s.}}X_{\infty}." display="block"><mrow><mrow><msub><mi>X</mi><mi>n</mi></msub><mover accent="true"><mo stretchy="false">→</mo><mtext>a.s.</mtext></mover><msub><mi>X</mi><mi mathvariant="normal">∞</mi></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">42.5 </span>Optional stopping</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Las Vegas.</em></p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">In the first section we described how to make money almost surely.
+The key advantage the gambler had was the ability to quit whenever he wanted
+(equivalently, an ability to control the size of the bets;
+betting $0 forever is the same as quitting.)
+Let’s formalize a notion of stopping time.</p>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">The idea is we want to define a function
+<math id="S5.p3.m1" class="ltx_Math" alttext="\tau\colon\Omega\to\{0,1,2,\dots\}\cup\{\infty\}" display="inline"><mrow><mi>τ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">}</mo></mrow></mrow></mrow></mrow></math> such that</p>
+<ul id="S5.I1" class="ltx_itemize">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="\tau(\omega)" display="inline"><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></math> specifies the index
+after which we <em class="ltx_emph ltx_font_italic">stop</em> the martingale.
+Note that the decisions to stop after time <math id="S5.I1.i1.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>
+must be made with only the information available at that time —
+i.e., with respect to <math id="S5.I1.i1.p1.m3" class="ltx_Math" alttext="\mathscr{F}_{n}" display="inline"><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>n</mi></msub></math> of the filtration.</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="X_{\tau\wedge n}" display="inline"><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mi>n</mi></mrow></msub></math> is the random value representing the
+value at time <math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> of the stopped martingale,
+where if <math id="S5.I1.i2.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is <em class="ltx_emph ltx_font_italic">after</em> the stopping time,
+we just take it to be the our currently value after we leave.</p>
+</div>
+<div id="S5.I1.i2.p2" class="ltx_para">
+<p class="ltx_p">So for example in a world <math id="S5.I1.i2.p2.m1" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math> where we stopped at time <math id="S5.I1.i2.p2.m2" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>, then
+<math id="S5.I1.i2.p2.m3" class="ltx_Math" alttext="X_{\tau\wedge 0}(\omega)=X_{0}(\omega)" display="inline"><mrow><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mn>0</mn></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>X</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+<math id="S5.I1.i2.p2.m4" class="ltx_Math" alttext="X_{\tau\wedge 1}(\omega)=X_{1}(\omega)" display="inline"><mrow><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mn>1</mn></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+<math id="S5.I1.i2.p2.m5" class="ltx_Math" alttext="X_{\tau\wedge 2}(\omega)=X_{2}(\omega)" display="inline"><mrow><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mn>2</mn></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>X</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+<math id="S5.I1.i2.p2.m6" class="ltx_Math" alttext="X_{\tau\wedge 3}(\omega)=X_{3}(\omega)" display="inline"><mrow><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mn>3</mn></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>X</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, but then</p>
+<div class="table-container"><table id="Ex31" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex31.m1" class="ltx_Math" alttext="X_{3}(\omega)=X_{\tau\wedge 4}(\omega)=X_{\tau\wedge 5}(\omega)=X_{\tau\wedge 6%
+}(\omega)=\dots" display="block"><mrow><mrow><msub><mi>X</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mn>4</mn></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mn>5</mn></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mn>6</mn></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">since we have stopped — the value stops changing.</p>
+</div>
+</li>
+<li id="S5.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i3.p1.m1" class="ltx_Math" alttext="X_{\tau}" display="inline"><msub><mi>X</mi><mi>τ</mi></msub></math> denotes the eventual value after we stop
+(or the limit <math id="S5.I1.i3.p1.m2" class="ltx_Math" alttext="X_{\infty}" display="inline"><msub><mi>X</mi><mi mathvariant="normal">∞</mi></msub></math> if we never stop).</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">Here’s the compiled machine code.</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 42.5.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathscr{F}_{0}\subseteq\mathscr{F}_{1}\subseteq\cdots" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>0</mn></msub><mo>⊆</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>1</mn></msub><mo>⊆</mo><mi mathvariant="normal">⋯</mi></mrow></math> be a filtration
+on a probability space <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>.</p>
+<ul id="S5.I2" class="ltx_itemize">
+<li id="S5.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> stopping time</span> is a function</p>
+<div class="table-container"><table id="Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex32.m1" class="ltx_Math" alttext="\tau\colon\Omega\to\{0,1,2,\dots\}\cup\{\infty\}" display="block"><mrow><mi>τ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">}</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">with the property that for each integer <math id="S5.I2.i1.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, the set</p>
+<div class="table-container"><table id="Ex33" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex33.m1" class="ltx_Math" alttext="\left\{\omega\in\Omega\mid\tau(\omega)=n\right\}" display="block"><mrow><mo>{</mo><mrow><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>n</mi></mrow><mo>}</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is <math id="S5.I2.i1.p1.m2" class="ltx_Math" alttext="\mathscr{F}_{n}" display="inline"><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>n</mi></msub></math>-measurable (i.e., is in <math id="S5.I2.i1.p1.m3" class="ltx_Math" alttext="\mathscr{F}_{n}" display="inline"><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>n</mi></msub></math>).</p>
+</div>
+</li>
+<li id="S5.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">For each <math id="S5.I2.i2.p1.m1" class="ltx_Math" alttext="n\geq 0" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></math> we define
+<math id="S5.I2.i2.p1.m2" class="ltx_Math" alttext="X_{\tau\wedge n}\colon\Omega\to\mathbb{R}" display="inline"><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mi>n</mi></mrow></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> by</p>
+<div class="table-container"><table id="Ex34" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex34.m1" class="ltx_Math" alttext="X_{\tau\wedge n}(\omega)=X_{\min\left\{\tau(\omega),n\right\}}(\omega)" display="block"><mrow><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mi>n</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>X</mi><mrow><mi>min</mi><mo>⁡</mo><mrow><mo>{</mo><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>n</mi><mo>}</mo></mrow></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+<li id="S5.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">Finally, we let the eventual outcome be denoted by</p>
+<div class="table-container"><table id="Ex35" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex35.m1" class="ltx_Math" alttext="X_{\tau}(\omega)=\begin{cases}X_{\tau(\omega)}(\omega)&amp;\tau(\omega)\neq\infty%
+\\
+\lim_{n\to\infty}X_{n}(\omega)&amp;\tau(\omega)=\infty\text{ and }\lim_{n\to\infty%
+}X_{n}(\omega)\text{ exists }\\
+\text{undefined}&amp;\text{otherwise}.\end{cases}" display="block"><mrow><mrow><msub><mi>X</mi><mi>τ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mi mathvariant="normal">∞</mi></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><msub><mo>lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></msub><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi mathvariant="normal">∞</mi><mo>⁢</mo><mtext> and </mtext><mo lspace="0.167em">⁢</mo><mrow><msub><mo rspace="0.167em">lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></msub><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> exists </mtext></mrow></mrow></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mtext>undefined</mtext></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>otherwise</mtext><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We require that the “undefined” case occurs
+only for a set of measure zero
+(for example, if <a href="#thm:doob_martingale_converge" title="Theorem 42.4.5 (Doob’s martingale convergence theorem) ‣ 42.4 Supermartingales ‣ Chapter 42 Stopped martingales (TO DO) ‣ Part XI Probability (TO DO) ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">42.4.5</span></a> applies).
+Otherwise we don’t allow <math id="S5.I2.i3.p1.m1" class="ltx_Math" alttext="X_{\tau}" display="inline"><msub><mi>X</mi><mi>τ</mi></msub></math> to be defined.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 42.5.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Stopped supermartingales are still supermartingales)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="X_{0}" display="inline"><msub><mi>X</mi><mn>0</mn></msub></math>, <math id="S5.Thmtheorem2.p1.m2" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, … be a supermartingale.
+Then the sequence</p>
+<div class="table-container"><table id="Ex36" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex36.m1" class="ltx_Math" alttext="X_{\tau\wedge 0},\;X_{\tau\wedge 1},\;\dots" display="block"><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mn>0</mn></mrow></msub><mo rspace="0.447em">,</mo><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mn>1</mn></mrow></msub><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is itself a supermartingale.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S5.p5" class="ltx_para">
+<p class="ltx_p">We have almost everywhere the inequalities</p>
+<div class="table-container"><table id="A5.S3.EGx111" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex37"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex37.m1" class="ltx_Math" alttext="\displaystyle\mathbb{E}\left(X_{\tau\wedge n}\mid\mathscr{F}_{n-1}\right)" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mi>n</mi></mrow></msub><mo>∣</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex37.m2" class="ltx_Math" alttext="\displaystyle=\mathbb{E}\left(X_{n-1}+\mathbf{1}_{\tau(\omega)=n-1}(X_{n}-X_{n%
+-1})\mid\mathscr{F}_{n-1}\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><msub><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><mrow><mrow><msub><mn>𝟏</mn><mrow><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>−</mo><msub><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>∣</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex38"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex38.m1" class="ltx_Math" alttext="\displaystyle=\mathbb{E}\left(X_{n-1}\mid\mathscr{F}_{n-1}\right)+\mathbb{E}%
+\left(\mathbf{1}_{\tau(\omega)=n-1}\cdot(X_{n}-X_{n-1})\mid\mathscr{F}_{n-1}\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><msub><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>∣</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo>)</mo></mrow></mrow><mo>+</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><msub><mn>𝟏</mn><mrow><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mrow></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>−</mo><msub><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>∣</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo>)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex39"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex39.m1" class="ltx_Math" alttext="\displaystyle=X_{n-1}+\mathbf{1}_{\tau(\omega)=n-1}\cdot\mathbb{E}\left(X_{n}-%
+X_{n-1}\mid\mathscr{F}_{n-1}\right)\leq X_{n-1}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><msub><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><mrow><mrow><msub><mn>𝟏</mn><mrow><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mrow></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>𝔼</mi></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>−</mo><mrow><msub><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>∣</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo>≤</mo><msub><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">as functions from <math id="S5.p5.m1" class="ltx_Math" alttext="\Omega\to\mathbb{R}" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 42.5.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Doob’s optional stopping theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem3.p1.m1" class="ltx_Math" alttext="X_{0}" display="inline"><msub><mi>X</mi><mn>0</mn></msub></math>, <math id="S5.Thmtheorem3.p1.m2" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, … be a supermartingale on a probability space <math id="S5.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>,
+with respect to a filtration <math id="S5.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\mathscr{F}_{0}\subseteq\mathscr{F}_{1}\subseteq\cdots" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>0</mn></msub><mo>⊆</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mn>1</mn></msub><mo>⊆</mo><mi mathvariant="normal">⋯</mi></mrow></math>.
+Let <math id="S5.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\tau" display="inline"><mi>τ</mi></math> be a stopping time with respect to this filtration.
+Suppose that <em class="ltx_emph ltx_font_italic">any</em> of the following hypotheses are true,
+for some constant <math id="S5.Thmtheorem3.p1.m6" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>:</p>
+<ol id="S5.I3" class="ltx_enumerate">
+<li id="S5.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S5.I3.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Finite time</span>: <math id="S5.I3.i1.p1.m1" class="ltx_Math" alttext="\tau(\omega)\leq C" display="inline"><mrow><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mi>C</mi></mrow></math> for almost all <math id="S5.I3.i1.p1.m2" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>.</p>
+</div>
+</li>
+<li id="S5.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S5.I3.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Finite money</span>: for each <math id="S5.I3.i2.p1.m1" class="ltx_Math" alttext="n\geq 1" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>,
+<math id="S5.I3.i2.p1.m2" class="ltx_Math" alttext="\left\lvert X_{\tau\wedge n}(\omega)\right\rvert\leq C" display="inline"><mrow><mrow><mo>|</mo><mrow><msub><mi>X</mi><mrow><mi>τ</mi><mo>∧</mo><mi>n</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mo>≤</mo><mi>C</mi></mrow></math>
+for almost all <math id="S5.I3.i2.p1.m3" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>.</p>
+</div>
+</li>
+<li id="S5.I3.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S5.I3.i3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Finite bets</span>: we have <math id="S5.I3.i3.p1.m1" class="ltx_Math" alttext="\mathbb{E}[\tau]&lt;\infty" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>τ</mi><mo stretchy="false">]</mo></mrow></mrow><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow></math>,
+and for each <math id="S5.I3.i3.p1.m2" class="ltx_Math" alttext="n\geq 1" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>, the conditional expectation</p>
+<div class="table-container"><table id="Ex40" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex40.m1" class="ltx_Math" alttext="\mathbb{E}\left(\left\lvert X_{n}-X_{n-1}\right\rvert\mid\mathscr{F}_{n}\right)" display="block"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mo>|</mo><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>−</mo><msub><mi>X</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo>|</mo></mrow><mo>∣</mo><msub><mi class="ltx_font_mathscript">ℱ</mi><mi>n</mi></msub></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">takes on values at most <math id="S5.I3.i3.p1.m3" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> for almost all <math id="S5.I3.i3.p1.m4" class="ltx_Math" alttext="\omega\in\Omega" display="inline"><mrow><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi></mrow></math>
+satisfying <math id="S5.I3.i3.p1.m5" class="ltx_Math" alttext="\tau(\omega)\geq n" display="inline"><mrow><mrow><mi>τ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mi>n</mi></mrow></math>.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">Then <math id="S5.Thmtheorem3.p1.m7" class="ltx_Math" alttext="X_{\tau}" display="inline"><msub><mi>X</mi><mi>τ</mi></msub></math> is well-defined almost everywhere,
+and more importantly,</p>
+<div class="table-container"><table id="Ex41" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex41.m1" class="ltx_Math" alttext="\mathbb{E}[X_{\tau}]\leq\mathbb{E}[X_{0}]." display="block"><mrow><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>τ</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>≤</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>0</mn></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S5.p6" class="ltx_para">
+<p class="ltx_p">The last equation can be cheekily expressed as
+“the only winning move is not to play”.</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<span id="todo11" class="ltx_note ltx_role_todo"><sup class="ltx_note_mark">11</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">11</sup><span class="ltx_note_type">todo: </span><span class="ltx_tag ltx_tag_note">11</span>do later tonight</span></span></span>
+<div id="S5.p7" class="ltx_para">
+<p class="ltx_p"><sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S5.Thmtheorem4" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 42.5.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S5.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Conclude that going to Las Vegas with the strategy
+described in the first section is a really bad idea.
+What goes wrong?</span></p>
+</div>
+</div>
+<div id="S5.p8" class="ltx_para">
+<p class="ltx_p">While this is useful to make us stop gambling, it doesn’t allow us to compute anything —
+we don’t know anything about <math id="S5.p8.m1" class="ltx_Math" alttext="\mathbb{E}[X_{\tau}]" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>τ</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math> other than it’s <math id="S5.p8.m2" class="ltx_Math" alttext="\leq\mathbb{E}[X_{0}]" display="inline"><mrow><mi></mi><mo>≤</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>0</mn></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+However:</p>
+</div>
+<div id="S5.Thmtheorem5" class="ltx_theorem ltx_theorem_corollary">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Corollary 42.5.5</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S5.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">With the same hypothesis as above:</p>
+<ul id="S5.I4" class="ltx_itemize">
+<li id="S5.I4.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I4.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S5.I4.i1.p1.m1" class="ltx_Math" alttext="X_{0}" display="inline"><msub><mi>X</mi><mn>0</mn></msub></math>, <math id="S5.I4.i1.p1.m2" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, … is a submartingale, then <math id="S5.I4.i1.p1.m3" class="ltx_Math" alttext="\mathbb{E}[X_{\tau}]\geq\mathbb{E}[X_{0}]" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>τ</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>≥</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>0</mn></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S5.I4.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I4.i2.p1" class="ltx_para">
+<p class="ltx_p">If it is a martingale, then <math id="S5.I4.i2.p1.m1" class="ltx_Math" alttext="\mathbb{E}[X_{\tau}]=\mathbb{E}[X_{0}]" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>τ</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>0</mn></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S5.p9" class="ltx_para">
+<p class="ltx_p">If <math id="S5.p9.m1" class="ltx_Math" alttext="X_{0}" display="inline"><msub><mi>X</mi><mn>0</mn></msub></math>, <math id="S5.p9.m2" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, … is a submartingale, then <math id="S5.p9.m3" class="ltx_Math" alttext="Y_{0}" display="inline"><msub><mi>Y</mi><mn>0</mn></msub></math>, <math id="S5.p9.m4" class="ltx_Math" alttext="Y_{1}" display="inline"><msub><mi>Y</mi><mn>1</mn></msub></math>, … defined by <math id="S5.p9.m5" class="ltx_Math" alttext="Y_{i}=-X_{i}" display="inline"><mrow><msub><mi>Y</mi><mi>i</mi></msub><mo>=</mo><mrow><mo>−</mo><msub><mi>X</mi><mi>i</mi></msub></mrow></mrow></math> is
+a supermartingale, and the hypothesis is still satisfied. Apply the theorem to <math id="S5.p9.m6" class="ltx_Math" alttext="Y_{\tau}" display="inline"><msub><mi>Y</mi><mi>τ</mi></msub></math> we
+get the result.</p>
+</div>
+<div id="S5.p10" class="ltx_para">
+<p class="ltx_p">If <math id="S5.p10.m1" class="ltx_Math" alttext="X_{0}" display="inline"><msub><mi>X</mi><mn>0</mn></msub></math>, <math id="S5.p10.m2" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, … is a martingale, then it is both a supermartingale and a submartingale,
+the result follows immediately.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S5.p11" class="ltx_para">
+<p class="ltx_p">This finally let us calculate something — if we can compute <math id="S5.p11.m1" class="ltx_Math" alttext="\mathbb{E}[X_{0}]" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>0</mn></msub><mo stretchy="false">]</mo></mrow></mrow></math> and write the result as
+<math id="S5.p11.m2" class="ltx_Math" alttext="\mathbb{E}[X_{\tau}]" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>τ</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math> for some martingale, then we can solve the problem!</p>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">42.6 </span>Fun applications of optional stopping (TO DO)</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p">We now give three problems which showcase some of the power of
+the results we have developed so far.</p>
+</div>
+<section id="S6.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">42.6.i </span>The ballot problem</h3>
+
+<div id="S6.SS1.p1" class="ltx_para">
+<p class="ltx_p">Suppose Alice and Bob are racing in an election;
+Alice received <math id="S6.SS1.p1.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> votes total while Bob received <math id="S6.SS1.p1.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> votes total, and <math id="S6.SS1.p1.m3" class="ltx_Math" alttext="a&gt;b" display="inline"><mrow><mi>a</mi><mo>&gt;</mo><mi>b</mi></mrow></math>.
+If the votes are chosen in random order,
+one could ask: what is the probability that Alice remains strictly ahead of
+Bob in the election?</p>
+</div>
+<div id="S6.SS1.p2" class="ltx_para">
+<p class="ltx_p">[Missing Figure: path]</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 42.6.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Ballot problem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">This occurs with probability <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\frac{a-b}{a+b}" display="inline"><mfrac linethickness="0.6px"><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mfrac></math>.</p>
+</div>
+</div>
+<div id="S6.SS1.p3" class="ltx_para">
+<p class="ltx_p">We should try to model this as a martingale.
+A natural way to do it is the random walk, as in <a href="#ex:supermartingales" title="Example 42.4.3 (Supermartingales) ‣ 42.4 Supermartingales ‣ Chapter 42 Stopped martingales (TO DO) ‣ Part XI Probability (TO DO) ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Example</span> <span class="ltx_text ltx_ref_tag">42.4.3</span></a>:</p>
+<div class="table-container"><table id="A5.S3.EGx112" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex42"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex42.m1" class="ltx_Math" alttext="\displaystyle X_{0}" display="inline"><msub><mi>X</mi><mn>0</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex42.m2" class="ltx_Math" alttext="\displaystyle=0" display="inline"><mrow><mi></mi><mo>=</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex43"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex43.m1" class="ltx_Math" alttext="\displaystyle X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex43.m2" class="ltx_Math" alttext="\displaystyle=X_{i-1}+\begin{cases}1\text{ with probability }\frac{1}{2}\\
+-1\text{ otherwise.}\end{cases}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><msub><mi>X</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><mrow><mo>{</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mn>1</mn><mo>⁢</mo><mtext> with probability </mtext><mo>⁢</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mrow></mtd><mtd></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mo>−</mo><mrow><mn>1</mn><mo>⁢</mo><mtext> otherwise.</mtext></mrow></mrow></mtd><mtd></mtd></mtr></mtable></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Here, each <math id="S6.SS1.p3.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> represents Alice getting a vote, and each <math id="S6.SS1.p3.m2" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> represents Bob getting a vote.</p>
+</div>
+<div id="S6.SS1.p4" class="ltx_para">
+<p class="ltx_p">Then, we need to compute</p>
+<div class="table-container"><table id="Ex44" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex44.m1" class="ltx_Math" alttext="\Pr[X_{i}&gt;0\text{ for all }1\leq i\leq a+b\mid X_{a+b}=a-b]." display="block"><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>&gt;</mo><mrow><mn>0</mn><mo>⁢</mo><mtext> for all </mtext><mo>⁢</mo><mn>1</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>∣</mo><msub><mi>X</mi><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></msub></mrow></mrow><mo>=</mo><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S6.SS1.p5" class="ltx_para">
+<p class="ltx_p">While this is natural, the fact that the probability is conditioned on <math id="S6.SS1.p5.m1" class="ltx_Math" alttext="X_{a+b}=a-b" display="inline"><mrow><msub><mi>X</mi><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></msub><mo>=</mo><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow></mrow></math> makes us unable
+to apply the optional stopping theorem.</p>
+</div>
+<div id="S6.SS1.p6" class="ltx_para">
+<p class="ltx_p">Instead, the following will work:
+We start with all the votes, and <em class="ltx_emph ltx_font_italic">remove</em> them in random order.</p>
+<div class="table-container"><table id="A5.S3.EGx113" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex45"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex45.m1" class="ltx_Math" alttext="\displaystyle(A_{0},B_{0})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>A</mi><mn>0</mn></msub><mo>,</mo><msub><mi>B</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex45.m2" class="ltx_Math" alttext="\displaystyle=(a,b)," display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex46"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex46.m1" class="ltx_Math" alttext="\displaystyle(A_{i},B_{i})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo>,</mo><msub><mi>B</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex46.m2" class="ltx_Math" alttext="\displaystyle=\begin{cases}(A_{i-1}-1,B_{i-1})\text{ with probability }\frac{A%
+_{i-1}}{A_{i-1}+B_{i-1}}\\
+(A_{i-1},B_{i-1}-1)\text{ otherwise}\end{cases}\text{ for }1\leq i\leq a+b." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mo>{</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>A</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>−</mo><mn>1</mn></mrow><mo>,</mo><msub><mi>B</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> with probability </mtext><mo>⁢</mo><mfrac linethickness="0.6px"><msub><mi>A</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mrow><msub><mi>A</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>B</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></mfrac></mrow></mtd><mtd></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>A</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><mrow><msub><mi>B</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> otherwise</mtext></mrow></mtd><mtd></mtd></mtr></mtable></mrow><mo>⁢</mo><mtext> for </mtext><mo>⁢</mo><mn>1</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Of course, here <math id="S6.SS1.p6.m1" class="ltx_Math" alttext="A_{i}" display="inline"><msub><mi>A</mi><mi>i</mi></msub></math> represents the number of votes Alice has left,
+and <math id="S6.SS1.p6.m2" class="ltx_Math" alttext="B_{i}" display="inline"><msub><mi>B</mi><mi>i</mi></msub></math> represents the number of votes Bob has left.</p>
+</div>
+<div id="S6.SS1.p7" class="ltx_para">
+<p class="ltx_p">Now we just need to compute</p>
+<div class="table-container"><table id="Ex47" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex47.m1" class="ltx_Math" alttext="\Pr[A_{i}&gt;B_{i}\text{ for all }0\leq i\leq a+b-1]." display="block"><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>&gt;</mo><mrow><msub><mi>B</mi><mi>i</mi></msub><mo>⁢</mo><mtext> for all </mtext><mo>⁢</mo><mn>0</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mo>−</mo><mn>1</mn></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">There’s no longer any conditional expectation!</p>
+</div>
+<div id="S6.SS1.p8" class="ltx_para">
+<p class="ltx_p">Next, we need to construct a martingale.
+We could try to define <math id="S6.SS1.p8.m1" class="ltx_Math" alttext="X_{i}=A_{i}-B_{i}" display="inline"><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>=</mo><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>−</mo><msub><mi>B</mi><mi>i</mi></msub></mrow></mrow></math> similar to above, but that will not be a martingale.</p>
+</div>
+<div id="S6.SS1.p9" class="ltx_para">
+<p class="ltx_p">Here is the trick: we <em class="ltx_emph ltx_font_italic">modify</em> <math id="S6.SS1.p9.m1" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> to make it a martingale. (More examples where a sequence
+of random variables is modified to create a martingale can be found in <a href="#exer:martingale" title="Problem 42A (Examples of martingales). ‣ 42.7 A few harder problems to think about ‣ Chapter 42 Stopped martingales (TO DO) ‣ Part XI Probability (TO DO) ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">42A</span></a>.)</p>
+</div>
+<div id="S6.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 42.6.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S6.Thmtheorem2.p1.m1" class="ltx_Math" alttext="a=2" display="inline"><mrow><mi>a</mi><mo>=</mo><mn>2</mn></mrow></math> and <math id="S6.Thmtheorem2.p1.m2" class="ltx_Math" alttext="b=1" display="inline"><mrow><mi>b</mi><mo>=</mo><mn>1</mn></mrow></math>. Then:</p>
+<div class="table-container"><table id="A5.S3.EGx114" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex48"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex48.m1" class="ltx_Math" alttext="\displaystyle(A_{0},B_{0})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>A</mi><mn>0</mn></msub><mo>,</mo><msub><mi>B</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex48.m2" class="ltx_Math" alttext="\displaystyle=(2,1)," display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex49"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex49.m1" class="ltx_Math" alttext="\displaystyle(A_{1},B_{1})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>A</mi><mn>1</mn></msub><mo>,</mo><msub><mi>B</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex49.m2" class="ltx_Math" alttext="\displaystyle=\begin{cases}(1,1)\text{ with probability }\frac{2}{3}\\
+(2,0)\text{ otherwise.}\end{cases}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> with probability </mtext><mo>⁢</mo><mfrac linethickness="0.6px"><mn>2</mn><mn>3</mn></mfrac></mrow></mtd><mtd></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> otherwise.</mtext></mrow></mtd><mtd></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So <math id="S6.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\mathbb{E}[A_{0}-B_{0}]=1" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msub><mi>A</mi><mn>0</mn></msub><mo>−</mo><msub><mi>B</mi><mn>0</mn></msub></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math> while <math id="S6.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\mathbb{E}[A_{1}-B_{1}]=\frac{2}{3}\cdot 0+\frac{1}{3}\cdot 2=\frac{2}{3}" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msub><mi>A</mi><mn>1</mn></msub><mo>−</mo><msub><mi>B</mi><mn>1</mn></msub></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mrow><mfrac linethickness="0.6px"><mn>2</mn><mn>3</mn></mfrac><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>0</mn></mrow><mo>+</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>3</mn></mfrac><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow></mrow><mo>=</mo><mfrac linethickness="0.6px"><mn>2</mn><mn>3</mn></mfrac></mrow></math>,
+if we define <math id="S6.Thmtheorem2.p1.m5" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> as above of course it wouldn’t be a martingale.</p>
+</div>
+<div id="S6.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">However, it’s not difficult to find ways to modify it to form a martingale. For example:</p>
+<ul id="S6.I1" class="ltx_itemize">
+<li id="S6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If we define <math id="S6.I1.i1.p1.m1" class="ltx_Math" alttext="X_{1}=A_{1}-B_{1}+\frac{1}{3}" display="inline"><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>=</mo><mrow><mrow><msub><mi>A</mi><mn>1</mn></msub><mo>−</mo><msub><mi>B</mi><mn>1</mn></msub></mrow><mo>+</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>3</mn></mfrac></mrow></mrow></math>, then <math id="S6.I1.i1.p1.m2" class="ltx_Math" alttext="\mathbb{E}[X_{1}]=1" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>1</mn></msub><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>, so we’re fine.</p>
+</div>
+</li>
+<li id="S6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Similarly, we can also define <math id="S6.I1.i2.p1.m1" class="ltx_Math" alttext="X_{1}=\frac{3}{2}\cdot(A_{1}-B_{1})" display="inline"><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>3</mn><mn>2</mn></mfrac><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>A</mi><mn>1</mn></msub><mo>−</mo><msub><mi>B</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S6.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Or <math id="S6.I1.i3.p1.m1" class="ltx_Math" alttext="X_{1}=\frac{9}{4}\cdot(A_{1}-B_{1})^{2}" display="inline"><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>9</mn><mn>4</mn></mfrac><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>A</mi><mn>1</mn></msub><mo>−</mo><msub><mi>B</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S6.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">… et cetera…</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S6.SS1.p10" class="ltx_para">
+<p class="ltx_p">We need to make <math id="S6.SS1.p10.m1" class="ltx_Math" alttext="\mathbb{E}[X_{i}\mid X_{0}=x_{0},X_{1}=x_{1},\dots,X_{i-1}=x_{i-1}]=x_{i-1}" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>∣</mo><msub><mi>X</mi><mn>0</mn></msub></mrow><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub></mrow><mo>,</mo><mrow><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>=</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo>,</mo><mrow><msub><mi>X</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></math>
+for <em class="ltx_emph ltx_font_italic">every</em> <math id="S6.SS1.p10.m2" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math> and every <math id="S6.SS1.p10.m3" class="ltx_Math" alttext="(x_{0},x_{1},\dots,x_{i-1})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></math>. (You can try to find out yourself what
+modification will work yourself before continue reading.)</p>
+</div>
+<div id="S6.SS1.p11" class="ltx_para">
+<p class="ltx_p">Turns out, the following will work:</p>
+<div class="table-container"><table id="Ex50" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex50.m1" class="ltx_Math" alttext="X_{i}=\frac{A_{i}-B_{i}}{a+b-i}\text{ for }0\leq i\leq a+b-1." display="block"><mrow><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>=</mo><mrow><mfrac linethickness="0.6px"><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>−</mo><msub><mi>B</mi><mi>i</mi></msub></mrow><mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mo>−</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mtext> for </mtext><mo>⁢</mo><mn>0</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mo>−</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We cannot extend it to <math id="S6.SS1.p11.m1" class="ltx_Math" alttext="i\geq a+b" display="inline"><mrow><mi>i</mi><mo>≥</mo><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mrow></math>, but it is fine.
+(If you’re worried, just define <math id="S6.SS1.p11.m2" class="ltx_Math" alttext="X_{i}=X_{a+b-1}" display="inline"><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>=</mo><msub><mi>X</mi><mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mo>−</mo><mn>1</mn></mrow></msub></mrow></math> for <math id="S6.SS1.p11.m3" class="ltx_Math" alttext="i\geq a+b" display="inline"><mrow><mi>i</mi><mo>≥</mo><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mrow></math>.)</p>
+</div>
+<div id="S6.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 42.6.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S6.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check that it works. (The math is very similar to the problem about Pólya’s urn in
+<a href="#exer:martingale" title="Problem 42A (Examples of martingales). ‣ 42.7 A few harder problems to think about ‣ Chapter 42 Stopped martingales (TO DO) ‣ Part XI Probability (TO DO) ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">42A</span></a>.)</span></p>
+</div>
+</div>
+<div id="S6.SS1.p12" class="ltx_para">
+<p class="ltx_p">For the stopping time, there is only one natural way to define it:
+<math id="S6.SS1.p12.m1" class="ltx_Math" alttext="\tau" display="inline"><mi>τ</mi></math> is <math id="S6.SS1.p12.m2" class="ltx_Math" alttext="a+b-1" display="inline"><mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mo>−</mo><mn>1</mn></mrow></math> if Alice remains ahead of Bob i.e. <math id="S6.SS1.p12.m3" class="ltx_Math" alttext="X_{i}&gt;0" display="inline"><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>&gt;</mo><mn>0</mn></mrow></math> for every <math id="S6.SS1.p12.m4" class="ltx_Math" alttext="0\leq i\leq a+b-1" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mo>−</mo><mn>1</mn></mrow></mrow></math>,
+otherwise <math id="S6.SS1.p12.m5" class="ltx_Math" alttext="\tau" display="inline"><mi>τ</mi></math> is the smallest <math id="S6.SS1.p12.m6" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math> such that <math id="S6.SS1.p12.m7" class="ltx_Math" alttext="X_{i}=0" display="inline"><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S6.SS1.p13" class="ltx_para">
+<p class="ltx_p">Then, the optional stopping theorem states:</p>
+<div class="table-container"><table id="Ex51" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex51.m1" class="ltx_Math" alttext="\mathbb{E}[X_{\tau}]=\mathbb{E}[X_{0}]." display="block"><mrow><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>τ</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>0</mn></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p"><math id="S6.SS1.p13.m1" class="ltx_Math" alttext="\mathbb{E}[X_{0}]" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>0</mn></msub><mo stretchy="false">]</mo></mrow></mrow></math> is easy to calculate, it is <math id="S6.SS1.p13.m2" class="ltx_Math" alttext="\frac{A_{0}-B_{0}}{a+b}=\frac{a-b}{a+b}" display="inline"><mrow><mfrac linethickness="0.6px"><mrow><msub><mi>A</mi><mn>0</mn></msub><mo>−</mo><msub><mi>B</mi><mn>0</mn></msub></mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mfrac><mo>=</mo><mfrac linethickness="0.6px"><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mfrac></mrow></math>.
+What is <math id="S6.SS1.p13.m3" class="ltx_Math" alttext="\mathbb{E}[X_{\tau}]" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>τ</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math>?</p>
+<ul id="S6.I2" class="ltx_itemize">
+<li id="S6.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">If Alice remains ahead of Bob, <math id="S6.I2.i1.p1.m1" class="ltx_Math" alttext="X_{\tau}=X_{a+b-1}=1" display="inline"><mrow><msub><mi>X</mi><mi>τ</mi></msub><mo>=</mo><msub><mi>X</mi><mrow><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S6.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">Otherwise, <math id="S6.I2.i2.p1.m1" class="ltx_Math" alttext="X_{\tau}=0" display="inline"><mrow><msub><mi>X</mi><mi>τ</mi></msub><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Therefore <math id="S6.SS1.p13.m4" class="ltx_Math" alttext="\mathbb{E}[X_{\tau}]" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>τ</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math> is exactly the probability we need to calculate, so we’re done.</p>
+</div>
+<div id="S6.Thmtheorem4" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 42.6.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(This is cheating a little)</span> — </span>
+</h5>
+<div id="S6.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Note that you can equivalently write</p>
+<div class="table-container"><table id="Ex52" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex52.m1" class="ltx_Math" alttext="X_{i}=\frac{A_{i}-B_{i}}{A_{i}+B_{i}}." display="block"><mrow><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>=</mo><mfrac linethickness="0.6px"><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>−</mo><msub><mi>B</mi><mi>i</mi></msub></mrow><mrow><msub><mi>A</mi><mi>i</mi></msub><mo>+</mo><msub><mi>B</mi><mi>i</mi></msub></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Which is exactly the form of the answer.</p>
+</div>
+<div id="S6.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">That is to say, if you already know the form of the answer, martingale theory can help you to
+check it. But if you don’t…</p>
+</div>
+</div>
+</section>
+<section id="S6.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">42.6.ii </span>ABRACADABRA</h3>
+
+<div id="S6.SS2.p1" class="ltx_para">
+<p class="ltx_p">To be written.</p>
+</div>
+<div id="S6.SS2.p2" class="ltx_para">
+<p class="ltx_p"><a href="https://www.jeremykun.com/2014/03/03/martingales-and-the-optional-stopping-theorem/" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://www.jeremykun.com/2014/03/03/martingales-and-the-optional-stopping-theorem/</a></p>
+</div>
+</section>
+<section id="S6.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">42.6.iii </span>USA TST 2018</h3>
+
+<div id="S6.SS3.p1" class="ltx_para">
+<p class="ltx_p">To be written.</p>
+</div>
+<div id="S6.SS3.p2" class="ltx_para">
+<p class="ltx_p"><a href="https://aops.com/community/p9513099" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://aops.com/community/p9513099</a></p>
+</div>
+</section>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">42.7 </span>A few harder problems to think about</h2>
+
+<div id="exer:martingale" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 42A</span></span><span class="ltx_text ltx_font_bold"> </span>(Examples of martingales)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">We give some more examples of martingales.</p>
+<ol id="S7.I1" class="ltx_enumerate">
+<li id="S7.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S7.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">(Simple random walk)</span>
+Let <math id="S7.I1.i1.p1.m1" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, <math id="S7.I1.i1.p1.m2" class="ltx_Math" alttext="X_{2}" display="inline"><msub><mi>X</mi><mn>2</mn></msub></math>, … be i.i.d. random variables
+which equal <math id="S7.I1.i1.p1.m3" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> with probability <math id="S7.I1.i1.p1.m4" class="ltx_Math" alttext="1/2" display="inline"><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></math>,
+and <math id="S7.I1.i1.p1.m5" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> with probability <math id="S7.I1.i1.p1.m6" class="ltx_Math" alttext="1/2" display="inline"><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></math>.
+Prove that</p>
+<div class="table-container"><table id="Ex53" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex53.m1" class="ltx_Math" alttext="Y_{n}=\left(X_{1}+\dots+X_{n}\right)^{2}-n" display="block"><mrow><msub><mi>Y</mi><mi>n</mi></msub><mo>=</mo><mrow><msup><mrow><mo>(</mo><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>X</mi><mi>n</mi></msub></mrow><mo>)</mo></mrow><mn>2</mn></msup><mo>−</mo><mi>n</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is a martingale.</p>
+</div>
+</li>
+<li id="S7.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S7.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">(de Moivre’s martingale)</span>
+Fix real numbers <math id="S7.I1.i2.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S7.I1.i2.p1.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> such that <math id="S7.I1.i2.p1.m3" class="ltx_Math" alttext="p,q&gt;0" display="inline"><mrow><mrow><mi>p</mi><mo>,</mo><mi>q</mi></mrow><mo>&gt;</mo><mn>0</mn></mrow></math> and <math id="S7.I1.i2.p1.m4" class="ltx_Math" alttext="p+q=1" display="inline"><mrow><mrow><mi>p</mi><mo>+</mo><mi>q</mi></mrow><mo>=</mo><mn>1</mn></mrow></math>.
+Let <math id="S7.I1.i2.p1.m5" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, <math id="S7.I1.i2.p1.m6" class="ltx_Math" alttext="X_{2}" display="inline"><msub><mi>X</mi><mn>2</mn></msub></math>, … be i.i.d. random variables
+which equal <math id="S7.I1.i2.p1.m7" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> with probability <math id="S7.I1.i2.p1.m8" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+and <math id="S7.I1.i2.p1.m9" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> with probability <math id="S7.I1.i2.p1.m10" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>.
+Show that</p>
+<div class="table-container"><table id="Ex54" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex54.m1" class="ltx_Math" alttext="Y_{n}=\left(qp^{-1}\right)^{X_{1}+X_{2}+\dots+X_{n}}" display="block"><mrow><msub><mi>Y</mi><mi>n</mi></msub><mo>=</mo><msup><mrow><mo>(</mo><mrow><mi>q</mi><mo>⁢</mo><msup><mi>p</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>)</mo></mrow><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>+</mo><msub><mi>X</mi><mn>2</mn></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>X</mi><mi>n</mi></msub></mrow></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is a martingale.</p>
+</div>
+</li>
+<li id="S7.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S7.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">(Pólya’s urn)</span>
+An urn contains one red and one blue marble initially.
+Every minute, a marble is randomly removed from the urn,
+and two more marbles of the same color are added to the urn.
+Thus after <math id="S7.I1.i3.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> minutes, the urn will have <math id="S7.I1.i3.p1.m2" class="ltx_Math" alttext="n+2" display="inline"><mrow><mi>n</mi><mo>+</mo><mn>2</mn></mrow></math> marbles.</p>
+</div>
+<div id="S7.I1.i3.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.I1.i3.p2.m1" class="ltx_Math" alttext="r_{n}" display="inline"><msub><mi>r</mi><mi>n</mi></msub></math> denote the fraction of marbles which are red.
+Show that <math id="S7.I1.i3.p2.m2" class="ltx_Math" alttext="r_{n}" display="inline"><msub><mi>r</mi><mi>n</mi></msub></math> is a martingale.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 42B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">A deck has <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="52" display="inline"><mn>52</mn></math> cards; of them <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="26" display="inline"><mn>26</mn></math> are red and <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="26" display="inline"><mn>26</mn></math> are black.
+The cards are drawn and revealed one at a time.
+At any point, if there is at least one card remaining in the deck,
+you may stop the dealer;
+you win if (and only if) the next card in the deck is red.
+If all cards are dealt, then you lose.
+Across all possible strategies,
+determine the maximal probability of winning.
+
+There is a cute elementary solution.
+For the martingale-based solution,
+show that the fraction of red cards in the deck at time <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is a martingale.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 42C</span></span><span class="ltx_text ltx_font_bold"> </span>(Wald’s identity)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="\mu" display="inline"><mi>μ</mi></math> be a real number.
+Let <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="X_{2}" display="inline"><msub><mi>X</mi><mn>2</mn></msub></math>, … be independent random variables
+on a probability space <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> with mean <math id="Thmproblem3.p1.m5" class="ltx_Math" alttext="\mu" display="inline"><mi>μ</mi></math>.
+Finally let <math id="Thmproblem3.p1.m6" class="ltx_Math" alttext="\tau\colon\Omega\to\{1,2,\dots\}" display="inline"><mrow><mi>τ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow></mrow></mrow></math>
+be a stopping time such that <math id="Thmproblem3.p1.m7" class="ltx_Math" alttext="\mathbb{E}[\tau]&lt;\infty" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>τ</mi><mo stretchy="false">]</mo></mrow></mrow><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow></math>,
+and the event <math id="Thmproblem3.p1.m8" class="ltx_Math" alttext="\tau=n" display="inline"><mrow><mi>τ</mi><mo>=</mo><mi>n</mi></mrow></math> depends only on <math id="Thmproblem3.p1.m9" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, …, <math id="Thmproblem3.p1.m10" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math>.</p>
+</div>
+<div id="Thmproblem3.p2" class="ltx_para">
+<p class="ltx_p">Prove that</p>
+<div class="table-container"><table id="Ex55" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex55.m1" class="ltx_Math" alttext="\mathbb{E}[X_{1}+X_{2}+\dots+X_{\tau}]=\mu\mathbb{E}[\tau]." display="block"><mrow><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>+</mo><msub><mi>X</mi><mn>2</mn></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>X</mi><mi>τ</mi></msub></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mi>μ</mi><mo>⁢</mo><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>τ</mi><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 42D</span></span><span class="ltx_text ltx_font_bold"> </span>(Unbiased drunkard’s walk)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">An ant starts at <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> on a number line,
+and walks left or right one unit with probability <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="1/2" display="inline"><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></math>.
+It stops once it reaches either <math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="-17" display="inline"><mrow><mo>−</mo><mn>17</mn></mrow></math> or <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="+8" display="inline"><mrow><mo>+</mo><mn>8</mn></mrow></math>.</p>
+<ol id="S7.I2" class="ltx_enumerate">
+<li id="S7.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S7.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">Find the probability it reaches <math id="S7.I2.i1.p1.m1" class="ltx_Math" alttext="+8" display="inline"><mrow><mo>+</mo><mn>8</mn></mrow></math> before <math id="S7.I2.i1.p1.m2" class="ltx_Math" alttext="-17" display="inline"><mrow><mo>−</mo><mn>17</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S7.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S7.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">Find the expected value of the amount of time
+it takes to reach either endpoint.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="Thmproblem5" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 42E</span></span><span class="ltx_text ltx_font_bold"> </span>(Biased drunkard’s walk)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p1.m1" class="ltx_Math" alttext="0&lt;p&lt;1" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>p</mi><mo>&lt;</mo><mn>1</mn></mrow></math> be a real number.
+An ant starts at <math id="Thmproblem5.p1.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> on a number line,
+and walks left or right one unit with probability <math id="Thmproblem5.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+It stops once it reaches either <math id="Thmproblem5.p1.m4" class="ltx_Math" alttext="-17" display="inline"><mrow><mo>−</mo><mn>17</mn></mrow></math> or <math id="Thmproblem5.p1.m5" class="ltx_Math" alttext="+8" display="inline"><mrow><mo>+</mo><mn>8</mn></mrow></math>.
+Find the probability it reaches <math id="Thmproblem5.p1.m6" class="ltx_Math" alttext="+8" display="inline"><mrow><mo>+</mo><mn>8</mn></mrow></math> first.
+
+Use <a href="#exer:martingale" title="Problem 42A (Examples of martingales). ‣ 42.7 A few harder problems to think about ‣ Chapter 42 Stopped martingales (TO DO) ‣ Part XI Probability (TO DO) ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">42A</span></a>.</p>
+</div>
+</div>
+<div id="Thmproblem6" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 42F</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem6.p1" class="ltx_para">
+<p class="ltx_p">The number <math id="Thmproblem6.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> is written on a blackboard.
+Every minute, if the number <math id="Thmproblem6.p1.m2" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> is written on the board,
+it’s erased and replaced by a real number
+in the interval <math id="Thmproblem6.p1.m3" class="ltx_Math" alttext="[0,2.01a]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mn>2.01</mn><mo>⁢</mo><mi>a</mi></mrow><mo stretchy="false">]</mo></mrow></math> selected uniformly at random.
+What is the probability that the resulting sequence of numbers approaches <math id="Thmproblem6.p1.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>?
+
+It occurs with probability <math id="Thmproblem6.p1.m5" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.
+If <math id="Thmproblem6.p1.m6" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> is the number on the board at step <math id="Thmproblem6.p1.m7" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>,
+and <math id="Thmproblem6.p1.m8" class="ltx_Math" alttext="\mu=\frac{1}{2.01}\int_{0}^{2.01}\log t\;dt" display="inline"><mrow><mi>μ</mi><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2.01</mn></mfrac><mo>⁢</mo><mrow><msubsup><mo>∫</mo><mn>0</mn><mn>2.01</mn></msubsup><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mrow><mi>t</mi><mo lspace="0.280em">⁢</mo><mi>d</mi><mo>⁢</mo><mi>t</mi></mrow></mrow></mrow></mrow></mrow></math>,
+show that <math id="Thmproblem6.p1.m9" class="ltx_Math" alttext="\log(X_{n})-n\mu" display="inline"><mrow><mrow><mi>log</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>X</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>n</mi><mo>⁢</mo><mi>μ</mi></mrow></mrow></math> is a martingale.
+(Incidentally, using the law of large numbers could work too.)</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../prob/large-number-laws.html">Previous chapter: Large number laws (TO DO)</a><br />
+<a href="../diffgeo/multivar-calculus.html">Next chapter: Multivariable calculus done correctly</a>
+</nav>
+
+		</main>
+	</body>
+</html>

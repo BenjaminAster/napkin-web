@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Multivariable calculus done correctly</title>
+		<meta property="og:title" content="Multivariable calculus done correctly" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../prob/martingales.html">Previous chapter: Stopped martingales (TO DO)</a><br />
+<a href="../diffgeo/forms-diffgeo.html">Next chapter: Differential forms</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 43 </span>Multivariable calculus done correctly</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">As I have ranted about before, linear algebra is done wrong
+by the extensive use of matrices to obscure the structure of a linear map.
+Similar problems occur with multivariable calculus, so here I would like to set
+the record straight.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">Since we are doing this chapter using morally correct linear algebra,
+it’s imperative you’re comfortable with linear maps,
+and in particular the dual space <math id="p2.m1" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math> which we will repeatedly use.</p>
+</div>
+<div id="p3" class="ltx_para">
+<p class="ltx_p">In this chapter, all vector spaces have norms and
+are finite-dimensional over <math id="p3.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.
+So in particular every vector space is also a metric space
+(with metric given by the norm), and we can talk about open sets as usual.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">43.1 </span>The total derivative</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> If <math id="S1.p1.m1" class="ltx_Math" alttext="f(x,y)=x^{2}+y^{2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow></math>, then <math id="S1.p1.m2" class="ltx_Math" alttext="(Df)_{(x,y)}=2x\mathbf{e}_{1}^{\vee}+2y\mathbf{e}_{2}^{\vee}" display="inline"><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></msub><mo>=</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>y</mi><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></mrow></mrow></math>.</em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">First, let <math id="S1.p2.m1" class="ltx_Math" alttext="f\colon[a,b]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>.
+You might recall from high school calculus that for every point <math id="S1.p2.m2" class="ltx_Math" alttext="p\in\mathbb{R}" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>ℝ</mi></mrow></math>,
+we defined <math id="S1.p2.m3" class="ltx_Math" alttext="f^{\prime}(p)" display="inline"><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> as the derivative at the point <math id="S1.p2.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> (if it existed), which we interpreted as the <em class="ltx_emph ltx_font_italic">slope</em> of
+the “tangent line”.</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S1.p3" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='150pt' height='133.699175pt' viewBox='131.945246 150.200341 150 133.699175'>
+<defs>
+<path id='asymptote-43-1-g2-40' d='M3.610908 2.618181C3.610908 2.585454 3.610908 2.563636 3.425454 2.378181C2.061818 1.003636 1.712727-1.058182 1.712727-2.727272C1.712727-4.625453 2.127272-6.523635 3.46909-7.887271C3.610908-8.01818 3.610908-8.039998 3.610908-8.072725C3.610908-8.149089 3.567272-8.181816 3.501817-8.181816C3.392726-8.181816 2.410908-7.439998 1.767272-6.054544C1.210909-4.854544 1.08-3.643635 1.08-2.727272C1.08-1.876363 1.2-.556363 1.799999 .676363C2.454545 2.018181 3.392726 2.727272 3.501817 2.727272C3.567272 2.727272 3.610908 2.694545 3.610908 2.618181Z'/>
+<path id='asymptote-43-1-g2-41' d='M3.152726-2.727272C3.152726-3.578181 3.032726-4.89818 2.432727-6.130907C1.778181-7.472725 .84-8.181816 .730909-8.181816C.665454-8.181816 .621818-8.13818 .621818-8.072725C.621818-8.039998 .621818-8.01818 .829091-7.821816C1.898181-6.741816 2.519999-5.007271 2.519999-2.727272C2.519999-.861818 2.116363 1.058182 .763636 2.432727C.621818 2.563636 .621818 2.585454 .621818 2.618181C.621818 2.683636 .665454 2.727272 .730909 2.727272C.84 2.727272 1.821818 1.985454 2.465454 .6C3.021817-.6 3.152726-1.810909 3.152726-2.727272Z'/>
+<path id='asymptote-43-1-g0-48' d='M2.11208-3.777833C2.15193-3.881445 2.183811-3.937235 2.183811-4.016936C2.183811-4.27995 1.944707-4.455293 1.721544-4.455293C1.40274-4.455293 1.315068-4.176339 1.283188-4.064757L.270984-.629639C.239103-.533998 .239103-.510087 .239103-.502117C.239103-.430386 .286924-.414446 .366625-.390535C.510087-.326775 .526027-.326775 .541968-.326775C.565878-.326775 .613699-.326775 .669489-.462267L2.11208-3.777833Z'/>
+<path id='asymptote-43-1-g1-102' d='M4.003635-4.363635H4.941817C5.159999-4.363635 5.269089-4.363635 5.269089-4.581817C5.269089-4.701817 5.159999-4.701817 4.974544-4.701817H4.06909L4.298181-5.945453C4.341817-6.174544 4.494544-6.949089 4.559999-7.079998C4.658181-7.287271 4.843635-7.450907 5.072726-7.450907C5.116362-7.450907 5.399998-7.450907 5.607271-7.254543C5.127271-7.210907 5.01818-6.829089 5.01818-6.665453C5.01818-6.414544 5.214544-6.283635 5.421817-6.283635C5.705453-6.283635 6.021817-6.523635 6.021817-6.93818C6.021817-7.439998 5.519998-7.690907 5.072726-7.690907C4.701817-7.690907 4.014544-7.494543 3.687272-6.414544C3.621817-6.185453 3.58909-6.076362 3.327272-4.701817H2.574545C2.367272-4.701817 2.247272-4.701817 2.247272-4.494544C2.247272-4.363635 2.345454-4.363635 2.552727-4.363635H3.272726L2.454545-.054545C2.258181 1.003636 2.072727 1.996363 1.505454 1.996363C1.461818 1.996363 1.189091 1.996363 .981818 1.799999C1.483636 1.767272 1.581818 1.374545 1.581818 1.210909C1.581818 .96 1.385454 .829091 1.178181 .829091C.894545 .829091 .578182 1.069091 .578182 1.483636C.578182 1.974545 1.058182 2.236363 1.505454 2.236363C2.105454 2.236363 2.541817 1.592727 2.738181 1.178181C3.087272 .490909 3.338181-.829091 3.34909-.905454L4.003635-4.363635Z'/>
+<path id='asymptote-43-1-g1-112' d='M.490909 1.330909C.403636 1.701818 .381818 1.778181-.098182 1.778181C-.229091 1.778181-.349091 1.778181-.349091 1.985454C-.349091 2.072727-.294545 2.116363-.207273 2.116363C.087273 2.116363 .403636 2.083636 .709091 2.083636C1.069091 2.083636 1.44 2.116363 1.78909 2.116363C1.843636 2.116363 1.985454 2.116363 1.985454 1.898181C1.985454 1.778181 1.876363 1.778181 1.723636 1.778181C1.178181 1.778181 1.178181 1.701818 1.178181 1.603636C1.178181 1.472727 1.636363-.305454 1.712727-.578182C1.854545-.261818 2.159999 .12 2.716363 .12C3.981817 .12 5.345453-1.472727 5.345453-3.076363C5.345453-4.101817 4.723635-4.821817 3.894544-4.821817C3.34909-4.821817 2.825454-4.42909 2.465454-4.003635C2.356363-4.592726 1.887272-4.821817 1.483636-4.821817C.981818-4.821817 .774545-4.396362 .676363-4.199999C.48-3.82909 .338182-3.174545 .338182-3.141817C.338182-3.032726 .447273-3.032726 .469091-3.032726C.578182-3.032726 .589091-3.043636 .654545-3.283635C.84-4.058181 1.058182-4.581817 1.450909-4.581817C1.636363-4.581817 1.78909-4.494544 1.78909-4.079999C1.78909-3.82909 1.756363-3.70909 1.712727-3.523635L.490909 1.330909ZM2.410908-3.403635C2.487272-3.698181 2.781817-4.003635 2.978181-4.167272C3.359999-4.505453 3.676363-4.581817 3.861817-4.581817C4.298181-4.581817 4.559999-4.199999 4.559999-3.556363S4.199999-1.658181 4.003635-1.243636C3.632726-.48 3.10909-.12 2.705454-.12C1.985454-.12 1.843636-1.025454 1.843636-1.090909C1.843636-1.112727 1.843636-1.134545 1.876363-1.265454L2.410908-3.403635Z'/>
+<path id='asymptote-43-1-g1-120' d='M3.643635-3.294545C3.70909-3.578181 3.959999-4.581817 4.723635-4.581817C4.77818-4.581817 5.039999-4.581817 5.269089-4.439999C4.963635-4.385453 4.745453-4.112726 4.745453-3.850908C4.745453-3.676363 4.865453-3.46909 5.159999-3.46909C5.399998-3.46909 5.749089-3.665454 5.749089-4.101817C5.749089-4.66909 5.105453-4.821817 4.734544-4.821817C4.101817-4.821817 3.719999-4.243635 3.58909-3.992726C3.316363-4.712726 2.727272-4.821817 2.410908-4.821817C1.276363-4.821817 .654545-3.414545 .654545-3.141817C.654545-3.032726 .763636-3.032726 .785454-3.032726C.872727-3.032726 .905454-3.054545 .927272-3.152726C1.298181-4.30909 2.018181-4.581817 2.38909-4.581817C2.596363-4.581817 2.978181-4.483635 2.978181-3.850908C2.978181-3.512726 2.792726-2.781817 2.38909-1.254545C2.214545-.578182 1.832727-.12 1.352727-.12C1.287272-.12 1.036363-.12 .807273-.261818C1.08-.316364 1.32-.545454 1.32-.850909C1.32-1.145454 1.08-1.232727 .916363-1.232727C.589091-1.232727 .316364-.949091 .316364-.6C.316364-.098182 .861818 .12 1.341818 .12C2.061818 .12 2.454545-.643636 2.487272-.709091C2.618181-.305454 3.010908 .12 3.665454 .12C4.78909 .12 5.410908-1.287272 5.410908-1.56C5.410908-1.66909 5.312726-1.66909 5.279999-1.66909C5.181817-1.66909 5.159999-1.625454 5.13818-1.54909C4.77818-.381818 4.036363-.12 3.687272-.12C3.261817-.12 3.087272-.469091 3.087272-.84C3.087272-1.08 3.152726-1.32 3.272726-1.799999L3.643635-3.294545Z'/>
+</defs>
+<g id='asymptote-43-1-page1'>
+<g transform='translate(131.945 150.2)scale(.996264)'>
+<path d='M75.8191 133.95V.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(131.945 150.2)scale(.996264)'>
+<path d='M.250937 96.7034H150.312' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='274.068344' y='254.497858' href='#asymptote-43-1-g1-120'/>
+<g transform='translate(131.945 150.2)scale(.996264)'>
+<path d='M142.823 2.29265C142.34 2.34499 141.856 2.39781 141.372 2.4511C140.876 2.50584 140.379 2.56108 139.883 2.61685C139.386 2.67263 138.889 2.72893 138.393 2.78577C137.896 2.84262 137.399 2.90001 136.903 2.95796C136.406 3.01591 135.91 3.07442 135.413 3.1335C134.916 3.1926 134.42 3.25226 133.923 3.31251C133.427 3.37277 132.93 3.43362 132.433 3.49507C131.937 3.55654 131.44 3.61862 130.944 3.68131C130.447 3.74402 129.95 3.80735 129.454 3.87133C128.957 3.93532 128.46 3.99995 127.964 4.06524C127.467 4.13055 126.97 4.19652 126.474 4.26317C125.977 4.32985 125.481 4.3972 124.984 4.46525C124.487 4.53333 123.991 4.60211 123.494 4.67161C122.998 4.74114 122.501 4.81139 122.004 4.88238C121.508 4.9534 121.011 5.02517 120.515 5.09771C120.018 5.17028 119.521 5.24361 119.025 5.31774C118.528 5.39191 118.031 5.46686 117.535 5.54264C117.038 5.61845 116.541 5.69508 116.045 5.77256C115.548 5.85008 115.052 5.92844 114.555 6.00768C114.058 6.08696 113.562 6.16711 113.065 6.24817C112.569 6.32928 112.072 6.41128 111.575 6.49422C111.079 6.57722 110.582 6.66114 110.086 6.74603C109.589 6.83098 109.092 6.91689 108.596 7.0038C108.099 7.09077 107.602 7.17874 107.106 7.26774C106.609 7.35681 106.112 7.44691 105.616 7.53808C105.119 7.62933 104.623 7.72164 104.126 7.81506C103.629 7.90856 103.133 8.00316 102.636 8.09892C102.14 8.19475 101.643 8.29174 101.147 8.38991C100.65 8.48818 100.153 8.58764 99.6567 8.68833C99.1598 8.78912 98.6632 8.89114 98.1668 8.99444C97.6699 9.09785 97.1733 9.20254 96.677 9.30855C96.1801 9.41469 95.6834 9.52215 95.1871 9.63099C94.6902 9.73996 94.1936 9.85031 93.6973 9.96208C93.2003 10.074 92.7037 10.1874 92.2074 10.3022C91.7104 10.4172 91.2138 10.5337 90.7176 10.6517C90.2206 10.7699 89.7239 10.8896 89.2277 11.0109C88.7307 11.1325 88.2341 11.2556 87.7379 11.3804C87.2408 11.5054 86.7442 11.6321 86.248 11.7605C85.7509 11.8891 85.2543 12.0195 84.7582 12.1516C84.261 12.2841 83.7644 12.4183 83.2683 12.5544C82.7712 12.6908 82.2745 12.8291 81.7785 12.9693C81.2813 13.1098 80.7846 13.2523 80.2886 13.3969C79.7914 13.5417 79.2948 13.6886 78.7988 13.8377C78.3015 13.9871 77.8049 14.1386 77.3089 14.2924C76.8116 14.4465 76.315 14.6029 75.8191 14.7616C75.3217 14.9208 74.825 15.0822 74.3292 15.2461C73.8318 15.4105 73.3351 15.5773 72.8394 15.7466C72.3419 15.9165 71.8452 16.0889 71.3495 16.264C70.8519 16.4397 70.3553 16.618 69.8597 16.799C69.362 16.9808 68.8654 17.1653 68.3698 17.3526C67.8721 17.5408 67.3754 17.7319 66.88 17.9259C66.3821 18.1208 65.8855 18.3187 65.3901 18.5198C64.8922 18.7218 64.3955 18.927 63.9003 19.1355C63.4022 19.3451 62.9056 19.5579 62.4104 19.7742C61.9123 19.9917 61.4156 20.2127 60.9206 20.4372C60.4223 20.6632 59.9256 20.8928 59.4307 21.126C58.9323 21.3609 58.4356 21.5996 57.9409 21.8421C57.4423 22.0865 56.9456 22.3347 56.451 22.5871C55.9522 22.8415 55.4556 23.1001 54.9612 23.3628C54.4622 23.6279 53.9655 23.8974 53.4713 24.1712C52.9721 24.4477 52.4755 24.7287 51.9815 25.0143C51.4821 25.303 50.9854 25.5964 50.4916 25.8945C49.992 26.1962 49.4953 26.5028 49.0018 26.8143C48.5018 27.1299 48.0052 27.4505 47.5119 27.7764C47.0117 28.1068 46.515 28.4426 46.0221 28.7837C45.5215 29.1301 45.0248 29.4821 44.5322 29.8396C44.0313 30.2032 43.5346 30.5725 43.0424 30.9476C42.5411 31.3296 42.0444 31.7177 41.5525 32.1118C41.0508 32.5137 40.5541 32.9219 40.0627 33.3364C39.5605 33.7599 39.0638 34.1898 38.5728 34.6263C38.0701 35.0731 37.5734 35.5267 37.083 35.9869C36.5797 36.459 36.083 36.9382 35.5931 37.4241C35.0893 37.9238 34.5926 38.4308 34.1033 38.9447C33.5988 39.4745 33.1021 40.0117 32.6134 40.556C32.1082 41.1187 31.6116 41.689 31.1236 42.2665C30.6176 42.8652 30.121 43.4717 29.6337 44.0856C29.127 44.724 28.6304 45.3702 28.1439 46.024C27.6363 46.706 27.1397 47.3961 26.654 48.0938C26.1456 48.8242 25.649 49.5627 25.1642 50.3089C24.6547 51.0929 24.1583 51.8851 23.6743 52.6851C23.1639 53.5288 22.6674 54.3808 22.1845 55.2405C21.6729 56.151 21.1766 57.07 20.6946 57.9965C20.1819 58.982 19.6856 59.9759 19.2048 60.9774C18.6909 62.0475 18.1946 63.1261 17.7149 64.2119C17.1997 65.378 16.7036 66.5525 16.2251 67.734C15.7085 69.0095 15.2125 70.2931 14.7352 71.5838C14.2172 72.9846 13.7213 74.3935 13.2454 75.8091C12.7258 77.3546 12.23 78.9079 11.7555 80.4678C11.2342 82.1814 10.7386 83.9026 10.2657 85.6301C9.74256 87.5406 9.24716 89.4586 8.7758 91.3825C8.25072 93.5256 7.75552 95.676 7.28595 97.832C6.75869 100.253 6.26378 102.681 5.7961 105.114C5.26635 107.87 4.77158 110.632 4.30625 113.4C3.77401 116.566 3.28032 119.737 2.8164 122.914C2.64258 124.104 2.47294 125.294 2.30749 126.486' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(131.945 150.2)scale(.996264)'>
+<path d='M150.312 1.51849C149.819 1.43716 149.327 1.35628 148.834 1.27582S147.849 1.11533 147.356 1.03576C146.863 .956166 146.37 .877028 145.877 .798354C145.384 .719665 144.891 .64144 144.398 .563693C143.904 .485929 143.411 .408643 142.917 .331848C142.813 .315702 142.71 .299578 142.606 .283476L143.041 4.29939C143.132 4.26372 143.224 4.22806 143.316 4.19243C143.782 4.01188 144.248 3.83179 144.714 3.65216C145.18 3.47256 145.646 3.29341 146.112 3.1147C146.578 2.93603 147.045 2.75779 147.511 2.57999C147.978 2.40222 148.444 2.22487 148.911 2.04794C149.378 1.87104 149.845 1.69456 150.312 1.51849Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(131.945 150.2)scale(.996264)'>
+<path d='M150.312 1.51849C149.819 1.43716 149.327 1.35628 148.834 1.27582S147.849 1.11533 147.356 1.03576C146.863 .956166 146.37 .877028 145.877 .798354C145.384 .719665 144.891 .64144 144.398 .563693C143.904 .485929 143.411 .408643 142.917 .331848C142.813 .315702 142.71 .299578 142.606 .283476L143.041 4.29939C143.132 4.26372 143.224 4.22806 143.316 4.19243C143.782 4.01188 144.248 3.83179 144.714 3.65216C145.18 3.47256 145.646 3.29341 146.112 3.1147C146.578 2.93603 147.045 2.75779 147.511 2.57999C147.978 2.40222 148.444 2.22487 148.911 2.04794C149.378 1.87104 149.845 1.69456 150.312 1.51849Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(131.945 150.2)scale(.996264)'>
+<path d='M1.32655 133.95C2.29943 131.546 3.2905 129.151 4.29965 126.762L.311628 126.209C.630315 128.791 .968632 131.372 1.32655 133.95Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(131.945 150.2)scale(.996264)'>
+<path d='M1.32655 133.95C2.29943 131.546 3.2905 129.151 4.29965 126.762L.311628 126.209C.630315 128.791 .968632 131.372 1.32655 133.95Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(131.945 150.2)scale(.996264)'>
+<path d='M72.0944 4.84912L5.05118 64.4034' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(131.945 150.2)scale(.996264)'>
+<circle cx='38.5728' cy='34.6263' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(131.945 150.2)scale(.996264)'>
+<path d='M38.5728 34.6263V96.7034' fill='none' stroke="var(--asymptote-color-000000)" stroke-dasharray='4.13847,4.13847' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(131.945 150.2)scale(.996264)'>
+<circle cx='38.5728' cy='96.7034' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='167.633444' y='254.497858' href='#asymptote-43-1-g1-112'/>
+<g fill="var(--asymptote-color-f00)">
+<use x='168.602923' y='164.069447' href='#asymptote-43-1-g1-102'/>
+<use x='175.118105' y='160.110629' href='#asymptote-43-1-g0-48'/>
+<use x='177.91318' y='164.069447' href='#asymptote-43-1-g2-40'/>
+<use x='182.155618' y='164.069447' href='#asymptote-43-1-g1-112'/>
+<use x='187.644266' y='164.069447' href='#asymptote-43-1-g2-41'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">That’s fine, but I claim that the “better” way to interpret
+the derivative at that point is as a <em class="ltx_emph ltx_font_italic">linear map</em>,
+that is, as a <em class="ltx_emph ltx_font_italic">function</em>.
+If <math id="S1.p4.m1" class="ltx_Math" alttext="f^{\prime}(p)=1.5" display="inline"><mrow><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1.5</mn></mrow></math>,
+then the derivative tells me that if I move <math id="S1.p4.m2" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> away from <math id="S1.p4.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>
+then I should expect <math id="S1.p4.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to change by about <math id="S1.p4.m5" class="ltx_Math" alttext="1.5\varepsilon" display="inline"><mrow><mn>1.5</mn><mo>⁢</mo><mi>ε</mi></mrow></math>.
+In other words,</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 43.1.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">The derivative of <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> at <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> approximates <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> near <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> by a <em class="ltx_emph ltx_font_italic">linear function</em>.</p>
+</div>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">What about more generally?
+Suppose I have a function like <math id="S1.p5.m1" class="ltx_Math" alttext="f\colon\mathbb{R}^{2}\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>, say</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="f(x,y)=x^{2}+y^{2}" display="block"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for concreteness or something.
+For a point <math id="S1.p5.m2" class="ltx_Math" alttext="p\in\mathbb{R}^{2}" display="inline"><mrow><mi>p</mi><mo>∈</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math>, the “derivative” of <math id="S1.p5.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> at <math id="S1.p5.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> ought to represent a linear map
+that approximates <math id="S1.p5.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> at that point <math id="S1.p5.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+That means I want a linear map <math id="S1.p5.m7" class="ltx_Math" alttext="T\colon\mathbb{R}^{2}\to\mathbb{R}" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> such that</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="f(p+v)\approx f(p)+T(v)" display="block"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>+</mo><mi>v</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≈</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for small displacements <math id="S1.p5.m8" class="ltx_Math" alttext="v\in\mathbb{R}^{2}" display="inline"><mrow><mi>v</mi><mo>∈</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math>.</p>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">Even more generally, if <math id="S1.p6.m1" class="ltx_Math" alttext="f\colon U\to W" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math> with <math id="S1.p6.m2" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> open
+(in the <math id="S1.p6.m3" class="ltx_Math" alttext="\left\lVert\bullet\right\rVert_{V}" display="inline"><msub><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mo lspace="0em" rspace="0em">∙</mo><mo fence="true" lspace="0em" stretchy="true">‖</mo></mrow><mi>V</mi></msub></math> metric as usual),
+then the derivative at <math id="S1.p6.m4" class="ltx_Math" alttext="p\in U" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>U</mi></mrow></math> ought to be so that</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="f(p+v)\approx f(p)+T(v)\in W." display="block"><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>+</mo><mi>v</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≈</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>∈</mo><mi>W</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">(We need <math id="S1.p6.m5" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> open so that for small enough <math id="S1.p6.m6" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math>, <math id="S1.p6.m7" class="ltx_Math" alttext="p+v\in U" display="inline"><mrow><mrow><mi>p</mi><mo>+</mo><mi>v</mi></mrow><mo>∈</mo><mi>U</mi></mrow></math> as well.)
+In fact this is exactly what we were doing earlier with <math id="S1.p6.m8" class="ltx_Math" alttext="f^{\prime}(p)" display="inline"><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> in high school.</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S1.p7" class="ltx_para">
+<img loading="lazy" src="../latexml-out/part_diffgeo//x1.png" id="S1.g1" class="ltx_graphics ltx_centering ltx_img_square" width="355" height="299" alt="[Uncaptioned image]">
+<p class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:70%;">Image derived from <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">img:tangentplane</span>]</cite></span></p>
+</div>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">The only difference is that, by an unfortunate coincidence,
+a linear map <math id="S1.p8.m1" class="ltx_Math" alttext="\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math> can be represented by just its slope.
+And in the unending quest to make everything a number so that it can be AP tested,
+we immediately forgot all about what we were trying to do in the first place
+and just defined the derivative of <math id="S1.p8.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to be a <em class="ltx_emph ltx_font_italic">number</em> instead of a <em class="ltx_emph ltx_font_italic">function</em>.</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 43.1.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The fundamental idea of Calculus is the local approximation of functions by linear functions.
+The derivative does exactly this.</p>
+</div>
+</div>
+<div id="S1.p9" class="ltx_para">
+<p class="ltx_p">Jean Dieudonné as quoted in <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:pugh</span>]</cite> continues:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">In the classical teaching of Calculus, this idea is immediately obscured
+by the accidental fact that, on a one-dimensional vector space,
+there is a one-to-one correspondence between linear forms and numbers,
+and therefore the derivative at a point is defined as a number instead of a linear form.
+This <span class="ltx_text ltx_font_bold">slavish subservience to the shibboleth of numerical interpretation at any cost</span>
+becomes much worse . . .</p>
+</blockquote>
+</div>
+<div id="S1.p10" class="ltx_para">
+<p class="ltx_p">So let’s do this right.
+The only thing that we have to do is say what “<math id="S1.p10.m1" class="ltx_Math" alttext="\approx" display="inline"><mo>≈</mo></math>” means, and for
+this we use the norm of the vector space.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 43.1.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> be open.
+Let <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="f\colon U\to W" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math> be a continuous function, and <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="p\in U" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>U</mi></mrow></math>.
+Suppose there exists a linear map <math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="T\colon V\to W" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math> such that</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\lim_{\left\lVert v\right\rVert_{V}\to 0}\frac{\left\lVert f(p+v)-f(p)-T(v)%
+\right\rVert_{W}}{\left\lVert v\right\rVert_{V}}=0." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><msub><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mi>v</mi><mo fence="true" lspace="0em" stretchy="true">‖</mo></mrow><mi>V</mi></msub><mo stretchy="false">→</mo><mn>0</mn></mrow></munder><mfrac linethickness="0.6px"><msub><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>+</mo><mi>v</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo fence="true" lspace="0em" stretchy="true">‖</mo></mrow><mi>W</mi></msub><msub><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mi>v</mi><mo fence="true" lspace="0em" stretchy="true">‖</mo></mrow><mi>V</mi></msub></mfrac></mrow><mo>=</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Then <math id="S1.Thmtheorem3.p1.m5" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> total derivative</span> of <math id="S1.Thmtheorem3.p1.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> at <math id="S1.Thmtheorem3.p1.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+We denote this by <math id="S1.Thmtheorem3.p1.m8" class="ltx_Math" alttext="(Df)_{p}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></math>, and say <math id="S1.Thmtheorem3.p1.m9" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> differentiable at <math id="S1.Thmtheorem3.p1.m10" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math></span>.</p>
+</div>
+<div id="S1.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p">If <math id="S1.Thmtheorem3.p2.m1" class="ltx_Math" alttext="(Df)_{p}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></math> exists at every point, we say <math id="S1.Thmtheorem3.p2.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> differentiable</span>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 43.1.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check if that <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="V=W=\mathbb{R}" display="inline"><mrow><mi>V</mi><mo>=</mo><mi>W</mi><mo>=</mo><mi>ℝ</mi></mrow></math>, this is equivalent to the single-variable definition.
+(What are the linear maps from <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> to <math id="S1.Thmtheorem4.p1.m3" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>?)</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 43.1.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Total derivative of <math id="S1.Thmtheorem5.m1" class="ltx_Math" alttext="f(x,y)=x^{2}+y^{2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="V=\mathbb{R}^{2}" display="inline"><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math> with standard basis <math id="S1.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\mathbf{e}_{1}" display="inline"><msub><mi>𝐞</mi><mn>1</mn></msub></math>, <math id="S1.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\mathbf{e}_{2}" display="inline"><msub><mi>𝐞</mi><mn>2</mn></msub></math> and let <math id="S1.Thmtheorem5.p1.m4" class="ltx_Math" alttext="W=\mathbb{R}" display="inline"><mrow><mi>W</mi><mo>=</mo><mi>ℝ</mi></mrow></math>,
+and let <math id="S1.Thmtheorem5.p1.m5" class="ltx_Math" alttext="f\left(x\mathbf{e}_{1}+y\mathbf{e}_{2}\right)=x^{2}+y^{2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow></math>. Let <math id="S1.Thmtheorem5.p1.m6" class="ltx_Math" alttext="p=a\mathbf{e}_{1}+b\mathbf{e}_{2}" display="inline"><mrow><mi>p</mi><mo>=</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow></mrow></mrow></math>.
+Then, we claim that</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="(Df)_{p}\colon\mathbb{R}^{2}\to\mathbb{R}\quad\text{by}\quad v\mapsto 2a\cdot%
+\mathbf{e}_{1}^{\vee}(v)+2b\cdot\mathbf{e}_{2}^{\vee}(v)." display="block"><mrow><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">→</mo><mrow><mi>ℝ</mi><mspace width="1em"></mspace><mtext>by</mtext></mrow></mrow><mspace width="1em"></mspace><mrow><mi>v</mi><mo stretchy="false">↦</mo><mrow><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>b</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S1.p11" class="ltx_para">
+<p class="ltx_p">Here, the notation <math id="S1.p11.m1" class="ltx_Math" alttext="\mathbf{e}_{1}^{\vee}" display="inline"><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></math> and <math id="S1.p11.m2" class="ltx_Math" alttext="\mathbf{e}_{2}^{\vee}" display="inline"><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></math> makes sense,
+because by definition <math id="S1.p11.m3" class="ltx_Math" alttext="(Df)_{p}\in V^{\vee}" display="inline"><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>∈</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math>: these are functions from <math id="S1.p11.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> to <math id="S1.p11.m5" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>!</p>
+</div>
+<div id="S1.p12" class="ltx_para">
+<p class="ltx_p">Let’s check this manually with the limit definition.
+Set <math id="S1.p12.m1" class="ltx_Math" alttext="v=xe_{1}+ye_{2}" display="inline"><mrow><mi>v</mi><mo>=</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow></mrow></math>, and note that the norm on <math id="S1.p12.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is <math id="S1.p12.m3" class="ltx_Math" alttext="\left\lVert(x,y)\right\rVert_{V}=\sqrt{x^{2}+y^{2}}" display="inline"><mrow><msub><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo fence="true" lspace="0em" stretchy="true">‖</mo></mrow><mi>V</mi></msub><mo>=</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></msqrt></mrow></math>
+while the norm on <math id="S1.p12.m4" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> is just the absolute value <math id="S1.p12.m5" class="ltx_Math" alttext="\left\lVert c\right\rVert_{W}=\left\lvert c\right\rvert" display="inline"><mrow><msub><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mi>c</mi><mo fence="true" lspace="0em" stretchy="true">‖</mo></mrow><mi>W</mi></msub><mo>=</mo><mrow><mo>|</mo><mi>c</mi><mo>|</mo></mrow></mrow></math>.
+Then we compute</p>
+<div class="table-container"><table id="A5.S3.EGx115" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex6"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex6.m1" class="ltx_Math" alttext="\displaystyle\frac{\left\lVert f(p+v)-f(p)-T(v)\right\rVert_{W}}{\left\lVert v%
+\right\rVert_{V}}" display="inline"><mstyle displaystyle="true"><mfrac linethickness="0.6px"><msub><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>+</mo><mi>v</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo fence="true" lspace="0em" stretchy="true">‖</mo></mrow><mi>W</mi></msub><msub><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mi>v</mi><mo fence="true" lspace="0em" stretchy="true">‖</mo></mrow><mi>V</mi></msub></mfrac></mstyle></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex6.m2" class="ltx_Math" alttext="\displaystyle=\frac{\left\lvert(a+x)^{2}+(b+y)^{2}-(a^{2}+b^{2})-(2ax+2by)%
+\right\rvert}{\sqrt{x^{2}+y^{2}}}" display="inline"><mrow><mi></mi><mo>=</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><mo>|</mo><mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>b</mi><mo>+</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>b</mi><mo>⁢</mo><mi>y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></msqrt></mfrac></mstyle></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex7.m1" class="ltx_Math" alttext="\displaystyle=\frac{x^{2}+y^{2}}{\sqrt{x^{2}+y^{2}}}=\sqrt{x^{2}+y^{2}}" display="inline"><mrow><mi></mi><mo>=</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></msqrt></mfrac></mstyle><mo>=</mo><msqrt><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></msqrt></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex8.m1" class="ltx_Math" alttext="\displaystyle\to 0" display="inline"><mrow><mi></mi><mo stretchy="false">→</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">as <math id="S1.p12.m6" class="ltx_Math" alttext="\left\lVert v\right\rVert\to 0" display="inline"><mrow><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mi>v</mi><mo fence="true" lspace="0em" rspace="0.1389em" stretchy="true">∥</mo></mrow><mo lspace="0.1389em" stretchy="false">→</mo><mn>0</mn></mrow></math>.
+Thus, for <math id="S1.p12.m7" class="ltx_Math" alttext="p=ae_{1}+be_{2}" display="inline"><mrow><mi>p</mi><mo>=</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow></mrow></math> we indeed have <math id="S1.p12.m8" class="ltx_Math" alttext="(Df)_{p}=2a\cdot\mathbf{e}_{1}^{\vee}+2b\cdot\mathbf{e}_{2}^{\vee}" display="inline"><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>=</mo><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>b</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S1.Thmtheorem6" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 43.1.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">As usual, differentiability implies continuity.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem7" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 43.1.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Although <math id="S1.Thmtheorem7.p1.m1" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math>, it might be helpful to think of vectors from <math id="S1.Thmtheorem7.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> and <math id="S1.Thmtheorem7.p1.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>
+as different types of objects (in particular, note that it’s possible for <math id="S1.Thmtheorem7.p1.m4" class="ltx_Math" alttext="0_{V}\notin U" display="inline"><mrow><msub><mn>0</mn><mi>V</mi></msub><mo>∉</mo><mi>U</mi></mrow></math>).
+The vectors in <math id="S1.Thmtheorem7.p1.m5" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> are “inputs” on our space
+while the vectors coming from <math id="S1.Thmtheorem7.p1.m6" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> are “small displacements”.
+For this reason, I deliberately try to use <math id="S1.Thmtheorem7.p1.m7" class="ltx_Math" alttext="p\in U" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>U</mi></mrow></math> and <math id="S1.Thmtheorem7.p1.m8" class="ltx_Math" alttext="v\in V" display="inline"><mrow><mi>v</mi><mo>∈</mo><mi>V</mi></mrow></math> when possible.</p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">43.2 </span>The projection principle</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">You may have learned single-variable calculus as the topic of doing
+differentiation and integration on single-variable functions <math id="S2.p1.m1" class="ltx_Math" alttext="\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>.
+So “multivariable calculus” ought to be calculus with functions <math id="S2.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{n}\to\mathbb{R}^{m}" display="inline"><mrow><msup><mi>ℝ</mi><mi>n</mi></msup><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mi>m</mi></msup></mrow></math>.
+You might notice there are <em class="ltx_emph ltx_font_italic">two</em> upgrades happening here:</p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The domain got upgraded from <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> to <math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The codomain got upgraded from <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> to <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{m}" display="inline"><msup><mi>ℝ</mi><mi>m</mi></msup></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">The point of this section is that the second upgrade is
+is <em class="ltx_emph ltx_font_italic">super easy</em> in comparison to the first upgrade,
+and basically doesn’t require doing anything new.
+All the interesting actions happens because we upgraded the domain, not the codomain.
+Here’s why:</p>
+</div>
+<div id="thm:project_principle" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 43.2.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Projection principle)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> be an open subset of the vector space <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+Let <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> be an <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>-dimensional real vector space with basis <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="w_{1},\dots,w_{m}" display="inline"><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>w</mi><mi>m</mi></msub></mrow></math>.
+Then there is a bijection between continuous functions <math id="S2.Thmtheorem1.p1.m6" class="ltx_Math" alttext="f\colon U\to W" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math> and
+<math id="S2.Thmtheorem1.p1.m7" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>-tuples of continuous <math id="S2.Thmtheorem1.p1.m8" class="ltx_Math" alttext="f_{1},f_{2},\dots,f_{m}\colon U\to\mathbb{R}" display="inline"><mrow><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+by projection onto the <math id="S2.Thmtheorem1.p1.m9" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>th basis element, i.e.</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="f(v)=f_{1}(v)w_{1}+\dots+f_{m}(v)w_{m}." display="block"><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>w</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>f</mi><mi>m</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>w</mi><mi>m</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Obvious.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">The theorem remains true if one replaces “continuous” by “differentiable”, “smooth”, “arbitrary”,
+or most other reasonable words. Translation:</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 43.2.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">To think about a function <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{R}^{m}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mi>m</mi></msup></mrow></mrow></math>,
+it suffices to think about each coordinate separately.</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">For this reason, we’ll most often be interested in functions <math id="S2.p5.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>.
+That’s why the dual space <math id="S2.p5.m2" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math> is so important.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">43.3 </span>Total and partial derivatives</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> If <math id="S3.p1.m1" class="ltx_Math" alttext="f(x,y)=x^{2}+y^{2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow></math>, then
+<math id="S3.p1.m2" class="ltx_Math" alttext="(Df)\colon(x,y)\mapsto 2x\cdot\mathbf{e}_{1}^{\vee}+2y\cdot\mathbf{e}_{2}^{\vee}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo rspace="0.278em" stretchy="false">)</mo></mrow><mo rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>y</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></mrow></mrow></mrow></math>, and
+<math id="S3.p1.m3" class="ltx_Math" alttext="\frac{\partial f}{\partial x}=2x" display="inline"><mrow><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi></mrow></mrow></math>, <math id="S3.p1.m4" class="ltx_Math" alttext="\frac{\partial f}{\partial y}=2y" display="inline"><mrow><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mi>y</mi></mrow></mrow></math>.</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p2.m1" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> be open and let <math id="S3.p2.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> have a basis <math id="S3.p2.m3" class="ltx_Math" alttext="\mathbf{e}_{1}" display="inline"><msub><mi>𝐞</mi><mn>1</mn></msub></math>, …, <math id="S3.p2.m4" class="ltx_Math" alttext="\mathbf{e}_{n}" display="inline"><msub><mi>𝐞</mi><mi>n</mi></msub></math>.
+Suppose <math id="S3.p2.m5" class="ltx_Math" alttext="f\colon U\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> is a function which is differentiable everywhere,
+meaning <math id="S3.p2.m6" class="ltx_Math" alttext="(Df)_{p}\in V^{\vee}" display="inline"><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>∈</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math> exists for every <math id="S3.p2.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+In that case, one can consider <math id="S3.p2.m8" class="ltx_Math" alttext="Df" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow></math> as <em class="ltx_emph ltx_font_italic">itself</em> a function:</p>
+<div class="table-container"><table id="A5.S3.EGx116" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex10"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex10.m1" class="ltx_Math" alttext="\displaystyle Df\colon U" display="inline"><mrow><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mi>U</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex10.m2" class="ltx_Math" alttext="\displaystyle\to V^{\vee}" display="inline"><mrow><mi></mi><mo stretchy="false">→</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex11"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex11.m1" class="ltx_Math" alttext="\displaystyle p" display="inline"><mi>p</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex11.m2" class="ltx_Math" alttext="\displaystyle\mapsto(Df)_{p}." display="inline"><mrow><mrow><mi></mi><mo stretchy="false">↦</mo><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This is a little crazy: to every <em class="ltx_emph ltx_font_italic">point</em> in <math id="S3.p2.m9" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>
+we associate a <em class="ltx_emph ltx_font_italic">function</em> in <math id="S3.p2.m10" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math>.
+We say <math id="S3.p2.m11" class="ltx_Math" alttext="Df" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow></math> is the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> total derivative</span> of <math id="S3.p2.m12" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>,
+to reflect how much information we’re dealing with.
+We say <math id="S3.p2.m13" class="ltx_Math" alttext="(Df)_{p}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></math> is the total derivative at <math id="S3.p2.m14" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Let’s apply the projection principle now to <math id="S3.p3.m1" class="ltx_Math" alttext="Df" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow></math>.
+Since we picked a basis <math id="S3.p3.m2" class="ltx_Math" alttext="\mathbf{e}_{1}" display="inline"><msub><mi>𝐞</mi><mn>1</mn></msub></math>, …, <math id="S3.p3.m3" class="ltx_Math" alttext="\mathbf{e}_{n}" display="inline"><msub><mi>𝐞</mi><mi>n</mi></msub></math> of <math id="S3.p3.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>,
+there is a corresponding dual basis
+<math id="S3.p3.m5" class="ltx_Math" alttext="\mathbf{e}_{1}^{\vee}" display="inline"><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></math>, <math id="S3.p3.m6" class="ltx_Math" alttext="\mathbf{e}_{2}^{\vee}" display="inline"><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></math>, …, <math id="S3.p3.m7" class="ltx_Math" alttext="\mathbf{e}_{n}^{\vee}" display="inline"><msubsup><mi>𝐞</mi><mi>n</mi><mo>∨</mo></msubsup></math>.
+The Projection Principle tells us that <math id="S3.p3.m8" class="ltx_Math" alttext="Df" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow></math> can thus be thought of as just <math id="S3.p3.m9" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> functions, so we can write</p>
+<div class="table-container"><table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="Df=\psi_{1}\mathbf{e}_{1}^{\vee}+\dots+\psi_{n}\mathbf{e}_{n}^{\vee}." display="block"><mrow><mrow><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo>=</mo><mrow><mrow><msub><mi>ψ</mi><mn>1</mn></msub><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>ψ</mi><mi>n</mi></msub><mo>⁢</mo><msubsup><mi>𝐞</mi><mi>n</mi><mo>∨</mo></msubsup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In fact, we can even describe what the <math id="S3.p3.m10" class="ltx_Math" alttext="\psi_{i}" display="inline"><msub><mi>ψ</mi><mi>i</mi></msub></math> are.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 43.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="i^{\text{th}}" display="inline"><msup><mi>i</mi><mtext class="ltx_mathvariant_bold">th</mtext></msup></math> partial derivative</span> of <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="f\colon U\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>, denoted</p>
+<div class="table-container"><table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\frac{\partial f}{\partial\mathbf{e}_{i}}\colon U\to\mathbb{R}" display="block"><mrow><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>i</mi></msub></mrow></mfrac><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is defined by</p>
+<div class="table-container"><table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\frac{\partial f}{\partial\mathbf{e}_{i}}(p)\coloneqq\lim_{t\to 0}\frac{f(p+te%
+_{i})-f(p)}{t}." display="block"><mrow><mrow><mrow><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>i</mi></msub></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">≔</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0.167em">lim</mo><mrow><mi>t</mi><mo stretchy="false">→</mo><mn>0</mn></mrow></munder><mfrac linethickness="0.6px"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>p</mi><mo>+</mo><mrow><mi>t</mi><mo>⁢</mo><msub><mi>e</mi><mi>i</mi></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mi>t</mi></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">You can think of it as “<math id="S3.p4.m1" class="ltx_Math" alttext="f^{\prime}" display="inline"><msup><mi>f</mi><mo>′</mo></msup></math> along <math id="S3.p4.m2" class="ltx_Math" alttext="\mathbf{e}_{i}" display="inline"><msub><mi>𝐞</mi><mi>i</mi></msub></math>”.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 43.3.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check that if <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="Df" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow></math> exists, then</span></p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="(Df)_{p}(\mathbf{e}_{i})=\frac{\partial f}{\partial\mathbf{e}_{i}}(p)." display="block"><mrow><mrow><mrow><msub><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow><mi>p</mi></msub><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><msub><mi>𝐞</mi><mi>i</mi></msub><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>i</mi></msub></mrow></mfrac><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi>p</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 43.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Of course you can write down a definition of <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\frac{\partial f}{\partial v}" display="inline"><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><mi>v</mi></mrow></mfrac></math>
+for any <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math> (rather than just the <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\mathbf{e}_{i}" display="inline"><msub><mi>𝐞</mi><mi>i</mi></msub></math>).</p>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">From the above remarks, we can derive that</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_math_unparsed" alttext="\boxed{Df=\frac{\partial f}{\partial\mathbf{e}_{1}}\cdot\mathbf{e}_{1}^{\vee}+%
+\dots+\frac{\partial f}{\partial\mathbf{e}_{n}}\cdot\mathbf{e}_{n}^{\vee}.}" display="block"><menclose notation="box"><mrow><mi>D</mi><mi>f</mi><mo>=</mo><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow></mfrac><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>n</mi></msub></mrow></mfrac><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mi>n</mi><mo>∨</mo></msubsup><mo lspace="0em">.</mo></mrow></menclose></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and so given a basis of <math id="S3.p5.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>, we can think of <math id="S3.p5.m2" class="ltx_Math" alttext="Df" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow></math> as just
+the <math id="S3.p5.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> partials.</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 43.3.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Keep in mind that each <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\frac{\partial f}{\partial\mathbf{e}_{i}}" display="inline"><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>i</mi></msub></mrow></mfrac></math> is a function from <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> to the <em class="ltx_emph ltx_font_italic">reals</em>.
+That is to say,</p>
+<div class="table-container"><table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="(Df)_{p}=\underbrace{\frac{\partial f}{\partial\mathbf{e}_{1}}(p)}_{\in\mathbb%
+{R}}\cdot\mathbf{e}_{1}^{\vee}+\dots+\underbrace{\frac{\partial f}{\partial%
+\mathbf{e}_{n}}(p)}_{\in\mathbb{R}}\cdot\mathbf{e}_{n}^{\vee}\in V^{\vee}." display="block"><mrow><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>=</mo><mrow><mrow><munder><munder accentunder="true"><mrow><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo>⏟</mo></munder><mrow><mi></mi><mo>∈</mo><mi>ℝ</mi></mrow></munder><mo rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><munder><munder accentunder="true"><mrow><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>n</mi></msub></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo>⏟</mo></munder><mrow><mi></mi><mo>∈</mo><mi>ℝ</mi></mrow></munder><mo rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mi>n</mi><mo>∨</mo></msubsup></mrow></mrow><mo>∈</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 43.3.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Partial derivatives of <math id="S3.Thmtheorem5.m1" class="ltx_Math" alttext="f(x,y)=x^{2}+y^{2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="f\colon\mathbb{R}^{2}\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> by <math id="S3.Thmtheorem5.p1.m2" class="ltx_Math" alttext="(x,y)\mapsto x^{2}+y^{2}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow></math>.
+Then in our new language,</p>
+<div class="table-container"><table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="Df\colon(x,y)\mapsto 2x\cdot\mathbf{e}_{1}^{\vee}+2y\cdot\mathbf{e}_{2}^{\vee}." display="block"><mrow><mrow><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>y</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Thus the partials are</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_math_unparsed" alttext="\frac{\partial f}{\partial x}\colon(x,y)\mapsto 2x\in\mathbb{R}\quad\text{and}%
+\quad\frac{\partial f}{\partial y}\colon(x,y)\mapsto 2y\in\mathbb{R}" display="block"><mrow><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mn>2</mn><mi>x</mi><mo>∈</mo><mi>ℝ</mi><mspace width="1em"></mspace><mtext>and</mtext><mspace width="1em"></mspace><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mn>2</mn><mi>y</mi><mo>∈</mo><mi>ℝ</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">With all that said, I haven’t really said much about how to
+find the total derivative itself.
+For example, if I told you</p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="f(x,y)=x\sin y+x^{2}y^{4}" display="block"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>x</mi><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>y</mi></mrow></mrow><mo>+</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>y</mi><mn>4</mn></msup></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">you might want to be able to compute <math id="S3.p6.m1" class="ltx_Math" alttext="Df" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow></math> without going through
+that horrible limit definition I told you about earlier.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">Fortunately, it turns out you already know how to compute partial derivatives,
+because you had to take AP Calculus at some point in your life.
+It turns out for most reasonable functions, this is all you’ll ever need.</p>
+</div>
+<div id="thm:apcalc_partials" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 43.3.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Continuous partials implies differentiable)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> be open and pick any basis <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="\mathbf{e}_{1},\dots,\mathbf{e}_{n}" display="inline"><mrow><msub><mi>𝐞</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>𝐞</mi><mi>n</mi></msub></mrow></math>.
+Let <math id="S3.Thmtheorem6.p1.m3" class="ltx_Math" alttext="f\colon U\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> and suppose that <math id="S3.Thmtheorem6.p1.m4" class="ltx_Math" alttext="\frac{\partial f}{\partial\mathbf{e}_{i}}" display="inline"><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>i</mi></msub></mrow></mfrac></math> is defined
+for each <math id="S3.Thmtheorem6.p1.m5" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math> and moreover is <em class="ltx_emph ltx_font_italic">continuous</em>.
+Then <math id="S3.Thmtheorem6.p1.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is differentiable and <math id="S3.Thmtheorem6.p1.m7" class="ltx_Math" alttext="Df" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow></math> is given by</p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="Df=\sum_{i=1}^{n}\frac{\partial f}{\partial\mathbf{e}_{i}}\cdot\mathbf{e}_{i}^%
+{\vee}." display="block"><mrow><mrow><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>i</mi></msub></mrow></mfrac><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mi>i</mi><mo>∨</mo></msubsup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">Not going to write out the details, but… given <math id="S3.p8.m1" class="ltx_Math" alttext="v=t_{1}e_{1}+\dots+t_{n}e_{n}" display="inline"><mrow><mi>v</mi><mo>=</mo><mrow><mrow><msub><mi>t</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>t</mi><mi>n</mi></msub><mo>⁢</mo><msub><mi>e</mi><mi>n</mi></msub></mrow></mrow></mrow></math>,
+the idea is to just walk from <math id="S3.p8.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S3.p8.m3" class="ltx_Math" alttext="p+t_{1}e_{1}" display="inline"><mrow><mi>p</mi><mo>+</mo><mrow><msub><mi>t</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow></mrow></math>, <math id="S3.p8.m4" class="ltx_Math" alttext="p+t_{1}e_{1}+t_{2}e_{2}" display="inline"><mrow><mi>p</mi><mo>+</mo><mrow><msub><mi>t</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><msub><mi>t</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow></mrow></math>, …,
+up to <math id="S3.p8.m5" class="ltx_Math" alttext="p+t_{1}e_{1}+t_{2}e_{2}+\dots+t_{n}e_{n}=p+v" display="inline"><mrow><mrow><mi>p</mi><mo>+</mo><mrow><msub><mi>t</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><msub><mi>t</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>t</mi><mi>n</mi></msub><mo>⁢</mo><msub><mi>e</mi><mi>n</mi></msub></mrow></mrow><mo>=</mo><mrow><mi>p</mi><mo>+</mo><mi>v</mi></mrow></mrow></math>,
+picking up the partial derivatives on the way.
+Do some calculation.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.Thmtheorem7" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 43.3.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">The continuous condition cannot be dropped. The function</p>
+<div class="table-container"><table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="f(x,y)=\begin{cases}\frac{xy}{x^{2}+y^{2}}&amp;(x,y)\neq(0,0)\\
+0&amp;(x,y)=(0,0).\end{cases}" display="block"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mstyle displaystyle="false"><mfrac linethickness="0.6px"><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mfrac></mstyle></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>≠</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is the classic counterexample – the total derivative <math id="S3.Thmtheorem7.p1.m1" class="ltx_Math" alttext="Df" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow></math> does not exist at zero,
+even though both partials do.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem8" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 43.3.8</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Actually computing a total derivative)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem8.p1.m1" class="ltx_Math" alttext="f(x,y)=x\sin y+x^{2}y^{4}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>x</mi><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>y</mi></mrow></mrow><mo>+</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>y</mi><mn>4</mn></msup></mrow></mrow></mrow></math>. Then</p>
+<div class="table-container"><table id="A5.S3.EGx117" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex23"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex23.m1" class="ltx_Math" alttext="\displaystyle\frac{\partial f}{\partial x}(x,y)" display="inline"><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac></mstyle><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex23.m2" class="ltx_Math" alttext="\displaystyle=\sin y+y^{4}\cdot 2x" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>y</mi></mrow><mo>+</mo><mrow><mrow><msup><mi>y</mi><mn>4</mn></msup><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>⁢</mo><mi>x</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex24"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex24.m1" class="ltx_Math" alttext="\displaystyle\frac{\partial f}{\partial y}(x,y)" display="inline"><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac></mstyle><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex24.m2" class="ltx_Math" alttext="\displaystyle=x\cos y+x^{2}\cdot 4y^{3}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>x</mi><mo lspace="0.167em">⁢</mo><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>y</mi></mrow></mrow><mo>+</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>4</mn></mrow><mo>⁢</mo><msup><mi>y</mi><mn>3</mn></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So <a href="#thm:apcalc_partials" title="Theorem 43.3.6 (Continuous partials implies differentiable) ‣ 43.3 Total and partial derivatives ‣ Chapter 43 Multivariable calculus done correctly ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">43.3.6</span></a> applies,
+and <math id="S3.Thmtheorem8.p1.m2" class="ltx_Math" alttext="Df=\frac{\partial f}{\partial x}\mathbf{e}_{1}^{\vee}+\frac{\partial f}{%
+\partial y}\mathbf{e}_{2}^{\vee}" display="inline"><mrow><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo>=</mo><mrow><mrow><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mfrac linethickness="0.6px"><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></mrow></mrow></math>,
+which I won’t bother to write out.</p>
+</div>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">The example <math id="S3.p9.m1" class="ltx_Math" alttext="f(x,y)=x^{2}+y^{2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow></math> is the same thing.
+That being said, who cares about <math id="S3.p9.m2" class="ltx_Math" alttext="x\sin y+x^{2}y^{4}" display="inline"><mrow><mrow><mi>x</mi><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>y</mi></mrow></mrow><mo>+</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>y</mi><mn>4</mn></msup></mrow></mrow></math> anyways?</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">43.4 </span>(Optional) A word on higher derivatives</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.p1.m1" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> be open, and take <math id="S4.p1.m2" class="ltx_Math" alttext="f\colon U\to W" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math>, so that <math id="S4.p1.m3" class="ltx_Math" alttext="Df\colon U\to\operatorname{Hom}(V,W)" display="inline"><mrow><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Well, <math id="S4.p2.m1" class="ltx_Math" alttext="\operatorname{Hom}(V,W)" display="inline"><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow></math> can also be thought of as a normed vector space in its own right:
+it turns out that one can define an operator norm on it by setting</p>
+<div class="table-container"><table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="\left\lVert T\right\rVert\coloneqq\sup\left\{\frac{\left\lVert T(v)\right%
+\rVert_{W}}{\left\lVert v\right\rVert_{V}}\mid v\neq 0_{V}\right\}." display="block"><mrow><mrow><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mi>T</mi><mo fence="true" lspace="0em" rspace="0.1389em" stretchy="true">∥</mo></mrow><mo lspace="0.1389em" rspace="0.1389em">≔</mo><mrow><mo lspace="0.1389em" movablelimits="false" rspace="0em">sup</mo><mrow><mo>{</mo><mfrac linethickness="0.6px"><msub><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo fence="true" lspace="0em" stretchy="true">‖</mo></mrow><mi>W</mi></msub><msub><mrow><mo fence="true" rspace="0em" stretchy="true">‖</mo><mi>v</mi><mo fence="true" lspace="0em" stretchy="true">‖</mo></mrow><mi>V</mi></msub></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>v</mi><mo>≠</mo><msub><mn>0</mn><mi>V</mi></msub></mrow><mo>}</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So <math id="S4.p2.m2" class="ltx_Math" alttext="\operatorname{Hom}(V,W)" display="inline"><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow></math> can be thought of as a normed vector space as well.
+Thus it makes sense to write</p>
+<div class="table-container"><table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="D(Df)\colon U\to\operatorname{Hom}(V,\operatorname{Hom}(V,W))" display="block"><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which we abbreviate as <math id="S4.p2.m3" class="ltx_Math" alttext="D^{2}f" display="inline"><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>⁢</mo><mi>f</mi></mrow></math>. Dropping all doubt and plunging on,</p>
+<div class="table-container"><table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="D^{3}f\colon U\to\operatorname{Hom}(V,\operatorname{Hom}(V,\operatorname{Hom}(%
+V,W)))." display="block"><mrow><mrow><mrow><msup><mi>D</mi><mn>3</mn></msup><mo>⁢</mo><mi>f</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">I’m sorry.
+As consolation, we at least know that <math id="S4.p2.m4" class="ltx_Math" alttext="\operatorname{Hom}(V,W)\cong V^{\vee}\otimes W" display="inline"><mrow><mrow><mi>Hom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo>,</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><msup><mi>V</mi><mo>∨</mo></msup><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>W</mi></mrow></mrow></math> in a natural way,
+so we can at least condense this to</p>
+<div class="table-container"><table id="Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex28.m1" class="ltx_Math" alttext="D^{k}f\colon V\to(V^{\vee})^{\otimes k}\otimes W" display="block"><mrow><mrow><msup><mi>D</mi><mi>k</mi></msup><mo>⁢</mo><mi>f</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mrow><msup><mrow><mo stretchy="false">(</mo><msup><mi>V</mi><mo>∨</mo></msup><mo rspace="0.055em" stretchy="false">)</mo></mrow><mrow><mi></mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>k</mi></mrow></msup><mo rspace="0.222em">⊗</mo><mi>W</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">rather than writing a bunch of <math id="S4.p2.m5" class="ltx_Math" alttext="\operatorname{Hom}" display="inline"><mi>Hom</mi></math>’s.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 43.4.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="k=2" display="inline"><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow></math>, <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="W=\mathbb{R}" display="inline"><mrow><mi>W</mi><mo>=</mo><mi>ℝ</mi></mrow></math>, then <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="D^{2}f(v)\in(V^{\vee})^{\otimes 2}" display="inline"><mrow><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><msup><mrow><mo stretchy="false">(</mo><msup><mi>V</mi><mo>∨</mo></msup><mo stretchy="false">)</mo></mrow><mrow><mi></mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mn>2</mn></mrow></msup></mrow></math>,
+so it can be represented as an <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="n\times n" display="inline"><mrow><mi>n</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>n</mi></mrow></math> matrix,
+which for some reason is called a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Hessian</span>.</p>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">The most important property of the second derivative is that</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 43.4.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Symmetry of <math id="S4.Thmtheorem2.m1" class="ltx_Math" alttext="D^{2}f" display="inline"><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>⁢</mo><mi>f</mi></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f\colon U\to W" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math> with <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> open.
+If <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="(D^{2}f)_{p}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></math> exists at some <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="p\in U" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>U</mi></mrow></math>, then it is symmetric, meaning</p>
+<div class="table-container"><table id="Ex29" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex29.m1" class="ltx_Math" alttext="(D^{2}f)_{p}(v_{1},v_{2})=(D^{2}f)_{p}(v_{2},v_{1})." display="block"><mrow><mrow><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><msup><mi>D</mi><mn>2</mn></msup><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo>,</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">I’ll just quote this without proof (see e.g. <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:pugh</span>, §5, theorem 16]</cite>),
+because double derivatives make my head spin.
+An important corollary of this theorem:</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_corollary">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Corollary 43.4.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Clairaut’s theorem: mixed partials are symmetric)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> with <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> open be twice differentiable.
+Then for any point <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> such that the quantities are defined,</p>
+<div class="table-container"><table id="Ex30" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex30.m1" class="ltx_Math" alttext="\frac{\partial}{\partial\mathbf{e}_{i}}\frac{\partial}{\partial\mathbf{e}_{j}}%
+f(p)=\frac{\partial}{\partial\mathbf{e}_{j}}\frac{\partial}{\partial\mathbf{e}%
+_{i}}f(p)." display="block"><mrow><mrow><mrow><mfrac linethickness="0.6px"><mo>∂</mo><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>i</mi></msub></mrow></mfrac><mo>⁢</mo><mfrac linethickness="0.6px"><mo>∂</mo><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>j</mi></msub></mrow></mfrac><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mo>∂</mo><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>j</mi></msub></mrow></mfrac><mo>⁢</mo><mfrac linethickness="0.6px"><mo>∂</mo><mrow><mo rspace="0em">∂</mo><msub><mi>𝐞</mi><mi>i</mi></msub></mrow></mfrac><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">43.5 </span>Towards differential forms</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">This concludes the exposition of what the derivative really is:
+the key idea I want to communicate in this chapter is that <math id="S5.p1.m1" class="ltx_Math" alttext="Df" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow></math>
+should be thought of as a map from <math id="S5.p1.m2" class="ltx_Math" alttext="U\to V^{\vee}" display="inline"><mrow><mi>U</mi><mo stretchy="false">→</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math>.</p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">The next natural thing to do is talk about <em class="ltx_emph ltx_font_italic">integration</em>.
+The correct way to do this is through a so-called <em class="ltx_emph ltx_font_italic">differential form</em>:
+you’ll finally know what all those stupid <math id="S5.p2.m1" class="ltx_Math" alttext="dx" display="inline"><mrow><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow></math>’s and <math id="S5.p2.m2" class="ltx_Math" alttext="dy" display="inline"><mrow><mi>d</mi><mo>⁢</mo><mi>y</mi></mrow></math>’s really mean.
+(They weren’t just there for decoration!)</p>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">43.6 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_sproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 43A</span></span><span class="ltx_text ltx_font_bold"> </span>(Chain rule)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="U_{1}\xrightarrow{f}U_{2}\xrightarrow{g}U_{3}" display="inline"><mrow><msub><mi>U</mi><mn>1</mn></msub><mover accent="true"><mo stretchy="false">→</mo><mo>𝑓</mo></mover><msub><mi>U</mi><mn>2</mn></msub><mover accent="true"><mo stretchy="false">→</mo><mo>𝑔</mo></mover><msub><mi>U</mi><mn>3</mn></msub></mrow></math> be differentiable maps
+between open sets of normed vector spaces <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="V_{i}" display="inline"><msub><mi>V</mi><mi>i</mi></msub></math>, and let <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="h=g\circ f" display="inline"><mrow><mi>h</mi><mo>=</mo><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>f</mi></mrow></mrow></math>.
+Prove the Chain Rule: for any point <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="p\in U_{1}" display="inline"><mrow><mi>p</mi><mo>∈</mo><msub><mi>U</mi><mn>1</mn></msub></mrow></math>, we have</p>
+<div class="table-container"><table id="Ex31" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex31.m1" class="ltx_Math" alttext="(Dh)_{p}=(Dg)_{f(p)}\circ(Df)_{p}." display="block"><mrow><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>h</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>=</mo><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>g</mi></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo rspace="0.222em">∘</mo><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 43B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> be open, and <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="f\colon U\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> be differentiable <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> times.
+Show that <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="(D^{k}f)_{p}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><msup><mi>D</mi><mi>k</mi></msup><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></math> is symmetric in its <math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> arguments, meaning for any <math id="Thmproblem2.p1.m6" class="ltx_Math" alttext="v_{1},\dots,v_{k}\in V" display="inline"><mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub></mrow><mo>∈</mo><mi>V</mi></mrow></math>
+and any permutation <math id="Thmproblem2.p1.m7" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math> on <math id="Thmproblem2.p1.m8" class="ltx_Math" alttext="\left\{1,\dots,k\right\}" display="inline"><mrow><mo>{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>k</mi><mo>}</mo></mrow></math> we have</p>
+<div class="table-container"><table id="Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex32.m1" class="ltx_Math" alttext="(D^{k}f)_{p}(v_{1},\dots,v_{k})=(D^{k}f)_{p}(v_{\sigma(1)},\dots,v_{\sigma(k)})." display="block"><mrow><mrow><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><msup><mi>D</mi><mi>k</mi></msup><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><msup><mi>D</mi><mi>k</mi></msup><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>v</mi><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Simply induct, with the work having been done on the <math id="Thmproblem2.p1.m9" class="ltx_Math" alttext="k=2" display="inline"><mrow><mi>k</mi><mo>=</mo><mn>2</mn></mrow></math> case.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../prob/martingales.html">Previous chapter: Stopped martingales (TO DO)</a><br />
+<a href="../diffgeo/forms-diffgeo.html">Next chapter: Differential forms</a>
+</nav>
+
+		</main>
+	</body>
+</html>

@@ -1,0 +1,1435 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Ordinals</title>
+		<meta property="og:title" content="Ordinals" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../st1/zfc.html">Previous chapter: Zermelo-Fraenkel with choice</a><br />
+<a href="../st1/cardinals-set-theory.html">Next chapter: Cardinals</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 90 </span>Ordinals</h1>
+
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">90.1 </span>Counting for preschoolers</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">In preschool, we were told to count as follows.
+We defined a set of symbols <math id="S1.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="S1.p1.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>, <math id="S1.p1.m3" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>, <math id="S1.p1.m4" class="ltx_Math" alttext="4" display="inline"><mn>4</mn></math>, ….
+Then the teacher would hold up three apples and say:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">“One . . . two . . . three! There are three apples.”</p>
+</blockquote>
+</div>
+<div class="ltx_logical-block">
+<div id="S1.p2" class="ltx_para">
+<img loading="lazy" src="../external/venhance-napkin/media/three-apples.jpg" id="S1.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="297" height="197" alt="[Uncaptioned image]">
+<p class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:70%;">Image from <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">img:apples</span>]</cite></span></p>
+</div>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">The implicit definition is that the <em class="ltx_emph ltx_font_italic">last</em> number said is the final answer.
+This raises some obvious problems if we try to count infinite sets,
+but even in the finite world,
+this method of counting fails for the simplest set of all:
+how many apples are in the following picture?</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S1.p4" class="ltx_para">
+<img loading="lazy" src="../external/venhance-napkin/media/velociraptor.jpg" id="S1.g2" class="ltx_graphics ltx_centering ltx_img_portrait" width="184" height="275" alt="[Uncaptioned image]">
+<p class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:70%;">Image from <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">img:velociraptor</span>]</cite></span></p>
+</div>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">Answer: <math id="S1.p5.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>. There is nothing to say, and our method of counting has failed
+for the simplest set of all: the empty set.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">90.2 </span>Counting for set theorists</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S2.p1.m1" class="ltx_Math" alttext="\omega+1=\{0,1,2,\dots,\omega\}" display="inline"><mrow><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>ω</mi><mo stretchy="false">}</mo></mrow></mrow></math> might work.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Rather than using the <em class="ltx_emph ltx_font_italic">last</em> number listed, I propose instead
+starting with a list of symbols <math id="S2.p2.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, <math id="S2.p2.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="S2.p2.m3" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>, … and making
+the final answer the <em class="ltx_emph ltx_font_italic">first</em> number which was <em class="ltx_emph ltx_font_italic">not</em> said.
+Thus to count three apples, we would say</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">“Zero . . . one . . . two! There are three apples.”</p>
+</blockquote>
+<p class="ltx_p">We will call these numbers <em class="ltx_emph ltx_font_italic">ordinal numbers</em> (rigorous definition later).
+In particular, we’ll <em class="ltx_emph ltx_font_italic">define</em> each ordinal to be the set of things we say:</p>
+<div class="table-container"><table id="A5.S3.EGx179" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex1"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex1.m1" class="ltx_Math" alttext="\displaystyle 0" display="inline"><mn>0</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex1.m2" class="ltx_Math" alttext="\displaystyle=\varnothing" display="inline"><mrow><mi></mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex2"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex2.m1" class="ltx_Math" alttext="\displaystyle 1" display="inline"><mn>1</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex2.m2" class="ltx_Math" alttext="\displaystyle=\{0\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex3"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex3.m1" class="ltx_Math" alttext="\displaystyle 2" display="inline"><mn>2</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex3.m2" class="ltx_Math" alttext="\displaystyle=\{0,1\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex4.m1" class="ltx_Math" alttext="\displaystyle 3" display="inline"><mn>3</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex4.m2" class="ltx_Math" alttext="\displaystyle=\{0,1,2\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex5.m1" class="ltx_Math" alttext='\displaystyle\mathmakebox[width("{}={}")][c]{\vdots}' display="inline"><mi mathvariant="normal">⋮</mi></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In this way we can write out the natural numbers.
+You can have some fun with this, by saying things like</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="4\coloneqq\left\{\left\{\right\},\left\{\left\{\right\}\right\},\left\{\left\{%
+\right\},\left\{\left\{\right\}\right\}\right\},\left\{\left\{\right\},\left\{%
+\left\{\right\}\right\},\left\{\left\{\right\},\left\{\left\{\right\}\right\}%
+\right\}\right\}\right\}." display="block"><mrow><mrow><mn>4</mn><mo>≔</mo><mrow><mo>{</mo><mrow><mo>{</mo><mo>}</mo></mrow><mo>,</mo><mrow><mo>{</mo><mrow><mo>{</mo><mo>}</mo></mrow><mo>}</mo></mrow><mo>,</mo><mrow><mo>{</mo><mrow><mo>{</mo><mo>}</mo></mrow><mo>,</mo><mrow><mo>{</mo><mrow><mo>{</mo><mo>}</mo></mrow><mo>}</mo></mrow><mo>}</mo></mrow><mo>,</mo><mrow><mo>{</mo><mrow><mo>{</mo><mo>}</mo></mrow><mo>,</mo><mrow><mo>{</mo><mrow><mo>{</mo><mo>}</mo></mrow><mo>}</mo></mrow><mo>,</mo><mrow><mo>{</mo><mrow><mo>{</mo><mo>}</mo></mrow><mo>,</mo><mrow><mo>{</mo><mrow><mo>{</mo><mo>}</mo></mrow><mo>}</mo></mrow><mo>}</mo></mrow><mo>}</mo></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In this way, we soon write down all the natural numbers.
+The next ordinal, <math id="S2.p2.m4" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>,<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>As mentioned in the last chapter,
+it’s not immediate that <math id="footnote1.m1" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math> is a set;
+its existence is generally postulated by the <math id="footnote1.m2" class="ltx_Math" alttext="\mathrm{Infinity}" display="inline"><mi>Infinity</mi></math> axiom.
+</span></span></span> is defined as</p>
+<div class="table-container"><table id="A5.S3.EGx180" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex7.m1" class="ltx_Math" alttext="\displaystyle\omega" display="inline"><mi>ω</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex7.m2" class="ltx_Math" alttext="\displaystyle=\left\{0,1,2,\dots\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody><tr class="ltx_eqn_row ltx_align_baseline"><td class="ltx_eqn_cell ltx_align_left" style="white-space:normal;" colspan="5">Then comes</td></tr></tbody>
+<tbody id="Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex8.m1" class="ltx_Math" alttext="\displaystyle\omega+1" display="inline"><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex8.m2" class="ltx_Math" alttext="\displaystyle=\left\{0,1,2,\dots,\omega\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>ω</mi><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex9"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex9.m1" class="ltx_Math" alttext="\displaystyle\omega+2" display="inline"><mrow><mi>ω</mi><mo>+</mo><mn>2</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex9.m2" class="ltx_Math" alttext="\displaystyle=\left\{0,1,2,\dots,\omega,\omega+1\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>ω</mi><mo>,</mo><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex10"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex10.m1" class="ltx_Math" alttext="\displaystyle\omega+3" display="inline"><mrow><mi>ω</mi><mo>+</mo><mn>3</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex10.m2" class="ltx_Math" alttext="\displaystyle=\left\{0,1,2,\dots,\omega,\omega+1,\omega+2\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>ω</mi><mo>,</mo><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow><mo>,</mo><mrow><mi>ω</mi><mo>+</mo><mn>2</mn></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex11"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex11.m1" class="ltx_Math" alttext='\displaystyle\mathmakebox[width("{}={}")][c]{\vdots}' display="inline"><mi mathvariant="normal">⋮</mi></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody><tr class="ltx_eqn_row ltx_align_baseline"><td class="ltx_eqn_cell ltx_align_left" style="white-space:normal;" colspan="5">And in this way we define <math id="A5.S3.EGx180.m1" class="ltx_Math" alttext="\omega+n" display="inline"><mrow><mi>ω</mi><mo>+</mo><mi>n</mi></mrow></math>, and eventually reach</td></tr></tbody>
+<tbody id="Ex12"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex12.m1" class="ltx_Math" alttext="\displaystyle\omega\cdot 2=\omega+\omega" display="inline"><mrow><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>=</mo><mrow><mi>ω</mi><mo>+</mo><mi>ω</mi></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex12.m2" class="ltx_Math" alttext="\displaystyle=\left\{0,1,2\dots,\omega,\omega+1,\omega+2,\dots\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mrow><mn>2</mn><mo>⁢</mo><mi mathvariant="normal">…</mi></mrow><mo>,</mo><mi>ω</mi><mo>,</mo><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow><mo>,</mo><mrow><mi>ω</mi><mo>+</mo><mn>2</mn></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex13"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex13.m1" class="ltx_Math" alttext="\displaystyle\omega\cdot 2+1" display="inline"><mrow><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>+</mo><mn>1</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex13.m2" class="ltx_Math" alttext="\displaystyle=\left\{0,1,2\dots,\omega,\omega+1,\omega+2,\dots,\omega\cdot 2%
+\right\}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mrow><mn>2</mn><mo>⁢</mo><mi mathvariant="normal">…</mi></mrow><mo>,</mo><mi>ω</mi><mo>,</mo><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow><mo>,</mo><mrow><mi>ω</mi><mo>+</mo><mn>2</mn></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In this way we obtain</p>
+<div class="table-container"><table id="A5.S3.EGx181" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex14"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex14.m1" class="ltx_Math" alttext="\displaystyle 0,\;" display="inline"><mrow><mn>0</mn><mo>,</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex14.m2" class="ltx_Math" alttext="\displaystyle 1,\;2,\;3,\;\dots,\;\omega" display="inline"><mrow><mn>1</mn><mo>,</mo><mn> 2</mn><mo>,</mo><mn> 3</mn><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi><mo rspace="0.447em">,</mo><mi>ω</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex15"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex15.m1" class="ltx_Math" alttext="\displaystyle\omega+1,\;\omega+2,\;\dots,\;\omega+\omega" display="inline"><mrow><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow><mo rspace="0.447em">,</mo><mrow><mi>ω</mi><mo>+</mo><mn>2</mn></mrow><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi><mo rspace="0.447em">,</mo><mrow><mi>ω</mi><mo>+</mo><mi>ω</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex16"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex16.m1" class="ltx_Math" alttext="\displaystyle\omega\cdot 2+1,\;\omega\cdot 2+2,\;\dots,\;\omega\cdot 3,\;" display="inline"><mrow><mrow><mrow><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>+</mo><mn>1</mn></mrow><mo rspace="0.447em">,</mo><mrow><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>+</mo><mn>2</mn></mrow><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi><mo rspace="0.447em">,</mo><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>3</mn></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex17"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex17.m1" class="ltx_Math" alttext="\displaystyle\vdots" display="inline"><mi mathvariant="normal">⋮</mi></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex18"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex18.m1" class="ltx_Math" alttext="\displaystyle\omega^{2}+1,\;\omega^{2}+2,\;\dots" display="inline"><mrow><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mo rspace="0.447em">,</mo><mrow><msup><mi>ω</mi><mn>2</mn></msup><mo>+</mo><mn>2</mn></mrow><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex19"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex19.m1" class="ltx_Math" alttext="\displaystyle\vdots" display="inline"><mi mathvariant="normal">⋮</mi></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex20"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex20.m1" class="ltx_Math" alttext="\displaystyle\omega^{3},\;\dots,\;\omega^{4},\;\dots,\;\omega^{\omega}" display="inline"><mrow><msup><mi>ω</mi><mn>3</mn></msup><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi><mo rspace="0.447em">,</mo><msup><mi>ω</mi><mn>4</mn></msup><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi><mo rspace="0.447em">,</mo><msup><mi>ω</mi><mi>ω</mi></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex21"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex21.m1" class="ltx_Math" alttext="\displaystyle\vdots" display="inline"><mi mathvariant="normal">⋮</mi></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex22"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex22.m1" class="ltx_Math" alttext="\displaystyle\omega^{\omega^{\omega^{\dots}}}" display="inline"><msup><mi>ω</mi><msup><mi>ω</mi><msup><mi>ω</mi><mi mathvariant="normal">…</mi></msup></msup></msup></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">The first several ordinals can be illustrated in a nice spiral.</p>
+<img loading="lazy" src="../external/venhance-napkin/media/500px-Omega-exp-omega-labeled.png" id="S2.p3.g1" class="ltx_graphics ltx_centering ltx_img_square" width="300" height="369" alt="[Uncaptioned image]">
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 90.2.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">You may think, well, why don’t we define the ordinals like this instead? It certainly looks
+shorter and simpler!</p>
+<div class="table-container"><table id="A5.S3.EGx182" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex24"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex24.m1" class="ltx_Math" alttext="\displaystyle 0" display="inline"><mn>0</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex24.m2" class="ltx_Math" alttext="\displaystyle=\varnothing" display="inline"><mrow><mi></mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex25"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex25.m1" class="ltx_Math" alttext="\displaystyle 1" display="inline"><mn>1</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex25.m2" class="ltx_Math" alttext="\displaystyle=\{0\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex26"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex26.m1" class="ltx_Math" alttext="\displaystyle 2" display="inline"><mn>2</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex26.m2" class="ltx_Math" alttext="\displaystyle=\{1\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex27"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex27.m1" class="ltx_Math" alttext="\displaystyle 3" display="inline"><mn>3</mn></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex27.m2" class="ltx_Math" alttext="\displaystyle=\{2\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>2</mn><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex28"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex28.m1" class="ltx_Math" alttext='\displaystyle\mathmakebox[width("{}={}")][c]{\vdots}' display="inline"><mi mathvariant="normal">⋮</mi></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex29"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex29.m1" class="ltx_Math" alttext="\displaystyle\omega" display="inline"><mi>ω</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex29.m2" class="ltx_Math" alttext="\displaystyle=\{0,1,2,\dots\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex30"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex30.m1" class="ltx_Math" alttext="\displaystyle\omega+1" display="inline"><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex30.m2" class="ltx_Math" alttext="\displaystyle=\{\omega\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>ω</mi><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex31"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex31.m1" class="ltx_Math" alttext='\displaystyle\mathmakebox[width("{}={}")][c]{\vdots}' display="inline"><mi mathvariant="normal">⋮</mi></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">There are a few reasons why the usual definition is better.</p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The “alternative definition” above is not uniform —
+an ordinal of the form <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="\alpha+1" display="inline"><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow></math> is defined by a singleton set, while the other ordinals
+are defined by a set that leads up to it.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Comparison is simpler: for two ordinals <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>, <math id="S2.I1.i2.p1.m3" class="ltx_Math" alttext="\alpha&lt;\beta" display="inline"><mrow><mi>α</mi><mo>&lt;</mo><mi>β</mi></mrow></math> if
+and only if <math id="S2.I1.i2.p1.m4" class="ltx_Math" alttext="\alpha\in\beta" display="inline"><mrow><mi>α</mi><mo>∈</mo><mi>β</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Cardinals will be simpler: the size of the set <math id="S2.I1.i3.p1.m1" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math> is exactly <math id="S2.I1.i3.p1.m2" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 90.2.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Digression)</span> — </span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The number <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\omega^{\omega^{\omega^{\dots}}}" display="inline"><msup><mi>ω</mi><msup><mi>ω</mi><msup><mi>ω</mi><mi mathvariant="normal">…</mi></msup></msup></msup></math> has a name, <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\varepsilon_{0}" display="inline"><msub><mi>ε</mi><mn>0</mn></msub></math>;
+it has the property that <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\omega^{\varepsilon_{0}}=\varepsilon_{0}" display="inline"><mrow><msup><mi>ω</mi><msub><mi>ε</mi><mn>0</mn></msub></msup><mo>=</mo><msub><mi>ε</mi><mn>0</mn></msub></mrow></math>.
+The reason for using “<math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>” (which is usually used to denote small quantities)
+is that, despite how huge it may appear, it is actually a countable set.
+More on that later.</p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">90.3 </span>Definition of an ordinal</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Our informal description of ordinals gives us a chain</p>
+<div class="table-container"><table id="Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex32.m1" class="ltx_Math" alttext="0\in 1\in 2\in\dots\in\omega\in\omega+1\in\dots." display="block"><mrow><mrow><mn>0</mn><mo>∈</mo><mn>1</mn><mo>∈</mo><mn>2</mn><mo>∈</mo><mi mathvariant="normal">⋯</mi><mo>∈</mo><mi>ω</mi><mo>∈</mo><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow><mo>∈</mo><mi mathvariant="normal">…</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">To give the actual definition of an ordinal, I need to define two auxiliary terms first.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 90.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A set <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> transitive</span> if whenever <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="z\in y\in x" display="inline"><mrow><mi>z</mi><mo>∈</mo><mi>y</mi><mo>∈</mo><mi>x</mi></mrow></math>, we have <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="z\in x" display="inline"><mrow><mi>z</mi><mo>∈</mo><mi>x</mi></mrow></math> also.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 90.3.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(<math id="S3.Thmtheorem2.m1" class="ltx_Math" alttext="7" display="inline"><mn>7</mn></math> is transitive)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The set <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="7" display="inline"><mn>7</mn></math> is transitive: for example, <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="2\in 5\in 7\implies 2\in 7" display="inline"><mrow><mn>2</mn><mo>∈</mo><mn>5</mn><mo>∈</mo><mn>7</mn><mo stretchy="false">⟹</mo><mn>2</mn><mo>∈</mo><mn>7</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 90.3.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that this is equivalent to: whenever <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="y\in x" display="inline"><mrow><mi>y</mi><mo>∈</mo><mi>x</mi></mrow></math>, <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="y\subseteq x" display="inline"><mrow><mi>y</mi><mo>⊆</mo><mi>x</mi></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Moreover, recall the definition of “well-ordering”: a strict linear order
+with no infinite descending chains.</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 90.3.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(<math id="S3.Thmtheorem4.m1" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math> is a well-ordering on <math id="S3.Thmtheorem4.m2" class="ltx_Math" alttext="\omega\cdot 3" display="inline"><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>3</mn></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">In <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\omega\cdot 3" display="inline"><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>3</mn></mrow></math>, we have an ordering</p>
+<div class="table-container"><table id="Ex33" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex33.m1" class="ltx_Math" alttext="0\in 1\in 2\in\dots\in\omega\in\omega+1\in\dots\in\omega\cdot 2\in\omega\cdot 2%
++1\in\dots." display="block"><mrow><mrow><mn>0</mn><mo>∈</mo><mn>1</mn><mo>∈</mo><mn>2</mn><mo>∈</mo><mi mathvariant="normal">⋯</mi><mo>∈</mo><mi>ω</mi><mo>∈</mo><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow><mo>∈</mo><mi mathvariant="normal">⋯</mi><mo>∈</mo><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>∈</mo><mrow><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>+</mo><mn>1</mn></mrow><mo>∈</mo><mi mathvariant="normal">…</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which has no infinite descending chains.
+Indeed, a typical descending chain might look like</p>
+<div class="table-container"><table id="Ex34" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex34.m1" class="ltx_Math" alttext="\omega\cdot 2+6\ni\omega\cdot 2\ni\omega+2015\ni\omega+3\ni\omega\ni 1000\ni 2%
+56\ni 42\ni 7\ni 0." display="block"><mrow><mrow><mrow><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>+</mo><mn>6</mn></mrow><mo>∋</mo><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>∋</mo><mrow><mi>ω</mi><mo>+</mo><mn>2015</mn></mrow><mo>∋</mo><mrow><mi>ω</mi><mo>+</mo><mn>3</mn></mrow><mo>∋</mo><mi>ω</mi><mo>∋</mo><mn>1000</mn><mo>∋</mo><mn>256</mn><mo>∋</mo><mn>42</mn><mo>∋</mo><mn>7</mn><mo>∋</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Even though there are infinitely many elements, there is no way
+to make an infinite descending chain.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 90.3.5</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">(Important)
+Convince yourself there are no infinite
+descending chains of ordinals at all,
+without using the <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathrm{Foundation}" display="inline"><mi>Foundation</mi></math> axiom.</span></p>
+</div>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 90.3.6</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">An <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> ordinal</span> is a transitive set which is well-ordered by <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math>.
+The class of all ordinals is denoted <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="\mathrm{On}" display="inline"><mi>On</mi></math>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem7" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 90.3.7</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Satisfy yourself that this definition works.</span></p>
+</div>
+</div>
+<div id="S3.Thmtheorem8" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 90.3.8</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">All of <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="S3.I1.i1.p1.m3" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>, …, <math id="S3.I1.i1.p1.m4" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>, <math id="S3.I1.i1.p1.m5" class="ltx_Math" alttext="\omega+1" display="inline"><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow></math>, … defined above are ordinals.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="\{3\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>3</mn><mo stretchy="false">}</mo></mrow></math> is not an ordinal — it’s not transitive because <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="2\in 3" display="inline"><mrow><mn>2</mn><mo>∈</mo><mn>3</mn></mrow></math>,
+but <math id="S3.I1.i2.p1.m3" class="ltx_Math" alttext="2\notin\{3\}" display="inline"><mrow><mn>2</mn><mo>∉</mo><mrow><mo stretchy="false">{</mo><mn>3</mn><mo stretchy="false">}</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I1.i3.p1.m1" class="ltx_Math" alttext="\{0,1,2,\{0,2\}\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow></math> is not an ordinal — the two elements <math id="S3.I1.i3.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> and <math id="S3.I1.i3.p1.m3" class="ltx_Math" alttext="\{0,2\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">}</mo></mrow></math> are not comparable.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">We typically use Greek letters <math id="S3.p3.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>, <math id="S3.p3.m2" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>, etc. for ordinal numbers.</p>
+</div>
+<div id="S3.Thmtheorem9" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 90.3.9</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">We write</p>
+<ul id="S3.I2" class="ltx_itemize">
+<li id="S3.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I2.i1.p1.m1" class="ltx_Math" alttext="\alpha&lt;\beta" display="inline"><mrow><mi>α</mi><mo>&lt;</mo><mi>β</mi></mrow></math> to mean <math id="S3.I2.i1.p1.m2" class="ltx_Math" alttext="\alpha\in\beta" display="inline"><mrow><mi>α</mi><mo>∈</mo><mi>β</mi></mrow></math>,
+and <math id="S3.I2.i1.p1.m3" class="ltx_Math" alttext="\alpha&gt;\beta" display="inline"><mrow><mi>α</mi><mo>&gt;</mo><mi>β</mi></mrow></math> to mean <math id="S3.I2.i1.p1.m4" class="ltx_Math" alttext="\alpha\ni\beta" display="inline"><mrow><mi>α</mi><mo>∋</mo><mi>β</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I2.i2.p1.m1" class="ltx_Math" alttext="\alpha\leq\beta" display="inline"><mrow><mi>α</mi><mo>≤</mo><mi>β</mi></mrow></math> to mean <math id="S3.I2.i2.p1.m2" class="ltx_Math" alttext="\alpha\in\beta" display="inline"><mrow><mi>α</mi><mo>∈</mo><mi>β</mi></mrow></math> or <math id="S3.I2.i2.p1.m3" class="ltx_Math" alttext="\alpha=\beta" display="inline"><mrow><mi>α</mi><mo>=</mo><mi>β</mi></mrow></math>,
+and <math id="S3.I2.i2.p1.m4" class="ltx_Math" alttext="\alpha\geq\beta" display="inline"><mrow><mi>α</mi><mo>≥</mo><mi>β</mi></mrow></math> to mean <math id="S3.I2.i2.p1.m5" class="ltx_Math" alttext="\alpha\ni\beta" display="inline"><mrow><mi>α</mi><mo>∋</mo><mi>β</mi></mrow></math> or <math id="S3.I2.i2.p1.m6" class="ltx_Math" alttext="\alpha=\beta" display="inline"><mrow><mi>α</mi><mo>=</mo><mi>β</mi></mrow></math>,</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S3.Thmtheorem10" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 90.3.10</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Ordinals are strictly ordered)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p">Given any two ordinal numbers <math id="S3.Thmtheorem10.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and <math id="S3.Thmtheorem10.p1.m2" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>,
+either <math id="S3.Thmtheorem10.p1.m3" class="ltx_Math" alttext="\alpha&lt;\beta" display="inline"><mrow><mi>α</mi><mo>&lt;</mo><mi>β</mi></mrow></math>, <math id="S3.Thmtheorem10.p1.m4" class="ltx_Math" alttext="\alpha=\beta" display="inline"><mrow><mi>α</mi><mo>=</mo><mi>β</mi></mrow></math> or <math id="S3.Thmtheorem10.p1.m5" class="ltx_Math" alttext="\alpha&gt;\beta" display="inline"><mrow><mi>α</mi><mo>&gt;</mo><mi>β</mi></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Surprisingly annoying, thus omitted. The key idea is that we can define <math id="S3.p4.m1" class="ltx_Math" alttext="\min(\alpha,\beta)=\alpha\cap\beta" display="inline"><mrow><mrow><mi>min</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>α</mi><mo>∩</mo><mi>β</mi></mrow></mrow></math>, then prove that this must be equal to either <math id="S3.p4.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> or <math id="S3.p4.m3" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.Thmtheorem11" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 90.3.11</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Ordinals represent all order types)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem11.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S3.Thmtheorem11.p1.m1" class="ltx_Math" alttext="&lt;" display="inline"><mo>&lt;</mo></math> is a well-ordering on a set <math id="S3.Thmtheorem11.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+Then there exists a unique ordinal <math id="S3.Thmtheorem11.p1.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>
+such that there is a bijection <math id="S3.Thmtheorem11.p1.m4" class="ltx_Math" alttext="\alpha\to X" display="inline"><mrow><mi>α</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></math>
+which is order preserving.</p>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Thus ordinals represent the possible <em class="ltx_emph ltx_font_italic">equivalence classes</em> of order types.
+Any time you have a well-ordered set, it is isomorphic to a unique ordinal.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">We now formalize the “<math id="S3.p6.m1" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math>” operation we were doing:</p>
+</div>
+<div id="S3.Thmtheorem12" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 90.3.12</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem12.p1" class="ltx_para">
+<p class="ltx_p">Given an ordinal <math id="S3.Thmtheorem12.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>, we let <math id="S3.Thmtheorem12.p1.m2" class="ltx_Math" alttext="\alpha+1=\alpha\cup\{\alpha\}" display="inline"><mrow><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow><mo>=</mo><mrow><mi>α</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi>α</mi><mo stretchy="false">}</mo></mrow></mrow></mrow></math>.
+An ordinal of the form <math id="S3.Thmtheorem12.p1.m3" class="ltx_Math" alttext="\alpha+1" display="inline"><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow></math> is called a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> successor ordinal</span>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem13" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 90.3.13</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem13.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.Thmtheorem13.p1.m1" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> is an ordinal which is neither zero nor a successor ordinal,
+then we say <math id="S3.Thmtheorem13.p1.m2" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> is a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> limit ordinal</span>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem14" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 90.3.14</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Successor and limit ordinals)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem14.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.Thmtheorem14.p1.m1" class="ltx_Math" alttext="7" display="inline"><mn>7</mn></math>, <math id="S3.Thmtheorem14.p1.m2" class="ltx_Math" alttext="\omega+3" display="inline"><mrow><mi>ω</mi><mo>+</mo><mn>3</mn></mrow></math>, <math id="S3.Thmtheorem14.p1.m3" class="ltx_Math" alttext="\omega\cdot 2+2015" display="inline"><mrow><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>+</mo><mn>2015</mn></mrow></math> are successor ordinals,
+but <math id="S3.Thmtheorem14.p1.m4" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math> and <math id="S3.Thmtheorem14.p1.m5" class="ltx_Math" alttext="\omega\cdot 2" display="inline"><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow></math> are limit ordinals.</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">90.4 </span>Ordinals are “tall”</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">First, we note that:</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 90.4.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(There is no set of all ordinals)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathrm{On}" display="inline"><mi>On</mi></math> is a proper class.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Assume for contradiction not.
+Then <math id="S4.p2.m1" class="ltx_Math" alttext="\mathrm{On}" display="inline"><mi>On</mi></math> is well-ordered by <math id="S4.p2.m2" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math> and transitive, so <math id="S4.p2.m3" class="ltx_Math" alttext="\mathrm{On}" display="inline"><mi>On</mi></math> is an ordinal,
+i.e. <math id="S4.p2.m4" class="ltx_Math" alttext="\mathrm{On}\in\mathrm{On}" display="inline"><mrow><mi>On</mi><mo>∈</mo><mi>On</mi></mrow></math>, which violates <math id="S4.p2.m5" class="ltx_Math" alttext="\mathrm{Foundation}" display="inline"><mi>Foundation</mi></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 90.4.2</span></span><span class="ltx_text ltx_font_bold"> </span>(Unimportant)
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Give a proof without <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathrm{Foundation}" display="inline"><mi>Foundation</mi></math> by considering <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathrm{On}+1" display="inline"><mrow><mi>On</mi><mo>+</mo><mn>1</mn></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">From this we deduce:</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 90.4.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Sets of ordinals are bounded)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="A\subseteq\mathrm{On}" display="inline"><mrow><mi>A</mi><mo>⊆</mo><mi>On</mi></mrow></math>.
+Then there is some ordinal <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> such that <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="A\subseteq\alpha" display="inline"><mrow><mi>A</mi><mo>⊆</mo><mi>α</mi></mrow></math>
+(i.e. <math id="S4.Thmtheorem3.p1.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> must be bounded).</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Otherwise, look at <math id="S4.p4.m1" class="ltx_Math" alttext="\bigcup A" display="inline"><mrow><mo>⋃</mo><mi>A</mi></mrow></math>.
+It is a set.
+But if <math id="S4.p4.m2" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is unbounded it must equal <math id="S4.p4.m3" class="ltx_Math" alttext="\mathrm{On}" display="inline"><mi>On</mi></math>,
+which is a contradiction.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">In light of this, every set of ordinals has a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> supremum</span>,
+which is the least upper bound. We denote this by <math id="S4.p5.m1" class="ltx_Math" alttext="\sup A" display="inline"><mrow><mo rspace="0.167em">sup</mo><mi>A</mi></mrow></math>.</p>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 90.4.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that</span></p>
+<ol id="S4.I1" class="ltx_enumerate">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="\sup(\alpha+1)=\alpha" display="inline"><mrow><mrow><mo rspace="0em">sup</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo>=</mo><mi>α</mi></mrow></math><span class="ltx_text" style="font-size:90%;"> for any ordinal </span><math id="S4.I1.i1.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="\sup\lambda=\lambda" display="inline"><mrow><mrow><mo rspace="0.167em">sup</mo><mi>λ</mi></mrow><mo>=</mo><mi>λ</mi></mrow></math><span class="ltx_text" style="font-size:90%;"> for any limit ordinal </span><math id="S4.I1.i2.p1.m2" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">The pictorial “tall” will be explained in a few sections.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">90.5 </span>Transfinite induction and recursion</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">The fact that <math id="S5.p1.m1" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math> has no infinite descending chains means that induction and recursion still work verbatim.</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 90.5.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Transfinite induction)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Given a statement <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="P(-)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">)</mo></mrow></mrow></math>, suppose that</p>
+<ul id="S5.I1" class="ltx_itemize">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="P(0)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> is true, and</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="P(\alpha)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math> is true for all <math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="\alpha&lt;\beta" display="inline"><mrow><mi>α</mi><mo>&lt;</mo><mi>β</mi></mrow></math>, then <math id="S5.I1.i2.p1.m3" class="ltx_Math" alttext="P(\beta)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>β</mi><mo stretchy="false">)</mo></mrow></mrow></math> is true.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Then <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="P(\alpha)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math> is true for every ordinal <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 90.5.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Transfinite recursion)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">To define a sequence <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="x_{\alpha}" display="inline"><msub><mi>x</mi><mi>α</mi></msub></math> for every ordinal <math id="S5.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>,
+it suffices to</p>
+<ul id="S5.I2" class="ltx_itemize">
+<li id="S5.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">define <math id="S5.I2.i1.p1.m1" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math>, then</p>
+</div>
+</li>
+<li id="S5.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">for any <math id="S5.I2.i2.p1.m1" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>, define <math id="S5.I2.i2.p1.m2" class="ltx_Math" alttext="x_{\beta}" display="inline"><msub><mi>x</mi><mi>β</mi></msub></math> using only <math id="S5.I2.i2.p1.m3" class="ltx_Math" alttext="x_{\alpha}" display="inline"><msub><mi>x</mi><mi>α</mi></msub></math> for any <math id="S5.I2.i2.p1.m4" class="ltx_Math" alttext="\alpha&lt;\beta" display="inline"><mrow><mi>α</mi><mo>&lt;</mo><mi>β</mi></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">The difference between this and normal induction lies in the <em class="ltx_emph ltx_font_italic">limit ordinals</em>.
+In real life, we might only do things like “define <math id="S5.p2.m1" class="ltx_Math" alttext="x_{n+1}=\dots" display="inline"><mrow><msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mi mathvariant="normal">…</mi></mrow></math>”.
+But this is not enough to define <math id="S5.p2.m2" class="ltx_Math" alttext="x_{\alpha}" display="inline"><msub><mi>x</mi><mi>α</mi></msub></math> for all <math id="S5.p2.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>,
+because we can’t hit <math id="S5.p2.m4" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math> this way.
+Similarly, the simple <math id="S5.p2.m5" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> doesn’t let us hit the ordinal <math id="S5.p2.m6" class="ltx_Math" alttext="\omega\cdot 2" display="inline"><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow></math>,
+even if we already have <math id="S5.p2.m7" class="ltx_Math" alttext="\omega+n" display="inline"><mrow><mi>ω</mi><mo>+</mo><mi>n</mi></mrow></math> for all <math id="S5.p2.m8" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+In other words, simply incrementing by <math id="S5.p2.m9" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> cannot get us past limit stages,
+but using transfinite induction to jump upwards lets us sidestep this issue.</p>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">So a transfinite induction is often broken up into three cases.
+In the induction phrasing, it looks like</p>
+<ul id="S5.I3" class="ltx_itemize">
+<li id="S5.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">(Zero Case) First, resolve <math id="S5.I3.i1.p1.m1" class="ltx_Math" alttext="P(0)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S5.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">(Successor Case) Show that from <math id="S5.I3.i2.p1.m1" class="ltx_Math" alttext="P(\alpha)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math> we can get <math id="S5.I3.i2.p1.m2" class="ltx_Math" alttext="P(\alpha+1)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S5.I3.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I3.i3.p1" class="ltx_para">
+<p class="ltx_p">(Limit Case) For <math id="S5.I3.i3.p1.m1" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> a limit ordinal,
+show that <math id="S5.I3.i3.p1.m2" class="ltx_Math" alttext="P(\lambda)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow></mrow></math> holds given <math id="S5.I3.i3.p1.m3" class="ltx_Math" alttext="P(\alpha)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math> for all <math id="S5.I3.i3.p1.m4" class="ltx_Math" alttext="\alpha&lt;\lambda" display="inline"><mrow><mi>α</mi><mo>&lt;</mo><mi>λ</mi></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Similarly, transfinite recursion is often split into cases too.</p>
+<ul id="S5.I4" class="ltx_itemize">
+<li id="S5.I4.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I4.i1.p1" class="ltx_para">
+<p class="ltx_p">(Zero Case) First, define <math id="S5.I4.i1.p1.m1" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math>.</p>
+</div>
+</li>
+<li id="S5.I4.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I4.i2.p1" class="ltx_para">
+<p class="ltx_p">(Successor Case) Define <math id="S5.I4.i2.p1.m1" class="ltx_Math" alttext="x_{\alpha+1}" display="inline"><msub><mi>x</mi><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow></msub></math> from <math id="S5.I4.i2.p1.m2" class="ltx_Math" alttext="x_{\alpha}" display="inline"><msub><mi>x</mi><mi>α</mi></msub></math>.</p>
+</div>
+</li>
+<li id="S5.I4.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I4.i3.p1" class="ltx_para">
+<p class="ltx_p">(Limit Case) Define <math id="S5.I4.i3.p1.m1" class="ltx_Math" alttext="x_{\lambda}" display="inline"><msub><mi>x</mi><mi>λ</mi></msub></math> from <math id="S5.I4.i3.p1.m2" class="ltx_Math" alttext="x_{\alpha}" display="inline"><msub><mi>x</mi><mi>α</mi></msub></math> for all <math id="S5.I4.i3.p1.m3" class="ltx_Math" alttext="\alpha&lt;\lambda" display="inline"><mrow><mi>α</mi><mo>&lt;</mo><mi>λ</mi></mrow></math>,
+where <math id="S5.I4.i3.p1.m4" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> is a limit ordinal.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">In both situations, finite induction only does the first two cases,
+but if we’re able to do the third case we can climb above the barrier <math id="S5.p3.m1" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>.</p>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">90.6 </span>Ordinal arithmetic</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S6.p1.m1" class="ltx_Math" alttext="1+\omega=\omega\neq\omega+1" display="inline"><mrow><mrow><mn>1</mn><mo>+</mo><mi>ω</mi></mrow><mo>=</mo><mi>ω</mi><mo>≠</mo><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow></mrow></math>.</em></p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">To give an example of transfinite recursion, let’s define addition of ordinals.
+Recall that we defined <math id="S6.p2.m1" class="ltx_Math" alttext="\alpha+1=\alpha\cup\{\alpha\}" display="inline"><mrow><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow><mo>=</mo><mrow><mi>α</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi>α</mi><mo stretchy="false">}</mo></mrow></mrow></mrow></math>.
+By transfinite recursion, let</p>
+<div class="table-container"><table id="A5.S3.EGx183" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex35"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex35.m1" class="ltx_Math" alttext="\displaystyle\alpha+0" display="inline"><mrow><mi>α</mi><mo>+</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex35.m2" class="ltx_Math" alttext="\displaystyle=\alpha" display="inline"><mrow><mi></mi><mo>=</mo><mi>α</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex36"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex36.m1" class="ltx_Math" alttext="\displaystyle\alpha+(\beta+1)" display="inline"><mrow><mi>α</mi><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><mi>β</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex36.m2" class="ltx_Math" alttext="\displaystyle=(\alpha+\beta)+1" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>α</mi><mo>+</mo><mi>β</mi></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mn>1</mn></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex37"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex37.m1" class="ltx_Math" alttext="\displaystyle\alpha+\lambda" display="inline"><mrow><mi>α</mi><mo>+</mo><mi>λ</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex37.m2" class="ltx_Math" alttext="\displaystyle=\bigcup_{\beta&lt;\lambda}(\alpha+\beta)." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">⋃</mo><mrow><mi>β</mi><mo>&lt;</mo><mi>λ</mi></mrow></munder></mstyle><mrow><mo stretchy="false">(</mo><mrow><mi>α</mi><mo>+</mo><mi>β</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Here <math id="S6.p2.m2" class="ltx_Math" alttext="\lambda\neq 0" display="inline"><mrow><mi>λ</mi><mo>≠</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">We can also do this explicitly:
+The picture is to just line up <math id="S6.p3.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> before <math id="S6.p3.m2" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>.
+That is, we can consider the set</p>
+<div class="table-container"><table id="Ex38" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex38.m1" class="ltx_Math" alttext="X=\left(\left\{0\right\}\times\alpha\right)\cup\left(\left\{1\right\}\times%
+\beta\right)" display="block"><mrow><mi>X</mi><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mrow><mo>{</mo><mn>0</mn><mo rspace="0.055em">}</mo></mrow><mo rspace="0.222em">×</mo><mi>α</mi></mrow><mo>)</mo></mrow><mo>∪</mo><mrow><mo>(</mo><mrow><mrow><mo>{</mo><mn>1</mn><mo rspace="0.055em">}</mo></mrow><mo rspace="0.222em">×</mo><mi>β</mi></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">(i.e. we tag each element of <math id="S6.p3.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> with a <math id="S6.p3.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, and
+each element of <math id="S6.p3.m5" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math> with a <math id="S6.p3.m6" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>).
+We then impose a well-ordering on <math id="S6.p3.m7" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> by a lexicographic ordering <math id="S6.p3.m8" class="ltx_Math" alttext="&lt;_{\text{lex}}" display="inline"><msub><mo>&lt;</mo><mtext>lex</mtext></msub></math>
+(sort by first component, then by second).
+This well-ordering is isomorphic to a unique ordinal.</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 90.6.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(<math id="S6.Thmtheorem1.m1" class="ltx_Math" alttext="2+3=5" display="inline"><mrow><mrow><mn>2</mn><mo>+</mo><mn>3</mn></mrow><mo>=</mo><mn>5</mn></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Under the explicit construction for <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\alpha=2" display="inline"><mrow><mi>α</mi><mo>=</mo><mn>2</mn></mrow></math> and <math id="S6.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\beta=3" display="inline"><mrow><mi>β</mi><mo>=</mo><mn>3</mn></mrow></math>, we get the set</p>
+<div class="table-container"><table id="Ex39" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex39.m1" class="ltx_Math" alttext="X=\left\{(0,0)&lt;(0,1)&lt;(1,0)&lt;(1,1)&lt;(1,2)\right\}" display="block"><mrow><mi>X</mi><mo>=</mo><mrow><mo>{</mo><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo>&lt;</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>&lt;</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo>&lt;</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>&lt;</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which is isomorphic to <math id="S6.Thmtheorem1.p1.m3" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math>.</p>
+</div>
+</div>
+<div id="S6.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 90.6.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Ordinal arithmetic is not commutative)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Note that <math id="S6.Thmtheorem2.p1.m1" class="ltx_Math" alttext="1+\omega=\omega" display="inline"><mrow><mrow><mn>1</mn><mo>+</mo><mi>ω</mi></mrow><mo>=</mo><mi>ω</mi></mrow></math>!
+Indeed, under the transfinite definition, we have</p>
+<div class="table-container"><table id="Ex40" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex40.m1" class="ltx_Math" alttext="1+\omega=\cup_{n}(1+n)=1\cup 2\cup 3\cup\dots=\omega." display="block"><mrow><mrow><mrow><mn>1</mn><mo>+</mo><mi>ω</mi></mrow><mo rspace="0em">=</mo><mrow><msub><mo lspace="0em">∪</mo><mi>n</mi></msub><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>∪</mo><mn>2</mn><mo>∪</mo><mn>3</mn><mo>∪</mo><mi mathvariant="normal">⋯</mi></mrow><mo>=</mo><mi>ω</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">With the explicit construction, we have</p>
+<div class="table-container"><table id="Ex41" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex41.m1" class="ltx_Math" alttext="X=\left\{(0,0)&lt;(1,0)&lt;(1,1)&lt;(1,2)&lt;\dots\right\}" display="block"><mrow><mi>X</mi><mo>=</mo><mrow><mo>{</mo><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo>&lt;</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo>&lt;</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>&lt;</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mo>&lt;</mo><mi mathvariant="normal">…</mi></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which is isomorphic to <math id="S6.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>.</p>
+</div>
+</div>
+<div id="S6.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 90.6.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S6.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S6.Thmtheorem3.p1.m1" class="ltx_Math" alttext="n+\omega=\omega" display="inline"><mrow><mrow><mi>n</mi><mo>+</mo><mi>ω</mi></mrow><mo>=</mo><mi>ω</mi></mrow></math> for any <math id="S6.Thmtheorem3.p1.m2" class="ltx_Math" alttext="n\in\omega" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>ω</mi></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S6.Thmtheorem4" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 90.6.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S6.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Ordinal addition is not commutative.
+However, from the explicit construction
+we can see that it is at least associative.</p>
+</div>
+<div id="S6.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">Furthermore, you can see that for small enough <math id="S6.Thmtheorem4.p2.m1" class="ltx_Math" alttext="\alpha\neq 0" display="inline"><mrow><mi>α</mi><mo>≠</mo><mn>0</mn></mrow></math>,
+then <math id="S6.Thmtheorem4.p2.m2" class="ltx_Math" alttext="\alpha+\beta=\beta" display="inline"><mrow><mrow><mi>α</mi><mo>+</mo><mi>β</mi></mrow><mo>=</mo><mi>β</mi></mrow></math> may happen; however, this does not happen on the other side — if
+<math id="S6.Thmtheorem4.p2.m3" class="ltx_Math" alttext="\beta&lt;\gamma" display="inline"><mrow><mi>β</mi><mo>&lt;</mo><mi>γ</mi></mrow></math>, then <math id="S6.Thmtheorem4.p2.m4" class="ltx_Math" alttext="\alpha+\beta&lt;\alpha+\gamma" display="inline"><mrow><mrow><mi>α</mi><mo>+</mo><mi>β</mi></mrow><mo>&lt;</mo><mrow><mi>α</mi><mo>+</mo><mi>γ</mi></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S6.p4" class="ltx_para">
+<p class="ltx_p">Similarly, we can define multiplication in two ways.
+By transfinite induction:</p>
+<div class="table-container"><table id="A5.S3.EGx184" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex42"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex42.m1" class="ltx_Math" alttext="\displaystyle\alpha\cdot 0" display="inline"><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex42.m2" class="ltx_Math" alttext="\displaystyle=0" display="inline"><mrow><mi></mi><mo>=</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex43"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex43.m1" class="ltx_Math" alttext="\displaystyle\alpha\cdot(\beta+1)" display="inline"><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mi>β</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex43.m2" class="ltx_Math" alttext="\displaystyle=(\alpha\cdot\beta)+\alpha" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>β</mi></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mi>α</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex44"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex44.m1" class="ltx_Math" alttext="\displaystyle\alpha\cdot\lambda" display="inline"><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>λ</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex44.m2" class="ltx_Math" alttext="\displaystyle=\bigcup_{\beta&lt;\lambda}\alpha\cdot\beta." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">⋃</mo><mrow><mi>β</mi><mo>&lt;</mo><mi>λ</mi></mrow></munder></mstyle><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>β</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We can also do an explicit construction:
+This time, the picture is to line up <math id="S6.p4.m1" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math> copies, each copy contains <math id="S6.p4.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> items.
+That is, <math id="S6.p4.m3" class="ltx_Math" alttext="\alpha\cdot\beta" display="inline"><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>β</mi></mrow></math> is the order type of</p>
+<div class="table-container"><table id="Ex45" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex45.m1" class="ltx_Math" alttext="&lt;_{\text{lex}}\text{ applied to }\beta\times\alpha." display="block"><mrow><mrow><mi></mi><msub><mo>&lt;</mo><mtext>lex</mtext></msub><mrow><mrow><mtext> applied to </mtext><mo>⁢</mo><mi>β</mi></mrow><mo lspace="0.222em" rspace="0.222em">×</mo><mi>α</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S6.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 90.6.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Ordinal multiplication is not commutative)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S6.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">We have <math id="S6.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\omega\cdot 2=\omega+\omega" display="inline"><mrow><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>2</mn></mrow><mo>=</mo><mrow><mi>ω</mi><mo>+</mo><mi>ω</mi></mrow></mrow></math>,
+but <math id="S6.Thmtheorem5.p1.m2" class="ltx_Math" alttext="2\cdot\omega=\omega" display="inline"><mrow><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>ω</mi></mrow><mo>=</mo><mi>ω</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S6.Thmtheorem6" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 90.6.6</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S6.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Prove this.</span></p>
+</div>
+</div>
+<div id="S6.Thmtheorem7" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 90.6.7</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S6.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify that ordinal multiplication
+(like addition) is associative but not commutative.
+(Look at <math id="S6.Thmtheorem7.p1.m1" class="ltx_Math" alttext="\gamma\times\beta\times\alpha" display="inline"><mrow><mi>γ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>β</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>α</mi></mrow></math>.)</span></p>
+</div>
+</div>
+<div id="S6.p5" class="ltx_para">
+<p class="ltx_p">Similar to ordinal addition, defining <math id="S6.p5.m1" class="ltx_Math" alttext="\alpha\cdot(\beta+1)=(\alpha\cdot\beta)+\alpha" display="inline"><mrow><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mi>β</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>β</mi></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mi>α</mi></mrow></mrow></math> makes
+sure that if <math id="S6.p5.m2" class="ltx_Math" alttext="\beta&lt;\gamma" display="inline"><mrow><mi>β</mi><mo>&lt;</mo><mi>γ</mi></mrow></math> then <math id="S6.p5.m3" class="ltx_Math" alttext="\alpha\cdot\beta&lt;\alpha\cdot\gamma" display="inline"><mrow><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>β</mi></mrow><mo>&lt;</mo><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>γ</mi></mrow></mrow></math> — as long as <math id="S6.p5.m4" class="ltx_Math" alttext="\alpha&gt;0" display="inline"><mrow><mi>α</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S6.p6" class="ltx_para">
+<p class="ltx_p">Exponentiation can also be so defined, though the explicit construction is less natural —
+since we will not use this definition in the rest of the book, you may ignore it.</p>
+</div>
+<div id="S6.p7" class="ltx_para">
+<p class="ltx_p">For <math id="S6.p7.m1" class="ltx_Math" alttext="\alpha=0" display="inline"><mrow><mi>α</mi><mo>=</mo><mn>0</mn></mrow></math>, define <math id="S6.p7.m2" class="ltx_Math" alttext="0^{0}=1" display="inline"><mrow><msup><mn>0</mn><mn>0</mn></msup><mo>=</mo><mn>1</mn></mrow></math> and <math id="S6.p7.m3" class="ltx_Math" alttext="0^{\beta}=0" display="inline"><mrow><msup><mn>0</mn><mi>β</mi></msup><mo>=</mo><mn>0</mn></mrow></math> for all <math id="S6.p7.m4" class="ltx_Math" alttext="\beta&gt;0" display="inline"><mrow><mi>β</mi><mo>&gt;</mo><mn>0</mn></mrow></math>. Otherwise:</p>
+<div class="table-container"><table id="A5.S3.EGx185" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex46"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex46.m1" class="ltx_Math" alttext="\displaystyle\alpha^{0}" display="inline"><msup><mi>α</mi><mn>0</mn></msup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex46.m2" class="ltx_Math" alttext="\displaystyle=1" display="inline"><mrow><mi></mi><mo>=</mo><mn>1</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex47"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex47.m1" class="ltx_Math" alttext="\displaystyle\alpha^{\beta+1}" display="inline"><msup><mi>α</mi><mrow><mi>β</mi><mo>+</mo><mn>1</mn></mrow></msup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex47.m2" class="ltx_Math" alttext="\displaystyle=\alpha^{\beta}\cdot\alpha" display="inline"><mrow><mi></mi><mo>=</mo><mrow><msup><mi>α</mi><mi>β</mi></msup><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>α</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex48"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex48.m1" class="ltx_Math" alttext="\displaystyle\alpha^{\lambda}" display="inline"><msup><mi>α</mi><mi>λ</mi></msup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex48.m2" class="ltx_Math" alttext="\displaystyle=\bigcup_{\beta&lt;\lambda}\alpha^{\beta}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">⋃</mo><mrow><mi>β</mi><mo>&lt;</mo><mi>λ</mi></mrow></munder></mstyle><msup><mi>α</mi><mi>β</mi></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S6.Thmtheorem8" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 90.6.8</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S6.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify that <math id="S6.Thmtheorem8.p1.m1" class="ltx_Math" alttext="2^{\omega}=\omega" display="inline"><mrow><msup><mn>2</mn><mi>ω</mi></msup><mo>=</mo><mi>ω</mi></mrow></math>.</span></p>
+</div>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">90.7 </span>The hierarchy of sets</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p">We now define the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> von Neumann Hierarchy</span> by transfinite recursion.</p>
+</div>
+<div id="S7.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 90.7.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S7.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">By transfinite recursion, we set</p>
+<div class="table-container"><table id="A5.S3.EGx186" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex49"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex49.m1" class="ltx_Math" alttext="\displaystyle V_{0}" display="inline"><msub><mi>V</mi><mn>0</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex49.m2" class="ltx_Math" alttext="\displaystyle=\varnothing" display="inline"><mrow><mi></mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex50"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex50.m1" class="ltx_Math" alttext="\displaystyle V_{\alpha+1}" display="inline"><msub><mi>V</mi><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex50.m2" class="ltx_Math" alttext="\displaystyle=\mathcal{P}(V_{\alpha})" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒫</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>V</mi><mi>α</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex51"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex51.m1" class="ltx_Math" alttext="\displaystyle V_{\lambda}" display="inline"><msub><mi>V</mi><mi>λ</mi></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex51.m2" class="ltx_Math" alttext="\displaystyle=\bigcup_{\alpha&lt;\lambda}V_{\alpha}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">⋃</mo><mrow><mi>α</mi><mo>&lt;</mo><mi>λ</mi></mrow></munder></mstyle><msub><mi>V</mi><mi>α</mi></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S7.p2" class="ltx_para">
+<p class="ltx_p">By transfinite induction, we see <math id="S7.p2.m1" class="ltx_Math" alttext="V_{\alpha}" display="inline"><msub><mi>V</mi><mi>α</mi></msub></math> is transitive
+and that <math id="S7.p2.m2" class="ltx_Math" alttext="V_{\alpha}\subseteq V_{\beta}" display="inline"><mrow><msub><mi>V</mi><mi>α</mi></msub><mo>⊆</mo><msub><mi>V</mi><mi>β</mi></msub></mrow></math> for all <math id="S7.p2.m3" class="ltx_Math" alttext="\alpha&lt;\beta" display="inline"><mrow><mi>α</mi><mo>&lt;</mo><mi>β</mi></mrow></math>.</p>
+</div>
+<div id="S7.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 90.7.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(<math id="S7.Thmtheorem2.m1" class="ltx_Math" alttext="V_{\alpha}" display="inline"><msub><mi>V</mi><mi>α</mi></msub></math> for <math id="S7.Thmtheorem2.m2" class="ltx_Math" alttext="\alpha\leq 3" display="inline"><mrow><mi>α</mi><mo>≤</mo><mn>3</mn></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S7.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The first few levels of the hierarchy are:</p>
+<div class="table-container"><table id="A5.S3.EGx187" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex52"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex52.m1" class="ltx_Math" alttext="\displaystyle V_{0}" display="inline"><msub><mi>V</mi><mn>0</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex52.m2" class="ltx_Math" alttext="\displaystyle=\varnothing" display="inline"><mrow><mi></mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex53"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex53.m1" class="ltx_Math" alttext="\displaystyle V_{1}" display="inline"><msub><mi>V</mi><mn>1</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex53.m2" class="ltx_Math" alttext="\displaystyle=\left\{0\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mn>0</mn><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex54"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex54.m1" class="ltx_Math" alttext="\displaystyle V_{2}" display="inline"><msub><mi>V</mi><mn>2</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex54.m2" class="ltx_Math" alttext="\displaystyle=\left\{0,1\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex55"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex55.m1" class="ltx_Math" alttext="\displaystyle V_{3}" display="inline"><msub><mi>V</mi><mn>3</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex55.m2" class="ltx_Math" alttext="\displaystyle=\left\{0,1,2,\left\{1\right\}\right\}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mrow><mo>{</mo><mn>1</mn><mo>}</mo></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Notice that for each <math id="S7.Thmtheorem2.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, <math id="S7.Thmtheorem2.p1.m2" class="ltx_Math" alttext="V_{n}" display="inline"><msub><mi>V</mi><mi>n</mi></msub></math> consists of only finite sets,
+and each <math id="S7.Thmtheorem2.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> appears in <math id="S7.Thmtheorem2.p1.m4" class="ltx_Math" alttext="V_{n+1}" display="inline"><msub><mi>V</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math> for the first time.
+Observe that</p>
+<div class="table-container"><table id="Ex56" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex56.m1" class="ltx_Math" alttext="V_{\omega}=\bigcup_{n\in\omega}V_{n}" display="block"><mrow><msub><mi>V</mi><mi>ω</mi></msub><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">⋃</mo><mrow><mi>n</mi><mo>∈</mo><mi>ω</mi></mrow></munder><msub><mi>V</mi><mi>n</mi></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">consists only of finite sets; thus <math id="S7.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math> appears for the first time
+in <math id="S7.Thmtheorem2.p1.m6" class="ltx_Math" alttext="V_{\omega+1}" display="inline"><msub><mi>V</mi><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow></msub></math>.</p>
+</div>
+</div>
+<div id="S7.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 90.7.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S7.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">How many sets are in <math id="S7.Thmtheorem3.p1.m1" class="ltx_Math" alttext="V_{5}" display="inline"><msub><mi>V</mi><mn>5</mn></msub></math>?</span></p>
+</div>
+</div>
+<div id="S7.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 90.7.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S7.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> rank</span> of a set <math id="S7.Thmtheorem4.p1.m1" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>, denoted <math id="S7.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\operatorname{rank}(y)" display="inline"><mrow><mi>rank</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+is the smallest ordinal <math id="S7.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> such that <math id="S7.Thmtheorem4.p1.m4" class="ltx_Math" alttext="y\in V_{\alpha+1}" display="inline"><mrow><mi>y</mi><mo>∈</mo><msub><mi>V</mi><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></math>.</p>
+</div>
+</div>
+<div id="S7.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 90.7.5</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S7.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><math id="S7.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\operatorname{rank}(2)=2" display="inline"><mrow><mrow><mi>rank</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>2</mn></mrow></math>, and actually <math id="S7.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\operatorname{rank}(\alpha)=\alpha" display="inline"><mrow><mrow><mi>rank</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>α</mi></mrow></math>
+for any ordinal <math id="S7.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> (problem later).
+This is the reason for the extra “<math id="S7.Thmtheorem5.p1.m4" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math>”.</p>
+</div>
+</div>
+<div id="S7.Thmtheorem6" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 90.7.6</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S7.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S7.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\operatorname{rank}(y)" display="inline"><mrow><mi>rank</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the smallest ordinal <math id="S7.Thmtheorem6.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>
+such that <math id="S7.Thmtheorem6.p1.m3" class="ltx_Math" alttext="y\subseteq V_{\alpha}" display="inline"><mrow><mi>y</mi><mo>⊆</mo><msub><mi>V</mi><mi>α</mi></msub></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S7.p3" class="ltx_para">
+<p class="ltx_p">It’s not yet clear that the rank of a set actually exists, so we prove:</p>
+</div>
+<div id="S7.Thmtheorem7" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 90.7.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(The von Neumann hierarchy is complete)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S7.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">The class <math id="S7.Thmtheorem7.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is equal to <math id="S7.Thmtheorem7.p1.m2" class="ltx_Math" alttext="\bigcup_{\alpha\in\mathrm{On}}V_{\alpha}" display="inline"><mrow><msub><mo>⋃</mo><mrow><mi>α</mi><mo>∈</mo><mi>On</mi></mrow></msub><msub><mi>V</mi><mi>α</mi></msub></mrow></math>.
+In other words, every set appears in some <math id="S7.Thmtheorem7.p1.m3" class="ltx_Math" alttext="V_{\alpha}" display="inline"><msub><mi>V</mi><mi>α</mi></msub></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S7.p4" class="ltx_para">
+<p class="ltx_p">Assume for contradiction this is false.
+The key is that because <math id="S7.p4.m1" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math> satisfies <math id="S7.p4.m2" class="ltx_Math" alttext="\mathrm{Foundation}" display="inline"><mi>Foundation</mi></math>,
+we can take a <math id="S7.p4.m3" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math>-minimal counterexample <math id="S7.p4.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>.
+Thus <math id="S7.p4.m5" class="ltx_Math" alttext="\operatorname{rank}(y)" display="inline"><mrow><mi>rank</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math> is defined for every <math id="S7.p4.m6" class="ltx_Math" alttext="y\in x" display="inline"><mrow><mi>y</mi><mo>∈</mo><mi>x</mi></mrow></math>,
+and we can consider (by <math id="S7.p4.m7" class="ltx_Math" alttext="\mathrm{Replacement}" display="inline"><mi>Replacement</mi></math>) the set</p>
+<div class="table-container"><table id="Ex57" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex57.m1" class="ltx_Math" alttext="\left\{\operatorname{rank}(y)\mid y\in x\right\}." display="block"><mrow><mrow><mo>{</mo><mrow><mi>rank</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>y</mi><mo>∈</mo><mi>x</mi></mrow><mo>}</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Since it is a set of ordinals, it is bounded.
+So there is some large ordinal <math id="S7.p4.m8" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> such that <math id="S7.p4.m9" class="ltx_Math" alttext="y\in V_{\alpha}" display="inline"><mrow><mi>y</mi><mo>∈</mo><msub><mi>V</mi><mi>α</mi></msub></mrow></math>
+for all <math id="S7.p4.m10" class="ltx_Math" alttext="y\in x" display="inline"><mrow><mi>y</mi><mo>∈</mo><mi>x</mi></mrow></math>, i.e. <math id="S7.p4.m11" class="ltx_Math" alttext="x\subseteq V_{\alpha}" display="inline"><mrow><mi>x</mi><mo>⊆</mo><msub><mi>V</mi><mi>α</mi></msub></mrow></math>,
+so <math id="S7.p4.m12" class="ltx_Math" alttext="x\in V_{\alpha+1}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msub><mi>V</mi><mrow><mi>α</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S7.p5" class="ltx_para">
+<p class="ltx_p">This leads us to a picture of the universe <math id="S7.p5.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>:</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='269.130656pt' height='311.811024pt' viewBox='173.024004 356.938565 269.130656 311.811024'>
+<defs>
+<path id='asymptote-90-1-g1-83' d='M7.747945 7.134247C7.747945 8.986301 6.191781 10.20274 4.558904 10.20274S1.369863 8.99726 1.369863 7.134247V.526027C1.369863 .372603 1.369863 0 .99726 0C.613699 0 .613699 .361644 .613699 .526027V7.178082C.613699 9.30411 2.421918 10.958904 4.558904 10.958904S8.50411 9.30411 8.50411 7.178082V.526027C8.50411 .372603 8.50411 0 8.131507 0C7.747945 0 7.747945 .361644 7.747945 .526027V7.134247Z'/>
+<path id='asymptote-90-1-g3-33' d='M5.108842-2.917061C5.108842-3.164134 5.037111-3.52279 4.726276-3.52279C4.511083-3.52279 4.303861-3.323537 4.303861-3.100374C4.303861-2.980822 4.391532-2.909091 4.479203-2.82939C4.598755-2.709838 4.718306-2.502615 4.718306-2.207721C4.718306-1.673724 4.168369-.541968 3.371357-.541968C2.956912-.541968 2.669988-.789041 2.574346-1.171606C2.701868-1.44259 2.86924-1.880946 2.86924-2.10411C2.86924-2.239601 2.805479-2.343213 2.654047-2.343213C2.295392-2.343213 2.247572-1.458531 2.247572-1.203487C1.968618-.868742 1.641843-.541968 1.179577-.541968C.669489-.541968 .430386-.948443 .430386-1.41868C.430386-1.793275 .533998-2.12802 .6934-2.438854C.924533-2.901121 1.235367-3.203985 1.235367-3.331507C1.235367-3.419178 1.163636-3.482939 1.075965-3.482939C.924533-3.482939 .804981-3.251806 .71731-3.108344C.374595-2.542466 .127522-1.801245 .127522-1.139726C.127522-.526027 .358655 .071731 1.060025 .071731C1.745455 .071731 2.13599-.478207 2.311333-.70137C2.430884-.263014 2.757659 .079701 3.243836 .079701C3.897385 .079701 4.224159-.342715 4.550934-.892653C4.805978-1.315068 5.108842-2.414944 5.108842-2.917061Z'/>
+<path id='asymptote-90-1-g3-110' d='M1.594022-1.307098C1.617933-1.42665 1.697634-1.729514 1.721544-1.849066C1.833126-2.279452 1.833126-2.287422 2.016438-2.550436C2.279452-2.940971 2.654047-3.291656 3.188045-3.291656C3.474969-3.291656 3.642341-3.124284 3.642341-2.749689C3.642341-2.311333 3.307597-1.40274 3.156164-1.012204C3.052553-.749191 3.052553-.70137 3.052553-.597758C3.052553-.143462 3.427148 .079701 3.769863 .079701C4.550934 .079701 4.877709-1.036115 4.877709-1.139726C4.877709-1.219427 4.813948-1.243337 4.758157-1.243337C4.662516-1.243337 4.646575-1.187547 4.622665-1.107846C4.431382-.454296 4.096638-.143462 3.793773-.143462C3.666252-.143462 3.602491-.223163 3.602491-.406476S3.666252-.765131 3.745953-.964384C3.865504-1.267248 4.216189-2.183811 4.216189-2.630137C4.216189-3.227895 3.801743-3.514819 3.227895-3.514819C2.582316-3.514819 2.16787-3.124284 1.936737-2.82142C1.880946-3.259776 1.530262-3.514819 1.123786-3.514819C.836862-3.514819 .637609-3.331507 .510087-3.084433C.318804-2.709838 .239103-2.311333 .239103-2.295392C.239103-2.223661 .294894-2.191781 .358655-2.191781C.462267-2.191781 .470237-2.223661 .526027-2.430884C.621669-2.82142 .765131-3.291656 1.099875-3.291656C1.307098-3.291656 1.354919-3.092403 1.354919-2.917061C1.354919-2.773599 1.315068-2.622167 1.251308-2.359153C1.235367-2.295392 1.115816-1.825156 1.083935-1.713574L.789041-.518057C.757161-.398506 .70934-.199253 .70934-.167372C.70934 .01594 .860772 .079701 .964384 .079701C1.107846 .079701 1.227397-.01594 1.283188-.111582C1.307098-.159402 1.370859-.430386 1.41071-.597758L1.594022-1.307098Z'/>
+<path id='asymptote-90-1-g2-80' d='M3.796363-7.450907C2.258181-7.450907 1.090909-6.709089 .643636-6.196362C.261818-5.759998 .229091-5.443635 .229091-5.421817C.229091-5.356362 .272727-5.334544 .338182-5.334544C.512727-5.334544 .763636-5.487271 .850909-5.541817C1.08-5.694544 1.112727-5.759998 1.178181-5.967271C1.330909-6.403635 1.636363-6.785453 3.010908-6.850907C2.814545-4.396362 2.159999-2.007272 1.243636 .272727C1.178181 .436364 1.178181 .458182 1.178181 .469091C1.178181 .501818 1.210909 .545454 1.287272 .545454C1.461818 .545454 1.985454 .305454 2.105454 .021818C2.672727-1.309091 3.567272-3.818181 3.894544-6.850907H4.461817C5.792726-6.850907 7.069089-6.33818 7.069089-5.247271C7.069089-4.42909 6.283635-2.901817 4.167272-2.836363C3.938181-2.825454 3.818181-2.825454 3.512726-2.62909C3.316363-2.498181 3.22909-2.378181 3.22909-2.312727C3.22909-2.236363 3.294545-2.236363 3.436363-2.236363C5.421817-2.236363 7.996361-3.916363 7.996361-5.716362C7.996361-6.959998 6.523635-7.450907 5.25818-7.450907H3.796363Z'/>
+<path id='asymptote-90-1-g2-102' d='M3.087272-6.730907C3.087272-7.167271 3.370908-7.865452 4.559999-7.941816C4.614544-7.952725 4.658181-7.996361 4.658181-8.061816C4.658181-8.181816 4.570908-8.181816 4.450908-8.181816C3.359999-8.181816 2.367272-7.625452 2.356363-6.81818V-4.330908C2.356363-3.905453 2.356363-3.556363 1.919999-3.196363C1.538181-2.879999 1.123636-2.858181 .883636-2.847272C.829091-2.836363 .785454-2.792726 .785454-2.727272C.785454-2.618181 .850909-2.618181 .96-2.607272C1.68-2.563636 2.203636-2.170908 2.323636-1.636363C2.356363-1.516363 2.356363-1.494545 2.356363-1.101818V1.058182C2.356363 1.516363 2.356363 1.865454 2.879999 2.279999C3.305454 2.607272 4.025453 2.727272 4.450908 2.727272C4.570908 2.727272 4.658181 2.727272 4.658181 2.607272C4.658181 2.498181 4.592726 2.498181 4.483635 2.487272C3.796363 2.443636 3.261817 2.094545 3.119999 1.538181C3.087272 1.44 3.087272 1.418181 3.087272 1.025454V-1.265454C3.087272-1.767272 2.999999-1.952727 2.650908-2.301818C2.421818-2.530908 2.105454-2.639999 1.799999-2.727272C2.694545-2.978181 3.087272-3.479999 3.087272-4.112726V-6.730907Z'/>
+<path id='asymptote-90-1-g2-103' d='M2.356363 1.276363C2.356363 1.712727 2.072727 2.410908 .883636 2.487272C.829091 2.498181 .785454 2.541817 .785454 2.607272C.785454 2.727272 .905454 2.727272 1.003636 2.727272C2.061818 2.727272 3.076363 2.192727 3.087272 1.363636V-1.123636C3.087272-1.54909 3.087272-1.898181 3.523635-2.258181C3.905453-2.574545 4.319999-2.596363 4.559999-2.607272C4.614544-2.618181 4.658181-2.661817 4.658181-2.727272C4.658181-2.836363 4.592726-2.836363 4.483635-2.847272C3.763635-2.890908 3.239999-3.283635 3.119999-3.818181C3.087272-3.938181 3.087272-3.959999 3.087272-4.352726V-6.512725C3.087272-6.970907 3.087272-7.319998 2.563636-7.734543C2.127272-8.072725 1.374545-8.181816 1.003636-8.181816C.905454-8.181816 .785454-8.181816 .785454-8.061816C.785454-7.952725 .850909-7.952725 .96-7.941816C1.647272-7.89818 2.181818-7.549089 2.323636-6.992725C2.356363-6.894544 2.356363-6.872725 2.356363-6.479998V-4.18909C2.356363-3.687272 2.443636-3.501817 2.792726-3.152726C3.021817-2.923636 3.338181-2.814545 3.643635-2.727272C2.74909-2.476363 2.356363-1.974545 2.356363-1.341818V1.276363Z'/>
+<path id='asymptote-90-1-g6-40' d='M3.610908 2.618181C3.610908 2.585454 3.610908 2.563636 3.425454 2.378181C2.061818 1.003636 1.712727-1.058182 1.712727-2.727272C1.712727-4.625453 2.127272-6.523635 3.46909-7.887271C3.610908-8.01818 3.610908-8.039998 3.610908-8.072725C3.610908-8.149089 3.567272-8.181816 3.501817-8.181816C3.392726-8.181816 2.410908-7.439998 1.767272-6.054544C1.210909-4.854544 1.08-3.643635 1.08-2.727272C1.08-1.876363 1.2-.556363 1.799999 .676363C2.454545 2.018181 3.392726 2.727272 3.501817 2.727272C3.567272 2.727272 3.610908 2.694545 3.610908 2.618181Z'/>
+<path id='asymptote-90-1-g6-41' d='M3.152726-2.727272C3.152726-3.578181 3.032726-4.89818 2.432727-6.130907C1.778181-7.472725 .84-8.181816 .730909-8.181816C.665454-8.181816 .621818-8.13818 .621818-8.072725C.621818-8.039998 .621818-8.01818 .829091-7.821816C1.898181-6.741816 2.519999-5.007271 2.519999-2.727272C2.519999-.861818 2.116363 1.058182 .763636 2.432727C.621818 2.563636 .621818 2.585454 .621818 2.618181C.621818 2.683636 .665454 2.727272 .730909 2.727272C.84 2.727272 1.821818 1.985454 2.465454 .6C3.021817-.6 3.152726-1.810909 3.152726-2.727272Z'/>
+<path id='asymptote-90-1-g6-43' d='M4.461817-2.50909H7.505452C7.65818-2.50909 7.865452-2.50909 7.865452-2.727272S7.65818-2.945454 7.505452-2.945454H4.461817V-5.999998C4.461817-6.152726 4.461817-6.359998 4.243635-6.359998S4.025453-6.152726 4.025453-5.999998V-2.945454H.970909C.818182-2.945454 .610909-2.945454 .610909-2.727272S.818182-2.50909 .970909-2.50909H4.025453V.545454C4.025453 .698182 4.025453 .905454 4.243635 .905454S4.461817 .698182 4.461817 .545454V-2.50909Z'/>
+<path id='asymptote-90-1-g6-49' d='M3.207272-6.981816C3.207272-7.243634 3.207272-7.265453 2.956363-7.265453C2.279999-6.567271 1.32-6.567271 .970909-6.567271V-6.229089C1.189091-6.229089 1.832727-6.229089 2.399999-6.512725V-.861818C2.399999-.469091 2.367272-.338182 1.385454-.338182H1.036363V0C1.418181-.032727 2.367272-.032727 2.803636-.032727S4.18909-.032727 4.570908 0V-.338182H4.221817C3.239999-.338182 3.207272-.458182 3.207272-.861818V-6.981816Z'/>
+<path id='asymptote-90-1-g6-61' d='M7.494543-3.567272C7.65818-3.567272 7.865452-3.567272 7.865452-3.785453S7.65818-4.003635 7.505452-4.003635H.970909C.818182-4.003635 .610909-4.003635 .610909-3.785453S.818182-3.567272 .981818-3.567272H7.494543ZM7.505452-1.450909C7.65818-1.450909 7.865452-1.450909 7.865452-1.66909S7.65818-1.887272 7.494543-1.887272H.981818C.818182-1.887272 .610909-1.887272 .610909-1.66909S.818182-1.450909 .970909-1.450909H7.505452Z'/>
+<path id='asymptote-90-1-g6-79' d='M7.865452-3.698181C7.865452-5.923635 6.21818-7.690907 4.232726-7.690907C2.279999-7.690907 .610909-5.945453 .610909-3.698181C.610909-1.461818 2.290908 .24 4.232726 .24C6.21818 .24 7.865452-1.494545 7.865452-3.698181ZM4.243635-.043636C3.196363-.043636 1.734545-1.003636 1.734545-3.850908C1.734545-6.676362 3.327272-7.41818 4.232726-7.41818C5.181817-7.41818 6.741816-6.643635 6.741816-3.850908C6.741816-.96 5.247271-.043636 4.243635-.043636Z'/>
+<path id='asymptote-90-1-g6-110' d='M1.2-3.752726V-.829091C1.2-.338182 1.08-.338182 .349091-.338182V0C.730909-.010909 1.287272-.032727 1.581818-.032727C1.865454-.032727 2.432727-.010909 2.803636 0V-.338182C2.072727-.338182 1.952727-.338182 1.952727-.829091V-2.836363C1.952727-3.970908 2.727272-4.581817 3.425454-4.581817C4.112726-4.581817 4.232726-3.992726 4.232726-3.370908V-.829091C4.232726-.338182 4.112726-.338182 3.381817-.338182V0C3.763635-.010909 4.319999-.032727 4.614544-.032727C4.89818-.032727 5.465453-.010909 5.836362 0V-.338182C5.269089-.338182 4.996362-.338182 4.985453-.665454V-2.74909C4.985453-3.687272 4.985453-4.025453 4.647271-4.418181C4.494544-4.603635 4.134544-4.821817 3.501817-4.821817C2.705454-4.821817 2.192727-4.352726 1.887272-3.676363V-4.821817L.349091-4.701817V-4.363635C1.112727-4.363635 1.2-4.287272 1.2-3.752726Z'/>
+<path id='asymptote-90-1-g0-63' d='M7.747945-5.950685C7.90137-6.082192 7.90137-6.147945 7.90137-6.191781C7.90137-6.4 7.70411-6.410959 7.682192-6.410959C7.605479-6.410959 7.572603-6.389041 7.375342-6.213699L6.531507-5.479452C6.30137-5.720548 5.490411-6.410959 4.263014-6.410959C2.509589-6.410959 1.041096-5.019178 1.041096-3.2C1.041096-2.169863 1.468493-1.567123 1.687671-1.249315C1.512329-1.084932 1.50137-1.073973 .854795-.515068C.635616-.317808 .613699-.29589 .613699-.19726C.613699-.065753 .70137 .021918 .832877 .021918C.909589 .021918 .931507 .021918 1.128767-.164384L1.983562-.909589C2.082192-.8 2.893151 .021918 4.252055 .021918C6.115068 .021918 7.473973-1.490411 7.473973-3.189041C7.473973-4.208219 7.035616-4.843836 6.827397-5.139726C6.838356-5.150685 6.90411-5.205479 6.947945-5.249315L7.747945-5.950685ZM2.016438-1.534247C1.479452-2.290411 1.479452-2.947945 1.479452-3.189041C1.479452-4.767123 2.739726-5.972603 4.252055-5.972603C5.424658-5.972603 6.082192-5.30411 6.191781-5.183562L2.016438-1.534247ZM6.487671-4.854795C6.849315-4.372603 7.035616-3.824658 7.035616-3.2C7.035616-1.621918 5.775342-.416438 4.263014-.416438C3.090411-.416438 2.432877-1.084932 2.323288-1.205479L6.487671-4.854795Z'/>
+<path id='asymptote-90-1-g5-43' d='M3.474969-1.809215H5.818182C5.929763-1.809215 6.105106-1.809215 6.105106-1.992528S5.929763-2.175841 5.818182-2.175841H3.474969V-4.527024C3.474969-4.638605 3.474969-4.813948 3.291656-4.813948S3.108344-4.638605 3.108344-4.527024V-2.175841H.757161C.645579-2.175841 .470237-2.175841 .470237-1.992528S.645579-1.809215 .757161-1.809215H3.108344V.541968C3.108344 .653549 3.108344 .828892 3.291656 .828892S3.474969 .653549 3.474969 .541968V-1.809215Z'/>
+<path id='asymptote-90-1-g5-48' d='M3.897385-2.542466C3.897385-3.395268 3.809714-3.913325 3.5467-4.423412C3.196015-5.124782 2.550436-5.300125 2.11208-5.300125C1.107846-5.300125 .74122-4.550934 .629639-4.327771C.342715-3.745953 .326775-2.956912 .326775-2.542466C.326775-2.016438 .350685-1.211457 .73325-.573848C1.099875 .01594 1.689664 .167372 2.11208 .167372C2.494645 .167372 3.180075 .047821 3.57858-.74122C3.873474-1.315068 3.897385-2.024408 3.897385-2.542466ZM2.11208-.055791C1.841096-.055791 1.291158-.183313 1.123786-1.020174C1.036115-1.474471 1.036115-2.223661 1.036115-2.638107C1.036115-3.188045 1.036115-3.745953 1.123786-4.184309C1.291158-4.99726 1.912827-5.076961 2.11208-5.076961C2.383064-5.076961 2.933001-4.941469 3.092403-4.216189C3.188045-3.777833 3.188045-3.180075 3.188045-2.638107C3.188045-2.16787 3.188045-1.45056 3.092403-1.004234C2.925031-.167372 2.375093-.055791 2.11208-.055791Z'/>
+<path id='asymptote-90-1-g5-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-90-1-g5-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-90-1-g4-33' d='M6.599998-4.058181C6.599998-4.54909 6.403635-4.821817 6.163635-4.821817C5.879998-4.821817 5.585453-4.559999 5.585453-4.30909C5.585453-4.199999 5.639998-4.079999 5.749089-3.981817C5.934544-3.818181 6.130907-3.523635 6.130907-3.065454C6.130907-2.62909 5.923635-2.007272 5.585453-1.505454C5.25818-1.036363 4.854544-.665454 4.341817-.665454C3.719999-.665454 3.381817-1.058182 3.283635-1.647272C3.403635-1.930909 3.654544-2.62909 3.654544-2.934545C3.654544-3.065454 3.599999-3.174545 3.458181-3.174545C3.370908-3.174545 3.250908-3.152726 3.163635-2.98909C3.043636-2.770908 2.912726-2.061818 2.912726-1.66909C2.552727-1.156363 2.116363-.665454 1.429091-.665454C.709091-.665454 .48-1.309091 .48-1.919999C.48-3.283635 1.592727-4.42909 1.592727-4.570908C1.592727-4.690908 1.505454-4.77818 1.385454-4.77818C1.243636-4.77818 1.167272-4.636362 1.101818-4.538181C.545454-3.730908 .130909-2.432727 .130909-1.44C.130909-.687273 .381818 .12 1.276363 .12C2.050909 .12 2.563636-.425454 2.956363-1.025454C3.054545-.392727 3.479999 .12 4.156362 .12C5.007271 .12 5.530908-.545454 5.923635-1.363636C6.185453-1.898181 6.599998-3.381817 6.599998-4.058181Z'/>
+<path id='asymptote-90-1-g4-59' d='M2.214545-.010909C2.214545-.730909 1.941818-1.156363 1.516363-1.156363C1.156363-1.156363 .938182-.883636 .938182-.578182C.938182-.283636 1.156363 0 1.516363 0C1.647272 0 1.78909-.043636 1.898181-.141818C1.930909-.163636 1.941818-.174545 1.952727-.174545S1.974545-.163636 1.974545-.010909C1.974545 .796363 1.592727 1.450909 1.232727 1.810909C1.112727 1.930909 1.112727 1.952727 1.112727 1.985454C1.112727 2.061818 1.167272 2.105454 1.221818 2.105454C1.341818 2.105454 2.214545 1.265454 2.214545-.010909Z'/>
+<path id='asymptote-90-1-g4-86' d='M6.850907-6.207271C7.385452-7.05818 7.843634-7.090907 8.24727-7.112725C8.378179-7.123634 8.389089-7.309089 8.389089-7.319998C8.389089-7.407271 8.334543-7.450907 8.24727-7.450907C7.963634-7.450907 7.647271-7.41818 7.352725-7.41818C6.992725-7.41818 6.621816-7.450907 6.272726-7.450907C6.207271-7.450907 6.065453-7.450907 6.065453-7.243634C6.065453-7.123634 6.163635-7.112725 6.239998-7.112725C6.534544-7.090907 6.741816-6.981816 6.741816-6.752725C6.741816-6.589089 6.57818-6.349089 6.57818-6.33818L3.22909-1.014545L2.487272-6.785453C2.487272-6.970907 2.738181-7.112725 3.239999-7.112725C3.392726-7.112725 3.512726-7.112725 3.512726-7.330907C3.512726-7.429089 3.425454-7.450907 3.359999-7.450907C2.923636-7.450907 2.454545-7.41818 2.007272-7.41818C1.810909-7.41818 1.603636-7.429089 1.407272-7.429089S1.003636-7.450907 .818182-7.450907C.741818-7.450907 .610909-7.450907 .610909-7.243634C.610909-7.112725 .709091-7.112725 .883636-7.112725C1.494545-7.112725 1.505454-7.014543 1.538181-6.741816L2.399999-.010909C2.432727 .207273 2.476363 .24 2.618181 .24C2.792726 .24 2.836363 .185454 2.923636 .043636L6.850907-6.207271Z'/>
+<path id='asymptote-90-1-g4-110' d='M.96-.643636C.927272-.48 .861818-.229091 .861818-.174545C.861818 .021818 1.014545 .12 1.178181 .12C1.309091 .12 1.505454 .032727 1.581818-.185454C1.592727-.207273 1.723636-.72 1.78909-.992727L2.02909-1.974545C2.094545-2.214545 2.159999-2.454545 2.214545-2.705454C2.258181-2.890908 2.345454-3.207272 2.356363-3.250908C2.519999-3.58909 3.098181-4.581817 4.134544-4.581817C4.625453-4.581817 4.723635-4.178181 4.723635-3.818181C4.723635-3.141817 4.18909-1.745454 4.014544-1.276363C3.916363-1.025454 3.905453-.894545 3.905453-.774545C3.905453-.261818 4.287272 .12 4.799999 .12C5.825453 .12 6.229089-1.472727 6.229089-1.56C6.229089-1.66909 6.130907-1.66909 6.09818-1.66909C5.989089-1.66909 5.989089-1.636363 5.934544-1.472727C5.716362-.730909 5.356362-.12 4.821817-.12C4.636362-.12 4.559999-.229091 4.559999-.48C4.559999-.752727 4.658181-1.014545 4.756362-1.254545C4.963635-1.832727 5.421817-3.032726 5.421817-3.654544C5.421817-4.385453 4.952726-4.821817 4.167272-4.821817C3.185454-4.821817 2.650908-4.123635 2.465454-3.872726C2.410908-4.483635 1.963636-4.821817 1.461818-4.821817S.752727-4.396362 .643636-4.199999C.469091-3.82909 .316364-3.185454 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.043636 .632727-3.283635C.818182-4.058181 1.036363-4.581817 1.429091-4.581817C1.647272-4.581817 1.767272-4.439999 1.767272-4.079999C1.767272-3.850908 1.734545-3.730908 1.592727-3.163635L.96-.643636Z'/>
+</defs>
+<g id='asymptote-90-1-page1'>
+<use x='409.275018' y='371.541245' href='#asymptote-90-1-g4-86'/>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<path d='M233.853 12.2145L117.052 304.217L.250937 12.2145' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<path d='M233.853 12.2145L117.052 304.217L.250937 12.2145H233.853Z' fill="var(--asymptote-color-c0ffff)" opacity='0.3'/>
+</g>
+<use x='292.760744' y='665.657319' href='#asymptote-90-1-g4-86'/>
+<use x='299.124386' y='667.293669' href='#asymptote-90-1-g5-48'/>
+<use x='306.886948' y='665.657319' href='#asymptote-90-1-g6-61'/>
+<use x='318.402071' y='665.657319' href='#asymptote-90-1-g0-63'/>
+<use x='298.779099' y='648.140548' href='#asymptote-90-1-g4-86'/>
+<use x='305.142741' y='649.776899' href='#asymptote-90-1-g5-49'/>
+<use x='312.905303' y='648.140548' href='#asymptote-90-1-g6-61'/>
+<use x='324.420426' y='648.140548' href='#asymptote-90-1-g2-102'/>
+<use x='329.874991' y='648.140548' href='#asymptote-90-1-g0-63'/>
+<use x='338.398613' y='648.140548' href='#asymptote-90-1-g2-103'/>
+<use x='304.597323' y='633.594981' href='#asymptote-90-1-g4-86'/>
+<use x='310.960965' y='635.231332' href='#asymptote-90-1-g5-50'/>
+<use x='318.723527' y='633.594981' href='#asymptote-90-1-g6-61'/>
+<use x='330.23865' y='633.594981' href='#asymptote-90-1-g2-102'/>
+<use x='335.693215' y='633.594981' href='#asymptote-90-1-g0-63'/>
+<use x='344.216837' y='633.594981' href='#asymptote-90-1-g4-59'/>
+<use x='349.065297' y='633.594981' href='#asymptote-90-1-g2-102'/>
+<use x='354.519862' y='633.594981' href='#asymptote-90-1-g0-63'/>
+<use x='363.043484' y='633.594981' href='#asymptote-90-1-g2-103'/>
+<use x='368.498049' y='633.594981' href='#asymptote-90-1-g2-103'/>
+<use x='327.870233' y='575.594572' href='#asymptote-90-1-g4-86'/>
+<use x='334.233875' y='577.230922' href='#asymptote-90-1-g3-110'/>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<path d='M152.092 216.616H82.0116' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='333.688472' y='560.867131' href='#asymptote-90-1-g4-86'/>
+<use x='340.052114' y='562.503481' href='#asymptote-90-1-g3-110'/>
+<use x='345.190316' y='562.503481' href='#asymptote-90-1-g5-43'/>
+<use x='351.776823' y='562.503481' href='#asymptote-90-1-g5-49'/>
+<use x='359.539385' y='560.867131' href='#asymptote-90-1-g6-61'/>
+<use x='371.054509' y='560.867131' href='#asymptote-90-1-g2-80'/>
+<use x='379.539394' y='560.867131' href='#asymptote-90-1-g6-40'/>
+<use x='383.781832' y='560.867131' href='#asymptote-90-1-g4-86'/>
+<use x='390.145474' y='562.503481' href='#asymptote-90-1-g3-110'/>
+<use x='395.781808' y='560.867131' href='#asymptote-90-1-g6-41'/>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<path d='M157.932 202.016H76.1715' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='291.988904' y='555.793338' href='#asymptote-90-1-g4-110'/>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<circle cx='117.052' cy='202.016' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='351.143144' y='517.230369' href='#asymptote-90-1-g4-86'/>
+<use x='357.506785' y='518.866719' href='#asymptote-90-1-g3-33'/>
+<use x='366.586643' y='517.230369' href='#asymptote-90-1-g6-61'/>
+<use x='378.101766' y='509.023596' href='#asymptote-90-1-g1-83'/>
+<use x='389.052355' y='517.230369' href='#asymptote-90-1-g4-86'/>
+<use x='395.415996' y='518.866719' href='#asymptote-90-1-g3-110'/>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<path d='M175.452 158.216H58.6514' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='356.961383' y='502.684848' href='#asymptote-90-1-g4-86'/>
+<use x='363.325024' y='504.321198' href='#asymptote-90-1-g3-33'/>
+<use x='368.876502' y='504.321198' href='#asymptote-90-1-g5-43'/>
+<use x='375.463009' y='504.321198' href='#asymptote-90-1-g5-49'/>
+<use x='383.225571' y='502.684848' href='#asymptote-90-1-g6-61'/>
+<use x='394.740694' y='502.684848' href='#asymptote-90-1-g2-80'/>
+<use x='403.22558' y='502.684848' href='#asymptote-90-1-g6-40'/>
+<use x='407.468018' y='502.684848' href='#asymptote-90-1-g4-86'/>
+<use x='413.83166' y='504.321198' href='#asymptote-90-1-g3-33'/>
+<use x='419.88127' y='502.684848' href='#asymptote-90-1-g6-41'/>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<path d='M181.292 143.616H52.8114' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='291.988904' y='497.611055' href='#asymptote-90-1-g4-33'/>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<circle cx='117.052' cy='143.616' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='362.779606' y='488.139281' href='#asymptote-90-1-g4-86'/>
+<use x='369.143248' y='489.775631' href='#asymptote-90-1-g3-33'/>
+<use x='374.694726' y='489.775631' href='#asymptote-90-1-g5-43'/>
+<use x='381.281233' y='489.775631' href='#asymptote-90-1-g5-50'/>
+<use x='389.043795' y='488.139281' href='#asymptote-90-1-g6-61'/>
+<use x='400.558918' y='488.139281' href='#asymptote-90-1-g2-80'/>
+<use x='409.043804' y='488.139281' href='#asymptote-90-1-g6-40'/>
+<use x='413.286242' y='488.139281' href='#asymptote-90-1-g4-86'/>
+<use x='419.649884' y='489.775631' href='#asymptote-90-1-g3-33'/>
+<use x='425.201362' y='489.775631' href='#asymptote-90-1-g5-43'/>
+<use x='431.787868' y='489.775631' href='#asymptote-90-1-g5-49'/>
+<use x='436.520183' y='488.139281' href='#asymptote-90-1-g6-41'/>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<path d='M187.132 129.015H46.9713' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='291.988904' y='482.156421' href='#asymptote-90-1-g4-33'/>
+<use x='301.594914' y='482.156421' href='#asymptote-90-1-g6-43'/>
+<use x='312.503988' y='482.156421' href='#asymptote-90-1-g6-49'/>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<circle cx='117.052' cy='129.015' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='386.052517' y='429.723635' href='#asymptote-90-1-g4-86'/>
+<use x='392.416158' y='431.359985' href='#asymptote-90-1-g3-33'/>
+<use x='397.967636' y='431.359985' href='#asymptote-90-1-g5-43'/>
+<use x='404.554143' y='431.359985' href='#asymptote-90-1-g3-33'/>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<path d='M210.493 70.615H23.6111' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(173.024 356.939)scale(.996264)'>
+<path d='M117.052 304.217V12.2145' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='282.369626' y='365.728965' href='#asymptote-90-1-g6-79'/>
+<use x='290.854503' y='365.728965' href='#asymptote-90-1-g6-110'/>
+</g>
+</svg>
+</div>
+</div>
+<div id="S7.p6" class="ltx_para">
+<p class="ltx_p">We can imagine the universe <math id="S7.p6.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> as a triangle,
+built in several stages or layers,
+<math id="S7.p6.m2" class="ltx_Math" alttext="V_{0}\subsetneq V_{1}\subsetneq V_{2}\subsetneq\dots" display="inline"><mrow><msub><mi>V</mi><mn>0</mn></msub><mo>⊊</mo><msub><mi>V</mi><mn>1</mn></msub><mo>⊊</mo><msub><mi>V</mi><mn>2</mn></msub><mo>⊊</mo><mi mathvariant="normal">…</mi></mrow></math>.
+This universe doesn’t have a top: but each of the <math id="S7.p6.m3" class="ltx_Math" alttext="V_{i}" display="inline"><msub><mi>V</mi><mi>i</mi></msub></math> do.
+However, the universe has a very clear bottom.
+Each stage is substantially wider than the previous one.</p>
+</div>
+<div id="S7.p7" class="ltx_para">
+<p class="ltx_p">In the center of this universe are the ordinals:
+for every successor <math id="S7.p7.m1" class="ltx_Math" alttext="V_{\alpha}" display="inline"><msub><mi>V</mi><mi>α</mi></msub></math>, exactly one new ordinal appears, namely <math id="S7.p7.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.
+Thus we can picture the class of ordinals as a thin line
+that stretches the entire height of the universe.
+A set has rank <math id="S7.p7.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> if it appears at the same stage that <math id="S7.p7.m4" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> does.</p>
+</div>
+<div id="S7.p8" class="ltx_para">
+<p class="ltx_p">All of number theory, the study of the integers, lives inside <math id="S7.p8.m1" class="ltx_Math" alttext="V_{\omega}" display="inline"><msub><mi>V</mi><mi>ω</mi></msub></math>.
+Real analysis, the study of real numbers, lives inside <math id="S7.p8.m2" class="ltx_Math" alttext="V_{\omega+1}" display="inline"><msub><mi>V</mi><mrow><mi>ω</mi><mo>+</mo><mn>1</mn></mrow></msub></math>, since a real number
+can be encoded as a subset of <math id="S7.p8.m3" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math> (by binary expansion).
+Functional analysis lives one step past that, <math id="S7.p8.m4" class="ltx_Math" alttext="V_{\omega+2}" display="inline"><msub><mi>V</mi><mrow><mi>ω</mi><mo>+</mo><mn>2</mn></mrow></msub></math>.
+For all intents and purposes, most mathematics does not go beyond <math id="S7.p8.m5" class="ltx_Math" alttext="V_{\omega+\omega}" display="inline"><msub><mi>V</mi><mrow><mi>ω</mi><mo>+</mo><mi>ω</mi></mrow></msub></math>.
+This pales in comparison to the true magnitude of the whole universe.</p>
+</div>
+</section>
+<section id="S8" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">90.8 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 90A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Prove that <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="\operatorname{rank}(\alpha)=\alpha" display="inline"><mrow><mrow><mi>rank</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>α</mi></mrow></math> for any <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>
+by transfinite induction.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 90B</span></span><span class="ltx_text ltx_font_bold"> </span>(Online Math Open)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Count the number of transitive sets in <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="V_{5}" display="inline"><msub><mi>V</mi><mn>5</mn></msub></math>.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 90C</span></span><span class="ltx_text ltx_font_bold"> </span>(Goodstein)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="a_{2}" display="inline"><msub><mi>a</mi><mn>2</mn></msub></math> be any positive integer.
+We define the infinite sequence <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="a_{2}" display="inline"><msub><mi>a</mi><mn>2</mn></msub></math>, <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="a_{3}" display="inline"><msub><mi>a</mi><mn>3</mn></msub></math>, … recursively as follows.
+If <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="a_{n}=0" display="inline"><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>=</mo><mn>0</mn></mrow></math>, then <math id="Thmproblem3.p1.m5" class="ltx_Math" alttext="a_{n+1}=0" display="inline"><mrow><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow></math>.
+Otherwise, we write <math id="Thmproblem3.p1.m6" class="ltx_Math" alttext="a_{n}" display="inline"><msub><mi>a</mi><mi>n</mi></msub></math> in base <math id="Thmproblem3.p1.m7" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>,
+then write all exponents in base <math id="Thmproblem3.p1.m8" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, and so on until all
+numbers in the expression are at most <math id="Thmproblem3.p1.m9" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+Then we replace all instances of <math id="Thmproblem3.p1.m10" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> by <math id="Thmproblem3.p1.m11" class="ltx_Math" alttext="n+1" display="inline"><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></math>
+(including the exponents!), subtract <math id="Thmproblem3.p1.m12" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>,
+and set the result to <math id="Thmproblem3.p1.m13" class="ltx_Math" alttext="a_{n+1}" display="inline"><msub><mi>a</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math>.
+For example, if <math id="Thmproblem3.p1.m14" class="ltx_Math" alttext="a_{2}=11" display="inline"><mrow><msub><mi>a</mi><mn>2</mn></msub><mo>=</mo><mn>11</mn></mrow></math> we have</p>
+<div class="table-container"><table id="A5.S3.EGx188" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex58"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex58.m1" class="ltx_Math" alttext="\displaystyle a_{2}" display="inline"><msub><mi>a</mi><mn>2</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex58.m2" class="ltx_Math" alttext="\displaystyle=2^{3}+2+1=2^{2+1}+2+1" display="inline"><mrow><mi></mi><mo>=</mo><mrow><msup><mn>2</mn><mn>3</mn></msup><mo>+</mo><mn>2</mn><mo>+</mo><mn>1</mn></mrow><mo>=</mo><mrow><msup><mn>2</mn><mrow><mn>2</mn><mo>+</mo><mn>1</mn></mrow></msup><mo>+</mo><mn>2</mn><mo>+</mo><mn>1</mn></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex59"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex59.m1" class="ltx_Math" alttext="\displaystyle a_{3}" display="inline"><msub><mi>a</mi><mn>3</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex59.m2" class="ltx_Math" alttext="\displaystyle=3^{3+1}+3+1-1=3^{3+1}+3" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><msup><mn>3</mn><mrow><mn>3</mn><mo>+</mo><mn>1</mn></mrow></msup><mo>+</mo><mn>3</mn><mo>+</mo><mn>1</mn></mrow><mo>−</mo><mn>1</mn></mrow><mo>=</mo><mrow><msup><mn>3</mn><mrow><mn>3</mn><mo>+</mo><mn>1</mn></mrow></msup><mo>+</mo><mn>3</mn></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex60"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex60.m1" class="ltx_Math" alttext="\displaystyle a_{4}" display="inline"><msub><mi>a</mi><mn>4</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex60.m2" class="ltx_Math" alttext="\displaystyle=4^{4+1}+4-1=4^{4+1}+3" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><msup><mn>4</mn><mrow><mn>4</mn><mo>+</mo><mn>1</mn></mrow></msup><mo>+</mo><mn>4</mn></mrow><mo>−</mo><mn>1</mn></mrow><mo>=</mo><mrow><msup><mn>4</mn><mrow><mn>4</mn><mo>+</mo><mn>1</mn></mrow></msup><mo>+</mo><mn>3</mn></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex61"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex61.m1" class="ltx_Math" alttext="\displaystyle a_{5}" display="inline"><msub><mi>a</mi><mn>5</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex61.m2" class="ltx_Math" alttext="\displaystyle=5^{5+1}+3-1=5^{5+1}+2" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><msup><mn>5</mn><mrow><mn>5</mn><mo>+</mo><mn>1</mn></mrow></msup><mo>+</mo><mn>3</mn></mrow><mo>−</mo><mn>1</mn></mrow><mo>=</mo><mrow><msup><mn>5</mn><mrow><mn>5</mn><mo>+</mo><mn>1</mn></mrow></msup><mo>+</mo><mn>2</mn></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and so on. Prove that <math id="Thmproblem3.p1.m15" class="ltx_Math" alttext="a_{N}=0" display="inline"><mrow><msub><mi>a</mi><mi>N</mi></msub><mo>=</mo><mn>0</mn></mrow></math> for some integer <math id="Thmproblem3.p1.m16" class="ltx_Math" alttext="N&gt;2" display="inline"><mrow><mi>N</mi><mo>&gt;</mo><mn>2</mn></mrow></math>.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../st1/zfc.html">Previous chapter: Zermelo-Fraenkel with choice</a><br />
+<a href="../st1/cardinals-set-theory.html">Next chapter: Cardinals</a>
+</nav>
+
+		</main>
+	</body>
+</html>

@@ -1,0 +1,1583 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 5 Flavors of rings ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="ch_rings_ideals.html" title="Chapter 4 Rings and ideals ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="next" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_homomorphisms_quotient.html" title="Chapter 3 Homomorphisms and quotient groups ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_rings_ideals.html" title="Chapter 4 Rings and ideals ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_startout/" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_linalg/" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_calc/" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_measure/" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_diffgeo/" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop1/" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st2/" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">II </span>Basic Abstract Algebra</span></a><a href="ch_rings_ideals.html" title="In Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">4 </span>Rings and ideals</span></a><a href="../part_basictop/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">III </span>Basic Topology</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 5 </span>Flavors of rings</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">We continue our exploration of rings by considering
+some nice-ness properties that rings or ideals can satisfy,
+which will be valuable later on.
+As before, number theory is interlaced as motivation.
+I guess I can tell you at the outset what the completed table
+is going to look like, so you know what to expect.</p>
+</div>
+<div id="p2" class="ltx_para">
+<table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column">Ring noun</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column">Ideal adjective</th>
+<th class="ltx_td ltx_align_left ltx_th ltx_th_column">Relation</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left ltx_border_t">PID</td>
+<td class="ltx_td ltx_align_left ltx_border_t">principal</td>
+<td class="ltx_td ltx_align_left ltx_border_t">
+<math id="m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a PID <math id="m2" class="ltx_Math" alttext="\iff" display="inline"><mo stretchy="false">⇔</mo></math> <math id="m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is an integral domain,</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td"></td>
+<td class="ltx_td"></td>
+<td class="ltx_td ltx_align_left">    and every <math id="m4" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is principal</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">Noetherian ring</td>
+<td class="ltx_td ltx_align_left">finitely generated</td>
+<td class="ltx_td ltx_align_left">
+<math id="m5" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is Noetherian <math id="m6" class="ltx_Math" alttext="\iff" display="inline"><mo stretchy="false">⇔</mo></math> every <math id="m7" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is fin. gen.</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">field</td>
+<td class="ltx_td ltx_align_left">maximal</td>
+<td class="ltx_td ltx_align_left">
+<math id="m8" class="ltx_Math" alttext="R/I" display="inline"><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow></math> is a field <math id="m9" class="ltx_Math" alttext="\iff" display="inline"><mo stretchy="false">⇔</mo></math> <math id="m10" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is maximal</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_left">integral domain</td>
+<td class="ltx_td ltx_align_left">prime</td>
+<td class="ltx_td ltx_align_left">
+<math id="m11" class="ltx_Math" alttext="R/I" display="inline"><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow></math> is an integral domain
+<math id="m12" class="ltx_Math" alttext="\iff" display="inline"><mo stretchy="false">⇔</mo></math> <math id="m13" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is prime</td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5.1 </span>Fields</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> is a field, but <math id="S1.p1.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is not.</em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">We already saw this definition last chapter:
+a field <math id="S1.p2.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> is a nontrivial ring for which every nonzero element is a unit.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">In particular, there are only two ideals in a field:
+the ideal <math id="S1.p3.m1" class="ltx_Math" alttext="(0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math>, which is maximal, and the entire field <math id="S1.p3.m2" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5.2 </span>Integral domains</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S2.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is an integral domain.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">In practice, we are often not so lucky that we have a full-fledged field.
+Now it would be nice if we could still conclude the zero product property:
+if <math id="S2.p2.m1" class="ltx_Math" alttext="ab=0" display="inline"><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo>=</mo><mn>0</mn></mrow></math> then either <math id="S2.p2.m2" class="ltx_Math" alttext="a=0" display="inline"><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow></math> or <math id="S2.p2.m3" class="ltx_Math" alttext="b=0" display="inline"><mrow><mi>b</mi><mo>=</mo><mn>0</mn></mrow></math>.
+If our ring is a field, this is true: if <math id="S2.p2.m4" class="ltx_Math" alttext="b\neq 0" display="inline"><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow></math>,
+then we can multiply by <math id="S2.p2.m5" class="ltx_Math" alttext="b^{-1}" display="inline"><msup><mi>b</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math> to get <math id="S2.p2.m6" class="ltx_Math" alttext="a=0" display="inline"><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow></math>.
+But many other rings we consider like <math id="S2.p2.m7" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> and <math id="S2.p2.m8" class="ltx_Math" alttext="\mathbb{Z}[x]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> also have this property,
+despite not having division.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Not all rings though: in <math id="S2.p3.m1" class="ltx_Math" alttext="\mathbb{Z}/15\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>15</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math>,</p>
+<table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="3\cdot 5\equiv 0\pmod{15}." display="block"><mrow><mrow><mrow><mn>3</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>5</mn></mrow><mo>≡</mo><mrow><mn>0</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" movablelimits="false" rspace="0.167em">mod</mo><mn>15</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">If <math id="S2.p3.m2" class="ltx_Math" alttext="a,b\neq 0" display="inline"><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>≠</mo><mn>0</mn></mrow></math> but <math id="S2.p3.m3" class="ltx_Math" alttext="ab=0" display="inline"><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo>=</mo><mn>0</mn></mrow></math> then we say <math id="S2.p3.m4" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S2.p3.m5" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> are <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> zero divisors</span>
+of the ring <math id="S2.p3.m6" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>.
+So we give a name to such rings.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 5.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A nontrivial ring with no zero divisors
+is called an <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> integral domain</span>.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Some
+authors abbreviate this to “domain”, notably Artin.</span></span></span></p>
+</div>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 5.2.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that a field is an integral domain.</span></p>
+</div>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 5.2.3</span></span><span class="ltx_text ltx_font_bold"> </span>(Cancellation in integral domains)
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Suppose <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="ac=bc" display="inline"><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>c</mi></mrow><mo>=</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow></math> in an integral domain, and <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="c\neq 0" display="inline"><mrow><mi>c</mi><mo>≠</mo><mn>0</mn></mrow></math>.
+Show that <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="a=b" display="inline"><mrow><mi>a</mi><mo>=</mo><mi>b</mi></mrow></math>.
+(There is no <math id="S2.Thmtheorem3.p1.m4" class="ltx_Math" alttext="c^{-1}" display="inline"><msup><mi>c</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math> to multiply by,
+so you have to use the definition.)</span></p>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.2.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of integral domains)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Every field is an integral domain,
+so all the previous examples apply.
+In addition:</p>
+<ol id="S2.I1" class="ltx_enumerate">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is an integral domain, but it is not a field.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{R}[x]" display="inline"><mrow><mi>ℝ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is not a field,
+since there is no polynomial <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="P(x)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> with <math id="S2.I1.i2.p1.m3" class="ltx_Math" alttext="xP(x)=1" display="inline"><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>.
+However, <math id="S2.I1.i2.p1.m4" class="ltx_Math" alttext="\mathbb{R}[x]" display="inline"><mrow><mi>ℝ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is an integral domain,
+because if <math id="S2.I1.i2.p1.m5" class="ltx_Math" alttext="P(x)Q(x)=0" display="inline"><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>Q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> then one of <math id="S2.I1.i2.p1.m6" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> or <math id="S2.I1.i2.p1.m7" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> is zero.</p>
+</div>
+</li>
+<li id="S2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S2.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i3.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[x]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is also an example of an integral domain.
+In fact, <math id="S2.I1.i3.p1.m2" class="ltx_Math" alttext="R[x]" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is an integral domain for any integral domain <math id="S2.I1.i3.p1.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> (why?).</p>
+</div>
+</li>
+<li id="S2.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S2.I1.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i4.p1.m1" class="ltx_Math" alttext="\mathbb{Z}/n\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mi>n</mi></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math> is a field (hence integral domain)
+exactly when <math id="S2.I1.i4.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is prime.
+When <math id="S2.I1.i4.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is not prime, it is a ring but not an integral domain.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">The trivial ring <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> is <em class="ltx_emph ltx_font_italic">not</em> considered an integral domain.</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">At this point, we go ahead and say:</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 5.2.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">An integral domain where all ideals are principal
+is called a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> principal ideal domain (PID)</span>.</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Recall that the ideal <math id="S2.p5.m1" class="ltx_Math" alttext="(a,b)" display="inline"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></math> is the ring-analog of the <math id="S2.p5.m2" class="ltx_Math" alttext="gcd" display="inline"><mrow><mi>g</mi><mo>⁢</mo><mi>c</mi><mo>⁢</mo><mi>d</mi></mrow></math> operation, so essentially what this
+definition is saying is that:
+If any family of elements <math id="S2.p5.m3" class="ltx_Math" alttext="\{a_{i}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>a</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow></math> is taken, then the ideal generated by all of the <math id="S2.p5.m4" class="ltx_Math" alttext="a_{i}" display="inline"><msub><mi>a</mi><mi>i</mi></msub></math> is in
+fact generated by a single element <math id="S2.p5.m5" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">In other words,</p>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 5.2.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">In a PID, you can take the <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="gcd" display="inline"><mrow><mi>g</mi><mo>⁢</mo><mi>c</mi><mo>⁢</mo><mi>d</mi></mrow></math> of any collection of elements.</p>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">The ring <math id="S2.p7.m1" class="ltx_Math" alttext="\mathbb{Z}/6\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>6</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math> is an example of a ring
+which is a principal ideal ring, but not an integral domain.
+As we alluded to earlier, we will never really use “principal ideal ring”
+in any real way: we typically will want to strengthen it to PID.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5.3 </span>Prime ideals</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S3.p1.m1" class="ltx_Math" alttext="(5)" display="inline"><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></math> is a prime ideal of <math id="S3.p1.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>.</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">We know that every integer can be factored (up to sign)
+as a unique product of primes; for example <math id="S3.p2.m1" class="ltx_Math" alttext="15=3\cdot 5" display="inline"><mrow><mn>15</mn><mo>=</mo><mrow><mn>3</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>5</mn></mrow></mrow></math>
+and <math id="S3.p2.m2" class="ltx_Math" alttext="-10=-2\cdot 5" display="inline"><mrow><mrow><mo>−</mo><mn>10</mn></mrow><mo>=</mo><mrow><mo>−</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>5</mn></mrow></mrow></mrow></math>.
+You might remember the proof involves the so-called Bézout’s lemma,
+which essentially says that <math id="S3.p2.m3" class="ltx_Math" alttext="(a,b)=(\gcd(a,b))" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><mi>gcd</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math>;
+in other words we’ve carefully used the fact that <math id="S3.p2.m4" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is a PID.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">It turns out that for general rings, the situation is not as nice
+as factoring elements because most rings are not PID’s.
+The classic example of something going wrong is</p>
+<table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="6=2\cdot 3=\left(1-\sqrt{-5}\right)\left(1+\sqrt{-5}\right)" display="block"><mrow><mn>6</mn><mo>=</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>3</mn></mrow><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mn>1</mn><mo>−</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>+</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">in <math id="S3.p3.m1" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{-5}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt><mo stretchy="false">]</mo></mrow></mrow></math>.
+Nonetheless, we can sidestep the issue
+and talk about factoring <em class="ltx_emph ltx_font_italic">ideals</em>:
+somehow the example <math id="S3.p3.m2" class="ltx_Math" alttext="10=2\cdot 5" display="inline"><mrow><mn>10</mn><mo>=</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>5</mn></mrow></mrow></math> should be <math id="S3.p3.m3" class="ltx_Math" alttext="(10)=(2)\cdot(5)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>10</mn><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mn>2</mn><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+which says “every multiple of <math id="S3.p3.m4" class="ltx_Math" alttext="10" display="inline"><mn>10</mn></math> is the product of a
+multiple of <math id="S3.p3.m5" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> and a multiple of <math id="S3.p3.m6" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math>”.
+I’d have to tell you then how to multiply two ideals, which I do
+in the chapter on unique factorization.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Let’s at least figure out what primes are.
+In <math id="S3.p4.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>, we have that <math id="S3.p4.m2" class="ltx_Math" alttext="p\neq 1" display="inline"><mrow><mi>p</mi><mo>≠</mo><mn>1</mn></mrow></math> is prime if whenever <math id="S3.p4.m3" class="ltx_Math" alttext="p\mid xy" display="inline"><mrow><mi>p</mi><mo>∣</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></mrow></math>,
+either <math id="S3.p4.m4" class="ltx_Math" alttext="p\mid x" display="inline"><mrow><mi>p</mi><mo>∣</mo><mi>x</mi></mrow></math> or <math id="S3.p4.m5" class="ltx_Math" alttext="p\mid y" display="inline"><mrow><mi>p</mi><mo>∣</mo><mi>y</mi></mrow></math>.
+We port over this definition to our world of ideals.</p>
+</div>
+<div id="def:prime_ideal" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 5.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <em class="ltx_emph ltx_font_italic">proper</em> ideal <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="I\subsetneq R" display="inline"><mrow><mi>I</mi><mo>⊊</mo><mi>R</mi></mrow></math> is a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> prime ideal</span>
+if whenever <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="xy\in I" display="inline"><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>∈</mo><mi>I</mi></mrow></math>, either <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="x\in I" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>I</mi></mrow></math> or <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="y\in I" display="inline"><mrow><mi>y</mi><mo>∈</mo><mi>I</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">The condition that <math id="S3.p5.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is proper is analogous to the
+fact that we don’t consider <math id="S3.p5.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> to be a prime number.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.3.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples and non-examples of prime ideals)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S3.I1" class="ltx_enumerate">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The ideal <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="(7)" display="inline"><mrow><mo stretchy="false">(</mo><mn>7</mn><mo stretchy="false">)</mo></mrow></math> of <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is prime.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The ideal <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="(8)" display="inline"><mrow><mo stretchy="false">(</mo><mn>8</mn><mo stretchy="false">)</mo></mrow></math> of <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is not prime,
+since <math id="S3.I1.i2.p1.m3" class="ltx_Math" alttext="2\cdot 4=8" display="inline"><mrow><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>4</mn></mrow><mo>=</mo><mn>8</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S3.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The ideal <math id="S3.I1.i3.p1.m1" class="ltx_Math" alttext="(x)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></math> of <math id="S3.I1.i3.p1.m2" class="ltx_Math" alttext="\mathbb{Z}[x]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is prime.</p>
+</div>
+</li>
+<li id="S3.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S3.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">The ideal <math id="S3.I1.i4.p1.m1" class="ltx_Math" alttext="(x^{2})" display="inline"><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></math> of <math id="S3.I1.i4.p1.m2" class="ltx_Math" alttext="\mathbb{Z}[x]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is not prime,
+since <math id="S3.I1.i4.p1.m3" class="ltx_Math" alttext="x\cdot x=x^{2}" display="inline"><mrow><mrow><mi>x</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(e)</span> 
+<div id="S3.I1.i5.p1" class="ltx_para">
+<p class="ltx_p">The ideal <math id="S3.I1.i5.p1.m1" class="ltx_Math" alttext="(3,x)" display="inline"><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></math> of <math id="S3.I1.i5.p1.m2" class="ltx_Math" alttext="\mathbb{Z}[x]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is prime.
+This is actually easiest to see
+using <a href="#thm:prime_ideal_quotient" title="Theorem 5.3.5 (Prime ideal ⇔ quotient is integral domain) ‣ 5.3 Prime ideals ‣ Chapter 5 Flavors of rings ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">5.3.5</span></a> below.</p>
+</div>
+</li>
+<li id="S3.I1.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(f)</span> 
+<div id="S3.I1.i6.p1" class="ltx_para">
+<p class="ltx_p">The ideal <math id="S3.I1.i6.p1.m1" class="ltx_Math" alttext="(5)=5\mathbb{Z}+5i\mathbb{Z}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mrow><mn>5</mn><mo>⁢</mo><mi>ℤ</mi></mrow><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></mrow></math> of <math id="S3.I1.i6.p1.m2" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math>
+is not prime, since the elements
+<math id="S3.I1.i6.p1.m3" class="ltx_Math" alttext="3+i" display="inline"><mrow><mn>3</mn><mo>+</mo><mi>i</mi></mrow></math> and <math id="S3.I1.i6.p1.m4" class="ltx_Math" alttext="3-i" display="inline"><mrow><mn>3</mn><mo>−</mo><mi>i</mi></mrow></math> have product <math id="S3.I1.i6.p1.m5" class="ltx_Math" alttext="10\in(5)" display="inline"><mrow><mn>10</mn><mo>∈</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></mrow></math>,
+yet neither is itself in <math id="S3.I1.i6.p1.m6" class="ltx_Math" alttext="(5)" display="inline"><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="rem:unit_sign_issue" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 5.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Ideals have the nice property that they get rid of “sign issues”.
+For example, in <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>, do we consider <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="-3" display="inline"><mrow><mo>−</mo><mn>3</mn></mrow></math> to be a prime?
+When phrased with ideals, this annoyance goes away: <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="(-3)=(3)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mrow></math>.
+More generally, for a ring <math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>, talking about ideals
+lets us ignore multiplication by a unit.
+(Note that <math id="S3.Thmtheorem3.p1.m5" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> is a unit in <math id="S3.Thmtheorem3.p1.m6" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>.)</p>
+</div>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 5.3.4</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">What do you call a ring <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> for which the zero ideal <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="(0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math> is prime?</span></p>
+</div>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">We also have:</p>
+</div>
+<div id="thm:prime_ideal_quotient" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 5.3.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Prime ideal <math id="S3.Thmtheorem5.m1" class="ltx_Math" alttext="\iff" display="inline"><mo mathcolor="#191970" stretchy="false">⇔</mo></math> quotient is integral domain)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">An ideal <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is prime if and only if <math id="S3.Thmtheorem5.p1.m2" class="ltx_Math" alttext="R/I" display="inline"><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow></math> is an integral domain.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 5.3.6</span></span><span class="ltx_text ltx_font_bold"> </span>(Mandatory)
+<br class="ltx_break">
+</h6>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself the theorem is true;
+it is just definition chasing.
+(A possible start is to consider <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="R=\mathbb{Z}" display="inline"><mrow><mi>R</mi><mo>=</mo><mi>ℤ</mi></mrow></math> and <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="I=(15)" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>15</mn><mo stretchy="false">)</mo></mrow></mrow></math>.)</span></p>
+</div>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">I now must regrettably inform you that unique factorization is still
+not true even with the notion of a “prime” ideal
+(though again I haven’t told you how to multiply two ideals yet).
+But it will become true with some additional assumptions
+that will arise in algebraic number theory
+(relevant buzzword: Dedekind domain).</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5.4 </span>Maximal ideals</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> The ideal <math id="S4.p1.m1" class="ltx_Math" alttext="(x,5)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></math> is maximal in <math id="S4.p1.m2" class="ltx_Math" alttext="\mathbb{Z}[x]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>, by quotient-ing.</em></p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Here’s another flavor of an ideal.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 5.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A proper ideal <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> of a ring <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> maximal</span> if
+it is not contained in any other proper ideal.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.4.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of maximal ideals)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S4.I1" class="ltx_enumerate">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The ideal <math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="I=(7)" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>7</mn><mo stretchy="false">)</mo></mrow></mrow></math> of <math id="S4.I1.i1.p1.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is maximal, because
+if an ideal <math id="S4.I1.i1.p1.m3" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> contains <math id="S4.I1.i1.p1.m4" class="ltx_Math" alttext="7" display="inline"><mn>7</mn></math>
+and an element <math id="S4.I1.i1.p1.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> not in <math id="S4.I1.i1.p1.m6" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>
+it must contain <math id="S4.I1.i1.p1.m7" class="ltx_Math" alttext="\gcd(7,n)=1" display="inline"><mrow><mrow><mi>gcd</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>7</mn><mo>,</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>, and hence <math id="S4.I1.i1.p1.m8" class="ltx_Math" alttext="J=\mathbb{Z}" display="inline"><mrow><mi>J</mi><mo>=</mo><mi>ℤ</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The ideal <math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="(x)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></math> is <em class="ltx_emph ltx_font_italic">not</em> maximal in <math id="S4.I1.i2.p1.m2" class="ltx_Math" alttext="\mathbb{Z}[x]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>,
+because it’s contained in <math id="S4.I1.i2.p1.m3" class="ltx_Math" alttext="(x,5)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></math> (among others).</p>
+</div>
+</li>
+<li id="S4.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S4.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">On the other hand, <math id="S4.I1.i3.p1.m1" class="ltx_Math" alttext="(x,5)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></math> is indeed maximal in <math id="S4.I1.i3.p1.m2" class="ltx_Math" alttext="\mathbb{Z}[x]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>.
+This is actually easiest to verify using
+<a href="#thm:max_ideal_quotient" title="Theorem 5.4.4 (𝐼 maximal ⇔ 𝑅/𝐼 field) ‣ 5.4 Maximal ideals ‣ Chapter 5 Flavors of rings ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">5.4.4</span></a> below.</p>
+</div>
+</li>
+<li id="S4.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S4.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">Also, <math id="S4.I1.i4.p1.m1" class="ltx_Math" alttext="(x)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></math> is maximal in <math id="S4.I1.i4.p1.m2" class="ltx_Math" alttext="\mathbb{C}[x]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>,
+again appealing to <a href="#thm:max_ideal_quotient" title="Theorem 5.4.4 (𝐼 maximal ⇔ 𝑅/𝐼 field) ‣ 5.4 Maximal ideals ‣ Chapter 5 Flavors of rings ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">5.4.4</span></a> below.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 5.4.3</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">What do you call a ring <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> for which the zero ideal <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="(0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math> is maximal?</span></p>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">There’s an analogous theorem to the one for prime ideals.</p>
+</div>
+<div id="thm:max_ideal_quotient" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 5.4.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(<math id="S4.Thmtheorem4.m1" class="ltx_Math" alttext="I" display="inline"><mi mathcolor="#191970">I</mi></math> maximal <math id="S4.Thmtheorem4.m2" class="ltx_Math" alttext="\iff" display="inline"><mo mathcolor="#191970" stretchy="false">⇔</mo></math> <math id="S4.Thmtheorem4.m3" class="ltx_Math" alttext="R/I" display="inline"><mrow><mi mathcolor="#191970">R</mi><mo mathcolor="#191970">/</mo><mi mathcolor="#191970">I</mi></mrow></math> field)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">An ideal <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is maximal if and only if <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="R/I" display="inline"><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow></math> is a field.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">A ring is a field if and only if <math id="S4.p4.m1" class="ltx_Math" alttext="(0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math> is the only maximal ideal.
+So this follows by <a href="ch_rings_ideals.html#prob:inclusion_preserving" title="Problem 4D. ‣ 4.10 A few harder problems to think about ‣ Chapter 4 Rings and ideals ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">4D</span></a>.
+∎</p>
+</div>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_corollary">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Corollary 5.4.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Maximal ideals are prime)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is a maximal ideal of a ring <math id="S4.Thmtheorem5.p1.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>, then <math id="S4.Thmtheorem5.p1.m3" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is prime.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">If <math id="S4.p5.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is maximal, then <math id="S4.p5.m2" class="ltx_Math" alttext="R/I" display="inline"><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow></math> is a field,
+hence an integral domain, so <math id="S4.p5.m3" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is prime.
+∎</p>
+</div>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">In practice, because modding out by generated ideals is pretty convenient,
+this is a very efficient way to check whether an ideal is maximal.</p>
+</div>
+<div id="S4.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.4.6</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Modding out in <math id="S4.Thmtheorem6.m1" class="ltx_Math" alttext="\mathbb{Z}{[x]}" display="inline"><mrow><mi mathcolor="#8C0000">ℤ</mi><mo>⁢</mo><mrow><mo mathcolor="#8C0000" stretchy="false">[</mo><mi mathcolor="#8C0000">x</mi><mo mathcolor="#8C0000" stretchy="false">]</mo></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S4.I2" class="ltx_enumerate">
+<li id="S4.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S4.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">This instantly implies that <math id="S4.I2.i1.p1.m1" class="ltx_Math" alttext="(x,5)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></math> is a maximal ideal
+in <math id="S4.I2.i1.p1.m2" class="ltx_Math" alttext="\mathbb{Z}[x]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>, because if we mod out by <math id="S4.I2.i1.p1.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> and <math id="S4.I2.i1.p1.m4" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math> in <math id="S4.I2.i1.p1.m5" class="ltx_Math" alttext="\mathbb{Z}[x]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>,
+we just get <math id="S4.I2.i1.p1.m6" class="ltx_Math" alttext="\mathbb{F}_{5}" display="inline"><msub><mi>𝔽</mi><mn>5</mn></msub></math>, which is a field.</p>
+</div>
+</li>
+<li id="S4.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S4.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">On the other hand, modding out by just <math id="S4.I2.i2.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> gives <math id="S4.I2.i2.p1.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>,
+which is an integral domain but not a field; that’s why <math id="S4.I2.i2.p1.m3" class="ltx_Math" alttext="(x)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></math> is
+prime but not maximal.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">As we saw, any maximal ideal is prime.
+But now note that <math id="S4.p7.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> has the special property that
+all of its nonzero prime ideals are also maximal.
+It’s with this condition and a few other minor conditions
+that you get a so-called <em class="ltx_emph ltx_font_italic">Dedekind domain</em>
+where prime factorization of ideals <em class="ltx_emph ltx_font_italic">does</em> work.
+More on that later.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5.5 </span>Field of fractions</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S5.p1.m1" class="ltx_Math" alttext="\operatorname{Frac}(\mathbb{Z})=\mathbb{Q}" display="inline"><mrow><mrow><mi>Frac</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ℤ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>ℚ</mi></mrow></math>.</em></p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">As long as we are here, we take the time to introduce a useful
+construction that turns any integral domain into a field.</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 5.5.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Given an integral domain <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>,
+we define its <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> field of fractions</span> or <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> fraction field</span>
+<math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\operatorname{Frac}(R)" display="inline"><mrow><mi>Frac</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>R</mi><mo stretchy="false">)</mo></mrow></mrow></math> as follows:
+it consists of elements <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="a/b" display="inline"><mrow><mi>a</mi><mo>/</mo><mi>b</mi></mrow></math>, where <math id="S5.Thmtheorem1.p1.m4" class="ltx_Math" alttext="a,b\in R" display="inline"><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>∈</mo><mi>R</mi></mrow></math> and <math id="S5.Thmtheorem1.p1.m5" class="ltx_Math" alttext="b\neq 0" display="inline"><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow></math>.
+We set <math id="S5.Thmtheorem1.p1.m6" class="ltx_Math" alttext="a/b\sim c/d" display="inline"><mrow><mrow><mi>a</mi><mo>/</mo><mi>b</mi></mrow><mo>∼</mo><mrow><mi>c</mi><mo>/</mo><mi>d</mi></mrow></mrow></math> if and only if <math id="S5.Thmtheorem1.p1.m7" class="ltx_Math" alttext="bc=ad" display="inline"><mrow><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow><mo>=</mo><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi></mrow></mrow></math>.
+Addition and multiplication is defined by</p>
+<table id="A5.S3.EGx9" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex3"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex3.m1" class="ltx_Math" alttext="\displaystyle\frac{a}{b}+\frac{c}{d}" display="inline"><mrow><mstyle displaystyle="true"><mfrac><mi>a</mi><mi>b</mi></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true"><mfrac><mi>c</mi><mi>d</mi></mfrac></mstyle></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex3.m2" class="ltx_Math" alttext="\displaystyle=\frac{ad+bc}{bd}" display="inline"><mrow><mi></mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>d</mi></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow><mrow><mi>b</mi><mo>⁢</mo><mi>d</mi></mrow></mfrac></mstyle></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex4.m1" class="ltx_Math" alttext="\displaystyle\frac{a}{b}\cdot\frac{c}{d}" display="inline"><mrow><mstyle displaystyle="true"><mfrac><mi>a</mi><mi>b</mi></mfrac></mstyle><mo lspace="0.222em" rspace="0.222em">⋅</mo><mstyle displaystyle="true"><mfrac><mi>c</mi><mi>d</mi></mfrac></mstyle></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex4.m2" class="ltx_Math" alttext="\displaystyle=\frac{ac}{bd}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mstyle displaystyle="true"><mfrac><mrow><mi>a</mi><mo>⁢</mo><mi>c</mi></mrow><mrow><mi>b</mi><mo>⁢</mo><mi>d</mi></mrow></mfrac></mstyle></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">In fact everything you know about <math id="S5.p3.m1" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> basically carries over by analogy.
+You can prove if you want that this indeed a field, but
+considering how comfortable we are that <math id="S5.p3.m2" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> is well-defined,
+I wouldn’t worry about it…</p>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 5.5.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> be a field.
+We define <math id="S5.Thmtheorem2.p1.m2" class="ltx_Math" alttext="k(x)=\operatorname{Frac}(k[x])" display="inline"><mrow><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>Frac</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+(read “<math id="S5.Thmtheorem2.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> of <math id="S5.Thmtheorem2.p1.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>”),
+and call it the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> field of rational functions</span>.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.5.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of fraction fields)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S5.I1" class="ltx_enumerate">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">By <em class="ltx_emph ltx_font_italic">definition</em>, <math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="\operatorname{Frac}(\mathbb{Z})=\mathbb{Q}" display="inline"><mrow><mrow><mi>Frac</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ℤ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>ℚ</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The field <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{R}(x)" display="inline"><mrow><mi>ℝ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> consists of rational functions in <math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>:</p>
+<table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\mathbb{R}(x)=\left\{\frac{f(x)}{g(x)}\mid f,g\in\mathbb{R}[x]\right\}." display="block"><mrow><mrow><mrow><mi>ℝ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mfrac><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo>∈</mo><mrow><mi>ℝ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">For example, <math id="S5.I1.i2.p1.m3" class="ltx_Math" alttext="\frac{2x}{x^{2}-3}" display="inline"><mfrac><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>3</mn></mrow></mfrac></math> might be a typical element.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="ex:gaussian_rationals" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.5.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Gaussian rationals)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Just like we defined <math id="S5.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math> by abusing notation,
+we can also write <math id="S5.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\mathbb{Q}(i)=\operatorname{Frac}(\mathbb{Z}[i])" display="inline"><mrow><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>Frac</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+Officially, it should consist of</p>
+<table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\mathbb{Q}(i)=\left\{\frac{f(i)}{g(i)}\mid g(i)\neq 0\right\}" display="block"><mrow><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mfrac><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">for polynomials <math id="S5.Thmtheorem4.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S5.Thmtheorem4.p1.m4" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> with rational coefficients.
+But since <math id="S5.Thmtheorem4.p1.m5" class="ltx_Math" alttext="i^{2}=-1" display="inline"><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math> this just leads to</p>
+<table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\mathbb{Q}(i)=\left\{\frac{a+bi}{c+di}\mid a,b,c,d\in\mathbb{Q},(c,d)\neq(0,0)%
+\right\}." display="block"><mrow><mrow><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mfrac><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>i</mi></mrow></mrow><mrow><mi>c</mi><mo>+</mo><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi></mrow></mrow></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo>,</mo><mi>d</mi></mrow><mo>∈</mo><mi>ℚ</mi></mrow><mo>,</mo><mrow><mrow><mo stretchy="false">(</mo><mi>c</mi><mo>,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow><mo>≠</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">And since <math id="S5.Thmtheorem4.p1.m6" class="ltx_Math" alttext="\frac{1}{c+di}=\frac{c-di}{c^{2}+d^{2}}" display="inline"><mrow><mfrac><mn>1</mn><mrow><mi>c</mi><mo>+</mo><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi></mrow></mrow></mfrac><mo>=</mo><mfrac><mrow><mi>c</mi><mo>−</mo><mrow><mi>d</mi><mo>⁢</mo><mi>i</mi></mrow></mrow><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>+</mo><msup><mi>d</mi><mn>2</mn></msup></mrow></mfrac></mrow></math> we end up with</p>
+<table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\mathbb{Q}(i)=\left\{a+bi\mid a,b\in\mathbb{Q}\right\}." display="block"><mrow><mrow><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>i</mi></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>∈</mo><mi>ℚ</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5.6 </span>Unique factorization domains (UFD’s)</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S6.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> and polynomial rings in general.</em></p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">Here is one stray definition that will be important
+for those with a number-theoretic inclination.
+Over the positive integers, we have a fundamental theorem of arithmetic,
+stating that every integer is uniquely the product of prime numbers.</p>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">We can even make an analogous statement in <math id="S6.p3.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> or <math id="S6.p3.m2" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math>,
+if we allow representations like <math id="S6.p3.m3" class="ltx_Math" alttext="6=(-2)(-3)" display="inline"><mrow><mn>6</mn><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and so on.
+The trick is that we only consider everything <em class="ltx_emph ltx_font_italic">up to units</em>;
+so <math id="S6.p3.m4" class="ltx_Math" alttext="6=(-2)(-3)=2\cdot 3" display="inline"><mrow><mn>6</mn><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>3</mn></mrow></mrow></math> are considered the same.</p>
+</div>
+<div id="S6.p4" class="ltx_para">
+<p class="ltx_p">The general definition goes as follows.</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 5.6.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A nonzero non-unit of an integral domain <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is
+<span class="ltx_text ltx_font_bold" style="color:#0000FF;"> irreducible</span> if it cannot be written as the product of two non-units.</p>
+</div>
+<div id="S6.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">An integral domain <math id="S6.Thmtheorem1.p2.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> unique factorization domain</span>
+if every nonzero non-unit of <math id="S6.Thmtheorem1.p2.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> can be written
+as the product of irreducible elements,
+which is unique up to multiplication by units.</p>
+</div>
+</div>
+<div id="S6.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 5.6.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify that <math id="S6.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is a UFD.</span></p>
+</div>
+</div>
+<div id="S6.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.6.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of UFD’s)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S6.I1" class="ltx_enumerate">
+<li id="S6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S6.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Fields are a “degenerate” example of UFD’s:
+every nonzero element is a unit,
+so there is nothing to check.</p>
+</div>
+</li>
+<li id="S6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S6.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S6.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is a UFD.
+The irreducible elements are <math id="S6.I1.i2.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S6.I1.i2.p1.m3" class="ltx_Math" alttext="-p" display="inline"><mrow><mo>−</mo><mi>p</mi></mrow></math>,
+for example <math id="S6.I1.i2.p1.m4" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math> or <math id="S6.I1.i2.p1.m5" class="ltx_Math" alttext="-17" display="inline"><mrow><mo>−</mo><mn>17</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S6.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S6.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S6.I1.i3.p1.m1" class="ltx_Math" alttext="\mathbb{Q}[x]" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is a UFD:
+polynomials with rational coefficients
+can be uniquely factored, up to scaling by constants
+(as the units of <math id="S6.I1.i3.p1.m2" class="ltx_Math" alttext="\mathbb{Q}[x]" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> are just the rational numbers).</p>
+</div>
+</li>
+<li id="S6.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S6.I1.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S6.I1.i4.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[x]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is a UFD.</p>
+</div>
+</li>
+<li id="S6.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(e)</span> 
+<div id="S6.I1.i5.p1" class="ltx_para">
+<p class="ltx_p">The Gaussian integers <math id="S6.I1.i5.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math> turns out to be a UFD too
+(and this will be proved in the chapters on algebraic number theory).</p>
+</div>
+</li>
+<li id="S6.I1.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(f)</span> 
+<div id="S6.I1.i6.p1" class="ltx_para">
+<p class="ltx_p"><math id="S6.I1.i6.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{-5}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt><mo stretchy="false">]</mo></mrow></mrow></math> is the classic non-example of a UFD:
+one may write</p>
+<table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="6=2\cdot 3=\left(1-\sqrt{-5}\right)\left(1+\sqrt{-5}\right)" display="block"><mrow><mn>6</mn><mo>=</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>3</mn></mrow><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mn>1</mn><mo>−</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>+</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">but each of <math id="S6.I1.i6.p1.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>, <math id="S6.I1.i6.p1.m3" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>, <math id="S6.I1.i6.p1.m4" class="ltx_Math" alttext="1\pm\sqrt{-5}" display="inline"><mrow><mn>1</mn><mo>±</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt></mrow></math> is irreducible.
+(It turns out the right way to fix this is
+by considering prime <em class="ltx_emph ltx_font_italic">ideals</em> instead,
+and this is one big motivation for <a href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Part</span> <span class="ltx_text ltx_ref_tag">XIV</span></a>.)</p>
+</div>
+</li>
+<li id="S6.I1.i7" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(g)</span> 
+<div id="S6.I1.i7.p1" class="ltx_para">
+<p class="ltx_p">Theorem we won’t prove: if <math id="S6.I1.i7.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a UFD,
+so is <math id="S6.I1.i7.p1.m2" class="ltx_Math" alttext="R[x]" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> (and hence by induction so is
+<math id="S6.I1.i7.p1.m3" class="ltx_Math" alttext="R[x,y]" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></math>, <math id="S6.I1.i7.p1.m4" class="ltx_Math" alttext="R[x,y,z]" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">]</mo></mrow></mrow></math>, …).</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S6.p5" class="ltx_para">
+<p class="ltx_p">We have the following theorem:</p>
+</div>
+<div id="S6.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 5.6.4</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S6.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S6.Thmtheorem4.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> be a PID. Then <math id="S6.Thmtheorem4.p1.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a UFD.</p>
+</div>
+</div>
+<div id="S6.p6" class="ltx_para">
+<p class="ltx_p">If we look at the non-example above:</p>
+<table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="6=2\cdot 3=\left(1-\sqrt{-5}\right)\left(1+\sqrt{-5}\right)" display="block"><mrow><mn>6</mn><mo>=</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>3</mn></mrow><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mn>1</mn><mo>−</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>+</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">The failure of <math id="S6.p6.m1" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{-5}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt><mo stretchy="false">]</mo></mrow></mrow></math> to be a UFD here is reflected by the fact that we cannot decompose
+any factor into further irreducible factor, indeed, the ideal</p>
+<table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\left(2,1+\sqrt{-5}\right)" display="block"><mrow><mo>(</mo><mn>2</mn><mo>,</mo><mrow><mn>1</mn><mo>+</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt></mrow><mo>)</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is not principal — there is no element that is the <math id="S6.p6.m2" class="ltx_Math" alttext="\gcd" display="inline"><mi>gcd</mi></math> of <math id="S6.p6.m3" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> and <math id="S6.p6.m4" class="ltx_Math" alttext="1+\sqrt{-5}" display="inline"><mrow><mn>1</mn><mo>+</mo><msqrt><mrow><mo>−</mo><mn>5</mn></mrow></msqrt></mrow></math>.</p>
+</div>
+<div id="S6.p7" class="ltx_para">
+<p class="ltx_p">In a similar manner, we can prove that a PID is an UFD, assuming a decomposition into irreducible
+factors exist.</p>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5.7 </span>Extra: Euclidean domains</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p">This chapter will not be used later on, but it is of historical interest.</p>
+</div>
+<div id="S7.p2" class="ltx_para">
+<p class="ltx_p">Recall that a PID is a ring where you can take the <math id="S7.p2.m1" class="ltx_Math" alttext="\gcd" display="inline"><mi>gcd</mi></math> of any family of elements.</p>
+</div>
+<div id="S7.p3" class="ltx_para">
+<p class="ltx_p">We all know that the most popular algorithm to compute the <math id="S7.p3.m1" class="ltx_Math" alttext="\gcd" display="inline"><mi>gcd</mi></math> of two elements in <math id="S7.p3.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is the
+Euclidean algorithm:</p>
+<ul id="S7.I1" class="ltx_itemize">
+<li id="S7.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Start with two integers <math id="S7.I1.i1.p1.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S7.I1.i1.p1.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>.</p>
+</div>
+</li>
+<li id="S7.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If either of <math id="S7.I1.i2.p1.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S7.I1.i2.p1.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> is <math id="S7.I1.i2.p1.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, we’re done. The <math id="S7.I1.i2.p1.m4" class="ltx_Math" alttext="\gcd" display="inline"><mi>gcd</mi></math> is the nonzero element.</p>
+</div>
+</li>
+<li id="S7.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Otherwise, assume <math id="S7.I1.i3.p1.m1" class="ltx_Math" alttext="|a|\geq|b|" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>a</mi><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mo stretchy="false">|</mo><mi>b</mi><mo stretchy="false">|</mo></mrow></mrow></math>, divide <math id="S7.I1.i3.p1.m2" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> by <math id="S7.I1.i3.p1.m3" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> to get some remainder <math id="S7.I1.i3.p1.m4" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> such that
+<math id="S7.I1.i3.p1.m5" class="ltx_Math" alttext="|r|&lt;|b|" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>r</mi><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mrow><mo stretchy="false">|</mo><mi>b</mi><mo stretchy="false">|</mo></mrow></mrow></math>, replace <math id="S7.I1.i3.p1.m6" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> with <math id="S7.I1.i3.p1.m7" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>, and continue the algorithm.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">This algorithm is very efficient — it can be proven that the algorithm only takes logarithmically
+many steps in the size of <math id="S7.p3.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S7.p3.m4" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> — for instance, if <math id="S7.p3.m5" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S7.p3.m6" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> are on the order of
+<math id="S7.p3.m7" class="ltx_Math" alttext="10^{100}" display="inline"><msup><mn>10</mn><mn>100</mn></msup></math>, at worst <math id="S7.p3.m8" class="ltx_Math" alttext="500" display="inline"><mn>500</mn></math> steps are needed.</p>
+</div>
+<div id="S7.p4" class="ltx_para">
+<p class="ltx_p">Naturally, the following questions are raised:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">On which rings can we perform the same algorithm?</p>
+</blockquote>
+<p class="ltx_p">We will see that we can in fact do it on several rings! For example, the ring of Gaussian integers
+<math id="S7.p4.m1" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math>, the Eisenstein integers <math id="S7.p4.m2" class="ltx_Math" alttext="\mathbb{Z}[\omega]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>ω</mi><mo stretchy="false">]</mo></mrow></mrow></math>, and so on.</p>
+</div>
+<div id="S7.p5" class="ltx_para">
+<p class="ltx_p">If we look at the algorithm description above, what makes the algorithm work?
+It’s the absolute value <math id="S7.p5.m1" class="ltx_math_unparsed" alttext="|\cdot|" display="inline"><mrow><mo fence="false" stretchy="false">|</mo><mo lspace="0em" rspace="0em">⋅</mo><mo fence="false" stretchy="false">|</mo></mrow></math> which is used to compare the magnitude of two numbers,
+and this absolute value satisfies two conditions:</p>
+<ul id="S7.I2" class="ltx_itemize">
+<li id="S7.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">It outputs nonnegative integer values — that way, the algorithm will eventually terminate.</p>
+</div>
+</li>
+<li id="S7.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">For any two ring elements <math id="S7.I2.i2.p1.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S7.I2.i2.p1.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>, where <math id="S7.I2.i2.p1.m3" class="ltx_Math" alttext="b\neq 0" display="inline"><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow></math>, there exist some <math id="S7.I2.i2.p1.m4" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> such that
+<math id="S7.I2.i2.p1.m5" class="ltx_Math" alttext="r=a-qb" display="inline"><mrow><mi>r</mi><mo>=</mo><mrow><mi>a</mi><mo>−</mo><mrow><mi>q</mi><mo>⁢</mo><mi>b</mi></mrow></mrow></mrow></math> has smaller absolute value than <math id="S7.I2.i2.p1.m6" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">So, naturally, for any ring with a similar integer-valued function, we can perform the algorithm.
+We call a function <math id="S7.p5.m2" class="ltx_Math" alttext="\operatorname{N}\colon R\to\mathbb{Z}_{\geq 0}" display="inline"><mrow><mi mathvariant="normal">N</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>R</mi><mo stretchy="false">→</mo><msub><mi>ℤ</mi><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></msub></mrow></mrow></math> that satisfies the two conditions above an
+<span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Euclidean norm</span>, and an integral domain <math id="S7.p5.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> that has a norm an <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Euclidean domain</span>.</p>
+</div>
+<div id="S7.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.7.1</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(The ring of Gaussian integers is a Euclidean domain)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">On <math id="S7.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math>, the usual norm</p>
+<table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="|a+bi|=a^{2}+b^{2}" display="block"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>i</mi></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is a Euclidean norm.</p>
+</div>
+<div id="S7.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">Indeed, for any elements <math id="S7.Thmtheorem1.p2.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S7.Thmtheorem1.p2.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> with <math id="S7.Thmtheorem1.p2.m3" class="ltx_Math" alttext="b\neq 0" display="inline"><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow></math>, we can compute the remainder <math id="S7.Thmtheorem1.p2.m4" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>
+by dividing <math id="S7.Thmtheorem1.p2.m5" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> by <math id="S7.Thmtheorem1.p2.m6" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>, let <math id="S7.Thmtheorem1.p2.m7" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> be the Gaussian integer that is closest to <math id="S7.Thmtheorem1.p2.m8" class="ltx_Math" alttext="\frac{a}{b}" display="inline"><mfrac><mi>a</mi><mi>b</mi></mfrac></math> (that
+is, <math id="S7.Thmtheorem1.p2.m9" class="ltx_Math" alttext="|\frac{a}{b}-q|" display="inline"><mrow><mo stretchy="false">|</mo><mrow><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>−</mo><mi>q</mi></mrow><mo stretchy="false">|</mo></mrow></math> is minimized) and let <math id="S7.Thmtheorem1.p2.m10" class="ltx_Math" alttext="r=a-bq" display="inline"><mrow><mi>r</mi><mo>=</mo><mrow><mi>a</mi><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><mi>q</mi></mrow></mrow></mrow></math>, then it can be proven that <math id="S7.Thmtheorem1.p2.m11" class="ltx_Math" alttext="|r|&lt;|b|" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>r</mi><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mrow><mo stretchy="false">|</mo><mi>b</mi><mo stretchy="false">|</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S7.Thmtheorem1.p3" class="ltx_para">
+<p class="ltx_p">The proof is done by showing <math id="S7.Thmtheorem1.p3.m1" class="ltx_Math" alttext="|\frac{a}{b}-q|&lt;1" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>−</mo><mi>q</mi></mrow><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mn>1</mn></mrow></math> — if we look at the lattice of points
+contained in <math id="S7.Thmtheorem1.p3.m2" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math> embedded in the complex plane,
+then for any value of <math id="S7.Thmtheorem1.p3.m3" class="ltx_Math" alttext="\frac{a}{b}\in\mathbb{C}" display="inline"><mrow><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>∈</mo><mi>ℂ</mi></mrow></math>, rounding it to the nearest integer will move it by
+at most <math id="S7.Thmtheorem1.p3.m4" class="ltx_Math" alttext="\frac{\sqrt{2}}{2}&lt;1" display="inline"><mrow><mfrac><msqrt><mn>2</mn></msqrt><mn>2</mn></mfrac><mo>&lt;</mo><mn>1</mn></mrow></math>.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(4cm);
+ΨΨfor(int x=-2; x&lt;=2;++x){
+ΨΨΨfor(int y=-2; y&lt;=2;++y){
+ΨΨΨΨdot((x, y), blue);
+ΨΨΨ}
+ΨΨ}
+ΨΨfor(var p: new pair[]{
+ΨΨΨ(0.3, 0.4),
+ΨΨΨ(-1.1, 1.6),
+ΨΨΨ(-1.5, -1.5),
+ΨΨ}){
+ΨΨΨdot(p, red);
+ΨΨΨdraw(p--(round(p.x), round(p.y)), Arrow);
+ΨΨ}
+ΨΨgraph.xaxis(xmin=-2.4, xmax=2.4);
+ΨΨgraph.yaxis(ymin=-2.4, ymax=2.4);
+Ψ
+</pre>
+</div>
+</div>
+<div id="S7.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.7.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(The ring of Eisenstein integers is a Euclidean domain)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Similarly, let <math id="S7.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\omega=\frac{1+\sqrt{3}i}{2}" display="inline"><mrow><mi>ω</mi><mo>=</mo><mfrac><mrow><mn>1</mn><mo>+</mo><mrow><msqrt><mn>3</mn></msqrt><mo>⁢</mo><mi>i</mi></mrow></mrow><mn>2</mn></mfrac></mrow></math> (that is <math id="S7.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\omega^{3}=-1" display="inline"><mrow><msup><mi>ω</mi><mn>3</mn></msup><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math>), then <math id="S7.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\mathbb{Z}[\omega]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>ω</mi><mo stretchy="false">]</mo></mrow></mrow></math> is
+a Euclidean domain with the usual norm</p>
+<table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="|a+bi|=a^{2}+b^{2}" display="block"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>i</mi></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">or equivalently</p>
+<table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="|a+b\omega|=a^{2}+ab+b^{2}." display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>ω</mi></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S7.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.7.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(The ring <math id="S7.Thmtheorem3.m1" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{11}]" display="inline"><mrow><mi mathcolor="#8C0000">ℤ</mi><mo>⁢</mo><mrow><mo mathcolor="#8C0000" stretchy="false">[</mo><msqrt mathcolor="#8C0000"><mn mathcolor="#8C0000">11</mn></msqrt><mo mathcolor="#8C0000" stretchy="false">]</mo></mrow></mrow></math> is a Euclidean domain)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">As before. This time, the natural norm<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>See <a href="../part_algnt1/ch_ring_of_integers.html#sec:norms_traces" title="54.1 Norms and traces ‣ Chapter 54 The ring of integers ‣ Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Section</span> <span class="ltx_text ltx_ref_tag">54.1</span></a> for the explanation why this norm is the natural one.</span></span></span>
+will be:</p>
+<table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\operatorname{N}_{\mathbb{Q}(\sqrt{11})/\mathbb{Q}}(a+b\sqrt{1}1)=(a+b\sqrt{1}%
+1)(a-b\sqrt{1}1)=a^{2}-11b^{2}." display="block"><mrow><mrow><mrow><msub><mi mathvariant="normal">N</mi><mrow><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>11</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>1</mn></msqrt><mo>⁢</mo><mn>1</mn></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>1</mn></msqrt><mo>⁢</mo><mn>1</mn></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>1</mn></msqrt><mo>⁢</mo><mn>1</mn></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>11</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Since we need a Euclidean norm, we will take <math id="S7.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\operatorname{N}(a+b\sqrt{1}1)=|a^{2}-11b^{2}|." display="inline"><mrow><mrow><mrow><mi mathvariant="normal">N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>1</mn></msqrt><mo>⁢</mo><mn>1</mn></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>11</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow><mo stretchy="false">|</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></p>
+</div>
+<div id="S7.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p">Given two elements <math id="S7.Thmtheorem3.p2.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S7.Thmtheorem3.p2.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> in <math id="S7.Thmtheorem3.p2.m3" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{11}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>11</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow></math> with <math id="S7.Thmtheorem3.p2.m4" class="ltx_Math" alttext="b\neq 0" display="inline"><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow></math>,
+we will try to compute <math id="S7.Thmtheorem3.p2.m5" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> such that <math id="S7.Thmtheorem3.p2.m6" class="ltx_Math" alttext="\operatorname{N}(r)&lt;\operatorname{N}(b)" display="inline"><mrow><mrow><mi mathvariant="normal">N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mrow><mi mathvariant="normal">N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> as <math id="S7.Thmtheorem3.p2.m7" class="ltx_Math" alttext="r=a-qb" display="inline"><mrow><mi>r</mi><mo>=</mo><mrow><mi>a</mi><mo>−</mo><mrow><mi>q</mi><mo>⁢</mo><mi>b</mi></mrow></mrow></mrow></math> as before.</p>
+</div>
+<div id="S7.Thmtheorem3.p3" class="ltx_para">
+<p class="ltx_p">This time around, we cannot draw <math id="S7.Thmtheorem3.p3.m1" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{11}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>11</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow></math> as a lattice of points — it is dense in
+<math id="S7.Thmtheorem3.p3.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> — so, each point <math id="S7.Thmtheorem3.p3.m3" class="ltx_Math" alttext="a+b\sqrt{11}" display="inline"><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>11</mn></msqrt></mrow></mrow></math> will be drawn at the coordinate
+<math id="S7.Thmtheorem3.p3.m4" class="ltx_Math" alttext="(a+b\sqrt{11},a-b\sqrt{11})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>11</mn></msqrt></mrow></mrow><mo>,</mo><mrow><mi>a</mi><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>11</mn></msqrt></mrow></mrow><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+<div id="S7.Thmtheorem3.p4" class="ltx_para">
+<p class="ltx_p">The set of points with norm <math id="S7.Thmtheorem3.p4.m1" class="ltx_Math" alttext="&lt;1" display="inline"><mrow><mi></mi><mo>&lt;</mo><mn>1</mn></mrow></math> will be drawn below.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(6cm);
+ΨΨpair pointof(real a, real b){
+ΨΨΨreturn (a+b*sqrt(11), a-b*sqrt(11));
+ΨΨ}
+ΨΨreal threshold=6.5;
+ΨΨbool valid(real x, real y){
+ΨΨΨreturn -threshold&lt;=x &amp;&amp; x&lt;=threshold &amp;&amp; -threshold&lt;=y &amp;&amp; y&lt;=threshold;
+ΨΨ}
+ΨΨbool valid(pair p){ return valid(p.x, p.y); }
+
+ΨΨfor(int a=-8; a&lt;=8;++a){
+ΨΨΨfor(int b=-2; b&lt;=2;++b){
+ΨΨΨΨvar p=pointof(a, b);
+ΨΨΨΨif(valid(p)) dot(p, blue);
+ΨΨΨ}
+ΨΨ}
+
+ΨΨvar axisthreshold=threshold+0.2;
+ΨΨgraph.xaxis(xmin=-axisthreshold, xmax=axisthreshold);
+ΨΨgraph.yaxis(ymin=-axisthreshold, ymax=axisthreshold);
+
+ΨΨvar t=graph.graph(new real(real a){ return 1/a; }, -axisthreshold, -1/axisthreshold);
+ΨΨvar p=red;
+ΨΨdraw(t, p);
+ΨΨdraw(scale(-1)*t, p);
+ΨΨdraw(scale(1, -1)*t, p);
+ΨΨdraw(scale(-1, 1)*t, p);
+
+
+ΨΨreal norm(pair p){
+ΨΨΨreturn abs(p.x*p.y);
+ΨΨ}
+
+ΨΨpair[] tryround(pair q){
+ΨΨΨpair[] l;
+ΨΨΨfor(int a=-8; a&lt;=8;++a){
+ΨΨΨΨfor(int b=-2; b&lt;=2;++b){
+ΨΨΨΨΨvar p=pointof(a, b);
+ΨΨΨΨΨif(valid(p) &amp;&amp; norm(p-q)&lt;1) l.push(p);
+ΨΨΨΨ}
+ΨΨΨ}
+ΨΨΨl=sort(l, new bool(pair a, pair b){
+ΨΨΨΨreturn norm(a-q)&lt;norm(b-q);
+ΨΨΨ});
+ΨΨΨreturn l;
+ΨΨ}
+
+ΨΨfor(pair p: new pair[]{
+ΨΨΨ(-2, 1.4),
+ΨΨΨ(-1.7, 1.8),
+ΨΨΨ(3.1, 3.7),
+ΨΨΨ(4, -5),
+ΨΨ}){
+ΨΨΨvar l=tryround(p);
+ΨΨΨdraw(p--l[0], Arrow);
+ΨΨΨfor(var q: l[1:]){
+ΨΨΨΨdraw(p--q, Arrow, p=gray);
+ΨΨΨ}
+ΨΨΨdot(p, red);
+ΨΨ}
+
+ΨΨfor(int a=-8; a&lt;=8;++a){
+ΨΨΨfor(int b=-2; b&lt;=2;++b){
+ΨΨΨΨvar p=pointof(a, b);
+ΨΨΨΨif(valid(p)) dot(p, blue);
+ΨΨΨ}
+ΨΨ}
+Ψ
+</pre>
+</div>
+<div id="S7.Thmtheorem3.p5" class="ltx_para">
+<p class="ltx_p">Instead of a ball (as in imaginary quadratic fields, that is, <math id="S7.Thmtheorem3.p5.m1" class="ltx_Math" alttext="\mathbb{Q}(\sqrt{-d})" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mrow><mo>−</mo><mi>d</mi></mrow></msqrt><mo stretchy="false">)</mo></mrow></mrow></math> for integer <math id="S7.Thmtheorem3.p5.m2" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math>),
+the set of points with norm <math id="S7.Thmtheorem3.p5.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> forms a hyperbola.</p>
+</div>
+<div id="S7.Thmtheorem3.p6" class="ltx_para">
+<p class="ltx_p">As such, rounding to the nearest point is not always the best way — nevertheless, it can be
+proven (by exhaustive case checking, similar to the case of <math id="S7.Thmtheorem3.p6.m1" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math>) that for every value of
+<math id="S7.Thmtheorem3.p6.m2" class="ltx_Math" alttext="\frac{a}{b}\in\mathbb{Q}(\sqrt{11})" display="inline"><mrow><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>∈</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>11</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, there is some <math id="S7.Thmtheorem3.p6.m3" class="ltx_Math" alttext="q\in\mathbb{Z}[\sqrt{11}]" display="inline"><mrow><mi>q</mi><mo>∈</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>11</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow></mrow></math> such that
+<math id="S7.Thmtheorem3.p6.m4" class="ltx_Math" alttext="\operatorname{N}(\frac{a}{b}-q)&lt;1" display="inline"><mrow><mrow><mi mathvariant="normal">N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mfrac><mi>a</mi><mi>b</mi></mfrac><mo>−</mo><mi>q</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mn>1</mn></mrow></math>. Thus <math id="S7.Thmtheorem3.p6.m5" class="ltx_Math" alttext="\operatorname{N}" display="inline"><mi mathvariant="normal">N</mi></math> is a Euclidean norm.</p>
+</div>
+</div>
+<div id="S7.p6" class="ltx_para">
+<p class="ltx_p">That having said, sometimes the natural norm of a Euclidean domain need not be Euclidean.
+<math id="S7.p6.m1" class="ltx_Math" alttext="\mathbb{Z}[\frac{1+\sqrt{69}}{2}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mfrac><mrow><mn>1</mn><mo>+</mo><msqrt><mn>69</mn></msqrt></mrow><mn>2</mn></mfrac><mo stretchy="false">]</mo></mrow></mrow></math> is the first example.</p>
+</div>
+<div id="S7.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.7.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(<math id="S7.Thmtheorem4.m1" class="ltx_Math" alttext="\mathbb{Q}[x]" display="inline"><mrow><mi mathcolor="#8C0000">ℚ</mi><mo>⁢</mo><mrow><mo mathcolor="#8C0000" stretchy="false">[</mo><mi mathcolor="#8C0000">x</mi><mo mathcolor="#8C0000" stretchy="false">]</mo></mrow></mrow></math> is a Euclidean domain)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Similarly, in <math id="S7.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathbb{Q}[x]" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> we can let the norm be the degree of a polynomial — the polynomial
+division with remainder algorithm will take care of computing the <math id="S7.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\gcd" display="inline"><mi>gcd</mi></math>.</p>
+</div>
+</div>
+<div id="S7.p7" class="ltx_para">
+<p class="ltx_p">Back to the topic of PID. In a Euclidean domain, you can compute the <math id="S7.p7.m1" class="ltx_Math" alttext="\gcd" display="inline"><mi>gcd</mi></math> of any two elements.
+What about an infinite family of elements?</p>
+</div>
+<div id="S7.p8" class="ltx_para">
+<p class="ltx_p">Turns out the situation is very nice:</p>
+</div>
+<div id="S7.Thmtheorem5" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Proposition 5.7.5</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">A Euclidean domain is a PID.</p>
+</div>
+</div>
+<div id="S7.p9" class="ltx_para">
+<p class="ltx_p">Actually, we don’t need to provide an explicit algorithm to compute the <math id="S7.p9.m1" class="ltx_Math" alttext="\gcd" display="inline"><mi>gcd</mi></math> of an infinite family
+of elements — of course any such algorithm cannot terminate in a finite amount of time! — but we
+only need to show the <math id="S7.p9.m2" class="ltx_Math" alttext="\gcd" display="inline"><mi>gcd</mi></math> exists, we can cheat our way out.</p>
+</div>
+<div id="S7.p10" class="ltx_para">
+<p class="ltx_p">Note that in the Euclidean algorithm, the norm of the elements <em class="ltx_emph ltx_font_italic">keep decreasing</em> until one of
+the elements become <math id="S7.p10.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>. So, if we’re given an arbitrary family of elements, we take the ideal
+generated by these elements — certainly the <math id="S7.p10.m2" class="ltx_Math" alttext="\gcd" display="inline"><mi>gcd</mi></math> is inside that ideal — and we <em class="ltx_emph ltx_font_italic">take the
+nonzero element with the smallest norm</em>. This is the <math id="S7.p10.m3" class="ltx_Math" alttext="\gcd" display="inline"><mi>gcd</mi></math>.</p>
+</div>
+<div id="S7.p11" class="ltx_para">
+<p class="ltx_p">With that intuition in mind, we formalize our proof:</p>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S7.p12" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.p12.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> be any ideal. We need to show <math id="S7.p12.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is principal.</p>
+</div>
+<div id="S7.p13" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.p13.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> be a nonzero element with smallest norm in <math id="S7.p13.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> — such an element exists because
+<math id="S7.p13.m3" class="ltx_Math" alttext="\mathbb{Z}_{\geq 0}" display="inline"><msub><mi>ℤ</mi><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></msub></math> is well-ordered.</p>
+</div>
+<div id="S7.Thmtheorem6" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 5.7.6</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that, for every other elements <math id="S7.Thmtheorem6.p1.m1" class="ltx_Math" alttext="b\in I" display="inline"><mrow><mi>b</mi><mo>∈</mo><mi>I</mi></mrow></math>, then <math id="S7.Thmtheorem6.p1.m2" class="ltx_Math" alttext="a\mid b" display="inline"><mrow><mi>a</mi><mo>∣</mo><mi>b</mi></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S7.p14" class="ltx_para">
+<p class="ltx_p">Thus, <math id="S7.p14.m1" class="ltx_Math" alttext="I=(a)" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></math>, we’re done.
+∎</p>
+</div>
+</div>
+<div id="S7.Thmtheorem7" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.7.7</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(The ring <math id="S7.Thmtheorem7.m1" class="ltx_Math" alttext="\mathbb{Z}[\frac{1+\sqrt{-19}}{2}]" display="inline"><mrow><mi mathcolor="#8C0000">ℤ</mi><mo>⁢</mo><mrow><mo mathcolor="#8C0000" stretchy="false">[</mo><mfrac mathcolor="#8C0000"><mrow><mn mathcolor="#8C0000">1</mn><mo mathcolor="#8C0000">+</mo><msqrt mathcolor="#8C0000"><mrow><mo mathcolor="#8C0000">−</mo><mn mathcolor="#8C0000">19</mn></mrow></msqrt></mrow><mn mathcolor="#8C0000">2</mn></mfrac><mo mathcolor="#8C0000" stretchy="false">]</mo></mrow></mrow></math> is not a Euclidean domain)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.Thmtheorem7.p1.m1" class="ltx_Math" alttext="R=\mathbb{Z}[\frac{1+\sqrt{-19}}{2}]" display="inline"><mrow><mi>R</mi><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mfrac><mrow><mn>1</mn><mo>+</mo><msqrt><mrow><mo>−</mo><mn>19</mn></mrow></msqrt></mrow><mn>2</mn></mfrac><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S7.Thmtheorem7.p2" class="ltx_para">
+<p class="ltx_p">With the above example in mind, what can we say about this ring?</p>
+</div>
+<div id="S7.Thmtheorem7.p3" class="ltx_para">
+<p class="ltx_p">This is in fact a principal ideal domain (we will not prove it here), but there is in fact no
+Euclidean norm on this ring.
+</p>
+</div>
+</div>
+<div id="S7.p15" class="ltx_para">
+<p class="ltx_p">We will prove the above claim. The general plan is:</p>
+<ul id="S7.I3" class="ltx_itemize">
+<li id="S7.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">Show that the existence of a Euclidean norm implies the existence of something that we
+calls an <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> universal side divisor</span>.</p>
+</div>
+</li>
+<li id="S7.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">Show that <math id="S7.I3.i2.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> has no universal side divisor.</p>
+</div>
+</li>
+<li id="S7.I3.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I3.i3.p1" class="ltx_para">
+<p class="ltx_p">Thus, <math id="S7.I3.i3.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> cannot have a Euclidean norm.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S7.p16" class="ltx_para">
+<p class="ltx_p">First, look at the examples above of <math id="S7.p16.m1" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math> and <math id="S7.p16.m2" class="ltx_Math" alttext="\mathbb{Z}[\omega]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>ω</mi><mo stretchy="false">]</mo></mrow></mrow></math>. We see that the units are the
+elements with the smallest norm.</p>
+</div>
+<div id="S7.p17" class="ltx_para">
+<p class="ltx_p">So far, nothing useful — every ring has the unit <math id="S7.p17.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>. Next, we look at the elements with the
+next-smallest norm:</p>
+<ul id="S7.I4" class="ltx_itemize">
+<li id="S7.I4.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I4.i1.p1" class="ltx_para">
+<p class="ltx_p">In <math id="S7.I4.i1.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math>, the element <math id="S7.I4.i1.p1.m2" class="ltx_Math" alttext="1+i" display="inline"><mrow><mn>1</mn><mo>+</mo><mi>i</mi></mrow></math> has norm <math id="S7.I4.i1.p1.m3" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>, and is an element with smallest norm that is
+not <math id="S7.I4.i1.p1.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> or an unit. (The other elements are <math id="S7.I4.i1.p1.m5" class="ltx_Math" alttext="\pm 1\pm i" display="inline"><mrow><mrow><mo>±</mo><mn>1</mn></mrow><mo>±</mo><mi>i</mi></mrow></math>.)</p>
+</div>
+</li>
+<li id="S7.I4.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I4.i2.p1" class="ltx_para">
+<p class="ltx_p">In <math id="S7.I4.i2.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[\omega]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>ω</mi><mo stretchy="false">]</mo></mrow></mrow></math>, the units are <math id="S7.I4.i2.p1.m2" class="ltx_Math" alttext="\{\pm 1,\pm\omega,\pm(\omega-1)\}" display="inline"><mrow><mo stretchy="false">{</mo><mrow><mo>±</mo><mn>1</mn></mrow><mo>,</mo><mrow><mo>±</mo><mi>ω</mi></mrow><mo>,</mo><mrow><mo>±</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ω</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">}</mo></mrow></math> with norm <math id="S7.I4.i2.p1.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>. An
+elements with next-smallest norms are <math id="S7.I4.i2.p1.m4" class="ltx_Math" alttext="1+\omega" display="inline"><mrow><mn>1</mn><mo>+</mo><mi>ω</mi></mrow></math> with norm <math id="S7.I4.i2.p1.m5" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S7.p18" class="ltx_para">
+<p class="ltx_p">Now, in order to proceed with the proof, we have to define a <em class="ltx_emph ltx_font_italic">side divisor</em>.
+Recall that <math id="S7.p18.m1" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> is a divisor of <math id="S7.p18.m2" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> if there is some <math id="S7.p18.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> such that <math id="S7.p18.m4" class="ltx_Math" alttext="a=bq" display="inline"><mrow><mi>a</mi><mo>=</mo><mrow><mi>b</mi><mo>⁢</mo><mi>q</mi></mrow></mrow></math>.
+We say <math id="S7.p18.m5" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> is a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> side divisor</span> (read: “almost divisor”) of <math id="S7.p18.m6" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> if there is some <math id="S7.p18.m7" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> such
+that the remainder <math id="S7.p18.m8" class="ltx_Math" alttext="a-bq" display="inline"><mrow><mi>a</mi><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><mi>q</mi></mrow></mrow></math> is either <math id="S7.p18.m9" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> or an unit.</p>
+</div>
+<div id="S7.Thmtheorem8" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.7.8</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">In <math id="S7.Thmtheorem8.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math>, consider <math id="S7.Thmtheorem8.p1.m2" class="ltx_Math" alttext="b=3+i" display="inline"><mrow><mi>b</mi><mo>=</mo><mrow><mn>3</mn><mo>+</mo><mi>i</mi></mrow></mrow></math>. The set of numbers <math id="S7.Thmtheorem8.p1.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> for which <math id="S7.Thmtheorem8.p1.m4" class="ltx_Math" alttext="b\mid a" display="inline"><mrow><mi>b</mi><mo>∣</mo><mi>a</mi></mrow></math> is drawn in red
+below.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(8cm);
+ΨΨfor(int x=-7; x&lt;=7; ++x)
+ΨΨfor(int y=-7; y&lt;=7; ++y){
+ΨΨΨvar q=(x+I*y)/(3+I);
+ΨΨΨdot((x, y), q==(round(q.x), round(q.y)) ? red: mediumgray);
+ΨΨ}
+ΨΨgraph.xaxis(xmin=-7.4, xmax=7.4, "$x$");
+ΨΨgraph.yaxis(ymin=-7.4, ymax=7.4, "$y$");
+Ψ
+</pre>
+</div>
+<div id="S7.Thmtheorem8.p2" class="ltx_para">
+<p class="ltx_p">If we add an unit to these values of <math id="S7.Thmtheorem8.p2.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, we get the set of numbers <math id="S7.Thmtheorem8.p2.m2" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> for which <math id="S7.Thmtheorem8.p2.m3" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> is a side
+divisor of <math id="S7.Thmtheorem8.p2.m4" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, thus give a picture to the concept of “almost divisor”.</p>
+</div>
+<div id="S7.Thmtheorem8.p3" class="ltx_para">
+<p class="ltx_p">The points <math id="S7.Thmtheorem8.p3.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> where <math id="S7.Thmtheorem8.p3.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> is a side divisor of <math id="S7.Thmtheorem8.p3.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> is marked in red and blue below.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(8cm);
+ΨΨfor(int x=-7; x&lt;=7; ++x)
+ΨΨfor(int y=-7; y&lt;=7; ++y){
+ΨΨΨvar q=(x+I*y)/(3+I);
+ΨΨΨvar r=(round(q.x), round(q.y));
+ΨΨΨdot((x, y), q==r ? red: abs((x+I*y)-r*(3+I))&lt;=1 ? blue: mediumgray);
+ΨΨ}
+ΨΨgraph.xaxis(xmin=-7.9, xmax=7.9, "$x$");
+ΨΨgraph.yaxis(ymin=-7.9, ymax=7.9, "$y$");
+Ψ
+</pre>
+</div>
+</div>
+<div id="S7.p19" class="ltx_para">
+<p class="ltx_p">Finally, we define a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> universal side divisor</span> to be a number <math id="S7.p19.m1" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> such that <math id="S7.p19.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> is a side
+divisor of every element <math id="S7.p19.m3" class="ltx_Math" alttext="a\in R" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>R</mi></mrow></math>.</p>
+</div>
+<div id="S7.Thmtheorem9" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 5.7.9</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">Drawing a picture similar to the above, in <math id="S7.Thmtheorem9.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math>, then <math id="S7.Thmtheorem9.p1.m2" class="ltx_Math" alttext="2+i" display="inline"><mrow><mn>2</mn><mo>+</mo><mi>i</mi></mrow></math> and <math id="S7.Thmtheorem9.p1.m3" class="ltx_Math" alttext="1+i" display="inline"><mrow><mn>1</mn><mo>+</mo><mi>i</mi></mrow></math> are side divisors.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(8cm);
+ΨΨfor(int x=-7; x&lt;=7; ++x)
+ΨΨfor(int y=-7; y&lt;=7; ++y){
+ΨΨΨvar p=x+I*y, q=p/(2+I), r=(round(q.x), round(q.y));
+ΨΨΨif(abs(p-r*(2+I))==1){
+ΨΨΨΨdot(p, blue);
+ΨΨΨΨvar x=(r*(2+I)).x, y=(r*(2+I)).y;
+ΨΨΨΨif(-7&lt;=x &amp;&amp; x&lt;=7 &amp;&amp; -7&lt;=y &amp;&amp; y&lt;=7){
+ΨΨΨΨΨdraw((r*(2+I))--p, Arrow, DotMargin);
+ΨΨΨΨ}
+ΨΨΨ}
+ΨΨ}
+ΨΨfor(int x=-7; x&lt;=7; ++x)
+ΨΨfor(int y=-7; y&lt;=7; ++y){
+ΨΨΨvar p=x+I*y, q=p/(2+I), r=(round(q.x), round(q.y));
+ΨΨΨif(q==r){
+ΨΨΨΨdot(p, red);
+ΨΨΨ}
+ΨΨ}
+ΨΨgraph.xaxis(xmin=-7.9, xmax=7.9, "$x$");
+ΨΨgraph.yaxis(ymin=-7.9, ymax=7.9, "$y$");
+Ψ
+</pre>
+</div>
+</div>
+<div id="S7.p20" class="ltx_para">
+<p class="ltx_p">Now, the connection between the two concepts considered above.</p>
+</div>
+<div id="S7.Thmtheorem10" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Lemma 5.7.10</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p">In a Euclidean domain,
+the smallest-norm nonzero element <math id="S7.Thmtheorem10.p1.m1" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> that is not an unit is a universal side divisor.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S7.p21" class="ltx_para">
+<p class="ltx_p">Just run the Euclidean algorithm between any number and <math id="S7.p21.m1" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> for one step, the remainder must be
+<math id="S7.p21.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> or an unit.
+∎</p>
+</div>
+</div>
+<div id="S7.p22" class="ltx_para">
+<p class="ltx_p">And finally,</p>
+</div>
+<div id="S7.Thmtheorem11" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Proposition 5.7.11</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem11.p1" class="ltx_para">
+<p class="ltx_p">There is no universal side divisor in <math id="S7.Thmtheorem11.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>.</p>
+</div>
+</div>
+<div id="S7.p23" class="ltx_para">
+<p class="ltx_p">Proof is tedious, omitted.<span id="todo1" class="ltx_note ltx_role_todo"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_note_type">todo: </span><span class="ltx_tag ltx_tag_note">1</span>fix</span></span></span></p>
+</div>
+</section>
+<section id="S8" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">5.8 </span>A few harder problems to think about</h2>
+
+<div id="S8.p1" class="ltx_para">
+<p class="ltx_p">Not olympiad problems, but again the spirit is very close
+to what you might see in an olympiad.</p>
+</div>
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 5A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Consider the ring</p>
+<table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="\mathbb{Q}[\sqrt{2}]=\left\{a+b\sqrt{2}\mid a,b\in\mathbb{Q}\right\}." display="block"><mrow><mrow><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>2</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>∈</mo><mi>ℚ</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Is it a field?
+
+Yes.</p>
+</div>
+</div>
+<div id="prob:field_hom" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 5B</span></span><span class="ltx_text ltx_font_bold"> </span>(Homomorphisms from fields are injective)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> be a field and <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> a nontrivial ring.
+Prove that any homomorphism <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="\psi\colon K\to R" display="inline"><mrow><mi>ψ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>K</mi><mo stretchy="false">→</mo><mi>R</mi></mrow></mrow></math>
+is injective.<span id="footnote3" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup><span class="ltx_tag ltx_tag_note">3</span>Note that <math id="footnote3.m1" class="ltx_Math" alttext="\psi" display="inline"><mi>ψ</mi></math>
+cannot be the zero map for us,
+since we require <math id="footnote3.m2" class="ltx_Math" alttext="\psi(1_{K})=1_{R}" display="inline"><mrow><mrow><mi>ψ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mn>1</mn><mi>K</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mn>1</mn><mi>R</mi></msub></mrow></math>.
+You sometimes find different statements in the literature.</span></span></span>
+
+The kernel is an ideal of <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>!</p>
+</div>
+</div>
+<div id="prob:prime_preimage" class="ltx_theorem ltx_theorem_sproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 5C</span></span><span class="ltx_text ltx_font_bold"> </span>(Pre-image of prime ideals)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="\phi\colon R\to S" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>R</mi><mo stretchy="false">→</mo><mi>S</mi></mrow></mrow></math> is a ring homomorphism,
+and <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="I\subseteq S" display="inline"><mrow><mi>I</mi><mo>⊆</mo><mi>S</mi></mrow></math> is a prime ideal.
+Prove that <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="\phi^{\text{pre}}(I)" display="inline"><mrow><msup><mi>ϕ</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math> is prime as well.
+
+This is just a definition chase.
+
+
+Consider <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="ab\in\phi^{\text{pre}}(I)" display="inline"><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo>∈</mo><mrow><msup><mi>ϕ</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+meaning <math id="Thmproblem3.p1.m5" class="ltx_Math" alttext="\phi(ab)=\phi(a)\phi(b)\in I" display="inline"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>I</mi></mrow></math>.
+Since <math id="Thmproblem3.p1.m6" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is prime, either <math id="Thmproblem3.p1.m7" class="ltx_Math" alttext="\phi(a)\in I" display="inline"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>I</mi></mrow></math> or <math id="Thmproblem3.p1.m8" class="ltx_Math" alttext="\phi(b)\in I" display="inline"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>I</mi></mrow></math>.
+In the former case we get <math id="Thmproblem3.p1.m9" class="ltx_Math" alttext="a\in\phi^{\text{pre}}(I)" display="inline"><mrow><mi>a</mi><mo>∈</mo><mrow><msup><mi>ϕ</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> as needed;
+the latter case we get <math id="Thmproblem3.p1.m10" class="ltx_Math" alttext="b\in\phi^{\text{pre}}(I)" display="inline"><mrow><mi>b</mi><mo>∈</mo><mrow><msup><mi>ϕ</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="prob:finite_domain_field" class="ltx_theorem ltx_theorem_sproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 5D</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem4.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem4.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem4.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p2.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> be an integral domain with finitely many elements.
+Prove that <math id="Thmproblem4.p2.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a field.
+
+
+Fermat’s little theorem type argument;
+cancellation holds in integral domains.
+
+
+Let <math id="Thmproblem4.p2.m3" class="ltx_Math" alttext="x\in R" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>R</mi></mrow></math> with <math id="Thmproblem4.p2.m4" class="ltx_Math" alttext="x\neq 0" display="inline"><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow></math>.
+Look at the powers <math id="Thmproblem4.p2.m5" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>, <math id="Thmproblem4.p2.m6" class="ltx_Math" alttext="x^{2}" display="inline"><msup><mi>x</mi><mn>2</mn></msup></math>, ….
+By pigeonhole, eventually two of them coincide.
+So assume <math id="Thmproblem4.p2.m7" class="ltx_Math" alttext="x^{m}=x^{n}" display="inline"><mrow><msup><mi>x</mi><mi>m</mi></msup><mo>=</mo><msup><mi>x</mi><mi>n</mi></msup></mrow></math> where <math id="Thmproblem4.p2.m8" class="ltx_Math" alttext="m&lt;n" display="inline"><mrow><mi>m</mi><mo>&lt;</mo><mi>n</mi></mrow></math>, or equivalently</p>
+<table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="0=x\cdot x\cdot\dots\cdot x\cdot\left(x^{n-m}-1\right)." display="block"><mrow><mrow><mn>0</mn><mo>=</mo><mrow><mi>x</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi mathvariant="normal">⋯</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo>(</mo><mrow><msup><mi>x</mi><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow></msup><mo>−</mo><mn>1</mn></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Since <math id="Thmproblem4.p2.m9" class="ltx_Math" alttext="x\neq 0" display="inline"><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow></math>, we get <math id="Thmproblem4.p2.m10" class="ltx_Math" alttext="x^{n-m}-1=0" display="inline"><mrow><mrow><msup><mi>x</mi><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow></msup><mo>−</mo><mn>1</mn></mrow><mo>=</mo><mn>0</mn></mrow></math>,
+or <math id="Thmproblem4.p2.m11" class="ltx_Math" alttext="x^{n-m}=1" display="inline"><mrow><msup><mi>x</mi><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow></msup><mo>=</mo><mn>1</mn></mrow></math>.
+So <math id="Thmproblem4.p2.m12" class="ltx_Math" alttext="x^{n-m-1}" display="inline"><msup><mi>x</mi><mrow><mi>n</mi><mo>−</mo><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msup></math> is an inverse for <math id="Thmproblem4.p2.m13" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>.</p>
+</div>
+<div id="Thmproblem4.p3" class="ltx_para">
+<p class="ltx_p">This means every nonzero element has an inverse,
+ergo <math id="Thmproblem4.p3.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a field.</p>
+</div>
+</div>
+<div id="prob:krull_max_ideal" class="ltx_theorem ltx_theorem_sproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 5E</span></span><span class="ltx_text ltx_font_bold"> </span>(Krull’s theorem)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> be a ring and <math id="Thmproblem5.p1.m2" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> a proper ideal.</p>
+<ol id="S8.I1" class="ltx_enumerate">
+<li id="S8.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S8.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Prove that if <math id="S8.I1.i1.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is Noetherian,
+then <math id="S8.I1.i1.p1.m2" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> is contained in a maximal ideal <math id="S8.I1.i1.p1.m3" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>.</p>
+</div>
+</li>
+<li id="S8.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S8.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Use Zorn’s lemma (<a href="../part_st1/ch_zorn.html" title="Chapter 88 Interlude: Cauchy’s functional equation and Zorn’s lemma ‣ Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Chapter</span> <span class="ltx_text ltx_ref_tag">88</span></a>)
+to prove the result even if <math id="S8.I1.i2.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> isn’t Noetherian.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">Just keep on adding in elements to get an ascending chain.
+
+
+For part (b), look at the poset of <em class="ltx_emph ltx_font_italic">proper</em> ideals.
+Apply Zorn’s lemma (again using a union trick to verify the condition;
+be sure to verify that the union is proper!).
+In part (a) we are given no ascending infinite chains,
+so no need to use Zorn’s lemma.</p>
+</div>
+</div>
+<div id="Thmproblem6" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 5F</span></span><span class="ltx_text ltx_font_bold"> </span>(<math id="Thmproblem6.m1" class="ltx_Math" alttext="\operatorname{Spec}k[x]" display="inline"><mrow><mrow><mi>Spec</mi><mo lspace="0.167em">⁡</mo><mi>k</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem6.p1" class="ltx_para">
+<p class="ltx_p">Describe the prime ideals of <math id="Thmproblem6.p1.m1" class="ltx_Math" alttext="\mathbb{C}[x]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> and <math id="Thmproblem6.p1.m2" class="ltx_Math" alttext="\mathbb{R}[x]" display="inline"><mrow><mi>ℝ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>.
+
+Use the fact that both are PID’s.
+
+
+The ideal <math id="Thmproblem6.p1.m3" class="ltx_Math" alttext="(0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math> is of course prime in both.
+Also, both rings are PID’s.</p>
+</div>
+<div id="Thmproblem6.p2" class="ltx_para">
+<p class="ltx_p">For <math id="Thmproblem6.p2.m1" class="ltx_Math" alttext="\mathbb{C}[x]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> we get a prime ideal <math id="Thmproblem6.p2.m2" class="ltx_Math" alttext="(x-z)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>z</mi></mrow><mo stretchy="false">)</mo></mrow></math> for each <math id="Thmproblem6.p2.m3" class="ltx_Math" alttext="z\in\mathbb{C}" display="inline"><mrow><mi>z</mi><mo>∈</mo><mi>ℂ</mi></mrow></math>.</p>
+</div>
+<div id="Thmproblem6.p3" class="ltx_para">
+<p class="ltx_p">For <math id="Thmproblem6.p3.m1" class="ltx_Math" alttext="\mathbb{R}[x]" display="inline"><mrow><mi>ℝ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> a prime ideal <math id="Thmproblem6.p3.m2" class="ltx_Math" alttext="(x-a)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow></math> for each <math id="Thmproblem6.p3.m3" class="ltx_Math" alttext="a\in\mathbb{R}" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>ℝ</mi></mrow></math>
+and a prime ideal <math id="Thmproblem6.p3.m4" class="ltx_Math" alttext="(x^{2}-ax+b)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow></mrow><mo>+</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></math> for each quadratic
+with two conjugate non-real roots.</p>
+</div>
+</div>
+<div id="prob:dedekind_sample" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 5G</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem7.p1" class="ltx_para">
+<p class="ltx_p">How many prime ideals of <math id="Thmproblem7.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{2017}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>2017</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow></math> are <em class="ltx_emph ltx_font_italic">not</em> maximal ideals?
+
+
+Show that the quotient <math id="Thmproblem7.p1.m2" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{2017}]/I" display="inline"><mrow><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>2017</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mi>I</mi></mrow></math> has finitely many elements
+for any nonzero prime ideal <math id="Thmproblem7.p1.m3" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>.
+Therefore, the quotient is an integral domain, it is also a field,
+and thus <math id="Thmproblem7.p1.m4" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> was a maximal ideal.
+
+
+Only one; the ideal <math id="Thmproblem7.p1.m5" class="ltx_Math" alttext="(0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math> which is not maximal.
+We contend every other prime ideal is maximal.</p>
+</div>
+<div id="Thmproblem7.p2" class="ltx_para">
+<p class="ltx_p">Indeed, let <math id="Thmproblem7.p2.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> be any ideal (not necessarily prime),
+and let <math id="Thmproblem7.p2.m2" class="ltx_Math" alttext="a+b\sqrt{2017}" display="inline"><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2017</mn></msqrt></mrow></mrow></math> be a nonzero element of it.
+Then <math id="Thmproblem7.p2.m3" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> also contains <math id="Thmproblem7.p2.m4" class="ltx_Math" alttext="(a^{2}-2017b^{2})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>2017</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow><mo stretchy="false">)</mo></mrow></math>.
+That means when taking modulo <math id="Thmproblem7.p2.m5" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> we may take modulo the integer
+<math id="Thmproblem7.p2.m6" class="ltx_Math" alttext="n\coloneqq|a^{2}-2017b^{2}|\neq 0" display="inline"><mrow><mi>n</mi><mo>≔</mo><mrow><mo stretchy="false">|</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>2017</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≠</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="Thmproblem7.p3" class="ltx_para">
+<p class="ltx_p">So every element in <math id="Thmproblem7.p3.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is equivalent modulo <math id="Thmproblem7.p3.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>
+to an element of the form <math id="Thmproblem7.p3.m3" class="ltx_Math" alttext="x+y\sqrt{2017}" display="inline"><mrow><mi>x</mi><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><msqrt><mn>2017</mn></msqrt></mrow></mrow></math>,
+where <math id="Thmproblem7.p3.m4" class="ltx_Math" alttext="x,y\in\{0,1,\dots,n-1\}" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.
+In other words, the quotient <math id="Thmproblem7.p3.m5" class="ltx_Math" alttext="R/I" display="inline"><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow></math> has at most finitely many elements.</p>
+</div>
+<div id="Thmproblem7.p4" class="ltx_para">
+<p class="ltx_p">When <math id="Thmproblem7.p4.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is prime, it follows <math id="Thmproblem7.p4.m2" class="ltx_Math" alttext="R/I" display="inline"><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow></math> is an integral domain, too.
+An integral domain with finitely many elements must be a field.
+Hence, from <math id="Thmproblem7.p4.m3" class="ltx_Math" alttext="R/I" display="inline"><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow></math> being a field, we conclude <math id="Thmproblem7.p4.m4" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is maximal.</p>
+</div>
+</div>
+<div id="Thmproblem8" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 5H</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem8.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem8.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> denote the set of rational numbers <math id="Thmproblem8.p1.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> such that,
+when <math id="Thmproblem8.p1.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> is written in lowest terms, the denominator is not a multiple of <math id="Thmproblem8.p1.m4" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math>.
+Then <math id="Thmproblem8.p1.m5" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a ring (under the usual addition and multiplication).
+Classify all the ideals of <math id="Thmproblem8.p1.m6" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>.
+Which of these ideals are prime / maximal?
+
+The ideals are <math id="Thmproblem8.p1.m7" class="ltx_Math" alttext="(0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math>, <math id="Thmproblem8.p1.m8" class="ltx_Math" alttext="(1)=R" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>=</mo><mi>R</mi></mrow></math>, and <math id="Thmproblem8.p1.m9" class="ltx_Math" alttext="(5^{n})=5^{n}R" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mn>5</mn><mi>n</mi></msup><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><msup><mn>5</mn><mi>n</mi></msup><mo>⁢</mo><mi>R</mi></mrow></mrow></math> for each <math id="Thmproblem8.p1.m10" class="ltx_Math" alttext="n\geq 1" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>.
+The ideal <math id="Thmproblem8.p1.m11" class="ltx_Math" alttext="(0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math> is prime and the ideal <math id="Thmproblem8.p1.m12" class="ltx_Math" alttext="(5)" display="inline"><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></math> is maximal
+(because the quotient <math id="Thmproblem8.p1.m13" class="ltx_Math" alttext="R/(5)\cong\mathbb{F}_{5}" display="inline"><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><msub><mi>𝔽</mi><mn>5</mn></msub></mrow></math> is a field).</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="ch_rings_ideals.html" title="In Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">4 </span>Rings and ideals</span></a><a href="../part_basictop/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">III </span>Basic Topology</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

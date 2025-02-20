@@ -1,0 +1,1454 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 92 Inner model theory ‣ Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="./" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="next" href="ch_forcing_set_theory.html" title="Chapter 93 Forcing ‣ Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_forcing_set_theory.html" title="Chapter 93 Forcing ‣ Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_break_CH.html" title="Chapter 94 Breaking the continuum hypothesis ‣ Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_startout/" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_linalg/" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_calc/" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_measure/" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_diffgeo/" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop1/" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">XXII </span>Set Theory II: Model Theory and Forcing</span></a><a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">XXII </span>Set Theory II: Model Theory and Forcing</span></a><a href="ch_forcing_set_theory.html" title="In Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">93 </span>Forcing</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 92 </span>Inner model theory</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">Model theory is <em class="ltx_emph ltx_font_italic">really</em> meta, so you will have to pay attention here.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">Roughly, a “model of <math id="p2.m1" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>” is a set with a binary relation that satisfies the <math id="p2.m2" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> axioms,
+just as a group is a set with a binary operation that satisfies the group axioms.
+Unfortunately, unlike with groups, it is very hard for me to give interesting examples of models,
+for the simple reason that we are literally trying to model the entire universe.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">92.1 </span>Models</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="(\omega,\in)" display="inline"><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo>,</mo><mo lspace="0em" rspace="0em">∈</mo><mo stretchy="false">)</mo></mrow></math> obeys <math id="S1.p1.m2" class="ltx_Math" alttext="\mathrm{PowerSet}" display="inline"><mi>PowerSet</mi></math>, <math id="S1.p1.m3" class="ltx_Math" alttext="V_{\kappa}" display="inline"><msub><mi>V</mi><mi>κ</mi></msub></math> is a model for <math id="S1.p1.m4" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> inaccessible (later).</em></p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 92.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> model</span> <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math> consists of a set <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and a
+binary relation <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="E\subseteq M\times M" display="inline"><mrow><mi>E</mi><mo>⊆</mo><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>M</mi></mrow></mrow></math>.
+(The <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math> relation is the “<math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math>” for the model.)</p>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 92.1.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">I’m only considering <em class="ltx_emph ltx_font_italic">set-sized</em> models where <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a set.
+Experts may be aware that I can actually play with <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> being a class,
+but that would require too much care for now.</p>
+</div>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">If you have a model, you can ask certain things about it,
+such as “does it satisfy <math id="S1.p2.m1" class="ltx_Math" alttext="\mathrm{EmptySet}" display="inline"><mi>EmptySet</mi></math>?”.
+Let me give you an example of what I mean and then make it rigorous.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 92.1.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(A stupid model)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let’s take <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathscr{M}=(M,E)=\left(\omega,\in\right)" display="inline"><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo>(</mo><mi>ω</mi><mo>,</mo><mo lspace="0em" rspace="0em">∈</mo><mo>)</mo></mrow></mrow></math>.
+This is not a very good model of <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>, but let’s see if we can
+make sense of some of the first few axioms.</p>
+<ol id="S1.I1" class="ltx_enumerate">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math> satisfies <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="\mathrm{Extensionality}" display="inline"><mi>Extensionality</mi></math>, which is the sentence</p>
+<table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_math_unparsed" alttext="\forall x\forall y\forall a:\left(a\in x\iff a\in y\right)\implies x=y." display="block"><mrow><mo rspace="0.167em">∀</mo><mi>x</mi><mo lspace="0.167em" rspace="0.167em">∀</mo><mi>y</mi><mo lspace="0.167em" rspace="0.167em">∀</mo><mi>a</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mo>(</mo><mi>a</mi><mo>∈</mo><mi>x</mi><mo stretchy="false">⇔</mo><mi>a</mi><mo>∈</mo><mi>y</mi><mo>)</mo></mrow><mo stretchy="false">⟹</mo><mi>x</mi><mo>=</mo><mi>y</mi><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This just follows from the fact that <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math> is actually <math id="S1.I1.i1.p1.m4" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math> satisfies <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="\mathrm{EmptySet}" display="inline"><mi>EmptySet</mi></math>, which is the sentence</p>
+<table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\exists a:\forall x\;\neg(x\in a)." display="block"><mrow><mrow><mrow><mo rspace="0.167em">∃</mo><mi>a</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mo rspace="0.167em">∀</mo><mrow><mi>x</mi><mo lspace="0.447em">⁢</mo><mrow><mo>¬</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>∈</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Namely, take <math id="S1.I1.i2.p1.m3" class="ltx_Math" alttext="a=\varnothing\in\omega" display="inline"><mrow><mi>a</mi><mo>=</mo><mi mathvariant="normal">∅</mi><mo>∈</mo><mi>ω</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math> does not satisfy <math id="S1.I1.i3.p1.m2" class="ltx_Math" alttext="\mathrm{Pairing}" display="inline"><mi>Pairing</mi></math>, since <math id="S1.I1.i3.p1.m3" class="ltx_Math" alttext="\{1,3\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo stretchy="false">}</mo></mrow></math> is not in <math id="S1.I1.i3.p1.m4" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>,
+even though <math id="S1.I1.i3.p1.m5" class="ltx_Math" alttext="1,3\in\omega" display="inline"><mrow><mrow><mn>1</mn><mo>,</mo><mn>3</mn></mrow><mo>∈</mo><mi>ω</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S1.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">Miraculously, <math id="S1.I1.i4.p1.m1" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math> satisfies <math id="S1.I1.i4.p1.m2" class="ltx_Math" alttext="\mathrm{Union}" display="inline"><mi>Union</mi></math>, since for any <math id="S1.I1.i4.p1.m3" class="ltx_Math" alttext="n\in\omega" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>ω</mi></mrow></math>,
+<math id="S1.I1.i4.p1.m4" class="ltx_Math" alttext="\cup n" display="inline"><mrow><mo rspace="0em">∪</mo><mi>n</mi></mrow></math> is <math id="S1.I1.i4.p1.m5" class="ltx_Math" alttext="n-1" display="inline"><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math> (unless <math id="S1.I1.i4.p1.m6" class="ltx_Math" alttext="n=0" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow></math>).
+The Union axiom states that</p>
+<table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_math_unparsed" alttext="\forall a\exists U\quad\forall x\;\left[(x\in U)\iff(\exists y:x\in y\in a)%
+\right]." display="block"><mrow><mo rspace="0.167em">∀</mo><mi>a</mi><mo lspace="0.167em" rspace="0.167em">∃</mo><mi>U</mi><mspace width="1.167em"></mspace><mo rspace="0.167em">∀</mo><mi>x</mi><mrow><mo lspace="0.280em">[</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>∈</mo><mi>U</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">⇔</mo><mrow><mo stretchy="false">(</mo><mo rspace="0.167em">∃</mo><mi>y</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>x</mi><mo>∈</mo><mi>y</mi><mo>∈</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mo>]</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">An important thing to notice is that the “<math id="S1.I1.i4.p1.m7" class="ltx_Math" alttext="\forall a" display="inline"><mrow><mo rspace="0.167em">∀</mo><mi>a</mi></mrow></math>” ranges only over
+the sets in the model of the universe, <math id="S1.I1.i4.p1.m8" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 92.1.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Important: this stupid model satisfies <math id="S1.Thmtheorem4.m1" class="ltx_Math" alttext="\mathrm{PowerSet}" display="inline"><mi mathcolor="#8C0000">PowerSet</mi></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Most incredibly of all: <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathscr{M}=(\omega,\in)" display="inline"><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo>,</mo><mo lspace="0em" rspace="0em">∈</mo><mo stretchy="false">)</mo></mrow></mrow></math> satisfies <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\mathrm{PowerSet}" display="inline"><mi>PowerSet</mi></math>.
+This is a really important example.</p>
+</div>
+<div id="S1.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">You might think this is ridiculous. Look at <math id="S1.Thmtheorem4.p2.m1" class="ltx_Math" alttext="2=\{0,1\}" display="inline"><mrow><mn>2</mn><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math>.
+The power set of this is <math id="S1.Thmtheorem4.p2.m2" class="ltx_Math" alttext="\{0,1,2,\{1\}\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo stretchy="false">}</mo></mrow><mo stretchy="false">}</mo></mrow></math> which is not in the model, right?</p>
+</div>
+<div id="S1.Thmtheorem4.p3" class="ltx_para">
+<p class="ltx_p">Well, let’s look more closely at <math id="S1.Thmtheorem4.p3.m1" class="ltx_Math" alttext="\mathrm{PowerSet}" display="inline"><mi>PowerSet</mi></math>. It states that:</p>
+<table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_math_unparsed" alttext="\forall x\exists a\forall y(y\in a\iff y\subseteq x)." display="block"><mrow><mo rspace="0.167em">∀</mo><mi>x</mi><mo lspace="0.167em" rspace="0.167em">∃</mo><mi>a</mi><mo lspace="0.167em" rspace="0.167em">∀</mo><mi>y</mi><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>∈</mo><mi>a</mi><mo stretchy="false">⇔</mo><mi>y</mi><mo>⊆</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">What happens if we set <math id="S1.Thmtheorem4.p3.m2" class="ltx_Math" alttext="x=2=\{0,1\}" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>2</mn><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math>?
+Well, actually, we claim that <math id="S1.Thmtheorem4.p3.m3" class="ltx_Math" alttext="a=3=\{0,1,2\}" display="inline"><mrow><mi>a</mi><mo>=</mo><mn>3</mn><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">}</mo></mrow></mrow></math> works.
+The key point is “for all <math id="S1.Thmtheorem4.p3.m4" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>” – this <em class="ltx_emph ltx_font_italic">only ranges over the objects in <math id="S1.Thmtheorem4.p3.m5" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math></em>.
+In <math id="S1.Thmtheorem4.p3.m6" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math>, the only subsets of <math id="S1.Thmtheorem4.p3.m7" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> are <math id="S1.Thmtheorem4.p3.m8" class="ltx_Math" alttext="0=\varnothing" display="inline"><mrow><mn>0</mn><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>,
+<math id="S1.Thmtheorem4.p3.m9" class="ltx_Math" alttext="1=\{0\}" display="inline"><mrow><mn>1</mn><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math> and <math id="S1.Thmtheorem4.p3.m10" class="ltx_Math" alttext="2=\{0,1\}" display="inline"><mrow><mn>2</mn><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math>.
+The “set” <math id="S1.Thmtheorem4.p3.m11" class="ltx_Math" alttext="\{1\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></math> in the “real world” (in <math id="S1.Thmtheorem4.p3.m12" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>) is not a set in the model <math id="S1.Thmtheorem4.p3.m13" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math>.</p>
+</div>
+<div id="S1.Thmtheorem4.p4" class="ltx_para">
+<p class="ltx_p">In particular, you might say that in this strange new world,
+we have <math id="S1.Thmtheorem4.p4.m1" class="ltx_Math" alttext="2^{n}=n+1" display="inline"><mrow><msup><mn>2</mn><mi>n</mi></msup><mo>=</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mrow></math>, since <math id="S1.Thmtheorem4.p4.m2" class="ltx_Math" alttext="n=\{0,1,\dots,n-1\}" display="inline"><mrow><mi>n</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math> really does
+have only <math id="S1.Thmtheorem4.p4.m3" class="ltx_Math" alttext="n+1" display="inline"><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></math> subsets.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 92.1.5</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Sentences with parameters)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">The sentences we ask of our model are allowed to have “parameters” as well.
+For example, if <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathscr{M}=(\omega,\in)" display="inline"><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo>,</mo><mo lspace="0em" rspace="0em">∈</mo><mo stretchy="false">)</mo></mrow></mrow></math> as before then <math id="S1.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math> satisfies the sentence</p>
+<table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\forall x\in 3(x\in 5)." display="block"><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mi>x</mi></mrow><mo>∈</mo><mrow><mn>3</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>∈</mo><mn>5</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">92.2 </span>Sentences and satisfaction</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">With this intuitive notion, we can define what it means for a model to satisfy a sentence.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 92.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Note that any sentence <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> can be written in one of five forms:</p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="x\in y" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>y</mi></mrow></math></p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="x=y" display="inline"><mrow><mi>x</mi><mo>=</mo><mi>y</mi></mrow></math></p>
+</div>
+</li>
+<li id="S2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i3.p1.m1" class="ltx_Math" alttext="\neg\psi" display="inline"><mrow><mo rspace="0.167em">¬</mo><mi>ψ</mi></mrow></math> (“not <math id="S2.I1.i3.p1.m2" class="ltx_Math" alttext="\psi" display="inline"><mi>ψ</mi></math>”) for some shorter sentence <math id="S2.I1.i3.p1.m3" class="ltx_Math" alttext="\psi" display="inline"><mi>ψ</mi></math></p>
+</div>
+</li>
+<li id="S2.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i4.p1.m1" class="ltx_Math" alttext="\psi_{1}\lor\psi_{2}" display="inline"><mrow><msub><mi>ψ</mi><mn>1</mn></msub><mo>∨</mo><msub><mi>ψ</mi><mn>2</mn></msub></mrow></math> (“<math id="S2.I1.i4.p1.m2" class="ltx_Math" alttext="\psi_{1}" display="inline"><msub><mi>ψ</mi><mn>1</mn></msub></math> or <math id="S2.I1.i4.p1.m3" class="ltx_Math" alttext="\psi_{2}" display="inline"><msub><mi>ψ</mi><mn>2</mn></msub></math>”)
+for some shorter sentences <math id="S2.I1.i4.p1.m4" class="ltx_Math" alttext="\psi_{1}" display="inline"><msub><mi>ψ</mi><mn>1</mn></msub></math>, <math id="S2.I1.i4.p1.m5" class="ltx_Math" alttext="\psi_{2}" display="inline"><msub><mi>ψ</mi><mn>2</mn></msub></math></p>
+</div>
+</li>
+<li id="S2.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i5.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i5.p1.m1" class="ltx_Math" alttext="\exists x\psi" display="inline"><mrow><mo rspace="0.167em">∃</mo><mrow><mi>x</mi><mo>⁢</mo><mi>ψ</mi></mrow></mrow></math> (“exists <math id="S2.I1.i5.p1.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>”) for some shorter sentence <math id="S2.I1.i5.p1.m3" class="ltx_Math" alttext="\psi" display="inline"><mi>ψ</mi></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 92.2.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">What happened to <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\land" display="inline"><mo>∧</mo></math> (and) and <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\forall" display="inline"><mo>∀</mo></math> (for all)?
+(Hint: use <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\neg" display="inline"><mo>¬</mo></math>.)</span></p>
+</div>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Often (almost always, actually) we will proceed by so-called “induction on formula complexity”,
+meaning that we define or prove something by induction using this.
+Note that we require all formulas to be finite.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Now suppose we have a sentence <math id="S2.p3.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math>, like <math id="S2.p3.m2" class="ltx_Math" alttext="a=b" display="inline"><mrow><mi>a</mi><mo>=</mo><mi>b</mi></mrow></math> or <math id="S2.p3.m3" class="ltx_Math" alttext="\exists a\forall x\neg(x\in a)" display="inline"><mrow><mo rspace="0.167em">∃</mo><mrow><mi>a</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mrow><mi>x</mi><mo lspace="0.167em">⁢</mo><mrow><mo>¬</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>∈</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></mrow></math>,
+plus a model <math id="S2.p3.m4" class="ltx_Math" alttext="\mathscr{M}=(M,E)" display="inline"><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+We want to ask whether <math id="S2.p3.m5" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math> satisfies <math id="S2.p3.m6" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math>.</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">To give meaning to this, we have to designate certain variables as <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> parameters</span>.
+For example, if I asked you</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">“Does <math id="S2.p4.m1" class="ltx_Math" alttext="a=b" display="inline"><mrow><mi>a</mi><mo>=</mo><mi>b</mi></mrow></math>?”</p>
+</blockquote>
+<p class="ltx_p">the first question you would ask is what <math id="S2.p4.m2" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S2.p4.m3" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> are.
+So <math id="S2.p4.m4" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, <math id="S2.p4.m5" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> would be parameters: I have to give them values for this sentence to make sense.</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">On the other hand, if I asked you</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">“Does <math id="S2.p5.m1" class="ltx_Math" alttext="\exists a\forall x\neg(x\in a)" display="inline"><mrow><mo rspace="0.167em">∃</mo><mrow><mi>a</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mrow><mi>x</mi><mo lspace="0.167em">⁢</mo><mrow><mo>¬</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>∈</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></mrow></math>?”</p>
+</blockquote>
+<p class="ltx_p">then you would just say “yes”.
+In this case, <math id="S2.p5.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> and <math id="S2.p5.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> are <em class="ltx_emph ltx_font_italic">not</em> parameters.
+In general, parameters are those variables whose meaning is not given by some <math id="S2.p5.m4" class="ltx_Math" alttext="\forall" display="inline"><mo>∀</mo></math> or <math id="S2.p5.m5" class="ltx_Math" alttext="\exists" display="inline"><mo>∃</mo></math>.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">In what follows, we will let <math id="S2.p6.m1" class="ltx_Math" alttext="\phi(x_{1},\dots,x_{n})" display="inline"><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> denote a formula <math id="S2.p6.m2" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math>,
+whose parameters are <math id="S2.p6.m3" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math>, …, <math id="S2.p6.m4" class="ltx_Math" alttext="x_{n}" display="inline"><msub><mi>x</mi><mi>n</mi></msub></math>.
+Note that possibly <math id="S2.p6.m5" class="ltx_Math" alttext="n=0" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow></math>, for example all <math id="S2.p6.m6" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> axioms have no parameters.</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 92.2.3</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Try to guess the definition of satisfaction before reading it below.
+(It’s not very hard to guess!)</span></p>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 92.2.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathscr{M}=(M,E)" display="inline"><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></mrow></math> be a model.
+Let <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\phi(x_{1},\dots,x_{n})" display="inline"><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> be a sentence, and let <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="b_{1},\dots,b_{n}\in M" display="inline"><mrow><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><mo>∈</mo><mi>M</mi></mrow></math>.
+We will define a relation</p>
+<table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\mathscr{M}\vDash\phi[b_{1},\dots,b_{n}]" display="block"><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and say <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="\mathscr{M}" display="inline"><mi class="ltx_font_mathscript">ℳ</mi></math> <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> satisfies</span> the sentence <math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> with parameters <math id="S2.Thmtheorem4.p1.m6" class="ltx_Math" alttext="b_{1},\dots,b_{n}" display="inline"><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">The relationship is defined by induction on formula complexity as follows:</p>
+<ul id="S2.I2" class="ltx_itemize">
+<li id="S2.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.I2.i1.p1.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is “<math id="S2.I2.i1.p1.m2" class="ltx_Math" alttext="x_{1}=x_{2}" display="inline"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math>” then <math id="S2.I2.i1.p1.m3" class="ltx_Math" alttext="\mathscr{M}\vDash\phi[b_{1},b_{2}]\iff b_{1}=b_{2}" display="inline"><mrow><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>2</mn></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo stretchy="false">⇔</mo><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>=</mo><msub><mi>b</mi><mn>2</mn></msub></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.I2.i2.p1.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is “<math id="S2.I2.i2.p1.m2" class="ltx_Math" alttext="x_{1}\in x_{2}" display="inline"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>∈</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math>” then <math id="S2.I2.i2.p1.m3" class="ltx_Math" alttext="\mathscr{M}\vDash\phi[b_{1},b_{2}]\iff b_{1}\;E\;b_{2}" display="inline"><mrow><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>2</mn></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo stretchy="false">⇔</mo><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>⁢</mo><mi>E</mi><mo lspace="0.280em">⁢</mo><msub><mi>b</mi><mn>2</mn></msub></mrow></mrow></math>. 
+<br class="ltx_break">(This is what we mean by “<math id="S2.I2.i2.p1.m4" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math> interprets <math id="S2.I2.i2.p1.m5" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math>”.)</p>
+</div>
+</li>
+<li id="S2.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.I2.i3.p1.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is “<math id="S2.I2.i3.p1.m2" class="ltx_Math" alttext="\neg\psi" display="inline"><mrow><mo rspace="0.167em">¬</mo><mi>ψ</mi></mrow></math>” then
+<math id="S2.I2.i3.p1.m3" class="ltx_Math" alttext="\mathscr{M}\vDash\phi[b_{1},\dots,b_{n}]\iff\mathscr{M}\not\vDash\psi[b_{1},%
+\dots,b_{n}]" display="inline"><mrow><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo stretchy="false">⇔</mo><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>⊭</mo><mrow><mi>ψ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i4.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.I2.i4.p1.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is “<math id="S2.I2.i4.p1.m2" class="ltx_Math" alttext="\psi_{1}\lor\psi_{2}" display="inline"><mrow><msub><mi>ψ</mi><mn>1</mn></msub><mo>∨</mo><msub><mi>ψ</mi><mn>2</mn></msub></mrow></math>” then <math id="S2.I2.i4.p1.m3" class="ltx_Math" alttext="\mathscr{M}\vDash\phi[b_{1},\dots,b_{n}]" display="inline"><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>
+means <math id="S2.I2.i4.p1.m4" class="ltx_Math" alttext="\mathscr{M}\vDash\psi_{i}[b_{1},\dots,b_{n}]" display="inline"><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>⊨</mo><mrow><msub><mi>ψ</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math> for some <math id="S2.I2.i4.p1.m5" class="ltx_Math" alttext="i=1,2" display="inline"><mrow><mi>i</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I2.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i5.p1" class="ltx_para">
+<p class="ltx_p">Most important case: suppose <math id="S2.I2.i5.p1.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is <math id="S2.I2.i5.p1.m2" class="ltx_Math" alttext="\exists x\psi(x,x_{1},\dots,x_{n})" display="inline"><mrow><mo rspace="0.167em">∃</mo><mrow><mi>x</mi><mo>⁢</mo><mi>ψ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+Then <math id="S2.I2.i5.p1.m3" class="ltx_Math" alttext="\mathscr{M}\vDash\phi[b_{1},\dots,b_{n}]" display="inline"><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math> if and only if</p>
+<table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\exists b\in M\text{ such that }\mathscr{M}\vDash\psi[b,b_{1},\dots,b_{n}]." display="block"><mrow><mrow><mrow><mo rspace="0.167em">∃</mo><mi>b</mi></mrow><mo>∈</mo><mrow><mi>M</mi><mo>⁢</mo><mtext> such that </mtext><mo>⁢</mo><mi class="ltx_font_mathscript">ℳ</mi></mrow><mo>⊨</mo><mrow><mi>ψ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>b</mi><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Note that <math id="S2.I2.i5.p1.m4" class="ltx_Math" alttext="\psi" display="inline"><mi>ψ</mi></math> has one extra parameter.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">Notice where the information of the model actually gets used.
+We only ever use <math id="S2.p7.m1" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math> in interpreting <math id="S2.p7.m2" class="ltx_Math" alttext="x_{1}\in x_{2}" display="inline"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>∈</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math>; unsurprising.
+But we only ever use the set <math id="S2.p7.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> when we are running over <math id="S2.p7.m4" class="ltx_Math" alttext="\exists" display="inline"><mo>∃</mo></math> (and hence <math id="S2.p7.m5" class="ltx_Math" alttext="\forall" display="inline"><mo>∀</mo></math>).
+That’s well-worth keeping in mind:</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 92.2.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">The behavior of a model essentially comes from <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\exists" display="inline"><mo>∃</mo></math> and <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\forall" display="inline"><mo>∀</mo></math>,
+which search through the entire model <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">And finally,</p>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 92.2.6</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> model of <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi mathcolor="#0000FF">𝖹𝖥𝖢</mi></math></span> is a model <math id="S2.Thmtheorem6.p1.m2" class="ltx_Math" alttext="\mathscr{M}=(M,E)" display="inline"><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></mrow></math> satisfying all <math id="S2.Thmtheorem6.p1.m3" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> axioms.</p>
+</div>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">We are especially interested in models of the form <math id="S2.p9.m1" class="ltx_Math" alttext="(M,\in)" display="inline"><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mo lspace="0em" rspace="0em">∈</mo><mo stretchy="false">)</mo></mrow></math>, where <math id="S2.p9.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a <em class="ltx_emph ltx_font_italic">transitive</em> set.
+(We want our universe to be transitive,
+otherwise we would have elements of sets which are not themselves
+in the universe, which is very strange.)
+Such a model is called a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> transitive model</span>.</p>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_abuse">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 92.2.7</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.Thmtheorem7.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a transitive set, the model <math id="S2.Thmtheorem7.p1.m2" class="ltx_Math" alttext="(M,\in)" display="inline"><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mo lspace="0em" rspace="0em">∈</mo><mo stretchy="false">)</mo></mrow></math> will be abbreviated to just <math id="S2.Thmtheorem7.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem8" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 92.2.8</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">An <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> inner model</span> of <math id="S2.Thmtheorem8.p1.m1" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> is a transitive model satisfying <math id="S2.Thmtheorem8.p1.m2" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem9" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 92.2.9</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S2.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">The definition of a model of <math id="S2.Thmtheorem9.p1.m1" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> only uses <math id="S2.Thmtheorem9.p1.m2" class="ltx_Math" alttext="M\vDash\varphi" display="inline"><mrow><mi>M</mi><mo>⊨</mo><mi>φ</mi></mrow></math> where <math id="S2.Thmtheorem9.p1.m3" class="ltx_Math" alttext="\varphi" display="inline"><mi>φ</mi></math> has no
+parameters; nevertheless, you can see that we define what <math id="S2.Thmtheorem9.p1.m4" class="ltx_Math" alttext="M\vDash\varphi" display="inline"><mrow><mi>M</mi><mo>⊨</mo><mi>φ</mi></mrow></math> means when
+<math id="S2.Thmtheorem9.p1.m5" class="ltx_Math" alttext="\varphi" display="inline"><mi>φ</mi></math> has parameters because it’s used in the definition of <math id="S2.Thmtheorem9.p1.m6" class="ltx_Math" alttext="M\vDash\exists x\psi(x)" display="inline"><mrow><mi>M</mi><mo>⊨</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>x</mi><mo>⁢</mo><mi>ψ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem9.p2" class="ltx_para">
+<p class="ltx_p">The extension <math id="S2.Thmtheorem9.p2.m1" class="ltx_Math" alttext="\varphi(x_{1},\dots,x_{n})" display="inline"><mrow><mi>φ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> is written with round parentheses, but <math id="S2.Thmtheorem9.p2.m2" class="ltx_Math" alttext="M\vDash\varphi[b_{1},\dots,b_{n}]" display="inline"><mrow><mi>M</mi><mo>⊨</mo><mrow><mi>φ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math> is written with square brackets — you can think of it as “formally
+substitute” the parameters <math id="S2.Thmtheorem9.p2.m3" class="ltx_Math" alttext="b_{1},\dots,b_{n}" display="inline"><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow></math> into <math id="S2.Thmtheorem9.p2.m4" class="ltx_Math" alttext="\varphi" display="inline"><mi>φ</mi></math>, because if <math id="S2.Thmtheorem9.p2.m5" class="ltx_Math" alttext="b_{1},\dots,b_{n}" display="inline"><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow></math> is
+“actually” substituted into <math id="S2.Thmtheorem9.p2.m6" class="ltx_Math" alttext="\varphi" display="inline"><mi>φ</mi></math>, then <math id="S2.Thmtheorem9.p2.m7" class="ltx_Math" alttext="\varphi(b_{1},\dots,b_{n})" display="inline"><mrow><mi>φ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> is just a single
+boolean value.</p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">92.3 </span>The Levy hierarchy</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S3.p1.m1" class="ltx_Math" alttext="\mathtt{isSubset}(x,y)" display="inline"><mrow><mi>𝚒𝚜𝚂𝚞𝚋𝚜𝚎𝚝</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math> is absolute. The axiom
+<math id="S3.p1.m2" class="ltx_Math" alttext="\mathrm{EmptySet}" display="inline"><mi>EmptySet</mi></math> is <math id="S3.p1.m3" class="ltx_Math" alttext="\Sigma_{1}" display="inline"><msub><mi mathvariant="normal">Σ</mi><mn>1</mn></msub></math>, <math id="S3.p1.m4" class="ltx_Math" alttext="\mathtt{isPowerSetOf}(X,x)" display="inline"><mrow><mi>𝚒𝚜𝙿𝚘𝚠𝚎𝚛𝚂𝚎𝚝𝙾𝚏</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> is <math id="S3.p1.m5" class="ltx_Math" alttext="\Pi_{1}" display="inline"><msub><mi mathvariant="normal">Π</mi><mn>1</mn></msub></math>.</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">A key point to remember is that the behavior of a model is largely determined by <math id="S3.p2.m1" class="ltx_Math" alttext="\exists" display="inline"><mo>∃</mo></math> and <math id="S3.p2.m2" class="ltx_Math" alttext="\forall" display="inline"><mo>∀</mo></math>.
+It turns out we can say even more than this.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Consider a formula such as</p>
+<table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\mathtt{isEmpty}(x):\neg\exists a(a\in x)" display="block"><mrow><mrow><mi>𝚒𝚜𝙴𝚖𝚙𝚝𝚢</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.278em">:</mo><mrow><mo rspace="0.167em">¬</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>a</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>∈</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">which checks whether a given set <math id="S3.p3.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> has an element in it.
+Technically, this has an “<math id="S3.p3.m2" class="ltx_Math" alttext="\exists" display="inline"><mo>∃</mo></math>” in it.
+But somehow this <math id="S3.p3.m3" class="ltx_Math" alttext="\exists" display="inline"><mo>∃</mo></math> does not really search over the entire model,
+because it is <em class="ltx_emph ltx_font_italic">bounded</em> to search in <math id="S3.p3.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>.
+That is, we might informally rewrite this as</p>
+<table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\neg(\exists a\in x)" display="block"><mrow><mo>¬</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo rspace="0.167em">∃</mo><mi>a</mi></mrow><mo>∈</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">which doesn’t fit into the strict form,
+but points out that we are only looking over <math id="S3.p3.m5" class="ltx_Math" alttext="a\in x" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>x</mi></mrow></math>.
+We call such a quantifier a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> bounded quantifier</span>.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">We like sentences with bounded quantifiers because they designate
+properties which are <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> absolute</span> over transitive models.
+It doesn’t matter how strange your surrounding model <math id="S3.p4.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is.
+As long as <math id="S3.p4.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is transitive,</p>
+<table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="M\vDash\mathtt{isEmpty}(\varnothing)" display="block"><mrow><mi>M</mi><mo>⊨</mo><mrow><mi>𝚒𝚜𝙴𝚖𝚙𝚝𝚢</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">will always hold.
+Similarly, the sentence</p>
+<table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\mathtt{isSubset}(x,y):x\subseteq y\text{ i.e. }\forall a\in x(a\in y)" display="block"><mrow><mrow><mi>𝚒𝚜𝚂𝚞𝚋𝚜𝚎𝚝</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.278em">:</mo><mrow><mi>x</mi><mo>⊆</mo><mrow><mi>y</mi><mo>⁢</mo><mtext> i.e. </mtext><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mi>a</mi></mrow></mrow><mo>∈</mo><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>∈</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is absolute.
+Sentences with this property are called <math id="S3.p4.m3" class="ltx_Math" alttext="\Sigma_{0}" display="inline"><msub><mi mathvariant="normal">Σ</mi><mn>0</mn></msub></math> or <math id="S3.p4.m4" class="ltx_Math" alttext="\Pi_{0}" display="inline"><msub><mi mathvariant="normal">Π</mi><mn>0</mn></msub></math>.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">The situation is different with a sentence like</p>
+<table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_math_unparsed" alttext="\mathtt{isPowerSetOf}(y,x):\forall z\left(z\subseteq x\iff z\in y\right)" display="block"><mrow><mi>𝚒𝚜𝙿𝚘𝚠𝚎𝚛𝚂𝚎𝚝𝙾𝚏</mi><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>x</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow><mo rspace="0.278em">:</mo><mo rspace="0.167em">∀</mo><mi>z</mi><mrow><mo>(</mo><mi>z</mi><mo>⊆</mo><mi>x</mi><mo stretchy="false">⇔</mo><mi>z</mi><mo>∈</mo><mi>y</mi><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">which in English means “<math id="S3.p5.m1" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> is the power set of <math id="S3.p5.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>”, or just <math id="S3.p5.m3" class="ltx_Math" alttext="y=\mathcal{P}(x)" display="inline"><mrow><mi>y</mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒫</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+The <math id="S3.p5.m4" class="ltx_Math" alttext="\forall z" display="inline"><mrow><mo rspace="0.167em">∀</mo><mi>z</mi></mrow></math> is <em class="ltx_emph ltx_font_italic">not</em> bounded here.
+This weirdness is what allows things like</p>
+<table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\omega\vDash\text{``$\{0,1,2\}$ is the power set of $\{0,1\}$''}" display="block"><mrow><mi>ω</mi><mo>⊨</mo><mrow><mtext>“</mtext><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">}</mo></mrow><mtext> is the power set of </mtext><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow><mtext>”</mtext></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and hence</p>
+<table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\omega\vDash\mathrm{PowerSet}" display="block"><mrow><mi>ω</mi><mo>⊨</mo><mi>PowerSet</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">which was our stupid example earlier.
+The sentence <math id="S3.p5.m5" class="ltx_Math" alttext="\mathtt{isPowerSetOf}" display="inline"><mi>𝚒𝚜𝙿𝚘𝚠𝚎𝚛𝚂𝚎𝚝𝙾𝚏</mi></math> consists of an unbounded <math id="S3.p5.m6" class="ltx_Math" alttext="\forall" display="inline"><mo>∀</mo></math> followed
+by an absolute sentence, so we say it is <math id="S3.p5.m7" class="ltx_Math" alttext="\Pi_{1}" display="inline"><msub><mi mathvariant="normal">Π</mi><mn>1</mn></msub></math>.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">More generally, the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Levy hierarchy</span> keeps track of how bounded our
+quantifiers are.
+Specifically,</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Formulas which have only bounded quantifiers
+are <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="\Delta_{0}=\Sigma_{0}=\Pi_{0}" display="inline"><mrow><msub><mi mathvariant="normal">Δ</mi><mn>0</mn></msub><mo>=</mo><msub><mi mathvariant="normal">Σ</mi><mn>0</mn></msub><mo>=</mo><msub><mi mathvariant="normal">Π</mi><mn>0</mn></msub></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Formulas of the form <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="\exists x_{1}\dots\exists x_{k}\psi" display="inline"><mrow><mo rspace="0.167em">∃</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>⁢</mo><mi mathvariant="normal">…</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∃</mo><mrow><msub><mi>x</mi><mi>k</mi></msub><mo>⁢</mo><mi>ψ</mi></mrow></mrow></mrow></mrow></math>
+where <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="\psi" display="inline"><mi>ψ</mi></math> is <math id="S3.I1.i2.p1.m3" class="ltx_Math" alttext="\Pi_{n}" display="inline"><msub><mi mathvariant="normal">Π</mi><mi>n</mi></msub></math> are considered <math id="S3.I1.i2.p1.m4" class="ltx_Math" alttext="\Sigma_{n+1}" display="inline"><msub><mi mathvariant="normal">Σ</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Formulas of the form <math id="S3.I1.i3.p1.m1" class="ltx_Math" alttext="\forall x_{1}\dots\forall x_{k}\psi" display="inline"><mrow><mo rspace="0.167em">∀</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>⁢</mo><mi mathvariant="normal">…</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mrow><msub><mi>x</mi><mi>k</mi></msub><mo>⁢</mo><mi>ψ</mi></mrow></mrow></mrow></mrow></math>
+where <math id="S3.I1.i3.p1.m2" class="ltx_Math" alttext="\psi" display="inline"><mi>ψ</mi></math> is <math id="S3.I1.i3.p1.m3" class="ltx_Math" alttext="\Sigma_{n}" display="inline"><msub><mi mathvariant="normal">Σ</mi><mi>n</mi></msub></math> are considered <math id="S3.I1.i3.p1.m4" class="ltx_Math" alttext="\Pi_{n+1}" display="inline"><msub><mi mathvariant="normal">Π</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">(A formula which is both <math id="S3.p6.m1" class="ltx_Math" alttext="\Sigma_{n}" display="inline"><msub><mi mathvariant="normal">Σ</mi><mi>n</mi></msub></math> and <math id="S3.p6.m2" class="ltx_Math" alttext="\Pi_{n}" display="inline"><msub><mi mathvariant="normal">Π</mi><mi>n</mi></msub></math> is called <math id="S3.p6.m3" class="ltx_Math" alttext="\Delta_{n}" display="inline"><msub><mi mathvariant="normal">Δ</mi><mi>n</mi></msub></math>, but we won’t
+use this except for <math id="S3.p6.m4" class="ltx_Math" alttext="n=0" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow></math>.)</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 92.3.1</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of <math id="S3.Thmtheorem1.m1" class="ltx_Math" alttext="\Delta_{0}" display="inline"><msub><mi mathcolor="#8C0000" mathvariant="normal">Δ</mi><mn mathcolor="#8C0000">0</mn></msub></math> sentences)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S3.I2" class="ltx_enumerate">
+<li id="S3.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S3.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">The sentences <math id="S3.I2.i1.p1.m1" class="ltx_Math" alttext="\mathtt{isEmpty}(x)" display="inline"><mrow><mi>𝚒𝚜𝙴𝚖𝚙𝚝𝚢</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S3.I2.i1.p1.m2" class="ltx_Math" alttext="x\subseteq y" display="inline"><mrow><mi>x</mi><mo>⊆</mo><mi>y</mi></mrow></math>, as discussed above.</p>
+</div>
+</li>
+<li id="S3.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S3.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The formula “<math id="S3.I2.i2.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is transitive” can be expanded as a <math id="S3.I2.i2.p1.m2" class="ltx_Math" alttext="\Delta_{0}" display="inline"><msub><mi mathvariant="normal">Δ</mi><mn>0</mn></msub></math> sentence.</p>
+</div>
+</li>
+<li id="S3.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S3.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">The formula “<math id="S3.I2.i3.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is an ordinal” can be expanded as a <math id="S3.I2.i3.p1.m2" class="ltx_Math" alttext="\Delta_{0}" display="inline"><msub><mi mathvariant="normal">Δ</mi><mn>0</mn></msub></math> sentence.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 92.3.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Write out the expansions for “<math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is transitive” and “<math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is an ordinal”
+in a <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\Delta_{0}" display="inline"><msub><mi mathvariant="normal">Δ</mi><mn>0</mn></msub></math> form.</span></p>
+</div>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 92.3.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(More complex formulas)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S3.I3" class="ltx_enumerate">
+<li id="S3.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S3.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">The axiom <math id="S3.I3.i1.p1.m1" class="ltx_Math" alttext="\mathrm{EmptySet}" display="inline"><mi>EmptySet</mi></math> is <math id="S3.I3.i1.p1.m2" class="ltx_Math" alttext="\Sigma_{1}" display="inline"><msub><mi mathvariant="normal">Σ</mi><mn>1</mn></msub></math>; it is <math id="S3.I3.i1.p1.m3" class="ltx_Math" alttext="\exists a(\mathtt{isEmpty}(a))" display="inline"><mrow><mo rspace="0.167em">∃</mo><mrow><mi>a</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>𝚒𝚜𝙴𝚖𝚙𝚝𝚢</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+and <math id="S3.I3.i1.p1.m4" class="ltx_Math" alttext="\mathtt{isEmpty}(a)" display="inline"><mrow><mi>𝚒𝚜𝙴𝚖𝚙𝚝𝚢</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></math> is <math id="S3.I3.i1.p1.m5" class="ltx_Math" alttext="\Delta_{0}" display="inline"><msub><mi mathvariant="normal">Δ</mi><mn>0</mn></msub></math>.</p>
+</div>
+</li>
+<li id="S3.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S3.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">The formula “<math id="S3.I3.i2.p1.m1" class="ltx_Math" alttext="y=\mathcal{P}(x)" display="inline"><mrow><mi>y</mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒫</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>” is <math id="S3.I3.i2.p1.m2" class="ltx_Math" alttext="\Pi_{1}" display="inline"><msub><mi mathvariant="normal">Π</mi><mn>1</mn></msub></math>, as discussed above.</p>
+</div>
+</li>
+<li id="S3.I3.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S3.I3.i3.p1" class="ltx_para">
+<p class="ltx_p">The formula “<math id="S3.I3.i3.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is countable” is <math id="S3.I3.i3.p1.m2" class="ltx_Math" alttext="\Sigma_{1}" display="inline"><msub><mi mathvariant="normal">Σ</mi><mn>1</mn></msub></math>.
+One way to phrase it is “<math id="S3.I3.i3.p1.m3" class="ltx_Math" alttext="\exists f" display="inline"><mrow><mo rspace="0.167em">∃</mo><mi>f</mi></mrow></math> an injective map <math id="S3.I3.i3.p1.m4" class="ltx_Math" alttext="x\hookrightarrow\omega" display="inline"><mrow><mi>x</mi><mo stretchy="false">↪</mo><mi>ω</mi></mrow></math>”,
+which necessarily has an unbounded “<math id="S3.I3.i3.p1.m5" class="ltx_Math" alttext="\exists f" display="inline"><mrow><mo rspace="0.167em">∃</mo><mi>f</mi></mrow></math>”.</p>
+</div>
+</li>
+<li id="S3.I3.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S3.I3.i4.p1" class="ltx_para">
+<p class="ltx_p">The axiom <math id="S3.I3.i4.p1.m1" class="ltx_Math" alttext="\mathrm{PowerSet}" display="inline"><mi>PowerSet</mi></math> is <math id="S3.I3.i4.p1.m2" class="ltx_Math" alttext="\Pi_{3}" display="inline"><msub><mi mathvariant="normal">Π</mi><mn>3</mn></msub></math>:</p>
+<table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_math_unparsed" alttext="\forall y\exists P\forall x(x\subseteq y\iff x\in P)." display="block"><mrow><mo rspace="0.167em">∀</mo><mi>y</mi><mo lspace="0.167em" rspace="0.167em">∃</mo><mi>P</mi><mo lspace="0.167em" rspace="0.167em">∀</mo><mi>x</mi><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>⊆</mo><mi>y</mi><mo stretchy="false">⇔</mo><mi>x</mi><mo>∈</mo><mi>P</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 92.3.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Why only alternating unbounded quantifier count?)</span> — </span>
+</h6>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Note that a formula <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\exists a\exists b\psi(a,b)" display="inline"><mrow><mo rspace="0.167em">∃</mo><mrow><mi>a</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>b</mi><mo>⁢</mo><mi>ψ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></math> can alternatively be written as <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\exists c(\text{$c$ is an ordered pair $(a,b)$}\land\psi(a,b))" display="inline"><mrow><mo rspace="0.167em">∃</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>c</mi><mtext> is an ordered pair </mtext><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mi>ψ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, which explains why we only
+want to consider the formula <math id="S3.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\exists a\exists b\psi(a,b)" display="inline"><mrow><mo rspace="0.167em">∃</mo><mrow><mi>a</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>b</mi><mo>⁢</mo><mi>ψ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></math> as <math id="S3.Thmtheorem4.p1.m4" class="ltx_Math" alttext="\Sigma_{1}" display="inline"><msub><mi mathvariant="normal">Σ</mi><mn>1</mn></msub></math>.</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">92.4 </span>Substructures, and Tarski-Vaught</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.p1.m1" class="ltx_Math" alttext="\mathscr{M}_{1}=(M_{1},E_{1})" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>M</mi><mn>1</mn></msub><mo>,</mo><msub><mi>E</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S4.p1.m2" class="ltx_Math" alttext="\mathscr{M}_{2}=(M_{2},E_{2})" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>M</mi><mn>2</mn></msub><mo>,</mo><msub><mi>E</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math> be models.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 92.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We say that <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathscr{M}_{1}\subseteq\mathscr{M}_{2}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>⊆</mo><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></mrow></math> if <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="M_{1}\subseteq M_{2}" display="inline"><mrow><msub><mi>M</mi><mn>1</mn></msub><mo>⊆</mo><msub><mi>M</mi><mn>2</mn></msub></mrow></math> and
+<math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="E_{1}" display="inline"><msub><mi>E</mi><mn>1</mn></msub></math> agrees with <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="E_{2}" display="inline"><msub><mi>E</mi><mn>2</mn></msub></math>; we say <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\mathscr{M}_{1}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub></math> is a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> substructure</span> of <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\mathscr{M}_{2}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></math>.</p>
+</div>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">That’s boring. The good part is:</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 92.4.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We say <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathscr{M}_{1}\prec\mathscr{M}_{2}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>≺</mo><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></mrow></math>, or <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathscr{M}_{1}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub></math> is an <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> elementary substructure</span> of <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\mathscr{M}_{2}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></math>,
+if <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\mathscr{M}_{1}\subseteq\mathscr{M}_{2}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>⊆</mo><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></mrow></math> and for <em class="ltx_emph ltx_font_italic">every</em> sentence <math id="S4.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\phi(x_{1},\dots,x_{n})" display="inline"><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+and parameters <math id="S4.Thmtheorem2.p1.m6" class="ltx_Math" alttext="b_{1},\dots,b_{n}\in M_{1}" display="inline"><mrow><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><mo>∈</mo><msub><mi>M</mi><mn>1</mn></msub></mrow></math>, we have</p>
+<table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="\mathscr{M}_{1}\vDash\phi[b_{1},\dots,b_{n}]\iff\mathscr{M}_{2}\vDash\phi[b_{1%
+},\dots,b_{n}]." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo stretchy="false">⇔</mo><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">In other words, <math id="S4.p3.m1" class="ltx_Math" alttext="\mathscr{M}_{1}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub></math> and <math id="S4.p3.m2" class="ltx_Math" alttext="\mathscr{M}_{2}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></math> agree on every sentence possible.
+Note that the <math id="S4.p3.m3" class="ltx_Math" alttext="b_{i}" display="inline"><msub><mi>b</mi><mi>i</mi></msub></math> have to come from <math id="S4.p3.m4" class="ltx_Math" alttext="\mathscr{M}_{1}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub></math>; if the <math id="S4.p3.m5" class="ltx_Math" alttext="b_{i}" display="inline"><msub><mi>b</mi><mi>i</mi></msub></math> came from <math id="S4.p3.m6" class="ltx_Math" alttext="\mathscr{M}_{2}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></math> then
+asking something of <math id="S4.p3.m7" class="ltx_Math" alttext="\mathscr{M}_{1}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub></math> wouldn’t make sense.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Let’s ask now: how would <math id="S4.p4.m1" class="ltx_Math" alttext="\mathscr{M}_{1}\prec\mathscr{M}_{2}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>≺</mo><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></mrow></math> fail to be true?
+If we look at the possible sentences, none of the atomic formulas,
+nor the “<math id="S4.p4.m2" class="ltx_Math" alttext="\land" display="inline"><mo>∧</mo></math>” and “<math id="S4.p4.m3" class="ltx_Math" alttext="\neg" display="inline"><mo>¬</mo></math>”, are going to cause issues.</p>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">The intuition you should be getting by now is that things go
+wrong once we hit <math id="S4.p5.m1" class="ltx_Math" alttext="\forall" display="inline"><mo>∀</mo></math> and <math id="S4.p5.m2" class="ltx_Math" alttext="\exists" display="inline"><mo>∃</mo></math>.
+They won’t go wrong for bounded quantifiers.
+But unbounded quantifiers search the entire model, and that’s where things go wrong.</p>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">To give a “concrete example”:
+imagine <math id="S4.p6.m1" class="ltx_Math" alttext="\mathscr{M}_{1}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub></math> is MIT, and <math id="S4.p6.m2" class="ltx_Math" alttext="\mathscr{M}_{2}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></math> is the state of Massachusetts.
+If <math id="S4.p6.m3" class="ltx_Math" alttext="\mathscr{M}_{1}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub></math> thinks there exist hackers at MIT,
+certainly there exist hackers in Massachusetts.
+Where things go wrong is something like:</p>
+<table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="\mathscr{M}_{2}\vDash\text{``$\exists x$ : $x$ is a course numbered $&gt;50$''}." display="block"><mrow><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub><mo>⊨</mo><mrow><mtext>“</mtext><mrow><mo lspace="0.167em" rspace="0.167em">∃</mo><mi>x</mi></mrow><mtext> : </mtext><mi>x</mi><mtext> is a course numbered </mtext><mrow><mi></mi><mo>&gt;</mo><mn>50</mn></mrow><mtext>”</mtext></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This is true for <math id="S4.p6.m4" class="ltx_Math" alttext="\mathscr{M}_{2}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></math> because we can
+take the witness <math id="S4.p6.m5" class="ltx_Math" alttext="x=\text{Math 55}" display="inline"><mrow><mi>x</mi><mo>=</mo><mtext>Math 55</mtext></mrow></math>, say.
+But it’s false for <math id="S4.p6.m6" class="ltx_Math" alttext="\mathscr{M}_{1}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub></math>,
+because at MIT all courses are numbered <math id="S4.p6.m7" class="ltx_Math" alttext="18.701" display="inline"><mn>18.701</mn></math> or something similar.</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 92.4.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">The issue is that the <em class="ltx_emph ltx_font_italic">witnesses</em>
+for statements in <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathscr{M}_{2}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></math> do not necessarily propagate
+down to witnesses for <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\mathscr{M}_{1}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub></math>.</p>
+</div>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">The Tarski-Vaught test says this is the only impediment:
+if every witness in <math id="S4.p7.m1" class="ltx_Math" alttext="\mathscr{M}_{2}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></math> can be replaced by one in <math id="S4.p7.m2" class="ltx_Math" alttext="\mathscr{M}_{1}" display="inline"><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub></math> then <math id="S4.p7.m3" class="ltx_Math" alttext="\mathscr{M}_{1}\prec\mathscr{M}_{2}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>≺</mo><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></mrow></math>.</p>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Lemma 92.4.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Tarski-Vaught)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathscr{M}_{1}\subseteq\mathscr{M}_{2}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>⊆</mo><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></mrow></math>.
+Then <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\mathscr{M}_{1}\prec\mathscr{M}_{2}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>≺</mo><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></mrow></math> if and only if:
+For every sentence <math id="S4.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\phi(x,x_{1},\dots,x_{n})" display="inline"><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> and parameters
+<math id="S4.Thmtheorem4.p1.m4" class="ltx_Math" alttext="b_{1},\dots,b_{n}\in M_{1}" display="inline"><mrow><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><mo>∈</mo><msub><mi>M</mi><mn>1</mn></msub></mrow></math>:
+if there is a witness <math id="S4.Thmtheorem4.p1.m5" class="ltx_Math" alttext="\tilde{b}\in M_{2}" display="inline"><mrow><mover accent="true"><mi>b</mi><mo>~</mo></mover><mo>∈</mo><msub><mi>M</mi><mn>2</mn></msub></mrow></math>
+to <math id="S4.Thmtheorem4.p1.m6" class="ltx_Math" alttext="\mathscr{M}_{2}\vDash\phi(\tilde{b},b_{1}\dots,b_{n})" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mi>b</mi><mo>~</mo></mover><mo>,</mo><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>⁢</mo><mi mathvariant="normal">…</mi></mrow><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+then there is a witness <math id="S4.Thmtheorem4.p1.m7" class="ltx_Math" alttext="b\in M_{1}" display="inline"><mrow><mi>b</mi><mo>∈</mo><msub><mi>M</mi><mn>1</mn></msub></mrow></math> to <math id="S4.Thmtheorem4.p1.m8" class="ltx_Math" alttext="\mathscr{M}_{1}\vDash\phi(b,b_{1},\dots,b_{n})" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">Easy after the above discussion.
+To formalize it, use induction on formula complexity.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">92.5 </span>Obtaining the axioms of <math id="S5.m1" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>
+</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">We now want to write down conditions for <math id="S5.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> to satisfy <math id="S5.p1.m2" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> axioms.
+The idea is that almost all the <math id="S5.p1.m3" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> axioms are just <math id="S5.p1.m4" class="ltx_Math" alttext="\Sigma_{1}" display="inline"><msub><mi mathvariant="normal">Σ</mi><mn>1</mn></msub></math>
+claims about certain desired sets,
+and so verifying an axiom reduces to checking some appropriate “closure” condition:
+that the witness to the axiom is actually in the model.</p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">For example, the <math id="S5.p2.m1" class="ltx_Math" alttext="\mathrm{EmptySet}" display="inline"><mi>EmptySet</mi></math> axiom is “<math id="S5.p2.m2" class="ltx_Math" alttext="\exists a(\mathtt{isEmpty}(a))" display="inline"><mrow><mo rspace="0.167em">∃</mo><mrow><mi>a</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>𝚒𝚜𝙴𝚖𝚙𝚝𝚢</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>”,
+and so we’re happy as long as <math id="S5.p2.m3" class="ltx_Math" alttext="\varnothing\in M" display="inline"><mrow><mi mathvariant="normal">∅</mi><mo>∈</mo><mi>M</mi></mrow></math>, which is of course
+true for any nonempty transitive set <math id="S5.p2.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+<div id="lem:transitive_ZFC" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Lemma 92.5.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Transitive sets inheriting <math id="S5.Thmtheorem1.m1" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi mathcolor="#191970">ZFC</mi></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a nonempty transitive set. Then</p>
+<ol id="S5.I1" class="ltx_enumerate">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(i)</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> satisfies <math id="S5.I1.i1.p1.m2" class="ltx_Math" alttext="\mathrm{Extensionality}" display="inline"><mi>Extensionality</mi></math>, <math id="S5.I1.i1.p1.m3" class="ltx_Math" alttext="\mathrm{Foundation}" display="inline"><mi>Foundation</mi></math>, <math id="S5.I1.i1.p1.m4" class="ltx_Math" alttext="\mathrm{EmptySet}" display="inline"><mi>EmptySet</mi></math>.</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(ii)</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="M\vDash\mathrm{Pairing}" display="inline"><mrow><mi>M</mi><mo>⊨</mo><mi>Pairing</mi></mrow></math> if <math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="x,y\in M\implies\{x,y\}\in M" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><mi>M</mi><mo stretchy="false">⟹</mo><mrow><mo stretchy="false">{</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">}</mo></mrow><mo>∈</mo><mi>M</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S5.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(iii)</span> 
+<div id="S5.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i3.p1.m1" class="ltx_Math" alttext="M\vDash\mathrm{Union}" display="inline"><mrow><mi>M</mi><mo>⊨</mo><mi>Union</mi></mrow></math> if <math id="S5.I1.i3.p1.m2" class="ltx_Math" alttext="x\in M\implies\cup x\in M" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>M</mi><mo rspace="0.1389em" stretchy="false">⟹</mo><mrow><mo lspace="0.1389em" rspace="0em">∪</mo><mi>x</mi></mrow><mo>∈</mo><mi>M</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S5.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(iv)</span> 
+<div id="S5.I1.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i4.p1.m1" class="ltx_Math" alttext="M\vDash\mathrm{PowerSet}" display="inline"><mrow><mi>M</mi><mo>⊨</mo><mi>PowerSet</mi></mrow></math> if <math id="S5.I1.i4.p1.m2" class="ltx_Math" alttext="x\in M\implies\mathcal{P}(x)\cap M\in M" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>M</mi><mo stretchy="false">⟹</mo><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒫</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∩</mo><mi>M</mi></mrow><mo>∈</mo><mi>M</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S5.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(v)</span> 
+<div id="S5.I1.i5.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i5.p1.m1" class="ltx_Math" alttext="M\vDash\mathrm{Replacement}" display="inline"><mrow><mi>M</mi><mo>⊨</mo><mi>Replacement</mi></mrow></math> if for every <math id="S5.I1.i5.p1.m2" class="ltx_Math" alttext="x\in M" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>M</mi></mrow></math>
+and every function <math id="S5.I1.i5.p1.m3" class="ltx_Math" alttext="F\colon x\to M" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>x</mi><mo stretchy="false">→</mo><mi>M</mi></mrow></mrow></math>
+which is <math id="S5.I1.i5.p1.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>-definable with parameters,
+we have <math id="S5.I1.i5.p1.m5" class="ltx_Math" alttext="F^{\text{img}}(x)\in M" display="inline"><mrow><mrow><msup><mi>F</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>M</mi></mrow></math> as well.</p>
+</div>
+</li>
+<li id="S5.I1.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(vi)</span> 
+<div id="S5.I1.i6.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i6.p1.m1" class="ltx_Math" alttext="M\vDash\mathrm{Infinity}" display="inline"><mrow><mi>M</mi><mo>⊨</mo><mi>Infinity</mi></mrow></math> as long as <math id="S5.I1.i6.p1.m2" class="ltx_Math" alttext="\omega\in M" display="inline"><mrow><mi>ω</mi><mo>∈</mo><mi>M</mi></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">Here, a set <math id="S5.p3.m1" class="ltx_Math" alttext="X\subseteq M" display="inline"><mrow><mi>X</mi><mo>⊆</mo><mi>M</mi></mrow></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> <math id="S5.p3.m2" class="ltx_Math" alttext="M" display="inline"><mi mathcolor="#0000FF">M</mi></math>-definable with parameters</span>
+if it can be realized as</p>
+<table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="X=\left\{x\in M\mid\phi[x,b_{1},\dots,b_{n}]\right\}" display="block"><mrow><mi>X</mi><mo>=</mo><mrow><mo>{</mo><mrow><mi>x</mi><mo>∈</mo><mi>M</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">for some (fixed) choice of parameters <math id="S5.p3.m3" class="ltx_Math" alttext="b_{1},\dots,b_{n}\in M" display="inline"><mrow><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><mo>∈</mo><mi>M</mi></mrow></math>.
+We allow <math id="S5.p3.m4" class="ltx_Math" alttext="n=0" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow></math>, in which case we say <math id="S5.p3.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> <math id="S5.p3.m6" class="ltx_Math" alttext="M" display="inline"><mi mathcolor="#0000FF">M</mi></math>-definable without parameters</span>.
+Note that <math id="S5.p3.m7" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> need not itself be in <math id="S5.p3.m8" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>!
+As a trivial example, <math id="S5.p3.m9" class="ltx_Math" alttext="X=M" display="inline"><mrow><mi>X</mi><mo>=</mo><mi>M</mi></mrow></math> is <math id="S5.p3.m10" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>-definable without parameters
+(just take <math id="S5.p3.m11" class="ltx_Math" alttext="\phi[x]" display="inline"><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> to always be true), and certainly we do not have <math id="S5.p3.m12" class="ltx_Math" alttext="X\in M" display="inline"><mrow><mi>X</mi><mo>∈</mo><mi>M</mi></mrow></math>.</p>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 92.5.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify (i)-(iv) above.</span></p>
+</div>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 92.5.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Converses to the statements of <a href="#lem:transitive_ZFC" title="Lemma 92.5.1 (Transitive sets inheriting ZFC) ‣ 92.5 Obtaining the axioms of 𝖹𝖥𝖢 ‣ Chapter 92 Inner model theory ‣ Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Lemma</span> <span class="ltx_text ltx_ref_tag">92.5.1</span></a>
+are true for all claims other than (vi).</p>
+</div>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">92.6 </span>Mostowski collapse</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p">Up until now I have been only talking about transitive models,
+because they were easier to think about.
+Here’s a second, better reason we might only care about transitive models.</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Lemma 92.6.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Mostowski collapse lemma)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X=(X,\in)" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mo lspace="0em" rspace="0em">∈</mo><mo stretchy="false">)</mo></mrow></mrow></math> be a model satisfying Extensionality,
+where <math id="S6.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is a set (possibly not transitive).
+Then there exists an isomorphism <math id="S6.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\pi\colon X\to M" display="inline"><mrow><mi>π</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>M</mi></mrow></mrow></math> for
+a transitive model <math id="S6.Thmtheorem1.p1.m4" class="ltx_Math" alttext="M=(M,\in)" display="inline"><mrow><mi>M</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mo lspace="0em" rspace="0em">∈</mo><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">This is also called the <em class="ltx_emph ltx_font_italic">transitive collapse</em>.
+In fact, both <math id="S6.p2.m1" class="ltx_Math" alttext="\pi" display="inline"><mi>π</mi></math> and <math id="S6.p2.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> are unique.</p>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">The idea behind the proof is very simple.
+Since <math id="S6.p3.m1" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math> is well-founded and extensional
+(satisfies <math id="S6.p3.m2" class="ltx_Math" alttext="\mathrm{Foundation}" display="inline"><mi>Foundation</mi></math> and <math id="S6.p3.m3" class="ltx_Math" alttext="\mathrm{Extensionality}" display="inline"><mi>Extensionality</mi></math>, respectively),
+we can look at the <math id="S6.p3.m4" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math>-minimal element <math id="S6.p3.m5" class="ltx_Math" alttext="x_{\varnothing}" display="inline"><msub><mi>x</mi><mi mathvariant="normal">∅</mi></msub></math>
+of <math id="S6.p3.m6" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> with respect to <math id="S6.p3.m7" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math>.
+Clearly, we want to send that to <math id="S6.p3.m8" class="ltx_Math" alttext="0=\varnothing" display="inline"><mrow><mn>0</mn><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>.</p>
+</div>
+<div id="S6.p4" class="ltx_para">
+<p class="ltx_p">Then we take the next-smallest set under <math id="S6.p4.m1" class="ltx_Math" alttext="\in" display="inline"><mo>∈</mo></math>, and send it to <math id="S6.p4.m2" class="ltx_Math" alttext="1=\{\varnothing\}" display="inline"><mrow><mn>1</mn><mo>=</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">}</mo></mrow></mrow></math>.
+We “keep doing this”; it’s not hard to see this does exactly what we want.</p>
+</div>
+<div id="S6.p5" class="ltx_para">
+<p class="ltx_p">To formalize, define <math id="S6.p5.m1" class="ltx_Math" alttext="\pi" display="inline"><mi>π</mi></math> by transfinite recursion:</p>
+<table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="\pi(x)\coloneqq\left\{\pi(y)\mid y\in x\right\}." display="block"><mrow><mrow><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mo>{</mo><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>y</mi><mo>∈</mo><mi>x</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This <math id="S6.p5.m2" class="ltx_Math" alttext="\pi" display="inline"><mi>π</mi></math>, by construction, does the trick.
+∎</p>
+</div>
+</div>
+<div id="S6.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 92.6.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Digression for experts)</span> — </span>
+</h6>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Earlier versions of Napkin claimed this was true for general models
+<math id="S6.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathscr{X}=(X,E)" display="inline"><mrow><mi class="ltx_font_mathscript">𝒳</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></mrow></math> with <math id="S6.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathscr{X}\vDash\mathrm{Foundation}+\mathrm{Extensionality}" display="inline"><mrow><mi class="ltx_font_mathscript">𝒳</mi><mo>⊨</mo><mrow><mi>Foundation</mi><mo>+</mo><mi>Extensionality</mi></mrow></mrow></math>.
+This is false; it does not even imply <math id="S6.Thmtheorem2.p1.m3" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math> is well-founded,
+because there may be infinite descending chains of subsets of <math id="S6.Thmtheorem2.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+which do not live in <math id="S6.Thmtheorem2.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> itself.
+Another issue is that <math id="S6.Thmtheorem2.p1.m6" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math> may not be set-like.</p>
+</div>
+</div>
+<div id="S6.p6" class="ltx_para">
+<p class="ltx_p">The picture of this is “collapsing” the elements of <math id="S6.p6.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> down
+to the bottom of <math id="S6.p6.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>, hence the name.
+[Missing Figure: Picture of Mostowski collapse]</p>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">92.7 </span>Adding an inaccessible</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S7.p1.m1" class="ltx_Math" alttext="V_{\kappa}" display="inline"><msub><mi>V</mi><mi>κ</mi></msub></math></em></p>
+</div>
+<div id="S7.p2" class="ltx_para">
+<p class="ltx_p">At this point you might be asking, well, where’s my model of <math id="S7.p2.m1" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>?</p>
+</div>
+<div id="S7.p3" class="ltx_para">
+<p class="ltx_p">I unfortunately have to admit now: <math id="S7.p3.m1" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> can never prove that there is a model of <math id="S7.p3.m2" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>
+(unless <math id="S7.p3.m3" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> is inconsistent, but that would be even worse).
+This is a result called Gödel’s incompleteness theorem.</p>
+</div>
+<div id="S7.p4" class="ltx_para">
+<p class="ltx_p">Nonetheless, with some very modest assumptions added,
+we can actually show that a model <em class="ltx_emph ltx_font_italic">does</em> exist:
+for example, assuming that there exists a strongly inaccessible cardinal <math id="S7.p4.m1" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> would do the trick,
+<math id="S7.p4.m2" class="ltx_Math" alttext="V_{\kappa}" display="inline"><msub><mi>V</mi><mi>κ</mi></msub></math> will be such a model (<a href="#prob:inaccessible_model" title="Problem 92D (Strongly inaccessible cardinals produce models). ‣ 92.10 A few harder problems to think about ‣ Chapter 92 Inner model theory ‣ Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">92D</span></a>).
+Intuitively you can see why: <math id="S7.p4.m3" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> is so big that any set of rank lower than it can’t escape it
+even if we take their power sets, use the <math id="S7.p4.m4" class="ltx_Math" alttext="\mathrm{Replacement}" display="inline"><mi>Replacement</mi></math> axiom,
+or any other method that <math id="S7.p4.m5" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> lets us do.</p>
+</div>
+<div id="S7.p5" class="ltx_para">
+<p class="ltx_p">More pessimistically,
+this shows that it’s impossible to prove in <math id="S7.p5.m1" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> that such a <math id="S7.p5.m2" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> exists.
+Nonetheless, we now proceed under <math id="S7.p5.m3" class="ltx_Math" alttext="\mathsf{ZFC}^{+}" display="inline"><msup><mi>𝖹𝖥𝖢</mi><mo>+</mo></msup></math> for convenience,
+which adds the existence of such a <math id="S7.p5.m4" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>
+as a final axiom.
+So we now have a model <math id="S7.p5.m5" class="ltx_Math" alttext="V_{\kappa}" display="inline"><msub><mi>V</mi><mi>κ</mi></msub></math> to play with. Joy!</p>
+</div>
+<div id="S7.p6" class="ltx_para">
+<p class="ltx_p">Great. Now we do something <em class="ltx_emph ltx_font_italic">really</em> crazy.</p>
+</div>
+<div id="S7.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 92.7.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Countable transitive model)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Assume <math id="S7.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathsf{ZFC}^{+}" display="inline"><msup><mi>𝖹𝖥𝖢</mi><mo>+</mo></msup></math>. Then there exists a transitive model <math id="S7.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> of <math id="S7.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>
+such that <math id="S7.Thmtheorem1.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is a <em class="ltx_emph ltx_font_italic">countable</em> set.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S7.p7" class="ltx_para">
+<p class="ltx_p">Fasten your seat belts.</p>
+</div>
+<div id="S7.p8" class="ltx_para">
+<p class="ltx_p">First, since we assumed <math id="S7.p8.m1" class="ltx_Math" alttext="\mathsf{ZFC}^{+}" display="inline"><msup><mi>𝖹𝖥𝖢</mi><mo>+</mo></msup></math>,
+we can take <math id="S7.p8.m2" class="ltx_Math" alttext="V_{\kappa}=(V_{\kappa},\in)" display="inline"><mrow><msub><mi>V</mi><mi>κ</mi></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>V</mi><mi>κ</mi></msub><mo>,</mo><mo lspace="0em" rspace="0em">∈</mo><mo stretchy="false">)</mo></mrow></mrow></math> as our model of <math id="S7.p8.m3" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>.
+Start with the set <math id="S7.p8.m4" class="ltx_Math" alttext="X_{0}=\varnothing" display="inline"><mrow><msub><mi>X</mi><mn>0</mn></msub><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>.
+Then for every integer <math id="S7.p8.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, we do the following to get <math id="S7.p8.m6" class="ltx_Math" alttext="X_{n+1}" display="inline"><msub><mi>X</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math>.</p>
+<ul id="S7.I1" class="ltx_itemize">
+<li id="S7.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Start with <math id="S7.I1.i1.p1.m1" class="ltx_Math" alttext="X_{n+1}" display="inline"><msub><mi>X</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math> containing every element of <math id="S7.I1.i1.p1.m2" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math>.</p>
+</div>
+</li>
+<li id="S7.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Consider a formula <math id="S7.I1.i2.p1.m1" class="ltx_Math" alttext="\phi(x,x_{1},\dots,x_{n})" display="inline"><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+and <math id="S7.I1.i2.p1.m2" class="ltx_Math" alttext="b_{1},\dots,b_{n}" display="inline"><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow></math> in <math id="S7.I1.i2.p1.m3" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math>.
+Suppose that <math id="S7.I1.i2.p1.m4" class="ltx_Math" alttext="V_{\kappa}" display="inline"><msub><mi>V</mi><mi>κ</mi></msub></math> thinks there is a <math id="S7.I1.i2.p1.m5" class="ltx_Math" alttext="b\in V_{\kappa}" display="inline"><mrow><mi>b</mi><mo>∈</mo><msub><mi>V</mi><mi>κ</mi></msub></mrow></math> for which</p>
+<table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="V_{\kappa}\vDash\phi[b,b_{1},\dots,b_{n}]." display="block"><mrow><mrow><msub><mi>V</mi><mi>κ</mi></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>b</mi><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">We then add in the element <math id="S7.I1.i2.p1.m6" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> to <math id="S7.I1.i2.p1.m7" class="ltx_Math" alttext="X_{n+1}" display="inline"><msub><mi>X</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math>.</p>
+</div>
+</li>
+<li id="S7.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">We do this for <em class="ltx_emph ltx_font_italic">every possible formula in the language of set theory</em>.
+We also have to put in <em class="ltx_emph ltx_font_italic">every possible set of parameters</em> from the previous set <math id="S7.I1.i3.p1.m1" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">At every step <math id="S7.p8.m7" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> is countable.
+Reason: there are countably many possible finite sets of parameters in <math id="S7.p8.m8" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math>,
+and countably many possible formulas, so in total we only ever add in countably many things
+at each step.
+This exhibits an infinite nested sequence of countable sets</p>
+<table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="X_{0}\subseteq X_{1}\subseteq X_{2}\subseteq\dots" display="block"><mrow><msub><mi>X</mi><mn>0</mn></msub><mo>⊆</mo><msub><mi>X</mi><mn>1</mn></msub><mo>⊆</mo><msub><mi>X</mi><mn>2</mn></msub><mo>⊆</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">None of these is an elementary substructure of <math id="S7.p8.m9" class="ltx_Math" alttext="V_{\kappa}" display="inline"><msub><mi>V</mi><mi>κ</mi></msub></math>,
+because each <math id="S7.p8.m10" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> relies on witnesses in <math id="S7.p8.m11" class="ltx_Math" alttext="X_{n+1}" display="inline"><msub><mi>X</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math>.
+So we instead <em class="ltx_emph ltx_font_italic">take the union</em>:</p>
+<table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="X=\bigcup_{n}X_{n}." display="block"><mrow><mrow><mi>X</mi><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">⋃</mo><mi>n</mi></munder><msub><mi>X</mi><mi>n</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This satisfies the Tarski-Vaught test, and is countable.</p>
+</div>
+<div id="S7.p9" class="ltx_para">
+<p class="ltx_p">There is one minor caveat: <math id="S7.p9.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> might not be transitive.
+We don’t care, because we just take its Mostowski collapse.
+∎</p>
+</div>
+</div>
+<div id="S7.p10" class="ltx_para">
+<p class="ltx_p">Please take a moment to admire how insane this is.
+It hinges irrevocably on the fact that there are countably many sentences we can write down.</p>
+</div>
+<div id="S7.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 92.7.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S7.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">This proof relies heavily on the Axiom of Choice
+when we add in the element <math id="S7.Thmtheorem2.p1.m1" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> to <math id="S7.Thmtheorem2.p1.m2" class="ltx_Math" alttext="X_{n+1}" display="inline"><msub><mi>X</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math>.
+Without Choice, there is no way of making these decisions all at once.</p>
+</div>
+<div id="S7.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">Usually, the right way to formalize the Axiom of Choice usage is,
+for every formula <math id="S7.Thmtheorem2.p2.m1" class="ltx_Math" alttext="\phi(x,x_{1},\dots,x_{n})" display="inline"><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>, to pre-commit (at the very beginning)
+to a function <math id="S7.Thmtheorem2.p2.m2" class="ltx_Math" alttext="f_{\phi}(x_{1},\dots,x_{n})" display="inline"><mrow><msub><mi>f</mi><mi>ϕ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>, such that given any <math id="S7.Thmtheorem2.p2.m3" class="ltx_Math" alttext="b_{1},\dots,b_{n}" display="inline"><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow></math>,
+<math id="S7.Thmtheorem2.p2.m4" class="ltx_Math" alttext="f_{\phi}(b_{1},\dots,b_{n})" display="inline"><mrow><msub><mi>f</mi><mi>ϕ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> will spit out the suitable value of <math id="S7.Thmtheorem2.p2.m5" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> (if one exists).
+Personally, I think this is hiding the spirit of the proof, but it does
+make it clear how exactly Choice is being used.</p>
+</div>
+<div id="S7.Thmtheorem2.p3" class="ltx_para">
+<p class="ltx_p">These <math id="S7.Thmtheorem2.p3.m1" class="ltx_Math" alttext="f_{\phi}" display="inline"><msub><mi>f</mi><mi>ϕ</mi></msub></math>’s have a name: <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Skolem functions</span>.</p>
+</div>
+</div>
+<div id="S7.p11" class="ltx_para">
+<p class="ltx_p">The trick we used in the proof works in more general settings:</p>
+</div>
+<div id="S7.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 92.7.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Downward Löwenheim-Skolem theorem)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathscr{M}=(M,E)" display="inline"><mrow><mi class="ltx_font_mathscript">ℳ</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></mrow></math> be a model, and <math id="S7.Thmtheorem3.p1.m2" class="ltx_Math" alttext="A\subseteq M" display="inline"><mrow><mi>A</mi><mo>⊆</mo><mi>M</mi></mrow></math>.
+Then there exists a set <math id="S7.Thmtheorem3.p1.m3" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> (called the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Skolem hull</span> of <math id="S7.Thmtheorem3.p1.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>)
+with <math id="S7.Thmtheorem3.p1.m5" class="ltx_Math" alttext="A\subseteq B\subseteq M" display="inline"><mrow><mi>A</mi><mo>⊆</mo><mi>B</mi><mo>⊆</mo><mi>M</mi></mrow></math>,
+such that <math id="S7.Thmtheorem3.p1.m6" class="ltx_Math" alttext="(B,E)\prec\mathscr{M}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>B</mi><mo>,</mo><mi>E</mi><mo stretchy="false">)</mo></mrow><mo>≺</mo><mi class="ltx_font_mathscript">ℳ</mi></mrow></math>, and</p>
+<table id="Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex23.m1" class="ltx_Math" alttext="\left\lvert B\right\rvert=\max\left\{\omega,\left\lvert A\right\rvert\right\}." display="block"><mrow><mrow><mrow><mo>|</mo><mi>B</mi><mo>|</mo></mrow><mo>=</mo><mrow><mi>max</mi><mo>⁡</mo><mrow><mo>{</mo><mi>ω</mi><mo>,</mo><mrow><mo>|</mo><mi>A</mi><mo>|</mo></mrow><mo>}</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S7.p12" class="ltx_para">
+<p class="ltx_p">In our case, what we did was simply take <math id="S7.p12.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> to be the empty set.</p>
+</div>
+<div id="S7.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 92.7.4</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Prove this. (Exactly the same proof as before.)</span></p>
+</div>
+</div>
+</section>
+<section id="S8" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">92.8 </span>FAQ’s on countable models</h2>
+
+<div id="S8.p1" class="ltx_para">
+<p class="ltx_p">The most common one is “how is this possible?”,
+with runner-up “what just happened?”.</p>
+</div>
+<div id="S8.p2" class="ltx_para">
+<p class="ltx_p">Let me do my best to answer the first question.
+It seems like there are two things running up against each other:</p>
+<ol id="S8.I1" class="ltx_enumerate">
+<li id="S8.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(1)</span> 
+<div id="S8.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S8.I1.i1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a transitive model of <math id="S8.I1.i1.p1.m2" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>, but its universe is countable.</p>
+</div>
+</li>
+<li id="S8.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(2)</span> 
+<div id="S8.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S8.I1.i2.p1.m1" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> tells us there are uncountable sets!</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">(This has confused so many people it has a name, <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Skolem’s paradox</span>.)</p>
+</div>
+<div id="S8.p3" class="ltx_para">
+<p class="ltx_p">The reason this works I actually pointed out earlier:
+<em class="ltx_emph ltx_font_italic">countability is not absolute, it is a <math id="S8.p3.m1" class="ltx_Math" alttext="\Sigma_{1}" display="inline"><msub><mi mathvariant="normal">Σ</mi><mn>1</mn></msub></math> notion</em>.</p>
+</div>
+<div id="S8.p4" class="ltx_para">
+<p class="ltx_p">Recall that a set <math id="S8.p4.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is countable if
+<em class="ltx_emph ltx_font_italic">there exists</em> an injective map <math id="S8.p4.m2" class="ltx_Math" alttext="x\hookrightarrow\omega" display="inline"><mrow><mi>x</mi><mo stretchy="false">↪</mo><mi>ω</mi></mrow></math>.
+The first statement just says that <em class="ltx_emph ltx_font_italic">in the universe <math id="S8.p4.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math></em>,
+there is an injective map <math id="S8.p4.m4" class="ltx_Math" alttext="F\colon M\hookrightarrow\omega" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">↪</mo><mi>ω</mi></mrow></mrow></math>.
+In particular, for any <math id="S8.p4.m5" class="ltx_Math" alttext="x\in M" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>M</mi></mrow></math> (hence <math id="S8.p4.m6" class="ltx_Math" alttext="x\subseteq M" display="inline"><mrow><mi>x</mi><mo>⊆</mo><mi>M</mi></mrow></math>, since <math id="S8.p4.m7" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is transitive),
+<math id="S8.p4.m8" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is countable <em class="ltx_emph ltx_font_italic">in <math id="S8.p4.m9" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math></em>.
+This is the content of the first statement.</p>
+</div>
+<div id="S8.p5" class="ltx_para">
+<p class="ltx_p">But for <math id="S8.p5.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> to be a model of <math id="S8.p5.m2" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>, <math id="S8.p5.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> only has to think statements in <math id="S8.p5.m4" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> are true.
+More to the point, the fact that <math id="S8.p5.m5" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> tells us there are uncountable sets means</p>
+<table id="Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex24.m1" class="ltx_Math" alttext="M\vDash\text{$\exists x$ uncountable}." display="block"><mrow><mrow><mi>M</mi><mo>⊨</mo><mrow><mrow><mo rspace="0.167em">∃</mo><mi>x</mi></mrow><mtext> uncountable</mtext></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">In other words,</p>
+<table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="M\vDash\exists x\forall f\text{ If $f\colon x\to\omega$ then $f$ isn't %
+injective}." display="block"><mrow><mrow><mi>M</mi><mo>⊨</mo><mrow><mo rspace="0.167em">∃</mo><mrow><mi>x</mi><mo lspace="0.167em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mtext> If </mtext><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>x</mi><mo stretchy="false">→</mo><mi>ω</mi></mrow></mrow><mtext> then </mtext><mi>f</mi><mtext> isn’t injective</mtext></mrow></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">The key point is the <math id="S8.p5.m6" class="ltx_Math" alttext="\forall f" display="inline"><mrow><mo rspace="0.167em">∀</mo><mi>f</mi></mrow></math> searches only functions in our tiny model <math id="S8.p5.m7" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+It is true that in the “real world” <math id="S8.p5.m8" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>, there are injective functions <math id="S8.p5.m9" class="ltx_Math" alttext="f\colon x\to\omega" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>x</mi><mo stretchy="false">→</mo><mi>ω</mi></mrow></mrow></math>.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Since <math id="footnote1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is transitive and countable, for any <math id="footnote1.m2" class="ltx_Math" alttext="x\in M" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>M</mi></mrow></math>, then <math id="footnote1.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> itself can have at most
+countably many elements. This isn’t necessarily true if <math id="footnote1.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is not transitive.</span></span></span>
+But <math id="S8.p5.m10" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> has no idea they exist!
+It is a brain in a vat: <math id="S8.p5.m11" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is oblivious to any information outside it.</p>
+</div>
+<div id="S8.p6" class="ltx_para">
+<p class="ltx_p">So in fact, every ordinal which appears in <math id="S8.p6.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is countable in the real world.
+It is just not countable in <math id="S8.p6.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+Since <math id="S8.p6.m3" class="ltx_Math" alttext="M\vDash\mathsf{ZFC}" display="inline"><mrow><mi>M</mi><mo>⊨</mo><mi>𝖹𝖥𝖢</mi></mrow></math>, <math id="S8.p6.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is going to think there is some smallest uncountable cardinal,
+say <math id="S8.p6.m5" class="ltx_Math" alttext="\aleph_{1}^{M}" display="inline"><msubsup><mi mathvariant="normal">ℵ</mi><mn>1</mn><mi>M</mi></msubsup></math>.
+It will be the smallest (infinite) ordinal in <math id="S8.p6.m6" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+with the property that there is no bijection <em class="ltx_emph ltx_font_italic">in the model <math id="S8.p6.m7" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math></em>
+between <math id="S8.p6.m8" class="ltx_Math" alttext="\aleph_{1}^{M}" display="inline"><msubsup><mi mathvariant="normal">ℵ</mi><mn>1</mn><mi>M</mi></msubsup></math> and <math id="S8.p6.m9" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>.
+However, we necessarily know that such a bijection is going to exist in the real world <math id="S8.p6.m10" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.</p>
+</div>
+<div id="S8.p7" class="ltx_para">
+<p class="ltx_p">Put another way, cardinalities in <math id="S8.p7.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> can look vastly different from those in the real world,
+because cardinality is measured by bijections, which I guess is inevitable, but leads to chaos.</p>
+</div>
+</section>
+<section id="S9" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">92.9 </span>Picturing inner models</h2>
+
+<div id="S9.p1" class="ltx_para">
+<p class="ltx_p">Here is a picture of a countable transitive model <math id="S9.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+<div id="S9.p2" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(14cm);
+ΨΨpair A = (12,30);
+ΨΨpair B = -conj(A);
+ΨΨpair M = midpoint(A--B);
+ΨΨpair O = origin;
+ΨΨMP("V", A, dir(10));
+ΨΨdraw(A--O--B);
+
+ΨΨfill(A--O--B--cycle, opacity(0.3)+palecyan);
+ΨΨMP("M", 0.7*M, 3*dir(0)+dir(45));
+
+ΨΨMP("V_0 = \varnothing", origin, dir(-20));
+ΨΨMP("V_1 = \{\varnothing\}", 0.05*A, dir(0));
+ΨΨMP("V_2 = \{\varnothing, \{\varnothing\} \}", 0.10*A, dir(0));
+
+ΨΨpair A1 = 0.4*A;
+ΨΨpair B1 = 0.4*B;
+ΨΨdraw(MP("V_\omega", A1, dir(0))--B1);
+ΨΨdraw(MP("V_{\omega+1} = \mathcal P(V_\omega)", 0.45*A, dir(0))--0.45*B);
+ΨΨDrawing("\omega", 0.45*M, dir(45));
+
+ΨΨfilldraw(O--A1--(A1+0.15*M)..(0.7*M)..(B1+0.15*M)--B1--cycle,
+ΨΨΨopacity(0.3)+lightgreen, heavygreen+1);
+ΨΨdraw(O--0.7*M, heavygreen+1);
+
+ΨΨDrawing("\aleph_1^V", 0.80*M, dir(0));
+ΨΨDrawing("\aleph_2^V", 0.90*M, dir(0));
+ΨΨDrawing("\aleph_1^M", 0.55*M, dir(0));
+ΨΨDrawing("\aleph_2^M", 0.60*M, dir(0));
+
+ΨΨpair F = 0.6*B+0.15*A;
+ΨΨDrawing("f", F, dir(135));
+ΨΨdraw(F--0.55*M, dotted, EndArrow, Margins);
+ΨΨdraw(F--0.45*M, dotted, EndArrow, Margins);
+
+ΨΨdraw(0.7*M--M);
+ΨΨMP("\mathrm{On}^V", M, dir(90));
+ΨΨMP("\mathrm{On}^M", 0.7*M, dir(135));
+Ψ
+</pre>
+</div>
+<div id="S9.p3" class="ltx_para">
+<p class="ltx_p">Note that <math id="S9.p3.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and <math id="S9.p3.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> must agree on finite sets,
+since every finite set has a formula that can express it.
+However, past <math id="S9.p3.m3" class="ltx_Math" alttext="V_{\omega}" display="inline"><msub><mi>V</mi><mi>ω</mi></msub></math> the model and the true universe start to diverge.</p>
+</div>
+<div id="S9.p4" class="ltx_para">
+<p class="ltx_p">The entire model <math id="S9.p4.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is countable, so it only occupies a small
+portion of the universe, below the first uncountable cardinal <math id="S9.p4.m2" class="ltx_Math" alttext="\aleph_{1}^{V}" display="inline"><msubsup><mi mathvariant="normal">ℵ</mi><mn>1</mn><mi>V</mi></msubsup></math>
+(where the superscript means “of the true universe <math id="S9.p4.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>”).
+The ordinals in <math id="S9.p4.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> are precisely the ordinals of <math id="S9.p4.m5" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> which happen to live inside the model,
+because the sentence “<math id="S9.p4.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is an ordinal” is absolute.
+On the other hand, <math id="S9.p4.m7" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> has only a portion of these ordinals, since it is only
+a lowly set, and a countable set at that.
+To denote the ordinals of <math id="S9.p4.m8" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, we write <math id="S9.p4.m9" class="ltx_Math" alttext="\mathrm{On}^{M}" display="inline"><msup><mi>On</mi><mi>M</mi></msup></math>, where the superscript means
+“the ordinals as computed in <math id="S9.p4.m10" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>”.
+Similarly, <math id="S9.p4.m11" class="ltx_Math" alttext="\mathrm{On}^{V}" display="inline"><msup><mi>On</mi><mi>V</mi></msup></math> will now denote the “set of true ordinals”.</p>
+</div>
+<div id="S9.p5" class="ltx_para">
+<p class="ltx_p">Nonetheless, the model <math id="S9.p5.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> has its own version of the first uncountable
+cardinal <math id="S9.p5.m2" class="ltx_Math" alttext="\aleph_{1}^{M}" display="inline"><msubsup><mi mathvariant="normal">ℵ</mi><mn>1</mn><mi>M</mi></msubsup></math>.
+In the true universe, <math id="S9.p5.m3" class="ltx_Math" alttext="\aleph_{1}^{M}" display="inline"><msubsup><mi mathvariant="normal">ℵ</mi><mn>1</mn><mi>M</mi></msubsup></math> is countable (below <math id="S9.p5.m4" class="ltx_Math" alttext="\aleph_{1}^{V}" display="inline"><msubsup><mi mathvariant="normal">ℵ</mi><mn>1</mn><mi>V</mi></msubsup></math>),
+but the necessary bijection witnessing this might not be inside <math id="S9.p5.m5" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+That’s why <math id="S9.p5.m6" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> can think <math id="S9.p5.m7" class="ltx_Math" alttext="\aleph_{1}^{M}" display="inline"><msubsup><mi mathvariant="normal">ℵ</mi><mn>1</mn><mi>M</mi></msubsup></math> is uncountable,
+even if it is a countable cardinal in the original universe.</p>
+</div>
+<div id="S9.p6" class="ltx_para">
+<p class="ltx_p">So our model <math id="S9.p6.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a brain in a vat.
+It happens to believe all the axioms of <math id="S9.p6.m2" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>, and so every
+statement that is true in <math id="S9.p6.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> could conceivably be true in <math id="S9.p6.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> as well.
+But <math id="S9.p6.m5" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> can’t see the universe around it; it has no idea that what it believes is
+the uncountable <math id="S9.p6.m6" class="ltx_Math" alttext="\aleph_{1}^{M}" display="inline"><msubsup><mi mathvariant="normal">ℵ</mi><mn>1</mn><mi>M</mi></msubsup></math> is really just an ordinary countable ordinal.</p>
+</div>
+</section>
+<section id="S10" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">92.10 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_sproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 92A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Show that for any transitive model <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, the set of ordinals in <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+is itself some ordinal.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 92B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Assume <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="\mathscr{M}_{1}\subseteq\mathscr{M}_{2}" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>⊆</mo><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub></mrow></math>. Show that</p>
+<ol id="S10.I1" class="ltx_enumerate">
+<li id="S10.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S10.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S10.I1.i1.p1.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is <math id="S10.I1.i1.p1.m2" class="ltx_Math" alttext="\Delta_{0}" display="inline"><msub><mi mathvariant="normal">Δ</mi><mn>0</mn></msub></math>,
+then <math id="S10.I1.i1.p1.m3" class="ltx_Math" alttext="\mathscr{M}_{1}\vDash\phi[b_{1},\dots,b_{n}]\iff\mathscr{M}_{2}\vDash\phi[b_{1%
+},\dots,b_{n}]" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo stretchy="false">⇔</mo><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S10.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S10.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S10.I1.i2.p1.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is <math id="S10.I1.i2.p1.m2" class="ltx_Math" alttext="\Sigma_{1}" display="inline"><msub><mi mathvariant="normal">Σ</mi><mn>1</mn></msub></math>,
+then <math id="S10.I1.i2.p1.m3" class="ltx_Math" alttext="\mathscr{M}_{1}\vDash\phi[b_{1},\dots,b_{n}]\implies\mathscr{M}_{2}\vDash\phi[%
+b_{1},\dots,b_{n}]" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">⟹</mo><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S10.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S10.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S10.I1.i3.p1.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is <math id="S10.I1.i3.p1.m2" class="ltx_Math" alttext="\Pi_{1}" display="inline"><msub><mi mathvariant="normal">Π</mi><mn>1</mn></msub></math>,
+then <math id="S10.I1.i3.p1.m3" class="ltx_Math" alttext="\mathscr{M}_{2}\vDash\phi[b_{1},\dots,b_{n}]\implies\mathscr{M}_{1}\vDash\phi[%
+b_{1},\dots,b_{n}]" display="inline"><mrow><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>2</mn></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">⟹</mo><msub><mi class="ltx_font_mathscript">ℳ</mi><mn>1</mn></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">(This should be easy if you’ve understood the chapter.)</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 92C</span></span><span class="ltx_text ltx_font_bold"> </span>(Reflection)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem3.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem3.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem3.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem3.p2.m1" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> be an inaccessible cardinal such that <math id="Thmproblem3.p2.m2" class="ltx_Math" alttext="|V_{\alpha}|&lt;\kappa" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>V</mi><mi>α</mi></msub><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mi>κ</mi></mrow></math> for all <math id="Thmproblem3.p2.m3" class="ltx_Math" alttext="\alpha&lt;\kappa" display="inline"><mrow><mi>α</mi><mo>&lt;</mo><mi>κ</mi></mrow></math>.
+Prove that for any <math id="Thmproblem3.p2.m4" class="ltx_Math" alttext="\delta&lt;\kappa" display="inline"><mrow><mi>δ</mi><mo>&lt;</mo><mi>κ</mi></mrow></math> there exists <math id="Thmproblem3.p2.m5" class="ltx_Math" alttext="\delta&lt;\alpha&lt;\kappa" display="inline"><mrow><mi>δ</mi><mo>&lt;</mo><mi>α</mi><mo>&lt;</mo><mi>κ</mi></mrow></math>
+such that <math id="Thmproblem3.p2.m6" class="ltx_Math" alttext="V_{\alpha}\prec V_{\kappa}" display="inline"><mrow><msub><mi>V</mi><mi>α</mi></msub><mo>≺</mo><msub><mi>V</mi><mi>κ</mi></msub></mrow></math>; in other words,
+the set of <math id="Thmproblem3.p2.m7" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> such that <math id="Thmproblem3.p2.m8" class="ltx_Math" alttext="V_{\alpha}\prec V_{\kappa}" display="inline"><mrow><msub><mi>V</mi><mi>α</mi></msub><mo>≺</mo><msub><mi>V</mi><mi>κ</mi></msub></mrow></math> is <em class="ltx_emph ltx_font_italic">unbounded</em> in <math id="Thmproblem3.p2.m9" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>.
+This means that properties of <math id="Thmproblem3.p2.m10" class="ltx_Math" alttext="V_{\kappa}" display="inline"><msub><mi>V</mi><mi>κ</mi></msub></math> reflect down to properties of <math id="Thmproblem3.p2.m11" class="ltx_Math" alttext="V_{\alpha}" display="inline"><msub><mi>V</mi><mi>α</mi></msub></math>.
+
+This is very similar to the proof of Löwenheim-Skolem.
+For a sentence <math id="Thmproblem3.p2.m12" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math>, let <math id="Thmproblem3.p2.m13" class="ltx_Math" alttext="f_{\phi}" display="inline"><msub><mi>f</mi><mi>ϕ</mi></msub></math>
+send <math id="Thmproblem3.p2.m14" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> to the least <math id="Thmproblem3.p2.m15" class="ltx_Math" alttext="\beta&lt;\kappa" display="inline"><mrow><mi>β</mi><mo>&lt;</mo><mi>κ</mi></mrow></math> such that for all <math id="Thmproblem3.p2.m16" class="ltx_Math" alttext="\vec{b}\in V_{\alpha}" display="inline"><mrow><mover accent="true"><mi>b</mi><mo stretchy="false">→</mo></mover><mo>∈</mo><msub><mi>V</mi><mi>α</mi></msub></mrow></math>, if there exists <math id="Thmproblem3.p2.m17" class="ltx_Math" alttext="a\in M" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>M</mi></mrow></math> such that <math id="Thmproblem3.p2.m18" class="ltx_Math" alttext="V_{\kappa}\vDash\phi[a,\vec{b}]" display="inline"><mrow><msub><mi>V</mi><mi>κ</mi></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mover accent="true"><mi>b</mi><mo stretchy="false">→</mo></mover><mo stretchy="false">]</mo></mrow></mrow></mrow></math> then <math id="Thmproblem3.p2.m19" class="ltx_Math" alttext="\exists a\in V_{\beta}" display="inline"><mrow><mrow><mo rspace="0.167em">∃</mo><mi>a</mi></mrow><mo>∈</mo><msub><mi>V</mi><mi>β</mi></msub></mrow></math> such that <math id="Thmproblem3.p2.m20" class="ltx_Math" alttext="V_{\kappa}\vDash\phi[a,\vec{b}]" display="inline"><mrow><msub><mi>V</mi><mi>κ</mi></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mover accent="true"><mi>b</mi><mo stretchy="false">→</mo></mover><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+(To prove this <math id="Thmproblem3.p2.m21" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math> exists, use the fact that <math id="Thmproblem3.p2.m22" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> is cofinal.)
+Then, take the supremum over the countably many sentences for each <math id="Thmproblem3.p2.m23" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.
+
+
+For a sentence <math id="Thmproblem3.p2.m24" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> let</p>
+<table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="f_{\phi}\colon\kappa\to\kappa" display="block"><mrow><msub><mi>f</mi><mi>ϕ</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>κ</mi><mo stretchy="false">→</mo><mi>κ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">send <math id="Thmproblem3.p2.m25" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> to the least <math id="Thmproblem3.p2.m26" class="ltx_Math" alttext="\beta&lt;\kappa" display="inline"><mrow><mi>β</mi><mo>&lt;</mo><mi>κ</mi></mrow></math> such that for all <math id="Thmproblem3.p2.m27" class="ltx_Math" alttext="\vec{b}\in V_{\alpha}" display="inline"><mrow><mover accent="true"><mi>b</mi><mo stretchy="false">→</mo></mover><mo>∈</mo><msub><mi>V</mi><mi>α</mi></msub></mrow></math>, if there exists <math id="Thmproblem3.p2.m28" class="ltx_Math" alttext="a\in V_{\kappa}" display="inline"><mrow><mi>a</mi><mo>∈</mo><msub><mi>V</mi><mi>κ</mi></msub></mrow></math> such that <math id="Thmproblem3.p2.m29" class="ltx_Math" alttext="V_{\kappa}\vDash\phi[a,\vec{b}]" display="inline"><mrow><msub><mi>V</mi><mi>κ</mi></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mover accent="true"><mi>b</mi><mo stretchy="false">→</mo></mover><mo stretchy="false">]</mo></mrow></mrow></mrow></math> then <math id="Thmproblem3.p2.m30" class="ltx_Math" alttext="\exists a\in V_{\beta}" display="inline"><mrow><mrow><mo rspace="0.167em">∃</mo><mi>a</mi></mrow><mo>∈</mo><msub><mi>V</mi><mi>β</mi></msub></mrow></math> such that <math id="Thmproblem3.p2.m31" class="ltx_Math" alttext="V_{\kappa}\vDash\phi[a,\vec{b}]" display="inline"><mrow><msub><mi>V</mi><mi>κ</mi></msub><mo>⊨</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mover accent="true"><mi>b</mi><mo stretchy="false">→</mo></mover><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="Thmproblem3.p3" class="ltx_para">
+<p class="ltx_p">We claim this is well-defined.
+There are only <math id="Thmproblem3.p3.m1" class="ltx_Math" alttext="\left\lvert V_{\alpha}\right\rvert^{n}" display="inline"><msup><mrow><mo>|</mo><msub><mi>V</mi><mi>α</mi></msub><mo>|</mo></mrow><mi>n</mi></msup></math> many possible choices of <math id="Thmproblem3.p3.m2" class="ltx_Math" alttext="\vec{b}" display="inline"><mover accent="true"><mi>b</mi><mo stretchy="false">→</mo></mover></math>,
+and in particular there are fewer than <math id="Thmproblem3.p3.m3" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> of these
+(since we know that <math id="Thmproblem3.p3.m4" class="ltx_Math" alttext="\left\lvert V_{\alpha}\right\rvert&lt;\kappa" display="inline"><mrow><mrow><mo>|</mo><msub><mi>V</mi><mi>α</mi></msub><mo>|</mo></mrow><mo>&lt;</mo><mi>κ</mi></mrow></math>; compare <a href="../part_st1/ch_cardinals_set_theory.html#prob:strongly_inaccessible" title="Problem 91C (Strongly inaccessible cardinals). ‣ 91.8 A few harder problems to think about ‣ Chapter 91 Cardinals ‣ Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">91C</span></a>).
+Otherwise, we can construct a cofinal map from <math id="Thmproblem3.p3.m5" class="ltx_Math" alttext="\left\lvert V_{\alpha}^{n}\right\rvert" display="inline"><mrow><mo>|</mo><msubsup><mi>V</mi><mi>α</mi><mi>n</mi></msubsup><mo>|</mo></mrow></math>
+into <math id="Thmproblem3.p3.m6" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> by mapping each vector <math id="Thmproblem3.p3.m7" class="ltx_Math" alttext="\vec{b}" display="inline"><mover accent="true"><mi>b</mi><mo stretchy="false">→</mo></mover></math> into a <math id="Thmproblem3.p3.m8" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math> for which the proposition fails.
+And that’s impossible since <math id="Thmproblem3.p3.m9" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> is regular!</p>
+</div>
+<div id="Thmproblem3.p4" class="ltx_para">
+<p class="ltx_p">In other words, what we’ve done is fix <math id="Thmproblem3.p4.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> and then use Tarski-Vaught on all the <math id="Thmproblem3.p4.m2" class="ltx_Math" alttext="\vec{b}\in V_{\alpha}^{n}" display="inline"><mrow><mover accent="true"><mi>b</mi><mo stretchy="false">→</mo></mover><mo>∈</mo><msubsup><mi>V</mi><mi>α</mi><mi>n</mi></msubsup></mrow></math>.
+Now let <math id="Thmproblem3.p4.m3" class="ltx_Math" alttext="g\colon\kappa\to\kappa" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>κ</mi><mo stretchy="false">→</mo><mi>κ</mi></mrow></mrow></math> be defined by</p>
+<table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="\alpha\mapsto\sup f_{\phi}(\alpha)." display="block"><mrow><mrow><mi>α</mi><mo rspace="0.1389em" stretchy="false">↦</mo><mrow><mo lspace="0.1389em" movablelimits="false" rspace="0.167em">sup</mo><mrow><msub><mi>f</mi><mi>ϕ</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Since <math id="Thmproblem3.p4.m4" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> is regular and there are only countably many formulas, <math id="Thmproblem3.p4.m5" class="ltx_Math" alttext="g(\alpha)" display="inline"><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math> is well-defined.</p>
+</div>
+<div id="Thmproblem3.p5" class="ltx_para">
+<p class="ltx_p">Check that if <math id="Thmproblem3.p5.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> has the property that <math id="Thmproblem3.p5.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> maps <math id="Thmproblem3.p5.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> into itself (in other words, <math id="Thmproblem3.p5.m4" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is closed under <math id="Thmproblem3.p5.m5" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>), then by the Tarski-Vaught test, we have <math id="Thmproblem3.p5.m6" class="ltx_Math" alttext="V_{\alpha}\prec V_{\kappa}" display="inline"><mrow><msub><mi>V</mi><mi>α</mi></msub><mo>≺</mo><msub><mi>V</mi><mi>κ</mi></msub></mrow></math>.</p>
+</div>
+<div id="Thmproblem3.p6" class="ltx_para">
+<p class="ltx_p">So it suffices to show there are arbitrarily large <math id="Thmproblem3.p6.m1" class="ltx_Math" alttext="\alpha&lt;\kappa" display="inline"><mrow><mi>α</mi><mo>&lt;</mo><mi>κ</mi></mrow></math> which are closed under <math id="Thmproblem3.p6.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>.
+Fix <math id="Thmproblem3.p6.m3" class="ltx_Math" alttext="\alpha_{0}" display="inline"><msub><mi>α</mi><mn>0</mn></msub></math>. Let <math id="Thmproblem3.p6.m4" class="ltx_math_unparsed" alttext="\alpha_{1}=g(\alpha_{0}" display="inline"><mrow><msub><mi>α</mi><mn>1</mn></msub><mo>=</mo><mi>g</mi><mrow><mo stretchy="false">(</mo><msub><mi>α</mi><mn>0</mn></msub></mrow></mrow></math>), et cetera and define</p>
+<table id="Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex28.m1" class="ltx_Math" alttext="\alpha=\sup_{n&lt;\omega}\alpha_{n}." display="block"><mrow><mrow><mi>α</mi><mo rspace="0.1389em">=</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0.167em">sup</mo><mrow><mi>n</mi><mo>&lt;</mo><mi>ω</mi></mrow></munder><msub><mi>α</mi><mi>n</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This <math id="Thmproblem3.p6.m5" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is closed under <math id="Thmproblem3.p6.m6" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>, and by making <math id="Thmproblem3.p6.m7" class="ltx_Math" alttext="\alpha_{0}" display="inline"><msub><mi>α</mi><mn>0</mn></msub></math> arbitrarily large we can make <math id="Thmproblem3.p6.m8" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> as large as we like.</p>
+</div>
+</div>
+<div id="prob:inaccessible_model" class="ltx_theorem ltx_theorem_sproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 92D</span></span><span class="ltx_text ltx_font_bold"> </span>(Strongly inaccessible cardinals produce models)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem4.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem4.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem4.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p2.m1" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> be a strongly inaccessible cardinal.
+Prove that <math id="Thmproblem4.p2.m2" class="ltx_Math" alttext="V_{\kappa}" display="inline"><msub><mi>V</mi><mi>κ</mi></msub></math> is a model of <math id="Thmproblem4.p2.m3" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>.
+
+Use <a href="#lem:transitive_ZFC" title="Lemma 92.5.1 (Transitive sets inheriting ZFC) ‣ 92.5 Obtaining the axioms of 𝖹𝖥𝖢 ‣ Chapter 92 Inner model theory ‣ Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Lemma</span> <span class="ltx_text ltx_ref_tag">92.5.1</span></a>.
+To prove <math id="Thmproblem4.p2.m4" class="ltx_Math" alttext="V_{\kappa}\vDash\mathrm{PowerSet}" display="inline"><mrow><msub><mi>V</mi><mi>κ</mi></msub><mo>⊨</mo><mi>PowerSet</mi></mrow></math> you need <math id="Thmproblem4.p2.m5" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> to be a strong limit cardinal,
+and to prove <math id="Thmproblem4.p2.m6" class="ltx_Math" alttext="V_{\kappa}\vDash\mathrm{Replacement}" display="inline"><mrow><msub><mi>V</mi><mi>κ</mi></msub><mo>⊨</mo><mi>Replacement</mi></mrow></math> you need <math id="Thmproblem4.p2.m7" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> to be inaccessible —
+this is why we cared about cofinality and inaccessibility.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">XXII </span>Set Theory II: Model Theory and Forcing</span></a><a href="ch_forcing_set_theory.html" title="In Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">93 </span>Forcing</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

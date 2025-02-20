@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Affine varieties</title>
+		<meta property="og:title" content="Affine varieties" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../algtop2/application-of-cohomology.html">Previous chapter: Application of cohomology</a><br />
+<a href="../ag1/affine-varieties-ringed-spaces.html">Next chapter: Affine varieties as ringed spaces</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 77 </span>Affine varieties</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">In this chapter we introduce affine varieties.
+We introduce them in the context of coordinates,
+but over the course of the other chapters
+we’ll gradually move away from this perspective to
+viewing varieties as “intrinsic objects”,
+rather than embedded in coordinates.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">For simplicity, we’ll do almost everything over the field of complex numbers,
+but the discussion generalizes to any algebraically closed field.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">77.1 </span>Affine varieties</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="\mathcal{V}(y-x^{2})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is a parabola in <math id="S1.p1.m2" class="ltx_Math" alttext="\mathbb{A}^{2}" display="inline"><msup><mi>𝔸</mi><mn>2</mn></msup></math>.</em></p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 77.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Given a set of polynomials <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="S\subseteq\mathbb{C}[x_{1},\dots,x_{n}]" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>
+(not necessarily finite or even countable),
+we let <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathcal{V}(S)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow></mrow></math> denote the set of points vanishing on <em class="ltx_emph ltx_font_italic">all</em>
+the polynomials in <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.
+Such a set is called an <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> affine variety</span>.
+It lives in <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional affine space</span>, denoted <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\mathbb{A}^{n}" display="inline"><msup><mi>𝔸</mi><mi>n</mi></msup></math>
+(to distinguish it from projective space later).</p>
+</div>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">For example, a parabola is the zero locus of the polynomial <math id="S1.p2.m1" class="ltx_Math" alttext="y-x^{2}" display="inline"><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math>. Picture:</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='141.732284pt' height='134.62303pt' viewBox='119.271374 179.069958 141.732284 134.62303'>
+<defs>
+<path id='asymptote-77-1-g0-65' d='M4.021918-7.473973C3.945205-7.660274 3.923288-7.715068 3.80274-7.715068S3.627397-7.616438 3.572603-7.484932L1.073973-.931507C.942466-.580822 .712329-.416438 .416438-.383562C.361644-.383562 .186301-.361644 .186301-.19726C.186301 0 .361644 0 .558904 0H2.312329C2.509589 0 2.673973 0 2.673973-.19726C2.673973-.361644 2.520548-.372603 2.443836-.383562C2.290411-.394521 2.016438-.438356 2.016438-1.09589C2.016438-1.457534 2.093151-1.808219 2.169863-2.158904H4.580822C4.964384-1.084932 4.975342-.909589 4.986301-.679452C4.723288-.416438 4.416438-.394521 4.29589-.383562C4.186301-.372603 4.109589-.29589 4.109589-.19726C4.109589 0 4.273973 0 4.471233 0H7.331507C7.528767 0 7.70411 0 7.70411-.19726C7.70411-.350685 7.561644-.372603 7.463014-.383562C7.221918-.427397 7.035616-.613699 6.816438-1.106849L4.021918-7.473973ZM2.279452-2.542466C2.531507-3.506849 2.882192-4.438356 3.243836-5.358904C3.583562-4.624658 4.241096-3.046575 4.427397-2.542466H2.279452ZM1.632877-1.315068L1.643836-1.30411V-1.194521C1.632877-1.172603 1.632877-1.161644 1.632877-1.09589C1.632877-1.052055 1.632877-.635616 1.786301-.383562H1.194521C1.336986-.536986 1.380822-.668493 1.446575-.843836L1.632877-1.315068ZM3.408219-5.950685L3.80274-7.013699L6.465753-.953425C6.509589-.843836 6.630137-.580822 6.783562-.383562H5.227397C5.336986-.449315 5.369863-.60274 5.369863-.734247C5.369863-1.40274 4.416438-3.627397 3.945205-4.723288L3.408219-5.950685Z'/>
+<path id='asymptote-77-1-g3-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-77-1-g4-40' d='M3.610908 2.618181C3.610908 2.585454 3.610908 2.563636 3.425454 2.378181C2.061818 1.003636 1.712727-1.058182 1.712727-2.727272C1.712727-4.625453 2.127272-6.523635 3.46909-7.887271C3.610908-8.01818 3.610908-8.039998 3.610908-8.072725C3.610908-8.149089 3.567272-8.181816 3.501817-8.181816C3.392726-8.181816 2.410908-7.439998 1.767272-6.054544C1.210909-4.854544 1.08-3.643635 1.08-2.727272C1.08-1.876363 1.2-.556363 1.799999 .676363C2.454545 2.018181 3.392726 2.727272 3.501817 2.727272C3.567272 2.727272 3.610908 2.694545 3.610908 2.618181Z'/>
+<path id='asymptote-77-1-g4-41' d='M3.152726-2.727272C3.152726-3.578181 3.032726-4.89818 2.432727-6.130907C1.778181-7.472725 .84-8.181816 .730909-8.181816C.665454-8.181816 .621818-8.13818 .621818-8.072725C.621818-8.039998 .621818-8.01818 .829091-7.821816C1.898181-6.741816 2.519999-5.007271 2.519999-2.727272C2.519999-.861818 2.116363 1.058182 .763636 2.432727C.621818 2.563636 .621818 2.585454 .621818 2.618181C.621818 2.683636 .665454 2.727272 .730909 2.727272C.84 2.727272 1.821818 1.985454 2.465454 .6C3.021817-.6 3.152726-1.810909 3.152726-2.727272Z'/>
+<path id='asymptote-77-1-g1-0' d='M7.189089-2.50909C7.374543-2.50909 7.570907-2.50909 7.570907-2.727272S7.374543-2.945454 7.189089-2.945454H1.287272C1.101818-2.945454 .905454-2.945454 .905454-2.727272S1.101818-2.50909 1.287272-2.50909H7.189089Z'/>
+<path id='asymptote-77-1-g1-86' d='M2.945454-.938182C3.10909-2.279999 3.10909-3.261817 3.10909-3.425454C3.10909-4.199999 3.10909-7.450907 1.123636-7.450907C.752727-7.450907 .370909-7.145453 .370909-6.992725C.370909-6.916362 .425454-6.916362 .578182-6.905453C2.170908-6.763634 2.301818-4.265453 2.301818-3.032726C2.301818-1.930909 2.159999-.621818 2.02909 .109091C2.007272 .24 2.007272 .261818 2.007272 .305454C2.007272 .36 2.007272 .490909 2.083636 .490909C2.203636 .490909 4.843635-1.527272 6.229089-3.632726C6.785453-4.483635 7.199998-5.454544 7.199998-6.185453C7.199998-7.112725 6.589089-7.450907 6.141816-7.450907C5.825453-7.450907 5.672726-6.763634 5.672726-6.621816C5.672726-6.45818 5.727271-6.45818 5.85818-6.447271C6.589089-6.359998 6.719998-5.781817 6.719998-5.519998C6.719998-4.636362 4.821817-2.399999 2.945454-.938182Z'/>
+<path id='asymptote-77-1-g2-120' d='M3.643635-3.294545C3.70909-3.578181 3.959999-4.581817 4.723635-4.581817C4.77818-4.581817 5.039999-4.581817 5.269089-4.439999C4.963635-4.385453 4.745453-4.112726 4.745453-3.850908C4.745453-3.676363 4.865453-3.46909 5.159999-3.46909C5.399998-3.46909 5.749089-3.665454 5.749089-4.101817C5.749089-4.66909 5.105453-4.821817 4.734544-4.821817C4.101817-4.821817 3.719999-4.243635 3.58909-3.992726C3.316363-4.712726 2.727272-4.821817 2.410908-4.821817C1.276363-4.821817 .654545-3.414545 .654545-3.141817C.654545-3.032726 .763636-3.032726 .785454-3.032726C.872727-3.032726 .905454-3.054545 .927272-3.152726C1.298181-4.30909 2.018181-4.581817 2.38909-4.581817C2.596363-4.581817 2.978181-4.483635 2.978181-3.850908C2.978181-3.512726 2.792726-2.781817 2.38909-1.254545C2.214545-.578182 1.832727-.12 1.352727-.12C1.287272-.12 1.036363-.12 .807273-.261818C1.08-.316364 1.32-.545454 1.32-.850909C1.32-1.145454 1.08-1.232727 .916363-1.232727C.589091-1.232727 .316364-.949091 .316364-.6C.316364-.098182 .861818 .12 1.341818 .12C2.061818 .12 2.454545-.643636 2.487272-.709091C2.618181-.305454 3.010908 .12 3.665454 .12C4.78909 .12 5.410908-1.287272 5.410908-1.56C5.410908-1.66909 5.312726-1.66909 5.279999-1.66909C5.181817-1.66909 5.159999-1.625454 5.13818-1.54909C4.77818-.381818 4.036363-.12 3.687272-.12C3.261817-.12 3.087272-.469091 3.087272-.84C3.087272-1.08 3.152726-1.32 3.272726-1.799999L3.643635-3.294545Z'/>
+<path id='asymptote-77-1-g2-121' d='M5.301817-4.156362C5.345453-4.30909 5.345453-4.330908 5.345453-4.407271C5.345453-4.603635 5.192726-4.701817 5.02909-4.701817C4.919999-4.701817 4.745453-4.636362 4.647271-4.472726C4.625453-4.418181 4.538181-4.079999 4.494544-3.883635C4.418181-3.599999 4.341817-3.305454 4.276362-3.010908L3.785453-1.047272C3.741817-.883636 3.272726-.12 2.552727-.12C1.996363-.12 1.876363-.6 1.876363-1.003636C1.876363-1.505454 2.061818-2.181818 2.432727-3.141817C2.607272-3.58909 2.650908-3.70909 2.650908-3.927272C2.650908-4.418181 2.301818-4.821817 1.756363-4.821817C.72-4.821817 .316364-3.239999 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.054545 .621818-3.22909C.916363-4.254544 1.352727-4.581817 1.723636-4.581817C1.810909-4.581817 1.996363-4.581817 1.996363-4.232726C1.996363-3.959999 1.887272-3.676363 1.810909-3.46909C1.374545-2.312727 1.178181-1.690909 1.178181-1.178181C1.178181-.207273 1.865454 .12 2.50909 .12C2.934545 .12 3.305454-.065455 3.610908-.370909C3.46909 .196364 3.338181 .730909 2.901817 1.309091C2.618181 1.68 2.203636 1.996363 1.701818 1.996363C1.54909 1.996363 1.058182 1.963636 .872727 1.538181C1.047272 1.538181 1.189091 1.538181 1.341818 1.407272C1.450909 1.309091 1.56 1.167272 1.56 .96C1.56 .621818 1.265454 .578182 1.156363 .578182C.905454 .578182 .545454 .752727 .545454 1.287272C.545454 1.832727 1.025454 2.236363 1.701818 2.236363C2.825454 2.236363 3.94909 1.243636 4.254544 .010909L5.301817-4.156362Z'/>
+</defs>
+<g id='asymptote-77-1-page1'>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M63.0977 134.877V.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='173.078708' y='185.352794' href='#asymptote-77-1-g2-121'/>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M.250937 125.681H142.013' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='253.126748' y='312.237085' href='#asymptote-77-1-g2-120'/>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M123.961 7.5478C123.743 8.39371 123.524 9.23934 123.304 10.0847C122.89 11.6745 122.472 13.2633 122.05 14.851C121.636 16.4075 121.218 17.9628 120.796 19.517C120.382 21.0401 119.964 22.562 119.541 24.0827C119.128 25.5723 118.709 27.0608 118.287 28.548C117.873 30.0043 117.455 31.4593 117.033 32.913C116.619 34.3358 116.201 35.7574 115.778 37.1776C115.365 38.5671 114.947 39.9552 114.524 41.3419C114.111 42.698 113.693 44.0527 113.27 45.4058C112.856 46.7285 112.438 48.0498 112.015 49.3694C111.602 50.6588 111.184 51.9466 110.761 53.2327C110.348 54.4886 109.93 55.743 109.507 56.9956C109.094 58.2182 108.676 59.4391 108.253 60.6582C107.84 61.8474 107.422 63.0349 106.998 64.2204C106.585 65.3763 106.167 66.5303 105.744 67.6823C105.331 68.8048 104.913 69.9254 104.49 71.0438C104.077 72.133 103.659 73.2201 103.235 74.305C102.823 75.3608 102.405 76.4145 101.981 77.4658C101.569 78.4884 101.151 79.5086 100.727 80.5263C100.315 81.5155 99.8966 82.5024 99.4724 83.4865C99.0604 84.4424 98.6425 85.3958 98.2181 86.3463C97.8063 87.2689 97.3883 88.1889 96.9638 89.1058C96.5521 89.9951 96.1342 90.8816 95.7095 91.7649C95.2979 92.621 94.88 93.474 94.4552 94.3237C94.0438 95.1465 93.6259 95.9661 93.2009 96.7821C92.7897 97.5717 92.3718 98.3579 91.9466 99.1402C91.5355 99.8966 91.1176 100.649 90.6923 101.398C90.2814 102.121 89.8635 102.841 89.438 103.555C89.0272 104.245 88.6094 104.931 88.1837 105.612C87.7731 106.269 87.3552 106.922 86.9294 107.569C86.5189 108.193 86.1011 108.812 85.6751 109.425C85.2648 110.016 84.847 110.602 84.4208 111.181C84.0106 111.739 83.5928 112.292 83.1665 112.837C82.7564 113.362 82.3386 113.881 81.9122 114.393C81.5022 114.884 81.0844 115.37 80.6579 115.847C80.248 116.307 79.8302 116.759 79.4036 117.202C78.9937 117.628 78.5759 118.047 78.1493 118.456C77.7394 118.85 77.3215 119.235 76.895 119.61C76.485 119.971 76.0671 120.323 75.6407 120.664C75.2306 120.992 74.8126 121.31 74.3864 121.617C73.976 121.913 73.558 122.198 73.1321 122.47C72.7213 122.733 72.3033 122.985 71.8778 123.223C71.4665 123.453 71.0484 123.671 70.6235 123.875C70.2116 124.073 69.7934 124.257 69.3692 124.427C68.9565 124.592 68.5382 124.743 68.1149 124.878C67.7012 125.011 67.2829 125.128 66.8606 125.23C66.4458 125.329 66.0274 125.413 65.6063 125.481C65.1903 125.547 64.7719 125.597 64.352 125.631C63.9347 125.664 63.5163 125.681 63.0977 125.681S62.2606 125.664 61.8434 125.631C61.4234 125.597 61.005 125.547 60.5891 125.481C60.1679 125.413 59.7495 125.329 59.3347 125.23C58.9124 125.128 58.4941 125.011 58.0804 124.878C57.6571 124.743 57.2389 124.592 56.8261 124.427C56.4019 124.257 55.9838 124.073 55.5718 123.875C55.1469 123.671 54.7288 123.453 54.3175 123.223C53.892 122.985 53.474 122.733 53.0632 122.47C52.6373 122.198 52.2193 121.913 51.8089 121.617C51.3827 121.31 50.9648 120.992 50.5546 120.664C50.1282 120.323 49.7103 119.971 49.3003 119.61C48.8738 119.235 48.4559 118.85 48.046 118.456C47.6194 118.047 47.2016 117.628 46.7917 117.202C46.3652 116.759 45.9473 116.307 45.5374 115.847C45.1109 115.37 44.6931 114.884 44.2831 114.393C43.8567 113.881 43.4389 113.362 43.0288 112.837C42.6025 112.292 42.1847 111.739 41.7745 111.181C41.3484 110.602 40.9305 110.016 40.5202 109.425C40.0942 108.812 39.6764 108.193 39.2659 107.569C38.8401 106.922 38.4222 106.269 38.0116 105.612C37.5859 104.931 37.1681 104.245 36.7573 103.555C36.3318 102.841 35.9139 102.121 35.503 101.398C35.0777 100.649 34.6598 99.8966 34.2487 99.1402C33.8235 98.3579 33.4057 97.5717 32.9944 96.7821C32.5694 95.9661 32.1515 95.1465 31.7401 94.3237C31.3153 93.474 30.8974 92.621 30.4858 91.7649C30.0611 90.8816 29.6432 89.9951 29.2315 89.1058C28.807 88.1889 28.3891 87.2689 27.9772 86.3463C27.5528 85.3958 27.1349 84.4424 26.7229 83.4865C26.2987 82.5024 25.8807 81.5155 25.4686 80.5263C25.0445 79.5086 24.6266 78.4884 24.2143 77.4658C23.7904 76.4145 23.3724 75.3608 22.96 74.305C22.5362 73.2201 22.1182 72.133 21.7057 71.0438C21.282 69.9254 20.864 68.8048 20.4514 67.6823C20.0278 66.5303 19.6099 65.3763 19.1971 64.2204C18.7736 63.0349 18.3557 61.8474 17.9428 60.6582C17.5195 59.4391 17.1015 58.2182 16.6884 56.9956C16.2653 55.743 15.8473 54.4886 15.4341 53.2327C15.0111 51.9466 14.5931 50.6588 14.1798 49.3694C13.7569 48.0498 13.3389 46.7285 12.9255 45.4058C12.5027 44.0527 12.0847 42.698 11.6712 41.3419C11.2485 39.9552 10.8305 38.5671 10.4169 37.1776C9.99426 35.7574 9.57625 34.3358 9.16263 32.913C8.74004 31.4593 8.32203 30.0043 7.90833 28.548C7.48583 27.0608 7.06782 25.5723 6.65402 24.0827C6.23161 22.562 5.81359 21.0401 5.39972 19.517C4.97739 17.9628 4.55937 16.4075 4.14542 14.851C3.72316 13.2633 3.30513 11.6745 2.89112 10.0847C2.67098 9.23934 2.45198 8.39371 2.23407 7.5478' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M125.813 .250938C124.984 1.74421 124.152 3.23547 123.317 4.72469C122.882 5.49879 122.447 6.27234 122.011 7.04532L125.914 8.05074C125.905 7.15827 125.896 6.26582 125.886 5.37338C125.865 3.66585 125.841 1.95836 125.813 .250938Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M125.813 .250938C124.984 1.74421 124.152 3.23547 123.317 4.72469C122.882 5.49879 122.447 6.27234 122.011 7.04532L125.914 8.05074C125.905 7.15827 125.896 6.26582 125.886 5.37338C125.865 3.66585 125.841 1.95836 125.813 .250938Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M.38251 .250938C.353271 1.95834 .328194 3.66582 .307279 5.37335C.296343 6.26612 .286545 7.15891 .277931 8.0517L4.18841 7.04435C3.75151 6.2713 3.31562 5.49767 2.88071 4.72349C2.04435 3.23467 1.21161 1.74382 .38251 .250938Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M.38251 .250938C.353271 1.95834 .328194 3.66582 .307279 5.37335C.296343 6.26612 .286545 7.15891 .277931 8.0517L4.18841 7.04435C3.75151 6.2713 3.31562 5.49767 2.88071 4.72349C2.04435 3.23467 1.21161 1.74382 .38251 .250938Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='209.475985' y='295.669468' href='#asymptote-77-1-g1-86'/>
+<use x='217.057849' y='295.669468' href='#asymptote-77-1-g4-40'/>
+<use x='221.300287' y='295.669468' href='#asymptote-77-1-g2-121'/>
+<use x='229.464416' y='295.669468' href='#asymptote-77-1-g1-0'/>
+<use x='240.37349' y='295.669468' href='#asymptote-77-1-g2-120'/>
+<use x='246.608344' y='291.71065' href='#asymptote-77-1-g3-50'/>
+<use x='251.340658' y='295.669468' href='#asymptote-77-1-g4-41'/>
+</g>
+<use x='246.964493' y='208.153841' href='#asymptote-77-1-g0-65'/>
+<use x='254.879279' y='204.195023' href='#asymptote-77-1-g3-50'/>
+</g>
+</svg>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 77.1.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of affine varieties)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">These examples are in two-dimensional space <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathbb{A}^{2}" display="inline"><msup><mi>𝔸</mi><mn>2</mn></msup></math>,
+whose points are pairs <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="(x,y)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></math>.</p>
+<ol id="S1.I1" class="ltx_enumerate">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">A straight line can be thought of as <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\mathcal{V}(Ax+By+C)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>A</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mrow><mi>B</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mi>C</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">A parabola as above can be pictured as <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\mathcal{V}(y-x^{2})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">A hyperbola might be <math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="\mathcal{V}(xy-1)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S1.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">The two axes can be thought of as <math id="S1.I1.i4.p1.m1" class="ltx_Math" alttext="\mathcal{V}(xy)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>; this is the set of points
+such that <math id="S1.I1.i4.p1.m2" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math> <em class="ltx_emph ltx_font_italic">or</em> <math id="S1.I1.i4.p1.m3" class="ltx_Math" alttext="y=0" display="inline"><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(e)</span> 
+<div id="S1.I1.i5.p1" class="ltx_para">
+<p class="ltx_p">A point <math id="S1.I1.i5.p1.m1" class="ltx_Math" alttext="(x_{0},y_{0})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></math> can be thought of as <math id="S1.I1.i5.p1.m2" class="ltx_Math" alttext="\mathcal{V}(x-x_{0},y-y_{0})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><msub><mi>x</mi><mn>0</mn></msub></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><msub><mi>y</mi><mn>0</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(f)</span> 
+<div id="S1.I1.i6.p1" class="ltx_para">
+<p class="ltx_p">The entire space <math id="S1.I1.i6.p1.m1" class="ltx_Math" alttext="\mathbb{A}^{2}" display="inline"><msup><mi>𝔸</mi><mn>2</mn></msup></math> can be thought of as <math id="S1.I1.i6.p1.m2" class="ltx_Math" alttext="\mathcal{V}(0)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i7" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(g)</span> 
+<div id="S1.I1.i7.p1" class="ltx_para">
+<p class="ltx_p">The empty set is the zero locus of the constant polynomial <math id="S1.I1.i7.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, that is <math id="S1.I1.i7.p1.m2" class="ltx_Math" alttext="\mathcal{V}(1)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">77.2 </span>Naming affine varieties via ideals</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S2.p1.m1" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a parabola, where <math id="S2.p1.m2" class="ltx_Math" alttext="I=(y-x^{2})" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">As you might have already noticed, a variety can be named by <math id="S2.p2.m1" class="ltx_Math" alttext="\mathcal{V}(-)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">)</mo></mrow></mrow></math> in multiple ways.
+For example, the set of solutions to</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="x=3\text{ and }y=4" display="block"><mrow><mi>x</mi><mo>=</mo><mrow><mn>3</mn><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>y</mi></mrow><mo>=</mo><mn>4</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is just the point <math id="S2.p2.m2" class="ltx_Math" alttext="(3,4)" display="inline"><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></math>.
+But this is also the set of solutions to</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="x=3\text{ and }y=x+1." display="block"><mrow><mrow><mi>x</mi><mo>=</mo><mrow><mn>3</mn><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>y</mi></mrow><mo>=</mo><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So, for example</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\{(3,4)\}=\mathcal{V}(x-3,y-4)=\mathcal{V}(x-3,y-x-1)." display="block"><mrow><mrow><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">That’s a little annoying, because in an ideal<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Pun not intended
+but left for amusement value.</span></span></span>
+world we would have <em class="ltx_emph ltx_font_italic">one</em> name
+for every variety.
+Let’s see if we can achieve this.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">A partial solution is to use <em class="ltx_emph ltx_font_italic">ideals</em> rather than small sets.
+That is, consider the ideal</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="I=\left(x-3,y-4\right)=\left\{p(x,y)\cdot(x-3)+q(x,y)\cdot(y-4)\mid p,q\in%
+\mathbb{C}[x,y]\right\}" display="block"><mrow><mi>I</mi><mo>=</mo><mrow><mo>(</mo><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mn>4</mn></mrow><mo>)</mo></mrow><mo>=</mo><mrow><mo>{</mo><mrow><mrow><mrow><mi>p</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mrow><mi>q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>−</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>p</mi><mo>,</mo><mi>q</mi></mrow><mo>∈</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and look at <math id="S2.p3.m1" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 77.2.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself that <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathcal{V}(I)=\{(3,4)\}" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">So rather than writing <math id="S2.p4.m1" class="ltx_Math" alttext="\mathcal{V}(x-3,y-4)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> it makes sense to
+think about this as <math id="S2.p4.m2" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math>, where <math id="S2.p4.m3" class="ltx_Math" alttext="I=(x-3,y-4)" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is the <em class="ltx_emph ltx_font_italic">ideal</em>
+generated by the two polynomials <math id="S2.p4.m4" class="ltx_Math" alttext="x-3" display="inline"><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow></math> and <math id="S2.p4.m5" class="ltx_Math" alttext="y-4" display="inline"><mrow><mi>y</mi><mo>−</mo><mn>4</mn></mrow></math>.
+This is an improvement because</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 77.2.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check that <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="(x-3,y-x-1)=(x-3,y-4)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Needless to say, this pattern holds in general.</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 77.2.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\{f_{i}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>f</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow></math> be a set of polynomials, and consider
+the ideal <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> generated by these <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\{f_{i}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>f</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow></math>.
+Show that <math id="S2.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\mathcal{V}(\{f_{i}\})=\mathcal{V}(I)" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">{</mo><msub><mi>f</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Thus we will only consider <math id="S2.p6.m1" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math> when <math id="S2.p6.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is an ideal.
+Of course, frequently our ideals are generated by one or two polynomials,
+which leads to:</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 77.2.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Given a set of polynomials <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="f_{1},\dots,f_{m}" display="inline"><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub></mrow></math>
+we let <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\mathcal{V}(f_{1},\dots,f_{m})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> be shorthand for
+<math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\mathcal{V}\left(\left(f_{1},\dots,f_{m}\right)\right)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mo>(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub><mo>)</mo></mrow><mo>)</mo></mrow></mrow></math>.
+In other words we let <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="\mathcal{V}(f_{1},\dots,f_{m})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+abbreviate <math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math>, where <math id="S2.Thmtheorem4.p1.m6" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is the <em class="ltx_emph ltx_font_italic">ideal</em> <math id="S2.Thmtheorem4.p1.m7" class="ltx_Math" alttext="I=(f_{1},\dots,f_{m})" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">This is where the Noetherian condition really shines:
+it guarantees that every ideal <math id="S2.p7.m1" class="ltx_Math" alttext="I\subseteq\mathbb{C}[x_{1},\dots,x_{n}]" display="inline"><mrow><mi>I</mi><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>
+can be written in the form above with <em class="ltx_emph ltx_font_italic">finitely</em> many polynomials,
+because it is <em class="ltx_emph ltx_font_italic">finitely generated</em>.
+(The fact that <math id="S2.p7.m2" class="ltx_Math" alttext="\mathbb{C}[x_{1},\dots,x_{n}]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math> is Noetherian follows from the Hilbert basis theorem,
+which is <a href="../absalg/rings-ideals.html#thm:hilbert_basis" title="Theorem 4.9.5 (Hilbert basis theorem) ‣ 4.9 Noetherian rings ‣ Chapter 4 Rings and ideals ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">4.9.5</span></a>).
+This is a relief, because dealing with infinite sets of polynomials is not much fun.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">77.3 </span>Radical ideals and Hilbert’s Nullstellensatz</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S3.p1.m1" class="ltx_Math" alttext="\sqrt{(x^{2})}=(x)" display="inline"><mrow><msqrt><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></msqrt><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> in <math id="S3.p1.m2" class="ltx_Math" alttext="\mathbb{C}[x]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>, <math id="S3.p1.m3" class="ltx_Math" alttext="\sqrt{(12)}=(6)" display="inline"><mrow><msqrt><mrow><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo></mrow></msqrt><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow></mrow></math> in <math id="S3.p1.m4" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>.</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">You might ask whether the name is unique now:
+that is, if <math id="S3.p2.m1" class="ltx_Math" alttext="\mathcal{V}(I)=\mathcal{V}(J)" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, does it follow that <math id="S3.p2.m2" class="ltx_Math" alttext="I=J" display="inline"><mrow><mi>I</mi><mo>=</mo><mi>J</mi></mrow></math>?
+The answer is unfortunately no: the counterexample can be found in just <math id="S3.p2.m3" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math>.
+It is</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\mathcal{V}(x)=\mathcal{V}(x^{2})." display="block"><mrow><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In other words, the set of solutions to <math id="S3.p2.m4" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math>
+is the same as the set of solutions to <math id="S3.p2.m5" class="ltx_Math" alttext="x^{2}=0" display="inline"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Well, that’s stupid.
+We want an operation which takes the ideal <math id="S3.p3.m1" class="ltx_Math" alttext="(x^{2})" display="inline"><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></math> and makes it into the ideal <math id="S3.p3.m2" class="ltx_Math" alttext="(x)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></math>.
+The way to do so is using the radical of an ideal.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 77.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> be a ring.
+The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> radical</span> of an ideal <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="I\subseteq R" display="inline"><mrow><mi>I</mi><mo>⊆</mo><mi>R</mi></mrow></math>, denoted <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\sqrt{I}" display="inline"><msqrt><mi>I</mi></msqrt></math>,
+is defined by</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\sqrt{I}=\left\{r\in R\mid r^{m}\in I\text{ for some integer $m\geq 1$}\right\}." display="block"><mrow><mrow><msqrt><mi>I</mi></msqrt><mo>=</mo><mrow><mo>{</mo><mrow><mi>r</mi><mo>∈</mo><mi>R</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msup><mi>r</mi><mi>m</mi></msup><mo>∈</mo><mrow><mi>I</mi><mo>⁢</mo><mrow><mtext> for some integer </mtext><mrow><mi>m</mi><mo>≥</mo><mn>1</mn></mrow></mrow></mrow></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">If <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="I=\sqrt{I}" display="inline"><mrow><mi>I</mi><mo>=</mo><msqrt><mi>I</mi></msqrt></mrow></math>, we say the ideal <math id="S3.Thmtheorem1.p1.m5" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> itself is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> radical</span>.</p>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">For example, <math id="S3.p4.m1" class="ltx_Math" alttext="\sqrt{(x^{2})}=(x)" display="inline"><mrow><msqrt><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></msqrt><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+You may like to take the time to verify that <math id="S3.p4.m2" class="ltx_Math" alttext="\sqrt{I}" display="inline"><msqrt><mi>I</mi></msqrt></math> is actually an ideal.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 77.3.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Number theoretic motivation)</span> — </span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">This is actually the same as the notion of “radical” in number theory.
+In <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>, the radical of an ideal <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="(n)" display="inline"><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></math> corresponds to just
+removing all the duplicate prime factors, so for example</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\sqrt{(12)}=(6)." display="block"><mrow><mrow><msqrt><mrow><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo></mrow></msqrt><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In particular, if you try to take <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\sqrt{(6)}" display="inline"><msqrt><mrow><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow></msqrt></math>,
+you just get <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="(6)" display="inline"><mrow><mo stretchy="false">(</mo><mn>6</mn><mo stretchy="false">)</mo></mrow></math> back;
+you don’t squeeze out any new prime factors.</p>
+</div>
+<div id="S3.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">This is actually true more generally,
+and there is a nice corresponding alternate definition:
+for any ideal <math id="S3.Thmtheorem2.p2.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>, we have</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\sqrt{I}=\bigcap_{I\subseteq\mathfrak{p}\text{ prime}}\mathfrak{p}." display="block"><mrow><mrow><msqrt><mi>I</mi></msqrt><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">⋂</mo><mrow><mi>I</mi><mo>⊆</mo><mrow><mi>𝔭</mi><mo>⁢</mo><mtext> prime</mtext></mrow></mrow></munder><mi>𝔭</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Although we could prove this now,
+it will be proved later in <a href="../ag2/spec-zariski.html#thm:radical_intersect_prime" title="Theorem 84.4.2 (Radical is intersection of primes) ‣ 84.4 On radicals ‣ Chapter 84 Affine schemes: the Zariski topology ‣ Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">84.4.2</span></a>,
+when we first need it.</p>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Here are the immediate properties you should know.</p>
+</div>
+<div id="prop:radical" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 77.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Properties of radical)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">In any ring:</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is an ideal, then <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="\sqrt{I}" display="inline"><msqrt><mi>I</mi></msqrt></math> is always a radical ideal.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Prime ideals are radical.</p>
+</div>
+</li>
+<li id="S3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">For <math id="S3.I1.i3.p1.m1" class="ltx_Math" alttext="I\subseteq\mathbb{C}[x_{1},\dots,x_{n}]" display="inline"><mrow><mi>I</mi><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>
+we have <math id="S3.I1.i3.p1.m2" class="ltx_Math" alttext="\mathcal{V}(I)=\mathcal{V}(\sqrt{I})" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mi>I</mi></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">These are all obvious.</p>
+<ul id="S3.I2" class="ltx_itemize">
+<li id="S3.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.I2.i1.p1.m1" class="ltx_Math" alttext="f^{m}\in\sqrt{I}" display="inline"><mrow><msup><mi>f</mi><mi>m</mi></msup><mo>∈</mo><msqrt><mi>I</mi></msqrt></mrow></math> then <math id="S3.I2.i1.p1.m2" class="ltx_Math" alttext="f^{mn}\in I" display="inline"><mrow><msup><mi>f</mi><mrow><mi>m</mi><mo>⁢</mo><mi>n</mi></mrow></msup><mo>∈</mo><mi>I</mi></mrow></math>, so <math id="S3.I2.i1.p1.m3" class="ltx_Math" alttext="f\in\sqrt{I}" display="inline"><mrow><mi>f</mi><mo>∈</mo><msqrt><mi>I</mi></msqrt></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.I2.i2.p1.m1" class="ltx_Math" alttext="f^{n}\in\mathfrak{p}" display="inline"><mrow><msup><mi>f</mi><mi>n</mi></msup><mo>∈</mo><mi>𝔭</mi></mrow></math> for a prime <math id="S3.I2.i2.p1.m2" class="ltx_Math" alttext="\mathfrak{p}" display="inline"><mi>𝔭</mi></math>,
+then either <math id="S3.I2.i2.p1.m3" class="ltx_Math" alttext="f\in\mathfrak{p}" display="inline"><mrow><mi>f</mi><mo>∈</mo><mi>𝔭</mi></mrow></math> or <math id="S3.I2.i2.p1.m4" class="ltx_Math" alttext="f^{n-1}\in\mathfrak{p}" display="inline"><mrow><msup><mi>f</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>∈</mo><mi>𝔭</mi></mrow></math>,
+and in the latter case we may continue by induction.</p>
+</div>
+</li>
+<li id="S3.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">We have <math id="S3.I2.i3.p1.m1" class="ltx_Math" alttext="f(x_{1},\dots,x_{n})=0" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>
+if and only if <math id="S3.I2.i3.p1.m2" class="ltx_Math" alttext="f(x_{1},\dots,x_{n})^{m}=0" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mi>m</mi></msup></mrow><mo>=</mo><mn>0</mn></mrow></math> for some integer <math id="S3.I2.i3.p1.m3" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">The last bit makes sense: you would never refer to <math id="S3.p7.m1" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math> as <math id="S3.p7.m2" class="ltx_Math" alttext="x^{2}=0" display="inline"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow></math>,
+and hence we would always want to call <math id="S3.p7.m3" class="ltx_Math" alttext="\mathcal{V}(x^{2})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> just <math id="S3.p7.m4" class="ltx_Math" alttext="\mathcal{V}(x)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+With this, we obtain a theorem called Hilbert’s Nullstellensatz.</p>
+</div>
+<div id="thm:hilbert_null" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 77.3.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Hilbert’s Nullstellensatz)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Given an affine variety <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="V=\mathcal{V}(I)" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+the set of polynomials which vanish
+on all points of <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is precisely <math id="S3.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\sqrt{I}" display="inline"><msqrt><mi>I</mi></msqrt></math>.
+Thus if <math id="S3.Thmtheorem4.p1.m4" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> and <math id="S3.Thmtheorem4.p1.m5" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> are ideals in <math id="S3.Thmtheorem4.p1.m6" class="ltx_Math" alttext="\mathbb{C}[x_{1},\dots,x_{n}]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math>, then</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\mathcal{V}(I)=\mathcal{V}(J)\text{ if and only if $\sqrt{I}=\sqrt{J}$}." display="block"><mrow><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mtext> if and only if </mtext><mrow><msqrt><mi>I</mi></msqrt><mo>=</mo><msqrt><mi>J</mi></msqrt></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">In other words</p>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 77.3.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Radical ideals in <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathbb{C}[x_{1},\dots,x_{n}]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math> correspond
+exactly to <math id="S3.Thmtheorem5.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional affine varieties.</p>
+</div>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">The proof of Hilbert’s Nullstellensatz will be given in
+<a href="#prob:hilbert_from_weak" title="Problem 77D. ‣ 77.9 A few harder problems to think about ‣ Chapter 77 Affine varieties ‣ Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">77D</span></a>; for now it is worth remarking that
+it relies essentially on the fact that <math id="S3.p9.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> is
+<em class="ltx_emph ltx_font_italic">algebraically closed</em>.
+For example, it is false in <math id="S3.p9.m2" class="ltx_Math" alttext="\mathbb{R}[x]" display="inline"><mrow><mi>ℝ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>,
+with <math id="S3.p9.m3" class="ltx_Math" alttext="(x^{2}+1)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math> being a maximal ideal with empty vanishing set.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">77.4 </span>Pictures of varieties in <math id="S4.m1" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math>
+</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Finite sets of points (in fact these are the only nontrivial examples).</em></p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Let’s first draw some pictures.
+In what follows I’ll draw <math id="S4.p2.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> as a straight line… sorry.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">First of all, let’s look at just the complex line <math id="S4.p3.m1" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math>.
+What are the various varieties on it?
+For starters, we have a single point <math id="S4.p3.m2" class="ltx_Math" alttext="9\in\mathbb{C}" display="inline"><mrow><mn>9</mn><mo>∈</mo><mi>ℂ</mi></mrow></math>,
+generated by <math id="S4.p3.m3" class="ltx_Math" alttext="(x-9)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>9</mn></mrow><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='170.07874pt' height='32.751464pt' viewBox='141.448819 67.667775 170.07874 32.751464'>
+<defs>
+<path id='asymptote-77-2-g2-120' d='M3.643635-3.294545C3.70909-3.578181 3.959999-4.581817 4.723635-4.581817C4.77818-4.581817 5.039999-4.581817 5.269089-4.439999C4.963635-4.385453 4.745453-4.112726 4.745453-3.850908C4.745453-3.676363 4.865453-3.46909 5.159999-3.46909C5.399998-3.46909 5.749089-3.665454 5.749089-4.101817C5.749089-4.66909 5.105453-4.821817 4.734544-4.821817C4.101817-4.821817 3.719999-4.243635 3.58909-3.992726C3.316363-4.712726 2.727272-4.821817 2.410908-4.821817C1.276363-4.821817 .654545-3.414545 .654545-3.141817C.654545-3.032726 .763636-3.032726 .785454-3.032726C.872727-3.032726 .905454-3.054545 .927272-3.152726C1.298181-4.30909 2.018181-4.581817 2.38909-4.581817C2.596363-4.581817 2.978181-4.483635 2.978181-3.850908C2.978181-3.512726 2.792726-2.781817 2.38909-1.254545C2.214545-.578182 1.832727-.12 1.352727-.12C1.287272-.12 1.036363-.12 .807273-.261818C1.08-.316364 1.32-.545454 1.32-.850909C1.32-1.145454 1.08-1.232727 .916363-1.232727C.589091-1.232727 .316364-.949091 .316364-.6C.316364-.098182 .861818 .12 1.341818 .12C2.061818 .12 2.454545-.643636 2.487272-.709091C2.618181-.305454 3.010908 .12 3.665454 .12C4.78909 .12 5.410908-1.287272 5.410908-1.56C5.410908-1.66909 5.312726-1.66909 5.279999-1.66909C5.181817-1.66909 5.159999-1.625454 5.13818-1.54909C4.77818-.381818 4.036363-.12 3.687272-.12C3.261817-.12 3.087272-.469091 3.087272-.84C3.087272-1.08 3.152726-1.32 3.272726-1.799999L3.643635-3.294545Z'/>
+<path id='asymptote-77-2-g3-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-77-2-g4-40' d='M3.610908 2.618181C3.610908 2.585454 3.610908 2.563636 3.425454 2.378181C2.061818 1.003636 1.712727-1.058182 1.712727-2.727272C1.712727-4.625453 2.127272-6.523635 3.46909-7.887271C3.610908-8.01818 3.610908-8.039998 3.610908-8.072725C3.610908-8.149089 3.567272-8.181816 3.501817-8.181816C3.392726-8.181816 2.410908-7.439998 1.767272-6.054544C1.210909-4.854544 1.08-3.643635 1.08-2.727272C1.08-1.876363 1.2-.556363 1.799999 .676363C2.454545 2.018181 3.392726 2.727272 3.501817 2.727272C3.567272 2.727272 3.610908 2.694545 3.610908 2.618181Z'/>
+<path id='asymptote-77-2-g4-41' d='M3.152726-2.727272C3.152726-3.578181 3.032726-4.89818 2.432727-6.130907C1.778181-7.472725 .84-8.181816 .730909-8.181816C.665454-8.181816 .621818-8.13818 .621818-8.072725C.621818-8.039998 .621818-8.01818 .829091-7.821816C1.898181-6.741816 2.519999-5.007271 2.519999-2.727272C2.519999-.861818 2.116363 1.058182 .763636 2.432727C.621818 2.563636 .621818 2.585454 .621818 2.618181C.621818 2.683636 .665454 2.727272 .730909 2.727272C.84 2.727272 1.821818 1.985454 2.465454 .6C3.021817-.6 3.152726-1.810909 3.152726-2.727272Z'/>
+<path id='asymptote-77-2-g4-57' d='M4.003635-3.46909V-3.119999C4.003635-.567273 2.86909-.065455 2.236363-.065455C2.050909-.065455 1.461818-.087273 1.167272-.458182C1.647272-.458182 1.734545-.774545 1.734545-.96C1.734545-1.298181 1.472727-1.461818 1.232727-1.461818C1.058182-1.461818 .730909-1.363636 .730909-.938182C.730909-.207273 1.32 .24 2.247272 .24C3.654544 .24 4.985453-1.243636 4.985453-3.58909C4.985453-6.523635 3.730908-7.265453 2.759999-7.265453C2.159999-7.265453 1.625454-7.069089 1.156363-6.57818C.709091-6.087271 .458182-5.629089 .458182-4.810908C.458182-3.447272 1.418181-2.378181 2.639999-2.378181C3.305454-2.378181 3.752726-2.836363 4.003635-3.46909ZM2.650908-2.62909C2.476363-2.62909 1.974545-2.62909 1.636363-3.316363C1.44-3.719999 1.44-4.265453 1.44-4.799999C1.44-5.389089 1.44-5.901817 1.66909-6.305453C1.963636-6.850907 2.378181-6.992725 2.759999-6.992725C3.261817-6.992725 3.621817-6.621816 3.807272-6.130907C3.938181-5.781817 3.981817-5.094544 3.981817-4.592726C3.981817-3.687272 3.610908-2.62909 2.650908-2.62909Z'/>
+<path id='asymptote-77-2-g0-65' d='M4.021918-7.473973C3.945205-7.660274 3.923288-7.715068 3.80274-7.715068S3.627397-7.616438 3.572603-7.484932L1.073973-.931507C.942466-.580822 .712329-.416438 .416438-.383562C.361644-.383562 .186301-.361644 .186301-.19726C.186301 0 .361644 0 .558904 0H2.312329C2.509589 0 2.673973 0 2.673973-.19726C2.673973-.361644 2.520548-.372603 2.443836-.383562C2.290411-.394521 2.016438-.438356 2.016438-1.09589C2.016438-1.457534 2.093151-1.808219 2.169863-2.158904H4.580822C4.964384-1.084932 4.975342-.909589 4.986301-.679452C4.723288-.416438 4.416438-.394521 4.29589-.383562C4.186301-.372603 4.109589-.29589 4.109589-.19726C4.109589 0 4.273973 0 4.471233 0H7.331507C7.528767 0 7.70411 0 7.70411-.19726C7.70411-.350685 7.561644-.372603 7.463014-.383562C7.221918-.427397 7.035616-.613699 6.816438-1.106849L4.021918-7.473973ZM2.279452-2.542466C2.531507-3.506849 2.882192-4.438356 3.243836-5.358904C3.583562-4.624658 4.241096-3.046575 4.427397-2.542466H2.279452ZM1.632877-1.315068L1.643836-1.30411V-1.194521C1.632877-1.172603 1.632877-1.161644 1.632877-1.09589C1.632877-1.052055 1.632877-.635616 1.786301-.383562H1.194521C1.336986-.536986 1.380822-.668493 1.446575-.843836L1.632877-1.315068ZM3.408219-5.950685L3.80274-7.013699L6.465753-.953425C6.509589-.843836 6.630137-.580822 6.783562-.383562H5.227397C5.336986-.449315 5.369863-.60274 5.369863-.734247C5.369863-1.40274 4.416438-3.627397 3.945205-4.723288L3.408219-5.950685Z'/>
+<path id='asymptote-77-2-g1-0' d='M7.189089-2.50909C7.374543-2.50909 7.570907-2.50909 7.570907-2.727272S7.374543-2.945454 7.189089-2.945454H1.287272C1.101818-2.945454 .905454-2.945454 .905454-2.727272S1.101818-2.50909 1.287272-2.50909H7.189089Z'/>
+<path id='asymptote-77-2-g1-86' d='M2.945454-.938182C3.10909-2.279999 3.10909-3.261817 3.10909-3.425454C3.10909-4.199999 3.10909-7.450907 1.123636-7.450907C.752727-7.450907 .370909-7.145453 .370909-6.992725C.370909-6.916362 .425454-6.916362 .578182-6.905453C2.170908-6.763634 2.301818-4.265453 2.301818-3.032726C2.301818-1.930909 2.159999-.621818 2.02909 .109091C2.007272 .24 2.007272 .261818 2.007272 .305454C2.007272 .36 2.007272 .490909 2.083636 .490909C2.203636 .490909 4.843635-1.527272 6.229089-3.632726C6.785453-4.483635 7.199998-5.454544 7.199998-6.185453C7.199998-7.112725 6.589089-7.450907 6.141816-7.450907C5.825453-7.450907 5.672726-6.763634 5.672726-6.621816C5.672726-6.45818 5.727271-6.45818 5.85818-6.447271C6.589089-6.359998 6.719998-5.781817 6.719998-5.519998C6.719998-4.636362 4.821817-2.399999 2.945454-.938182Z'/>
+</defs>
+<g id='asymptote-77-2-page1'>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<path d='M162.937 13.8613H7.77906' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<path d='M170.466 13.8613L162.937 11.8441V15.8784L170.466 13.8613Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<path d='M170.466 13.8613L162.937 11.8441V15.8784L170.466 13.8613Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<path d='M.250937 13.8613L7.77906 15.8784V11.8441L.250937 13.8613Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<path d='M.250937 13.8613L7.77906 15.8784V11.8441L.250937 13.8613Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='205.947317' y='96.236054' href='#asymptote-77-2-g1-86'/>
+<use x='213.529181' y='96.236054' href='#asymptote-77-2-g4-40'/>
+<use x='217.771619' y='96.236054' href='#asymptote-77-2-g2-120'/>
+<use x='226.430671' y='96.236054' href='#asymptote-77-2-g1-0'/>
+<use x='237.339745' y='96.236054' href='#asymptote-77-2-g4-57'/>
+<use x='242.79431' y='96.236054' href='#asymptote-77-2-g4-41'/>
+</g>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<circle cx='113.727' cy='13.8613' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='252.027857' y='78.098777' href='#asymptote-77-2-g4-57'/>
+</g>
+<use x='154.22117' y='78.098777' href='#asymptote-77-2-g0-65'/>
+<use x='162.135956' y='74.139959' href='#asymptote-77-2-g3-49'/>
+</g>
+</svg>
+</div>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Another example is the point <math id="S4.p5.m1" class="ltx_Math" alttext="4" display="inline"><mn>4</mn></math>.
+And in fact, if we like we can get an ideal consisting of just these two points;
+consider <math id="S4.p5.m2" class="ltx_Math" alttext="\mathcal{V}\left((x-4)(x-9)\right)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>9</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S4.p6" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='170.07874pt' height='32.751464pt' viewBox='141.448819 67.667775 170.07874 32.751464'>
+<defs>
+<path id='asymptote-77-3-g2-120' d='M3.643635-3.294545C3.70909-3.578181 3.959999-4.581817 4.723635-4.581817C4.77818-4.581817 5.039999-4.581817 5.269089-4.439999C4.963635-4.385453 4.745453-4.112726 4.745453-3.850908C4.745453-3.676363 4.865453-3.46909 5.159999-3.46909C5.399998-3.46909 5.749089-3.665454 5.749089-4.101817C5.749089-4.66909 5.105453-4.821817 4.734544-4.821817C4.101817-4.821817 3.719999-4.243635 3.58909-3.992726C3.316363-4.712726 2.727272-4.821817 2.410908-4.821817C1.276363-4.821817 .654545-3.414545 .654545-3.141817C.654545-3.032726 .763636-3.032726 .785454-3.032726C.872727-3.032726 .905454-3.054545 .927272-3.152726C1.298181-4.30909 2.018181-4.581817 2.38909-4.581817C2.596363-4.581817 2.978181-4.483635 2.978181-3.850908C2.978181-3.512726 2.792726-2.781817 2.38909-1.254545C2.214545-.578182 1.832727-.12 1.352727-.12C1.287272-.12 1.036363-.12 .807273-.261818C1.08-.316364 1.32-.545454 1.32-.850909C1.32-1.145454 1.08-1.232727 .916363-1.232727C.589091-1.232727 .316364-.949091 .316364-.6C.316364-.098182 .861818 .12 1.341818 .12C2.061818 .12 2.454545-.643636 2.487272-.709091C2.618181-.305454 3.010908 .12 3.665454 .12C4.78909 .12 5.410908-1.287272 5.410908-1.56C5.410908-1.66909 5.312726-1.66909 5.279999-1.66909C5.181817-1.66909 5.159999-1.625454 5.13818-1.54909C4.77818-.381818 4.036363-.12 3.687272-.12C3.261817-.12 3.087272-.469091 3.087272-.84C3.087272-1.08 3.152726-1.32 3.272726-1.799999L3.643635-3.294545Z'/>
+<path id='asymptote-77-3-g3-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-77-3-g4-40' d='M3.610908 2.618181C3.610908 2.585454 3.610908 2.563636 3.425454 2.378181C2.061818 1.003636 1.712727-1.058182 1.712727-2.727272C1.712727-4.625453 2.127272-6.523635 3.46909-7.887271C3.610908-8.01818 3.610908-8.039998 3.610908-8.072725C3.610908-8.149089 3.567272-8.181816 3.501817-8.181816C3.392726-8.181816 2.410908-7.439998 1.767272-6.054544C1.210909-4.854544 1.08-3.643635 1.08-2.727272C1.08-1.876363 1.2-.556363 1.799999 .676363C2.454545 2.018181 3.392726 2.727272 3.501817 2.727272C3.567272 2.727272 3.610908 2.694545 3.610908 2.618181Z'/>
+<path id='asymptote-77-3-g4-41' d='M3.152726-2.727272C3.152726-3.578181 3.032726-4.89818 2.432727-6.130907C1.778181-7.472725 .84-8.181816 .730909-8.181816C.665454-8.181816 .621818-8.13818 .621818-8.072725C.621818-8.039998 .621818-8.01818 .829091-7.821816C1.898181-6.741816 2.519999-5.007271 2.519999-2.727272C2.519999-.861818 2.116363 1.058182 .763636 2.432727C.621818 2.563636 .621818 2.585454 .621818 2.618181C.621818 2.683636 .665454 2.727272 .730909 2.727272C.84 2.727272 1.821818 1.985454 2.465454 .6C3.021817-.6 3.152726-1.810909 3.152726-2.727272Z'/>
+<path id='asymptote-77-3-g4-52' d='M3.207272-1.799999V-.850909C3.207272-.458182 3.185454-.338182 2.378181-.338182H2.14909V0C2.596363-.032727 3.163635-.032727 3.621817-.032727S4.658181-.032727 5.105453 0V-.338182H4.876362C4.06909-.338182 4.047272-.458182 4.047272-.850909V-1.799999H5.13818V-2.138181H4.047272V-7.101816C4.047272-7.319998 4.047272-7.385452 3.872726-7.385452C3.774544-7.385452 3.741817-7.385452 3.654544-7.254543L.305454-2.138181V-1.799999H3.207272ZM3.272726-2.138181H.610909L3.272726-6.207271V-2.138181Z'/>
+<path id='asymptote-77-3-g4-57' d='M4.003635-3.46909V-3.119999C4.003635-.567273 2.86909-.065455 2.236363-.065455C2.050909-.065455 1.461818-.087273 1.167272-.458182C1.647272-.458182 1.734545-.774545 1.734545-.96C1.734545-1.298181 1.472727-1.461818 1.232727-1.461818C1.058182-1.461818 .730909-1.363636 .730909-.938182C.730909-.207273 1.32 .24 2.247272 .24C3.654544 .24 4.985453-1.243636 4.985453-3.58909C4.985453-6.523635 3.730908-7.265453 2.759999-7.265453C2.159999-7.265453 1.625454-7.069089 1.156363-6.57818C.709091-6.087271 .458182-5.629089 .458182-4.810908C.458182-3.447272 1.418181-2.378181 2.639999-2.378181C3.305454-2.378181 3.752726-2.836363 4.003635-3.46909ZM2.650908-2.62909C2.476363-2.62909 1.974545-2.62909 1.636363-3.316363C1.44-3.719999 1.44-4.265453 1.44-4.799999C1.44-5.389089 1.44-5.901817 1.66909-6.305453C1.963636-6.850907 2.378181-6.992725 2.759999-6.992725C3.261817-6.992725 3.621817-6.621816 3.807272-6.130907C3.938181-5.781817 3.981817-5.094544 3.981817-4.592726C3.981817-3.687272 3.610908-2.62909 2.650908-2.62909Z'/>
+<path id='asymptote-77-3-g0-65' d='M4.021918-7.473973C3.945205-7.660274 3.923288-7.715068 3.80274-7.715068S3.627397-7.616438 3.572603-7.484932L1.073973-.931507C.942466-.580822 .712329-.416438 .416438-.383562C.361644-.383562 .186301-.361644 .186301-.19726C.186301 0 .361644 0 .558904 0H2.312329C2.509589 0 2.673973 0 2.673973-.19726C2.673973-.361644 2.520548-.372603 2.443836-.383562C2.290411-.394521 2.016438-.438356 2.016438-1.09589C2.016438-1.457534 2.093151-1.808219 2.169863-2.158904H4.580822C4.964384-1.084932 4.975342-.909589 4.986301-.679452C4.723288-.416438 4.416438-.394521 4.29589-.383562C4.186301-.372603 4.109589-.29589 4.109589-.19726C4.109589 0 4.273973 0 4.471233 0H7.331507C7.528767 0 7.70411 0 7.70411-.19726C7.70411-.350685 7.561644-.372603 7.463014-.383562C7.221918-.427397 7.035616-.613699 6.816438-1.106849L4.021918-7.473973ZM2.279452-2.542466C2.531507-3.506849 2.882192-4.438356 3.243836-5.358904C3.583562-4.624658 4.241096-3.046575 4.427397-2.542466H2.279452ZM1.632877-1.315068L1.643836-1.30411V-1.194521C1.632877-1.172603 1.632877-1.161644 1.632877-1.09589C1.632877-1.052055 1.632877-.635616 1.786301-.383562H1.194521C1.336986-.536986 1.380822-.668493 1.446575-.843836L1.632877-1.315068ZM3.408219-5.950685L3.80274-7.013699L6.465753-.953425C6.509589-.843836 6.630137-.580822 6.783562-.383562H5.227397C5.336986-.449315 5.369863-.60274 5.369863-.734247C5.369863-1.40274 4.416438-3.627397 3.945205-4.723288L3.408219-5.950685Z'/>
+<path id='asymptote-77-3-g1-0' d='M7.189089-2.50909C7.374543-2.50909 7.570907-2.50909 7.570907-2.727272S7.374543-2.945454 7.189089-2.945454H1.287272C1.101818-2.945454 .905454-2.945454 .905454-2.727272S1.101818-2.50909 1.287272-2.50909H7.189089Z'/>
+<path id='asymptote-77-3-g1-86' d='M2.945454-.938182C3.10909-2.279999 3.10909-3.261817 3.10909-3.425454C3.10909-4.199999 3.10909-7.450907 1.123636-7.450907C.752727-7.450907 .370909-7.145453 .370909-6.992725C.370909-6.916362 .425454-6.916362 .578182-6.905453C2.170908-6.763634 2.301818-4.265453 2.301818-3.032726C2.301818-1.930909 2.159999-.621818 2.02909 .109091C2.007272 .24 2.007272 .261818 2.007272 .305454C2.007272 .36 2.007272 .490909 2.083636 .490909C2.203636 .490909 4.843635-1.527272 6.229089-3.632726C6.785453-4.483635 7.199998-5.454544 7.199998-6.185453C7.199998-7.112725 6.589089-7.450907 6.141816-7.450907C5.825453-7.450907 5.672726-6.763634 5.672726-6.621816C5.672726-6.45818 5.727271-6.45818 5.85818-6.447271C6.589089-6.359998 6.719998-5.781817 6.719998-5.519998C6.719998-4.636362 4.821817-2.399999 2.945454-.938182Z'/>
+</defs>
+<g id='asymptote-77-3-page1'>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<path d='M162.937 13.8613H7.77906' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<path d='M170.466 13.8613L162.937 11.8441V15.8784L170.466 13.8613Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<path d='M170.466 13.8613L162.937 11.8441V15.8784L170.466 13.8613Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<path d='M.250937 13.8613L7.77906 15.8784V11.8441L.250937 13.8613Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<path d='M.250937 13.8613L7.77906 15.8784V11.8441L.250937 13.8613Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='184.951102' y='96.236054' href='#asymptote-77-3-g1-86'/>
+<use x='192.532966' y='96.236054' href='#asymptote-77-3-g4-40'/>
+<use x='196.775404' y='96.236054' href='#asymptote-77-3-g4-40'/>
+<use x='201.017842' y='96.236054' href='#asymptote-77-3-g2-120'/>
+<use x='209.676894' y='96.236054' href='#asymptote-77-3-g1-0'/>
+<use x='220.585968' y='96.236054' href='#asymptote-77-3-g4-52'/>
+<use x='226.040532' y='96.236054' href='#asymptote-77-3-g4-41'/>
+<use x='230.282971' y='96.236054' href='#asymptote-77-3-g4-40'/>
+<use x='234.525409' y='96.236054' href='#asymptote-77-3-g2-120'/>
+<use x='243.18446' y='96.236054' href='#asymptote-77-3-g1-0'/>
+<use x='254.093534' y='96.236054' href='#asymptote-77-3-g4-57'/>
+<use x='259.548099' y='96.236054' href='#asymptote-77-3-g4-41'/>
+<use x='263.790537' y='96.236054' href='#asymptote-77-3-g4-41'/>
+</g>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<circle cx='75.9019' cy='13.8613' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='214.343687' y='78.098777' href='#asymptote-77-3-g4-52'/>
+</g>
+<g transform='translate(141.449 67.6678)scale(.996264)'>
+<circle cx='113.727' cy='13.8613' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='252.027857' y='78.098777' href='#asymptote-77-3-g4-57'/>
+</g>
+<use x='154.22117' y='78.098777' href='#asymptote-77-3-g0-65'/>
+<use x='162.135956' y='74.139959' href='#asymptote-77-3-g3-49'/>
+</g>
+</svg>
+</div>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">In general, in <math id="S4.p7.m1" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math> you can get finitely
+many points <math id="S4.p7.m2" class="ltx_Math" alttext="\left\{a_{1},\dots,a_{n}\right\}" display="inline"><mrow><mo>{</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub><mo>}</mo></mrow></math> by
+just taking</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\mathcal{V}\left((x-a_{1})(x-a_{2})\dots(x-a_{n})\right)." display="block"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><msub><mi>a</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi mathvariant="normal">…</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">On the other hand, you can’t get the set <math id="S4.p7.m3" class="ltx_Math" alttext="\{0,1,2,\dots\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow></math> as an affine variety;
+the only polynomial vanishing
+on all those points is the zero polynomial.
+In fact, you can convince yourself that these
+are the only affine varieties, with two exceptions:</p>
+<ul id="S4.I1" class="ltx_itemize">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The entire line <math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math> is given by <math id="S4.I1.i1.p1.m2" class="ltx_Math" alttext="\mathcal{V}(0)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math>, and</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The empty set is given by <math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="\mathcal{V}(1)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 77.4.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that these are the only varieties of <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math>.
+(Let <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math> be the variety and pick a <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="0\neq f\in I" display="inline"><mrow><mn>0</mn><mo>≠</mo><mi>f</mi><mo>∈</mo><mi>I</mi></mrow></math>.)</span></p>
+</div>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">As you might correctly guess, we have:</p>
+</div>
+<div id="thm:many_aff_variety" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 77.4.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Intersections and unions of varieties)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S4.I2" class="ltx_enumerate">
+<li id="S4.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S4.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">The intersection of affine varieties
+(even infinitely many) is an affine variety.</p>
+</div>
+</li>
+<li id="S4.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S4.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The union of finitely many affine varieties
+is an affine variety.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">In fact we have</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\bigcap_{\alpha}\mathcal{V}(I_{\alpha})=\mathcal{V}\left(\sum_{\alpha}I_{%
+\alpha}\right)\qquad\text{and}\qquad\bigcup_{k=1}^{n}\mathcal{V}(I_{k})=%
+\mathcal{V}\left(\bigcap_{k=1}^{n}I_{k}\right)." display="block"><mrow><mrow><mrow><mrow><munder><mo movablelimits="false">⋂</mo><mi>α</mi></munder><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>I</mi><mi>α</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><munder><mo lspace="0em" movablelimits="false">∑</mo><mi>α</mi></munder><msub><mi>I</mi><mi>α</mi></msub></mrow><mo>)</mo></mrow></mrow><mspace width="2em"></mspace><mtext>and</mtext></mrow></mrow><mspace width="2em"></mspace><mrow><mrow><munderover><mo movablelimits="false">⋃</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>I</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><munderover><mo lspace="0em" movablelimits="false">⋂</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>I</mi><mi>k</mi></msub></mrow><mo>)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S4.p9" class="ltx_para">
+<p class="ltx_p">You are welcome to prove this easy result yourself.</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 77.4.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Part (a) is a little misleading in that the sum <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="I+J" display="inline"><mrow><mi>I</mi><mo>+</mo><mi>J</mi></mrow></math> need not be radical:
+take for example <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="I=(y-x^{2})" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="J=(y)" display="inline"><mrow><mi>J</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math> in <math id="S4.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\mathbb{C}[x,y]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></math>,
+where <math id="S4.Thmtheorem3.p1.m5" class="ltx_Math" alttext="x\in\sqrt{I+J}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msqrt><mrow><mi>I</mi><mo>+</mo><mi>J</mi></mrow></msqrt></mrow></math> and <math id="S4.Thmtheorem3.p1.m6" class="ltx_Math" alttext="x\notin I+J" display="inline"><mrow><mi>x</mi><mo>∉</mo><mrow><mi>I</mi><mo>+</mo><mi>J</mi></mrow></mrow></math>.
+But in part (b) for radical ideals <math id="S4.Thmtheorem3.p1.m7" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> and <math id="S4.Thmtheorem3.p1.m8" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math>,
+the intersection <math id="S4.Thmtheorem3.p1.m9" class="ltx_Math" alttext="I\cap J" display="inline"><mrow><mi>I</mi><mo>∩</mo><mi>J</mi></mrow></math> is radical.</p>
+</div>
+</div>
+<div id="S4.p10" class="ltx_para">
+<p class="ltx_p">As another easy result concerning the relation between the ideal and variety, we
+have:</p>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 77.4.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<math id="S4.Thmtheorem4.m1" class="ltx_Math" alttext="\mathcal{V}(-)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">)</mo></mrow></mrow></math> is inclusion reversing)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="I\subseteq J" display="inline"><mrow><mi>I</mi><mo>⊆</mo><mi>J</mi></mrow></math> then <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\mathcal{V}(I)\supseteq\mathcal{V}(J)" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊇</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+Thus <math id="S4.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\mathcal{V}(-)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">)</mo></mrow></mrow></math> is <em class="ltx_emph ltx_font_italic">inclusion-reversing</em>.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 77.4.5</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify this.</span></p>
+</div>
+</div>
+<div id="S4.p11" class="ltx_para">
+<p class="ltx_p">Thus, bigger ideals correspond to smaller varieties.</p>
+</div>
+<div id="S4.p12" class="ltx_para">
+<p class="ltx_p">These results will be used a lot throughout the chapter, so it would be useful
+for you to be comfortable with the inclusion-reversing nature of <math id="S4.p12.m1" class="ltx_Math" alttext="\mathcal{V}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒱</mi></math>.</p>
+</div>
+<div id="S4.Thmtheorem6" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 77.4.6</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Some quick exercises to help you be more familiar with the concepts.</span></p>
+<ol id="S4.I3" class="ltx_enumerate">
+<li id="S4.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span> 
+<div id="S4.I3.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let </span><math id="S4.I3.i1.p1.m1" class="ltx_Math" alttext="I=(y-x^{2})" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> and </span><math id="S4.I3.i1.p1.m2" class="ltx_Math" alttext="J=(x+1,y+2)" display="inline"><mrow><mi>J</mi><mo>=</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mi>x</mi><mo>+</mo><mn>1</mn></mrow><mo>,</mo><mrow><mi>y</mi><mo>+</mo><mn>2</mn></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">. What is </span><math id="S4.I3.i1.p1.m3" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi>I</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> and </span><math id="S4.I3.i1.p1.m4" class="ltx_Math" alttext="\mathcal{V}(J)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi>J</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">?</span></p>
+</div>
+</li>
+<li id="S4.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span> 
+<div id="S4.I3.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">What is the ideal </span><math id="S4.I3.i2.p1.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math><span class="ltx_text" style="font-size:90%;"> such that </span><math id="S4.I3.i2.p1.m2" class="ltx_Math" alttext="\mathcal{V}(K)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi>K</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> is the union of the
+parabola </span><math id="S4.I3.i2.p1.m3" class="ltx_Math" alttext="y=x^{2}" display="inline"><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math><span class="ltx_text" style="font-size:90%;"> and the point </span><math id="S4.I3.i2.p1.m4" class="ltx_Math" alttext="(-1,-2)" display="inline"><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mrow><mo>−</mo><mn>2</mn></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></math><span class="ltx_text" style="font-size:90%;">?</span></p>
+</div>
+</li>
+<li id="S4.I3.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span> 
+<div id="S4.I3.i3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let </span><math id="S4.I3.i3.p1.m1" class="ltx_Math" alttext="L=(y-1)" display="inline"><mrow><mi>L</mi><mo>=</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mi>y</mi><mo>−</mo><mn>1</mn></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">. What is </span><math id="S4.I3.i3.p1.m2" class="ltx_Math" alttext="\mathcal{V}(L)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi>L</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">?</span></p>
+</div>
+</li>
+<li id="S4.I3.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span> 
+<div id="S4.I3.i4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">The intersection </span><math id="S4.I3.i4.p1.m1" class="ltx_Math" alttext="\mathcal{V}(I)\cap\mathcal{V}(L)" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi>I</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo>∩</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi>L</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> consist of two points </span><math id="S4.I3.i4.p1.m2" class="ltx_Math" alttext="(1,1)" display="inline"><mrow><mo maxsize="90%" minsize="90%">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo maxsize="90%" minsize="90%">)</mo></mrow></math><span class="ltx_text" style="font-size:90%;"> and </span><math id="S4.I3.i4.p1.m3" class="ltx_Math" alttext="(-1,1)" display="inline"><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn><mo maxsize="90%" minsize="90%">)</mo></mrow></math><span class="ltx_text" style="font-size:90%;">. What’s the ideal corresponding to it, in terms of
+</span><math id="S4.I3.i4.p1.m4" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math><span class="ltx_text" style="font-size:90%;"> and </span><math id="S4.I3.i4.p1.m5" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math><span class="ltx_text" style="font-size:90%;">?</span></p>
+</div>
+</li>
+<li id="S4.I3.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">5.</span> 
+<div id="S4.I3.i5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">What is </span><math id="S4.I3.i5.p1.m1" class="ltx_Math" alttext="\mathcal{V}(I\cap L)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mi>I</mi><mo>∩</mo><mi>L</mi></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">? What about </span><math id="S4.I3.i5.p1.m2" class="ltx_Math" alttext="\mathcal{V}(IL)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mi>I</mi><mo>⁢</mo><mi>L</mi></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">?</span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S4.Thmtheorem7" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 77.4.7</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Note that the intersection of infinitely many ideals is still an ideal, but the
+union of infinitely many affine varieties may not be an affine variety.</span></p>
+</div>
+<div id="S4.Thmtheorem7.p2" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Consider <math id="S4.Thmtheorem7.p2.m1" class="ltx_Math" alttext="I_{k}=(x-k)" display="inline"><mrow><msub><mi>I</mi><mi>k</mi></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>k</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> in <math id="S4.Thmtheorem7.p2.m2" class="ltx_Math" alttext="\mathbb{C}[x]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>, and take the infinite intersection
+<math id="S4.Thmtheorem7.p2.m3" class="ltx_Math" alttext="I=\bigcap_{k\in\mathbb{N}}I_{k}" display="inline"><mrow><mi>I</mi><mo rspace="0.111em">=</mo><mrow><msub><mo>⋂</mo><mrow><mi>k</mi><mo>∈</mo><mi>ℕ</mi></mrow></msub><msub><mi>I</mi><mi>k</mi></msub></mrow></mrow></math>. What is <math id="S4.Thmtheorem7.p2.m4" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S4.Thmtheorem7.p2.m5" class="ltx_Math" alttext="\bigcup_{k\in\mathbb{N}}\mathcal{V}(I_{k})" display="inline"><mrow><msub><mo>⋃</mo><mrow><mi>k</mi><mo>∈</mo><mi>ℕ</mi></mrow></msub><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>I</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>?</span></p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">77.5 </span>Prime ideals correspond to irreducible affine varieties</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S5.p1.m1" class="ltx_Math" alttext="(xy)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></math> corresponds to the union of two lines in <math id="S5.p1.m2" class="ltx_Math" alttext="\mathbb{A}^{2}" display="inline"><msup><mi>𝔸</mi><mn>2</mn></msup></math>.</em></p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">Note that most of the affine varieties of <math id="S5.p2.m1" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math>, like <math id="S5.p2.m2" class="ltx_Math" alttext="\{4,9\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>4</mn><mo>,</mo><mn>9</mn><mo stretchy="false">}</mo></mrow></math>,
+are just unions of the simplest “one-point” ideals.
+To ease our classification,
+we can restrict our attention to the case of <em class="ltx_emph ltx_font_italic">irreducible</em> varieties:</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 77.5.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A variety <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> irreducible</span> if it cannot be written
+as the union of two proper sub-varieties <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="V=V_{1}\cup V_{2}" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><msub><mi>V</mi><mn>1</mn></msub><mo>∪</mo><msub><mi>V</mi><mn>2</mn></msub></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 77.5.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Warning: in other literature,
+irreducible is part of the definition of variety.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 77.5.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Irreducible varieties of <math id="S5.Thmtheorem3.m1" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">The irreducible varieties of <math id="S5.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math> are:</p>
+<ul id="S5.I1" class="ltx_itemize">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">the empty set <math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="\mathcal{V}(1)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>,</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">a single point <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="\mathcal{V}(x-a)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>, and</p>
+</div>
+</li>
+<li id="S5.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">the entire line <math id="S5.I1.i3.p1.m1" class="ltx_Math" alttext="\mathbb{A}^{1}=\mathcal{V}(0)" display="inline"><mrow><msup><mi>𝔸</mi><mn>1</mn></msup><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S5.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 77.5.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(The union of two axes)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let’s take a non-prime ideal in <math id="S5.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathbb{C}[x,y]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></math>, such as <math id="S5.Thmtheorem4.p1.m2" class="ltx_Math" alttext="I=(xy)" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
+Its vanishing set <math id="S5.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the union of two lines <math id="S5.Thmtheorem4.p1.m4" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math> and <math id="S5.Thmtheorem4.p1.m5" class="ltx_Math" alttext="y=0" display="inline"><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow></math>.
+So <math id="S5.Thmtheorem4.p1.m6" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math> is reducible.</p>
+</div>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">In general:</p>
+</div>
+<div id="S5.Thmtheorem5" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 77.5.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Prime <math id="S5.Thmtheorem5.m1" class="ltx_Math" alttext="\iff" display="inline"><mo stretchy="false">⇔</mo></math> irreducible)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem5.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> be a radical ideal, and <math id="S5.Thmtheorem5.p1.m2" class="ltx_Math" alttext="V=\mathcal{V}(I)" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> a nonempty variety.
+Then <math id="S5.Thmtheorem5.p1.m3" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is prime if and only if <math id="S5.Thmtheorem5.p1.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is irreducible.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">First, assume <math id="S5.p4.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is irreducible; we’ll show <math id="S5.p4.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is prime.
+Let <math id="S5.p4.m3" class="ltx_Math" alttext="f,g\in\mathbb{C}[x_{1},\dots,x_{n}]" display="inline"><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo>∈</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math> so that <math id="S5.p4.m4" class="ltx_Math" alttext="fg\in I" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mi>g</mi></mrow><mo>∈</mo><mi>I</mi></mrow></math>.
+Then <math id="S5.p4.m5" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is a subset of the union <math id="S5.p4.m6" class="ltx_Math" alttext="\mathcal{V}(f)\cup\mathcal{V}(g)" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∪</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>;
+actually, <math id="S5.p4.m7" class="ltx_Math" alttext="V=\left(V\cap\mathcal{V}(f)\right)\cup\left(V\cap\mathcal{V}(g)\right)" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mi>V</mi><mo>∩</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow><mo>∪</mo><mrow><mo>(</mo><mrow><mi>V</mi><mo>∩</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math>.
+Since <math id="S5.p4.m8" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is irreducible, we may assume <math id="S5.p4.m9" class="ltx_Math" alttext="V=V\cap\mathcal{V}(f)" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mi>V</mi><mo>∩</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>,
+hence <math id="S5.p4.m10" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> vanishes on all of <math id="S5.p4.m11" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>. So <math id="S5.p4.m12" class="ltx_Math" alttext="f\in I" display="inline"><mrow><mi>f</mi><mo>∈</mo><mi>I</mi></mrow></math>.</p>
+</div>
+<div id="S5.p5" class="ltx_para">
+<p class="ltx_p">The reverse direction is similar.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">77.6 </span>Pictures in <math id="S6.m1" class="ltx_Math" alttext="\mathbb{A}^{2}" display="inline"><msup><mi>𝔸</mi><mn>2</mn></msup></math> and <math id="S6.m2" class="ltx_Math" alttext="\mathbb{A}^{3}" display="inline"><msup><mi>𝔸</mi><mn>3</mn></msup></math>
+</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Various curves and hypersurfaces.</em></p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">With this notion, we can now draw pictures in
+“complex affine plane”, <math id="S6.p2.m1" class="ltx_Math" alttext="\mathbb{A}^{2}" display="inline"><msup><mi>𝔸</mi><mn>2</mn></msup></math>.
+What are the irreducible affine varieties in it?</p>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">As we saw in the previous discussion,
+naming irreducible affine varieties in <math id="S6.p3.m1" class="ltx_Math" alttext="\mathbb{A}^{2}" display="inline"><msup><mi>𝔸</mi><mn>2</mn></msup></math>
+amounts to naming the prime ideals of <math id="S6.p3.m2" class="ltx_Math" alttext="\mathbb{C}[x,y]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></math>.
+Here are a few.</p>
+<ul id="S6.I1" class="ltx_itemize">
+<li id="S6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The ideal <math id="S6.I1.i1.p1.m1" class="ltx_Math" alttext="(0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math> is prime. <math id="S6.I1.i1.p1.m2" class="ltx_Math" alttext="\mathcal{V}(0)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> as usual corresponds to the entire plane.</p>
+</div>
+</li>
+<li id="S6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The ideal <math id="S6.I1.i2.p1.m1" class="ltx_Math" alttext="(x-a,y-b)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></math> is prime,
+since <math id="S6.I1.i2.p1.m2" class="ltx_Math" alttext="\mathbb{C}[x,y]/(x-a,y-b)\cong\mathbb{C}" display="inline"><mrow><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mi>ℂ</mi></mrow></math> is an integral domain.
+(In fact, since <math id="S6.I1.i2.p1.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> is a field, the ideal <math id="S6.I1.i2.p1.m4" class="ltx_Math" alttext="(x-a,y-b)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></math> is <em class="ltx_emph ltx_font_italic">maximal</em>).
+The vanishing set of this is <math id="S6.I1.i2.p1.m5" class="ltx_Math" alttext="\mathcal{V}(x-a,y-b)=\{(a,b)\}\in\mathbb{C}^{2}" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow><mo>∈</mo><msup><mi>ℂ</mi><mn>2</mn></msup></mrow></math>,
+so these ideals correspond to a single point.</p>
+</div>
+</li>
+<li id="S6.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S6.I1.i3.p1.m1" class="ltx_Math" alttext="f(x,y)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math> be an irreducible polynomial, like <math id="S6.I1.i3.p1.m2" class="ltx_Math" alttext="y-x^{2}" display="inline"><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math>.
+Then <math id="S6.I1.i3.p1.m3" class="ltx_Math" alttext="(f)" display="inline"><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></math> is a prime ideal! Here <math id="S6.I1.i3.p1.m4" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a “degree one curve”.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S6.p4" class="ltx_para">
+<p class="ltx_p">By using some polynomial algebra
+(again you’re welcome to check this; Euclidean algorithm),
+these are in fact the only prime ideals of <math id="S6.p4.m1" class="ltx_Math" alttext="\mathbb{C}[x,y]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></math>.
+Here’s a picture.</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S6.p5" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='170.07874pt' height='153.493163pt' viewBox='133.15603 130.604849 170.07874 153.493163'>
+<defs>
+<path id='asymptote-77-4-g2-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-77-4-g3-40' d='M3.610908 2.618181C3.610908 2.585454 3.610908 2.563636 3.425454 2.378181C2.061818 1.003636 1.712727-1.058182 1.712727-2.727272C1.712727-4.625453 2.127272-6.523635 3.46909-7.887271C3.610908-8.01818 3.610908-8.039998 3.610908-8.072725C3.610908-8.149089 3.567272-8.181816 3.501817-8.181816C3.392726-8.181816 2.410908-7.439998 1.767272-6.054544C1.210909-4.854544 1.08-3.643635 1.08-2.727272C1.08-1.876363 1.2-.556363 1.799999 .676363C2.454545 2.018181 3.392726 2.727272 3.501817 2.727272C3.567272 2.727272 3.610908 2.694545 3.610908 2.618181Z'/>
+<path id='asymptote-77-4-g3-41' d='M3.152726-2.727272C3.152726-3.578181 3.032726-4.89818 2.432727-6.130907C1.778181-7.472725 .84-8.181816 .730909-8.181816C.665454-8.181816 .621818-8.13818 .621818-8.072725C.621818-8.039998 .621818-8.01818 .829091-7.821816C1.898181-6.741816 2.519999-5.007271 2.519999-2.727272C2.519999-.861818 2.116363 1.058182 .763636 2.432727C.621818 2.563636 .621818 2.585454 .621818 2.618181C.621818 2.683636 .665454 2.727272 .730909 2.727272C.84 2.727272 1.821818 1.985454 2.465454 .6C3.021817-.6 3.152726-1.810909 3.152726-2.727272Z'/>
+<path id='asymptote-77-4-g3-43' d='M4.461817-2.50909H7.505452C7.65818-2.50909 7.865452-2.50909 7.865452-2.727272S7.65818-2.945454 7.505452-2.945454H4.461817V-5.999998C4.461817-6.152726 4.461817-6.359998 4.243635-6.359998S4.025453-6.152726 4.025453-5.999998V-2.945454H.970909C.818182-2.945454 .610909-2.945454 .610909-2.727272S.818182-2.50909 .970909-2.50909H4.025453V.545454C4.025453 .698182 4.025453 .905454 4.243635 .905454S4.461817 .698182 4.461817 .545454V-2.50909Z'/>
+<path id='asymptote-77-4-g3-49' d='M3.207272-6.981816C3.207272-7.243634 3.207272-7.265453 2.956363-7.265453C2.279999-6.567271 1.32-6.567271 .970909-6.567271V-6.229089C1.189091-6.229089 1.832727-6.229089 2.399999-6.512725V-.861818C2.399999-.469091 2.367272-.338182 1.385454-.338182H1.036363V0C1.418181-.032727 2.367272-.032727 2.803636-.032727S4.18909-.032727 4.570908 0V-.338182H4.221817C3.239999-.338182 3.207272-.458182 3.207272-.861818V-6.981816Z'/>
+<path id='asymptote-77-4-g3-50' d='M1.385454-.84L2.541817-1.963636C4.243635-3.46909 4.89818-4.058181 4.89818-5.149089C4.89818-6.392725 3.916363-7.265453 2.585454-7.265453C1.352727-7.265453 .545454-6.261816 .545454-5.290908C.545454-4.679999 1.090909-4.679999 1.123636-4.679999C1.309091-4.679999 1.690909-4.810908 1.690909-5.25818C1.690909-5.541817 1.494545-5.825453 1.112727-5.825453C1.025454-5.825453 1.003636-5.825453 .970909-5.814544C1.221818-6.523635 1.810909-6.927271 2.443636-6.927271C3.436363-6.927271 3.905453-6.043635 3.905453-5.149089C3.905453-4.276362 3.359999-3.414545 2.759999-2.738181L.665454-.403636C.545454-.283636 .545454-.261818 .545454 0H4.592726L4.89818-1.898181H4.625453C4.570908-1.570909 4.494544-1.090909 4.385453-.927272C4.30909-.84 3.58909-.84 3.34909-.84H1.385454Z'/>
+<path id='asymptote-77-4-g0-0' d='M7.189089-2.50909C7.374543-2.50909 7.570907-2.50909 7.570907-2.727272S7.374543-2.945454 7.189089-2.945454H1.287272C1.101818-2.945454 .905454-2.945454 .905454-2.727272S1.101818-2.50909 1.287272-2.50909H7.189089Z'/>
+<path id='asymptote-77-4-g0-86' d='M2.945454-.938182C3.10909-2.279999 3.10909-3.261817 3.10909-3.425454C3.10909-4.199999 3.10909-7.450907 1.123636-7.450907C.752727-7.450907 .370909-7.145453 .370909-6.992725C.370909-6.916362 .425454-6.916362 .578182-6.905453C2.170908-6.763634 2.301818-4.265453 2.301818-3.032726C2.301818-1.930909 2.159999-.621818 2.02909 .109091C2.007272 .24 2.007272 .261818 2.007272 .305454C2.007272 .36 2.007272 .490909 2.083636 .490909C2.203636 .490909 4.843635-1.527272 6.229089-3.632726C6.785453-4.483635 7.199998-5.454544 7.199998-6.185453C7.199998-7.112725 6.589089-7.450907 6.141816-7.450907C5.825453-7.450907 5.672726-6.763634 5.672726-6.621816C5.672726-6.45818 5.727271-6.45818 5.85818-6.447271C6.589089-6.359998 6.719998-5.781817 6.719998-5.519998C6.719998-4.636362 4.821817-2.399999 2.945454-.938182Z'/>
+<path id='asymptote-77-4-g1-59' d='M2.214545-.010909C2.214545-.730909 1.941818-1.156363 1.516363-1.156363C1.156363-1.156363 .938182-.883636 .938182-.578182C.938182-.283636 1.156363 0 1.516363 0C1.647272 0 1.78909-.043636 1.898181-.141818C1.930909-.163636 1.941818-.174545 1.952727-.174545S1.974545-.163636 1.974545-.010909C1.974545 .796363 1.592727 1.450909 1.232727 1.810909C1.112727 1.930909 1.112727 1.952727 1.112727 1.985454C1.112727 2.061818 1.167272 2.105454 1.221818 2.105454C1.341818 2.105454 2.214545 1.265454 2.214545-.010909Z'/>
+<path id='asymptote-77-4-g1-120' d='M3.643635-3.294545C3.70909-3.578181 3.959999-4.581817 4.723635-4.581817C4.77818-4.581817 5.039999-4.581817 5.269089-4.439999C4.963635-4.385453 4.745453-4.112726 4.745453-3.850908C4.745453-3.676363 4.865453-3.46909 5.159999-3.46909C5.399998-3.46909 5.749089-3.665454 5.749089-4.101817C5.749089-4.66909 5.105453-4.821817 4.734544-4.821817C4.101817-4.821817 3.719999-4.243635 3.58909-3.992726C3.316363-4.712726 2.727272-4.821817 2.410908-4.821817C1.276363-4.821817 .654545-3.414545 .654545-3.141817C.654545-3.032726 .763636-3.032726 .785454-3.032726C.872727-3.032726 .905454-3.054545 .927272-3.152726C1.298181-4.30909 2.018181-4.581817 2.38909-4.581817C2.596363-4.581817 2.978181-4.483635 2.978181-3.850908C2.978181-3.512726 2.792726-2.781817 2.38909-1.254545C2.214545-.578182 1.832727-.12 1.352727-.12C1.287272-.12 1.036363-.12 .807273-.261818C1.08-.316364 1.32-.545454 1.32-.850909C1.32-1.145454 1.08-1.232727 .916363-1.232727C.589091-1.232727 .316364-.949091 .316364-.6C.316364-.098182 .861818 .12 1.341818 .12C2.061818 .12 2.454545-.643636 2.487272-.709091C2.618181-.305454 3.010908 .12 3.665454 .12C4.78909 .12 5.410908-1.287272 5.410908-1.56C5.410908-1.66909 5.312726-1.66909 5.279999-1.66909C5.181817-1.66909 5.159999-1.625454 5.13818-1.54909C4.77818-.381818 4.036363-.12 3.687272-.12C3.261817-.12 3.087272-.469091 3.087272-.84C3.087272-1.08 3.152726-1.32 3.272726-1.799999L3.643635-3.294545Z'/>
+<path id='asymptote-77-4-g1-121' d='M5.301817-4.156362C5.345453-4.30909 5.345453-4.330908 5.345453-4.407271C5.345453-4.603635 5.192726-4.701817 5.02909-4.701817C4.919999-4.701817 4.745453-4.636362 4.647271-4.472726C4.625453-4.418181 4.538181-4.079999 4.494544-3.883635C4.418181-3.599999 4.341817-3.305454 4.276362-3.010908L3.785453-1.047272C3.741817-.883636 3.272726-.12 2.552727-.12C1.996363-.12 1.876363-.6 1.876363-1.003636C1.876363-1.505454 2.061818-2.181818 2.432727-3.141817C2.607272-3.58909 2.650908-3.70909 2.650908-3.927272C2.650908-4.418181 2.301818-4.821817 1.756363-4.821817C.72-4.821817 .316364-3.239999 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.054545 .621818-3.22909C.916363-4.254544 1.352727-4.581817 1.723636-4.581817C1.810909-4.581817 1.996363-4.581817 1.996363-4.232726C1.996363-3.959999 1.887272-3.676363 1.810909-3.46909C1.374545-2.312727 1.178181-1.690909 1.178181-1.178181C1.178181-.207273 1.865454 .12 2.50909 .12C2.934545 .12 3.305454-.065455 3.610908-.370909C3.46909 .196364 3.338181 .730909 2.901817 1.309091C2.618181 1.68 2.203636 1.996363 1.701818 1.996363C1.54909 1.996363 1.058182 1.963636 .872727 1.538181C1.047272 1.538181 1.189091 1.538181 1.341818 1.407272C1.450909 1.309091 1.56 1.167272 1.56 .96C1.56 .621818 1.265454 .578182 1.156363 .578182C.905454 .578182 .545454 .752727 .545454 1.287272C.545454 1.832727 1.025454 2.236363 1.701818 2.236363C2.825454 2.236363 3.94909 1.243636 4.254544 .010909L5.301817-4.156362Z'/>
+</defs>
+<g id='asymptote-77-4-page1'>
+<g transform='translate(133.156 130.605)scale(.996264)'>
+<path d='M77.0344 153.818V.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='200.848016' y='136.887672' href='#asymptote-77-4-g1-121'/>
+<g transform='translate(133.156 130.605)scale(.996264)'>
+<path d='M.250937 77.0344H153.818' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='278.772292' y='215.306857' href='#asymptote-77-4-g1-120'/>
+<g transform='translate(133.156 130.605)scale(.996264)'>
+<path d='M38.6427 .250938C38.8961 1.2651 39.1521 2.27865 39.4105 3.29156C39.664 4.28525 39.9199 5.27834 40.1783 6.27076C40.4318 7.24401 40.6877 8.21661 40.9462 9.18853C41.1996 10.1413 41.4555 11.0935 41.714 12.0449C41.9674 12.9772 42.2232 13.9089 42.4818 14.8398C42.7351 15.7517 42.991 16.6629 43.2497 17.5733C43.5029 18.4647 43.7588 19.3554 44.0175 20.2453C44.2707 21.1164 44.5266 21.9866 44.7853 22.856C45.0385 23.7066 45.2944 24.5563 45.5532 25.4052C45.8063 26.2353 46.0621 27.0646 46.321 27.893C46.574 28.7027 46.8299 29.5115 47.0888 30.3193C47.3418 31.1086 47.5977 31.8969 47.8567 32.6843C48.1096 33.4531 48.3655 34.221 48.6245 34.9878C48.8774 35.7362 49.1332 36.4836 49.3923 37.2298C49.6451 37.9578 49.901 38.6848 50.1602 39.4105C50.4129 40.1181 50.6687 40.8245 50.928 41.5297C51.1806 42.2169 51.4365 42.9029 51.6958 43.5875C51.9484 44.2543 52.2043 44.9198 52.4637 45.5839C52.7162 46.2302 52.972 46.8753 53.2315 47.5188C53.4839 48.1448 53.7398 48.7693 53.9993 49.3923C54.2517 49.9979 54.5075 50.602 54.7672 51.2044C55.0194 51.7896 55.2753 52.3732 55.535 52.9551C55.7872 53.5199 56.043 54.083 56.3029 54.6443C56.5549 55.1888 56.8107 55.7314 57.0707 56.2721C57.3226 56.7962 57.5785 57.3184 57.8385 57.8385C58.0904 58.3422 58.3462 58.844 58.6064 59.3435C58.8581 59.8269 59.1139 60.3081 59.3742 60.787C59.6259 61.2501 59.8817 61.7109 60.142 62.1691C60.3936 62.6119 60.6494 63.0522 60.9099 63.4898C61.1613 63.9122 61.4171 64.3321 61.6777 64.749C61.9291 65.1512 62.1849 65.5506 62.4455 65.9469C62.6968 66.3288 62.9526 66.7077 63.2134 67.0832C63.4645 67.4449 63.7203 67.8034 63.9812 68.1582C64.2323 68.4997 64.4881 68.8377 64.749 69.1718C65.0001 69.4931 65.2558 69.8106 65.5169 70.1239C65.7678 70.425 66.0236 70.7221 66.2847 71.0146C66.5356 71.2956 66.7914 71.5722 67.0525 71.8438C67.3034 72.1048 67.5592 72.361 67.8204 72.6117C68.0713 72.8525 68.3271 73.0883 68.5882 73.3181C68.8392 73.5389 69.095 73.7542 69.356 73.963C69.6071 74.1639 69.8629 74.3587 70.1239 74.5466C70.3751 74.7275 70.631 74.9018 70.8917 75.0687C71.1432 75.2297 71.3991 75.3836 71.6595 75.5294C71.9113 75.6704 72.1672 75.8038 72.4274 75.9287C72.6795 76.0497 72.9355 76.1627 73.1952 76.2665C73.4479 76.3676 73.7039 76.46 73.963 76.543C74.2163 76.624 74.4723 76.6959 74.7309 76.758C74.9848 76.8189 75.2409 76.8703 75.4987 76.9115C75.7534 76.9523 76.0095 76.9831 76.2665 77.0037C76.522 77.0241 76.7781 77.0344 77.0344 77.0344C77.2906 77.0344 77.5468 77.0241 77.8022 77.0037C78.0593 76.9831 78.3154 76.9523 78.57 76.9115C78.8279 76.8703 79.084 76.8189 79.3379 76.758C79.5964 76.6959 79.8525 76.624 80.1057 76.543C80.3649 76.46 80.6209 76.3676 80.8736 76.2665C81.1333 76.1627 81.3892 76.0497 81.6414 75.9287C81.9015 75.8038 82.1575 75.6704 82.4092 75.5294C82.6697 75.3836 82.9256 75.2297 83.1771 75.0687C83.4378 74.9018 83.6937 74.7275 83.9449 74.5466C84.2058 74.3587 84.4617 74.1639 84.7127 73.963C84.9738 73.7542 85.2296 73.5389 85.4806 73.3181C85.7417 73.0883 85.9975 72.8525 86.2484 72.6117C86.5095 72.361 86.7653 72.1048 87.0162 71.8438C87.2774 71.5722 87.5331 71.2956 87.7841 71.0146C88.0452 70.7221 88.3009 70.425 88.5519 70.1239C88.8129 69.8106 89.0687 69.4931 89.3197 69.1718C89.5807 68.8377 89.8365 68.4997 90.0876 68.1582C90.3484 67.8034 90.6042 67.4449 90.8554 67.0832C91.1162 66.7077 91.372 66.3288 91.6232 65.9469C91.8839 65.5506 92.1397 65.1512 92.3911 64.749C92.6516 64.3321 92.9074 63.9122 93.1589 63.4898C93.4194 63.0522 93.6752 62.6119 93.9267 62.1691C94.1871 61.7109 94.4429 61.2501 94.6946 60.787C94.9548 60.3081 95.2106 59.8269 95.4624 59.3435C95.7226 58.844 95.9784 58.3422 96.2302 57.8385C96.4903 57.3184 96.7461 56.7962 96.9981 56.2721C97.258 55.7314 97.5139 55.1888 97.7659 54.6443C98.0258 54.083 98.2816 53.5199 98.5337 52.9551C98.7935 52.3732 99.0493 51.7896 99.3016 51.2044C99.5613 50.602 99.8171 49.9979 100.069 49.3923C100.329 48.7693 100.585 48.1448 100.837 47.5188C101.097 46.8753 101.353 46.2302 101.605 45.5839C101.865 44.9198 102.12 44.2543 102.373 43.5875C102.632 42.9029 102.888 42.2169 103.141 41.5297C103.4 40.8245 103.656 40.1181 103.909 39.4105C104.168 38.6848 104.424 37.9578 104.676 37.2298C104.936 36.4836 105.191 35.7362 105.444 34.9878C105.703 34.221 105.959 33.4531 106.212 32.6843C106.471 31.8969 106.727 31.1086 106.98 30.3193C107.239 29.5115 107.495 28.7027 107.748 27.893C108.007 27.0646 108.263 26.2353 108.516 25.4052C108.774 24.5563 109.03 23.7066 109.283 22.856C109.542 21.9866 109.798 21.1164 110.051 20.2453C110.31 19.3554 110.566 18.4647 110.819 17.5733C111.078 16.6629 111.334 15.7517 111.587 14.8398C111.846 13.9089 112.101 12.9772 112.355 12.0449C112.613 11.0935 112.869 10.1413 113.123 9.18853C113.381 8.21661 113.637 7.24401 113.89 6.27076C114.149 5.27834 114.405 4.28525 114.658 3.29156C114.917 2.27865 115.173 1.2651 115.426 .250938' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='231.377102' y='199.608965' href='#asymptote-77-4-g0-86'/>
+<use x='238.958966' y='199.608965' href='#asymptote-77-4-g3-40'/>
+<use x='243.201404' y='199.608965' href='#asymptote-77-4-g1-121'/>
+<use x='251.365532' y='199.608965' href='#asymptote-77-4-g0-0'/>
+<use x='262.274606' y='199.608965' href='#asymptote-77-4-g1-120'/>
+<use x='268.50946' y='195.650147' href='#asymptote-77-4-g2-50'/>
+<use x='273.241775' y='199.608965' href='#asymptote-77-4-g3-41'/>
+</g>
+<g transform='translate(133.156 130.605)scale(.996264)'>
+<circle cx='96.2302' cy='115.426' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='231.377102' y='256.068035' href='#asymptote-77-4-g0-86'/>
+<use x='238.958966' y='256.068035' href='#asymptote-77-4-g3-40'/>
+<use x='243.201404' y='256.068035' href='#asymptote-77-4-g1-120'/>
+<use x='251.860456' y='256.068035' href='#asymptote-77-4-g0-0'/>
+<use x='262.76953' y='256.068035' href='#asymptote-77-4-g3-49'/>
+<use x='268.224095' y='256.068035' href='#asymptote-77-4-g1-59'/>
+<use x='273.072554' y='256.068035' href='#asymptote-77-4-g1-121'/>
+<use x='281.236683' y='256.068035' href='#asymptote-77-4-g3-43'/>
+<use x='292.145757' y='256.068035' href='#asymptote-77-4-g3-50'/>
+<use x='297.600321' y='256.068035' href='#asymptote-77-4-g3-41'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div id="S6.p6" class="ltx_para">
+<p class="ltx_p">As usual, you can make varieties which are just unions of these irreducible ones.
+For example, if you wanted the variety consisting of a parabola <math id="S6.p6.m1" class="ltx_Math" alttext="y=x^{2}" display="inline"><mrow><mi>y</mi><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math>
+plus the point <math id="S6.p6.m2" class="ltx_Math" alttext="(20,15)" display="inline"><mrow><mo stretchy="false">(</mo><mn>20</mn><mo>,</mo><mn>15</mn><mo stretchy="false">)</mo></mrow></math> you would write</p>
+<div class="table-container"><table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="\mathcal{V}\left((y-x^{2})(x-20),(y-x^{2})(y-15)\right)." display="block"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>20</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>−</mo><mn>15</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S6.p7" class="ltx_para">
+<p class="ltx_p">The picture in <math id="S6.p7.m1" class="ltx_Math" alttext="\mathbb{A}^{3}" display="inline"><msup><mi>𝔸</mi><mn>3</mn></msup></math> is harder to describe.
+Again, you have points <math id="S6.p7.m2" class="ltx_Math" alttext="\mathcal{V}(x-a,y-b,z-c)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><mo>,</mo><mrow><mi>y</mi><mo>−</mo><mi>b</mi></mrow><mo>,</mo><mrow><mi>z</mi><mo>−</mo><mi>c</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> corresponding to
+be zero-dimensional points <math id="S6.p7.m3" class="ltx_Math" alttext="(a,b,c)" display="inline"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo stretchy="false">)</mo></mrow></math>, and two-dimensional surfaces
+<math id="S6.p7.m4" class="ltx_Math" alttext="\mathcal{V}(f)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math> for each irreducible polynomial <math id="S6.p7.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> (for example, <math id="S6.p7.m6" class="ltx_Math" alttext="x+y+z=0" display="inline"><mrow><mrow><mi>x</mi><mo>+</mo><mi>y</mi><mo>+</mo><mi>z</mi></mrow><mo>=</mo><mn>0</mn></mrow></math> is a plane).
+But there are more prime ideals, like <math id="S6.p7.m7" class="ltx_Math" alttext="\mathcal{V}(x,y)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math>, which corresponds to the
+intersection of the planes <math id="S6.p7.m8" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math> and <math id="S6.p7.m9" class="ltx_Math" alttext="y=0" display="inline"><mrow><mi>y</mi><mo>=</mo><mn>0</mn></mrow></math>: this is the one-dimensional <math id="S6.p7.m10" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>-axis.
+It turns out there is no reasonable way to classify the “one-dimensional” varieties;
+they correspond to “irreducible curves”.</p>
+</div>
+<div id="S6.p8" class="ltx_para">
+<p class="ltx_p">Thus, as Ravi Vakil <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:vakil</span>]</cite> says:
+the purely algebraic question
+of determining the prime ideals of <math id="S6.p8.m1" class="ltx_Math" alttext="\mathbb{C}[x,y,z]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">]</mo></mrow></mrow></math>
+has a fundamentally geometric answer.</p>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">77.7 </span>Maximal ideals</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> All maximal ideals are <math id="S7.p1.m1" class="ltx_Math" alttext="(x_{1}-a_{1},\dots,x_{n}-a_{n})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><mo stretchy="false">)</mo></mrow></math>.</em></p>
+</div>
+<div id="S7.p2" class="ltx_para">
+<p class="ltx_p">Recall that bigger ideals correspond to smaller varieties.</p>
+</div>
+<div id="S7.p3" class="ltx_para">
+<p class="ltx_p">As the above pictures might have indicated,
+the smallest varieties are <em class="ltx_emph ltx_font_italic">single points</em>.
+Moreover, as you might guess from the name,
+the biggest ideals are the <em class="ltx_emph ltx_font_italic">maximal ideals</em>.
+As an example, all ideals of the form</p>
+<div class="table-container"><table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\left(x_{1}-a_{1},\dots,x_{n}-a_{n}\right)" display="block"><mrow><mo>(</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><mo>)</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">are maximal, since the quotient</p>
+<div class="table-container"><table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\mathbb{C}[x_{1},\dots,x_{n}]/\left(x_{1}-a_{1},\dots,x_{n}-a_{n}\right)\cong%
+\mathbb{C}" display="block"><mrow><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mrow><mo>(</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><mo>)</mo></mrow></mrow><mo>≅</mo><mi>ℂ</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is a field.
+The question is: are all maximal ideals of this form?</p>
+</div>
+<div id="S7.p4" class="ltx_para">
+<p class="ltx_p">The answer is in the affirmative.
+</p>
+</div>
+<div id="S7.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 77.7.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Weak Nullstellensatz, phrased with maximal ideals)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S7.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Every maximal ideal of <math id="S7.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathbb{C}[x_{1},\dots,x_{n}]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math>
+is of the form <math id="S7.Thmtheorem1.p1.m2" class="ltx_Math" alttext="(x_{1}-a_{1},\dots,x_{n}-a_{n})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+</div>
+<div id="S7.p5" class="ltx_para">
+<p class="ltx_p">The proof of this is surprisingly nontrivial,
+so we won’t include it here yet; see <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:vakil</span>, §7.4.3]</cite>.
+Again this uses the fact that <math id="S7.p5.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> is algebraically closed.
+(For example <math id="S7.p5.m2" class="ltx_Math" alttext="(x^{2}+1)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math> is a maximal ideal of <math id="S7.p5.m3" class="ltx_Math" alttext="\mathbb{R}[x]" display="inline"><mrow><mi>ℝ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>.)
+Thus:</p>
+</div>
+<div id="S7.Thmtheorem2" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 77.7.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S7.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Over <math id="S7.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>, maximal ideals correspond to single points.</p>
+</div>
+</div>
+<div id="S7.p6" class="ltx_para">
+<p class="ltx_p">Consequently, our various ideals over <math id="S7.p6.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> correspond to various flavors
+of affine varieties:</p>
+<div class="table-container"><table class="ltx_tabular ltx_centering ltx_guessed_headers ltx_align_middle">
+<thead class="ltx_thead">
+<tr class="ltx_tr">
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_l ltx_border_t">Algebraic flavor</th>
+<th class="ltx_td ltx_align_center ltx_th ltx_th_column ltx_border_r ltx_border_t">Geometric flavor</th>
+</tr>
+</thead>
+<tbody class="ltx_tbody">
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l ltx_border_t">radical ideal</td>
+<td class="ltx_td ltx_align_center ltx_border_r ltx_border_t">affine variety</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l">prime ideal</td>
+<td class="ltx_td ltx_align_center ltx_border_r">irreducible variety</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_l">maximal ideal</td>
+<td class="ltx_td ltx_align_center ltx_border_r">single point</td>
+</tr>
+<tr class="ltx_tr">
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_l">any ideal</td>
+<td class="ltx_td ltx_align_center ltx_border_b ltx_border_r">(scheme?)</td>
+</tr>
+</tbody>
+</table></div>
+<p class="ltx_p">There’s one thing I haven’t talked about: what’s the last entry?</p>
+</div>
+</section>
+<section id="S8" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">77.8 </span>Motivating schemes with non-radical ideals</h2>
+
+<div id="S8.p1" class="ltx_para">
+<p class="ltx_p">One of the most elementary motivations for the scheme
+is that we would like to use them to count multiplicity.
+That is, consider the intersection</p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\mathcal{V}(y-x^{2})\cap\mathcal{V}(y)\subseteq\mathbb{A}^{2}" display="block"><mrow><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>∩</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>⊆</mo><msup><mi>𝔸</mi><mn>2</mn></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This is the intersection of the parabola with the tangent <math id="S8.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>-axis,
+this is the green dot below.</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S8.p2" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='141.732284pt' height='134.62303pt' viewBox='119.271374 179.069958 141.732284 134.62303'>
+<defs>
+<path id='asymptote-77-5-g0-65' d='M4.021918-7.473973C3.945205-7.660274 3.923288-7.715068 3.80274-7.715068S3.627397-7.616438 3.572603-7.484932L1.073973-.931507C.942466-.580822 .712329-.416438 .416438-.383562C.361644-.383562 .186301-.361644 .186301-.19726C.186301 0 .361644 0 .558904 0H2.312329C2.509589 0 2.673973 0 2.673973-.19726C2.673973-.361644 2.520548-.372603 2.443836-.383562C2.290411-.394521 2.016438-.438356 2.016438-1.09589C2.016438-1.457534 2.093151-1.808219 2.169863-2.158904H4.580822C4.964384-1.084932 4.975342-.909589 4.986301-.679452C4.723288-.416438 4.416438-.394521 4.29589-.383562C4.186301-.372603 4.109589-.29589 4.109589-.19726C4.109589 0 4.273973 0 4.471233 0H7.331507C7.528767 0 7.70411 0 7.70411-.19726C7.70411-.350685 7.561644-.372603 7.463014-.383562C7.221918-.427397 7.035616-.613699 6.816438-1.106849L4.021918-7.473973ZM2.279452-2.542466C2.531507-3.506849 2.882192-4.438356 3.243836-5.358904C3.583562-4.624658 4.241096-3.046575 4.427397-2.542466H2.279452ZM1.632877-1.315068L1.643836-1.30411V-1.194521C1.632877-1.172603 1.632877-1.161644 1.632877-1.09589C1.632877-1.052055 1.632877-.635616 1.786301-.383562H1.194521C1.336986-.536986 1.380822-.668493 1.446575-.843836L1.632877-1.315068ZM3.408219-5.950685L3.80274-7.013699L6.465753-.953425C6.509589-.843836 6.630137-.580822 6.783562-.383562H5.227397C5.336986-.449315 5.369863-.60274 5.369863-.734247C5.369863-1.40274 4.416438-3.627397 3.945205-4.723288L3.408219-5.950685Z'/>
+<path id='asymptote-77-5-g3-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-77-5-g4-40' d='M3.610908 2.618181C3.610908 2.585454 3.610908 2.563636 3.425454 2.378181C2.061818 1.003636 1.712727-1.058182 1.712727-2.727272C1.712727-4.625453 2.127272-6.523635 3.46909-7.887271C3.610908-8.01818 3.610908-8.039998 3.610908-8.072725C3.610908-8.149089 3.567272-8.181816 3.501817-8.181816C3.392726-8.181816 2.410908-7.439998 1.767272-6.054544C1.210909-4.854544 1.08-3.643635 1.08-2.727272C1.08-1.876363 1.2-.556363 1.799999 .676363C2.454545 2.018181 3.392726 2.727272 3.501817 2.727272C3.567272 2.727272 3.610908 2.694545 3.610908 2.618181Z'/>
+<path id='asymptote-77-5-g4-41' d='M3.152726-2.727272C3.152726-3.578181 3.032726-4.89818 2.432727-6.130907C1.778181-7.472725 .84-8.181816 .730909-8.181816C.665454-8.181816 .621818-8.13818 .621818-8.072725C.621818-8.039998 .621818-8.01818 .829091-7.821816C1.898181-6.741816 2.519999-5.007271 2.519999-2.727272C2.519999-.861818 2.116363 1.058182 .763636 2.432727C.621818 2.563636 .621818 2.585454 .621818 2.618181C.621818 2.683636 .665454 2.727272 .730909 2.727272C.84 2.727272 1.821818 1.985454 2.465454 .6C3.021817-.6 3.152726-1.810909 3.152726-2.727272Z'/>
+<path id='asymptote-77-5-g1-0' d='M7.189089-2.50909C7.374543-2.50909 7.570907-2.50909 7.570907-2.727272S7.374543-2.945454 7.189089-2.945454H1.287272C1.101818-2.945454 .905454-2.945454 .905454-2.727272S1.101818-2.50909 1.287272-2.50909H7.189089Z'/>
+<path id='asymptote-77-5-g1-86' d='M2.945454-.938182C3.10909-2.279999 3.10909-3.261817 3.10909-3.425454C3.10909-4.199999 3.10909-7.450907 1.123636-7.450907C.752727-7.450907 .370909-7.145453 .370909-6.992725C.370909-6.916362 .425454-6.916362 .578182-6.905453C2.170908-6.763634 2.301818-4.265453 2.301818-3.032726C2.301818-1.930909 2.159999-.621818 2.02909 .109091C2.007272 .24 2.007272 .261818 2.007272 .305454C2.007272 .36 2.007272 .490909 2.083636 .490909C2.203636 .490909 4.843635-1.527272 6.229089-3.632726C6.785453-4.483635 7.199998-5.454544 7.199998-6.185453C7.199998-7.112725 6.589089-7.450907 6.141816-7.450907C5.825453-7.450907 5.672726-6.763634 5.672726-6.621816C5.672726-6.45818 5.727271-6.45818 5.85818-6.447271C6.589089-6.359998 6.719998-5.781817 6.719998-5.519998C6.719998-4.636362 4.821817-2.399999 2.945454-.938182Z'/>
+<path id='asymptote-77-5-g2-120' d='M3.643635-3.294545C3.70909-3.578181 3.959999-4.581817 4.723635-4.581817C4.77818-4.581817 5.039999-4.581817 5.269089-4.439999C4.963635-4.385453 4.745453-4.112726 4.745453-3.850908C4.745453-3.676363 4.865453-3.46909 5.159999-3.46909C5.399998-3.46909 5.749089-3.665454 5.749089-4.101817C5.749089-4.66909 5.105453-4.821817 4.734544-4.821817C4.101817-4.821817 3.719999-4.243635 3.58909-3.992726C3.316363-4.712726 2.727272-4.821817 2.410908-4.821817C1.276363-4.821817 .654545-3.414545 .654545-3.141817C.654545-3.032726 .763636-3.032726 .785454-3.032726C.872727-3.032726 .905454-3.054545 .927272-3.152726C1.298181-4.30909 2.018181-4.581817 2.38909-4.581817C2.596363-4.581817 2.978181-4.483635 2.978181-3.850908C2.978181-3.512726 2.792726-2.781817 2.38909-1.254545C2.214545-.578182 1.832727-.12 1.352727-.12C1.287272-.12 1.036363-.12 .807273-.261818C1.08-.316364 1.32-.545454 1.32-.850909C1.32-1.145454 1.08-1.232727 .916363-1.232727C.589091-1.232727 .316364-.949091 .316364-.6C.316364-.098182 .861818 .12 1.341818 .12C2.061818 .12 2.454545-.643636 2.487272-.709091C2.618181-.305454 3.010908 .12 3.665454 .12C4.78909 .12 5.410908-1.287272 5.410908-1.56C5.410908-1.66909 5.312726-1.66909 5.279999-1.66909C5.181817-1.66909 5.159999-1.625454 5.13818-1.54909C4.77818-.381818 4.036363-.12 3.687272-.12C3.261817-.12 3.087272-.469091 3.087272-.84C3.087272-1.08 3.152726-1.32 3.272726-1.799999L3.643635-3.294545Z'/>
+<path id='asymptote-77-5-g2-121' d='M5.301817-4.156362C5.345453-4.30909 5.345453-4.330908 5.345453-4.407271C5.345453-4.603635 5.192726-4.701817 5.02909-4.701817C4.919999-4.701817 4.745453-4.636362 4.647271-4.472726C4.625453-4.418181 4.538181-4.079999 4.494544-3.883635C4.418181-3.599999 4.341817-3.305454 4.276362-3.010908L3.785453-1.047272C3.741817-.883636 3.272726-.12 2.552727-.12C1.996363-.12 1.876363-.6 1.876363-1.003636C1.876363-1.505454 2.061818-2.181818 2.432727-3.141817C2.607272-3.58909 2.650908-3.70909 2.650908-3.927272C2.650908-4.418181 2.301818-4.821817 1.756363-4.821817C.72-4.821817 .316364-3.239999 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.054545 .621818-3.22909C.916363-4.254544 1.352727-4.581817 1.723636-4.581817C1.810909-4.581817 1.996363-4.581817 1.996363-4.232726C1.996363-3.959999 1.887272-3.676363 1.810909-3.46909C1.374545-2.312727 1.178181-1.690909 1.178181-1.178181C1.178181-.207273 1.865454 .12 2.50909 .12C2.934545 .12 3.305454-.065455 3.610908-.370909C3.46909 .196364 3.338181 .730909 2.901817 1.309091C2.618181 1.68 2.203636 1.996363 1.701818 1.996363C1.54909 1.996363 1.058182 1.963636 .872727 1.538181C1.047272 1.538181 1.189091 1.538181 1.341818 1.407272C1.450909 1.309091 1.56 1.167272 1.56 .96C1.56 .621818 1.265454 .578182 1.156363 .578182C.905454 .578182 .545454 .752727 .545454 1.287272C.545454 1.832727 1.025454 2.236363 1.701818 2.236363C2.825454 2.236363 3.94909 1.243636 4.254544 .010909L5.301817-4.156362Z'/>
+</defs>
+<g id='asymptote-77-5-page1'>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M63.0977 134.877V.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='173.078708' y='185.352794' href='#asymptote-77-5-g2-121'/>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M.250937 125.681H142.013' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='253.126748' y='312.237085' href='#asymptote-77-5-g2-120'/>
+</g>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M123.961 7.5478C123.743 8.39371 123.524 9.23934 123.304 10.0847C122.89 11.6745 122.472 13.2633 122.05 14.851C121.636 16.4075 121.218 17.9628 120.796 19.517C120.382 21.0401 119.964 22.562 119.541 24.0827C119.128 25.5723 118.709 27.0608 118.287 28.548C117.873 30.0043 117.455 31.4593 117.033 32.913C116.619 34.3358 116.201 35.7574 115.778 37.1776C115.365 38.5671 114.947 39.9552 114.524 41.3419C114.111 42.698 113.693 44.0527 113.27 45.4058C112.856 46.7285 112.438 48.0498 112.015 49.3694C111.602 50.6588 111.184 51.9466 110.761 53.2327C110.348 54.4886 109.93 55.743 109.507 56.9956C109.094 58.2182 108.676 59.4391 108.253 60.6582C107.84 61.8474 107.422 63.0349 106.998 64.2204C106.585 65.3763 106.167 66.5303 105.744 67.6823C105.331 68.8048 104.913 69.9254 104.49 71.0438C104.077 72.133 103.659 73.2201 103.235 74.305C102.823 75.3608 102.405 76.4145 101.981 77.4658C101.569 78.4884 101.151 79.5086 100.727 80.5263C100.315 81.5155 99.8966 82.5024 99.4724 83.4865C99.0604 84.4424 98.6425 85.3958 98.2181 86.3463C97.8063 87.2689 97.3883 88.1889 96.9638 89.1058C96.5521 89.9951 96.1342 90.8816 95.7095 91.7649C95.2979 92.621 94.88 93.474 94.4552 94.3237C94.0438 95.1465 93.6259 95.9661 93.2009 96.7821C92.7897 97.5717 92.3718 98.3579 91.9466 99.1402C91.5355 99.8966 91.1176 100.649 90.6923 101.398C90.2814 102.121 89.8635 102.841 89.438 103.555C89.0272 104.245 88.6094 104.931 88.1837 105.612C87.7731 106.269 87.3552 106.922 86.9294 107.569C86.5189 108.193 86.1011 108.812 85.6751 109.425C85.2648 110.016 84.847 110.602 84.4208 111.181C84.0106 111.739 83.5928 112.292 83.1665 112.837C82.7564 113.362 82.3386 113.881 81.9122 114.393C81.5022 114.884 81.0844 115.37 80.6579 115.847C80.248 116.307 79.8302 116.759 79.4036 117.202C78.9937 117.628 78.5759 118.047 78.1493 118.456C77.7394 118.85 77.3215 119.235 76.895 119.61C76.485 119.971 76.0671 120.323 75.6407 120.664C75.2306 120.992 74.8126 121.31 74.3864 121.617C73.976 121.913 73.558 122.198 73.1321 122.47C72.7213 122.733 72.3033 122.985 71.8778 123.223C71.4665 123.453 71.0484 123.671 70.6235 123.875C70.2116 124.073 69.7934 124.257 69.3692 124.427C68.9565 124.592 68.5382 124.743 68.1149 124.878C67.7012 125.011 67.2829 125.128 66.8606 125.23C66.4458 125.329 66.0274 125.413 65.6063 125.481C65.1903 125.547 64.7719 125.597 64.352 125.631C63.9347 125.664 63.5163 125.681 63.0977 125.681S62.2606 125.664 61.8434 125.631C61.4234 125.597 61.005 125.547 60.5891 125.481C60.1679 125.413 59.7495 125.329 59.3347 125.23C58.9124 125.128 58.4941 125.011 58.0804 124.878C57.6571 124.743 57.2389 124.592 56.8261 124.427C56.4019 124.257 55.9838 124.073 55.5718 123.875C55.1469 123.671 54.7288 123.453 54.3175 123.223C53.892 122.985 53.474 122.733 53.0632 122.47C52.6373 122.198 52.2193 121.913 51.8089 121.617C51.3827 121.31 50.9648 120.992 50.5546 120.664C50.1282 120.323 49.7103 119.971 49.3003 119.61C48.8738 119.235 48.4559 118.85 48.046 118.456C47.6194 118.047 47.2016 117.628 46.7917 117.202C46.3652 116.759 45.9473 116.307 45.5374 115.847C45.1109 115.37 44.6931 114.884 44.2831 114.393C43.8567 113.881 43.4389 113.362 43.0288 112.837C42.6025 112.292 42.1847 111.739 41.7745 111.181C41.3484 110.602 40.9305 110.016 40.5202 109.425C40.0942 108.812 39.6764 108.193 39.2659 107.569C38.8401 106.922 38.4222 106.269 38.0116 105.612C37.5859 104.931 37.1681 104.245 36.7573 103.555C36.3318 102.841 35.9139 102.121 35.503 101.398C35.0777 100.649 34.6598 99.8966 34.2487 99.1402C33.8235 98.3579 33.4057 97.5717 32.9944 96.7821C32.5694 95.9661 32.1515 95.1465 31.7401 94.3237C31.3153 93.474 30.8974 92.621 30.4858 91.7649C30.0611 90.8816 29.6432 89.9951 29.2315 89.1058C28.807 88.1889 28.3891 87.2689 27.9772 86.3463C27.5528 85.3958 27.1349 84.4424 26.7229 83.4865C26.2987 82.5024 25.8807 81.5155 25.4686 80.5263C25.0445 79.5086 24.6266 78.4884 24.2143 77.4658C23.7904 76.4145 23.3724 75.3608 22.96 74.305C22.5362 73.2201 22.1182 72.133 21.7057 71.0438C21.282 69.9254 20.864 68.8048 20.4514 67.6823C20.0278 66.5303 19.6099 65.3763 19.1971 64.2204C18.7736 63.0349 18.3557 61.8474 17.9428 60.6582C17.5195 59.4391 17.1015 58.2182 16.6884 56.9956C16.2653 55.743 15.8473 54.4886 15.4341 53.2327C15.0111 51.9466 14.5931 50.6588 14.1798 49.3694C13.7569 48.0498 13.3389 46.7285 12.9255 45.4058C12.5027 44.0527 12.0847 42.698 11.6712 41.3419C11.2485 39.9552 10.8305 38.5671 10.4169 37.1776C9.99426 35.7574 9.57625 34.3358 9.16263 32.913C8.74004 31.4593 8.32203 30.0043 7.90833 28.548C7.48583 27.0608 7.06782 25.5723 6.65402 24.0827C6.23161 22.562 5.81359 21.0401 5.39972 19.517C4.97739 17.9628 4.55937 16.4075 4.14542 14.851C3.72316 13.2633 3.30513 11.6745 2.89112 10.0847C2.67098 9.23934 2.45198 8.39371 2.23407 7.5478' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M125.813 .250938C124.984 1.74421 124.152 3.23547 123.317 4.72469C122.882 5.49879 122.447 6.27234 122.011 7.04532L125.914 8.05074C125.905 7.15827 125.896 6.26582 125.886 5.37338C125.865 3.66585 125.841 1.95836 125.813 .250938Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M125.813 .250938C124.984 1.74421 124.152 3.23547 123.317 4.72469C122.882 5.49879 122.447 6.27234 122.011 7.04532L125.914 8.05074C125.905 7.15827 125.896 6.26582 125.886 5.37338C125.865 3.66585 125.841 1.95836 125.813 .250938Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M.38251 .250938C.353271 1.95834 .328194 3.66582 .307279 5.37335C.296343 6.26612 .286545 7.15891 .277931 8.0517L4.18841 7.04435C3.75151 6.2713 3.31562 5.49767 2.88071 4.72349C2.04435 3.23467 1.21161 1.74382 .38251 .250938Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<path d='M.38251 .250938C.353271 1.95834 .328194 3.66582 .307279 5.37335C.296343 6.26612 .286545 7.15891 .277931 8.0517L4.18841 7.04435C3.75151 6.2713 3.31562 5.49767 2.88071 4.72349C2.04435 3.23467 1.21161 1.74382 .38251 .250938Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='209.475985' y='295.669468' href='#asymptote-77-5-g1-86'/>
+<use x='217.057849' y='295.669468' href='#asymptote-77-5-g4-40'/>
+<use x='221.300287' y='295.669468' href='#asymptote-77-5-g2-121'/>
+<use x='229.464416' y='295.669468' href='#asymptote-77-5-g1-0'/>
+<use x='240.37349' y='295.669468' href='#asymptote-77-5-g2-120'/>
+<use x='246.608344' y='291.71065' href='#asymptote-77-5-g3-50'/>
+<use x='251.340658' y='295.669468' href='#asymptote-77-5-g4-41'/>
+</g>
+<use x='246.964493' y='208.153841' href='#asymptote-77-5-g0-65'/>
+<use x='254.879279' y='204.195023' href='#asymptote-77-5-g3-50'/>
+<g transform='translate(119.271 179.07)scale(.996264)'>
+<circle cx='63.0977' cy='125.681' fill="var(--asymptote-color-00c000)" r='2.25844'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div id="S8.p3" class="ltx_para">
+<p class="ltx_p">Unfortunately, as a variety, it is just a single point!
+However, we want to think of this as a “double point”:
+after all, in some sense it has multiplicity <math id="S8.p3.m1" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>.
+You can detect this when you look at the ideals:</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="(y-x^{2})+(y)=(x^{2},y)" display="block"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and thus, if we blithely ignore taking the radical, we get</p>
+<div class="table-container"><table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="\mathbb{C}[x,y]/(x^{2},y)\cong\mathbb{C}[\varepsilon]/(\varepsilon^{2})." display="block"><mrow><mrow><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>ε</mi><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>ε</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So the ideals in question are noticing the presence of a double point.</p>
+</div>
+<div id="S8.p4" class="ltx_para">
+<p class="ltx_p">In order to encapsulate this, we need a more refined object than
+a variety, which (at the end of the day) is just a set of points;
+it’s not possible using topology along to encode more information
+(there is only one topology on a single point!).
+This refined object is the <em class="ltx_emph ltx_font_italic">scheme</em>.</p>
+</div>
+</section>
+<section id="S9" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">77.9 </span>A few harder problems to think about</h2>
+<span id="todo25" class="ltx_note ltx_role_todo"><sup class="ltx_note_mark">25</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">25</sup><span class="ltx_note_type">todo: </span><span class="ltx_tag ltx_tag_note">25</span>some actual computation here would be good</span></span></span>
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 77A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Show that <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="I\subseteq\sqrt{I}" display="inline"><mrow><mi>I</mi><mo>⊆</mo><msqrt><mi>I</mi></msqrt></mrow></math> and <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="\sqrt{I}\cap\sqrt{J}=\sqrt{IJ}\subseteq\sqrt{I\cap J}" display="inline"><mrow><mrow><msqrt><mi>I</mi></msqrt><mo>∩</mo><msqrt><mi>J</mi></msqrt></mrow><mo>=</mo><msqrt><mrow><mi>I</mi><mo>⁢</mo><mi>J</mi></mrow></msqrt><mo>⊆</mo><msqrt><mrow><mi>I</mi><mo>∩</mo><mi>J</mi></mrow></msqrt></mrow></math>, for two ideals
+<math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> and <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math>.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 77B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Show that a <em class="ltx_emph ltx_font_italic">real</em> affine variety <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="V\subseteq\mathbb{A}_{\mathbb{R}}^{n}" display="inline"><mrow><mi>V</mi><mo>⊆</mo><msubsup><mi>𝔸</mi><mi>ℝ</mi><mi>n</mi></msubsup></mrow></math>
+can always be written in the form <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="\mathcal{V}(f)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+
+Squares are nonnegative.
+
+
+If <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="V=\mathcal{V}(I)" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> with <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="I=(f_{1},\dots,f_{m})" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+(as usual there are finitely many polynomials since <math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="\mathbb{R}[x_{1},\dots,x_{n}]" display="inline"><mrow><mi>ℝ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math> is Noetherian)
+then we can take <math id="Thmproblem2.p1.m6" class="ltx_Math" alttext="f=f_{1}^{2}+\dots+f_{m}^{2}" display="inline"><mrow><mi>f</mi><mo>=</mo><mrow><msubsup><mi>f</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msubsup><mi>f</mi><mi>m</mi><mn>2</mn></msubsup></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="prob:complex_variety_nonempty" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 77C</span></span><span class="ltx_text ltx_font_bold"> </span>(Complex varieties can’t be empty)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Prove that if <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is a proper ideal in <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="\mathbb{C}[x_{1},\dots,x_{n}]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math>
+then <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="\mathcal{V}(I)\neq\varnothing" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mi mathvariant="normal">∅</mi></mrow></math>.
+
+This is actually an equivalent formulation
+of the Weak Nullstellensatz.
+
+
+Let <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> be an ideal, and let <math id="Thmproblem3.p1.m5" class="ltx_Math" alttext="\mathfrak{m}" display="inline"><mi>𝔪</mi></math> be a maximal ideal contained in it.
+(If you are worried about the existence of <math id="Thmproblem3.p1.m6" class="ltx_Math" alttext="\mathfrak{m}" display="inline"><mi>𝔪</mi></math>,
+it follows from Krull’s Theorem, <a href="../absalg/flavors-rings.html#prob:krull_max_ideal" title="Problem 5E (Krull’s theorem). ‣ 5.8 A few harder problems to think about ‣ Chapter 5 Flavors of rings ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">5E</span></a>).
+Then <math id="Thmproblem3.p1.m7" class="ltx_Math" alttext="\mathfrak{m}=(x_{1}-a_{1},\dots,x_{n}-a_{n})" display="inline"><mrow><mi>𝔪</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math> by Weak Nullstellensatz.
+Consequently, <math id="Thmproblem3.p1.m8" class="ltx_Math" alttext="(a_{1},\dots,a_{n})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></math> is the unique point of <math id="Thmproblem3.p1.m9" class="ltx_Math" alttext="\mathcal{V}(\mathfrak{m})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>𝔪</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+and hence this point is also in <math id="Thmproblem3.p1.m10" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="prob:hilbert_from_weak" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 77D</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem4.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem4.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem4.p1.g2" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem4.p2" class="ltx_para">
+<p class="ltx_p">Show that Hilbert’s Nullstellensatz in <math id="Thmproblem4.p2.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> dimensions
+follows from the Weak Nullstellensatz.
+(This solution is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Rabinowitsch Trick</span>.)
+
+Use the weak Nullstellensatz on <math id="Thmproblem4.p2.m2" class="ltx_Math" alttext="n+1" display="inline"><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></math> dimensions.
+Given <math id="Thmproblem4.p2.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> vanishing on everything,
+consider <math id="Thmproblem4.p2.m4" class="ltx_Math" alttext="x_{n+1}f-1" display="inline"><mrow><mrow><msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⁢</mo><mi>f</mi></mrow><mo>−</mo><mn>1</mn></mrow></math>.
+
+
+The point is to check that if <math id="Thmproblem4.p2.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> vanishes on all of <math id="Thmproblem4.p2.m6" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+then <math id="Thmproblem4.p2.m7" class="ltx_Math" alttext="f\in\sqrt{I}" display="inline"><mrow><mi>f</mi><mo>∈</mo><msqrt><mi>I</mi></msqrt></mrow></math>.</p>
+</div>
+<div id="Thmproblem4.p3" class="ltx_para">
+<p class="ltx_p">Take a set of generators <math id="Thmproblem4.p3.m1" class="ltx_Math" alttext="f_{1},\dots,f_{m}" display="inline"><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub></mrow></math>,
+in the original ring <math id="Thmproblem4.p3.m2" class="ltx_Math" alttext="\mathbb{C}[x_{1},\dots,x_{n}]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math>;
+we may assume it’s finite by the Hilbert basis theorem.</p>
+</div>
+<div id="Thmproblem4.p4" class="ltx_para">
+<p class="ltx_p">We’re going to do a trick now:
+consider <math id="Thmproblem4.p4.m1" class="ltx_Math" alttext="S=\mathbb{C}[x_{1},\dots,x_{n},x_{n+1}]" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math> instead.
+Consider the ideal <math id="Thmproblem4.p4.m2" class="ltx_Math" alttext="I^{\prime}\subseteq S" display="inline"><mrow><msup><mi>I</mi><mo>′</mo></msup><mo>⊆</mo><mi>S</mi></mrow></math> in the bigger ring
+generated by <math id="Thmproblem4.p4.m3" class="ltx_Math" alttext="\{f_{1},\dots,f_{m}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub><mo stretchy="false">}</mo></mrow></math> and the polynomial <math id="Thmproblem4.p4.m4" class="ltx_Math" alttext="x_{n+1}f-1" display="inline"><mrow><mrow><msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⁢</mo><mi>f</mi></mrow><mo>−</mo><mn>1</mn></mrow></math>.
+The point of the last guy is that its zero locus
+does not touch our copy <math id="Thmproblem4.p4.m5" class="ltx_Math" alttext="x_{n+1}=0" display="inline"><mrow><msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow></math> of <math id="Thmproblem4.p4.m6" class="ltx_Math" alttext="\mathbb{A}^{n}" display="inline"><msup><mi>𝔸</mi><mi>n</mi></msup></math>
+nor any point in the “projection” of <math id="Thmproblem4.p4.m7" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> through <math id="Thmproblem4.p4.m8" class="ltx_Math" alttext="\mathbb{A}^{n+1}" display="inline"><msup><mi>𝔸</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></math>
+(one can think of this as <math id="Thmproblem4.p4.m9" class="ltx_Math" alttext="\mathcal{V}(I)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math> in the smaller ring
+direct multiplied with <math id="Thmproblem4.p4.m10" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>).
+Thus <math id="Thmproblem4.p4.m11" class="ltx_Math" alttext="\mathcal{V}(I^{\prime})=\varnothing" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>I</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>, and by the weak Nullstellensatz
+we in fact have <math id="Thmproblem4.p4.m12" class="ltx_Math" alttext="I^{\prime}=\mathbb{C}[x_{1},\dots,x_{n+1}]" display="inline"><mrow><msup><mi>I</mi><mo>′</mo></msup><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+So</p>
+<div class="table-container"><table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="1=g_{1}f_{1}+\dots+g_{m}f_{m}+g_{m+1}\left(x_{n+1}f-1\right)." display="block"><mrow><mrow><mn>1</mn><mo>=</mo><mrow><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>f</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>g</mi><mi>m</mi></msub><mo>⁢</mo><msub><mi>f</mi><mi>m</mi></msub></mrow><mo>+</mo><mrow><msub><mi>g</mi><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⁢</mo><mi>f</mi></mrow><mo>−</mo><mn>1</mn></mrow><mo>)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Now the hack: <span class="ltx_text ltx_font_bold">replace every instance of <math id="Thmproblem4.p4.m13" class="ltx_Math" alttext="x_{n+1}" display="inline"><msub><mi>x</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math> by <math id="Thmproblem4.p4.m14" class="ltx_Math" alttext="\frac{1}{f}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mi>f</mi></mfrac></math></span>,
+and then clear all denominators.
+Thus for some large enough integer <math id="Thmproblem4.p4.m15" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> we can get</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="f^{N}=f^{N}(g_{1}f_{1}+\dots+g_{m}f_{m})" display="block"><mrow><msup><mi>f</mi><mi>N</mi></msup><mo>=</mo><mrow><msup><mi>f</mi><mi>N</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>f</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>g</mi><mi>m</mi></msub><mo>⁢</mo><msub><mi>f</mi><mi>m</mi></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which eliminates any fractional powers of <math id="Thmproblem4.p4.m16" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> in the right-hand side.
+It follows that <math id="Thmproblem4.p4.m17" class="ltx_Math" alttext="f^{N}\in I" display="inline"><mrow><msup><mi>f</mi><mi>N</mi></msup><mo>∈</mo><mi>I</mi></mrow></math>.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../algtop2/application-of-cohomology.html">Previous chapter: Application of cohomology</a><br />
+<a href="../ag1/affine-varieties-ringed-spaces.html">Next chapter: Affine varieties as ringed spaces</a>
+</nav>
+
+		</main>
+	</body>
+</html>

@@ -1,0 +1,1151 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 7 Topological spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="ch_metric_properties.html" title="Chapter 6 Properties of metric spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="next" href="ch_compactness.html" title="Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_metric_properties.html" title="Chapter 6 Properties of metric spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_compactness.html" title="Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_startout/" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_linalg/" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_calc/" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_measure/" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_diffgeo/" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop1/" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st2/" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">III </span>Basic Topology</span></a><a href="ch_metric_properties.html" title="In Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">6 </span>Properties of metric spaces</span></a><a href="ch_compactness.html" title="In Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">8 </span>Compactness</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 7 </span>Topological spaces</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">In <a href="../part_startout/ch_metric_space.html" title="Chapter 2 Metric spaces ‣ Part I Starting Out ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Chapter</span> <span class="ltx_text ltx_ref_tag">2</span></a> we introduced the notion
+of space by describing metrics on them.
+This gives you a lot of examples, and nice intuition,
+and tells you how you should draw pictures of open and closed sets.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">However, moving forward, it will be useful to begin
+thinking about topological spaces in terms of just their <em class="ltx_emph ltx_font_italic">open sets</em>.
+(One motivation is that our fishy <a href="ch_metric_properties.html#ex:fishy" title="Example 6.3.1 (Something fishy is going on here) ‣ 6.3 Let the buyer beware ‣ Chapter 6 Properties of metric spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Example</span> <span class="ltx_text ltx_ref_tag">6.3.1</span></a> shows that
+in some ways the notion of homeomorphism really wants
+to be phrased in terms of open sets, not in terms of the metric.)
+As we are going to see, the open sets manage to actually retain
+nearly all the information we need, but are simpler.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>The
+reason I adamantly introduce metric spaces first
+is because I think otherwise the examples make much less sense.</span></span></span>
+This will be done in just a few sections,
+and after that we will start describing more adjectives
+that we can apply to topological (and hence metric) spaces.</p>
+</div>
+<div id="p3" class="ltx_para">
+<p class="ltx_p">The most important topological notion is missing from this chapter:
+that of a <em class="ltx_emph ltx_font_italic">compact</em> space.
+It is so important that I have dedicated a separate chapter just for it.</p>
+</div>
+<div id="p4" class="ltx_para">
+<p class="ltx_p">Quick note for those who care:
+the adjectives “Hausdorff”, “connected”,
+and later “compact” are all absolute adjectives.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.1 </span>Forgetting the metric</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Recall <a href="../part_startout/ch_metric_space.html#thm:open_set" title="Theorem 2.6.11 (Open set condition) ‣ 2.6 Open sets ‣ Chapter 2 Metric spaces ‣ Part I Starting Out ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">2.6.11</span></a>:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">A function <math id="S1.p1.m1" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> of metric spaces is continuous
+if and only if the pre-image of every open set in <math id="S1.p1.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> is open in <math id="S1.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</blockquote>
+<p class="ltx_p">Despite us having defined this in the context of metric spaces,
+this nicely doesn’t refer to the metric at all,
+only the open sets.
+As alluded to at the start of this chapter,
+this is a great motivation for how we can forget
+about the fact that we had a metric to begin with,
+and rather <em class="ltx_emph ltx_font_italic">start</em> with the open sets instead.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> topological space</span> is a pair <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="(X,\mathcal{T})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi class="ltx_font_mathcaligraphic">𝒯</mi><mo stretchy="false">)</mo></mrow></math>,
+where <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is a set of points,
+and <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math> is the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> topology</span>,
+which consists of several subsets of <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, called the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> open sets</span> of <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+The topology must obey the following axioms.</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\varnothing" display="inline"><mi mathvariant="normal">∅</mi></math> and <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> are both in <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Finite intersections of open sets are also in <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Arbitrary unions (possibly infinite) of open sets are also in <math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">So this time, the open sets are <em class="ltx_emph ltx_font_italic">given</em>.
+Rather than defining a metric and getting open sets from the metric,
+we instead start from just the open sets.</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_abuse">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 7.1.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We abbreviate <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="(X,\mathcal{T})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi class="ltx_font_mathcaligraphic">𝒯</mi><mo stretchy="false">)</mo></mrow></math> by just <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>,
+leaving the topology <math id="S1.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math> implicit.
+(Do you see a pattern here?)</p>
+</div>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 7.1.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of topologies)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S1.I2" class="ltx_enumerate">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">Given a metric space <math id="S1.I2.i1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, we can let <math id="S1.I2.i1.p1.m2" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math> be
+the open sets in the metric sense.
+The point is that the axioms are satisfied.</p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">In particular, <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> discrete space</span>
+is a topological space in which every set is open. (Why?)</p>
+</div>
+</li>
+<li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">Given <math id="S1.I2.i3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, we can let <math id="S1.I2.i3.p1.m2" class="ltx_Math" alttext="\mathcal{T}=\left\{\varnothing,X\right\}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒯</mi><mo>=</mo><mrow><mo>{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mi>X</mi><mo>}</mo></mrow></mrow></math>,
+the opposite extreme of the discrete space.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Now we can port over our metric definitions.</p>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.1.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">An <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> open neighborhood<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note"><span class="ltx_text ltx_font_medium" style="color:#000000;">2</span></span><span class="ltx_text ltx_font_medium" style="color:#000000;">In literature,
+a “neighborhood” refers to a set
+which contains some open set around </span><math id="footnote2.m1" class="ltx_Math" alttext="x" display="inline"><mi mathcolor="#000000">x</mi></math><span class="ltx_text ltx_font_medium" style="color:#000000;">.
+We will not use this term,
+and exclusively refer to “open neighborhoods”.</span></span></span></span></span>
+of a point <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math> is an
+open set <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> which contains <math id="S1.Thmtheorem4.p1.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> (see figure).</p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(4cm);
+ΨΨbigblob("$X$");
+ΨΨpair p = Drawing("x", (0.3,0.1), dir(-90));
+ΨΨreal r = 1.55;
+ΨΨdraw(shift(p) * scale(1.6,1.2)*unitcircle, dashed);
+ΨΨlabel("$U$", p+r*dir(45), dir(45));
+Ψ
+</pre>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_abuse">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 7.1.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Just to be perfectly clear:
+by an “open neighborhood” I mean <em class="ltx_emph ltx_font_italic">any</em> open set containing <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>.
+But by an “<math id="S1.Thmtheorem5.p1.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhood” I always mean the
+points with distance less than <math id="S1.Thmtheorem5.p1.m3" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> from <math id="S1.Thmtheorem5.p1.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>,
+and so I can only use this term if my space is a metric space.</p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.2 </span>Re-definitions</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">Now that we’ve defined a topological space,
+for nearly all of our metric notions we can write down
+as the definition the one that required only open sets
+(which will of course agree with our old definitions
+when we have a metric space).</p>
+</div>
+<section id="S2.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">7.2.i </span>Continuity</h3>
+
+<div id="S2.SS1.p1" class="ltx_para">
+<p class="ltx_p">Here was our motivating example, continuity:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We say function <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> of topological spaces
+is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> continuous</span> at a point <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="p\in X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>X</mi></mrow></math> if the pre-image of any
+open neighborhood of <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="f(p)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> is an open neighborhood of <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+The function is continuous if it is continuous at every point.</p>
+</div>
+</div>
+<div id="S2.SS1.p2" class="ltx_para">
+<p class="ltx_p">Thus homeomorphism carries over:
+a bijection which is continuous in both directions.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.2.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> homeomorphism</span> of topological spaces
+<math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="(X,\tau_{X})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>τ</mi><mi>X</mi></msub><mo stretchy="false">)</mo></mrow></math> and <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="(Y,\tau_{Y})" display="inline"><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi>τ</mi><mi>Y</mi></msub><mo stretchy="false">)</mo></mrow></math>
+is a bijection <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math>
+which induces a bijection from <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\tau_{X}" display="inline"><msub><mi>τ</mi><mi>X</mi></msub></math> to <math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\tau_{Y}" display="inline"><msub><mi>τ</mi><mi>Y</mi></msub></math>:
+i.e. the bijection preserves open sets.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.2.3</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that this is equivalent to <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and its inverse
+both being continuous.</span></p>
+</div>
+</div>
+<div id="S2.SS1.p3" class="ltx_para">
+<p class="ltx_p">Therefore, any property defined only in
+terms of open sets is preserved by homeomorphism.
+Such a property is called a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> topological property</span>.
+The later adjectives we define
+(“connected”, “Hausdorff”, “compact”) will all be defined
+only in terms of open sets, so they will be topological properties.</p>
+</div>
+</section>
+<section id="S2.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">7.2.ii </span>Closed sets</h3>
+
+<div id="S2.SS2.p1" class="ltx_para">
+<p class="ltx_p">We saw last time there were two equivalent definitions
+for closed sets, but one of them relies only on open sets, and we use it:</p>
+</div>
+<div id="def:closure" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.2.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">In a general topological space <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, we say that <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="S\subseteq X" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>X</mi></mrow></math> is
+<span class="ltx_text ltx_font_bold" style="color:#0000FF;"> closed</span> in <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> if the complement <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="X\setminus S" display="inline"><mrow><mi>X</mi><mo>∖</mo><mi>S</mi></mrow></math> is open in <math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.</p>
+</div>
+<div id="S2.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">If <math id="S2.Thmtheorem4.p2.m1" class="ltx_Math" alttext="S\subseteq X" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>X</mi></mrow></math> is any set, the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> closure</span> of <math id="S2.Thmtheorem4.p2.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>,
+denoted <math id="S2.Thmtheorem4.p2.m3" class="ltx_Math" alttext="\overline{S}" display="inline"><mover accent="true"><mi>S</mi><mo>¯</mo></mover></math>,
+is defined as the smallest closed set containing <math id="S2.Thmtheorem4.p2.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.</p>
+</div>
+</div>
+<div id="S2.SS2.p2" class="ltx_para">
+<p class="ltx_p">Thus for general topological spaces,
+open and closed sets carry the same information,
+and it is entirely a matter of taste whether we define everything in terms
+of open sets or closed sets.
+In particular, you can translate axioms and properties of open sets to closed ones:</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.2.5</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that the (possibly infinite) intersection of closed sets is closed
+while the union of finitely many closed sets is closed.
+(Look at complements.)</span></p>
+</div>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 7.2.6</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that a function is continuous if and only if the pre-image
+of every closed set is closed.</span></p>
+</div>
+</div>
+<div id="S2.SS2.p3" class="ltx_para">
+<p class="ltx_p">Mathematicians seem to have agreed that they like open sets better.</p>
+</div>
+</section>
+<section id="S2.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">7.2.iii </span>Properties that don’t carry over</h3>
+
+<div id="S2.SS3.p1" class="ltx_para">
+<p class="ltx_p">Not everything works:</p>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 7.2.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Complete and (totally) bounded are metric properties)</span> — </span>
+</h6>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">The two metric properties we have seen,
+“complete” and “(totally) bounded”,
+are not topological properties.
+They rely on a metric,
+so as written we cannot apply them to topological spaces.
+One might hope that maybe,
+there is some alternate definition (like we saw for “continuous function”)
+that is just open-set based.
+But <a href="ch_metric_properties.html#ex:fishy" title="Example 6.3.1 (Something fishy is going on here) ‣ 6.3 Let the buyer beware ‣ Chapter 6 Properties of metric spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Example</span> <span class="ltx_text ltx_ref_tag">6.3.1</span></a> showing <math id="S2.Thmtheorem7.p1.m1" class="ltx_Math" alttext="(0,1)\cong\mathbb{R}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>≅</mo><mi>ℝ</mi></mrow></math>
+tells us that it is hopeless.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem8" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 7.2.8</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Sequences don’t work well)</span> — </span>
+</h6>
+<div id="S2.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">You could also try to port over the notion
+of sequences and convergent sequences.
+However, this turns out to break a lot of desirable properties.
+Therefore I won’t bother to do so,
+and thus if we are discussing sequences you should
+assume that we are working with a metric space.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.3 </span>Hausdorff spaces</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> Every space that’s not the Zariski topology (defined much later).</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">As you might have guessed,
+there exist topological spaces which cannot be realized
+as metric spaces (in other words, are not <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> metrizable</span>).
+One example is just to take <math id="S3.p2.m1" class="ltx_Math" alttext="X=\{a,b,c\}" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo stretchy="false">}</mo></mrow></mrow></math> and the topology
+<math id="S3.p2.m2" class="ltx_Math" alttext="\tau_{X}=\left\{\varnothing,\{a,b,c\}\right\}" display="inline"><mrow><msub><mi>τ</mi><mi>X</mi></msub><mo>=</mo><mrow><mo>{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mo stretchy="false">{</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo stretchy="false">}</mo></mrow><mo>}</mo></mrow></mrow></math>.
+This topology is fairly “stupid”:
+it can’t tell apart any of the points <math id="S3.p2.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, <math id="S3.p2.m4" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>, <math id="S3.p2.m5" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>!
+But any metric space can tell its points apart (because <math id="S3.p2.m6" class="ltx_Math" alttext="d(x,y)&gt;0" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></math> when <math id="S3.p2.m7" class="ltx_Math" alttext="x\neq y" display="inline"><mrow><mi>x</mi><mo>≠</mo><mi>y</mi></mrow></math>).</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">We’ll see less trivial examples later,
+but for now we want to add a little more sanity condition onto our spaces.
+There is a whole hierarchy of such axioms, labelled <math id="S3.p3.m1" class="ltx_Math" alttext="T_{n}" display="inline"><msub><mi>T</mi><mi>n</mi></msub></math> for
+integers <math id="S3.p3.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> (with <math id="S3.p3.m3" class="ltx_Math" alttext="n=0" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow></math> being the weakest and <math id="S3.p3.m4" class="ltx_Math" alttext="n=6" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>6</mn></mrow></math> the strongest);
+these axioms are called <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> separation axioms</span>.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">By far the most common hypothesis is the <math id="S3.p4.m1" class="ltx_Math" alttext="T_{2}" display="inline"><msub><mi>T</mi><mn>2</mn></msub></math> axiom,
+which bears a special name.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A topological space <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Hausdorff</span> if
+for any two distinct points <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> in <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>,
+there exists an open neighborhood <math id="S3.Thmtheorem1.p1.m5" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> of <math id="S3.Thmtheorem1.p1.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>
+and an open neighborhood <math id="S3.Thmtheorem1.p1.m7" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> of <math id="S3.Thmtheorem1.p1.m8" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> such that</p>
+<table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="U\cap V=\varnothing." display="block"><mrow><mrow><mrow><mi>U</mi><mo>∩</mo><mi>V</mi></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">In other words, around any two distinct points we should be
+able to draw disjoint open neighborhoods.
+Here’s a picture to go with above,
+but not much going on.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+Ψsize(5cm);
+Ψpair p = (-1.5,0);
+Ψpair q = ( 1.5,0);
+Ψfilldraw(CR(p,1), opacity(0.1)+lightcyan, blue+dashed);
+Ψfilldraw(CR(q,1), opacity(0.1)+lightred, red+dashed);
+Ψdot("$p$", p, dir(-90), blue);
+Ψdot("$q$", q, dir(-90), red);
+</pre>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.3.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that all metric spaces are Hausdorff.</span></p>
+</div>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">I just want to define this here so that I can use this word later.
+In any case, basically any space we will encounter other than
+the Zariski topology is Hausdorff.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.4 </span>Subspaces</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S4.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> is a subspace of <math id="S4.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>.</em></p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">One can also take subspaces of general topological spaces.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Given a topological space <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, and a subset <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="S\subseteq X" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>X</mi></mrow></math>,
+we can make <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> into a topological space
+by declaring that the open subsets of <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> are <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="U\cap S" display="inline"><mrow><mi>U</mi><mo>∩</mo><mi>S</mi></mrow></math> for open <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="U\subseteq X" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>X</mi></mrow></math>.
+This is called the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> subspace topology</span>.</p>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">So for example, if we view <math id="S4.p3.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> as a subspace of <math id="S4.p3.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>,
+then any open arc is an open set,
+because you can view it as the intersection of an open disk with <math id="S4.p3.m3" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math>.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(3cm);
+ΨΨdraw(unitcircle, black+1);
+ΨΨMP("S^1", dir(60), dir(60));
+ΨΨMP("\mathbb R^2", dir(-45)*1.2, dir(-45));
+ΨΨpair A = dir(-30);
+ΨΨpair B = dir(50);
+ΨΨdraw(CP(dir(10), A), dotted);
+ΨΨdraw(arc(origin,A,B), blue+2);
+ΨΨdotfactor *= 2;
+ΨΨopendot(A, blue);
+ΨΨopendot(B, blue);
+Ψ
+</pre>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Needless to say, for metric spaces it doesn’t matter
+which of these definitions I choose.
+(Proving this turns out to be surprisingly annoying, so I won’t do so.)</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.5 </span>Connected spaces</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S5.p1.m1" class="ltx_Math" alttext="[0,1]\cup[2,3]" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow></mrow></math> is disconnected.</em></p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">Even in metric spaces, it is possible for a set to be both open and closed.</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.5.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A subset <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> of a topological space <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> clopen</span> if it is both closed and open in <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+(Equivalently, both <math id="S5.Thmtheorem1.p1.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> and its complement are open.)</p>
+</div>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">For example <math id="S5.p3.m1" class="ltx_Math" alttext="\varnothing" display="inline"><mi mathvariant="normal">∅</mi></math> and the entire space are examples of clopen sets.
+In fact, the presence of a nontrivial clopen set other
+than these two leads to a so-called <em class="ltx_emph ltx_font_italic">disconnected</em> space.</p>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.5.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that a space <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> has a nontrivial clopen set (one other than <math id="S5.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\varnothing" display="inline"><mi mathvariant="normal">∅</mi></math> and <math id="S5.Thmtheorem2.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>)
+if and only if <math id="S5.Thmtheorem2.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> can be written as a disjoint union of two nonempty open sets.</span></p>
+</div>
+</div>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">We say <math id="S5.p4.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> disconnected</span> if there are nontrivial clopen sets,
+and <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> connected</span> otherwise.
+To see why this should be a reasonable definition,
+it might help to solve <a href="#prob:disconnected_better_def" title="Problem 7A. ‣ 7.9 A few harder problems to think about ‣ Chapter 7 Topological spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7A</span></a>.</p>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 7.5.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Disconnected and connected spaces)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S5.I1" class="ltx_enumerate">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The metric space</p>
+<table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\{(x,y)\mid x^{2}+y^{2}\leq 1\}\cup\{(x,y)\mid(x-4)^{2}+y^{2}\leq 1\}\subseteq%
+\mathbb{R}^{2}" display="block"><mrow><mrow><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>≤</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>≤</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow><mo>⊆</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is disconnected (it consists of two disks).</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The space <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="[0,1]\cup[2,3]" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow></mrow></math> is disconnected:
+it consists of two segments,
+each of which is a clopen set.</p>
+</div>
+</li>
+<li id="S5.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S5.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">A discrete space on more than one point is disconnected,
+since <em class="ltx_emph ltx_font_italic">every</em> set is clopen in the discrete space.</p>
+</div>
+</li>
+<li id="S5.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S5.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">Convince yourself that the set</p>
+<table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\left\{x\in\mathbb{Q}\mid x^{2}&lt;2014\right\}" display="block"><mrow><mo>{</mo><mrow><mi>x</mi><mo>∈</mo><mi>ℚ</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>&lt;</mo><mn>2014</mn></mrow><mo>}</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is a clopen subset of <math id="S5.I1.i4.p1.m1" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>.
+Hence <math id="S5.I1.i4.p1.m2" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> is disconnected too – it has <em class="ltx_emph ltx_font_italic">gaps</em>.</p>
+</div>
+</li>
+<li id="S5.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(e)</span> 
+<div id="S5.I1.i5.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i5.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is connected.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.6 </span>Path-connected spaces</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> Walking around in <math id="S6.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.</em></p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">A stronger and perhaps more intuitive notion
+of a connected space is a <em class="ltx_emph ltx_font_italic">path-connected</em> space.
+The short description: “walk around in the space”.</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.6.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> path</span> in the space <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is a continuous function</p>
+<table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\gamma\colon[0,1]\to X." display="block"><mrow><mrow><mi>γ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Its <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> endpoints</span> are the two points <math id="S6.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\gamma(0)" display="inline"><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S6.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\gamma(1)" display="inline"><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">You can think of <math id="S6.p3.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> as measuring “time”, and so we’ll often write <math id="S6.p3.m2" class="ltx_Math" alttext="\gamma(t)" display="inline"><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+for <math id="S6.p3.m3" class="ltx_Math" alttext="t\in[0,1]" display="inline"><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math> (with <math id="S6.p3.m4" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math> standing for “time”).
+Here’s a picture of a path.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨbigblob("$X$");
+ΨΨpair A = Drawing("\gamma(0)", (-3,-1));
+ΨΨpair B = Drawing("\gamma(1)", (2,1), dir(90));
+ΨΨpath p = A..(-2,0)..(0,2)..(1,0)..B;
+ΨΨdraw(p, EndArrow);
+ΨΨMP("\gamma", midpoint(p), dir(90));
+Ψ
+</pre>
+</div>
+<div id="S6.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.6.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Why does this agree with your intuitive notion of what a “path” is?</span></p>
+</div>
+</div>
+<div id="S6.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.6.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S6.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">A space <math id="S6.Thmtheorem3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> path-connected</span> if
+any two points in it are connected by some path.</p>
+</div>
+</div>
+<div id="S6.Thmtheorem4" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 7.6.4</span></span><span class="ltx_text ltx_font_bold"> </span>(Path-connected implies connected)
+<br class="ltx_break">
+</h6>
+<div id="S6.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let <math id="S6.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X=U\sqcup V" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mi>U</mi><mo>⊔</mo><mi>V</mi></mrow></mrow></math> be a disconnected space.
+Show that there is no path
+from a point of <math id="S6.Thmtheorem4.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> to point <math id="S6.Thmtheorem4.p1.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+(If <math id="S6.Thmtheorem4.p1.m4" class="ltx_Math" alttext="\gamma\colon[0,1]\to X" display="inline"><mrow><mi>γ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math>, then we get
+<math id="S6.Thmtheorem4.p1.m5" class="ltx_Math" alttext="[0,1]=\gamma^{\text{pre}}(U)\sqcup\gamma^{\text{pre}}(V)" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo>=</mo><mrow><mrow><msup><mi>γ</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊔</mo><mrow><msup><mi>γ</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>,
+but <math id="S6.Thmtheorem4.p1.m6" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is connected.)</span></p>
+</div>
+</div>
+<div id="S6.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 7.6.5</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of path-connected spaces)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ul id="S6.I1" class="ltx_itemize">
+<li id="S6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S6.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> is path-connected,
+since we can “connect” any two points with a straight line.</p>
+</div>
+</li>
+<li id="S6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The unit circle <math id="S6.I1.i2.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> is path-connected, since
+we can just draw the major or minor arc to connect two points.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sec:meteor" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.7 </span>Homotopy and simply connected spaces</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S7.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> and <math id="S7.p1.m2" class="ltx_Math" alttext="\mathbb{C}\setminus\{0\}" display="inline"><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math>.</em></p>
+</div>
+<div id="S7.p2" class="ltx_para">
+<p class="ltx_p">Now let’s motivate the idea of homotopy.
+Consider the example of the complex plane <math id="S7.p2.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> (which you can
+think of just as <math id="S7.p2.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>) with two points <math id="S7.p2.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S7.p2.m4" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>.
+There’s a whole bunch of paths from <math id="S7.p2.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S7.p2.m6" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> but somehow
+they’re not very different from one another.
+If I told you “walk from <math id="S7.p2.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S7.p2.m8" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>” you wouldn’t have too many questions.</p>
+</div>
+<div id="S7.p3" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨunitsize(0.8cm);
+ΨΨbigbox("$\mathbb C$");
+ΨΨpair A = Drawing("p", (-3,0), dir(180));
+ΨΨpair B = Drawing("q", (3,0), dir(0));
+ΨΨdraw(A..(-2,0.5)..(0,2)..(1,1.2)..B, red, EndArrow(TeXHead));
+ΨΨdraw(A--B, mediumgreen, EndArrow(TeXHead));
+ΨΨdraw(A--(-1,-1)--(2,-1)--B, blue, EndArrow(TeXHead));
+ΨΨ// draw(A..(1.5,-2)..(-1.5,-2)..B, orange, EndArrow(TeXHead));
+Ψ
+</pre>
+</div>
+<div id="S7.p4" class="ltx_para">
+<p class="ltx_p">So we’re living happily in <math id="S7.p4.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> until a meteor strikes the origin,
+blowing it out of existence.
+Then suddenly to get from <math id="S7.p4.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S7.p4.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>, people might tell you two different things:
+“go left around the meteor” or “go right around the meteor”.</p>
+</div>
+<div id="S7.p5" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨunitsize(0.8cm);
+ΨΨbigbox("$\mathbb C \setminus \{0\}$");
+ΨΨpair A = Drawing("p", (-3,0), dir(180));
+ΨΨpair B = Drawing("q", (3,0), dir(0));
+ΨΨdraw(A..(-2,0.5)..(0,2)..(1,1.2)..B, red, EndArrow(TeXHead));
+ΨΨdraw(A--(-1,-1)--(2,-1)--B, blue, EndArrow(TeXHead));
+ΨΨfilldraw(scale(0.5)*unitcircle, grey, black);
+Ψ
+</pre>
+</div>
+<div id="S7.p6" class="ltx_para">
+<p class="ltx_p">So what’s happening?
+In the first picture, the red, green, and blue paths somehow all looked
+the same: if you imagine them as pieces of elastic string pinned down
+at <math id="S7.p6.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S7.p6.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>, you can stretch each one to any other one.</p>
+</div>
+<div id="S7.p7" class="ltx_para">
+<p class="ltx_p">But in the second picture,
+you can’t move the red string to match with the blue string:
+there’s a meteor in the way.
+The paths are actually different.<span id="footnote3" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup><span class="ltx_tag ltx_tag_note">3</span>If you know about winding numbers,
+you might feel this is familiar.
+We’ll talk more about this in the chapter on the fundamental group.</span></span></span></p>
+</div>
+<div id="S7.p8" class="ltx_para">
+<p class="ltx_p">The formal notion we’ll use to capture this is <em class="ltx_emph ltx_font_italic">homotopy equivalence</em>.
+We want to write a definition such that in the first picture,
+the three paths are all <em class="ltx_emph ltx_font_italic">homotopic</em>, but the two paths in the
+second picture are somehow not homotopic.
+And the idea is just continuous deformation.</p>
+</div>
+<div id="S7.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.7.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S7.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and <math id="S7.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math> be paths in <math id="S7.Thmtheorem1.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> whose endpoints coincide.
+A (path) <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> homotopy</span> from <math id="S7.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> to <math id="S7.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math> is a continuous function
+<math id="S7.Thmtheorem1.p1.m6" class="ltx_Math" alttext="F\colon[0,1]^{2}\to X" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mn>2</mn></msup><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math>, which we’ll write <math id="S7.Thmtheorem1.p1.m7" class="ltx_Math" alttext="F_{s}(t)" display="inline"><mrow><msub><mi>F</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math> for <math id="S7.Thmtheorem1.p1.m8" class="ltx_Math" alttext="s,t\in[0,1]" display="inline"><mrow><mrow><mi>s</mi><mo>,</mo><mi>t</mi></mrow><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math>,
+such that</p>
+<table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="F_{0}(t)=\alpha(t)\text{ and }F_{1}(t)=\beta(t)\text{ for all $t\in[0,1]$}" display="block"><mrow><mrow><msub><mi>F</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><msub><mi>F</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mtext> for all </mtext><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and moreover</p>
+<table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\alpha(0)=\beta(0)=F_{s}(0)\text{ and }\alpha(1)=\beta(1)=F_{s}(1)\text{ for %
+all $s\in[0,1]$}." display="block"><mrow><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>F</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>F</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mtext> for all </mtext><mrow><mi>s</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">If a path homotopy exists, we say <math id="S7.Thmtheorem1.p1.m9" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and <math id="S7.Thmtheorem1.p1.m10" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>
+are path <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> homotopic</span> and write <math id="S7.Thmtheorem1.p1.m11" class="ltx_Math" alttext="\alpha\simeq\beta" display="inline"><mrow><mi>α</mi><mo>≃</mo><mi>β</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S7.Thmtheorem2" class="ltx_theorem ltx_theorem_abuse">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 7.7.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S7.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">While I strictly should say “path homotopy” to describe this relation
+between two paths, I will shorten this to just “homotopy” instead.
+Similarly I will shorten “path homotopic” to “homotopic”.</p>
+</div>
+</div>
+<div id="S7.p9" class="ltx_para">
+<p class="ltx_p">Animated picture: <a href="https://commons.wikimedia.org/wiki/File:HomotopySmall.gif" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://commons.wikimedia.org/wiki/File:HomotopySmall.gif</a>.
+Needless to say, <math id="S7.p9.m1" class="ltx_Math" alttext="\simeq" display="inline"><mo>≃</mo></math> is an equivalence relation.</p>
+</div>
+<div id="S7.p10" class="ltx_para">
+<p class="ltx_p">What this definition is doing is taking <math id="S7.p10.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and “continuously deforming” it to <math id="S7.p10.m2" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>, while keeping the endpoints fixed.
+Note that for each particular <math id="S7.p10.m3" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math>, <math id="S7.p10.m4" class="ltx_Math" alttext="F_{s}" display="inline"><msub><mi>F</mi><mi>s</mi></msub></math> is itself a function.
+So <math id="S7.p10.m5" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> represents time as we deform <math id="S7.p10.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> to <math id="S7.p10.m7" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>:
+it goes from <math id="S7.p10.m8" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> to <math id="S7.p10.m9" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, starting at <math id="S7.p10.m10" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and ending at <math id="S7.p10.m11" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>.</p>
+</div>
+<div id="S7.p11" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(9cm);
+ΨΨbigbox("$\mathbb C$");
+ΨΨpair A = Drawing("p", (-3,0), dir(180));
+ΨΨpair B = Drawing("q", (3,0), dir(0));
+ΨΨdraw(A..MP("F_{0} = \alpha", (0,2), dir(45))..B, heavygreen);
+ΨΨdraw(A..MP("F_{0.25}", (0,1), dir(45))..B, mediumgreen);
+ΨΨdraw(A..MP("F_{0.5}", (0,0), dir(90))..B, palecyan);
+ΨΨdraw(A..MP("F_{0.75}", (0,-1), dir(-45))..B, mediumcyan);
+ΨΨdraw(A..MP("F_{1} = \beta", (0,-2), dir(-45))..B, heavycyan);
+ΨΨ// draw(A..(1.5,-2)..(-1.5,-2)..B, orange, EndArrow);
+Ψ
+</pre>
+</div>
+<div id="S7.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.7.3</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself the above definition is right.
+What goes wrong when the meteor strikes?</span></p>
+</div>
+</div>
+<div id="S7.p12" class="ltx_para">
+<p class="ltx_p">So now I can tell you what makes <math id="S7.p12.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> special:</p>
+</div>
+<div id="S7.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.7.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S7.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">A space <math id="S7.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> simply connected</span> if it’s path-connected and
+for any points <math id="S7.Thmtheorem4.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S7.Thmtheorem4.p1.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>, all paths from <math id="S7.Thmtheorem4.p1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S7.Thmtheorem4.p1.m5" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> are homotopic.</p>
+</div>
+</div>
+<div id="S7.p13" class="ltx_para">
+<p class="ltx_p">That’s why you don’t ask questions when walking from <math id="S7.p13.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S7.p13.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> in <math id="S7.p13.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>:
+there’s really only one way to walk. Hence the term “simply” connected.</p>
+</div>
+<div id="S7.Thmtheorem5" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.7.5</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself that <math id="S7.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> is simply connected for all <math id="S7.Thmtheorem5.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</span></p>
+</div>
+</div>
+</section>
+<section id="S8" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.8 </span>Bases of spaces</h2>
+
+<div id="S8.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S8.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> has a basis of open intervals, and <math id="S8.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> has a basis of open disks.</em></p>
+</div>
+<div id="S8.p2" class="ltx_para">
+<p class="ltx_p">You might have noticed that the open sets of <math id="S8.p2.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> are a little annoying to describe:
+the prototypical example of an open set is <math id="S8.p2.m2" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math>,
+but there are other open sets like</p>
+<table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="(0,1)\cup\left(1,\frac{3}{2}\right)\cup\left(2,\frac{7}{3}\right)\cup(2014,201%
+5)." display="block"><mrow><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>∪</mo><mrow><mo>(</mo><mn>1</mn><mo>,</mo><mfrac><mn>3</mn><mn>2</mn></mfrac><mo>)</mo></mrow><mo>∪</mo><mrow><mo>(</mo><mn>2</mn><mo>,</mo><mfrac><mn>7</mn><mn>3</mn></mfrac><mo>)</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">(</mo><mn>2014</mn><mo>,</mo><mn>2015</mn><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="S8.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.8.1</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S8.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check this is an open set.</span></p>
+</div>
+</div>
+<div id="S8.p3" class="ltx_para">
+<p class="ltx_p">But okay, this isn’t <em class="ltx_emph ltx_font_italic">that</em> different.
+All I’ve done is taken a bunch of my prototypes and threw a bunch of <math id="S8.p3.m1" class="ltx_Math" alttext="\cup" display="inline"><mo>∪</mo></math> signs at it.
+And that’s the idea behind a basis.</p>
+</div>
+<div id="S8.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.8.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S8.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> basis</span> for a topological space <math id="S8.Thmtheorem2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+is a subset <math id="S8.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic">ℬ</mi></math> of the open sets such that every open set in <math id="S8.Thmtheorem2.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+is a union of some (possibly infinite) number of elements in <math id="S8.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic">ℬ</mi></math>.</p>
+</div>
+</div>
+<div id="S8.p4" class="ltx_para">
+<p class="ltx_p">And all we’re doing is saying:</p>
+</div>
+<div id="S8.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 7.8.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Basis of <math id="S8.Thmtheorem3.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi mathcolor="#8C0000">ℝ</mi></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S8.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">The open intervals form a basis of <math id="S8.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.</p>
+</div>
+</div>
+<div id="S8.p5" class="ltx_para">
+<p class="ltx_p">In fact, more generally we have:</p>
+</div>
+<div id="S8.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 7.8.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Basis of metric spaces)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S8.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The <math id="S8.Thmtheorem4.p1.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhoods form a basis of any metric space <math id="S8.Thmtheorem4.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S8.p6" class="ltx_para">
+<p class="ltx_p">Kind of silly – given an open set <math id="S8.p6.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>, for every point <math id="S8.p6.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> inside <math id="S8.p6.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>,
+draw an <math id="S8.p6.m4" class="ltx_Math" alttext="r_{p}" display="inline"><msub><mi>r</mi><mi>p</mi></msub></math>-neighborhood <math id="S8.p6.m5" class="ltx_Math" alttext="U_{p}" display="inline"><msub><mi>U</mi><mi>p</mi></msub></math> contained entirely inside <math id="S8.p6.m6" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.
+Then <math id="S8.p6.m7" class="ltx_Math" alttext="\bigcup_{p}U_{p}" display="inline"><mrow><msub><mo>⋃</mo><mi>p</mi></msub><msub><mi>U</mi><mi>p</mi></msub></mrow></math> is contained in <math id="S8.p6.m8" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> and covers every point inside it.
+∎</p>
+</div>
+</div>
+<div id="S8.p7" class="ltx_para">
+<p class="ltx_p">Hence, an open set in <math id="S8.p7.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> is nothing more than a union
+of a bunch of open disks, and so on.
+The point is that in a metric space, the only open sets you really
+ever have to worry too much about are the <math id="S8.p7.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhoods.</p>
+</div>
+</section>
+<section id="S9" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.9 </span>A few harder problems to think about</h2>
+
+<div id="prob:disconnected_better_def" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a topological space.
+Show that there exists a nonconstant continuous function <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="X\to\{0,1\}" display="inline"><mrow><mi>X</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math> if and
+only if <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is disconnected (here <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="\{0,1\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></math> is given the discrete topology).</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_sproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> be topological spaces
+and let <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> be a continuous function.</p>
+<ol id="S9.I1" class="ltx_enumerate">
+<li id="S9.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S9.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Show that if <math id="S9.I1.i1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is connected then so is <math id="S9.I1.i1.p1.m2" class="ltx_Math" alttext="f^{\text{img}}(X)" display="inline"><mrow><msup><mi>f</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S9.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S9.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Show that if <math id="S9.I1.i2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is path-connected then so is <math id="S9.I1.i2.p1.m2" class="ltx_Math" alttext="f^{\text{img}}(X)" display="inline"><mrow><msup><mi>f</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7C</span></span><span class="ltx_text ltx_font_bold"> </span>(Hausdorff implies <math id="Thmproblem3.m1" class="ltx_Math" alttext="T_{1}" display="inline"><msub><mi>T</mi><mn>1</mn></msub></math> axiom)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a Hausdorff topological space.
+Prove that for any point <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="p\in X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>X</mi></mrow></math> the set <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="\{p\}" display="inline"><mrow><mo stretchy="false">{</mo><mi>p</mi><mo stretchy="false">}</mo></mrow></math> is closed.</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7D</span></span><span class="ltx_text ltx_font_bold"> </span>(<cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:pugh</span>]</cite>, Exercise 2.56)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a metric space with more than one point
+but at most countably infinitely many points.
+Show that <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is disconnected.
+
+Let <math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> be any point.
+If there is a real number <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> such that <math id="Thmproblem4.p1.m5" class="ltx_Math" alttext="d(p,q)\neq r" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mi>r</mi></mrow></math> for any <math id="Thmproblem4.p1.m6" class="ltx_Math" alttext="q\in M" display="inline"><mrow><mi>q</mi><mo>∈</mo><mi>M</mi></mrow></math>,
+then the <math id="Thmproblem4.p1.m7" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhood of <math id="Thmproblem4.p1.m8" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is clopen.</p>
+</div>
+</div>
+<div id="Thmproblem5" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7E</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a topological space.
+The <em class="ltx_emph ltx_font_italic">connected component</em> of a point <math id="Thmproblem5.p1.m2" class="ltx_Math" alttext="p\in X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>X</mi></mrow></math>
+is the union of all subspaces <math id="Thmproblem5.p1.m3" class="ltx_Math" alttext="S\subseteq X" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>X</mi></mrow></math> which are connected and contain <math id="Thmproblem5.p1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+<ol id="S9.I2" class="ltx_enumerate">
+<li id="S9.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S9.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">Does the connected component of a point have to be itself connected?</p>
+</div>
+</li>
+<li id="S9.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S9.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">Does the connected component of a point have to be an open subset of <math id="S9.I2.i2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>?</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">(a) is yes, and (b) is no even for metric spaces.
+In fact, a <em class="ltx_emph ltx_font_italic">totally disconnected</em> space is one for which
+every connected component consists of only a single point,
+and there are examples of totally disconnected metric spaces with
+non-discrete topologies.
+
+
+Part (a) is straightforward:
+assume for contradiction that the connected component of <math id="Thmproblem5.p1.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is
+a disjoint union <math id="Thmproblem5.p1.m6" class="ltx_Math" alttext="U\sqcup V" display="inline"><mrow><mi>U</mi><mo>⊔</mo><mi>V</mi></mrow></math> of two nonempty sets open in <math id="Thmproblem5.p1.m7" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+WLOG, assume <math id="Thmproblem5.p1.m8" class="ltx_Math" alttext="x\in U" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>U</mi></mrow></math>
+Let <math id="Thmproblem5.p1.m9" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> be one of the subspaces containing <math id="Thmproblem5.p1.m10" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> that intersects <math id="Thmproblem5.p1.m11" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+Then <math id="Thmproblem5.p1.m12" class="ltx_Math" alttext="S=(S\cap U)\sqcup(S\cap V)" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo>∩</mo><mi>U</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⊔</mo><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo>∩</mo><mi>V</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> rewrites <math id="Thmproblem5.p1.m13" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> as the disjoint union
+of two sets which are open in <math id="Thmproblem5.p1.m14" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, contradicting the connectedness of <math id="Thmproblem5.p1.m15" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.</p>
+</div>
+<div id="Thmproblem5.p2" class="ltx_para">
+<p class="ltx_p">(Though note that as <math id="Thmproblem5.p2.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is not necessarily open in <math id="Thmproblem5.p2.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>,
+the sets <math id="Thmproblem5.p2.m3" class="ltx_Math" alttext="S\cap U" display="inline"><mrow><mi>S</mi><mo>∩</mo><mi>U</mi></mrow></math> and <math id="Thmproblem5.p2.m4" class="ltx_Math" alttext="S\cap V" display="inline"><mrow><mi>S</mi><mo>∩</mo><mi>V</mi></mrow></math> are not necessarily open in <math id="Thmproblem5.p2.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> either.)</p>
+</div>
+<div id="Thmproblem5.p3" class="ltx_para">
+<p class="ltx_p">For (b), a counterexample is to take any <em class="ltx_emph ltx_font_italic">totally disconnected</em> space
+like the Cantor set or the <math id="Thmproblem5.p3.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic numbers.</p>
+</div>
+</div>
+<div id="Thmproblem6" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7F</span></span><span class="ltx_text ltx_font_bold"> </span>(Furstenberg)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem6.p1" class="ltx_para">
+<p class="ltx_p">We declare a subset of <math id="Thmproblem6.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> to be open if it’s the union (possibly empty or infinite)
+of arithmetic sequences <math id="Thmproblem6.p1.m2" class="ltx_Math" alttext="\left\{a+nd\mid n\in\mathbb{Z}\right\}" display="inline"><mrow><mo>{</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>n</mi><mo>⁢</mo><mi>d</mi></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>n</mi><mo>∈</mo><mi>ℤ</mi></mrow><mo>}</mo></mrow></math>,
+where <math id="Thmproblem6.p1.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="Thmproblem6.p1.m4" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> are positive integers.</p>
+<ol id="S9.I3" class="ltx_enumerate">
+<li id="S9.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S9.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">Verify this forms a topology on <math id="S9.I3.i1.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>,
+called the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> evenly spaced integer topology</span>.</p>
+</div>
+</li>
+<li id="S9.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S9.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">Prove there are infinitely many primes by considering <math id="S9.I3.i2.p1.m1" class="ltx_Math" alttext="\bigcup_{p}p\mathbb{Z}" display="inline"><mrow><msub><mo>⋃</mo><mi>p</mi></msub><mrow><mi>p</mi><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>
+for primes <math id="S9.I3.i2.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">Note that <math id="Thmproblem6.p1.m5" class="ltx_Math" alttext="p\mathbb{Z}" display="inline"><mrow><mi>p</mi><mo>⁢</mo><mi>ℤ</mi></mrow></math> is closed for each <math id="Thmproblem6.p1.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+If there were finitely many primes, then
+<math id="Thmproblem6.p1.m7" class="ltx_Math" alttext="\bigcup p\mathbb{Z}=\mathbb{Z}\setminus\{-1,1\}" display="inline"><mrow><mrow><mo>⋃</mo><mrow><mi>p</mi><mo>⁢</mo><mi>ℤ</mi></mrow></mrow><mo>=</mo><mrow><mi>ℤ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math> would have to be closed;
+i.e. <math id="Thmproblem6.p1.m8" class="ltx_Math" alttext="\{-1,1\}" display="inline"><mrow><mo stretchy="false">{</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></math> would be open, but all open sets here are infinite.</p>
+</div>
+</div>
+<div id="Thmproblem7" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7G</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem7.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem7.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem7.p2" class="ltx_para">
+<p class="ltx_p">Prove that the evenly spaced integer topology on <math id="Thmproblem7.p2.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is metrizable.
+In other words, show that one can impose a metric <math id="Thmproblem7.p2.m2" class="ltx_Math" alttext="d\colon\mathbb{Z}^{2}\to\mathbb{R}" display="inline"><mrow><mi>d</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>ℤ</mi><mn>2</mn></msup><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+which makes <math id="Thmproblem7.p2.m3" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> into a metric space whose open sets are those described above.
+
+The balls at <math id="Thmproblem7.p2.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> should be of the form <math id="Thmproblem7.p2.m5" class="ltx_Math" alttext="n!\cdot\mathbb{Z}" display="inline"><mrow><mrow><mi>n</mi><mo rspace="0.055em">!</mo></mrow><mo rspace="0.222em">⋅</mo><mi>ℤ</mi></mrow></math>.
+
+
+Let <math id="Thmproblem7.p2.m6" class="ltx_Math" alttext="d(x,y)=2017^{-n}" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mn>2017</mn><mrow><mo>−</mo><mi>n</mi></mrow></msup></mrow></math>, where <math id="Thmproblem7.p2.m7" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is the largest integer
+such that <math id="Thmproblem7.p2.m8" class="ltx_Math" alttext="n!" display="inline"><mrow><mi>n</mi><mo>!</mo></mrow></math> divides <math id="Thmproblem7.p2.m9" class="ltx_Math" alttext="\left\lvert x-y\right\rvert" display="inline"><mrow><mo>|</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo>|</mo></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem8" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7H</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem8.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem8.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem8.p2" class="ltx_para">
+<p class="ltx_p">We know that any open set <math id="Thmproblem8.p2.m1" class="ltx_Math" alttext="U\subseteq\mathbb{R}" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>ℝ</mi></mrow></math>
+is a union of open intervals (allowing <math id="Thmproblem8.p2.m2" class="ltx_Math" alttext="\pm\infty" display="inline"><mrow><mo>±</mo><mi mathvariant="normal">∞</mi></mrow></math> as endpoints).
+One can show that it’s actually possible to write <math id="Thmproblem8.p2.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> as the
+union of <em class="ltx_emph ltx_font_italic">pairwise disjoint</em> open intervals.<span id="footnote4" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup><span class="ltx_tag ltx_tag_note">4</span>You are invited to try
+and prove this, but I personally found the proof quite boring.</span></span></span>
+Prove that there exists such a disjoint union with at most <em class="ltx_emph ltx_font_italic">countably many</em>
+intervals in it.
+
+Appeal to <math id="Thmproblem8.p2.m4" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>.
+
+
+You can pick a rational number in each interval and
+there are only countably many rational numbers. Done!</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="ch_metric_properties.html" title="In Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">6 </span>Properties of metric spaces</span></a><a href="ch_compactness.html" title="In Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">8 </span>Compactness</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

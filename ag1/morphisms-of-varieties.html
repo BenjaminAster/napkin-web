@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Morphisms of varieties</title>
+		<meta property="og:title" content="Morphisms of varieties" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../ag1/bezouts-theorem.html">Previous chapter: Bonus: Bézout’s theorem</a><br />
+<a href="../ag2/sheaves-and-ringed-spaces.html">Next chapter: Sheaves and ringed spaces</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 81 </span>Morphisms of varieties</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">In preparation for our work with schemes,
+we will finish this part by talking about <em class="ltx_emph ltx_font_italic">morphisms</em>
+between affine and projective varieties,
+given that we have taken the time to define them.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">Idea: we know both affine and projective varieties are special
+cases of baby ringed spaces, so in fact we will just define a morphism
+between <em class="ltx_emph ltx_font_italic">any</em> two baby ringed spaces.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">81.1 </span>Defining morphisms of baby ringed spaces</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> See next section.</em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.p2.m1" class="ltx_Math" alttext="(X,\mathcal{O}_{X})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo stretchy="false">)</mo></mrow></math> and <math id="S1.p2.m2" class="ltx_Math" alttext="(Y,\mathcal{O}_{Y})" display="inline"><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>Y</mi></msub><mo stretchy="false">)</mo></mrow></math> be baby ringed spaces, and think
+about how to define a morphism between them.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">The guiding principle in algebra is that we want morphisms
+to be functions on underlying structure, but also respect
+the enriched additional data on top.
+To give some examples from the very beginning of time:</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 81.1.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(How to define a morphism)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Consider groups.
+A group <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> has an underlying set (of elements),
+which we then enrich with a multiplication operation.
+So a homomorphism is a map of the underlying sets,
+plus it has to respect the group multiplication.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Consider <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-modules.
+Each <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-module has an underlying abelian group,
+which we then enrich with scalar multiplication.
+So we require that a linear map respects the scalar multiplication as well,
+in addition to being a homomorphism of abelian groups.</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Consider topological spaces.
+A space <math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> has an underlying set (of points),
+which we then enrich with a topology of open sets.
+So we consider maps of the set of points
+which respect the topology (pre-images of open sets are open).</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">This time, the ringed spaces <math id="S1.p4.m1" class="ltx_Math" alttext="(X,\mathcal{O}_{X})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo stretchy="false">)</mo></mrow></math> have an underlying
+<em class="ltx_emph ltx_font_italic">topological space</em>, which we have enriched with a structure sheaf.
+So, we want a continuous map <math id="S1.p4.m2" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> of these topological spaces,
+which we then need to respect the sheaf of regular functions.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">How might we do this? Well, if we let <math id="S1.p5.m1" class="ltx_Math" alttext="\psi\colon Y\to\mathbb{C}" display="inline"><mrow><mi>ψ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>Y</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>
+be a regular function, then composition gives a natural way to
+write a map <math id="S1.p5.m2" class="ltx_Math" alttext="X\to Y\to\mathbb{C}" display="inline"><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math>.
+We then want to require that this is also a regular function.</p>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">More generally, we can take any regular function on <math id="S1.p6.m1" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>
+and obtain some function on <math id="S1.p6.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, which we call a pullback.
+We then require that all the pullbacks are regular on <math id="S1.p6.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 81.1.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="(X,\mathcal{O}_{X})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo stretchy="false">)</mo></mrow></math> and <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="(Y,\mathcal{O}_{Y})" display="inline"><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>Y</mi></msub><mo stretchy="false">)</mo></mrow></math> be baby ringed spaces.
+Given a map <math id="S1.Thmtheorem2.p1.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> and a regular function <math id="S1.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\phi\in\mathcal{O}_{Y}(U)" display="inline"><mrow><mi>ϕ</mi><mo>∈</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>Y</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+we define the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> pullback</span> of <math id="S1.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math>, denoted <math id="S1.Thmtheorem2.p1.m6" class="ltx_Math" alttext="f^{\sharp}\phi" display="inline"><mrow><msup><mi>f</mi><mi mathvariant="normal">♯</mi></msup><mo>⁢</mo><mi>ϕ</mi></mrow></math>,
+to be the composed function</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="f^{\text{pre}}(U)\xrightarrow{f}U\xrightarrow{\phi}\mathbb{C}." display="block"><mrow><mrow><mrow><msup><mi>f</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mover accent="true"><mo stretchy="false">→</mo><mo>𝑓</mo></mover><mi>U</mi><mover accent="true"><mo stretchy="false">→</mo><mo class="ltx_mathvariant_italic" mathvariant="italic">ϕ</mo></mover><mi>ℂ</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">The use of the word “pullback” is the same as in our study
+of differential forms.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 81.1.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="(X,\mathcal{O}_{X})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo stretchy="false">)</mo></mrow></math> and <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="(Y,\mathcal{O}_{Y})" display="inline"><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>Y</mi></msub><mo stretchy="false">)</mo></mrow></math> be baby ringed spaces.
+A continuous map of topological spaces <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math>
+is a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> morphism</span> if every pullback of a regular function on <math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>
+is a regular function on <math id="S1.Thmtheorem3.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.</p>
+</div>
+<div id="S1.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p">Two baby ringed spaces are <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> isomorphic</span>
+if there are mutually inverse morphisms between them,
+which we then call <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> isomorphisms</span>.</p>
+</div>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">In particular, the pullback gives us a (reversed) <em class="ltx_emph ltx_font_italic">ring homomorphism</em></p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="f^{\sharp}\colon\mathcal{O}_{Y}(U)\to\mathcal{O}_{X}(f^{\text{pre}}(U))" display="block"><mrow><msup><mi>f</mi><mi mathvariant="normal">♯</mi></msup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>Y</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>f</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for <em class="ltx_emph ltx_font_italic">every</em> <math id="S1.p8.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>;
+thus our morphisms package a lot of information.
+Here’s a picture of a morphism <math id="S1.p8.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>,
+and the pullback of <math id="S1.p8.m3" class="ltx_Math" alttext="\phi\colon U\to\mathbb{C}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> (where <math id="S1.p8.m4" class="ltx_Math" alttext="U\subseteq Y" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>Y</mi></mrow></math>).</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='368.503937pt' height='242.914517pt' viewBox='337.645675 116.650193 368.503937 242.914517'>
+<defs>
+<path id='asymptote-81-1-g0-67' d='M7.2-7.353425C7.2-7.539726 7.2-7.715068 7.013699-7.715068C7.00274-7.715068 6.838356-7.715068 6.816438-7.517808C6.783562-7.210959 6.531507-7.210959 6.454795-7.210959C6.071233-7.210959 5.687671-7.375342 5.468493-7.473973C4.909589-7.715068 4.438356-7.715068 4.263014-7.715068C2.432877-7.715068 .405479-6.564384 .405479-3.758904C.405479-.964384 2.389041 .208219 4.284932 .208219C4.865753 .208219 5.643836 .087671 6.443836-.394521C6.947945-.712329 7.506849-1.260274 7.506849-1.413699S7.342466-1.632877 7.276712-1.632877C7.2-1.632877 7.156164-1.6 7.046575-1.479452C6.410959-.756164 5.435616-.317808 4.460274-.317808C2.761644-.317808 2.334247-2.038356 2.334247-3.736986C2.334247-5.89589 3.123288-7.331507 4.29589-7.331507C5.117808-7.331507 6.432877-6.531507 6.805479-5.369863C6.838356-5.271233 6.871233-5.161644 7.013699-5.161644C7.2-5.161644 7.2-5.336986 7.2-5.523288V-7.353425ZM6.816438-6.224658C6.684932-6.410959 6.542466-6.553425 6.268493-6.838356C6.323288-6.827397 6.410959-6.827397 6.465753-6.827397C6.586301-6.827397 6.728767-6.849315 6.816438-6.90411V-6.224658ZM2.926027-7.079452C2.673973-6.827397 1.950685-5.884932 1.950685-3.736986C1.950685-2.652055 2.115068-1.139726 3.10137-.350685C1.30411-.931507 .789041-2.410959 .789041-3.747945C.789041-5.764384 1.89589-6.739726 2.926027-7.090411V-7.079452Z'/>
+<path id='asymptote-81-1-g2-88' d='M4.160399-3.044583C4.542964-3.435118 5.67472-4.598755 5.866002-4.750187C6.200747-5.00523 6.4-5.148692 6.973848-5.180573C7.021669-5.188543 7.08543-5.228394 7.08543-5.332005C7.08543-5.403736 7.013699-5.443587 6.973848-5.443587C6.894147-5.443587 6.846326-5.419676 6.224658-5.419676C5.626899-5.419676 5.411706-5.443587 5.371856-5.443587C5.339975-5.443587 5.212453-5.443587 5.212453-5.292154C5.212453-5.284184 5.212453-5.188543 5.332005-5.180573C5.387796-5.172603 5.602989-5.156663 5.602989-4.97335C5.602989-4.917559 5.571108-4.829888 5.507347-4.766127L5.483437-4.726276C5.459527-4.702366 5.459527-4.686426 5.379826-4.614695L4.048817-3.267746L3.235866-4.95741C3.347447-5.148692 3.58655-5.172603 3.682192-5.180573C3.722042-5.180573 3.833624-5.188543 3.833624-5.324035C3.833624-5.395766 3.777833-5.443587 3.706102-5.443587C3.626401-5.443587 3.323537-5.427646 3.243836-5.427646C3.196015-5.419676 2.901121-5.419676 2.733748-5.419676C1.992528-5.419676 1.896887-5.443587 1.825156-5.443587C1.793275-5.443587 1.665753-5.443587 1.665753-5.292154C1.665753-5.180573 1.769365-5.180573 1.896887-5.180573C2.295392-5.180573 2.367123-5.100872 2.438854-4.94944L3.498879-2.717808L1.865006-1.052055C1.3868-.573848 1.012204-.294894 .446326-.263014C.350685-.255044 .255044-.255044 .255044-.111582C.255044-.063761 .294894 0 .374595 0C.430386 0 .518057-.02391 1.123786-.02391C1.697634-.02391 1.944707 0 1.976588 0C2.016438 0 2.13599 0 2.13599-.151432C2.13599-.167372 2.12802-.255044 2.008468-.263014C1.857036-.270984 1.745455-.326775 1.745455-.470237C1.745455-.597758 1.841096-.70137 1.960648-.820922C2.096139-.972354 2.510585-1.3868 2.797509-1.665753C2.980822-1.849066 3.427148-2.311333 3.610461-2.486675L4.527024-.581818C4.566874-.502117 4.566874-.494147 4.566874-.486177C4.566874-.414446 4.399502-.278954 4.136488-.263014C4.080697-.263014 3.977086-.255044 3.977086-.111582C3.977086-.103611 3.985056 0 4.112578 0C4.192279 0 4.487173-.01594 4.566874-.02391H5.076961C5.810212-.02391 5.921793 0 5.993524 0C6.025405 0 6.144956 0 6.144956-.151432C6.144956-.263014 6.041345-.263014 5.921793-.263014C5.491407-.263014 5.443587-.358655 5.387796-.478207L4.160399-3.044583Z'/>
+<path id='asymptote-81-1-g2-89' d='M5.061021-4.487173C5.116812-4.550934 5.188543-4.614695 5.252304-4.678456C5.547198-4.94944 5.810212-5.148692 6.256538-5.180573C6.328269-5.188543 6.42391-5.196513 6.42391-5.332005C6.42391-5.387796 6.36812-5.443587 6.312329-5.443587C6.216687-5.443587 6.232628-5.419676 5.650809-5.419676C5.124782-5.419676 4.941469-5.443587 4.893649-5.443587C4.861768-5.443587 4.742217-5.443587 4.742217-5.292154C4.742217-5.220423 4.798007-5.188543 4.869738-5.180573C5.108842-5.164633 5.116812-5.076961 5.116812-5.029141C5.116812-4.877709 4.869738-4.622665 4.869738-4.614695L2.925031-2.518555L1.920797-4.877709C1.904857-4.909589 1.872976-4.98929 1.872976-5.021171C1.872976-5.180573 2.247572-5.180573 2.319303-5.180573C2.399004-5.180573 2.510585-5.180573 2.510585-5.332005C2.510585-5.371856 2.478705-5.443587 2.383064-5.443587C2.271482-5.443587 2.008468-5.427646 1.888917-5.419676H1.39477C.661519-5.419676 .549938-5.443587 .478207-5.443587C.350685-5.443587 .326775-5.355915 .326775-5.292154C.326775-5.180573 .430386-5.180573 .541968-5.180573C.972354-5.180573 1.012204-5.092902 1.075965-4.941469L2.247572-2.183811L1.888917-.72528C1.777335-.294894 1.769365-.270984 1.155666-.263014C1.028144-.263014 .932503-.263014 .932503-.111582C.932503-.079701 .956413 0 1.060025 0C1.211457 0 1.39477-.01594 1.554172-.02391H2.566376C2.685928-.01594 2.956912 0 3.060523 0C3.108344 0 3.227895 0 3.227895-.151432C3.227895-.263014 3.124284-.263014 2.988792-.263014C2.980822-.263014 2.81345-.263014 2.685928-.278954C2.510585-.302864 2.502615-.318804 2.502615-.398506C2.502615-.462267 2.598257-.852802 2.654047-1.083935C2.749689-1.466501 2.82142-1.729514 2.901121-2.064259C2.925031-2.16787 2.933001-2.183811 3.004732-2.263512L5.061021-4.487173Z'/>
+<path id='asymptote-81-1-g2-93' d='M2.223661 .159402V1.020174C2.223661 1.155666 2.223661 1.259278 2.335243 1.259278C2.470735 1.259278 2.470735 1.147696 2.470735 1.012204V.079701L2.725778 0C2.81345-.03188 2.81345-.079701 2.81345-.239103V-.454296C2.81345-.589788 2.81345-.6934 2.701868-.6934C2.662017-.6934 2.518555-.637609 2.470735-.621669V-3.355417L2.725778-3.435118C2.81345-3.466999 2.81345-3.514819 2.81345-3.674222V-3.889415C2.81345-4.024907 2.81345-4.128518 2.701868-4.128518C2.662017-4.128518 2.518555-4.072727 2.470735-4.056787V-5.459527C2.470735-5.602989 2.470735-5.7066 2.359153-5.7066C2.223661-5.7066 2.223661-5.602989 2.223661-5.459527V-3.977086L1.060025-3.594521V-5.00523C1.060025-5.140722 1.060025-5.244334 .948443-5.244334C.812951-5.244334 .812951-5.132752 .812951-4.99726V-3.514819C.781071-3.506849 .597758-3.443088 .557908-3.435118C.470237-3.395268 .470237-3.355417 .470237-3.188045V-2.980822C.470237-2.84533 .470237-2.741719 .581818-2.741719C.621669-2.741719 .765131-2.797509 .812951-2.81345V-.079701C.781071-.071731 .597758-.00797 .557908 0C.470237 .039851 .470237 .079701 .470237 .247073V.454296C.470237 .589788 .470237 .6934 .581818 .6934C.621669 .6934 .765131 .637609 .812951 .621669V1.474471C.812951 1.617933 .812951 1.721544 .924533 1.721544C1.060025 1.721544 1.060025 1.617933 1.060025 1.474471V.541968L2.223661 .159402ZM2.223661-3.275716V-.541968L1.060025-.159402V-2.893151L2.223661-3.275716Z'/>
+<path id='asymptote-81-1-g1-50' d='M5.97818-2.50909C6.163635-2.50909 6.359998-2.50909 6.359998-2.727272S6.163635-2.945454 5.97818-2.945454H1.352727C1.483636-4.407271 2.738181-5.454544 4.276362-5.454544H5.97818C6.163635-5.454544 6.359998-5.454544 6.359998-5.672726S6.163635-5.890907 5.97818-5.890907H4.254544C2.38909-5.890907 .905454-4.472726 .905454-2.727272S2.38909 .436364 4.254544 .436364H5.97818C6.163635 .436364 6.359998 .436364 6.359998 .218182S6.163635 0 5.97818 0H4.276362C2.738181 0 1.483636-1.047272 1.352727-2.50909H5.97818Z'/>
+<path id='asymptote-81-1-g1-79' d='M8.476361-5.25818C8.476361-6.643635 7.865452-7.690907 6.534544-7.690907C5.399998-7.690907 4.439999-6.774544 4.363635-6.709089C3.490908-5.847271 3.163635-4.865453 3.163635-4.843635C3.163635-4.77818 3.218181-4.767271 3.272726-4.767271C3.479999-4.767271 3.654544-4.876362 3.818181-4.996362C4.014544-5.13818 4.025453-5.170908 4.145453-5.421817C4.243635-5.639998 4.494544-6.174544 4.89818-6.632725C5.159999-6.927271 5.37818-7.090907 5.814544-7.090907C6.872725-7.090907 7.549089-6.21818 7.549089-4.78909C7.549089-2.563636 5.967271-.36 3.94909-.36C2.399999-.36 1.54909-1.592727 1.54909-3.152726C1.54909-4.636362 2.312727-6.272726 3.905453-7.210907C4.014544-7.276362 4.341817-7.472725 4.341817-7.614543C4.341817-7.690907 4.254544-7.690907 4.232726-7.690907C3.850908-7.690907 .621818-5.956362 .621818-2.683636C.621818-1.156363 1.418181 .24 3.22909 .24C5.356362 .24 8.476361-1.898181 8.476361-5.25818Z'/>
+<path id='asymptote-81-1-g5-40' d='M3.610908 2.618181C3.610908 2.585454 3.610908 2.563636 3.425454 2.378181C2.061818 1.003636 1.712727-1.058182 1.712727-2.727272C1.712727-4.625453 2.127272-6.523635 3.46909-7.887271C3.610908-8.01818 3.610908-8.039998 3.610908-8.072725C3.610908-8.149089 3.567272-8.181816 3.501817-8.181816C3.392726-8.181816 2.410908-7.439998 1.767272-6.054544C1.210909-4.854544 1.08-3.643635 1.08-2.727272C1.08-1.876363 1.2-.556363 1.799999 .676363C2.454545 2.018181 3.392726 2.727272 3.501817 2.727272C3.567272 2.727272 3.610908 2.694545 3.610908 2.618181Z'/>
+<path id='asymptote-81-1-g5-41' d='M3.152726-2.727272C3.152726-3.578181 3.032726-4.89818 2.432727-6.130907C1.778181-7.472725 .84-8.181816 .730909-8.181816C.665454-8.181816 .621818-8.13818 .621818-8.072725C.621818-8.039998 .621818-8.01818 .829091-7.821816C1.898181-6.741816 2.519999-5.007271 2.519999-2.727272C2.519999-.861818 2.116363 1.058182 .763636 2.432727C.621818 2.563636 .621818 2.585454 .621818 2.618181C.621818 2.683636 .665454 2.727272 .730909 2.727272C.84 2.727272 1.821818 1.985454 2.465454 .6C3.021817-.6 3.152726-1.810909 3.152726-2.727272Z'/>
+<path id='asymptote-81-1-g4-101' d='M3.291656-1.817186C3.466999-1.817186 3.514819-1.817186 3.514819-2.000498C3.514819-2.709838 3.124284-3.55467 2.000498-3.55467C1.012204-3.55467 .239103-2.733748 .239103-1.745455C.239103-.71731 1.099875 .079701 2.10411 .079701C3.116314 .079701 3.514819-.773101 3.514819-.956413C3.514819-.988294 3.490909-1.067995 3.387298-1.067995C3.299626-1.067995 3.283686-1.012204 3.267746-.964384C2.980822-.191283 2.295392-.167372 2.15193-.167372C1.793275-.167372 1.42665-.334745 1.187547-.70137S.948443-1.578082 .948443-1.817186H3.291656ZM.956413-2.024408C1.028144-3.140224 1.705604-3.331507 2.000498-3.331507C2.933001-3.331507 2.964882-2.207721 2.972852-2.024408H.956413Z'/>
+<path id='asymptote-81-1-g4-112' d='M2.096139 1.283188C1.586052 1.283188 1.490411 1.283188 1.490411 .924533V-.390535C1.865006 .01594 2.271482 .079701 2.526526 .079701C3.53873 .079701 4.415442-.70137 4.415442-1.721544C4.415442-2.717808 3.610461-3.514819 2.646077-3.514819C2.335243-3.514819 1.872976-3.435118 1.466501-3.020672V-3.514819L.278954-3.427148V-3.164134C.844832-3.164134 .884682-3.116314 .884682-2.781569V.924533C.884682 1.283188 .789041 1.283188 .278954 1.283188V1.546202C.621669 1.522291 .972354 1.522291 1.187547 1.522291C1.41868 1.522291 1.753425 1.522291 2.096139 1.546202V1.283188ZM1.490411-2.654047C1.673724-2.972852 2.072229-3.267746 2.574346-3.267746C3.188045-3.267746 3.706102-2.590286 3.706102-1.721544C3.706102-.804981 3.132254-.143462 2.486675-.143462C2.207721-.143462 1.841096-.263014 1.586052-.661519C1.490411-.797011 1.490411-.804981 1.490411-.956413V-2.654047Z'/>
+<path id='asymptote-81-1-g4-114' d='M1.466501-1.817186C1.466501-2.414944 1.713574-3.275716 2.478705-3.291656C2.430884-3.259776 2.351183-3.196015 2.351183-3.012702C2.351183-2.765629 2.542466-2.654047 2.701868-2.654047C2.893151-2.654047 3.060523-2.781569 3.060523-3.012702C3.060523-3.291656 2.805479-3.514819 2.454795-3.514819C1.936737-3.514819 1.586052-3.124284 1.41868-2.677958H1.41071V-3.514819L.278954-3.427148V-3.164134C.820922-3.164134 .884682-3.108344 .884682-2.717808V-.621669C.884682-.263014 .789041-.263014 .278954-.263014V0C.589788-.02391 1.028144-.02391 1.219427-.02391C1.689664-.02391 1.705604-.02391 2.223661 0V-.263014H2.064259C1.482441-.263014 1.466501-.350685 1.466501-.637609V-1.817186Z'/>
+<path id='asymptote-81-1-g3-30' d='M4.767271-7.309089C4.767271-7.330907 4.799999-7.450907 4.799999-7.461816S4.799999-7.570907 4.66909-7.570907C4.559999-7.570907 4.54909-7.53818 4.505453-7.352725L3.872726-4.832726C2.138181-4.77818 .534545-3.327272 .534545-1.843636C.534545-.807273 1.298181 .054545 2.62909 .130909C2.541817 .469091 2.465454 .818182 2.378181 1.156363C2.247272 1.66909 2.138181 2.083636 2.138181 2.116363C2.138181 2.225454 2.214545 2.236363 2.26909 2.236363S2.345454 2.225454 2.378181 2.192727C2.399999 2.170908 2.465454 1.90909 2.498181 1.756363L2.912726 .130909C4.66909 .076364 6.250907-1.396363 6.250907-2.858181C6.250907-3.719999 5.672726-4.723635 4.156362-4.832726L4.767271-7.309089ZM2.683636-.109091C2.02909-.141818 1.243636-.523636 1.243636-1.614545C1.243636-2.923636 2.181818-4.450908 3.807272-4.592726L2.683636-.109091ZM4.090908-4.592726C4.919999-4.54909 5.541817-4.047272 5.541817-3.087272C5.541817-1.799999 4.603635-.24 2.967272-.109091L4.090908-4.592726Z'/>
+<path id='asymptote-81-1-g3-85' d='M6.927271-6.305453C7.036362-6.752725 7.232725-7.079998 8.105452-7.112725C8.159998-7.112725 8.290907-7.123634 8.290907-7.330907C8.290907-7.341816 8.290907-7.450907 8.149089-7.450907C7.789089-7.450907 7.407271-7.41818 7.036362-7.41818S6.261816-7.450907 5.901817-7.450907C5.836362-7.450907 5.705453-7.450907 5.705453-7.232725C5.705453-7.112725 5.814544-7.112725 5.901817-7.112725C6.523635-7.101816 6.643635-6.872725 6.643635-6.632725C6.643635-6.599998 6.621816-6.436362 6.610907-6.403635L5.629089-2.50909C5.25818-1.047272 4.003635-.098182 2.912726-.098182C2.170908-.098182 1.581818-.578182 1.581818-1.516363C1.581818-1.538181 1.581818-1.887272 1.701818-2.367272L2.759999-6.610907C2.858181-7.003634 2.879999-7.112725 3.676363-7.112725C3.959999-7.112725 4.047272-7.112725 4.047272-7.330907C4.047272-7.450907 3.927272-7.450907 3.894544-7.450907C3.58909-7.450907 2.803636-7.41818 2.498181-7.41818C2.181818-7.41818 1.407272-7.450907 1.090909-7.450907C1.003636-7.450907 .883636-7.450907 .883636-7.232725C.883636-7.112725 .981818-7.112725 1.189091-7.112725C1.210909-7.112725 1.418181-7.112725 1.603636-7.090907C1.799999-7.069089 1.898181-7.05818 1.898181-6.916362C1.898181-6.850907 1.778181-6.392725 1.712727-6.141816L1.472727-5.181817C1.374545-4.756362 .850909-2.694545 .807273-2.487272C.730909-2.181818 .730909-2.018181 .730909-1.854545C.730909-.523636 1.723636 .24 2.86909 .24C4.243635 .24 5.596362-.992727 5.956362-2.432727L6.927271-6.305453Z'/>
+<path id='asymptote-81-1-g3-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+<path id='asymptote-81-1-g3-89' d='M6.512725-6.207271L6.665453-6.359998C6.992725-6.687271 7.352725-7.05818 8.094543-7.112725C8.214543-7.123634 8.312725-7.123634 8.312725-7.319998C8.312725-7.407271 8.25818-7.450907 8.170907-7.450907C7.887271-7.450907 7.570907-7.41818 7.276362-7.41818C6.916362-7.41818 6.534544-7.450907 6.185453-7.450907C6.119998-7.450907 5.97818-7.450907 5.97818-7.243634C5.97818-7.123634 6.087271-7.112725 6.141816-7.112725C6.21818-7.112725 6.534544-7.090907 6.534544-6.861816C6.534544-6.676362 6.283635-6.392725 6.239998-6.33818L3.70909-3.425454L2.50909-6.665453C2.443636-6.81818 2.443636-6.839998 2.443636-6.850907C2.443636-7.112725 2.978181-7.112725 3.087272-7.112725C3.239999-7.112725 3.34909-7.112725 3.34909-7.330907C3.34909-7.450907 3.218181-7.450907 3.185454-7.450907C2.879999-7.450907 2.116363-7.41818 1.810909-7.41818C1.538181-7.41818 .861818-7.450907 .589091-7.450907C.523636-7.450907 .381818-7.450907 .381818-7.232725C.381818-7.112725 .490909-7.112725 .632727-7.112725C1.287272-7.112725 1.330909-7.014543 1.429091-6.741816L2.770908-3.152726C2.781817-3.119999 2.814545-2.999999 2.814545-2.967272S2.378181-1.178181 2.323636-.981818C2.181818-.381818 2.170908-.349091 1.298181-.338182C1.090909-.338182 1.003636-.338182 1.003636-.12C1.003636 0 1.134545 0 1.156363 0C1.461818 0 2.225454-.032727 2.530908-.032727S3.621817 0 3.927272 0C4.003635 0 4.134544 0 4.134544-.218182C4.134544-.338182 4.036363-.338182 3.82909-.338182C3.807272-.338182 3.599999-.338182 3.414545-.36C3.185454-.381818 3.119999-.403636 3.119999-.534545C3.119999-.610909 3.218181-.992727 3.272726-1.221818L3.654544-2.759999C3.70909-2.967272 3.719999-2.999999 3.807272-3.098181L6.512725-6.207271Z'/>
+<path id='asymptote-81-1-g3-102' d='M4.003635-4.363635H4.941817C5.159999-4.363635 5.269089-4.363635 5.269089-4.581817C5.269089-4.701817 5.159999-4.701817 4.974544-4.701817H4.06909L4.298181-5.945453C4.341817-6.174544 4.494544-6.949089 4.559999-7.079998C4.658181-7.287271 4.843635-7.450907 5.072726-7.450907C5.116362-7.450907 5.399998-7.450907 5.607271-7.254543C5.127271-7.210907 5.01818-6.829089 5.01818-6.665453C5.01818-6.414544 5.214544-6.283635 5.421817-6.283635C5.705453-6.283635 6.021817-6.523635 6.021817-6.93818C6.021817-7.439998 5.519998-7.690907 5.072726-7.690907C4.701817-7.690907 4.014544-7.494543 3.687272-6.414544C3.621817-6.185453 3.58909-6.076362 3.327272-4.701817H2.574545C2.367272-4.701817 2.247272-4.701817 2.247272-4.494544C2.247272-4.363635 2.345454-4.363635 2.552727-4.363635H3.272726L2.454545-.054545C2.258181 1.003636 2.072727 1.996363 1.505454 1.996363C1.461818 1.996363 1.189091 1.996363 .981818 1.799999C1.483636 1.767272 1.581818 1.374545 1.581818 1.210909C1.581818 .96 1.385454 .829091 1.178181 .829091C.894545 .829091 .578182 1.069091 .578182 1.483636C.578182 1.974545 1.058182 2.236363 1.505454 2.236363C2.105454 2.236363 2.541817 1.592727 2.738181 1.178181C3.087272 .490909 3.338181-.829091 3.34909-.905454L4.003635-4.363635Z'/>
+</defs>
+<g id='asymptote-81-1-page1'>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M15.5843 18.5763C3.48655 21.0826-1.45282 34.9858 .767264 48.2104C1.62358 53.3113 3.31878 58.2167 5.21237 63.0274C9.01782 72.6951 13.6811 82.2526 14.1026 92.6615C14.3056 97.6744 13.5307 102.873 15.5843 107.478C22.2999 122.538 42.48 116.64 60.0354 111.924C69.6935 109.329 79.7935 108.872 89.6695 110.442C105.585 112.972 123.232 119.131 134.121 107.478C141.319 99.7751 140.631 88.3201 138.566 77.8444C137.114 70.4817 135.191 63.1243 135.602 55.6189C136.316 42.5963 143.133 28.3281 134.121 18.5763C126.923 10.7884 115.148 12.6494 104.486 14.1312C94.6509 15.4982 84.7056 15.8654 74.8524 17.0946C60.0211 18.9449 45.1522 22.729 30.4013 20.058C25.4665 19.1644 20.5149 17.5548 15.5843 18.5763Z' fill="var(--asymptote-color-8080ff)" opacity='0.2'/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M15.5843 18.5763C3.48655 21.0826-1.45282 34.9858 .767264 48.2104C1.62358 53.3113 3.31878 58.2167 5.21237 63.0274C9.01782 72.6951 13.6811 82.2526 14.1026 92.6615C14.3056 97.6744 13.5307 102.873 15.5843 107.478C22.2999 122.538 42.48 116.64 60.0354 111.924C69.6935 109.329 79.7935 108.872 89.6695 110.442C105.585 112.972 123.232 119.131 134.121 107.478C141.319 99.7751 140.631 88.3201 138.566 77.8444C137.114 70.4817 135.191 63.1243 135.602 55.6189C136.316 42.5963 143.133 28.3281 134.121 18.5763C126.923 10.7884 115.148 12.6494 104.486 14.1312C94.6509 15.4982 84.7056 15.8654 74.8524 17.0946C60.0211 18.9449 45.1522 22.729 30.4013 20.058C25.4665 19.1644 20.5149 17.5548 15.5843 18.5763Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='474.574837' y='138.208996' href='#asymptote-81-1-g3-88'/>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M97.078 63.0274C97.078 54.8442 90.4442 48.2104 82.2609 48.2104C74.0777 48.2104 67.4439 54.8442 67.4439 63.0274S74.0777 77.8444 82.2609 77.8444C90.4442 77.8444 97.078 71.2106 97.078 63.0274Z' fill="var(--asymptote-color-80ff80)" opacity='0.2'/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M97.078 63.0274C97.078 54.8442 90.4442 48.2104 82.2609 48.2104C74.0777 48.2104 67.4439 54.8442 67.4439 63.0274S74.0777 77.8444 82.2609 77.8444C90.4442 77.8444 97.078 71.2106 97.078 63.0274Z' fill='none' stroke="var(--asymptote-color-008000)" stroke-dasharray='3.87963,3.87963' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-008000)">
+<use x='370.913928' y='163.870228' href='#asymptote-81-1-g3-102'/>
+<use x='377.42911' y='159.91141' href='#asymptote-81-1-g4-112'/>
+<use x='382.133758' y='159.91141' href='#asymptote-81-1-g4-114'/>
+<use x='385.433928' y='159.91141' href='#asymptote-81-1-g4-101'/>
+<use x='389.695778' y='163.870228' href='#asymptote-81-1-g5-40'/>
+<use x='393.938216' y='163.870228' href='#asymptote-81-1-g3-85'/>
+<use x='402.576067' y='163.870228' href='#asymptote-81-1-g5-41'/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M208.206 7.46353C193.084 10.5964 186.909 27.9754 189.684 44.5061C190.755 50.8822 192.874 57.0141 195.241 63.0274C199.998 75.112 205.827 87.0589 206.354 100.07C206.607 106.336 205.639 112.835 208.206 118.591C216.6 137.416 241.825 130.043 263.77 124.148C275.842 120.904 288.467 120.333 300.812 122.296C320.707 125.458 342.765 133.157 356.376 118.591C365.374 108.962 364.514 94.6433 361.932 81.5487C360.118 72.3453 357.714 63.1486 358.228 53.7668C359.12 37.4886 367.641 19.6533 356.376 7.46353C347.379-2.27138 332.66 .054929 319.333 1.90714C307.039 3.61586 294.607 4.07487 282.291 5.6114C263.752 7.92423 245.166 12.6544 226.727 9.31566C220.558 8.19868 214.369 6.18666 208.206 7.46353Z' fill="var(--asymptote-color-8080ff)" opacity='0.2'/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M208.206 7.46353C193.084 10.5964 186.909 27.9754 189.684 44.5061C190.755 50.8822 192.874 57.0141 195.241 63.0274C199.998 75.112 205.827 87.0589 206.354 100.07C206.607 106.336 205.639 112.835 208.206 118.591C216.6 137.416 241.825 130.043 263.77 124.148C275.842 120.904 288.467 120.333 300.812 122.296C320.707 125.458 342.765 133.157 356.376 118.591C365.374 108.962 364.514 94.6433 361.932 81.5487C360.118 72.3453 357.714 63.1486 358.228 53.7668C359.12 37.4886 367.641 19.6533 356.376 7.46353C347.379-2.27138 332.66 .054929 319.333 1.90714C307.039 3.61586 294.607 4.07487 282.291 5.6114C263.752 7.92423 245.166 12.6544 226.727 9.31566C220.558 8.19868 214.369 6.18666 208.206 7.46353Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='695.999955' y='127.137735' href='#asymptote-81-1-g3-89'/>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M304.516 53.7668C304.516 41.4919 294.566 31.5412 282.291 31.5412S260.065 41.4919 260.065 53.7668C260.065 66.0416 270.016 75.9923 282.291 75.9923S304.516 66.0416 304.516 53.7668Z' fill="var(--asymptote-color-ff8080)" opacity='0.2'/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M304.516 53.7668C304.516 41.4919 294.566 31.5412 282.291 31.5412S260.065 41.4919 260.065 53.7668C260.065 66.0416 270.016 75.9923 282.291 75.9923S304.516 66.0416 304.516 53.7668Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-dasharray='4.10785,4.10785' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='636.889375' y='152.152405' href='#asymptote-81-1-g3-85'/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M219.199 53.7668H115.599' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M226.727 53.7668L219.199 51.7496V55.7839L226.727 53.7668Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M226.727 53.7668L219.199 51.7496V55.7839L226.727 53.7668Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='504.915572' y='164.716359' href='#asymptote-81-1-g3-102'/>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M282.291 203.67V53.7668' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M282.291 211.198L284.308 203.67H280.274L282.291 211.198Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M282.291 211.198L284.308 203.67H280.274L282.291 211.198Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='622.20421' y='292.821931' href='#asymptote-81-1-g3-30'/>
+<use x='631.734471' y='292.821931' href='#asymptote-81-1-g1-50'/>
+<use x='642.037467' y='292.821931' href='#asymptote-81-1-g1-79'/>
+<use x='650.722345' y='294.510606' href='#asymptote-81-1-g2-89'/>
+<use x='658.010398' y='292.821931' href='#asymptote-81-1-g5-40'/>
+<use x='662.252836' y='292.821931' href='#asymptote-81-1-g3-85'/>
+<use x='670.890687' y='292.821931' href='#asymptote-81-1-g5-41'/>
+</g>
+<g transform='translate(-1063.246148 -593.484818)scale(2.718)'>
+<use x='614.928333' y='349.225667' href='#asymptote-81-1-g0-67'/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M267.085 206.58L82.2609 63.0274' fill='none' stroke="var(--asymptote-color-008000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M273.03 211.198L268.322 204.987L265.847 208.173L273.03 211.198Z' fill="var(--asymptote-color-008000)"/>
+</g>
+<g transform='translate(337.646 116.65)scale(.996264)'>
+<path d='M273.03 211.198L268.322 204.987L265.847 208.173L273.03 211.198Z' fill='none' stroke="var(--asymptote-color-008000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-008000)">
+<use x='420.985681' y='265.030671' href='#asymptote-81-1-g3-102'/>
+<use x='427.500862' y='261.071853' href='#asymptote-81-1-g2-93'/>
+<use x='431.292248' y='265.030671' href='#asymptote-81-1-g3-30'/>
+<use x='440.822508' y='265.030671' href='#asymptote-81-1-g1-50'/>
+<use x='451.125505' y='265.030671' href='#asymptote-81-1-g1-79'/>
+<use x='459.810382' y='266.719346' href='#asymptote-81-1-g2-88'/>
+<use x='467.895435' y='265.030671' href='#asymptote-81-1-g5-40'/>
+<use x='472.137873' y='265.030671' href='#asymptote-81-1-g3-102'/>
+<use x='478.653055' y='261.071853' href='#asymptote-81-1-g4-112'/>
+<use x='483.357703' y='261.071853' href='#asymptote-81-1-g4-114'/>
+<use x='486.657873' y='261.071853' href='#asymptote-81-1-g4-101'/>
+<use x='490.919723' y='265.030671' href='#asymptote-81-1-g5-40'/>
+<use x='495.162161' y='265.030671' href='#asymptote-81-1-g3-85'/>
+<use x='503.800012' y='265.030671' href='#asymptote-81-1-g5-41'/>
+<use x='508.04245' y='265.030671' href='#asymptote-81-1-g5-41'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 81.1.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(The pullback of <math id="S1.Thmtheorem4.m1" class="ltx_Math" alttext="\frac{1}{y-25}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>y</mi><mo>−</mo><mn>25</mn></mrow></mfrac></math> under <math id="S1.Thmtheorem4.m2" class="ltx_Math" alttext="t\mapsto t^{2}" display="inline"><mrow><mi>t</mi><mo stretchy="false">↦</mo><msup><mi>t</mi><mn>2</mn></msup></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The map</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_math_unparsed" alttext="f\colon X=\mathbb{A}^{1}\to Y=\mathbb{A}^{1}\quad\text{by}\quad t\mapsto t^{2}" display="block"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>X</mi><mo>=</mo><msup><mi>𝔸</mi><mn>1</mn></msup><mo stretchy="false">→</mo><mi>Y</mi><mo>=</mo><msup><mi>𝔸</mi><mn>1</mn></msup><mspace width="1em"></mspace><mtext>by</mtext><mspace width="1em"></mspace><mi>t</mi><mo stretchy="false">↦</mo><msup><mi>t</mi><mn>2</mn></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is a morphism of varieties.
+For example, consider the regular function <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\varphi=\frac{1}{y-25}" display="inline"><mrow><mi>φ</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>y</mi><mo>−</mo><mn>25</mn></mrow></mfrac></mrow></math> on
+the open set <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="Y\setminus\{25\}\subseteq Y" display="inline"><mrow><mrow><mi>Y</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>25</mn><mo stretchy="false">}</mo></mrow></mrow><mo>⊆</mo><mi>Y</mi></mrow></math>.
+The <math id="S1.Thmtheorem4.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>-inverse image is <math id="S1.Thmtheorem4.p1.m4" class="ltx_Math" alttext="X\setminus\{\pm 5\}" display="inline"><mrow><mi>X</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mo>±</mo><mn>5</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.
+Thus the pullback is</p>
+<div class="table-container"><table id="A5.S3.EGx160" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex4.m1" class="ltx_Math" alttext="\displaystyle f^{\sharp}\varphi\colon X\setminus\{\pm 5\}" display="inline"><mrow><mrow><msup><mi>f</mi><mi mathvariant="normal">♯</mi></msup><mo>⁢</mo><mi>φ</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mo>±</mo><mn>5</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex4.m2" class="ltx_Math" alttext="\displaystyle\to Y\setminus\{25\}" display="inline"><mrow><mi></mi><mo stretchy="false">→</mo><mrow><mi>Y</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>25</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex5.m1" class="ltx_Math" alttext="\displaystyle\quad\text{by}\quad x" display="inline"><mrow><mtext>by</mtext><mspace width="1em"></mspace><mi>x</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex5.m2" class="ltx_Math" alttext="\displaystyle\mapsto\frac{1}{x^{2}-25}" display="inline"><mrow><mi></mi><mo stretchy="false">↦</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>25</mn></mrow></mfrac></mstyle></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which is regular on <math id="S1.Thmtheorem4.p1.m5" class="ltx_Math" alttext="X\setminus\{\pm 5\}" display="inline"><mrow><mi>X</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mo>±</mo><mn>5</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">81.2 </span>Classifying the simplest examples</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <a href="#thm:affine_global_polynomial" title="Theorem 81.2.2 (Regular maps of affine varieties are globally polynomials) ‣ 81.2.i Affine classification ‣ 81.2 Classifying the simplest examples ‣ Chapter 81 Morphisms of varieties ‣ Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">81.2.2</span></a>;
+they’re just polynomials.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">On a philosophical point, we like the earlier definition because
+it adheres to our philosophy of treating our
+varieties as intrinsic objects, rather than embedded ones.
+However, it is somewhat of a nuisance to actually verify it.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">So in this section, we will</p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">classify all the morphisms from <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{A}^{m}\to\mathbb{A}^{n}" display="inline"><mrow><msup><mi>𝔸</mi><mi>m</mi></msup><mo stretchy="false">→</mo><msup><mi>𝔸</mi><mi>n</mi></msup></mrow></math>, and</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">classify all the morphisms from <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{CP}^{m}\to\mathbb{CP}^{n}" display="inline"><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>m</mi></msup></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">It what follows I will wave my hands a lot in claiming
+that something is a morphism, since doing so is mostly detail checking.
+The theorems which follow will give us alternative definitions
+of morphism which are more coordinate-based
+and easier to use for actual computations.</p>
+</div>
+<section id="S2.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">81.2.i </span>Affine classification</h3>
+
+<div id="S2.SS1.p1" class="ltx_para">
+<p class="ltx_p">Earlier we saw how <math id="S2.SS1.p1.m1" class="ltx_Math" alttext="t\mapsto t^{2}" display="inline"><mrow><mi>t</mi><mo stretchy="false">↦</mo><msup><mi>t</mi><mn>2</mn></msup></mrow></math> gives us a map.
+More generally, given any polynomial <math id="S2.SS1.p1.m2" class="ltx_Math" alttext="P(t)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+the map <math id="S2.SS1.p1.m3" class="ltx_Math" alttext="t\mapsto P(t)" display="inline"><mrow><mi>t</mi><mo stretchy="false">↦</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> will work.
+And in fact, that’s all:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 81.2.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X=\mathbb{A}^{1}" display="inline"><mrow><mi>X</mi><mo>=</mo><msup><mi>𝔸</mi><mn>1</mn></msup></mrow></math>, <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="Y=\mathbb{A}^{1}" display="inline"><mrow><mi>Y</mi><mo>=</mo><msup><mi>𝔸</mi><mn>1</mn></msup></mrow></math>.
+By considering <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathrm{id}\in\mathcal{O}_{Y}(Y)" display="inline"><mrow><mi>id</mi><mo>∈</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>Y</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, show that no other
+regular functions exist.</span></p>
+</div>
+</div>
+<div id="S2.SS1.p2" class="ltx_para">
+<p class="ltx_p">In fact, let’s generalize the previous exercise:</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 81.2.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Regular maps of affine varieties are globally polynomials)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="X\subseteq\mathbb{A}^{m}" display="inline"><mrow><mi>X</mi><mo>⊆</mo><msup><mi>𝔸</mi><mi>m</mi></msup></mrow></math> and <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="Y\subseteq\mathbb{A}^{n}" display="inline"><mrow><mi>Y</mi><mo>⊆</mo><msup><mi>𝔸</mi><mi>n</mi></msup></mrow></math> be affine varieties.
+Every morphism <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> of varieties is given by</p>
+<div class="table-container"><table id="thm:affine_global_polynomial" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="x=\left(x_{1},\dots,x_{m}\right)\xmapsto{f}\left(P_{1}(x),\dots,P_{n}(x)\right)" display="block"><mrow><mi>x</mi><mo>=</mo><mrow><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>m</mi></msub><mo>)</mo></mrow><mover accent="true"><mo stretchy="false">↦</mo><mo>𝑓</mo></mover><mrow><mo>(</mo><mrow><msub><mi>P</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><msub><mi>P</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="P_{1}" display="inline"><msub><mi>P</mi><mn>1</mn></msub></math>, …, <math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="P_{n}" display="inline"><msub><mi>P</mi><mi>n</mi></msub></math> are polynomials.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.SS1.p3" class="ltx_para">
+<p class="ltx_p">It’s not too hard to see that all such functions work,
+so let’s go the other way.
+Let <math id="S2.SS1.p3.m1" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> be a morphism.</p>
+</div>
+<div id="S2.SS1.p4" class="ltx_para">
+<p class="ltx_p">First, remark that <math id="S2.SS1.p4.m1" class="ltx_Math" alttext="f^{\text{pre}}(Y)=X" display="inline"><mrow><mrow><msup><mi>f</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>X</mi></mrow></math>.
+Now consider the regular function <math id="S2.SS1.p4.m2" class="ltx_Math" alttext="\pi_{1}\in\mathcal{O}_{Y}(Y)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>∈</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>Y</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+given by the projection <math id="S2.SS1.p4.m3" class="ltx_Math" alttext="(y_{1},\dots,y_{n})\mapsto y_{1}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>y</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><msub><mi>y</mi><mn>1</mn></msub></mrow></math>.
+Thus we need <math id="S2.SS1.p4.m4" class="ltx_Math" alttext="f\circ\pi_{1}" display="inline"><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><msub><mi>π</mi><mn>1</mn></msub></mrow></math> to be regular on <math id="S2.SS1.p4.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.</p>
+</div>
+<div id="S2.SS1.p5" class="ltx_para">
+<p class="ltx_p">But for affine varieties <math id="S2.SS1.p5.m1" class="ltx_Math" alttext="\mathcal{O}_{X}(X)" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math> is just the coordinate ring <math id="S2.SS1.p5.m2" class="ltx_Math" alttext="\mathbb{C}[X]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow></mrow></math>
+and so we know there is a polynomial <math id="S2.SS1.p5.m3" class="ltx_Math" alttext="P_{1}" display="inline"><msub><mi>P</mi><mn>1</mn></msub></math> such that <math id="S2.SS1.p5.m4" class="ltx_Math" alttext="f\circ\pi_{1}=P_{1}" display="inline"><mrow><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><msub><mi>π</mi><mn>1</mn></msub></mrow><mo>=</mo><msub><mi>P</mi><mn>1</mn></msub></mrow></math>.
+Similarly for the other coordinates.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+</section>
+<section id="S2.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">81.2.ii </span>Projective classification</h3>
+
+<div id="S2.SS2.p1" class="ltx_para">
+<p class="ltx_p">Unfortunately, the situation is a little weirder in the projective setting.
+If <math id="S2.SS2.p1.m1" class="ltx_Math" alttext="X\subseteq\mathbb{CP}^{m}" display="inline"><mrow><mi>X</mi><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>m</mi></msup></mrow></mrow></math> and <math id="S2.SS2.p1.m2" class="ltx_Math" alttext="Y\subseteq\mathbb{CP}^{n}" display="inline"><mrow><mi>Y</mi><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></mrow></math> are projective varieties,
+then every function</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_math_unparsed" alttext="x=\left(x_{0}:x_{1}:\dots:x_{m}\right)\mapsto\left(P_{0}(x):P_{1}(x):\dots:P_{%
+n}(x)\right)" display="block"><mrow><mi>x</mi><mo>=</mo><mrow><mo>(</mo><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mi mathvariant="normal">…</mi><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mi>m</mi></msub><mo>)</mo></mrow><mo stretchy="false">↦</mo><mrow><mo>(</mo><msub><mi>P</mi><mn>0</mn></msub><mrow><mo stretchy="false">(</mo><mi>x</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow><mo rspace="0.278em">:</mo><msub><mi>P</mi><mn>1</mn></msub><mrow><mo stretchy="false">(</mo><mi>x</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow><mo rspace="0.278em">:</mo><mi mathvariant="normal">…</mi><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>P</mi><mi>n</mi></msub><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is a valid morphism, provided the <math id="S2.SS2.p1.m3" class="ltx_Math" alttext="P_{i}" display="inline"><msub><mi>P</mi><mi>i</mi></msub></math> are homogeneous
+of the same degree and don’t all vanish simultaneously.
+However if we try to repeat the proof for affine varieties
+we run into an issue: there is no <math id="S2.SS2.p1.m4" class="ltx_Math" alttext="\pi_{1}" display="inline"><msub><mi>π</mi><mn>1</mn></msub></math> morphism.
+(Would we send <math id="S2.SS2.p1.m5" class="ltx_math_unparsed" alttext="(1:1)=(2:2)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo lspace="0.278em" rspace="0.278em">:</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo lspace="0.278em" rspace="0.278em">:</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow></math> to <math id="S2.SS2.p1.m6" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> or <math id="S2.SS2.p1.m7" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>?)</p>
+</div>
+<div id="S2.SS2.p2" class="ltx_para">
+<p class="ltx_p">And unfortunately, there is no way to repair this.
+Counterexample:</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 81.2.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Projective map which is not globally polynomial)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="V=\mathcal{V}_{\text{pr}}(xy-z^{2})\subseteq\mathbb{CP}^{2}" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>2</mn></msup></mrow></mrow></math>.
+Then the map</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_math_unparsed" alttext="V\to\mathbb{CP}^{1}\quad\text{by}\quad(x:y:z)\mapsto\begin{cases}(x:z)&amp;x\neq 0%
+\\
+(z:y)&amp;y\neq 0\end{cases}" display="block"><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>ℂ</mi><msup><mi>ℙ</mi><mn>1</mn></msup><mspace width="1em"></mspace><mtext>by</mtext><mspace width="1em"></mspace><mrow><mo stretchy="false">(</mo><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>y</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>z</mi></mrow><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>x</mi><mo>≠</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>y</mi><mo>≠</mo><mn>0</mn></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">turns out to be a morphism of projective varieties.
+This is well defined just because <math id="S2.Thmtheorem3.p1.m2" class="ltx_math_unparsed" alttext="(x:z)=(z:y)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math> if <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="x,y\neq 0" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>≠</mo><mn>0</mn></mrow></math>;
+this should feel reminiscent of the definition of regular function.</p>
+</div>
+</div>
+<div id="S2.SS2.p3" class="ltx_para">
+<p class="ltx_p">The good news is that “local” issues are the only limiting factor.</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 81.2.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Regular maps of projective varieties are locally polynomials)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X\subseteq\mathbb{CP}^{m}" display="inline"><mrow><mi>X</mi><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>m</mi></msup></mrow></mrow></math> and <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="Y\subseteq\mathbb{CP}^{n}" display="inline"><mrow><mi>Y</mi><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></mrow></math> be projective varieties
+and let <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> be a morphism.
+Then at every point <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="p\in X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>X</mi></mrow></math> there exists
+an open neighborhood <math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="U_{p}\ni p" display="inline"><mrow><msub><mi>U</mi><mi>p</mi></msub><mo>∋</mo><mi>p</mi></mrow></math>
+and polynomials <math id="S2.Thmtheorem4.p1.m6" class="ltx_Math" alttext="P_{0}" display="inline"><msub><mi>P</mi><mn>0</mn></msub></math>, <math id="S2.Thmtheorem4.p1.m7" class="ltx_Math" alttext="P_{1}" display="inline"><msub><mi>P</mi><mn>1</mn></msub></math>, …, <math id="S2.Thmtheorem4.p1.m8" class="ltx_Math" alttext="P_{n}" display="inline"><msub><mi>P</mi><mi>n</mi></msub></math> (which depend on <math id="S2.Thmtheorem4.p1.m9" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>) so that</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_math_unparsed" alttext="f(x)=\left(P_{0}(x):P_{1}(x):\dots:P_{n}(x)\right)\quad\forall x=(x_{0}:\dots:%
+x_{n})\in U_{p}." display="block"><mrow><mi>f</mi><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo>(</mo><msub><mi>P</mi><mn>0</mn></msub><mrow><mo stretchy="false">(</mo><mi>x</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow><mo rspace="0.278em">:</mo><msub><mi>P</mi><mn>1</mn></msub><mrow><mo stretchy="false">(</mo><mi>x</mi><mo rspace="0.278em" stretchy="false">)</mo></mrow><mo rspace="0.278em">:</mo><mi mathvariant="normal">…</mi><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>P</mi><mi>n</mi></msub><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>)</mo></mrow><mspace width="1.167em"></mspace><mo rspace="0.167em">∀</mo><mi>x</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mi mathvariant="normal">…</mi><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo>∈</mo><msub><mi>U</mi><mi>p</mi></msub><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Of course the polynomials <math id="S2.Thmtheorem4.p1.m10" class="ltx_Math" alttext="P_{i}" display="inline"><msub><mi>P</mi><mi>i</mi></msub></math> must be homogeneous of the same degree
+and cannot vanish simultaneously on any point of <math id="S2.Thmtheorem4.p1.m11" class="ltx_Math" alttext="U_{p}" display="inline"><msub><mi>U</mi><mi>p</mi></msub></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 81.2.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Example of an isomorphism)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">In fact, the map <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="V=\mathcal{V}_{\text{pr}}(xy-z^{2})\to\mathbb{CP}^{1}" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></mrow></math> is an isomorphism.
+The inverse map <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\mathbb{CP}^{1}\to V" display="inline"><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow><mo stretchy="false">→</mo><mi>V</mi></mrow></math> is given by</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_math_unparsed" alttext="(s:t)\mapsto(s^{2}:t^{2}:st)." display="block"><mrow><mrow><mo stretchy="false">(</mo><mi>s</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><msup><mi>s</mi><mn>2</mn></msup><mo lspace="0.278em" rspace="0.278em">:</mo><msup><mi>t</mi><mn>2</mn></msup><mo lspace="0.278em" rspace="0.278em">:</mo><mi>s</mi><mi>t</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Thus actually <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="V\cong\mathbb{CP}^{1}" display="inline"><mrow><mi>V</mi><mo>≅</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></mrow></math>.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">81.3 </span>Some more applications and examples</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S3.p1.m1" class="ltx_Math" alttext="\mathbb{A}^{1}\hookrightarrow\mathbb{CP}^{1}" display="inline"><mrow><msup><mi>𝔸</mi><mn>1</mn></msup><mo stretchy="false">↪</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></mrow></math> is a good one.</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">The previous section complete settles affine varieties to affine varieties,
+and projective varieties to projective varieties.
+However, the definition we gave at the start of the chapter
+works for <em class="ltx_emph ltx_font_italic">any</em> baby ringed spaces,
+and therefore there is still a lot of room to explore.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">For example, <span class="ltx_text ltx_font_bold">we can have affine spaces talk to projective ones</span>.
+Why not?
+The power of our pullback-based definition
+is that you enable any baby ringed spaces to communicate,
+even if they live in different places.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 81.3.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Embedding <math id="S3.Thmtheorem1.m1" class="ltx_Math" alttext="\mathbb{A}^{1}\hookrightarrow\mathbb{CP}^{1}" display="inline"><mrow><msup><mi>𝔸</mi><mn>1</mn></msup><mo stretchy="false">↪</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Consider a morphism</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_math_unparsed" alttext="f\colon\mathbb{A}^{1}\hookrightarrow\mathbb{CP}^{1}\quad\text{by}\quad t%
+\mapsto(t:1)." display="block"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><msup><mi>𝔸</mi><mn>1</mn></msup><mo stretchy="false">↪</mo><mi>ℂ</mi><msup><mi>ℙ</mi><mn>1</mn></msup><mspace width="1em"></mspace><mtext>by</mtext><mspace width="1em"></mspace><mi>t</mi><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This is also a morphism of varieties.
+(Can you see what the pullbacks look like?)
+This reflects the fact that <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathbb{CP}^{1}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></math> is “<math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math> plus a point at infinity”.</p>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Here is another way you can generate more baby ringed spaces.
+Given any projective variety,
+you can take an open subset of it,
+and that will itself be a baby ringed space.
+We give this a name:</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 81.3.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> quasi-projective variety</span> is
+an open set <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> of a projective variety <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+It is a baby ringed space <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="(X,\mathcal{O}_{X})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo stretchy="false">)</mo></mrow></math> too,
+because for any open set <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="U\subseteq X" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>X</mi></mrow></math>
+we simply define <math id="S3.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\mathcal{O}_{X}(U)=\mathcal{O}_{V}(U)" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">We chose to take open subsets of projective varieties
+because this will subsume the affine ones, for example:</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 81.3.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(The parabola is quasi-projective)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Consider the parabola <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="V=\mathcal{V}(y-x^{2})\subset\mathbb{A}^{2}" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⊂</mo><msup><mi>𝔸</mi><mn>2</mn></msup></mrow></math>.
+We take the projective variety <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="W=\mathcal{V}_{\text{pr}}(zy-x^{2})" display="inline"><mrow><mi>W</mi><mo>=</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>z</mi><mo>⁢</mo><mi>y</mi></mrow><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+and look at the standard affine chart <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="D(z)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+Then there is an isomorphism</p>
+<div class="table-container"><table id="A5.S3.EGx161" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex12"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex12.m1" class="ltx_Math" alttext="\displaystyle V" display="inline"><mi>V</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex12.m2" class="ltx_Math" alttext="\displaystyle\to D(z)\subseteq W" display="inline"><mrow><mi></mi><mo stretchy="false">→</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>W</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex13"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex13.m1" class="ltx_Math" alttext="\displaystyle(x,y)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex13.m2" class="ltx_math_unparsed" alttext="\displaystyle\mapsto(x:y:1)" display="inline"><mrow><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>y</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex14"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex14.m1" class="ltx_Math" alttext="\displaystyle(x/z,y/z)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>/</mo><mi>z</mi></mrow><mo>,</mo><mrow><mi>y</mi><mo>/</mo><mi>z</mi></mrow><mo stretchy="false">)</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex14.m2" class="ltx_math_unparsed" alttext="\displaystyle\mapsfrom(x:y:z)." display="inline"><mrow><mo stretchy="false">↤</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>y</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Consequently, <math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is (isomorphic to)
+an open subset of <math id="S3.Thmtheorem3.p1.m5" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>, thus we regard it as quasi-projective.</p>
+</div>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">[Missing Figure: parabola]</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">In general this proof can be readily adapted:</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 81.3.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Affine <math id="S3.Thmtheorem4.m1" class="ltx_Math" alttext="\subseteq" display="inline"><mo>⊆</mo></math> quasi-projective)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Every affine variety is isomorphic to a quasi-projective one
+(i.e. every affine variety is an open subset of a projective variety).</p>
+</div>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">So quasi-projective varieties generalize both types of varieties we have seen.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">81.4 </span>The hyperbola effect</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S4.p1.m1" class="ltx_Math" alttext="\mathbb{A}^{1}\setminus\{0\}" display="inline"><mrow><msup><mi>𝔸</mi><mn>1</mn></msup><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math> is even affine</em></p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">So here is a natural question: are there quasi-projective varieties
+which are neither affine nor projective?
+The answer is yes, but for the sake of narrative
+I’m going to play dumb and find a <em class="ltx_emph ltx_font_italic">non-example</em>,
+with the actual example being given in the problems.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Our first guess might be to take the simplest projective variety,
+say <math id="S4.p3.m1" class="ltx_Math" alttext="\mathbb{CP}^{1}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></math>, and delete a point (to get an open set).
+This is quasi-projective, but it’s isomorphic to <math id="S4.p3.m2" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math>.
+So instead we start with the simplest affine variety,
+say <math id="S4.p3.m3" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math>, and try to delete a point.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Surprisingly, this doesn’t work.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 81.4.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Crucial example: punctured line is isomorphic to hyperbola)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X=\mathbb{A}^{1}\setminus\{0\}" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><msup><mi>𝔸</mi><mn>1</mn></msup><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math> be an quasi-projective variety.
+We claim that in fact we have an isomorphism</p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="X\cong V=\mathcal{V}(xy-1)\subseteq\mathbb{A}^{2}" display="block"><mrow><mi>X</mi><mo>≅</mo><mi>V</mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><msup><mi>𝔸</mi><mn>2</mn></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which shows that <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is still isomorphic to an affine variety.
+The maps are</p>
+<div class="table-container"><table id="A5.S3.EGx162" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex16"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex16.m1" class="ltx_Math" alttext="\displaystyle X" display="inline"><mi>X</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex16.m2" class="ltx_Math" alttext="\displaystyle\leftrightarrow V" display="inline"><mrow><mi></mi><mo stretchy="false">↔</mo><mi>V</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex17"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex17.m1" class="ltx_Math" alttext="\displaystyle t" display="inline"><mi>t</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex17.m2" class="ltx_Math" alttext="\displaystyle\mapsto(t,1/t)" display="inline"><mrow><mi></mi><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><mrow><mn>1</mn><mo>/</mo><mi>t</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex18"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex18.m1" class="ltx_Math" alttext="\displaystyle x" display="inline"><mi>x</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex18.m2" class="ltx_Math" alttext="\displaystyle\mapsfrom(x,y)." display="inline"><mrow><mrow><mi></mi><mo stretchy="false">↤</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Intuitively, the “hyperbola <math id="S4.p5.m1" class="ltx_Math" alttext="y=1/x" display="inline"><mrow><mi>y</mi><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></mrow></math>” in <math id="S4.p5.m2" class="ltx_Math" alttext="\mathbb{A}^{2}" display="inline"><msup><mi>𝔸</mi><mn>2</mn></msup></math> can be projected
+onto the <math id="S4.p5.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>-axis.
+Here is the relevant picture.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='111.328694pt' height='169.73699pt' viewBox='105.065012 102.513831 111.328694 169.73699'>
+<defs>
+<clipPath id='asymptote-81-2-Clip1'>
+<path clip-rule='evenodd' d='M-.501875 162.425H112.248V-.501875H-.501875V162.425ZM52.6021 158.159C52.6021 156.08 50.9169 154.395 48.838 154.395C46.7592 154.395 45.074 156.08 45.074 158.159S46.7592 161.923 48.838 161.923C50.9169 161.923 52.6021 160.238 52.6021 158.159Z' transform='matrix(0.996264 0 0 0.996264 105.065 102.514)'/>
+</clipPath>
+<path id='asymptote-81-2-g2-40' d='M3.610908 2.618181C3.610908 2.585454 3.610908 2.563636 3.425454 2.378181C2.061818 1.003636 1.712727-1.058182 1.712727-2.727272C1.712727-4.625453 2.127272-6.523635 3.46909-7.887271C3.610908-8.01818 3.610908-8.039998 3.610908-8.072725C3.610908-8.149089 3.567272-8.181816 3.501817-8.181816C3.392726-8.181816 2.410908-7.439998 1.767272-6.054544C1.210909-4.854544 1.08-3.643635 1.08-2.727272C1.08-1.876363 1.2-.556363 1.799999 .676363C2.454545 2.018181 3.392726 2.727272 3.501817 2.727272C3.567272 2.727272 3.610908 2.694545 3.610908 2.618181Z'/>
+<path id='asymptote-81-2-g2-41' d='M3.152726-2.727272C3.152726-3.578181 3.032726-4.89818 2.432727-6.130907C1.778181-7.472725 .84-8.181816 .730909-8.181816C.665454-8.181816 .621818-8.13818 .621818-8.072725C.621818-8.039998 .621818-8.01818 .829091-7.821816C1.898181-6.741816 2.519999-5.007271 2.519999-2.727272C2.519999-.861818 2.116363 1.058182 .763636 2.432727C.621818 2.563636 .621818 2.585454 .621818 2.618181C.621818 2.683636 .665454 2.727272 .730909 2.727272C.84 2.727272 1.821818 1.985454 2.465454 .6C3.021817-.6 3.152726-1.810909 3.152726-2.727272Z'/>
+<path id='asymptote-81-2-g2-49' d='M3.207272-6.981816C3.207272-7.243634 3.207272-7.265453 2.956363-7.265453C2.279999-6.567271 1.32-6.567271 .970909-6.567271V-6.229089C1.189091-6.229089 1.832727-6.229089 2.399999-6.512725V-.861818C2.399999-.469091 2.367272-.338182 1.385454-.338182H1.036363V0C1.418181-.032727 2.367272-.032727 2.803636-.032727S4.18909-.032727 4.570908 0V-.338182H4.221817C3.239999-.338182 3.207272-.458182 3.207272-.861818V-6.981816Z'/>
+<path id='asymptote-81-2-g0-0' d='M7.189089-2.50909C7.374543-2.50909 7.570907-2.50909 7.570907-2.727272S7.374543-2.945454 7.189089-2.945454H1.287272C1.101818-2.945454 .905454-2.945454 .905454-2.727272S1.101818-2.50909 1.287272-2.50909H7.189089Z'/>
+<path id='asymptote-81-2-g0-86' d='M2.945454-.938182C3.10909-2.279999 3.10909-3.261817 3.10909-3.425454C3.10909-4.199999 3.10909-7.450907 1.123636-7.450907C.752727-7.450907 .370909-7.145453 .370909-6.992725C.370909-6.916362 .425454-6.916362 .578182-6.905453C2.170908-6.763634 2.301818-4.265453 2.301818-3.032726C2.301818-1.930909 2.159999-.621818 2.02909 .109091C2.007272 .24 2.007272 .261818 2.007272 .305454C2.007272 .36 2.007272 .490909 2.083636 .490909C2.203636 .490909 4.843635-1.527272 6.229089-3.632726C6.785453-4.483635 7.199998-5.454544 7.199998-6.185453C7.199998-7.112725 6.589089-7.450907 6.141816-7.450907C5.825453-7.450907 5.672726-6.763634 5.672726-6.621816C5.672726-6.45818 5.727271-6.45818 5.85818-6.447271C6.589089-6.359998 6.719998-5.781817 6.719998-5.519998C6.719998-4.636362 4.821817-2.399999 2.945454-.938182Z'/>
+<path id='asymptote-81-2-g1-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+<path id='asymptote-81-2-g1-120' d='M3.643635-3.294545C3.70909-3.578181 3.959999-4.581817 4.723635-4.581817C4.77818-4.581817 5.039999-4.581817 5.269089-4.439999C4.963635-4.385453 4.745453-4.112726 4.745453-3.850908C4.745453-3.676363 4.865453-3.46909 5.159999-3.46909C5.399998-3.46909 5.749089-3.665454 5.749089-4.101817C5.749089-4.66909 5.105453-4.821817 4.734544-4.821817C4.101817-4.821817 3.719999-4.243635 3.58909-3.992726C3.316363-4.712726 2.727272-4.821817 2.410908-4.821817C1.276363-4.821817 .654545-3.414545 .654545-3.141817C.654545-3.032726 .763636-3.032726 .785454-3.032726C.872727-3.032726 .905454-3.054545 .927272-3.152726C1.298181-4.30909 2.018181-4.581817 2.38909-4.581817C2.596363-4.581817 2.978181-4.483635 2.978181-3.850908C2.978181-3.512726 2.792726-2.781817 2.38909-1.254545C2.214545-.578182 1.832727-.12 1.352727-.12C1.287272-.12 1.036363-.12 .807273-.261818C1.08-.316364 1.32-.545454 1.32-.850909C1.32-1.145454 1.08-1.232727 .916363-1.232727C.589091-1.232727 .316364-.949091 .316364-.6C.316364-.098182 .861818 .12 1.341818 .12C2.061818 .12 2.454545-.643636 2.487272-.709091C2.618181-.305454 3.010908 .12 3.665454 .12C4.78909 .12 5.410908-1.287272 5.410908-1.56C5.410908-1.66909 5.312726-1.66909 5.279999-1.66909C5.181817-1.66909 5.159999-1.625454 5.13818-1.54909C4.77818-.381818 4.036363-.12 3.687272-.12C3.261817-.12 3.087272-.469091 3.087272-.84C3.087272-1.08 3.152726-1.32 3.272726-1.799999L3.643635-3.294545Z'/>
+<path id='asymptote-81-2-g1-121' d='M5.301817-4.156362C5.345453-4.30909 5.345453-4.330908 5.345453-4.407271C5.345453-4.603635 5.192726-4.701817 5.02909-4.701817C4.919999-4.701817 4.745453-4.636362 4.647271-4.472726C4.625453-4.418181 4.538181-4.079999 4.494544-3.883635C4.418181-3.599999 4.341817-3.305454 4.276362-3.010908L3.785453-1.047272C3.741817-.883636 3.272726-.12 2.552727-.12C1.996363-.12 1.876363-.6 1.876363-1.003636C1.876363-1.505454 2.061818-2.181818 2.432727-3.141817C2.607272-3.58909 2.650908-3.70909 2.650908-3.927272C2.650908-4.418181 2.301818-4.821817 1.756363-4.821817C.72-4.821817 .316364-3.239999 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.054545 .621818-3.22909C.916363-4.254544 1.352727-4.581817 1.723636-4.581817C1.810909-4.581817 1.996363-4.581817 1.996363-4.232726C1.996363-3.959999 1.887272-3.676363 1.810909-3.46909C1.374545-2.312727 1.178181-1.690909 1.178181-1.178181C1.178181-.207273 1.865454 .12 2.50909 .12C2.934545 .12 3.305454-.065455 3.610908-.370909C3.46909 .196364 3.338181 .730909 2.901817 1.309091C2.618181 1.68 2.203636 1.996363 1.701818 1.996363C1.54909 1.996363 1.058182 1.963636 .872727 1.538181C1.047272 1.538181 1.189091 1.538181 1.341818 1.407272C1.450909 1.309091 1.56 1.167272 1.56 .96C1.56 .621818 1.265454 .578182 1.156363 .578182C.905454 .578182 .545454 .752727 .545454 1.287272C.545454 1.832727 1.025454 2.236363 1.701818 2.236363C2.825454 2.236363 3.94909 1.243636 4.254544 .010909L5.301817-4.156362Z'/>
+</defs>
+<g id='asymptote-81-2-page1'>
+<g clip-path='url(#asymptote-81-2-Clip1)'>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M48.838 97.4251V.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<use x='144.665983' y='108.796663' href='#asymptote-81-2-g1-121'/>
+<g clip-path='url(#asymptote-81-2-Clip1)'>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M.250937 48.838H97.4251' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<use x='194.499235' y='159.124839' href='#asymptote-81-2-g1-120'/>
+<g clip-path='url(#asymptote-81-2-Clip1)'>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M.250938 51.8747C.402778 51.8842 .554613 51.8938 .706441 51.9035C.858282 51.9131 1.01012 51.9229 1.16195 51.9327C1.31379 51.9426 1.46562 51.9525 1.61745 51.9626C1.76929 51.9726 1.92113 51.9828 2.07295 51.993C2.22479 52.0033 2.37663 52.0136 2.52846 52.0241C2.6803 52.0345 2.83213 52.0451 2.98396 52.0557C3.1358 52.0664 3.28764 52.0771 3.43946 52.088C3.59131 52.0989 3.74314 52.1098 3.89497 52.1209C4.04681 52.132 4.19865 52.1432 4.35047 52.1545C4.50232 52.1659 4.65415 52.1773 4.80598 52.1889C4.95782 52.2004 5.10966 52.2121 5.26148 52.2239C5.41332 52.2357 5.56516 52.2476 5.71698 52.2596C5.86883 52.2717 6.02066 52.2839 6.17249 52.2962C6.32433 52.3085 6.47617 52.3209 6.62799 52.3335C6.77984 52.3461 6.93167 52.3588 7.0835 52.3716C7.23534 52.3845 7.38718 52.3975 7.539 52.4106C7.69085 52.4237 7.84268 52.437 7.9945 52.4504C8.14635 52.4639 8.29819 52.4775 8.45001 52.4912C8.60186 52.5049 8.75369 52.5188 8.90551 52.5329C9.05736 52.5469 9.2092 52.5611 9.36102 52.5755C9.51287 52.5899 9.6647 52.6044 9.81652 52.6191C9.96837 52.6338 10.1202 52.6487 10.272 52.6638C10.4239 52.6788 10.5757 52.6941 10.7275 52.7095C10.8794 52.7249 11.0312 52.7405 11.183 52.7563C11.3349 52.7721 11.4867 52.7881 11.6385 52.8043C11.7904 52.8205 11.9422 52.8369 12.094 52.8535C12.2459 52.8701 12.3977 52.8869 12.5495 52.9039C12.7014 52.9209 12.8532 52.9381 13.005 52.9556C13.1569 52.973 13.3087 52.9907 13.4606 53.0086C13.6124 53.0265 13.7642 53.0446 13.9161 53.063C14.0679 53.0814 14.2198 53.1 14.3716 53.1188C14.5234 53.1377 14.6753 53.1568 14.8271 53.1762C14.9789 53.1955 15.1308 53.2152 15.2826 53.235C15.4344 53.2549 15.5863 53.2751 15.7381 53.2956C15.8899 53.316 16.0418 53.3367 16.1936 53.3578C16.3454 53.3788 16.4973 53.4001 16.6491 53.4217C16.801 53.4433 16.9528 53.4653 17.1046 53.4875C17.2565 53.5098 17.4083 53.5323 17.5601 53.5552C17.712 53.5781 17.8638 53.6014 18.0156 53.6249C18.1675 53.6485 18.3193 53.6724 18.4711 53.6967C18.623 53.721 18.7748 53.7457 18.9266 53.7707C19.0785 53.7958 19.2303 53.8212 19.3821 53.847C19.534 53.8728 19.6858 53.899 19.8376 53.9257C19.9895 53.9523 20.1413 53.9794 20.2931 54.0069C20.445 54.0344 20.5969 54.0623 20.7486 54.0907C20.9005 54.1191 21.0524 54.1479 21.2041 54.1773C21.356 54.2066 21.5079 54.2364 21.6596 54.2667C21.8116 54.2971 21.9634 54.3279 22.1151 54.3593C22.2671 54.3907 22.4189 54.4226 22.5706 54.455C22.7226 54.4875 22.8744 54.5206 23.0261 54.5541C23.1781 54.5878 23.3299 54.622 23.4816 54.6568C23.6336 54.6917 23.7855 54.7272 23.9371 54.7633C24.0891 54.7994 24.241 54.8362 24.3926 54.8737C24.5446 54.9112 24.6965 54.9494 24.8481 54.9883C25.0002 55.0273 25.152 55.0669 25.3037 55.1073C25.4557 55.1478 25.6075 55.1891 25.7592 55.2311C25.9112 55.2732 26.0631 55.3161 26.2147 55.3598C26.3667 55.4036 26.5186 55.4483 26.6702 55.4938C26.8223 55.5395 26.9741 55.586 27.1257 55.6334C27.2778 55.681 27.4296 55.7296 27.5812 55.779C27.7333 55.8287 27.8852 55.8794 28.0367 55.931C28.1889 55.9829 28.3407 56.0358 28.4922 56.0898C28.6444 56.1441 28.7963 56.1994 28.9477 56.2559C29.1 56.3127 29.2518 56.3706 29.4032 56.4298C29.5555 56.4893 29.7074 56.55 29.8587 56.612C30.0111 56.6744 30.1629 56.7381 30.3142 56.8031C30.4666 56.8687 30.6185 56.9356 30.7697 57.0039C30.9222 57.0728 31.0741 57.1432 31.2252 57.2151C31.3778 57.2877 31.5296 57.3618 31.6807 57.4375C31.8334 57.514 31.9852 57.5922 32.1362 57.672C32.289 57.7528 32.4409 57.8354 32.5917 57.9197C32.7446 58.0052 32.8965 58.0925 33.0472 58.1817C33.2002 58.2722 33.3521 58.3647 33.5027 58.4592C33.6559 58.5553 33.8078 58.6535 33.9582 58.7538C34.1116 58.8559 34.2634 58.9603 34.4137 59.0669C34.5672 59.1757 34.7191 59.2869 34.8692 59.4004C35.023 59.5167 35.1748 59.6353 35.3247 59.7565C35.4787 59.8809 35.6306 60.0078 35.7802 60.1373C35.9345 60.2708 36.0863 60.4069 36.2357 60.5458C36.3903 60.6893 36.5421 60.8357 36.6913 60.9848C36.8461 61.1396 36.9979 61.2974 37.1468 61.458C37.3019 61.6256 37.4538 61.7962 37.6023 61.9697C37.7578 62.1515 37.9097 62.3365 38.0578 62.5245C38.2138 62.7226 38.3656 62.924 38.5133 63.1283C38.6698 63.3449 38.8216 63.5649 38.9688 63.7879C39.1258 64.0257 39.2775 64.267 39.4243 64.5113C39.5818 64.7736 39.7336 65.0394 39.8798 65.3082C40.0379 65.599 40.1896 65.8933 40.3353 66.1906C40.4941 66.5147 40.6457 66.8423 40.7908 67.1728C40.9503 67.5362 41.1019 67.9031 41.2463 68.2729C41.4066 68.6832 41.5581 69.0969 41.7018 69.5134C41.8629 69.9802 42.0143 70.4504 42.1573 70.9231C42.3194 71.4588 42.4706 71.9977 42.6128 72.539C42.7759 73.16 42.927 73.7839 43.0683 74.4102C43.2326 75.1382 43.3835 75.8691 43.5238 76.6021C43.6894 77.4672 43.8401 78.3351 43.9793 79.2049C44.1465 80.2498 44.2969 81.2972 44.4348 82.3464C44.6039 83.633 44.7541 84.9221 44.8903 86.2127C45.0616 87.8358 45.2107 89.4612 45.3458 91.0877C45.5212 93.1984 45.673 95.311 45.8013 97.4251' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M51.8747 .250938C52.003 2.36505 52.1549 4.47766 52.3302 6.58838C52.4654 8.21489 52.6144 9.84024 52.7857 11.4633C52.9219 12.7539 53.0721 14.043 53.2412 15.3297C53.3791 16.3788 53.5296 17.4262 53.6967 18.4711C53.8359 19.3409 53.9866 20.2088 54.1522 21.074C54.2925 21.807 54.4435 22.5379 54.6077 23.2659C54.749 23.8921 54.9002 24.5161 55.0632 25.137C55.2054 25.6783 55.3567 26.2173 55.5187 26.753C55.6617 27.2257 55.8131 27.6958 55.9742 28.1627C56.118 28.5791 56.2695 28.9928 56.4298 29.4032C56.5742 29.7729 56.7257 30.1398 56.8853 30.5033C57.0303 30.8338 57.1819 31.1614 57.3408 31.4855C57.4864 31.7828 57.6381 32.077 57.7963 32.3678C57.9425 32.6366 58.0942 32.9024 58.2518 33.1648C58.3985 33.4091 58.5503 33.6503 58.7073 33.8881C58.8545 34.1112 59.0063 34.3311 59.1628 34.5477C59.3104 34.7521 59.4623 34.9534 59.6183 35.1515C59.7664 35.3395 59.9182 35.5245 60.0738 35.7064C60.2222 35.8799 60.3741 36.0505 60.5293 36.218C60.6781 36.3786 60.83 36.5364 60.9848 36.6913C61.1339 36.8404 61.2858 36.9867 61.4403 37.1303C61.5897 37.2691 61.7416 37.4052 61.8958 37.5387C62.0455 37.6682 62.1973 37.7952 62.3513 37.9196C62.5012 38.0407 62.6531 38.1594 62.8068 38.2756C62.9569 38.3891 63.1088 38.5003 63.2623 38.6092C63.4126 38.7157 63.5645 38.8201 63.7178 38.9223C63.8683 39.0226 64.0202 39.1207 64.1733 39.2168C64.3239 39.3113 64.4758 39.4038 64.6288 39.4944C64.7796 39.5836 64.9314 39.6709 65.0843 39.7563C65.2352 39.8407 65.3871 39.9232 65.5398 40.004C65.6908 40.0839 65.8427 40.162 65.9953 40.2385C66.1464 40.3143 66.2982 40.3884 66.4508 40.4609C66.602 40.5328 66.7538 40.6032 66.9063 40.6721C67.0576 40.7405 67.2094 40.8074 67.3618 40.8729C67.5131 40.938 67.665 41.0017 67.8174 41.0641C67.9687 41.1261 68.1205 41.1868 68.2729 41.2463C68.4242 41.3054 68.5761 41.3634 68.7284 41.4201C68.8798 41.4766 69.0316 41.532 69.1839 41.5862C69.3353 41.6402 69.4872 41.6931 69.6394 41.745C69.7909 41.7967 69.9427 41.8473 70.0949 41.897C70.2464 41.9465 70.3982 41.995 70.5504 42.0426C70.7019 42.0901 70.8538 42.1366 71.0059 42.1823C71.1575 42.2278 71.3093 42.2724 71.4614 42.3163C71.613 42.36 71.7648 42.4029 71.9169 42.445C72.0685 42.487 72.2204 42.5282 72.3724 42.5687C72.524 42.6091 72.6759 42.6488 72.8279 42.6878C72.9796 42.7266 73.1314 42.7648 73.2834 42.8024C73.4351 42.8398 73.5869 42.8766 73.7389 42.9128C73.8906 42.9489 74.0424 42.9843 74.1944 43.0192C74.3461 43.054 74.4979 43.0882 74.6499 43.1219C74.8016 43.1555 74.9535 43.1885 75.1054 43.221C75.2571 43.2535 75.409 43.2854 75.5609 43.3168C75.7126 43.3481 75.8645 43.3789 76.0164 43.4093C76.1682 43.4396 76.32 43.4694 76.4719 43.4988C76.6237 43.5281 76.7755 43.557 76.9274 43.5854C77.0792 43.6137 77.231 43.6417 77.3829 43.6692C77.5347 43.6967 77.6865 43.7237 77.8384 43.7504C77.9902 43.777 78.142 43.8032 78.2939 43.829C78.4457 43.8549 78.5975 43.8803 78.7494 43.9053C78.9012 43.9304 79.0531 43.955 79.2049 43.9793S79.5086 44.0275 79.6605 44.0511C79.8122 44.0747 79.9641 44.0979 80.116 44.1208C80.2677 44.1437 80.4196 44.1663 80.5715 44.1885C80.7233 44.2108 80.8751 44.2327 81.027 44.2543C81.1788 44.2759 81.3306 44.2973 81.4825 44.3183C81.6343 44.3393 81.7861 44.36 81.938 44.3805C82.0898 44.4009 82.2416 44.4211 82.3935 44.441C82.5453 44.4609 82.6971 44.4805 82.849 44.4999C83.0008 44.5193 83.1526 44.5384 83.3045 44.5572C83.4563 44.5761 83.6081 44.5947 83.76 44.6131C83.9118 44.6314 84.0636 44.6496 84.2155 44.6675C84.3673 44.6854 84.5191 44.703 84.671 44.7205C84.8228 44.7379 84.9746 44.7551 85.1265 44.7722C85.2783 44.7892 85.4301 44.806 85.582 44.8226C85.7338 44.8392 85.8857 44.8555 86.0375 44.8717S86.3412 44.9039 86.493 44.9197S86.7967 44.9511 86.9485 44.9665C87.1003 44.982 87.2522 44.9972 87.404 45.0123C87.5558 45.0273 87.7077 45.0422 87.8595 45.0569S88.1632 45.0862 88.315 45.1006C88.4668 45.1149 88.6187 45.1291 88.7705 45.1432C88.9224 45.1572 89.0742 45.1711 89.226 45.1849C89.3779 45.1986 89.5297 45.2122 89.6815 45.2256C89.8334 45.239 89.9852 45.2523 90.137 45.2654C90.2889 45.2786 90.4407 45.2916 90.5925 45.3044C90.7444 45.3173 90.8962 45.33 91.0481 45.3425C91.1999 45.3551 91.3517 45.3676 91.5036 45.3799C91.6554 45.3922 91.8072 45.4043 91.9591 45.4164C92.1109 45.4284 92.2627 45.4404 92.4146 45.4522C92.5664 45.464 92.7182 45.4756 92.8701 45.4872C93.0219 45.4987 93.1737 45.5102 93.3256 45.5215C93.4774 45.5328 93.6292 45.544 93.7811 45.5551C93.9329 45.5662 94.0847 45.5772 94.2366 45.588C94.3884 45.5989 94.5402 45.6097 94.6921 45.6203C94.8439 45.631 94.9957 45.6415 95.1476 45.652C95.2994 45.6624 95.4512 45.6728 95.6031 45.683C95.7549 45.6933 95.9068 45.7034 96.0586 45.7135C96.2104 45.7235 96.3623 45.7334 96.5141 45.7433S96.8178 45.7629 96.9696 45.7726S97.2733 45.7918 97.4251 45.8013' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='168.172317' y='133.934209' href='#asymptote-81-2-g0-86'/>
+<use x='175.754181' y='133.934209' href='#asymptote-81-2-g2-40'/>
+<use x='179.996619' y='133.934209' href='#asymptote-81-2-g1-120'/>
+<use x='186.231473' y='133.934209' href='#asymptote-81-2-g1-121'/>
+<use x='194.395601' y='133.934209' href='#asymptote-81-2-g0-0'/>
+<use x='205.304675' y='133.934209' href='#asymptote-81-2-g2-49'/>
+<use x='210.75924' y='133.934209' href='#asymptote-81-2-g2-41'/>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M48.838 138.484V109.572' fill='none' stroke="var(--asymptote-color-00c000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M48.838 146.012L50.8552 138.484H46.8209L48.838 146.012Z' fill="var(--asymptote-color-00c000)"/>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M48.838 146.012L50.8552 138.484H46.8209L48.838 146.012Z' fill='none' stroke="var(--asymptote-color-00c000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M89.897 158.159H7.77906' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M97.4251 158.159L89.897 156.142V160.176L97.4251 158.159Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M97.4251 158.159L89.897 156.142V160.176L97.4251 158.159Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M.250938 158.159L7.77906 160.176V156.142L.250938 158.159Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M.250938 158.159L7.77906 160.176V156.142L.250938 158.159Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M52.6021 158.159C52.6021 156.08 50.9169 154.395 48.838 154.395C46.7592 154.395 45.074 156.08 45.074 158.159S46.7592 161.923 48.838 161.923C50.9169 161.923 52.6021 160.238 52.6021 158.159Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='1.50562'/>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M52.6021 158.159C52.6021 156.08 50.9169 154.395 48.838 154.395C46.7592 154.395 45.074 156.08 45.074 158.159S46.7592 161.923 48.838 161.923C50.9169 161.923 52.6021 160.238 52.6021 158.159Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='1.50562'/>
+</g>
+<g transform='translate(105.065 102.514)scale(.996264)'>
+<path d='M52.6021 158.159C52.6021 156.08 50.9169 154.395 48.838 154.395C46.7592 154.395 45.074 156.08 45.074 158.159S46.7592 161.923 48.838 161.923C50.9169 161.923 52.6021 160.238 52.6021 158.159Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='197.182988' y='270.794929' href='#asymptote-81-2-g1-88'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">Actually, deleting any number of points from <math id="S4.p6.m1" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math> fails.
+If we delete <math id="S4.p6.m2" class="ltx_Math" alttext="\{1,2,3\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">}</mo></mrow></math>, the resulting open set
+is isomorphic as a baby ringed space to <math id="S4.p6.m3" class="ltx_Math" alttext="\mathcal{V}(y(x-1)(x-2)(x-3)-1)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math>,
+which colloquially might be called <math id="S4.p6.m4" class="ltx_Math" alttext="y=\frac{1}{(x-1)(x-2)(x-3)}" display="inline"><mrow><mi>y</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow></math>.</p>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">The truth is more general.</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 81.4.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Distinguished open sets of affine varieties are affine.</p>
+</div>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">Here is the exact isomorphism.</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 81.4.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Distinguished open subsets of affines are affine)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Consider <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="X=D(f)\subseteq V=\mathcal{V}(f_{1},\dots,f_{m})\subseteq\mathbb{A}^{n}" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>V</mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><msup><mi>𝔸</mi><mi>n</mi></msup></mrow></math>,
+where <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is an affine variety,
+and the distinguished open set <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is thought of as
+a quasi-projective variety.
+Define</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="W=\mathcal{V}(f_{1},\dots,f_{m},y\cdot f-1)\subseteq\mathbb{A}^{n+1}" display="block"><mrow><mi>W</mi><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub><mo>,</mo><mrow><mrow><mi>y</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>f</mi></mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><msup><mi>𝔸</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S4.Thmtheorem3.p1.m4" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> is the <math id="S4.Thmtheorem3.p1.m5" class="ltx_Math" alttext="(n+1)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math>st coordinate of <math id="S4.Thmtheorem3.p1.m6" class="ltx_Math" alttext="\mathbb{A}^{n+1}" display="inline"><msup><mi>𝔸</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></math>.</p>
+</div>
+<div id="S4.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p">Then <math id="S4.Thmtheorem3.p2.m1" class="ltx_Math" alttext="X\cong W" display="inline"><mrow><mi>X</mi><mo>≅</mo><mi>W</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p9" class="ltx_para">
+<p class="ltx_p">For lack of a better name, I will dub this the
+<span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> hyperbola effect</span>, and it will play a significant role later on.</p>
+</div>
+<div id="S4.p10" class="ltx_para">
+<p class="ltx_p">Therefore, if we wish to find an example of a quasi-projective
+variety which is not affine,
+one good place to look would be an open set of an affine space
+which is not distinguished open.
+If you are ambitious now,
+you can try to prove the punctured plane
+(that is, <math id="S4.p10.m1" class="ltx_Math" alttext="\mathbb{A}^{2}" display="inline"><msup><mi>𝔸</mi><mn>2</mn></msup></math> minus the origin) works.
+We will see that example once again later in the next chapter,
+so you will have a second chance to do so.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">81.5 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 81A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Consider the map</p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\mathbb{A}^{1}\to\mathcal{V}(y^{2}-x^{3})\subseteq\mathbb{A}^{2}\quad\text{by}%
+\quad t\mapsto(t^{2},t^{3})." display="block"><mrow><mrow><mrow><msup><mi>𝔸</mi><mn>1</mn></msup><mo stretchy="false">→</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>y</mi><mn>2</mn></msup><mo>−</mo><msup><mi>x</mi><mn>3</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><msup><mi>𝔸</mi><mn>2</mn></msup></mrow><mspace width="1em"></mspace><mrow><mrow><mtext>by</mtext><mspace width="1em"></mspace><mi>t</mi></mrow><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><msup><mi>t</mi><mn>2</mn></msup><mo>,</mo><msup><mi>t</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Show that it is a morphism of varieties,
+but it is not an isomorphism.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_dproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 81B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Show that every projective variety has an open neighborhood
+which is isomorphic to an affine variety.
+In this way, “projective varieties are locally affine”.
+
+Use the standard affine charts.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 81C</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a affine variety
+and let <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> be a irreducible projective variety.
+Prove that <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="V\cong W" display="inline"><mrow><mi>V</mi><mo>≅</mo><mi>W</mi></mrow></math> if and only
+if <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="Thmproblem3.p1.m5" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> are a single point.
+
+Examine the global regular functions.
+
+
+If they were isomorphic, we would have <math id="Thmproblem3.p1.m6" class="ltx_Math" alttext="\mathcal{O}_{V}(V)\cong\mathcal{O}_{W}(W)" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>W</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+For irreducible projective varieties, <math id="Thmproblem3.p1.m7" class="ltx_Math" alttext="\mathcal{O}_{W}(W)\cong\mathbb{C}" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>W</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>W</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mi>ℂ</mi></mrow></math>,
+while for affine varieties <math id="Thmproblem3.p1.m8" class="ltx_Math" alttext="\mathcal{O}_{V}(V)\cong\mathbb{C}[V]" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>V</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+Thus we conclude <math id="Thmproblem3.p1.m9" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> must be a single point.</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 81D</span></span><span class="ltx_text ltx_font_bold"> </span>(Punctured plane is not affine)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem4.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem4.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem4.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p2.m1" class="ltx_Math" alttext="X=\mathbb{A}^{2}\setminus\{(0,0)\}" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><msup><mi>𝔸</mi><mn>2</mn></msup><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></mrow></math> be an open set of <math id="Thmproblem4.p2.m2" class="ltx_Math" alttext="\mathbb{A}^{2}" display="inline"><msup><mi>𝔸</mi><mn>2</mn></msup></math>.
+Let <math id="Thmproblem4.p2.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be any affine variety and let <math id="Thmproblem4.p2.m4" class="ltx_Math" alttext="f\colon X\to V" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> be a morphism.
+Show that <math id="Thmproblem4.p2.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is not an isomorphism.
+
+Assume <math id="Thmproblem4.p2.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> was an isomorphism.
+Then it gives an isomorphism <math id="Thmproblem4.p2.m7" class="ltx_Math" alttext="f^{\sharp}\colon\mathcal{O}_{V}(V)\to\mathcal{O}_{X}(X)=\mathbb{C}[x,y]" display="inline"><mrow><msup><mi>f</mi><mi mathvariant="normal">♯</mi></msup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></math>.
+Thus we may write <math id="Thmproblem4.p2.m8" class="ltx_Math" alttext="\mathcal{O}_{V}(V)=\mathbb{C}[a,b]" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>,
+where <math id="Thmproblem4.p2.m9" class="ltx_Math" alttext="f^{\sharp}(a)=x" display="inline"><mrow><mrow><msup><mi>f</mi><mi mathvariant="normal">♯</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>x</mi></mrow></math> and <math id="Thmproblem4.p2.m10" class="ltx_Math" alttext="f^{\sharp}(b)=y" display="inline"><mrow><mrow><msup><mi>f</mi><mi mathvariant="normal">♯</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>y</mi></mrow></math>.
+Let <math id="Thmproblem4.p2.m11" class="ltx_Math" alttext="f(p)=q" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>q</mi></mrow></math> where <math id="Thmproblem4.p2.m12" class="ltx_Math" alttext="\mathcal{V}(a,b)=\{q\}" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>q</mi><mo stretchy="false">}</mo></mrow></mrow></math>.
+Use the definition of pullback to prove <math id="Thmproblem4.p2.m13" class="ltx_Math" alttext="p\in\mathcal{V}(x,y)" display="inline"><mrow><mi>p</mi><mo>∈</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, contradiction.
+
+
+Assume for contradiction there is an affine variety <math id="Thmproblem4.p2.m14" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>
+and an isomorphism</p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="f\colon X\to V." display="block"><mrow><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Then taking the pullback we get a ring isomorphism</p>
+<div class="table-container"><table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="f^{\sharp}\colon\mathcal{O}_{V}(V)\to\mathcal{O}_{X}(X)=\mathbb{C}[x,y]." display="block"><mrow><mrow><msup><mi>f</mi><mi mathvariant="normal">♯</mi></msup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>X</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Now let <math id="Thmproblem4.p2.m15" class="ltx_Math" alttext="\mathcal{O}_{V}(V)=\mathbb{C}[a,b]" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> where <math id="Thmproblem4.p2.m16" class="ltx_Math" alttext="f^{\sharp}(a)=x" display="inline"><mrow><mrow><msup><mi>f</mi><mi mathvariant="normal">♯</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>x</mi></mrow></math>, <math id="Thmproblem4.p2.m17" class="ltx_Math" alttext="f^{\sharp}(b)=y" display="inline"><mrow><mrow><msup><mi>f</mi><mi mathvariant="normal">♯</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>y</mi></mrow></math>.
+In particular, we actually have to have <math id="Thmproblem4.p2.m18" class="ltx_Math" alttext="V\cong\mathbb{A}^{2}" display="inline"><mrow><mi>V</mi><mo>≅</mo><msup><mi>𝔸</mi><mn>2</mn></msup></mrow></math>.</p>
+</div>
+<div id="Thmproblem4.p3" class="ltx_para">
+<p class="ltx_p">Now in the <em class="ltx_emph ltx_font_italic">affine</em> variety <math id="Thmproblem4.p3.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> we can take <math id="Thmproblem4.p3.m2" class="ltx_Math" alttext="\mathcal{V}(a)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="Thmproblem4.p3.m3" class="ltx_Math" alttext="\mathcal{V}(b)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></math>;
+these have nonempty intersection since <math id="Thmproblem4.p3.m4" class="ltx_Math" alttext="(a,b)" display="inline"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></math>
+is a maximal ideal in <math id="Thmproblem4.p3.m5" class="ltx_Math" alttext="\mathcal{O}_{V}(V)" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+Call this point <math id="Thmproblem4.p3.m6" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>, and let <math id="Thmproblem4.p3.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> be a point with <math id="Thmproblem4.p3.m8" class="ltx_Math" alttext="f(p)=q" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>q</mi></mrow></math>.</p>
+</div>
+<div id="Thmproblem4.p4" class="ltx_para">
+<p class="ltx_p">Then</p>
+<div class="table-container"><table id="Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex23.m1" class="ltx_Math" alttext="0=a(q)=(f^{\sharp}a)(p)=x(p)" display="block"><mrow><mn>0</mn><mo>=</mo><mrow><mi>a</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msup><mi>f</mi><mi mathvariant="normal">♯</mi></msup><mo>⁢</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and so <math id="Thmproblem4.p4.m1" class="ltx_Math" alttext="p\in\mathcal{V}(x)\subseteq X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>X</mi></mrow></math>.
+Similarly, <math id="Thmproblem4.p4.m2" class="ltx_Math" alttext="p\in\mathcal{V}(y)\subseteq X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>X</mi></mrow></math>,
+but this is a contradiction since <math id="Thmproblem4.p4.m3" class="ltx_Math" alttext="\mathcal{V}(x,y)=\varnothing" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../ag1/bezouts-theorem.html">Previous chapter: Bonus: Bézout’s theorem</a><br />
+<a href="../ag2/sheaves-and-ringed-spaces.html">Next chapter: Sheaves and ringed spaces</a>
+</nav>
+
+		</main>
+	</body>
+</html>

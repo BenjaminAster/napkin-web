@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Basic definitions of Riemann surfaces</title>
+		<meta property="og:title" content="Basic definitions of Riemann surfaces" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../diffgeo/manifolds-diffgeo.html">Previous chapter: A bit of manifolds</a><br />
+<a href="../riemann/morphism-riemann.html">Next chapter: Morphisms between Riemann surfaces</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 47 </span>Basic definitions of Riemann surfaces</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">Roughly speaking, the theory of Riemann surfaces is just the generalization of complex analysis
+using ideas from differential geometry:
+Just like how a <math id="p1.m1" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-manifold can be viewed as a collection of patches of the real plane <math id="p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>
+smoothly welded together to form a more complicated object,
+we take “pieces” of the complex plane <math id="p1.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>, <em class="ltx_emph ltx_font_italic">analytically</em> welded together .</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">We already know that the theory of holomorphic function is very nice — they’re all analytic!
+The same amount of rigidity is to be expected here.</p>
+</div>
+<div id="p3" class="ltx_para">
+<p class="ltx_p">In fact, on <em class="ltx_emph ltx_font_italic">compact</em> Riemann surfaces, the theories are even nicer than the case of
+holomorphic functions! For example:</p>
+<ul id="S0.I1" class="ltx_itemize">
+<li id="S0.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S0.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">For two Riemann surfaces <math id="S0.I1.i1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S0.I1.i1.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> where <math id="S0.I1.i1.p1.m3" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> is compact, any meromorphic function <math id="S0.I1.i1.p1.m4" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> must in fact be holomorphic i.e. defined everywhere.</p>
+</div>
+</li>
+<li id="S0.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S0.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S0.I1.i2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is a compact Riemann surface, then a holomorphic function <math id="S0.I1.i2.p1.m2" class="ltx_Math" alttext="f\colon X\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> is
+constant.</p>
+</div>
+</li>
+<li id="S0.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S0.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">In the same setting as above, furthermore we have that if <math id="S0.I1.i3.p1.m1" class="ltx_Math" alttext="g\colon X\to\mathbb{C}" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> is
+meromorphic, then the number of zeros of <math id="S0.I1.i3.p1.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> is equal to the number of poles of <math id="S0.I1.i3.p1.m3" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>, with
+multiplicity.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S0.Thmtheorem1" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 47.0.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Why do we have these nice properties?)</span> — </span>
+</h5>
+<div id="S0.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Roughly speaking, <math id="S0.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> is not compact — it is isomorphic to the Riemann sphere with a hole
+removed. By filling in the hole, we allow meromorphic functions to be extended taking value <math id="S0.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\infty" display="inline"><mi mathvariant="normal">∞</mi></math>
+at places that previously was a pole.</p>
+</div>
+</div>
+<div id="p4" class="ltx_para">
+<p class="ltx_p">As an orientable <math id="p4.m1" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-manifold, we can define the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> genus</span> of a Riemann surface — it is a
+purely topological concept, yet it is crucially linked to several algebraic invariants
+in very surprising ways.
+You may have heard of the <em class="ltx_emph ltx_font_italic">elliptic curve</em> in cryptography — they also present as a Riemann
+surface, and a generalization, <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> hyperelliptic curve</span>, form a family of Riemann surfaces of
+arbitrary genus <math id="p4.m2" class="ltx_Math" alttext="\geq 2" display="inline"><mrow><mi></mi><mo>≥</mo><mn>2</mn></mrow></math>!</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">47.1 </span>Complex structures</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Recall the definitions in the previous chapters:</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">A topological <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold is a Hausdorff space, with a covering <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="\{U_{i}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow></math>, each being
+homeomorphic to <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">A smooth <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold is a topological <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold, where all the transition maps are
+smooth.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">What do they have in common? Seemingly not too much. But essentially, they’re all describing the
+same philosophy:</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 47.1.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We take countably many patches <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\{U_{i}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow></math>, and weld them together while keeping the underlying
+structure.</p>
+</div>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Here, a topological manifold has a <em class="ltx_emph ltx_font_italic">topological structure</em>, and a smooth manifold has a
+<em class="ltx_emph ltx_font_italic">smooth structure</em>. In a similar manner, a complex manifold has a <em class="ltx_emph ltx_font_italic">complex structure</em>.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">What do we mean by “structure” here?</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">First, a topological structure is familiar to you — it’s just a topology.
+Formally, the topology is defined by the collection of open sets, but the actual <em class="ltx_emph ltx_font_italic">meaning</em> of a
+topological structure dictates:</p>
+<ul id="S1.I2" class="ltx_itemize">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">whether a set is considered open or closed,</p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">whether a sequence of points converge to a given point,</p>
+</div>
+</li>
+<li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">whether a map <math id="S1.I2.i3.p1.m1" class="ltx_Math" alttext="X\to Y" display="inline"><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></math> or <math id="S1.I2.i3.p1.m2" class="ltx_Math" alttext="Y\to X" display="inline"><mrow><mi>Y</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></math> is continuous (given <math id="S1.I2.i3.p1.m3" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> is another topological space),</p>
+</div>
+</li>
+<li id="S1.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i4.p1" class="ltx_para">
+<p class="ltx_p">etc.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">Given a topological <math id="S1.p5.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold with an existing (Hausdorff) topology on it, we can tell whether a
+local chart <em class="ltx_emph ltx_font_italic">respects the topological structure</em>; in other words, is a homeomorphism.</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 47.1.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(<math id="S1.Thmtheorem2.m1" class="ltx_Math" alttext="(0,2)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></math> is a topological <math id="S1.Thmtheorem2.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-manifold)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The open interval <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="(0,2)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></math> included in <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> can be considered a topological manifold.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='226.771653pt' height='137.482969pt' viewBox='57.409449 205.63243 226.771653 137.482969'>
+<defs>
+<clipPath id='asymptote-47-1-Clip1'>
+<path clip-rule='evenodd' d='M-.501875 138.5H228.124V9.8286H-.501875V138.5ZM201.177 124.141C201.177 122.617 199.941 121.381 198.416 121.381C196.892 121.381 195.656 122.617 195.656 124.141C195.656 125.666 196.892 126.902 198.416 126.902C199.941 126.902 201.177 125.666 201.177 124.141Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-47-1-Clip1)' id='asymptote-47-1-Clip2'>
+<path clip-rule='evenodd' d='M-.501875 138.5H228.124V9.8286H-.501875V138.5ZM164.514 124.141C164.514 122.617 163.279 121.381 161.754 121.381C160.23 121.381 158.994 122.617 158.994 124.141C158.994 125.666 160.23 126.902 161.754 126.902C163.279 126.902 164.514 125.666 164.514 124.141Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-47-1-Clip2)' id='asymptote-47-1-Clip3'>
+<path clip-rule='evenodd' d='M-.501875 127.655H228.124V9.8286H-.501875V127.655ZM88.3695 124.141C88.3695 122.617 87.1337 121.381 85.6092 121.381S82.8489 122.617 82.8489 124.141C82.8489 125.666 84.0847 126.902 85.6092 126.902S88.3695 125.666 88.3695 124.141Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-47-1-Clip3)' id='asymptote-47-1-Clip4'>
+<path clip-rule='evenodd' d='M-.501875 127.404H228.124V9.8286H-.501875V127.404ZM31.9659 124.141C31.9659 122.617 30.73 121.381 29.2056 121.381C27.6811 121.381 26.4453 122.617 26.4453 124.141C26.4453 125.666 27.6811 126.902 29.2056 126.902C30.73 126.902 31.9659 125.666 31.9659 124.141Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-47-1-Clip4)' id='asymptote-47-1-Clip5'>
+<path clip-rule='evenodd' d='M-.501875 43.0492H228.124V9.8286H-.501875V43.0492ZM144.773 39.536C144.773 38.0116 143.537 36.7757 142.013 36.7757C140.488 36.7757 139.253 38.0116 139.253 39.536C139.253 41.0605 140.488 42.2964 142.013 42.2964C143.537 42.2964 144.773 41.0605 144.773 39.536Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-47-1-Clip5)' id='asymptote-47-1-Clip6'>
+<path clip-rule='evenodd' d='M-.501875 42.7982H228.124V9.8286H-.501875V42.7982ZM88.3695 39.536C88.3695 38.0116 87.1337 36.7757 85.6092 36.7757S82.8489 38.0116 82.8489 39.536C82.8489 41.0605 84.0847 42.2964 85.6092 42.2964S88.3695 41.0605 88.3695 39.536Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+<path id='asymptote-47-1-g0-82' d='M2.936986-3.441096H3.331507L4.975342-.89863C5.084932-.723288 5.347945-.29589 5.468493-.131507C5.545205 0 5.578082 0 5.830137 0H7.342466C7.539726 0 7.70411 0 7.70411-.19726C7.70411-.284932 7.638356-.361644 7.539726-.383562C7.134247-.471233 6.59726-1.194521 6.334247-1.545205C6.257534-1.654795 5.709589-2.378082 4.975342-3.561644C5.950685-3.736986 6.893151-4.153425 6.893151-5.457534C6.893151-6.980822 5.282192-7.506849 3.989041-7.506849H.547945C.350685-7.506849 .175342-7.506849 .175342-7.309589C.175342-7.123288 .383562-7.123288 .471233-7.123288C1.09589-7.123288 1.150685-7.046575 1.150685-6.49863V-1.008219C1.150685-.460274 1.09589-.383562 .471233-.383562C.383562-.383562 .175342-.383562 .175342-.19726C.175342 0 .350685 0 .547945 0H3.550685C3.747945 0 3.912329 0 3.912329-.19726C3.912329-.383562 3.726027-.383562 3.605479-.383562C2.980822-.383562 2.936986-.471233 2.936986-1.008219V-3.441096ZM5.052055-3.978082C5.358904-4.383562 5.391781-4.964384 5.391781-5.446575C5.391781-5.972603 5.326027-6.553425 4.975342-7.00274C5.424658-6.90411 6.509589-6.564384 6.509589-5.457534C6.509589-4.745205 6.180822-4.186301 5.052055-3.978082ZM2.936986-6.531507C2.936986-6.761644 2.936986-7.123288 3.616438-7.123288C4.547945-7.123288 5.008219-6.739726 5.008219-5.446575C5.008219-4.032877 4.668493-3.824658 2.936986-3.824658V-6.531507ZM1.446575-.383562C1.534247-.580822 1.534247-.887671 1.534247-.986301V-6.520548C1.534247-6.630137 1.534247-6.926027 1.446575-7.123288H2.69589C2.553425-6.947945 2.553425-6.728767 2.553425-6.564384V-.986301C2.553425-.876712 2.553425-.580822 2.641096-.383562H1.446575ZM3.780822-3.441096C3.857534-3.452055 3.90137-3.463014 3.989041-3.463014C4.153425-3.463014 4.394521-3.484932 4.558904-3.506849C4.723288-3.243836 5.906849-1.293151 6.816438-.383562H5.753425L3.780822-3.441096Z'/>
+<path id='asymptote-47-1-g2-30' d='M4.767271-7.309089C4.767271-7.330907 4.799999-7.450907 4.799999-7.461816S4.799999-7.570907 4.66909-7.570907C4.559999-7.570907 4.54909-7.53818 4.505453-7.352725L3.872726-4.832726C2.138181-4.77818 .534545-3.327272 .534545-1.843636C.534545-.807273 1.298181 .054545 2.62909 .130909C2.541817 .469091 2.465454 .818182 2.378181 1.156363C2.247272 1.66909 2.138181 2.083636 2.138181 2.116363C2.138181 2.225454 2.214545 2.236363 2.26909 2.236363S2.345454 2.225454 2.378181 2.192727C2.399999 2.170908 2.465454 1.90909 2.498181 1.756363L2.912726 .130909C4.66909 .076364 6.250907-1.396363 6.250907-2.858181C6.250907-3.719999 5.672726-4.723635 4.156362-4.832726L4.767271-7.309089ZM2.683636-.109091C2.02909-.141818 1.243636-.523636 1.243636-1.614545C1.243636-2.923636 2.181818-4.450908 3.807272-4.592726L2.683636-.109091ZM4.090908-4.592726C4.919999-4.54909 5.541817-4.047272 5.541817-3.087272C5.541817-1.799999 4.603635-.24 2.967272-.109091L4.090908-4.592726Z'/>
+<path id='asymptote-47-1-g2-69' d='M7.723634-2.541817C7.745452-2.596363 7.77818-2.672727 7.77818-2.694545C7.77818-2.705454 7.77818-2.814545 7.647271-2.814545C7.549089-2.814545 7.527271-2.74909 7.505452-2.683636C6.796362-1.069091 6.392725-.338182 4.527271-.338182H2.934545C2.781817-.338182 2.759999-.338182 2.694545-.349091C2.585454-.36 2.552727-.370909 2.552727-.458182C2.552727-.490909 2.552727-.512727 2.607272-.709091L3.34909-3.687272H4.42909C5.356362-3.687272 5.356362-3.458181 5.356362-3.185454C5.356362-3.10909 5.356362-2.978181 5.279999-2.650908C5.25818-2.596363 5.247271-2.563636 5.247271-2.530908C5.247271-2.476363 5.290908-2.410908 5.389089-2.410908C5.476362-2.410908 5.509089-2.465454 5.552726-2.62909L6.174544-5.181817C6.174544-5.247271 6.119998-5.301817 6.043635-5.301817C5.945453-5.301817 5.923635-5.236362 5.890907-5.105453C5.661817-4.276362 5.465453-4.025453 4.461817-4.025453H3.436363L4.090908-6.654544C4.18909-7.036362 4.199999-7.079998 4.679999-7.079998H6.21818C7.549089-7.079998 7.876361-6.763634 7.876361-5.869089C7.876361-5.607271 7.876361-5.585453 7.832725-5.290908C7.832725-5.225453 7.821816-5.149089 7.821816-5.094544S7.854543-4.963635 7.952725-4.963635C8.072725-4.963635 8.083634-5.02909 8.105452-5.236362L8.323634-7.123634C8.356361-7.41818 8.301816-7.41818 8.029089-7.41818H2.519999C2.301818-7.41818 2.192727-7.41818 2.192727-7.199998C2.192727-7.079998 2.290908-7.079998 2.498181-7.079998C2.901817-7.079998 3.207272-7.079998 3.207272-6.883634C3.207272-6.839998 3.207272-6.81818 3.152726-6.621816L1.712727-.850909C1.603636-.425454 1.581818-.338182 .72-.338182C.534545-.338182 .414545-.338182 .414545-.130909C.414545 0 .512727 0 .72 0H6.381816C6.632725 0 6.643635-.010909 6.719998-.185454L7.723634-2.541817Z'/>
+<path id='asymptote-47-1-g4-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-47-1-g4-50' d='M1.385454-.84L2.541817-1.963636C4.243635-3.46909 4.89818-4.058181 4.89818-5.149089C4.89818-6.392725 3.916363-7.265453 2.585454-7.265453C1.352727-7.265453 .545454-6.261816 .545454-5.290908C.545454-4.679999 1.090909-4.679999 1.123636-4.679999C1.309091-4.679999 1.690909-4.810908 1.690909-5.25818C1.690909-5.541817 1.494545-5.825453 1.112727-5.825453C1.025454-5.825453 1.003636-5.825453 .970909-5.814544C1.221818-6.523635 1.810909-6.927271 2.443636-6.927271C3.436363-6.927271 3.905453-6.043635 3.905453-5.149089C3.905453-4.276362 3.359999-3.414545 2.759999-2.738181L.665454-.403636C.545454-.283636 .545454-.261818 .545454 0H4.592726L4.89818-1.898181H4.625453C4.570908-1.570909 4.494544-1.090909 4.385453-.927272C4.30909-.84 3.58909-.84 3.34909-.84H1.385454Z'/>
+<path id='asymptote-47-1-g3-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-47-1-g3-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-47-1-g1-18' d='M7.189089-6.501816C7.374543-6.501816 7.570907-6.501816 7.570907-6.719998S7.374543-6.93818 7.189089-6.93818H4.254544C2.378181-6.93818 .905454-5.509089 .905454-3.785453C.905454-2.02909 2.410908-.621818 4.254544-.621818H7.189089C7.374543-.621818 7.570907-.621818 7.570907-.84S7.374543-1.058182 7.189089-1.058182H4.276362C2.552727-1.058182 1.341818-2.334545 1.341818-3.774544C1.341818-5.25818 2.585454-6.501816 4.276362-6.501816H7.189089ZM1.505454 1.058182C1.32 1.058182 1.123636 1.058182 1.123636 1.276363S1.32 1.494545 1.505454 1.494545H7.189089C7.374543 1.494545 7.570907 1.494545 7.570907 1.276363S7.374543 1.058182 7.189089 1.058182H1.505454Z'/>
+</defs>
+<g id='asymptote-47-1-page1'>
+<g clip-path='url(#asymptote-47-1-Clip6)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M1.00375 11.3342H226.618' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='2.0075'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-1-Clip6)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M85.6092 39.536H142.013' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='2.0075'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-1-Clip5)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 39.536C88.3695 38.0116 87.1337 36.7757 85.6092 36.7757S82.8489 38.0116 82.8489 39.536C82.8489 41.0605 84.0847 42.2964 85.6092 42.2964S88.3695 41.0605 88.3695 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 39.536C88.3695 38.0116 87.1337 36.7757 85.6092 36.7757S82.8489 38.0116 82.8489 39.536C82.8489 41.0605 84.0847 42.2964 85.6092 42.2964S88.3695 41.0605 88.3695 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 39.536C88.3695 38.0116 87.1337 36.7757 85.6092 36.7757S82.8489 38.0116 82.8489 39.536C82.8489 41.0605 84.0847 42.2964 85.6092 42.2964S88.3695 41.0605 88.3695 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-1-Clip4)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M144.773 39.536C144.773 38.0116 143.537 36.7757 142.013 36.7757C140.488 36.7757 139.253 38.0116 139.253 39.536C139.253 41.0605 140.488 42.2964 142.013 42.2964C143.537 42.2964 144.773 41.0605 144.773 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M144.773 39.536C144.773 38.0116 143.537 36.7757 142.013 36.7757C140.488 36.7757 139.253 38.0116 139.253 39.536C139.253 41.0605 140.488 42.2964 142.013 42.2964C143.537 42.2964 144.773 41.0605 144.773 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M144.773 39.536C144.773 38.0116 143.537 36.7757 142.013 36.7757C140.488 36.7757 139.253 38.0116 139.253 39.536C139.253 41.0605 140.488 42.2964 142.013 42.2964C143.537 42.2964 144.773 41.0605 144.773 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='matrix(0 -1 1 0 -60.114 401.712)'>
+<use x='166.556656' y='233.639751' href='#asymptote-47-1-g1-18'/>
+</g>
+<use x='139.975367' y='227.213091' href='#asymptote-47-1-g4-48'/>
+<use x='196.168269' y='227.213091' href='#asymptote-47-1-g4-50'/>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M29.2056 124.141H85.6092' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-1-Clip3)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M31.9659 124.141C31.9659 122.617 30.73 121.381 29.2056 121.381C27.6811 121.381 26.4453 122.617 26.4453 124.141C26.4453 125.666 27.6811 126.902 29.2056 126.902C30.73 126.902 31.9659 125.666 31.9659 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M31.9659 124.141C31.9659 122.617 30.73 121.381 29.2056 121.381C27.6811 121.381 26.4453 122.617 26.4453 124.141C26.4453 125.666 27.6811 126.902 29.2056 126.902C30.73 126.902 31.9659 125.666 31.9659 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M31.9659 124.141C31.9659 122.617 30.73 121.381 29.2056 121.381C27.6811 121.381 26.4453 122.617 26.4453 124.141C26.4453 125.666 27.6811 126.902 29.2056 126.902C30.73 126.902 31.9659 125.666 31.9659 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-1-Clip2)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 124.141C88.3695 122.617 87.1337 121.381 85.6092 121.381S82.8489 122.617 82.8489 124.141C82.8489 125.666 84.0847 126.902 85.6092 126.902S88.3695 125.666 88.3695 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 124.141C88.3695 122.617 87.1337 121.381 85.6092 121.381S82.8489 122.617 82.8489 124.141C82.8489 125.666 84.0847 126.902 85.6092 126.902S88.3695 125.666 88.3695 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 124.141C88.3695 122.617 87.1337 121.381 85.6092 121.381S82.8489 122.617 82.8489 124.141C82.8489 125.666 84.0847 126.902 85.6092 126.902S88.3695 125.666 88.3695 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='108.213508' y='340.023192' href='#asymptote-47-1-g2-69'/>
+<use x='116.266547' y='341.659542' href='#asymptote-47-1-g3-49'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M161.754 124.141H198.416' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-1-Clip1)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M164.514 124.141C164.514 122.617 163.279 121.381 161.754 121.381C160.23 121.381 158.994 122.617 158.994 124.141C158.994 125.666 160.23 126.902 161.754 126.902C163.279 126.902 164.514 125.666 164.514 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M164.514 124.141C164.514 122.617 163.279 121.381 161.754 121.381C160.23 121.381 158.994 122.617 158.994 124.141C158.994 125.666 160.23 126.902 161.754 126.902C163.279 126.902 164.514 125.666 164.514 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M164.514 124.141C164.514 122.617 163.279 121.381 161.754 121.381C160.23 121.381 158.994 122.617 158.994 124.141C158.994 125.666 160.23 126.902 161.754 126.902C163.279 126.902 164.514 125.666 164.514 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M201.177 124.141C201.177 122.617 199.941 121.381 198.416 121.381C196.892 121.381 195.656 122.617 195.656 124.141C195.656 125.666 196.892 126.902 198.416 126.902C199.941 126.902 201.177 125.666 201.177 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M201.177 124.141C201.177 122.617 199.941 121.381 198.416 121.381C196.892 121.381 195.656 122.617 195.656 124.141C195.656 125.666 196.892 126.902 198.416 126.902C199.941 126.902 201.177 125.666 201.177 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M201.177 124.141C201.177 122.617 199.941 121.381 198.416 121.381C196.892 121.381 195.656 122.617 195.656 124.141C195.656 125.666 196.892 126.902 198.416 126.902C199.941 126.902 201.177 125.666 201.177 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='230.433102' y='340.023192' href='#asymptote-47-1-g2-69'/>
+<use x='238.486141' y='341.659542' href='#asymptote-47-1-g3-50'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M37.0768 112.335L81.9139 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M32.9009 118.598L38.7551 113.454L35.3984 111.216L32.9009 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M32.9009 118.598L38.7551 113.454L35.3984 111.216L32.9009 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M152.262 113.594L90.0658 44.4878' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M157.298 119.19L153.761 112.245L150.762 114.944L157.298 119.19Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M157.298 119.19L153.761 112.245L150.762 114.944L157.298 119.19Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M46.4774 112.335L91.3145 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M42.3015 118.598L48.1557 113.454L44.799 111.216L42.3015 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M42.3015 118.598L48.1557 113.454L44.799 111.216L42.3015 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M161.662 113.594L99.4664 44.4878' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M166.698 119.19L163.161 112.245L160.163 114.944L166.698 119.19Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M166.698 119.19L163.161 112.245L160.163 114.944L166.698 119.19Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M55.878 112.335L100.715 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M51.7021 118.598L57.5564 113.454L54.1996 111.216L51.7021 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M51.7021 118.598L57.5564 113.454L54.1996 111.216L51.7021 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M171.063 113.594L108.867 44.4878' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M176.099 119.19L172.562 112.245L169.563 114.944L176.099 119.19Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M176.099 119.19L172.562 112.245L169.563 114.944L176.099 119.19Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M65.2786 112.335L110.116 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M61.1027 118.598L66.957 113.454L63.6002 111.216L61.1027 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M61.1027 118.598L66.957 113.454L63.6002 111.216L61.1027 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M180.463 113.594L118.268 44.4878' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M185.499 119.19L181.963 112.245L178.964 114.944L185.499 119.19Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M185.499 119.19L181.963 112.245L178.964 114.944L185.499 119.19Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M74.6792 112.335L119.516 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M70.5033 118.598L76.3576 113.454L73.0008 111.216L70.5033 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M70.5033 118.598L76.3576 113.454L73.0008 111.216L70.5033 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M183.764 113.181L127.443 44.6818' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M188.545 118.996L185.322 111.9L182.206 114.462L188.545 118.996Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M188.545 118.996L185.322 111.9L182.206 114.462L188.545 118.996Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M84.0798 112.335L128.917 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M79.9039 118.598L85.7582 113.454L82.4014 111.216L79.9039 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M79.9039 118.598L85.7582 113.454L82.4014 111.216L79.9039 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M187.123 112.759L136.59 44.8798' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M191.618 118.798L188.741 111.555L185.505 113.964L191.618 118.798Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M191.618 118.798L188.741 111.555L185.505 113.964L191.618 118.798Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M93.4804 112.335L138.317 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M89.3045 118.598L95.1588 113.454L91.802 111.216L89.3045 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M89.3045 118.598L95.1588 113.454L91.802 111.216L89.3045 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M190.545 112.335L145.708 45.0791' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M194.721 118.598L192.224 111.216L188.867 113.454L194.721 118.598Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M194.721 118.598L192.224 111.216L188.867 113.454L194.721 118.598Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='272.923619' y='214.517778' href='#asymptote-47-1-g0-82'/>
+<g fill="var(--asymptote-color-00f)">
+<use x='101.027321' y='282.637725' href='#asymptote-47-1-g2-30'/>
+<use x='107.527335' y='284.274075' href='#asymptote-47-1-g3-49'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='229.338543' y='282.637725' href='#asymptote-47-1-g2-30'/>
+<use x='235.838557' y='284.274075' href='#asymptote-47-1-g3-50'/>
+</g>
+</g>
+</svg>
+</div>
+<p class="ltx_p">Two possible charts for the space, <math id="S1.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\phi_{1}" display="inline"><msub><mi>ϕ</mi><mn>1</mn></msub></math> and <math id="S1.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\phi_{2}" display="inline"><msub><mi>ϕ</mi><mn>2</mn></msub></math>, are shown.</p>
+</div>
+<div id="S1.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">Their formulas are <math id="S1.Thmtheorem2.p2.m1" class="ltx_Math" alttext="\phi_{1}\colon(0,2)\to(0,2),\phi_{1}(x)=x" display="inline"><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>x</mi></mrow></mrow></mrow></math> and <math id="S1.Thmtheorem2.p2.m2" class="ltx_Math" alttext="\phi_{2}\colon(0,2)\to(0,1.3),\phi_{2}(x)=x+0.35\cdot(1-x-\left\lvert 1-x%
+\right\rvert)" display="inline"><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1.3</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>x</mi><mo>+</mo><mrow><mn>0.35</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><mi>x</mi><mo>−</mo><mrow><mo>|</mo><mrow><mn>1</mn><mo>−</mo><mi>x</mi></mrow><mo>|</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">In the example above, you may notice that, even though the chart <math id="S1.p6.m1" class="ltx_Math" alttext="\phi_{2}" display="inline"><msub><mi>ϕ</mi><mn>2</mn></msub></math> is a homeomorphism,
+it doesn’t look <em class="ltx_emph ltx_font_italic">smooth</em>. So, you want to define a smooth <math id="S1.p6.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-manifold as something like:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">A surface <math id="S1.p6.m3" class="ltx_Math" alttext="S\subseteq\mathbb{R}^{3}" display="inline"><mrow><mi>S</mi><mo>⊆</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow></math> is a smooth <math id="S1.p6.m4" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-manifold if, for each <math id="S1.p6.m5" class="ltx_Math" alttext="p\in S" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>S</mi></mrow></math>, there exists an
+open neighborhood <math id="S1.p6.m6" class="ltx_Math" alttext="V\subseteq S" display="inline"><mrow><mi>V</mi><mo>⊆</mo><mi>S</mi></mrow></math> that is diffeomorphic to <math id="S1.p6.m7" class="ltx_Math" alttext="E\subseteq\mathbb{R}^{2}" display="inline"><mrow><mi>E</mi><mo>⊆</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math>.</p>
+</blockquote>
+<p class="ltx_p">In fact, this is the actual definition in classical differential geometry — of course, this isn’t
+completely general, for instance, we know that the Klein bottle cannot be embedded into <math id="S1.p6.m8" class="ltx_Math" alttext="\mathbb{R}^{3}" display="inline"><msup><mi>ℝ</mi><mn>3</mn></msup></math>.</p>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">So, why didn’t we define something like this in <a href="../diffgeo/manifolds-diffgeo.html#def:smooth_manif" title="Definition 46.2.2. ‣ 46.2 Smooth manifolds ‣ Chapter 46 A bit of manifolds ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Definition</span> <span class="ltx_text ltx_ref_tag">46.2.2</span></a>?
+The problem is, the concept of a diffeomorphism isn’t defined on a Hausdorff topological space —
+in fact it can’t be defined, right in the example above, you can see a homeomorphism that is not
+a diffeomorphism — in other words, a topological space can be assigned different <em class="ltx_emph ltx_font_italic">smooth
+structures</em>.</p>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">So, the essence of what the definition <a href="../diffgeo/manifolds-diffgeo.html#def:smooth_manif" title="Definition 46.2.2. ‣ 46.2 Smooth manifolds ‣ Chapter 46 A bit of manifolds ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Definition</span> <span class="ltx_text ltx_ref_tag">46.2.2</span></a> is doing is, it implicitly defines
+what a <em class="ltx_emph ltx_font_italic">smooth structure</em> mean, by inducing the smooth structure from each patch <math id="S1.p8.m1" class="ltx_Math" alttext="E_{i}\subseteq\mathbb{R}^{n}" display="inline"><mrow><msub><mi>E</mi><mi>i</mi></msub><mo>⊆</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow></math> to the topological space <math id="S1.p8.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+The condition that the transition functions need to be smooth is, of course, to ensure that the
+smooth structures on <math id="S1.p8.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> induced by different <math id="S1.p8.m4" class="ltx_Math" alttext="\phi_{i}" display="inline"><msub><mi>ϕ</mi><mi>i</mi></msub></math> are the same.</p>
+</div>
+<div id="S1.p9" class="ltx_para">
+<p class="ltx_p">In completely the same way, we could have replaced <a href="../diffgeo/manifolds-diffgeo.html#def:topological_manif" title="Definition 46.1.3. ‣ 46.1 Topological manifolds ‣ Chapter 46 A bit of manifolds ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Definition</span> <span class="ltx_text ltx_ref_tag">46.1.3</span></a> by:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">A topological <math id="S1.p9.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold <math id="S1.p9.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a set with a collection of subsets <math id="S1.p9.m3" class="ltx_Math" alttext="\{U_{i}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow></math> that covers
+<math id="S1.p9.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, for each <math id="S1.p9.m5" class="ltx_Math" alttext="U_{i}" display="inline"><msub><mi>U</mi><mi>i</mi></msub></math> there is a bijective map from it to a subset of <math id="S1.p9.m6" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>, say</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\phi_{i}\colon U_{i}\to E_{i}\subseteq\mathbb{R}^{n}" display="block"><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">→</mo><msub><mi>E</mi><mi>i</mi></msub><mo>⊆</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where each <math id="S1.p9.m7" class="ltx_Math" alttext="E_{i}" display="inline"><msub><mi>E</mi><mi>i</mi></msub></math> is an open subset of <math id="S1.p9.m8" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>, satisfying that all the transition maps are
+topological homeomorphisms.</p>
+</blockquote>
+</div>
+<div id="S1.p10" class="ltx_para">
+<p class="ltx_p">Here, the <math id="S1.p10.m1" class="ltx_Math" alttext="\phi_{i}" display="inline"><msub><mi>ϕ</mi><mi>i</mi></msub></math> are “set isomorphisms” and plays a similar role as the homeomorphisms in
+<a href="../diffgeo/manifolds-diffgeo.html#def:smooth_manif" title="Definition 46.2.2. ‣ 46.2 Smooth manifolds ‣ Chapter 46 A bit of manifolds ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Definition</span> <span class="ltx_text ltx_ref_tag">46.2.2</span></a>, and the topological space structure is
+similarly induced from the patches <math id="S1.p10.m2" class="ltx_Math" alttext="E_{i}" display="inline"><msub><mi>E</mi><mi>i</mi></msub></math>.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 47.1.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(<math id="S1.Thmtheorem3.m1" class="ltx_Math" alttext="(0,2)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></math> is a smooth <math id="S1.Thmtheorem3.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-manifold)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Just as above, the open interval <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="(0,2)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></math> included in <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> can also be considered a
+smooth manifold.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='226.771653pt' height='137.482969pt' viewBox='57.409449 205.63243 226.771653 137.482969'>
+<defs>
+<clipPath id='asymptote-47-2-Clip1'>
+<path clip-rule='evenodd' d='M-.501875 138.5H228.124V9.8286H-.501875V138.5ZM209.637 124.141C209.637 122.617 208.402 121.381 206.877 121.381C205.353 121.381 204.117 122.617 204.117 124.141C204.117 125.666 205.353 126.902 206.877 126.902C208.402 126.902 209.637 125.666 209.637 124.141Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-47-2-Clip1)' id='asymptote-47-2-Clip2'>
+<path clip-rule='evenodd' d='M-.501875 138.5H228.124V9.8286H-.501875V138.5ZM142.859 124.141C142.859 122.617 141.623 121.381 140.099 121.381C138.574 121.381 137.338 122.617 137.338 124.141C137.338 125.666 138.574 126.902 140.099 126.902C141.623 126.902 142.859 125.666 142.859 124.141Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-47-2-Clip2)' id='asymptote-47-2-Clip3'>
+<path clip-rule='evenodd' d='M-.501875 127.655H228.124V9.8286H-.501875V127.655ZM88.3695 124.141C88.3695 122.617 87.1337 121.381 85.6092 121.381S82.8489 122.617 82.8489 124.141C82.8489 125.666 84.0847 126.902 85.6092 126.902S88.3695 125.666 88.3695 124.141Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-47-2-Clip3)' id='asymptote-47-2-Clip4'>
+<path clip-rule='evenodd' d='M-.501875 127.404H228.124V9.8286H-.501875V127.404ZM31.9659 124.141C31.9659 122.617 30.73 121.381 29.2056 121.381C27.6811 121.381 26.4453 122.617 26.4453 124.141C26.4453 125.666 27.6811 126.902 29.2056 126.902C30.73 126.902 31.9659 125.666 31.9659 124.141Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-47-2-Clip4)' id='asymptote-47-2-Clip5'>
+<path clip-rule='evenodd' d='M-.501875 43.0492H228.124V9.8286H-.501875V43.0492ZM144.773 39.536C144.773 38.0116 143.537 36.7757 142.013 36.7757C140.488 36.7757 139.253 38.0116 139.253 39.536C139.253 41.0605 140.488 42.2964 142.013 42.2964C143.537 42.2964 144.773 41.0605 144.773 39.536Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-47-2-Clip5)' id='asymptote-47-2-Clip6'>
+<path clip-rule='evenodd' d='M-.501875 42.7982H228.124V9.8286H-.501875V42.7982ZM88.3695 39.536C88.3695 38.0116 87.1337 36.7757 85.6092 36.7757S82.8489 38.0116 82.8489 39.536C82.8489 41.0605 84.0847 42.2964 85.6092 42.2964S88.3695 41.0605 88.3695 39.536Z' transform='matrix(0.996264 0 0 0.996264 57.4094 205.632)'/>
+</clipPath>
+<path id='asymptote-47-2-g0-82' d='M2.936986-3.441096H3.331507L4.975342-.89863C5.084932-.723288 5.347945-.29589 5.468493-.131507C5.545205 0 5.578082 0 5.830137 0H7.342466C7.539726 0 7.70411 0 7.70411-.19726C7.70411-.284932 7.638356-.361644 7.539726-.383562C7.134247-.471233 6.59726-1.194521 6.334247-1.545205C6.257534-1.654795 5.709589-2.378082 4.975342-3.561644C5.950685-3.736986 6.893151-4.153425 6.893151-5.457534C6.893151-6.980822 5.282192-7.506849 3.989041-7.506849H.547945C.350685-7.506849 .175342-7.506849 .175342-7.309589C.175342-7.123288 .383562-7.123288 .471233-7.123288C1.09589-7.123288 1.150685-7.046575 1.150685-6.49863V-1.008219C1.150685-.460274 1.09589-.383562 .471233-.383562C.383562-.383562 .175342-.383562 .175342-.19726C.175342 0 .350685 0 .547945 0H3.550685C3.747945 0 3.912329 0 3.912329-.19726C3.912329-.383562 3.726027-.383562 3.605479-.383562C2.980822-.383562 2.936986-.471233 2.936986-1.008219V-3.441096ZM5.052055-3.978082C5.358904-4.383562 5.391781-4.964384 5.391781-5.446575C5.391781-5.972603 5.326027-6.553425 4.975342-7.00274C5.424658-6.90411 6.509589-6.564384 6.509589-5.457534C6.509589-4.745205 6.180822-4.186301 5.052055-3.978082ZM2.936986-6.531507C2.936986-6.761644 2.936986-7.123288 3.616438-7.123288C4.547945-7.123288 5.008219-6.739726 5.008219-5.446575C5.008219-4.032877 4.668493-3.824658 2.936986-3.824658V-6.531507ZM1.446575-.383562C1.534247-.580822 1.534247-.887671 1.534247-.986301V-6.520548C1.534247-6.630137 1.534247-6.926027 1.446575-7.123288H2.69589C2.553425-6.947945 2.553425-6.728767 2.553425-6.564384V-.986301C2.553425-.876712 2.553425-.580822 2.641096-.383562H1.446575ZM3.780822-3.441096C3.857534-3.452055 3.90137-3.463014 3.989041-3.463014C4.153425-3.463014 4.394521-3.484932 4.558904-3.506849C4.723288-3.243836 5.906849-1.293151 6.816438-.383562H5.753425L3.780822-3.441096Z'/>
+<path id='asymptote-47-2-g2-30' d='M4.767271-7.309089C4.767271-7.330907 4.799999-7.450907 4.799999-7.461816S4.799999-7.570907 4.66909-7.570907C4.559999-7.570907 4.54909-7.53818 4.505453-7.352725L3.872726-4.832726C2.138181-4.77818 .534545-3.327272 .534545-1.843636C.534545-.807273 1.298181 .054545 2.62909 .130909C2.541817 .469091 2.465454 .818182 2.378181 1.156363C2.247272 1.66909 2.138181 2.083636 2.138181 2.116363C2.138181 2.225454 2.214545 2.236363 2.26909 2.236363S2.345454 2.225454 2.378181 2.192727C2.399999 2.170908 2.465454 1.90909 2.498181 1.756363L2.912726 .130909C4.66909 .076364 6.250907-1.396363 6.250907-2.858181C6.250907-3.719999 5.672726-4.723635 4.156362-4.832726L4.767271-7.309089ZM2.683636-.109091C2.02909-.141818 1.243636-.523636 1.243636-1.614545C1.243636-2.923636 2.181818-4.450908 3.807272-4.592726L2.683636-.109091ZM4.090908-4.592726C4.919999-4.54909 5.541817-4.047272 5.541817-3.087272C5.541817-1.799999 4.603635-.24 2.967272-.109091L4.090908-4.592726Z'/>
+<path id='asymptote-47-2-g2-69' d='M7.723634-2.541817C7.745452-2.596363 7.77818-2.672727 7.77818-2.694545C7.77818-2.705454 7.77818-2.814545 7.647271-2.814545C7.549089-2.814545 7.527271-2.74909 7.505452-2.683636C6.796362-1.069091 6.392725-.338182 4.527271-.338182H2.934545C2.781817-.338182 2.759999-.338182 2.694545-.349091C2.585454-.36 2.552727-.370909 2.552727-.458182C2.552727-.490909 2.552727-.512727 2.607272-.709091L3.34909-3.687272H4.42909C5.356362-3.687272 5.356362-3.458181 5.356362-3.185454C5.356362-3.10909 5.356362-2.978181 5.279999-2.650908C5.25818-2.596363 5.247271-2.563636 5.247271-2.530908C5.247271-2.476363 5.290908-2.410908 5.389089-2.410908C5.476362-2.410908 5.509089-2.465454 5.552726-2.62909L6.174544-5.181817C6.174544-5.247271 6.119998-5.301817 6.043635-5.301817C5.945453-5.301817 5.923635-5.236362 5.890907-5.105453C5.661817-4.276362 5.465453-4.025453 4.461817-4.025453H3.436363L4.090908-6.654544C4.18909-7.036362 4.199999-7.079998 4.679999-7.079998H6.21818C7.549089-7.079998 7.876361-6.763634 7.876361-5.869089C7.876361-5.607271 7.876361-5.585453 7.832725-5.290908C7.832725-5.225453 7.821816-5.149089 7.821816-5.094544S7.854543-4.963635 7.952725-4.963635C8.072725-4.963635 8.083634-5.02909 8.105452-5.236362L8.323634-7.123634C8.356361-7.41818 8.301816-7.41818 8.029089-7.41818H2.519999C2.301818-7.41818 2.192727-7.41818 2.192727-7.199998C2.192727-7.079998 2.290908-7.079998 2.498181-7.079998C2.901817-7.079998 3.207272-7.079998 3.207272-6.883634C3.207272-6.839998 3.207272-6.81818 3.152726-6.621816L1.712727-.850909C1.603636-.425454 1.581818-.338182 .72-.338182C.534545-.338182 .414545-.338182 .414545-.130909C.414545 0 .512727 0 .72 0H6.381816C6.632725 0 6.643635-.010909 6.719998-.185454L7.723634-2.541817Z'/>
+<path id='asymptote-47-2-g4-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-47-2-g4-50' d='M1.385454-.84L2.541817-1.963636C4.243635-3.46909 4.89818-4.058181 4.89818-5.149089C4.89818-6.392725 3.916363-7.265453 2.585454-7.265453C1.352727-7.265453 .545454-6.261816 .545454-5.290908C.545454-4.679999 1.090909-4.679999 1.123636-4.679999C1.309091-4.679999 1.690909-4.810908 1.690909-5.25818C1.690909-5.541817 1.494545-5.825453 1.112727-5.825453C1.025454-5.825453 1.003636-5.825453 .970909-5.814544C1.221818-6.523635 1.810909-6.927271 2.443636-6.927271C3.436363-6.927271 3.905453-6.043635 3.905453-5.149089C3.905453-4.276362 3.359999-3.414545 2.759999-2.738181L.665454-.403636C.545454-.283636 .545454-.261818 .545454 0H4.592726L4.89818-1.898181H4.625453C4.570908-1.570909 4.494544-1.090909 4.385453-.927272C4.30909-.84 3.58909-.84 3.34909-.84H1.385454Z'/>
+<path id='asymptote-47-2-g3-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-47-2-g3-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-47-2-g1-18' d='M7.189089-6.501816C7.374543-6.501816 7.570907-6.501816 7.570907-6.719998S7.374543-6.93818 7.189089-6.93818H4.254544C2.378181-6.93818 .905454-5.509089 .905454-3.785453C.905454-2.02909 2.410908-.621818 4.254544-.621818H7.189089C7.374543-.621818 7.570907-.621818 7.570907-.84S7.374543-1.058182 7.189089-1.058182H4.276362C2.552727-1.058182 1.341818-2.334545 1.341818-3.774544C1.341818-5.25818 2.585454-6.501816 4.276362-6.501816H7.189089ZM1.505454 1.058182C1.32 1.058182 1.123636 1.058182 1.123636 1.276363S1.32 1.494545 1.505454 1.494545H7.189089C7.374543 1.494545 7.570907 1.494545 7.570907 1.276363S7.374543 1.058182 7.189089 1.058182H1.505454Z'/>
+</defs>
+<g id='asymptote-47-2-page1'>
+<g clip-path='url(#asymptote-47-2-Clip6)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M1.00375 11.3342H226.618' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='2.0075'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-2-Clip6)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M85.6092 39.536H142.013' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='2.0075'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-2-Clip5)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 39.536C88.3695 38.0116 87.1337 36.7757 85.6092 36.7757S82.8489 38.0116 82.8489 39.536C82.8489 41.0605 84.0847 42.2964 85.6092 42.2964S88.3695 41.0605 88.3695 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 39.536C88.3695 38.0116 87.1337 36.7757 85.6092 36.7757S82.8489 38.0116 82.8489 39.536C82.8489 41.0605 84.0847 42.2964 85.6092 42.2964S88.3695 41.0605 88.3695 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 39.536C88.3695 38.0116 87.1337 36.7757 85.6092 36.7757S82.8489 38.0116 82.8489 39.536C82.8489 41.0605 84.0847 42.2964 85.6092 42.2964S88.3695 41.0605 88.3695 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-2-Clip4)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M144.773 39.536C144.773 38.0116 143.537 36.7757 142.013 36.7757C140.488 36.7757 139.253 38.0116 139.253 39.536C139.253 41.0605 140.488 42.2964 142.013 42.2964C143.537 42.2964 144.773 41.0605 144.773 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M144.773 39.536C144.773 38.0116 143.537 36.7757 142.013 36.7757C140.488 36.7757 139.253 38.0116 139.253 39.536C139.253 41.0605 140.488 42.2964 142.013 42.2964C143.537 42.2964 144.773 41.0605 144.773 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M144.773 39.536C144.773 38.0116 143.537 36.7757 142.013 36.7757C140.488 36.7757 139.253 38.0116 139.253 39.536C139.253 41.0605 140.488 42.2964 142.013 42.2964C143.537 42.2964 144.773 41.0605 144.773 39.536Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='matrix(0 -1 1 0 -60.114 401.712)'>
+<use x='166.556656' y='233.639751' href='#asymptote-47-2-g1-18'/>
+</g>
+<use x='139.975367' y='227.213091' href='#asymptote-47-2-g4-48'/>
+<use x='196.168269' y='227.213091' href='#asymptote-47-2-g4-50'/>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M29.2056 124.141H85.6092' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-2-Clip3)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M31.9659 124.141C31.9659 122.617 30.73 121.381 29.2056 121.381C27.6811 121.381 26.4453 122.617 26.4453 124.141C26.4453 125.666 27.6811 126.902 29.2056 126.902C30.73 126.902 31.9659 125.666 31.9659 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M31.9659 124.141C31.9659 122.617 30.73 121.381 29.2056 121.381C27.6811 121.381 26.4453 122.617 26.4453 124.141C26.4453 125.666 27.6811 126.902 29.2056 126.902C30.73 126.902 31.9659 125.666 31.9659 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M31.9659 124.141C31.9659 122.617 30.73 121.381 29.2056 121.381C27.6811 121.381 26.4453 122.617 26.4453 124.141C26.4453 125.666 27.6811 126.902 29.2056 126.902C30.73 126.902 31.9659 125.666 31.9659 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-2-Clip2)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 124.141C88.3695 122.617 87.1337 121.381 85.6092 121.381S82.8489 122.617 82.8489 124.141C82.8489 125.666 84.0847 126.902 85.6092 126.902S88.3695 125.666 88.3695 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 124.141C88.3695 122.617 87.1337 121.381 85.6092 121.381S82.8489 122.617 82.8489 124.141C82.8489 125.666 84.0847 126.902 85.6092 126.902S88.3695 125.666 88.3695 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M88.3695 124.141C88.3695 122.617 87.1337 121.381 85.6092 121.381S82.8489 122.617 82.8489 124.141C82.8489 125.666 84.0847 126.902 85.6092 126.902S88.3695 125.666 88.3695 124.141Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='108.213508' y='340.023192' href='#asymptote-47-2-g2-69'/>
+<use x='116.266547' y='341.659542' href='#asymptote-47-2-g3-49'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M140.099 124.141H206.877' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-47-2-Clip1)'>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M142.859 124.141C142.859 122.617 141.623 121.381 140.099 121.381C138.574 121.381 137.338 122.617 137.338 124.141C137.338 125.666 138.574 126.902 140.099 126.902C141.623 126.902 142.859 125.666 142.859 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M142.859 124.141C142.859 122.617 141.623 121.381 140.099 121.381C138.574 121.381 137.338 122.617 137.338 124.141C137.338 125.666 138.574 126.902 140.099 126.902C141.623 126.902 142.859 125.666 142.859 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M142.859 124.141C142.859 122.617 141.623 121.381 140.099 121.381C138.574 121.381 137.338 122.617 137.338 124.141C137.338 125.666 138.574 126.902 140.099 126.902C141.623 126.902 142.859 125.666 142.859 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M209.637 124.141C209.637 122.617 208.402 121.381 206.877 121.381C205.353 121.381 204.117 122.617 204.117 124.141C204.117 125.666 205.353 126.902 206.877 126.902C208.402 126.902 209.637 125.666 209.637 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M209.637 124.141C209.637 122.617 208.402 121.381 206.877 121.381C205.353 121.381 204.117 122.617 204.117 124.141C204.117 125.666 205.353 126.902 206.877 126.902C208.402 126.902 209.637 125.666 209.637 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M209.637 124.141C209.637 122.617 208.402 121.381 206.877 121.381C205.353 121.381 204.117 122.617 204.117 124.141C204.117 125.666 205.353 126.902 206.877 126.902C208.402 126.902 209.637 125.666 209.637 124.141Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='223.860216' y='340.023192' href='#asymptote-47-2-g2-69'/>
+<use x='231.913255' y='341.659542' href='#asymptote-47-2-g3-50'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M37.0768 112.335L81.9139 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M32.9009 118.598L38.7551 113.454L35.3984 111.216L32.9009 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M32.9009 118.598L38.7551 113.454L35.3984 111.216L32.9009 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M132.415 112.212L89.2164 45.1369' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M136.491 118.541L134.111 111.119L130.719 113.304L136.491 118.541Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M136.491 118.541L134.111 111.119L130.719 113.304L136.491 118.541Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M46.4774 112.335L91.3145 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M42.3015 118.598L48.1557 113.454L44.799 111.216L42.3015 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M42.3015 118.598L48.1557 113.454L44.799 111.216L42.3015 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M141.816 112.212L98.617 45.1369' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M145.892 118.541L143.512 111.119L140.12 113.304L145.892 118.541Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M145.892 118.541L143.512 111.119L140.12 113.304L145.892 118.541Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M55.878 112.335L100.715 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M51.7021 118.598L57.5564 113.454L54.1996 111.216L51.7021 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M51.7021 118.598L57.5564 113.454L54.1996 111.216L51.7021 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M151.216 112.212L108.018 45.1369' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M155.293 118.541L152.912 111.119L149.521 113.304L155.293 118.541Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M155.293 118.541L152.912 111.119L149.521 113.304L155.293 118.541Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M65.2786 112.335L110.116 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M61.1027 118.598L66.957 113.454L63.6002 111.216L61.1027 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M61.1027 118.598L66.957 113.454L63.6002 111.216L61.1027 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M160.617 112.212L117.418 45.1369' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M164.693 118.541L162.313 111.119L158.921 113.304L164.693 118.541Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M164.693 118.541L162.313 111.119L158.921 113.304L164.693 118.541Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M74.6792 112.335L119.516 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M70.5033 118.598L76.3576 113.454L73.0008 111.216L70.5033 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M70.5033 118.598L76.3576 113.454L73.0008 111.216L70.5033 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M171.283 112.302L126.884 45.0945' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M175.433 118.583L172.966 111.19L169.6 113.414L175.433 118.583Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M175.433 118.583L172.966 111.19L169.6 113.414L175.433 118.583Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M84.0798 112.335L128.917 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M79.9039 118.598L85.7582 113.454L82.4014 111.216L79.9039 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M79.9039 118.598L85.7582 113.454L82.4014 111.216L79.9039 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M185.115 112.617L136.499 44.9464' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M189.507 118.731L186.753 111.44L183.477 113.794L189.507 118.731Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M189.507 118.731L186.753 111.44L183.477 113.794L189.507 118.731Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M93.4804 112.335L138.317 45.0791' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M89.3045 118.598L95.1588 113.454L91.802 111.216L89.3045 118.598Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M89.3045 118.598L95.1588 113.454L91.802 111.216L89.3045 118.598Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M198.243 112.88L146.066 44.8229' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M202.824 118.855L199.844 111.653L196.643 114.108L202.824 118.855Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(57.4094 205.632)scale(.996264)'>
+<path d='M202.824 118.855L199.844 111.653L196.643 114.108L202.824 118.855Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='272.923619' y='214.517778' href='#asymptote-47-2-g0-82'/>
+<g fill="var(--asymptote-color-00f)">
+<use x='101.027321' y='282.637725' href='#asymptote-47-2-g2-30'/>
+<use x='107.527335' y='284.274075' href='#asymptote-47-2-g3-49'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='233.553009' y='282.637725' href='#asymptote-47-2-g2-30'/>
+<use x='240.053023' y='284.274075' href='#asymptote-47-2-g3-50'/>
+</g>
+</g>
+</svg>
+</div>
+<p class="ltx_p">This time around, <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\phi_{1}" display="inline"><msub><mi>ϕ</mi><mn>1</mn></msub></math> is the same as above, but
+<math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\phi_{2}\colon(0,2)\to(0,2+\frac{1}{e})" display="inline"><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mrow><mn>2</mn><mo>+</mo><mfrac linethickness="0.6px"><mn>1</mn><mi>e</mi></mfrac></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> is defined by</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\phi_{2}(x)=\begin{cases}x&amp;\text{if }x\leq 1\\
+x+e^{-1/(x-1)}&amp;\text{otherwise}.\end{cases}" display="block"><mrow><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mi>x</mi></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext>if </mtext><mo>⁢</mo><mi>x</mi></mrow><mo>≤</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mi>x</mi><mo>+</mo><msup><mi>e</mi><mrow><mo>−</mo><mrow><mn>1</mn><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></msup></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>otherwise</mtext><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S1.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p">Because all of <math id="S1.Thmtheorem3.p2.m1" class="ltx_Math" alttext="\phi_{1}" display="inline"><msub><mi>ϕ</mi><mn>1</mn></msub></math>, <math id="S1.Thmtheorem3.p2.m2" class="ltx_Math" alttext="\phi_{2}" display="inline"><msub><mi>ϕ</mi><mn>2</mn></msub></math>, and their inverses are smooth functions, the transition maps
+<math id="S1.Thmtheorem3.p2.m3" class="ltx_Math" alttext="\phi_{1}\circ\phi_{2}^{-1}" display="inline"><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∘</mo><msubsup><mi>ϕ</mi><mn>2</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow></math> and <math id="S1.Thmtheorem3.p2.m4" class="ltx_Math" alttext="\phi_{2}\circ\phi_{1}^{-1}" display="inline"><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">∘</mo><msubsup><mi>ϕ</mi><mn>1</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow></math> are thus smooth, satisfying
+the hypothesis of <a href="../diffgeo/manifolds-diffgeo.html#def:smooth_manif" title="Definition 46.2.2. ‣ 46.2 Smooth manifolds ‣ Chapter 46 A bit of manifolds ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Definition</span> <span class="ltx_text ltx_ref_tag">46.2.2</span></a>.</p>
+</div>
+</div>
+<div id="S1.p11" class="ltx_para">
+<p class="ltx_p">You should take a moment to think through this idea — because smooth functions on <math id="S1.p11.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> are so
+natural, it’s easy to forget that a smooth manifold carries more structure than just the topology.</p>
+</div>
+<div id="S1.p12" class="ltx_para">
+<p class="ltx_p">Once again, as we have seen in the example above, <math id="S1.p12.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> has more structure than just being smooth
+— it has an <em class="ltx_emph ltx_font_italic">analytic structure</em>. The chart <math id="S1.p12.m2" class="ltx_Math" alttext="\phi_{2}" display="inline"><msub><mi>ϕ</mi><mn>2</mn></msub></math> does not preserve this structure.</p>
+</div>
+<div id="S1.p13" class="ltx_para">
+<p class="ltx_p">So, for Riemann surface, we will just have:</p>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 47.1.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">A Riemann surface is a smooth (real) <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-manifold which locally looks like <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>, and carries an
+<em class="ltx_emph ltx_font_italic">complex-smooth structure</em>.</p>
+</div>
+</div>
+<div id="S1.p14" class="ltx_para">
+<p class="ltx_p">Of course, by the miracle of complex analysis — holomorphic functions are analytic! — this is
+equivalent to stating that a Riemann surface carries a complex-analytic structure.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">47.2 </span>Riemann surface</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> The Riemann sphere, or any open subset of <math id="S2.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> such as <math id="S2.p1.m2" class="ltx_Math" alttext="\{z\in\mathbb{C}\mid|z|&lt;1\}" display="inline"><mrow><mo stretchy="false">{</mo><mrow><mi>z</mi><mo>∈</mo><mi>ℂ</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mo stretchy="false">|</mo><mi>z</mi><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></math>.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">From the motivation above, the definition of a Riemann surface naturally falls out:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 47.2.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Riemann surface)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Riemann surface</span> <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is a second countable connected Hausdorff space with an open cover
+<math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\{U_{i}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow></math> of countably many sets homeomorphic to open subsets of <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>, say by homeomorphisms</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\phi_{i}\colon U_{i}\xrightarrow{\cong}E_{i}\subseteq\mathbb{C}" display="block"><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mover accent="true"><mo stretchy="false">→</mo><mo>≅</mo></mover><msub><mi>E</mi><mi>i</mi></msub><mo>⊆</mo><mi>ℂ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">such that the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> transition maps</span> <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\phi_{ij}" display="inline"><msub><mi>ϕ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub></math> defined by</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\phi_{ij}\colon E_{i}\cap\phi_{i}^{\text{img}}(U_{i}\cap U_{j})\xrightarrow{%
+\phi_{i}^{-1}}U_{i}\cap U_{j}\xrightarrow{\phi_{j}}E_{j}\cap\phi_{j}^{\text{%
+img}}(U_{i}\cap U_{j})." display="block"><mrow><mrow><msub><mi>ϕ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msub><mi>E</mi><mi>i</mi></msub><mo>∩</mo><mrow><msubsup><mi>ϕ</mi><mi>i</mi><mtext>img</mtext></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mo>∩</mo><msub><mi>U</mi><mi>j</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mover accent="true"><mo stretchy="false">→</mo><msubsup><mi>ϕ</mi><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mover><mrow><msub><mi>U</mi><mi>i</mi></msub><mo>∩</mo><msub><mi>U</mi><mi>j</mi></msub></mrow><mover accent="true"><mo stretchy="false">→</mo><msub><mi>ϕ</mi><mi>j</mi></msub></mover><mrow><msub><mi>E</mi><mi>j</mi></msub><mo>∩</mo><mrow><msubsup><mi>ϕ</mi><mi>j</mi><mtext>img</mtext></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mo>∩</mo><msub><mi>U</mi><mi>j</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">are analytic functions.
+Each <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\phi_{i}" display="inline"><msub><mi>ϕ</mi><mi>i</mi></msub></math> is called a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> complex chart</span>, and together they form a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> complex atlas</span>.</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">We say that the complex atlas gives the Hausdorff space a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> complex structure</span>.
+Thus, in other words, a Riemann surface is a (second countable, connected, Hausdorff) topological
+space with a complex structure.</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p"><cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:miranda</span>]</cite> has an alternative definition, by a maximal complex atlas. Both definitions are the same,
+but in practice, it’s easier to specify finitely many complex charts than specifying infinitely many
+ones.</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">A complex chart <math id="S2.p5.m1" class="ltx_Math" alttext="U_{i}\to E_{i}" display="inline"><mrow><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">→</mo><msub><mi>E</mi><mi>i</mi></msub></mrow></math> should be think of as giving a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> local coordinate</span> on <math id="S2.p5.m2" class="ltx_Math" alttext="U_{i}" display="inline"><msub><mi>U</mi><mi>i</mi></msub></math>.
+Formally:</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 47.2.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">For a point <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="p\in X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>X</mi></mrow></math>, open set <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="U\subseteq X" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>X</mi></mrow></math> and complex chart <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\phi\colon U\to\mathbb{C}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>,
+let <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="z=\phi(x)" display="inline"><mrow><mi>z</mi><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for each <math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="x\in U" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>U</mi></mrow></math>, we call <math id="S2.Thmtheorem2.p1.m6" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> local coordinate</span>.
+We say that the local coordinate is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> centered</span> at <math id="S2.Thmtheorem2.p1.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> if <math id="S2.Thmtheorem2.p1.m8" class="ltx_Math" alttext="\phi(p)=0" display="inline"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">47.3 </span>Complex manifold</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Analogously to the definition of a real <math id="S3.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold, we can define a complex manifold.
+Just as above, the structure has much more rigidity than a smooth surface.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 47.3.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Complex <math id="S3.Thmtheorem1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> complex <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold</span> is a Hausdorff space with an open cover <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\{U_{i}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow></math> of countably
+many sets homeomorphic to open subsets of <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathbb{C}^{n}" display="inline"><msup><mi>ℂ</mi><mi>n</mi></msup></math>, say by homeomorphisms</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\phi_{i}\colon U_{i}\xrightarrow{\cong}E_{i}\subseteq\mathbb{C}^{n}" display="block"><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mover accent="true"><mo stretchy="false">→</mo><mo>≅</mo></mover><msub><mi>E</mi><mi>i</mi></msub><mo>⊆</mo><msup><mi>ℂ</mi><mi>n</mi></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">such that the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> transition maps</span> <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\phi_{ij}" display="inline"><msub><mi>ϕ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub></math> are analytic functions.</p>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Of course, a complex <math id="S3.p2.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold is naturally a smooth (real) <math id="S3.p2.m2" class="ltx_Math" alttext="2n" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></math>-manifold.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">47.4 </span>Examples of Riemann surfaces</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">In this chapter, several examples will be given.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 47.4.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Open subsets of <math id="S4.Thmtheorem1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Any connected open subset <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="U\subseteq\mathbb{C}" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>ℂ</mi></mrow></math> is a Riemann surface.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='170.07584pt' height='170.07874pt' viewBox='141.447369 138.899088 170.07584 170.07874'>
+<defs>
+<path id='asymptote-47-3-g0-85' d='M6.927271-6.305453C7.036362-6.752725 7.232725-7.079998 8.105452-7.112725C8.159998-7.112725 8.290907-7.123634 8.290907-7.330907C8.290907-7.341816 8.290907-7.450907 8.149089-7.450907C7.789089-7.450907 7.407271-7.41818 7.036362-7.41818S6.261816-7.450907 5.901817-7.450907C5.836362-7.450907 5.705453-7.450907 5.705453-7.232725C5.705453-7.112725 5.814544-7.112725 5.901817-7.112725C6.523635-7.101816 6.643635-6.872725 6.643635-6.632725C6.643635-6.599998 6.621816-6.436362 6.610907-6.403635L5.629089-2.50909C5.25818-1.047272 4.003635-.098182 2.912726-.098182C2.170908-.098182 1.581818-.578182 1.581818-1.516363C1.581818-1.538181 1.581818-1.887272 1.701818-2.367272L2.759999-6.610907C2.858181-7.003634 2.879999-7.112725 3.676363-7.112725C3.959999-7.112725 4.047272-7.112725 4.047272-7.330907C4.047272-7.450907 3.927272-7.450907 3.894544-7.450907C3.58909-7.450907 2.803636-7.41818 2.498181-7.41818C2.181818-7.41818 1.407272-7.450907 1.090909-7.450907C1.003636-7.450907 .883636-7.450907 .883636-7.232725C.883636-7.112725 .981818-7.112725 1.189091-7.112725C1.210909-7.112725 1.418181-7.112725 1.603636-7.090907C1.799999-7.069089 1.898181-7.05818 1.898181-6.916362C1.898181-6.850907 1.778181-6.392725 1.712727-6.141816L1.472727-5.181817C1.374545-4.756362 .850909-2.694545 .807273-2.487272C.730909-2.181818 .730909-2.018181 .730909-1.854545C.730909-.523636 1.723636 .24 2.86909 .24C4.243635 .24 5.596362-.992727 5.956362-2.432727L6.927271-6.305453Z'/>
+</defs>
+<g id='asymptote-47-3-page1'>
+<g transform='translate(141.447 138.899)scale(.996264)'>
+<path d='M85.3568 170.466V.253848' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.447 138.899)scale(.996264)'>
+<path d='M.250937 85.3597H170.463' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.447 138.899)scale(.996264)'>
+<path d='M113.725 28.6225C123.948 30.1511 135.254 36.4789 142.094 28.6225C151.788 17.4882 137.144-.008245 113.725 .253848C82.7748 .600233 51.4843 7.81266 28.6196 28.6225C-7.70573 61.6832-9.41983 117.868 28.6196 142.097C59.0023 161.449 99.4441 147.499 113.725 113.728C117.642 104.466 118.891 93.893 113.725 85.3597C106.634 73.6443 89.4323 70.4649 85.3568 56.9911C80.5341 41.0468 95.7139 25.9291 113.725 28.6225Z' fill="var(--asymptote-color-80ffff)" opacity='0.1'/>
+</g>
+<g transform='translate(141.447 138.899)scale(.996264)'>
+<path d='M113.725 28.6225C123.948 30.1511 135.254 36.4789 142.094 28.6225C151.788 17.4882 137.144-.008245 113.725 .253848C82.7748 .600233 51.4843 7.81266 28.6196 28.6225C-7.70573 61.6832-9.41983 117.868 28.6196 142.097C59.0023 161.449 99.4441 147.499 113.725 113.728C117.642 104.466 118.891 93.893 113.725 85.3597C106.634 73.6443 89.4323 70.4649 85.3568 56.9911C80.5341 41.0468 95.7139 25.9291 113.725 28.6225Z' fill='none' stroke="var(--asymptote-color-00c0c0)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='257.098275' y='221.53337' href='#asymptote-47-3-g0-85'/>
+</g>
+</svg>
+</div>
+</div>
+<div id="S4.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">This is a boring example (the whole thing can be defined without any welding), but let’s go on.</p>
+</div>
+</div>
+<div id="ex:riemann_sphere" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 47.4.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(The Riemann sphere)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The Riemann sphere <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathbb{C}_{\infty}" display="inline"><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub></math>, as a smooth <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-manifold, is just a sphere.</p>
+<img loading="lazy" src="../latexml-out/part_riemann//x1.png" id="S4.Thmtheorem2.p1.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="236" height="117" alt="[Uncaptioned image]">
+<p class="ltx_p">Its complex structure is defined as follows:</p>
+</div>
+<div id="S4.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">Embed the sphere in <math id="S4.Thmtheorem2.p2.m1" class="ltx_Math" alttext="\mathbb{R}^{3}" display="inline"><msup><mi>ℝ</mi><mn>3</mn></msup></math> such that <math id="S4.Thmtheorem2.p2.m2" class="ltx_Math" alttext="N=(0,0,1)" display="inline"><mrow><mi>N</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S4.Thmtheorem2.p2.m3" class="ltx_Math" alttext="S=(0,0,0)" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> are two antipodal
+points.</p>
+</div>
+<div id="S4.Thmtheorem2.p3" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem2.p3.m1" class="ltx_Math" alttext="E_{1}" display="inline"><msub><mi>E</mi><mn>1</mn></msub></math> be the <math id="S4.Thmtheorem2.p3.m2" class="ltx_Math" alttext="xy" display="inline"><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></math>-plane, and let <math id="S4.Thmtheorem2.p3.m3" class="ltx_Math" alttext="E_{2}" display="inline"><msub><mi>E</mi><mn>2</mn></msub></math> be the set of points with <math id="S4.Thmtheorem2.p3.m4" class="ltx_Math" alttext="z=1" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+<div id="S4.Thmtheorem2.p4" class="ltx_para">
+<p class="ltx_p">Then, let <math id="S4.Thmtheorem2.p4.m1" class="ltx_Math" alttext="\phi_{1}\colon\mathbb{C}_{\infty}\setminus\{N\}\to E_{1}" display="inline"><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub><mo>∖</mo><mrow><mo stretchy="false">{</mo><mi>N</mi><mo stretchy="false">}</mo></mrow></mrow><mo stretchy="false">→</mo><msub><mi>E</mi><mn>1</mn></msub></mrow></mrow></math> be the stereographic projection
+from the sphere (except the point <math id="S4.Thmtheorem2.p4.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>) to <math id="S4.Thmtheorem2.p4.m3" class="ltx_Math" alttext="E_{1}" display="inline"><msub><mi>E</mi><mn>1</mn></msub></math> through the point <math id="S4.Thmtheorem2.p4.m4" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>,
+and let <math id="S4.Thmtheorem2.p4.m5" class="ltx_Math" alttext="\phi_{2}\colon\mathbb{C}_{\infty}\setminus\{S\}\to E_{2}" display="inline"><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub><mo>∖</mo><mrow><mo stretchy="false">{</mo><mi>S</mi><mo stretchy="false">}</mo></mrow></mrow><mo stretchy="false">→</mo><msub><mi>E</mi><mn>2</mn></msub></mrow></mrow></math> be the stereographic projection
+from the sphere (except the point <math id="S4.Thmtheorem2.p4.m6" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>) to <math id="S4.Thmtheorem2.p4.m7" class="ltx_Math" alttext="E_{2}" display="inline"><msub><mi>E</mi><mn>2</mn></msub></math> through the point <math id="S4.Thmtheorem2.p4.m8" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.</p>
+</div>
+<div id="S4.Thmtheorem2.p5" class="ltx_para">
+<p class="ltx_p">We think of <math id="S4.Thmtheorem2.p5.m1" class="ltx_Math" alttext="E_{1}" display="inline"><msub><mi>E</mi><mn>1</mn></msub></math> and <math id="S4.Thmtheorem2.p5.m2" class="ltx_Math" alttext="E_{2}" display="inline"><msub><mi>E</mi><mn>2</mn></msub></math> as copies of the complex plane embedded in <math id="S4.Thmtheorem2.p5.m3" class="ltx_Math" alttext="\mathbb{R}^{3}" display="inline"><msup><mi>ℝ</mi><mn>3</mn></msup></math> by <math id="S4.Thmtheorem2.p5.m4" class="ltx_Math" alttext="z\mapsto(\operatorname{Re}z,\operatorname{Im}z,0)\in E_{1}" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><mrow><mi>Re</mi><mo lspace="0.167em">⁡</mo><mi>z</mi></mrow><mo>,</mo><mrow><mi>Im</mi><mo lspace="0.167em">⁡</mo><mi>z</mi></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo>∈</mo><msub><mi>E</mi><mn>1</mn></msub></mrow></math> and <math id="S4.Thmtheorem2.p5.m5" class="ltx_Math" alttext="t\mapsto(\operatorname{Re}t,-\operatorname{Im}t,1)\in E_{2}" display="inline"><mrow><mi>t</mi><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><mrow><mi>Re</mi><mo lspace="0.167em">⁡</mo><mi>t</mi></mrow><mo>,</mo><mrow><mo rspace="0.167em">−</mo><mrow><mi>Im</mi><mo lspace="0.167em">⁡</mo><mi>t</mi></mrow></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>∈</mo><msub><mi>E</mi><mn>2</mn></msub></mrow></math>.
+Then <math id="S4.Thmtheorem2.p5.m6" class="ltx_Math" alttext="\phi_{1}" display="inline"><msub><mi>ϕ</mi><mn>1</mn></msub></math> and <math id="S4.Thmtheorem2.p5.m7" class="ltx_Math" alttext="\phi_{2}" display="inline"><msub><mi>ϕ</mi><mn>2</mn></msub></math> are complex charts for <math id="S4.Thmtheorem2.p5.m8" class="ltx_Math" alttext="\mathbb{C}_{\infty}" display="inline"><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub></math>.</p>
+</div>
+<div id="S4.Thmtheorem2.p6" class="ltx_para">
+<p class="ltx_p">The domain of <math id="S4.Thmtheorem2.p6.m1" class="ltx_Math" alttext="\phi_{1}" display="inline"><msub><mi>ϕ</mi><mn>1</mn></msub></math> and <math id="S4.Thmtheorem2.p6.m2" class="ltx_Math" alttext="\phi_{2}" display="inline"><msub><mi>ϕ</mi><mn>2</mn></msub></math> covers <math id="S4.Thmtheorem2.p6.m3" class="ltx_Math" alttext="\mathbb{C}_{\infty}" display="inline"><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub></math>.
+To make <math id="S4.Thmtheorem2.p6.m4" class="ltx_Math" alttext="\mathbb{C}_{\infty}" display="inline"><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub></math> into a complex manifold, we must ensure that the complex structure induced
+by <math id="S4.Thmtheorem2.p6.m5" class="ltx_Math" alttext="\phi_{1}" display="inline"><msub><mi>ϕ</mi><mn>1</mn></msub></math> and <math id="S4.Thmtheorem2.p6.m6" class="ltx_Math" alttext="\phi_{2}" display="inline"><msub><mi>ϕ</mi><mn>2</mn></msub></math> are the same — indeed, over any open set <math id="S4.Thmtheorem2.p6.m7" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> that contains neither
+<math id="S4.Thmtheorem2.p6.m8" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> nor <math id="S4.Thmtheorem2.p6.m9" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, the projections are related by <math id="S4.Thmtheorem2.p6.m10" class="ltx_Math" alttext="\phi_{1}(p)=\frac{1}{\phi_{2}(p)}" display="inline"><mrow><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow></math> for all <math id="S4.Thmtheorem2.p6.m11" class="ltx_Math" alttext="p\in U" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>U</mi></mrow></math>.</p>
+</div>
+<div id="S4.Thmtheorem2.p7" class="ltx_para">
+<p class="ltx_p">This also explains why the minus sign is needed in <math id="S4.Thmtheorem2.p7.m1" class="ltx_Math" alttext="t\mapsto(\operatorname{Re}t,-\operatorname{Im}t,1)" display="inline"><mrow><mi>t</mi><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><mrow><mi>Re</mi><mo lspace="0.167em">⁡</mo><mi>t</mi></mrow><mo>,</mo><mrow><mo rspace="0.167em">−</mo><mrow><mi>Im</mi><mo lspace="0.167em">⁡</mo><mi>t</mi></mrow></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math> —
+otherwise, the projections will be related by
+<math id="S4.Thmtheorem2.p7.m2" class="ltx_Math" alttext="\phi_{1}(p)=\frac{1}{\left(\overline{\phi_{2}(p)}\right)}" display="inline"><mrow><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mo>(</mo><mover accent="true"><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>¯</mo></mover><mo>)</mo></mrow></mfrac></mrow></math>, which is not analytic.</p>
+</div>
+<div id="S4.Thmtheorem2.p8" class="ltx_para">
+<p class="ltx_p">We can think of the Riemann sphere as the result of welding two copies of <math id="S4.Thmtheorem2.p8.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> together in order
+to “fill in” the missing point <math id="S4.Thmtheorem2.p8.m2" class="ltx_Math" alttext="\infty" display="inline"><mi mathvariant="normal">∞</mi></math>.</p>
+</div>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">In the example above, the local coordinate given by <math id="S4.p2.m1" class="ltx_Math" alttext="\phi_{1}" display="inline"><msub><mi>ϕ</mi><mn>1</mn></msub></math> is centered at <math id="S4.p2.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, and the local
+coordinate given by <math id="S4.p2.m3" class="ltx_Math" alttext="\phi_{2}" display="inline"><msub><mi>ϕ</mi><mn>2</mn></msub></math> is centered at <math id="S4.p2.m4" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>.
+The point <math id="S4.p2.m5" class="ltx_Math" alttext="\phi_{1}^{-1}(4)" display="inline"><mrow><msubsup><mi>ϕ</mi><mn>1</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></mrow></math> would have local coordinate <math id="S4.p2.m6" class="ltx_Math" alttext="z=4" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>4</mn></mrow></math> under the chart <math id="S4.p2.m7" class="ltx_Math" alttext="\phi_{1}" display="inline"><msub><mi>ϕ</mi><mn>1</mn></msub></math>, and
+local coordinate <math id="S4.p2.m8" class="ltx_Math" alttext="t=\frac{1}{4}" display="inline"><mrow><mi>t</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></mrow></math> under the chart <math id="S4.p2.m9" class="ltx_Math" alttext="\phi_{2}" display="inline"><msub><mi>ϕ</mi><mn>2</mn></msub></math>.</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 47.4.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(The complex torus)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> be the set <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\mathbb{Z}[i]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></math> of complex numbers with both real and imaginary parts of <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.
+Then <math id="S4.Thmtheorem3.p1.m4" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> forms an additive subgroup of <math id="S4.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.</p>
+</div>
+<div id="S4.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p">Consider the quotient <math id="S4.Thmtheorem3.p2.m1" class="ltx_Math" alttext="\mathbb{C}/L" display="inline"><mrow><mi>ℂ</mi><mo>/</mo><mi>L</mi></mrow></math>. The quotient map <math id="S4.Thmtheorem3.p2.m2" class="ltx_Math" alttext="\mathbb{C}\to\mathbb{C}/L" display="inline"><mrow><mi>ℂ</mi><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo>/</mo><mi>L</mi></mrow></mrow></math> induces a natural complex
+structure on <math id="S4.Thmtheorem3.p2.m3" class="ltx_Math" alttext="\mathbb{C}/L" display="inline"><mrow><mi>ℂ</mi><mo>/</mo><mi>L</mi></mrow></math>.</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S4.Thmtheorem3.p3" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='125.984077pt' height='170.07874pt' viewBox='118.349591 117.932478 125.984077 170.07874'>
+<defs>
+<path id='asymptote-47-4-g0-67' d='M7.2-7.353425C7.2-7.539726 7.2-7.715068 7.013699-7.715068C7.00274-7.715068 6.838356-7.715068 6.816438-7.517808C6.783562-7.210959 6.531507-7.210959 6.454795-7.210959C6.071233-7.210959 5.687671-7.375342 5.468493-7.473973C4.909589-7.715068 4.438356-7.715068 4.263014-7.715068C2.432877-7.715068 .405479-6.564384 .405479-3.758904C.405479-.964384 2.389041 .208219 4.284932 .208219C4.865753 .208219 5.643836 .087671 6.443836-.394521C6.947945-.712329 7.506849-1.260274 7.506849-1.413699S7.342466-1.632877 7.276712-1.632877C7.2-1.632877 7.156164-1.6 7.046575-1.479452C6.410959-.756164 5.435616-.317808 4.460274-.317808C2.761644-.317808 2.334247-2.038356 2.334247-3.736986C2.334247-5.89589 3.123288-7.331507 4.29589-7.331507C5.117808-7.331507 6.432877-6.531507 6.805479-5.369863C6.838356-5.271233 6.871233-5.161644 7.013699-5.161644C7.2-5.161644 7.2-5.336986 7.2-5.523288V-7.353425ZM6.816438-6.224658C6.684932-6.410959 6.542466-6.553425 6.268493-6.838356C6.323288-6.827397 6.410959-6.827397 6.465753-6.827397C6.586301-6.827397 6.728767-6.849315 6.816438-6.90411V-6.224658ZM2.926027-7.079452C2.673973-6.827397 1.950685-5.884932 1.950685-3.736986C1.950685-2.652055 2.115068-1.139726 3.10137-.350685C1.30411-.931507 .789041-2.410959 .789041-3.747945C.789041-5.764384 1.89589-6.739726 2.926027-7.090411V-7.079452Z'/>
+<path id='asymptote-47-4-g1-61' d='M4.78909-7.767271C4.843635-7.909089 4.843635-7.952725 4.843635-7.963634C4.843635-8.083634 4.745453-8.181816 4.625453-8.181816C4.54909-8.181816 4.472726-8.149089 4.439999-8.083634L.654545 2.312727C.6 2.454545 .6 2.498181 .6 2.50909C.6 2.62909 .698182 2.727272 .818182 2.727272C.96 2.727272 .992727 2.650908 1.058182 2.465454L4.78909-7.767271Z'/>
+<path id='asymptote-47-4-g1-76' d='M4.079999-6.599998C4.178181-6.992725 4.210908-7.112725 5.236362-7.112725C5.563635-7.112725 5.650908-7.112725 5.650908-7.319998C5.650908-7.450907 5.530908-7.450907 5.476362-7.450907C5.116362-7.450907 4.221817-7.41818 3.861817-7.41818C3.534544-7.41818 2.738181-7.450907 2.410908-7.450907C2.334545-7.450907 2.203636-7.450907 2.203636-7.232725C2.203636-7.112725 2.301818-7.112725 2.50909-7.112725C2.530908-7.112725 2.738181-7.112725 2.923636-7.090907C3.119999-7.069089 3.218181-7.05818 3.218181-6.916362C3.218181-6.872725 3.207272-6.839998 3.174545-6.709089L1.712727-.850909C1.603636-.425454 1.581818-.338182 .72-.338182C.534545-.338182 .425454-.338182 .425454-.12C.425454 0 .523636 0 .72 0H5.770907C6.032726 0 6.043635 0 6.109089-.185454L6.970907-2.541817C7.014543-2.661817 7.014543-2.683636 7.014543-2.694545C7.014543-2.738181 6.981816-2.814545 6.883634-2.814545S6.774544-2.759999 6.69818-2.585454C6.327271-1.581818 5.847271-.338182 3.959999-.338182H2.934545C2.781817-.338182 2.759999-.338182 2.694545-.349091C2.585454-.36 2.552727-.370909 2.552727-.458182C2.552727-.490909 2.552727-.512727 2.607272-.709091L4.079999-6.599998Z'/>
+</defs>
+<g id='asymptote-47-4-page1'>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M62.1724 64.3145H79.8643V46.6226H62.1724V64.3145Z' fill="var(--asymptote-color-80ffff)" opacity='0.3'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M62.1724 64.3145H79.8643V46.6226H62.1724V64.3145Z' fill='none' stroke="var(--asymptote-color-00c0c0)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M116.566 64.3145H.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M124.094 64.3145L116.566 62.2973V66.3316L124.094 64.3145Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M124.094 64.3145L116.566 62.2973V66.3316L124.094 64.3145Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M62.1724 9.92113V126.236' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M62.1724 2.39301L60.1553 9.92113H64.1896L62.1724 2.39301Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M62.1724 2.39301L60.1553 9.92113H64.1896L62.1724 2.39301Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='9.09686' cy='117.39' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='9.09686' cy='99.6982' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='9.09686' cy='82.0063' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='9.09686' cy='64.3145' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='9.09686' cy='46.6226' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='9.09686' cy='28.9308' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='9.09686' cy='11.2389' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='26.7887' cy='117.39' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='26.7887' cy='99.6982' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='26.7887' cy='82.0063' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='26.7887' cy='64.3145' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='26.7887' cy='46.6226' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='26.7887' cy='28.9308' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='26.7887' cy='11.2389' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='44.4806' cy='117.39' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='44.4806' cy='99.6982' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='44.4806' cy='82.0063' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='44.4806' cy='64.3145' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='44.4806' cy='46.6226' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='44.4806' cy='28.9308' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='44.4806' cy='11.2389' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='62.1724' cy='117.39' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='62.1724' cy='99.6982' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='62.1724' cy='82.0063' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='62.1724' cy='64.3145' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='62.1724' cy='46.6226' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='62.1724' cy='28.9308' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='62.1724' cy='11.2389' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='79.8643' cy='117.39' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='79.8643' cy='99.6982' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='79.8643' cy='82.0063' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='79.8643' cy='64.3145' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='79.8643' cy='46.6226' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='79.8643' cy='28.9308' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='79.8643' cy='11.2389' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='97.5561' cy='117.39' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='97.5561' cy='99.6982' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='97.5561' cy='82.0063' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='97.5561' cy='64.3145' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='97.5561' cy='46.6226' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='97.5561' cy='28.9308' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='97.5561' cy='11.2389' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='115.248' cy='117.39' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='115.248' cy='99.6982' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='115.248' cy='82.0063' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='115.248' cy='64.3145' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='115.248' cy='46.6226' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='115.248' cy='28.9308' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<circle cx='115.248' cy='11.2389' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='235.517353' y='126.722879' href='#asymptote-47-4-g1-76'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M71.0183 141.707V126.236' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M71.0183 149.235L73.0355 141.707H69.0012L71.0183 149.235Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M71.0183 149.235L73.0355 141.707H69.0012L71.0183 149.235Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M62.1724 170.466H79.8643V152.774H62.1724V170.466Z' fill="var(--asymptote-color-80ffff)" opacity='0.3'/>
+</g>
+<g transform='translate(118.35 117.932)scale(.996264)'>
+<path d='M62.1724 170.466H79.8643V152.774H62.1724V170.466Z' fill='none' stroke="var(--asymptote-color-00c0c0)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00bfbf)">
+<use x='201.237805' y='278.090446' href='#asymptote-47-4-g0-67'/>
+<use x='209.152591' y='278.090446' href='#asymptote-47-4-g1-61'/>
+<use x='214.607156' y='278.090446' href='#asymptote-47-4-g1-76'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div id="S4.Thmtheorem3.p4" class="ltx_para">
+<p class="ltx_p">Here we draw <math id="S4.Thmtheorem3.p4.m1" class="ltx_Math" alttext="\mathbb{C}/L" display="inline"><mrow><mi>ℂ</mi><mo>/</mo><mi>L</mi></mrow></math> as a square, but you should imagine that the top and bottom edge, as well
+as the left and right edges, are smoothly welded together.</p>
+</div>
+<div id="S4.Thmtheorem3.p5" class="ltx_para">
+<p class="ltx_p">For each small patch of the torus, we can isomorphically map it to <math id="S4.Thmtheorem3.p5.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> by taking a suitable
+component of the preimage of the quotient map — the different choices of the projection are
+related by transition functions <math id="S4.Thmtheorem3.p5.m2" class="ltx_Math" alttext="\phi_{ij}(x)=x+a" display="inline"><mrow><mrow><msub><mi>ϕ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>x</mi><mo>+</mo><mi>a</mi></mrow></mrow></math> for <math id="S4.Thmtheorem3.p5.m3" class="ltx_Math" alttext="a\in L" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>L</mi></mrow></math>, this is analytic.</p>
+</div>
+<div id="S4.Thmtheorem3.p6" class="ltx_para">
+<p class="ltx_p">The complex torus is compact, thus any holomorphic function on <math id="S4.Thmtheorem3.p6.m1" class="ltx_Math" alttext="\mathbb{C}/L" display="inline"><mrow><mi>ℂ</mi><mo>/</mo><mi>L</mi></mrow></math> is constant. Meromorphic
+functions are more interesting, and also difficult to construct.</p>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">And some non-examples.</p>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 47.4.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The disjoint union of two Riemann spheres is not a Riemann surface, because it is not connected.</p>
+</div>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">The condition that a Riemann surface must be connected is merely a technical condition such that
+theorems are nice — we don’t lose much by requiring this, because any topological space with a
+complex structure can be broken down into disjoint union of Riemann surfaces, one for each connected
+component.</p>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../diffgeo/manifolds-diffgeo.html">Previous chapter: A bit of manifolds</a><br />
+<a href="../riemann/morphism-riemann.html">Next chapter: Morphisms between Riemann surfaces</a>
+</nav>
+
+		</main>
+	</body>
+</html>

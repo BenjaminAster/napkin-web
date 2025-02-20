@@ -1,0 +1,1595 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 2 Metric spaces ‣ Part I Starting Out ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="ch_group_intro.html" title="Chapter 1 Groups ‣ Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="next" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_sales.html" title="Chapter 0 Sales pitches ‣ Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_group_intro.html" title="Chapter 1 Groups ‣ Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_linalg/" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_calc/" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_measure/" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_diffgeo/" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop1/" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st2/" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">I </span>Starting Out</span></a><a href="ch_group_intro.html" title="In Part I Starting Out ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">1 </span>Groups</span></a><a href="../part_absalg/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">II </span>Basic Abstract Algebra</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 2 </span>Metric spaces</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">At the time of writing, I’m convinced that metric topology is
+the morally correct way to motivate point-set topology
+as well as to generalize normal calculus.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Also,
+“metric” is a fun word to say.</span></span></span>
+So here is my best attempt.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">The concept of a metric space is very “concrete”, and lends itself easily to visualization.
+Hence throughout this chapter you should draw lots of pictures as you learn about new objects,
+like convergent sequences, open sets, closed sets, and so on.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2.1 </span>Definition and examples of metric spaces</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>, with the Euclidean metric.</em></p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 2.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> metric space</span> is a pair <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="(M,d)" display="inline"><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></math> consisting of
+a set of points <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+and a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> metric</span> <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="d\colon M\times M\to\mathbb{R}_{\geq 0}" display="inline"><mrow><mi>d</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>M</mi></mrow><mo stretchy="false">→</mo><msub><mi>ℝ</mi><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></msub></mrow></mrow></math>.
+The distance function must obey:</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">For any <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="x,y\in M" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><mi>M</mi></mrow></math>, we have <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="d(x,y)=d(y,x)" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>; i.e. <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> is symmetric.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> must be <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> positive definite</span>
+which means that <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="d(x,y)\geq 0" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mn>0</mn></mrow></math> with equality if and only if <math id="S1.I1.i2.p1.m3" class="ltx_Math" alttext="x=y" display="inline"><mrow><mi>x</mi><mo>=</mo><mi>y</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> should satisfy the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> triangle inequality</span>: for all <math id="S1.I1.i3.p1.m2" class="ltx_Math" alttext="x,y,z\in M" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi></mrow><mo>∈</mo><mi>M</mi></mrow></math>,</p>
+<table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="d(x,z)+d(z,y)\geq d(x,y)." display="block"><mrow><mrow><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≥</mo><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_abuse">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 2.1.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Just like with groups, we will abbreviate <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="(M,d)" display="inline"><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></math> as just <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.1.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Metric spaces of <math id="S1.Thmtheorem3.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi mathcolor="#8C0000">ℝ</mi></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S1.I2" class="ltx_enumerate">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">The real line <math id="S1.I2.i1.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> is a metric space under the metric <math id="S1.I2.i1.p1.m2" class="ltx_Math" alttext="d(x,y)=\left\lvert x-y\right\rvert" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>|</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo>|</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The interval <math id="S1.I2.i2.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is also a metric space with the same distance function.</p>
+</div>
+</li>
+<li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">In fact, any subset <math id="S1.I2.i3.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> of <math id="S1.I2.i3.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> can be made into a metric space in this way.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.1.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Metric spaces of <math id="S1.Thmtheorem4.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi mathcolor="#8C0000">ℝ</mi><mn mathcolor="#8C0000">2</mn></msup></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S1.I3" class="ltx_enumerate">
+<li id="S1.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">We can make <math id="S1.I3.i1.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> into a metric space by imposing the Euclidean distance function</p>
+<table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="d\left((x_{1},y_{1}),(x_{2},y_{2})\right)=\sqrt{(x_{1}-x_{2})^{2}+(y_{1}-y_{2}%
+)^{2}}." display="block"><mrow><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><mo>,</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><mo>)</mo></mrow></mrow><mo>=</mo><msqrt><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>−</mo><msub><mi>y</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</li>
+<li id="S1.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">Just like with the first example, any subset of <math id="S1.I3.i2.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> also becomes a metric space after we inherit it.
+The unit disk, unit circle, and the unit square <math id="S1.I3.i2.p1.m2" class="ltx_Math" alttext="[0,1]^{2}" display="inline"><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mn>2</mn></msup></math>
+are special cases.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.1.5</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Taxicab on <math id="S1.Thmtheorem5.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi mathcolor="#8C0000">ℝ</mi><mn mathcolor="#8C0000">2</mn></msup></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">It is also possible to place the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> taxicab distance</span> on <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>:</p>
+<table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="d\left((x_{1},y_{1}),(x_{2},y_{2})\right)=\left\lvert x_{1}-x_{2}\right\rvert+%
+\left\lvert y_{1}-y_{2}\right\rvert." display="block"><mrow><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><mo>,</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo>|</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>−</mo><msub><mi>x</mi><mn>2</mn></msub></mrow><mo>|</mo></mrow><mo>+</mo><mrow><mo>|</mo><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>−</mo><msub><mi>y</mi><mn>2</mn></msub></mrow><mo>|</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">For now, we will use the more natural Euclidean metric.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.1.6</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Metric spaces of <math id="S1.Thmtheorem6.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi mathcolor="#8C0000">ℝ</mi><mi mathcolor="#8C0000">n</mi></msup></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">We can generalize the above examples easily.
+Let <math id="S1.Thmtheorem6.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> be a positive integer.</p>
+<ol id="S1.I4" class="ltx_enumerate">
+<li id="S1.I4.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I4.i1.p1" class="ltx_para">
+<p class="ltx_p">We let <math id="S1.I4.i1.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> be the metric space whose points are points in <math id="S1.I4.i1.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional Euclidean space,
+and whose metric is the Euclidean metric</p>
+<table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="d\left(\left(a_{1},\dots,a_{n}\right),\left(b_{1},\dots,b_{n}\right)\right)=%
+\sqrt{(a_{1}-b_{1})^{2}+\dots+(a_{n}-b_{n})^{2}}." display="block"><mrow><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mo>(</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>a</mi><mi>n</mi></msub><mo>)</mo></mrow><mo>,</mo><mrow><mo>(</mo><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo>)</mo></mrow><mo>)</mo></mrow></mrow><mo>=</mo><msqrt><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>−</mo><msub><mi>b</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>−</mo><msub><mi>b</mi><mi>n</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></msqrt></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This is the <math id="S1.I4.i1.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Euclidean space</span>.</p>
+</div>
+</li>
+<li id="S1.I4.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I4.i2.p1" class="ltx_para">
+<p class="ltx_p">The open <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> unit ball</span> <math id="S1.I4.i2.p1.m1" class="ltx_Math" alttext="B^{n}" display="inline"><msup><mi>B</mi><mi>n</mi></msup></math> is the subset of <math id="S1.I4.i2.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>
+consisting of those points <math id="S1.I4.i2.p1.m3" class="ltx_Math" alttext="\left(x_{1},\dots,x_{n}\right)" display="inline"><mrow><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo>)</mo></mrow></math>
+such that <math id="S1.I4.i2.p1.m4" class="ltx_Math" alttext="x_{1}^{2}+\dots+x_{n}^{2}&lt;1" display="inline"><mrow><mrow><msubsup><mi>x</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msubsup><mi>x</mi><mi>n</mi><mn>2</mn></msubsup></mrow><mo>&lt;</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I4.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I4.i3.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> unit sphere</span> <math id="S1.I4.i3.p1.m1" class="ltx_Math" alttext="S^{n-1}" display="inline"><msup><mi>S</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></math> is the subset of <math id="S1.I4.i3.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>
+consisting of those points <math id="S1.I4.i3.p1.m3" class="ltx_Math" alttext="\left(x_{1},\dots,x_{n}\right)" display="inline"><mrow><mo>(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo>)</mo></mrow></math>
+such that <math id="S1.I4.i3.p1.m4" class="ltx_Math" alttext="x_{1}^{2}+\dots+x_{n}^{2}=1" display="inline"><mrow><mrow><msubsup><mi>x</mi><mn>1</mn><mn>2</mn></msubsup><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msubsup><mi>x</mi><mi>n</mi><mn>2</mn></msubsup></mrow><mo>=</mo><mn>1</mn></mrow></math>, with the inherited metric.
+(The superscript <math id="S1.I4.i3.p1.m5" class="ltx_Math" alttext="n-1" display="inline"><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math> indicates that <math id="S1.I4.i3.p1.m6" class="ltx_Math" alttext="S^{n-1}" display="inline"><msup><mi>S</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></math> is an <math id="S1.I4.i3.p1.m7" class="ltx_Math" alttext="n-1" display="inline"><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math> dimensional space,
+even though it lives in <math id="S1.I4.i3.p1.m8" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional space.)
+For example, <math id="S1.I4.i3.p1.m9" class="ltx_Math" alttext="S^{1}\subseteq\mathbb{R}^{2}" display="inline"><mrow><msup><mi>S</mi><mn>1</mn></msup><mo>⊆</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math> is the unit circle,
+whose distance between two points is the length of the chord joining them.
+You can also think of it as the “boundary” of the unit ball <math id="S1.I4.i3.p1.m10" class="ltx_Math" alttext="B^{n}" display="inline"><msup><mi>B</mi><mi>n</mi></msup></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.Thmtheorem7" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.1.7</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Function space)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">We can let <math id="S1.Thmtheorem7.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be the space of
+continuous functions <math id="S1.Thmtheorem7.p1.m2" class="ltx_Math" alttext="f\colon[0,1]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> and define the metric
+by <math id="S1.Thmtheorem7.p1.m3" class="ltx_Math" alttext="d(f,g)=\int_{0}^{1}\left\lvert f-g\right\rvert\;dx" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msubsup><mo rspace="0em">∫</mo><mn>0</mn><mn>1</mn></msubsup><mrow><mrow><mo>|</mo><mrow><mi>f</mi><mo>−</mo><mi>g</mi></mrow><mo>|</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></math>.
+(It admittedly takes some work to check <math id="S1.Thmtheorem7.p1.m4" class="ltx_Math" alttext="d(f,g)=0" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> implies <math id="S1.Thmtheorem7.p1.m5" class="ltx_Math" alttext="f=g" display="inline"><mrow><mi>f</mi><mo>=</mo><mi>g</mi></mrow></math>,
+but we won’t worry about that yet.)</p>
+</div>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Here is a slightly more pathological example.</p>
+</div>
+<div id="S1.Thmtheorem8" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.1.8</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Discrete space)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem8.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> be any set of points (either finite or infinite).
+We can make <math id="S1.Thmtheorem8.p1.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> into a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> discrete space</span> by declaring</p>
+<table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="d(x,y)=\begin{cases}1&amp;\text{if $x\neq y$}\\
+0&amp;\text{if $x=y$}.\end{cases}" display="block"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mn>1</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>if </mtext><mrow><mi>x</mi><mo>≠</mo><mi>y</mi></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mtext>if </mtext><mrow><mi>x</mi><mo>=</mo><mi>y</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">If <math id="S1.Thmtheorem8.p1.m3" class="ltx_Math" alttext="\left\lvert S\right\rvert=4" display="inline"><mrow><mrow><mo>|</mo><mi>S</mi><mo>|</mo></mrow><mo>=</mo><mn>4</mn></mrow></math> you might think of this space
+as the vertices of a regular tetrahedron, living in <math id="S1.Thmtheorem8.p1.m4" class="ltx_Math" alttext="\mathbb{R}^{3}" display="inline"><msup><mi>ℝ</mi><mn>3</mn></msup></math>.
+But for larger <math id="S1.Thmtheorem8.p1.m5" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> it’s not so easy to visualize…</p>
+</div>
+</div>
+<div id="S1.Thmtheorem9" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.1.9</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Graphs are metric spaces)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">Any connected simple graph <math id="S1.Thmtheorem9.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> can be made into a metric space
+by defining the distance between two vertices to be the
+graph-theoretic distance between them.
+(The discrete metric is the special case when <math id="S1.Thmtheorem9.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is the complete graph on <math id="S1.Thmtheorem9.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.)</p>
+</div>
+</div>
+<div id="S1.Thmtheorem10" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 2.1.10</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S1.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check the conditions of a metric space for the metrics on the discrete space
+and for the connected graph.</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem11" class="ltx_theorem ltx_theorem_abuse">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 2.1.11</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem11.p1" class="ltx_para">
+<p class="ltx_p">From now on, we will refer to <math id="S1.Thmtheorem11.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> with the Euclidean metric
+by just <math id="S1.Thmtheorem11.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>.
+Moreover, if we wish to take the metric space for a subset <math id="S1.Thmtheorem11.p1.m3" class="ltx_Math" alttext="S\subseteq\mathbb{R}^{n}" display="inline"><mrow><mi>S</mi><mo>⊆</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow></math>
+with the inherited metric, we will just write <math id="S1.Thmtheorem11.p1.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.</p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2.2 </span>Convergence in metric spaces</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> The sequence <math id="S2.p1.m1" class="ltx_Math" alttext="\frac{1}{n}" display="inline"><mfrac><mn>1</mn><mi>n</mi></mfrac></math> (for <math id="S2.p1.m2" class="ltx_Math" alttext="n=1,2,\dots" display="inline"><mrow><mi>n</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>…</mi></mrow></mrow></math>) in <math id="S2.p1.m3" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Since we can talk about the distance between two points, we can talk about what it means for a sequence of points to converge.
+This is the same as the typical epsilon-delta definition, with absolute values replaced by the distance function.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 2.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="(x_{n})_{n\geq 1}" display="inline"><msub><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></msub></math> be a sequence of points in a metric space <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+We say that <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="x_{n}" display="inline"><msub><mi>x</mi><mi>n</mi></msub></math> <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> converges</span> to <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> if the following condition holds:
+for all <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, there is an integer <math id="S2.Thmtheorem1.p1.m6" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> (depending on <math id="S2.Thmtheorem1.p1.m7" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>)
+such that <math id="S2.Thmtheorem1.p1.m8" class="ltx_Math" alttext="d(x_{n},x)&lt;\varepsilon" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mi>ε</mi></mrow></math> for each <math id="S2.Thmtheorem1.p1.m9" class="ltx_Math" alttext="n\geq N" display="inline"><mrow><mi>n</mi><mo>≥</mo><mi>N</mi></mrow></math>.
+This is written</p>
+<table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="x_{n}\to x" display="block"><mrow><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">→</mo><mi>x</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">or more verbosely as</p>
+<table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\lim_{n\to\infty}x_{n}=x." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><msub><mi>x</mi><mi>n</mi></msub></mrow><mo>=</mo><mi>x</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">We say that a sequence converges in <math id="S2.Thmtheorem1.p1.m10" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> if it converges to a point in <math id="S2.Thmtheorem1.p1.m11" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">You should check that this definition coincides with your intuitive notion of “converges”.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_abuse">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 2.2.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">If the parent space <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is understood, we will allow ourselves
+to abbreviate “converges in <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>” to just “converges”.
+However, keep in mind that convergence is defined relative to the parent space;
+the “limit” of the space must actually be a point in <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> for a sequence to converge.</p>
+</div>
+</div>
+<div class="ltx_logical-block">
+<div id="S2.p4" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(9cm);
+ΨΨDrawing("x_1", (-9,0.1), dir(90));
+ΨΨDrawing("x_2", (-6,0.8), dir(90));
+ΨΨDrawing("x_3", (-5,-0.3), dir(90));
+ΨΨDrawing("x_4", (-2, 0.8), dir(90));
+ΨΨDrawing("x_5", (-1.7, -0.7), dir(-90));
+ΨΨDrawing("x_6", (-0.6, -0.3), dir(225));
+ΨΨDrawing("x_7", (-0.4, 0.3), dir(90));
+ΨΨDrawing("x_8", (-0.25, -0.24), dir(-90));
+ΨΨDrawing("x_9", (-0.12, 0.1), dir(45));
+ΨΨdot("$x$", (0,0), dir(-45), blue);
+ΨΨdraw(CR(origin, 1.5), blue+dashed);
+Ψ
+</pre>
+</div>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.2.3</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Consider the sequence
+<math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="x_{1}=1" display="inline"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>1</mn></mrow></math>, <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="x_{2}=1.4" display="inline"><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>=</mo><mn>1.4</mn></mrow></math>, <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="x_{3}=1.41" display="inline"><mrow><msub><mi>x</mi><mn>3</mn></msub><mo>=</mo><mn>1.41</mn></mrow></math>, <math id="S2.Thmtheorem3.p1.m4" class="ltx_Math" alttext="x_{4}=1.414" display="inline"><mrow><msub><mi>x</mi><mn>4</mn></msub><mo>=</mo><mn>1.414</mn></mrow></math>, ….</p>
+<ol id="S2.I1" class="ltx_enumerate">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If we view this as a sequence in <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>, it converges to <math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="\sqrt{2}" display="inline"><msqrt><mn>2</mn></msqrt></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">However, even though each <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="x_{i}" display="inline"><msub><mi>x</mi><mi>i</mi></msub></math> is in <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>,
+this sequence does NOT converge when we view it as a sequence in <math id="S2.I1.i2.p1.m3" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>!</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 2.2.4</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">What are the convergent sequences in a discrete metric space?</span></p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2.3 </span>Continuous maps</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">In calculus you were also told (or have at least heard)
+of what it means for a function to be continuous.
+Probably something like</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">A function <math id="S3.p1.m1" class="ltx_Math" alttext="f\colon\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+is continuous at a point <math id="S3.p1.m2" class="ltx_Math" alttext="p\in\mathbb{R}" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>ℝ</mi></mrow></math>
+if for every <math id="S3.p1.m3" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math> there exists a <math id="S3.p1.m4" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math> such that
+<math id="S3.p1.m5" class="ltx_Math" alttext="\left\lvert x-p\right\rvert&lt;\delta\implies\left\lvert f(x)-f(p)\right\rvert&lt;\varepsilon" display="inline"><mrow><mrow><mo>|</mo><mrow><mi>x</mi><mo>−</mo><mi>p</mi></mrow><mo>|</mo></mrow><mo>&lt;</mo><mi>δ</mi><mo stretchy="false">⟹</mo><mrow><mo>|</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>|</mo></mrow><mo>&lt;</mo><mi>ε</mi></mrow></math>.</p>
+</blockquote>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 2.3.1</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Can you guess what the corresponding definition for metric spaces is?</span></p>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">All we have to do is replace the absolute values with the more general distance functions:
+this gives us a definition of continuity for any function <math id="S3.p2.m1" class="ltx_Math" alttext="M\to N" display="inline"><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></math>.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 2.3.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M=(M,d_{M})" display="inline"><mrow><mi>M</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><msub><mi>d</mi><mi>M</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="N=(N,d_{N})" display="inline"><mrow><mi>N</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>N</mi><mo>,</mo><msub><mi>d</mi><mi>N</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> be metric spaces.
+A function <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> continuous</span>
+at a point <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>
+if for every <math id="S3.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math> there exists a <math id="S3.Thmtheorem2.p1.m6" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math> such that</p>
+<table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="d_{M}(x,p)&lt;\delta\implies d_{N}(f(x),f(p))&lt;\varepsilon." display="block"><mrow><mrow><mrow><msub><mi>d</mi><mi>M</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mi>δ</mi><mo stretchy="false">⟹</mo><mrow><msub><mi>d</mi><mi>N</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mi>ε</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Moreover, the entire function <math id="S3.Thmtheorem2.p1.m7" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is continuous
+if it is continuous at every point <math id="S3.Thmtheorem2.p1.m8" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Notice that, just like in our definition of an isomorphism of a group,
+we use the metric of <math id="S3.p3.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> for one condition
+and the metric of <math id="S3.p3.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> for the other condition.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">This generalization is nice because it tells us immediately how we could carry over continuity arguments in <math id="S3.p4.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> to more general spaces like <math id="S3.p4.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.
+Nonetheless, this definition is kind of cumbersome to work with,
+because it makes extensive use of the real numbers
+(epsilons and deltas).
+Here is an equivalent condition.</p>
+</div>
+<div id="thm:seq_cont" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 2.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Sequential continuity)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">A function <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> of metric spaces
+is continuous at a point <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>
+if and only if the following property holds:
+if <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math>, <math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="x_{2}" display="inline"><msub><mi>x</mi><mn>2</mn></msub></math>, … is a sequence in <math id="S3.Thmtheorem3.p1.m5" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> converging to <math id="S3.Thmtheorem3.p1.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+then the sequence <math id="S3.Thmtheorem3.p1.m7" class="ltx_Math" alttext="f(x_{1})" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S3.Thmtheorem3.p1.m8" class="ltx_Math" alttext="f(x_{2})" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>, … in <math id="S3.Thmtheorem3.p1.m9" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> converges to <math id="S3.Thmtheorem3.p1.m10" class="ltx_Math" alttext="f(p)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">One direction is not too hard:</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 2.3.4</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>-<math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> continuity implies sequential continuity
+at each point.</span></p>
+</div>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">Conversely, we will prove if <math id="S3.p6.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is not <math id="S3.p6.m2" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>-<math id="S3.p6.m3" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> continuous at <math id="S3.p6.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>
+then it does not preserve convergence.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">If <math id="S3.p7.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is not continuous at <math id="S3.p7.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, then there is a “bad” <math id="S3.p7.m3" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,
+which we now consider fixed.
+So for each choice of <math id="S3.p7.m4" class="ltx_Math" alttext="\delta=1/n" display="inline"><mrow><mi>δ</mi><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mi>n</mi></mrow></mrow></math>,
+there should be some point <math id="S3.p7.m5" class="ltx_Math" alttext="x_{n}" display="inline"><msub><mi>x</mi><mi>n</mi></msub></math> which is within <math id="S3.p7.m6" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> of <math id="S3.p7.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+but which is mapped more than <math id="S3.p7.m8" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> away from <math id="S3.p7.m9" class="ltx_Math" alttext="f(p)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+But then the sequence <math id="S3.p7.m10" class="ltx_Math" alttext="x_{n}" display="inline"><msub><mi>x</mi><mi>n</mi></msub></math> converges to <math id="S3.p7.m11" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+and <math id="S3.p7.m12" class="ltx_Math" alttext="f(x_{n})" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> is always at least <math id="S3.p7.m13" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> away from <math id="S3.p7.m14" class="ltx_Math" alttext="f(p)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math>, contradiction.
+∎</p>
+</div>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">Example application showcasing the niceness of sequential continuity:</p>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Proposition 2.3.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Composition of continuous functions is continuous)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> and <math id="S3.Thmtheorem5.p1.m2" class="ltx_Math" alttext="g\colon N\to L" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>N</mi><mo stretchy="false">→</mo><mi>L</mi></mrow></mrow></math> be continuous maps of metric spaces.
+Then their composition <math id="S3.Thmtheorem5.p1.m3" class="ltx_Math" alttext="g\circ f" display="inline"><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>f</mi></mrow></math> is continuous.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">Dead simple with sequences:
+Let <math id="S3.p9.m1" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math> be arbitrary and let <math id="S3.p9.m2" class="ltx_Math" alttext="x_{n}\to p" display="inline"><mrow><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">→</mo><mi>p</mi></mrow></math> in <math id="S3.p9.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+Then <math id="S3.p9.m4" class="ltx_Math" alttext="f(x_{n})\to f(p)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> in <math id="S3.p9.m5" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> and <math id="S3.p9.m6" class="ltx_Math" alttext="g(f(x_{n}))\to g(f(p))" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> in <math id="S3.p9.m7" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math>, QED.
+∎</p>
+</div>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 2.3.6</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be any metric space and <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> a discrete space.
+When is a map <math id="S3.Thmtheorem6.p1.m3" class="ltx_Math" alttext="f\colon D\to M" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>D</mi><mo stretchy="false">→</mo><mi>M</mi></mrow></mrow></math> continuous?</span></p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2.4 </span>Homeomorphisms</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> The unit circle <math id="S4.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> is homeomorphic to the boundary of the unit square.</em></p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">When do we consider two groups to be the same?
+Answer: if there’s a structure-preserving map
+between them which is also a bijection.
+For metric spaces, we do exactly the same thing,
+but replace “structure-preserving” with “continuous”.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 2.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> be metric spaces.
+A function <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> is a
+<span class="ltx_text ltx_font_bold" style="color:#0000FF;"> homeomorphism</span> if it is a bijection,
+and both <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math>
+and its inverse <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="f^{-1}\colon N\to M" display="inline"><mrow><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>N</mi><mo stretchy="false">→</mo><mi>M</mi></mrow></mrow></math> are continuous.
+We say <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and <math id="S4.Thmtheorem1.p1.m7" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> are <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> homeomorphic</span>.</p>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Needless to say, homeomorphism is an equivalence relation.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">You might be surprised that we require <math id="S4.p4.m1" class="ltx_Math" alttext="f^{-1}" display="inline"><msup><mi>f</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math> to also be continuous.
+Here’s the reason: you can show that if <math id="S4.p4.m2" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is
+an isomorphism of groups, then <math id="S4.p4.m3" class="ltx_Math" alttext="\phi^{-1}" display="inline"><msup><mi>ϕ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math> also preserves the group operation,
+hence <math id="S4.p4.m4" class="ltx_Math" alttext="\phi^{-1}" display="inline"><msup><mi>ϕ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math> is itself an isomorphism.
+The same is not true for continuous bijections,
+which is why we need the new condition.</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.4.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Homeomorphism <math id="S4.Thmtheorem2.m1" class="ltx_Math" alttext="\neq" display="inline"><mo mathcolor="#8C0000">≠</mo></math> continuous bijection)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S4.I1" class="ltx_enumerate">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">There is a continuous bijection
+from <math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="[0,1)" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math> to the circle, but it has no continuous inverse.</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a discrete space with size <math id="S4.I1.i2.p1.m2" class="ltx_Math" alttext="|\mathbb{R}|" display="inline"><mrow><mo stretchy="false">|</mo><mi>ℝ</mi><mo stretchy="false">|</mo></mrow></math>.
+Then there is a continuous function <math id="S4.I1.i2.p1.m3" class="ltx_Math" alttext="M\to\mathbb{R}" display="inline"><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>
+which certainly has no continuous inverse.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Note that this is the topologist’s definition of “same” –
+homeomorphisms are “continuous deformations”.
+Here are some examples.</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.4.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of homeomorphisms)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S4.I2" class="ltx_enumerate">
+<li id="S4.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S4.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">Any space <math id="S4.I2.i1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is homeomorphic to itself
+through the identity map.</p>
+</div>
+</li>
+<li id="S4.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S4.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The old saying: a doughnut (torus) is
+homeomorphic to a coffee cup.
+(Look this up if you haven’t heard of it.)</p>
+</div>
+</li>
+<li id="S4.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S4.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">The unit circle <math id="S4.I2.i3.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> is homeomorphic
+to the boundary of the unit square.
+Here’s one bijection between them, after an appropriate scaling:</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨΨΨsize(1.5cm);
+ΨΨΨΨdraw(unitcircle);
+ΨΨΨΨpair A = (1.4, 1.4);
+ΨΨΨΨpair B = rotate(90)*A;
+ΨΨΨΨpair C = rotate(90)*B;
+ΨΨΨΨpair D = rotate(90)*C;
+ΨΨΨΨdraw(A--B--C--D--cycle);
+ΨΨΨΨdot(origin);
+ΨΨΨΨpair P = Drawing(dir(70));
+ΨΨΨΨpair Q = Drawing(extension(origin, P, A, B));
+ΨΨΨΨdraw(origin--Q, dashed);
+ΨΨΨ
+</pre>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.4.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Metrics on the unit circle)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">It may have seemed strange that our metric function on <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math>
+was the one inherited from <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>,
+meaning the distance between two points
+on the circle was defined to be the length of the chord.
+Wouldn’t it have made more sense to use the circumference of the
+smaller arc joining the two points?</p>
+</div>
+<div id="S4.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">In fact, it doesn’t matter:
+if we consider <math id="S4.Thmtheorem4.p2.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> with the “chord” metric
+and the “arc” metric, we get two homeomorphic spaces,
+as the map between them is continuous.</p>
+</div>
+<div id="S4.Thmtheorem4.p3" class="ltx_para">
+<p class="ltx_p">The same goes for <math id="S4.Thmtheorem4.p3.m1" class="ltx_Math" alttext="S^{n-1}" display="inline"><msup><mi>S</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></math> for general <math id="S4.Thmtheorem4.p3.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.4.5</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Homeomorphisms really don’t preserve size)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Surprisingly, the open interval <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="(-1,1)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math>
+is homeomorphic to the real line <math id="S4.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>!
+One bijection is given by</p>
+<table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="x\mapsto\tan(x\pi/2)" display="block"><mrow><mi>x</mi><mo stretchy="false">↦</mo><mrow><mi>tan</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>π</mi></mrow><mo>/</mo><mn>2</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">with the inverse being given by <math id="S4.Thmtheorem5.p1.m3" class="ltx_Math" alttext="t\mapsto\frac{2}{\pi}\arctan(t)" display="inline"><mrow><mi>t</mi><mo stretchy="false">↦</mo><mrow><mfrac><mn>2</mn><mi>π</mi></mfrac><mo lspace="0.167em">⁢</mo><mrow><mi>arctan</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S4.Thmtheorem5.p2" class="ltx_para">
+<p class="ltx_p">This might come as a surprise,
+since <math id="S4.Thmtheorem5.p2.m1" class="ltx_Math" alttext="(-1,1)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math> doesn’t look that much like <math id="S4.Thmtheorem5.p2.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>;
+the former is “bounded” while the latter is “unbounded”.</p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2.5 </span>Extended example/definition: product metric</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S5.p1.m1" class="ltx_Math" alttext="\mathbb{R}\times\mathbb{R}" display="inline"><mrow><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi></mrow></math> is <math id="S5.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>.</em></p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">Here is an extended example which will occur later on.
+Let <math id="S5.p2.m1" class="ltx_Math" alttext="M=(M,d_{M})" display="inline"><mrow><mi>M</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><msub><mi>d</mi><mi>M</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S5.p2.m2" class="ltx_Math" alttext="N=(N,d_{N})" display="inline"><mrow><mi>N</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>N</mi><mo>,</mo><msub><mi>d</mi><mi>N</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> be metric spaces (say, <math id="S5.p2.m3" class="ltx_Math" alttext="M=N=\mathbb{R}" display="inline"><mrow><mi>M</mi><mo>=</mo><mi>N</mi><mo>=</mo><mi>ℝ</mi></mrow></math>).
+Our goal is to define a metric space on <math id="S5.p2.m4" class="ltx_Math" alttext="M\times N" display="inline"><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>N</mi></mrow></math>.</p>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.p3.m1" class="ltx_Math" alttext="p_{i}=(x_{i},y_{i})\in M\times N" display="inline"><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>N</mi></mrow></mrow></math> for <math id="S5.p3.m2" class="ltx_Math" alttext="i=1,2" display="inline"><mrow><mi>i</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn></mrow></mrow></math>.
+Consider the following metrics on the set of points <math id="S5.p3.m3" class="ltx_Math" alttext="M\times N" display="inline"><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>N</mi></mrow></math>:</p>
+<table id="A5.S3.EGx2" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex10"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex10.m1" class="ltx_Math" alttext="\displaystyle d_{\text{max}}(p_{1},p_{2})" display="inline"><mrow><msub><mi>d</mi><mtext>max</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><msub><mi>p</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex10.m2" class="ltx_Math" alttext="\displaystyle\coloneqq\max\left\{d_{M}(x_{1},x_{2}),d_{N}(y_{1},y_{2})\right\}" display="inline"><mrow><mi></mi><mo>≔</mo><mrow><mi>max</mi><mo>⁡</mo><mrow><mo>{</mo><mrow><msub><mi>d</mi><mi>M</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><msub><mi>d</mi><mi>N</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>}</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex11"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex11.m1" class="ltx_Math" alttext="\displaystyle d_{\text{Euclid}}(p_{1},p_{2})" display="inline"><mrow><msub><mi>d</mi><mtext>Euclid</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><msub><mi>p</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex11.m2" class="ltx_Math" alttext="\displaystyle\coloneqq\sqrt{d_{M}(x_{1},x_{2})^{2}+d_{N}(y_{1},y_{2})^{2}}" display="inline"><mrow><mi></mi><mo>≔</mo><msqrt><mrow><mrow><msub><mi>d</mi><mi>M</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow><mo>+</mo><mrow><msub><mi>d</mi><mi>N</mi></msub><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow></msqrt></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex12"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex12.m1" class="ltx_Math" alttext="\displaystyle d_{\text{taxicab}}\left(p_{1},p_{2}\right)" display="inline"><mrow><msub><mi>d</mi><mtext>taxicab</mtext></msub><mo>⁢</mo><mrow><mo>(</mo><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><msub><mi>p</mi><mn>2</mn></msub><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex12.m2" class="ltx_Math" alttext="\displaystyle\coloneqq d_{M}(x_{1},x_{2})+d_{N}(y_{1},y_{2})." display="inline"><mrow><mrow><mi></mi><mo>≔</mo><mrow><mrow><msub><mi>d</mi><mi>M</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><msub><mi>d</mi><mi>N</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">All of these are good candidates.
+We are about to see it doesn’t matter which one we use:</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 2.5.1</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify that</span></p>
+<table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="d_{\text{max}}(p_{1},p_{2})\leq d_{\text{Euclid}}(p_{1},p_{2})\leq d_{\text{%
+taxicab}}(p_{1},p_{2})\leq 2d_{\text{max}}(p_{1},p_{2})." display="block"><mrow><mrow><mrow><msub><mi mathsize="90%">d</mi><mtext mathsize="90%">max</mtext></msub><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><msub><mi mathsize="90%">p</mi><mn mathsize="90%">1</mn></msub><mo mathsize="90%">,</mo><msub><mi mathsize="90%">p</mi><mn mathsize="90%">2</mn></msub><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%">≤</mo><mrow><msub><mi mathsize="90%">d</mi><mtext mathsize="90%">Euclid</mtext></msub><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><msub><mi mathsize="90%">p</mi><mn mathsize="90%">1</mn></msub><mo mathsize="90%">,</mo><msub><mi mathsize="90%">p</mi><mn mathsize="90%">2</mn></msub><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%">≤</mo><mrow><msub><mi mathsize="90%">d</mi><mtext mathsize="90%">taxicab</mtext></msub><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><msub><mi mathsize="90%">p</mi><mn mathsize="90%">1</mn></msub><mo mathsize="90%">,</mo><msub><mi mathsize="90%">p</mi><mn mathsize="90%">2</mn></msub><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%">≤</mo><mrow><mn mathsize="90%">2</mn><mo>⁢</mo><msub><mi mathsize="90%">d</mi><mtext mathsize="90%">max</mtext></msub><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><msub><mi mathsize="90%">p</mi><mn mathsize="90%">1</mn></msub><mo mathsize="90%">,</mo><msub><mi mathsize="90%">p</mi><mn mathsize="90%">2</mn></msub><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow><mo lspace="0em" mathsize="90%">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Use this to show that the metric spaces we obtain
+by imposing any of the three metrics are homeomorphic,
+with the homeomorphism being just the identity map.</span></p>
+</div>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 2.5.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Hence we will usually simply refer to
+<em class="ltx_emph ltx_font_italic">the</em> metric on <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M\times N" display="inline"><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>N</mi></mrow></math>,
+called the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> product metric</span>.
+It will not be important which of the three metrics we select.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.5.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(<math id="S5.Thmtheorem3.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi mathcolor="#8C0000">ℝ</mi><mn mathcolor="#8C0000">2</mn></msup></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S5.Thmtheorem3.p1.m1" class="ltx_Math" alttext="M=N=\mathbb{R}" display="inline"><mrow><mi>M</mi><mo>=</mo><mi>N</mi><mo>=</mo><mi>ℝ</mi></mrow></math>, we get <math id="S5.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>, the Euclidean plane.
+The metric <math id="S5.Thmtheorem3.p1.m3" class="ltx_Math" alttext="d_{\text{Euclid}}" display="inline"><msub><mi>d</mi><mtext>Euclid</mtext></msub></math> is the one we started with,
+but using either of the other two metric works fine as well.</p>
+</div>
+</div>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">The product metric plays well with convergence of sequences.</p>
+</div>
+<div id="S5.Thmtheorem4" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Proposition 2.5.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Convergence in the product metric is by component)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">We have <math id="S5.Thmtheorem4.p1.m1" class="ltx_Math" alttext="(x_{n},y_{n})\to(x,y)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo>,</mo><msub><mi>y</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+if and only if <math id="S5.Thmtheorem4.p1.m2" class="ltx_Math" alttext="x_{n}\to x" display="inline"><mrow><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">→</mo><mi>x</mi></mrow></math> and <math id="S5.Thmtheorem4.p1.m3" class="ltx_Math" alttext="y_{n}\to y" display="inline"><mrow><msub><mi>y</mi><mi>n</mi></msub><mo stretchy="false">→</mo><mi>y</mi></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S5.p5" class="ltx_para">
+<p class="ltx_p">We have <math id="S5.p5.m1" class="ltx_Math" alttext="d_{\text{max}}\left((x,y),(x_{n},y_{n})\right)=\max\left\{d_{M}(x,x_{n}),d_{N}%
+(y,y_{n})\right\}" display="inline"><mrow><mrow><msub><mi>d</mi><mtext>max</mtext></msub><mo>⁢</mo><mrow><mo>(</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>,</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo>,</mo><msub><mi>y</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mi>max</mi><mo>⁡</mo><mrow><mo>{</mo><mrow><msub><mi>d</mi><mi>M</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><msub><mi>d</mi><mi>N</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><msub><mi>y</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>}</mo></mrow></mrow></mrow></math>
+and the latter approaches zero as <math id="S5.p5.m2" class="ltx_Math" alttext="n\to\infty" display="inline"><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></math>
+if and only if <math id="S5.p5.m3" class="ltx_Math" alttext="d_{M}(x,x_{n})\to 0" display="inline"><mrow><mrow><msub><mi>d</mi><mi>M</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mn>0</mn></mrow></math> and <math id="S5.p5.m4" class="ltx_Math" alttext="d_{N}(y,y_{n})\to 0" display="inline"><mrow><mrow><msub><mi>d</mi><mi>N</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><msub><mi>y</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mn>0</mn></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S5.p6" class="ltx_para">
+<p class="ltx_p">Let’s see an application of this:</p>
+</div>
+<div id="prop:arithmetic_continuous" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Proposition 2.5.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Addition and multiplication are continuous)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">The addition and multiplication maps
+are continuous maps <math id="S5.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathbb{R}\times\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mrow><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S5.p7" class="ltx_para">
+<p class="ltx_p">For multiplication: for any <math id="S5.p7.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> we have</p>
+<table id="A5.S3.EGx3" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex14"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex14.m1" class="ltx_Math" alttext="\displaystyle x_{n}y_{n}" display="inline"><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>⁢</mo><msub><mi>y</mi><mi>n</mi></msub></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex14.m2" class="ltx_Math" alttext="\displaystyle=\left(x+(x_{n}-x)\right)\left(y+(y_{n}-y)\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mi>x</mi><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>y</mi><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>y</mi><mi>n</mi></msub><mo>−</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex15"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex15.m1" class="ltx_Math" alttext="\displaystyle=xy+y(x_{n}-x)+x(y_{n}-y)+(x_{n}-x)(y_{n}-y)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>y</mi><mi>n</mi></msub><mo>−</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>y</mi><mi>n</mi></msub><mo>−</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex16"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex16.m1" class="ltx_Math" alttext="\displaystyle\implies\left\lvert x_{n}y_{n}-xy\right\rvert" display="inline"><mrow><mi></mi><mo stretchy="false">⟹</mo><mrow><mo>|</mo><mrow><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>⁢</mo><msub><mi>y</mi><mi>n</mi></msub></mrow><mo>−</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></mrow><mo>|</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex16.m2" class="ltx_Math" alttext="\displaystyle\leq\left\lvert y\right\rvert\left\lvert x_{n}-x\right\rvert+%
+\left\lvert x\right\rvert\left\lvert y_{n}-y\right\rvert+\left\lvert x_{n}-x%
+\right\rvert\left\lvert y_{n}-y\right\rvert." display="inline"><mrow><mrow><mi></mi><mo>≤</mo><mrow><mrow><mrow><mo>|</mo><mi>y</mi><mo>|</mo></mrow><mo>⁢</mo><mrow><mo>|</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><mi>x</mi></mrow><mo>|</mo></mrow></mrow><mo>+</mo><mrow><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow><mo>⁢</mo><mrow><mo>|</mo><mrow><msub><mi>y</mi><mi>n</mi></msub><mo>−</mo><mi>y</mi></mrow><mo>|</mo></mrow></mrow><mo>+</mo><mrow><mrow><mo>|</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><mi>x</mi></mrow><mo>|</mo></mrow><mo>⁢</mo><mrow><mo>|</mo><mrow><msub><mi>y</mi><mi>n</mi></msub><mo>−</mo><mi>y</mi></mrow><mo>|</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">As <math id="S5.p7.m2" class="ltx_Math" alttext="n\to\infty" display="inline"><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></math>, all three terms on the
+right-hand side tend to zero.
+The proof that <math id="S5.p7.m3" class="ltx_math_unparsed" alttext="+\colon\mathbb{R}\times\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mo rspace="0em">+</mo><mo rspace="0.278em">:</mo><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math> is continuous
+is similar (and easier): one notes for any <math id="S5.p7.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> that</p>
+<table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="|(x_{n}+y_{n})-(x+y)|\leq|x_{n}-x|+|y_{n}-y|" display="block"><mrow><mrow><mo stretchy="false">|</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>+</mo><msub><mi>y</mi><mi>n</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≤</mo><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><mi>x</mi></mrow><mo stretchy="false">|</mo></mrow><mo>+</mo><mrow><mo stretchy="false">|</mo><mrow><msub><mi>y</mi><mi>n</mi></msub><mo>−</mo><mi>y</mi></mrow><mo stretchy="false">|</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and both terms on the right-hand side
+tend to zero as <math id="S5.p7.m5" class="ltx_Math" alttext="n\to\infty" display="inline"><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S5.p8" class="ltx_para">
+<p class="ltx_p"><a href="#prob:subtract_divide" title="Problem 2C (Continuity of arithmetic continued). ‣ 2.8 A few harder problems to think about ‣ Chapter 2 Metric spaces ‣ Part I Starting Out ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">2C</span></a> covers the other two operations,
+subtraction and division.
+The upshot of this is that, since compositions are also continuous,
+most of your naturally arising real-valued functions
+will automatically be continuous as well.
+For example, the function <math id="S5.p8.m1" class="ltx_Math" alttext="\frac{3x}{x^{2}+1}" display="inline"><mfrac><mrow><mn>3</mn><mo>⁢</mo><mi>x</mi></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></math>
+will be a continuous function from <math id="S5.p8.m2" class="ltx_Math" alttext="\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>,
+since it can be obtained by composing <math id="S5.p8.m3" class="ltx_Math" alttext="+" display="inline"><mo>+</mo></math>, <math id="S5.p8.m4" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math>, <math id="S5.p8.m5" class="ltx_Math" alttext="\div" display="inline"><mo>÷</mo></math>.</p>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2.6 </span>Open sets</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> The open disk <math id="S6.p1.m1" class="ltx_Math" alttext="x^{2}+y^{2}&lt;r^{2}" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>&lt;</mo><msup><mi>r</mi><mn>2</mn></msup></mrow></math> in <math id="S6.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>.</em></p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">Continuity is really about what happens “locally”:
+how a function behaves “close to a certain point <math id="S6.p2.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>”.
+One way to capture this notion of “closeness”
+is to use metrics as we’ve done above.
+In this way we can define an <math id="S6.p2.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhood of a point.</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 2.6.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a metric space.
+For each real number <math id="S6.Thmtheorem1.p1.m2" class="ltx_Math" alttext="r&gt;0" display="inline"><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow></math> and point <math id="S6.Thmtheorem1.p1.m3" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>, we define</p>
+<table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="M_{r}(p)\coloneqq\left\{x\in M:d(x,p)&lt;r\right\}." display="block"><mrow><mrow><mrow><msub><mi>M</mi><mi>r</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mo>{</mo><mrow><mi>x</mi><mo>∈</mo><mi>M</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mi>r</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">The set <math id="S6.Thmtheorem1.p1.m4" class="ltx_Math" alttext="M_{r}(p)" display="inline"><mrow><msub><mi>M</mi><mi>r</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> is called an <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> <math id="S6.Thmtheorem1.p1.m5" class="ltx_Math" alttext="r" display="inline"><mi mathcolor="#0000FF">r</mi></math>-neighborhood</span> of <math id="S6.Thmtheorem1.p1.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+</div>
+<div id="S6.p3" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(4cm);
+ΨΨbigblob("$M$");
+ΨΨpair p = Drawing("p", (0.3,0.1), dir(-90));
+ΨΨreal r = 1.8;
+ΨΨdraw(CR(p,r), dashed);
+ΨΨlabel("$M_r(p)$", p+r*dir(-65), dir(-65));
+ΨΨdraw(p--(p+r*dir(130)));
+ΨΨlabel("$r$", midpoint(p--(p+r*dir(130))), dir(40));
+Ψ
+</pre>
+</div>
+<div id="S6.p4" class="ltx_para">
+<p class="ltx_p">We can rephrase convergence more succinctly in terms of <math id="S6.p4.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhoods.
+Specifically, a sequence <math id="S6.p4.m2" class="ltx_Math" alttext="(x_{n})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></math> converges to <math id="S6.p4.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>
+if for every <math id="S6.p4.m4" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhood of <math id="S6.p4.m5" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>,
+all terms of <math id="S6.p4.m6" class="ltx_Math" alttext="x_{n}" display="inline"><msub><mi>x</mi><mi>n</mi></msub></math> eventually stay within that <math id="S6.p4.m7" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhood.</p>
+</div>
+<div id="S6.p5" class="ltx_para">
+<p class="ltx_p">Let’s try to do the same with functions.</p>
+</div>
+<div id="S6.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 2.6.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">In terms of <math id="S6.Thmtheorem2.p1.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhoods,
+what does it mean for a function <math id="S6.Thmtheorem2.p1.m2" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math>
+to be continuous at a point <math id="S6.Thmtheorem2.p1.m3" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>?</span></p>
+</div>
+</div>
+<div id="S6.p6" class="ltx_para">
+<p class="ltx_p">Essentially, we require that the pre-image of every <math id="S6.p6.m1" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>-neighborhood has
+the property that some <math id="S6.p6.m2" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math>-neighborhood exists inside it.
+This motivates:</p>
+</div>
+<div id="S6.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 2.6.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S6.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">A set <math id="S6.Thmtheorem3.p1.m1" class="ltx_Math" alttext="U\subseteq M" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>M</mi></mrow></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> open</span> in <math id="S6.Thmtheorem3.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+if for each <math id="S6.Thmtheorem3.p1.m3" class="ltx_Math" alttext="p\in U" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>U</mi></mrow></math>, some <math id="S6.Thmtheorem3.p1.m4" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhood of <math id="S6.Thmtheorem3.p1.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>
+is contained inside <math id="S6.Thmtheorem3.p1.m6" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.
+In other words, there exists <math id="S6.Thmtheorem3.p1.m7" class="ltx_Math" alttext="r&gt;0" display="inline"><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow></math> such that <math id="S6.Thmtheorem3.p1.m8" class="ltx_Math" alttext="M_{r}(p)\subseteq U" display="inline"><mrow><mrow><msub><mi>M</mi><mi>r</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>U</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S6.Thmtheorem4" class="ltx_theorem ltx_theorem_abuse">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 2.6.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S6.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Note that a set being open is defined
+<em class="ltx_emph ltx_font_italic">relative to</em> the parent space <math id="S6.Thmtheorem4.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+However, if <math id="S6.Thmtheorem4.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is understood we can abbreviate
+“open in <math id="S6.Thmtheorem4.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>” to just “open”.</p>
+</div>
+</div>
+<figure id="fig:example_open" class="ltx_figure"><pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(5cm);
+ΨΨdraw(unitcircle, dashed);
+ΨΨpair P = Drawing("p", (0.6,0.2), dir(-90));
+ΨΨdraw(CR(P, 0.3), dotted);
+ΨΨMP("x^2+y^2&lt;1", dir(45), dir(45));
+Ψ
+</pre>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 2.1: </span>The set of points <math id="F1.m4" class="ltx_Math" alttext="x^{2}+y^{2}&lt;1" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>&lt;</mo><mn>1</mn></mrow></math> in <math id="F1.m5" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> is open in <math id="F1.m6" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>.</figcaption>
+</figure>
+<div id="S6.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.6.5</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of open sets)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S6.I1" class="ltx_enumerate">
+<li id="S6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S6.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Any <math id="S6.I1.i1.p1.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhood of a point is open.</p>
+</div>
+</li>
+<li id="S6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S6.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Open intervals of <math id="S6.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> are open in <math id="S6.I1.i2.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>, hence the name!
+This is the prototypical example to keep in mind.</p>
+</div>
+</li>
+<li id="S6.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S6.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The open unit ball <math id="S6.I1.i3.p1.m1" class="ltx_Math" alttext="B^{n}" display="inline"><msup><mi>B</mi><mi>n</mi></msup></math> is open in <math id="S6.I1.i3.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> for the same reason.</p>
+</div>
+</li>
+<li id="S6.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S6.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">In particular, the open interval <math id="S6.I1.i4.p1.m1" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math> is open in <math id="S6.I1.i4.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.
+However, if we embed it in <math id="S6.I1.i4.p1.m3" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>, it is no longer open!</p>
+</div>
+</li>
+<li id="S6.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(e)</span> 
+<div id="S6.I1.i5.p1" class="ltx_para">
+<p class="ltx_p">The empty set <math id="S6.I1.i5.p1.m1" class="ltx_Math" alttext="\varnothing" display="inline"><mi mathvariant="normal">∅</mi></math> and the whole set of points <math id="S6.I1.i5.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> are open in <math id="S6.I1.i5.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S6.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.6.6</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Non-examples of open sets)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S6.I2" class="ltx_enumerate">
+<li id="S6.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S6.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">The closed interval <math id="S6.I2.i1.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is not open in <math id="S6.I2.i1.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.
+There is no <math id="S6.I2.i1.p1.m3" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>-neighborhood of the point <math id="S6.I2.i1.p1.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>
+which is contained in <math id="S6.I2.i1.p1.m5" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math>.</p>
+</div>
+</li>
+<li id="S6.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S6.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The unit circle <math id="S6.I2.i2.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> is not open in <math id="S6.I2.i2.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S6.Thmtheorem7" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 2.6.7</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S6.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">What are the open sets of the discrete space?</span></p>
+</div>
+</div>
+<div id="S6.p7" class="ltx_para">
+<p class="ltx_p">Here are two quite important properties of open sets.</p>
+</div>
+<div id="S6.Thmtheorem8" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Proposition 2.6.8</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Intersections and unions of open sets)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S6.I3" class="ltx_enumerate">
+<li id="S6.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S6.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">The intersection of finitely many open sets is open.</p>
+</div>
+</li>
+<li id="S6.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S6.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">The union of open sets is open, even if there are infinitely many.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S6.Thmtheorem9" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 2.6.9</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S6.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself this is true.</span></p>
+</div>
+</div>
+<div id="S6.Thmtheorem10" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 2.6.10</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S6.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Exhibit an infinite collection of open sets in <math id="S6.Thmtheorem10.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>
+whose intersection is the set <math id="S6.Thmtheorem10.p1.m2" class="ltx_Math" alttext="\{0\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></math>.
+This implies that infinite intersections of open sets are not necessarily open.</span></p>
+</div>
+</div>
+<div id="S6.p8" class="ltx_para">
+<p class="ltx_p">The whole upshot of this is:</p>
+</div>
+<div id="thm:open_set" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 2.6.11</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Open set condition)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem11.p1" class="ltx_para">
+<p class="ltx_p">A function <math id="S6.Thmtheorem11.p1.m1" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> of metric spaces is continuous
+if and only if the pre-image of every open set in <math id="S6.Thmtheorem11.p1.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> is open in <math id="S6.Thmtheorem11.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S6.p9" class="ltx_para">
+<p class="ltx_p">I’ll just do one direction…</p>
+</div>
+<div id="S6.Thmtheorem12" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 2.6.12</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S6.Thmtheorem12.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S6.Thmtheorem12.p1.m1" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math>-<math id="S6.Thmtheorem12.p1.m2" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> continuity follows from
+the open set condition.</span></p>
+</div>
+</div>
+<div id="S6.p10" class="ltx_para">
+<p class="ltx_p">Now assume <math id="S6.p10.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is continuous.
+First, suppose <math id="S6.p10.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is an open subset of the metric space <math id="S6.p10.m3" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>;
+let <math id="S6.p10.m4" class="ltx_Math" alttext="U=f^{\text{pre}}(V)" display="inline"><mrow><mi>U</mi><mo>=</mo><mrow><msup><mi>f</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. Pick <math id="S6.p10.m5" class="ltx_Math" alttext="x\in U" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>U</mi></mrow></math>, so <math id="S6.p10.m6" class="ltx_Math" alttext="y=f(x)\in V" display="inline"><mrow><mi>y</mi><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>V</mi></mrow></math>; we want an
+open neighborhood of <math id="S6.p10.m7" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> inside <math id="S6.p10.m8" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.</p>
+</div>
+<div id="S6.p11" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨΨsize(12cm);
+ΨΨΨbigblob("$N$");
+ΨΨΨpair Y = Drawing("y", origin, dir(75));
+ΨΨΨreal eps = 1.5;
+ΨΨΨdraw(CR(Y, eps), dotted);
+ΨΨΨlabel("$\varepsilon$", Drawing(Y--(Y+eps*dir(255))));
+ΨΨΨlabel("$V$",
+ΨΨΨΨDrawing(shift(-0.5,0)*rotate(190)*scale(3.2,2.8)*unitcircle, dashed));
+ΨΨΨadd(shift( (13,0) ) * CC());
+ΨΨΨlabel("$f$", Drawing( (4.5,0)--(8,0), EndArrow));
+
+ΨΨΨbigblob("$M$");
+ΨΨΨreal delta = 1.1;
+ΨΨΨpair X = Drawing("x", (-1.5,-0.5), dir(-45));
+ΨΨΨlabel("$\delta$", Drawing(X--(X+delta*dir(155))));
+ΨΨΨdraw(CR(X, delta), dotted);
+ΨΨΨlabel("$U = f^{\text{pre}}(V)$",
+ΨΨΨΨDrawing(shift(-1.5,-0.3)*rotate(235)*scale(2.4,1.8)*unitcircle, dashed));
+ΨΨ
+</pre>
+</div>
+<div id="S6.p12" class="ltx_para">
+<p class="ltx_p">As <math id="S6.p12.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is open, there is some small <math id="S6.p12.m2" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>-neighborhood around <math id="S6.p12.m3" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>
+which is contained inside <math id="S6.p12.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+By continuity of <math id="S6.p12.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, we can find a <math id="S6.p12.m6" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> such that the <math id="S6.p12.m7" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math>-neighborhood
+of <math id="S6.p12.m8" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> gets mapped by <math id="S6.p12.m9" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> into the <math id="S6.p12.m10" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>-neighborhood in <math id="S6.p12.m11" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>,
+which in particular lives inside <math id="S6.p12.m12" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+Thus the <math id="S6.p12.m13" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math>-neighborhood lives in <math id="S6.p12.m14" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>, as desired.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2.7 </span>Closed sets</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> The closed unit disk <math id="S7.p1.m1" class="ltx_Math" alttext="x^{2}+y^{2}\leq r^{2}" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>≤</mo><msup><mi>r</mi><mn>2</mn></msup></mrow></math> in <math id="S7.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>.</em></p>
+</div>
+<div id="S7.p2" class="ltx_para">
+<p class="ltx_p">It would be criminal for me to talk about open sets
+without talking about closed sets.
+The name “closed” comes from the definition in a metric space.</p>
+</div>
+<div id="S7.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 2.7.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S7.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.Thmtheorem1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a metric space.
+A subset <math id="S7.Thmtheorem1.p1.m2" class="ltx_Math" alttext="S\subseteq M" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>M</mi></mrow></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> closed</span> in <math id="S7.Thmtheorem1.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> if the following property holds:
+let <math id="S7.Thmtheorem1.p1.m4" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math>, <math id="S7.Thmtheorem1.p1.m5" class="ltx_Math" alttext="x_{2}" display="inline"><msub><mi>x</mi><mn>2</mn></msub></math>, … be a sequence of points in <math id="S7.Thmtheorem1.p1.m6" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>
+and suppose that <math id="S7.Thmtheorem1.p1.m7" class="ltx_Math" alttext="x_{n}" display="inline"><msub><mi>x</mi><mi>n</mi></msub></math> converges to <math id="S7.Thmtheorem1.p1.m8" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> in <math id="S7.Thmtheorem1.p1.m9" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+Then <math id="S7.Thmtheorem1.p1.m10" class="ltx_Math" alttext="x\in S" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>S</mi></mrow></math> as well.</p>
+</div>
+</div>
+<div id="S7.Thmtheorem2" class="ltx_theorem ltx_theorem_abuse">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 2.7.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S7.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Same caveat: we abbreviate “closed in <math id="S7.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>” to just “closed”
+if the parent space <math id="S7.Thmtheorem2.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is understood.</p>
+</div>
+</div>
+<div id="S7.p3" class="ltx_para">
+<p class="ltx_p">Here’s another way to phrase it.
+The <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> limit points</span> of a subset <math id="S7.p3.m1" class="ltx_Math" alttext="S\subseteq M" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>M</mi></mrow></math> are defined by</p>
+<table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="\lim S\coloneqq\left\{p\in M:\exists(x_{n})\in S\text{ such that }x_{n}\to p%
+\right\}." display="block"><mrow><mrow><mrow><mo movablelimits="false" rspace="0.167em">lim</mo><mi>S</mi></mrow><mo>≔</mo><mrow><mo>{</mo><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo>∃</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mrow><mi>S</mi><mo>⁢</mo><mtext> such that </mtext><mo>⁢</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><mo stretchy="false">→</mo><mi>p</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Thus <math id="S7.p3.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is closed if and only if <math id="S7.p3.m3" class="ltx_Math" alttext="S=\lim S" display="inline"><mrow><mi>S</mi><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">lim</mo><mi>S</mi></mrow></mrow></math>.</p>
+</div>
+<div id="S7.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 2.7.3</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Prove that <math id="S7.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\lim S" display="inline"><mrow><mo rspace="0.167em">lim</mo><mi>S</mi></mrow></math> is closed even if <math id="S7.Thmtheorem3.p1.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> isn’t closed. (Draw a picture.)</span></p>
+</div>
+</div>
+<div id="S7.p4" class="ltx_para">
+<p class="ltx_p">For this reason, <math id="S7.p4.m1" class="ltx_Math" alttext="\lim S" display="inline"><mrow><mo rspace="0.167em">lim</mo><mi>S</mi></mrow></math> is also called the
+<span class="ltx_text ltx_font_bold" style="color:#0000FF;"> closure</span> of <math id="S7.p4.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> in <math id="S7.p4.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, and denoted <math id="S7.p4.m4" class="ltx_Math" alttext="\overline{S}" display="inline"><mover accent="true"><mi>S</mi><mo>¯</mo></mover></math>.
+It is simply the smallest closed set which contains <math id="S7.p4.m5" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.</p>
+</div>
+<div id="S7.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.7.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of closed sets)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S7.I1" class="ltx_enumerate">
+<li id="S7.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S7.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The empty set <math id="S7.I1.i1.p1.m1" class="ltx_Math" alttext="\varnothing" display="inline"><mi mathvariant="normal">∅</mi></math> is closed in <math id="S7.I1.i1.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> for vacuous reasons:
+there are no sequences of points with elements in <math id="S7.I1.i1.p1.m3" class="ltx_Math" alttext="\varnothing" display="inline"><mi mathvariant="normal">∅</mi></math>.</p>
+</div>
+</li>
+<li id="S7.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S7.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The entire space <math id="S7.I1.i2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is closed in <math id="S7.I1.i2.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> for tautological reasons.
+(Verify this!)</p>
+</div>
+</li>
+<li id="S7.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S7.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The closed interval <math id="S7.I1.i3.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> in <math id="S7.I1.i3.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> is closed in <math id="S7.I1.i3.p1.m3" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>, hence the name. Like with open sets, this is the prototypical example of a closed set to keep in mind!</p>
+</div>
+</li>
+<li id="S7.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S7.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">In fact, the closed interval <math id="S7.I1.i4.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is even closed in <math id="S7.I1.i4.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S7.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.7.5</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Non-examples of closed sets)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.Thmtheorem5.p1.m1" class="ltx_Math" alttext="S=(0,1)" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math> denote the open interval.
+Then <math id="S7.Thmtheorem5.p1.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is not closed in <math id="S7.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>
+because the sequence of points</p>
+<table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\frac{1}{2},\;\frac{1}{4},\;\frac{1}{8},\;\dots" display="block"><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac><mo rspace="0.447em">,</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo rspace="0.447em">,</mo><mfrac><mn>1</mn><mn>8</mn></mfrac><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">converges to <math id="S7.Thmtheorem5.p1.m4" class="ltx_Math" alttext="0\in\mathbb{R}" display="inline"><mrow><mn>0</mn><mo>∈</mo><mi>ℝ</mi></mrow></math>, but <math id="S7.Thmtheorem5.p1.m5" class="ltx_Math" alttext="0\notin(0,1)" display="inline"><mrow><mn>0</mn><mo>∉</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S7.p5" class="ltx_para">
+<p class="ltx_p">I should now warn you about a confusing part of this terminology.
+Firstly, <span class="ltx_text ltx_font_bold">“most” sets are neither open nor closed</span>.</p>
+</div>
+<div id="S7.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 2.7.6</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(A set neither open nor closed)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">The half-open interval <math id="S7.Thmtheorem6.p1.m1" class="ltx_Math" alttext="[0,1)" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math> is neither open nor closed in <math id="S7.Thmtheorem6.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.</p>
+</div>
+</div>
+<div id="S7.p6" class="ltx_para">
+<p class="ltx_p">Secondly, it’s <span class="ltx_text ltx_font_bold">also possible for a set to be both open and closed</span>;
+this will be discussed in <a href="../part_basictop/ch_top_more.html" title="Chapter 7 Topological spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Chapter</span> <span class="ltx_text ltx_ref_tag">7</span></a>.</p>
+</div>
+<div id="S7.p7" class="ltx_para">
+<p class="ltx_p">The reason for the opposing terms is the following theorem:</p>
+</div>
+<div id="S7.Thmtheorem7" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 2.7.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Closed sets are complements of open sets)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.Thmtheorem7.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a metric space, and <math id="S7.Thmtheorem7.p1.m2" class="ltx_Math" alttext="S\subseteq M" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>M</mi></mrow></math> any subset.
+Then the following are equivalent:</p>
+<ul id="S7.I2" class="ltx_itemize">
+<li id="S7.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">The set <math id="S7.I2.i1.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is closed in <math id="S7.I2.i1.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</li>
+<li id="S7.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The complement <math id="S7.I2.i2.p1.m1" class="ltx_Math" alttext="M\setminus S" display="inline"><mrow><mi>M</mi><mo>∖</mo><mi>S</mi></mrow></math> is open in <math id="S7.I2.i2.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S7.Thmtheorem8" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 2.7.8</span></span><span class="ltx_text ltx_font_bold"> </span>(Great)
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Prove this theorem!
+You’ll want to draw a picture to make it clear what’s happening:
+for example, you might take <math id="S7.Thmtheorem8.p1.m1" class="ltx_Math" alttext="M=\mathbb{R}^{2}" display="inline"><mrow><mi>M</mi><mo>=</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math> and <math id="S7.Thmtheorem8.p1.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> to be the closed unit disk.</span></p>
+</div>
+</div>
+</section>
+<section id="S8" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">2.8 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 2A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="M=(M,d)" display="inline"><mrow><mi>M</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></mrow></math> be a metric space.
+Show that</p>
+<table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="d\colon M\times M\to\mathbb{R}" display="block"><mrow><mi>d</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>M</mi></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is itself a continuous function
+(where <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="M\times M" display="inline"><mrow><mi>M</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>M</mi></mrow></math> is equipped with the product metric).</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 2B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Are <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> and <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math> homeomorphic subspaces of <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>?
+
+No. There is not even a continuous injective map from <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> to <math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math>.
+
+
+Two possible approaches, one using metric definition
+and one using open sets.</p>
+</div>
+<div id="Thmproblem2.p2" class="ltx_para">
+<p class="ltx_p">Metric approach: I claim there is no injective map from <math id="Thmproblem2.p2.m1" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> to <math id="Thmproblem2.p2.m2" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math>
+that is continuous. Indeed, suppose <math id="Thmproblem2.p2.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> was such a map and <math id="Thmproblem2.p2.m4" class="ltx_Math" alttext="f(x)=n" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>n</mi></mrow></math>.
+Then, choose <math id="Thmproblem2.p2.m5" class="ltx_Math" alttext="\varepsilon=1/2" display="inline"><mrow><mi>ε</mi><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow></math>.
+There should be a <math id="Thmproblem2.p2.m6" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math> such that everything with <math id="Thmproblem2.p2.m7" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> of <math id="Thmproblem2.p2.m8" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>
+in <math id="Thmproblem2.p2.m9" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> should land within <math id="Thmproblem2.p2.m10" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> of <math id="Thmproblem2.p2.m11" class="ltx_Math" alttext="n\in\mathbb{N}" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>ℕ</mi></mrow></math> — i.e., is equal to <math id="Thmproblem2.p2.m12" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+This is a blatant contradiction of injectivity.</p>
+</div>
+<div id="Thmproblem2.p3" class="ltx_para">
+<p class="ltx_p">Open set approach: In <math id="Thmproblem2.p3.m1" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>, no singleton set is open,
+whereas in <math id="Thmproblem2.p3.m2" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math>, they all are (in fact <math id="Thmproblem2.p3.m3" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math> is discrete).
+As you’ll see at the start of <a href="../part_basictop/ch_top_more.html" title="Chapter 7 Topological spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Chapter</span> <span class="ltx_text ltx_ref_tag">7</span></a>,
+with the new and improved definition of “homeomorphism”,
+we found out that the structure of open sets on <math id="Thmproblem2.p3.m4" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> and <math id="Thmproblem2.p3.m5" class="ltx_Math" alttext="\mathbb{N}" display="inline"><mi>ℕ</mi></math> are different,
+so they are not homeomorphic.</p>
+</div>
+</div>
+<div id="prob:subtract_divide" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 2C</span></span><span class="ltx_text ltx_font_bold"> </span>(Continuity of arithmetic continued)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Show that subtraction is a continuous map <math id="Thmproblem3.p1.m1" class="ltx_math_unparsed" alttext="-\colon\mathbb{R}\times\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mo rspace="0em">−</mo><mo rspace="0.278em">:</mo><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>,
+and division is a continuous map <math id="Thmproblem3.p1.m2" class="ltx_math_unparsed" alttext="\div\colon\mathbb{R}\times\mathbb{R}_{&gt;0}\to\mathbb{R}" display="inline"><mrow><mo rspace="0em">÷</mo><mo rspace="0.278em">:</mo><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>ℝ</mi><mrow><mi></mi><mo>&gt;</mo><mn>0</mn></mrow></msub><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>.
+
+You can do this with bare hands.
+You can also use composition.
+
+
+For subtraction, the map <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="x\mapsto-x" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><mrow><mo>−</mo><mi>x</mi></mrow></mrow></math> is continuous
+so you can view it as a composed map</p>
+<svg id="Thmproblem3.p1.pic1" class="ltx_picture ltx_centering" height="75.57" overflow="visible" version="1.1" width="196.7"><g transform="translate(0,75.57) matrix(1 0 0 -1 0 0) translate(98.35,0) translate(0,37.78)" fill="#000000" stroke="#000000"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -98.35 -37.78)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 63.59)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 14.52)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(21.52,0) matrix(1.0 0.0 0.0 1.0 -15.57 0)" fill="#000000" stroke="#000000"><foreignObject width="31.13" height="10.61" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic1.m1" class="ltx_Math" alttext="{\mathbb{R}\times\mathbb{R}}" display="inline"><mrow><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 45.25 0) translate(54.73,0) matrix(1.0 0.0 0.0 1.0 -15.57 0)" fill="#000000" stroke="#000000"><foreignObject width="31.13" height="10.61" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic1.m2" class="ltx_Math" alttext="{\mathbb{R}\times\mathbb{R}}" display="inline"><mrow><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 132.55 0) translate(44.26,0) matrix(1.0 0.0 0.0 1.0 -5.09 0)" fill="#000000" stroke="#000000"><foreignObject width="10.19" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic1.m3" class="ltx_Math" alttext="{\mathbb{R}}" display="inline"><mi>ℝ</mi></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 67.04)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0.48 0) translate(21.04,0) matrix(1.0 0.0 0.0 1.0 -15.08 0)" fill="#000000" stroke="#000000"><foreignObject width="30.16" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic1.m4" class="ltx_Math" alttext="{(a,b)}" display="inline"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 43.05 0) translate(56.94,0) matrix(1.0 0.0 0.0 1.0 -17.77 0)" fill="#000000" stroke="#000000"><foreignObject width="35.55" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic1.m5" class="ltx_Math" alttext="{(a,-b)}" display="inline"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mrow><mo>−</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 123.72 0) translate(53.1,0) matrix(1.0 0.0 0.0 1.0 -13.93 0)" fill="#000000" stroke="#000000"><foreignObject width="27.86" height="9.61" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic1.m6" class="ltx_Math" alttext="{a-b.}" display="inline"><mrow><mrow><mi>a</mi><mo>−</mo><mi>b</mi></mrow><mo lspace="0em">.</mo></mrow></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M -55.02 18.2 L -26.53 18.2" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 -26.53 18.2)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -51.12 23.88)" fill="#000000" stroke="#000000"><foreignObject width="27.06" height="9.69" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic1.m7" class="ltx_Math" alttext="\scriptstyle{(\mathrm{id},-x)}" display="inline"><mrow><mo maxsize="70%" minsize="70%">(</mo><mi mathsize="70%">id</mi><mo mathsize="70%">,</mo><mrow><mo mathsize="70%">−</mo><mi mathsize="70%">x</mi></mrow><mo maxsize="70%" minsize="70%">)</mo></mrow></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M 23.44 18.2 L 60.77 18.2" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 60.77 18.2)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 41.52 22.26)" fill="#000000" stroke="#000000"><foreignObject width="7.53" height="6.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic1.m8" class="ltx_Math" alttext="\scriptstyle{+}" display="inline"><mo mathsize="70%">+</mo></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -55.09 -34.32 L -28.73 -34.32" style="fill:none"></path><g transform="matrix(-1.0 0.0 0.0 -1.0 -55.23 -34.32)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linecap="butt" stroke-linejoin="miter"><path d="M 0 3.18 L 0 -3.18" style="fill:none"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -28.73 -34.32)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M 26.06 -34.32 L 51.94 -34.32" style="fill:none"></path><g transform="matrix(-1.0 0.0 0.0 -1.0 25.92 -34.32)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linecap="butt" stroke-linejoin="miter"><path d="M 0 3.18 L 0 -3.18" style="fill:none"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 51.94 -34.32)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g></g></svg>
+<p class="ltx_p">Similarly, if you are willing to believe <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="x\mapsto 1/x" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></mrow></math>
+is a continuous function, then division is composition</p>
+<svg id="Thmproblem3.p1.pic2" class="ltx_picture ltx_centering" height="71.25" overflow="visible" version="1.1" width="223.51"><g transform="translate(0,71.25) matrix(1 0 0 -1 0 0) translate(111.76,0) translate(0,35.63)" fill="#000000" stroke="#000000"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -111.76 -35.63)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 59.27)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 14.52)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(26.47,0) matrix(1.0 0.0 0.0 1.0 -20.52 0)" fill="#000000" stroke="#000000"><foreignObject width="41.03" height="12.26" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic2.m1" class="ltx_Math" alttext="{\mathbb{R}\times\mathbb{R}_{&gt;0}}" display="inline"><mrow><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>ℝ</mi><mrow><mi></mi><mo>&gt;</mo><mn>0</mn></mrow></msub></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 57.51 0) translate(59.68,0) matrix(1.0 0.0 0.0 1.0 -20.52 0)" fill="#000000" stroke="#000000"><foreignObject width="41.03" height="12.26" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic2.m2" class="ltx_Math" alttext="{\mathbb{R}\times\mathbb{R}_{&gt;0}}" display="inline"><mrow><mi>ℝ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>ℝ</mi><mrow><mi></mi><mo>&gt;</mo><mn>0</mn></mrow></msub></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 158.21 0) translate(44.26,0) matrix(1.0 0.0 0.0 1.0 -5.09 0)" fill="#000000" stroke="#000000"><foreignObject width="10.19" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic2.m3" class="ltx_Math" alttext="{\mathbb{R}}" display="inline"><mi>ℝ</mi></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 62.73)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 5.44 0) translate(21.04,0) matrix(1.0 0.0 0.0 1.0 -15.08 0)" fill="#000000" stroke="#000000"><foreignObject width="30.16" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic2.m4" class="ltx_Math" alttext="{(a,b)}" display="inline"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 52.95 0) translate(64.24,0) matrix(1.0 0.0 0.0 1.0 -25.08 0)" fill="#000000" stroke="#000000"><foreignObject width="50.15" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic2.m5" class="ltx_Math" alttext="{(a,1/b)}" display="inline"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mrow><mn>1</mn><mo>/</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 148.22 0) translate(54.25,0) matrix(1.0 0.0 0.0 1.0 -15.08 0)" fill="#000000" stroke="#000000"><foreignObject width="30.16" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic2.m6" class="ltx_Math" alttext="{a/b.}" display="inline"><mrow><mrow><mi>a</mi><mo>/</mo><mi>b</mi></mrow><mo lspace="0em">.</mo></mrow></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M -58.53 16.04 L -27.68 16.04" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 -27.68 16.04)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -56.68 21.72)" fill="#000000" stroke="#000000"><foreignObject width="33.52" height="9.69" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic2.m7" class="ltx_Math" alttext="\scriptstyle{(\mathrm{id},1/x)}" display="inline"><mrow><mo maxsize="70%" minsize="70%">(</mo><mi mathsize="70%">id</mi><mo mathsize="70%">,</mo><mrow><mn mathsize="70%">1</mn><mo maxsize="70%" minsize="70%" stretchy="true" symmetric="true">/</mo><mi mathsize="70%">x</mi></mrow><mo maxsize="70%" minsize="70%">)</mo></mrow></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M 32.19 16.04 L 73.02 16.04" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 73.02 16.04)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 52.02 20.11)" fill="#000000" stroke="#000000"><foreignObject width="7.53" height="6.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem3.p1.pic2.m8" class="ltx_Math" alttext="\scriptstyle{\times}" display="inline"><mo mathsize="70%">×</mo></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -63.55 -32.17 L -32.24 -32.17" style="fill:none"></path><g transform="matrix(-1.0 0.0 0.0 -1.0 -63.69 -32.17)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linecap="butt" stroke-linejoin="miter"><path d="M 0 3.18 L 0 -3.18" style="fill:none"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -32.24 -32.17)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M 37.16 -32.17 L 63.04 -32.17" style="fill:none"></path><g transform="matrix(-1.0 0.0 0.0 -1.0 37.02 -32.17)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linecap="butt" stroke-linejoin="miter"><path d="M 0 3.18 L 0 -3.18" style="fill:none"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 63.04 -32.17)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g></g></svg>
+<p class="ltx_p">If for some reason you are suspicious that <math id="Thmproblem3.p1.m5" class="ltx_Math" alttext="x\mapsto 1/x" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></mrow></math> is continuous,
+then here is a proof using sequential continuity.
+Suppose <math id="Thmproblem3.p1.m6" class="ltx_Math" alttext="x_{n}\to x" display="inline"><mrow><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">→</mo><mi>x</mi></mrow></math> with <math id="Thmproblem3.p1.m7" class="ltx_Math" alttext="x_{n}&gt;0" display="inline"><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>&gt;</mo><mn>0</mn></mrow></math> and <math id="Thmproblem3.p1.m8" class="ltx_Math" alttext="x&gt;0" display="inline"><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow></math>
+(since <math id="Thmproblem3.p1.m9" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> needs to be in <math id="Thmproblem3.p1.m10" class="ltx_Math" alttext="\mathbb{R}_{&gt;0}" display="inline"><msub><mi>ℝ</mi><mrow><mi></mi><mo>&gt;</mo><mn>0</mn></mrow></msub></math> too).
+Then</p>
+<table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="\left\lvert\frac{1}{x}-\frac{1}{x_{n}}\right\rvert=\frac{\left\lvert x_{n}-x%
+\right\rvert}{\left\lvert xx_{n}\right\rvert}." display="block"><mrow><mrow><mrow><mo>|</mo><mrow><mfrac><mn>1</mn><mi>x</mi></mfrac><mo>−</mo><mfrac><mn>1</mn><msub><mi>x</mi><mi>n</mi></msub></mfrac></mrow><mo>|</mo></mrow><mo>=</mo><mfrac><mrow><mo>|</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><mi>x</mi></mrow><mo>|</mo></mrow><mrow><mo>|</mo><mrow><mi>x</mi><mo>⁢</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><mo>|</mo></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">If <math id="Thmproblem3.p1.m11" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is large enough, then <math id="Thmproblem3.p1.m12" class="ltx_Math" alttext="\left\lvert x_{n}\right\rvert&gt;x/2" display="inline"><mrow><mrow><mo>|</mo><msub><mi>x</mi><mi>n</mi></msub><mo>|</mo></mrow><mo>&gt;</mo><mrow><mi>x</mi><mo>/</mo><mn>2</mn></mrow></mrow></math>;
+so the denominator is at least <math id="Thmproblem3.p1.m13" class="ltx_Math" alttext="x^{2}/2" display="inline"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>/</mo><mn>2</mn></mrow></math>,
+and hence the whole fraction is at most
+<math id="Thmproblem3.p1.m14" class="ltx_Math" alttext="\frac{2}{x^{2}}\left\lvert x_{n}-x\right\rvert" display="inline"><mrow><mfrac><mn>2</mn><msup><mi>x</mi><mn>2</mn></msup></mfrac><mo>⁢</mo><mrow><mo>|</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>−</mo><mi>x</mi></mrow><mo>|</mo></mrow></mrow></math>,
+which tends to zero as <math id="Thmproblem3.p1.m15" class="ltx_Math" alttext="n\to\infty" display="inline"><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 2D</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Exhibit a function <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="f\colon\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> such that
+<math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is continuous at <math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="x\in\mathbb{R}" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>ℝ</mi></mrow></math> if and only if <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math>.
+
+<math id="Thmproblem4.p1.m5" class="ltx_Math" alttext="\pm x" display="inline"><mrow><mo>±</mo><mi>x</mi></mrow></math> for good choices of <math id="Thmproblem4.p1.m6" class="ltx_Math" alttext="\pm" display="inline"><mo>±</mo></math>.
+
+
+Let <math id="Thmproblem4.p1.m7" class="ltx_Math" alttext="f(x)=x" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>x</mi></mrow></math> for <math id="Thmproblem4.p1.m8" class="ltx_Math" alttext="x\in\mathbb{Q}" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>ℚ</mi></mrow></math> and <math id="Thmproblem4.p1.m9" class="ltx_Math" alttext="f(x)=-x" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mi>x</mi></mrow></mrow></math> for irrational <math id="Thmproblem4.p1.m10" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>.</p>
+</div>
+</div>
+<div id="Thmproblem5" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 2E</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem5.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem5.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem5.p1.g2" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem5.p2" class="ltx_para">
+<p class="ltx_p">Prove that a function <math id="Thmproblem5.p2.m1" class="ltx_Math" alttext="f\colon\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> which is strictly increasing
+must be continuous at some point.
+
+Project gaps onto the <math id="Thmproblem5.p2.m2" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>-axis.
+Use the fact that uncountably many positive reals cannot have finite sum.
+
+
+Assume for contradiction it is completely discontinuous;
+by scaling set <math id="Thmproblem5.p2.m3" class="ltx_Math" alttext="f(0)=0" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>, <math id="Thmproblem5.p2.m4" class="ltx_Math" alttext="f(1)=1" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math> and focus just on <math id="Thmproblem5.p2.m5" class="ltx_Math" alttext="f\colon[0,1]\to[0,1]" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+Since it’s discontinuous everywhere,
+for every <math id="Thmproblem5.p2.m6" class="ltx_Math" alttext="x\in[0,1]" display="inline"><mrow><mi>x</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math> there’s an <math id="Thmproblem5.p2.m7" class="ltx_Math" alttext="\varepsilon_{x}&gt;0" display="inline"><mrow><msub><mi>ε</mi><mi>x</mi></msub><mo>&gt;</mo><mn>0</mn></mrow></math>
+such that the continuity condition fails.
+Since the function is strictly increasing,
+that can only happen if the
+function misses all <math id="Thmproblem5.p2.m8" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>-values in the interval
+<math id="Thmproblem5.p2.m9" class="ltx_Math" alttext="(f(x)-\varepsilon_{x},f(x))" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><msub><mi>ε</mi><mi>x</mi></msub></mrow><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></math> or <math id="Thmproblem5.p2.m10" class="ltx_Math" alttext="(f(x),f(x)+\varepsilon_{x})" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><msub><mi>ε</mi><mi>x</mi></msub></mrow><mo stretchy="false">)</mo></mrow></math> (or both).</p>
+</div>
+<div id="Thmproblem5.p3" class="ltx_para">
+<p class="ltx_p">Projecting these missing intervals to the <math id="Thmproblem5.p3.m1" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>-axis you find uncountably
+many intervals (one for each <math id="Thmproblem5.p3.m2" class="ltx_Math" alttext="x\in[0,1]" display="inline"><mrow><mi>x</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math>) all of which are disjoint.
+In particular, summing the <math id="Thmproblem5.p3.m3" class="ltx_Math" alttext="\varepsilon_{x}" display="inline"><msub><mi>ε</mi><mi>x</mi></msub></math> you get that a sum of uncountably
+many positive reals is <math id="Thmproblem5.p3.m4" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.</p>
+</div>
+<div id="Thmproblem5.p4" class="ltx_para">
+<p class="ltx_p">But in general it isn’t possible for an uncountable family <math id="Thmproblem5.p4.m1" class="ltx_Math" alttext="\mathcal{F}" display="inline"><mi class="ltx_font_mathcaligraphic">ℱ</mi></math>
+of positive reals to have finite sum.
+Indeed, just classify the reals into buckets <math id="Thmproblem5.p4.m2" class="ltx_Math" alttext="\frac{1}{k}\leq x&lt;\frac{1}{k-1}" display="inline"><mrow><mfrac><mn>1</mn><mi>k</mi></mfrac><mo>≤</mo><mi>x</mi><mo>&lt;</mo><mfrac><mn>1</mn><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mrow></math>.
+If the sum is actually finite then each bucket is finite,
+so the collection <math id="Thmproblem5.p4.m3" class="ltx_Math" alttext="\mathcal{F}" display="inline"><mi class="ltx_font_mathcaligraphic">ℱ</mi></math> must be countable, contradiction.</p>
+</div>
+</div>
+<div id="Thmproblem6" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 2F</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem6.p1" class="ltx_para">
+<p class="ltx_p">Someone on the Internet posted the question “is <math id="Thmproblem6.p1.m1" class="ltx_Math" alttext="1/x" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></math> a continuous function?”,
+leading to great controversy on Twitter. How should you respond?
+
+First answer the following question: “is <math id="Thmproblem6.p1.m2" class="ltx_Math" alttext="1/x" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></math> a function?”.
+
+
+Like most Internet “debates” about math,
+the question revolves around sloppy definitions.
+The original posed question (which is ill-formed) is</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">(1) Is <math id="Thmproblem6.p1.m3" class="ltx_Math" alttext="1/x" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></math> a continuous function?</p>
+</blockquote>
+<p class="ltx_p">To make it well-formed, I want to <em class="ltx_emph ltx_font_italic">first</em> bring up the question:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">(2) Is <math id="Thmproblem6.p1.m4" class="ltx_Math" alttext="1/x" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></math> a function?</p>
+</blockquote>
+<p class="ltx_p">Technically, this question is <em class="ltx_emph ltx_font_italic">also</em> ill-formed because it never specifies
+the domain of the function, which is part of the data needed to specify a function.
+One reasonable guess what the asker meant would be <math id="Thmproblem6.p1.m5" class="ltx_Math" alttext="\mathbb{R}\setminus\{0\}" display="inline"><mrow><mi>ℝ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math>,
+i.e. the set of nonzero real numbers, in which case we get the question</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">(2’) Does <math id="Thmproblem6.p1.m6" class="ltx_Math" alttext="1/x" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></math> define a function from <math id="Thmproblem6.p1.m7" class="ltx_Math" alttext="\mathbb{R}\setminus\{0\}" display="inline"><mrow><mi>ℝ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math> to <math id="Thmproblem6.p1.m8" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>?</p>
+</blockquote>
+<p class="ltx_p">which has the firm answer YES.</p>
+</div>
+<div id="Thmproblem6.p2" class="ltx_para">
+<p class="ltx_p">On the other hand, it does <em class="ltx_emph ltx_font_italic">not</em> make sense to try to define <math id="Thmproblem6.p2.m1" class="ltx_Math" alttext="1/x" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></math>
+as a function on <math id="Thmproblem6.p2.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.
+The definition a function requires you to specify an output value for every input,
+so at least if you want a real-valued function<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>Those of you
+that know what <math id="footnote2.m1" class="ltx_Math" alttext="\mathbb{RP}^{1}" display="inline"><mrow><mi>ℝ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></math> is could consider it as a function
+<math id="footnote2.m2" class="ltx_Math" alttext="\mathbb{RP}^{1}\to\mathbb{RP}^{1}" display="inline"><mrow><mrow><mi>ℝ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow><mo stretchy="false">→</mo><mrow><mi>ℝ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></mrow></math> if you insisted;
+but it’s continuous in that case too.</span></span></span>,
+there isn’t any way to construe <math id="Thmproblem6.p2.m3" class="ltx_Math" alttext="1/x" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></math> as a function on all of <math id="Thmproblem6.p2.m4" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.</p>
+</div>
+<div id="Thmproblem6.p3" class="ltx_para">
+<p class="ltx_p">Now, returning to (1), we can now ask a well-formed question</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">(1’) Does <math id="Thmproblem6.p3.m1" class="ltx_Math" alttext="1/x" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></math> describe a continuous function from <math id="Thmproblem6.p3.m2" class="ltx_Math" alttext="\mathbb{R}\setminus\{0\}\to\mathbb{R}" display="inline"><mrow><mrow><mi>ℝ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>?</p>
+</blockquote>
+<p class="ltx_p">which again has the firm answer YES.</p>
+</div>
+<div id="Thmproblem6.p4" class="ltx_para">
+<p class="ltx_p">Of course, you could also consider a question like
+“does <math id="Thmproblem6.p4.m1" class="ltx_Math" alttext="1/x" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></math> describe a continuous function <math id="Thmproblem6.p4.m2" class="ltx_Math" alttext="\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>?”.
+However, this feels misleading:
+it would be like asking “is <math id="Thmproblem6.p4.m3" class="ltx_Math" alttext="\sqrt{2}" display="inline"><msqrt><mn>2</mn></msqrt></math> an even integer?”.
+The question doesn’t make sense to begin with because <math id="Thmproblem6.p4.m4" class="ltx_Math" alttext="\sqrt{2}" display="inline"><msqrt><mn>2</mn></msqrt></math> isn’t an integer,
+and “even” is an adjective used for integers,
+so trying to ask whether it applies to <math id="Thmproblem6.p4.m5" class="ltx_Math" alttext="\sqrt{2}" display="inline"><msqrt><mn>2</mn></msqrt></math> is a <a href="https://qchu.wordpress.com/2013/05/28/the-type-system-of-mathematics/" title="" class="ltx_ref ltx_href">type-error</a>.
+Similarly, “continuous” is an adjective used for functions;
+it doesn’t make sense to ask whether it applies to something that isn’t a function.</p>
+</div>
+<div id="Thmproblem6.p5" class="ltx_para">
+<p class="ltx_p">See <a href="https://twitter.com/davidcpvm/status/1481024944830046209" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://twitter.com/davidcpvm/status/1481024944830046209</a>
+for the Twitter post (in Spanish) and the accompanying Reddit post (one of several)
+at <a href="https://www.reddit.com/r/math/comments/s82vf8" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://www.reddit.com/r/math/comments/s82vf8</a>.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="ch_group_intro.html" title="In Part I Starting Out ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">1 </span>Groups</span></a><a href="../part_absalg/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">II </span>Basic Abstract Algebra</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

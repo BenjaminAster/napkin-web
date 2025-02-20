@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Holomorphic square roots and logarithms</title>
+		<meta property="og:title" content="Holomorphic square roots and logarithms" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../cmplxana/meromorphic-fn.html">Previous chapter: Meromorphic functions</a><br />
+<a href="../cmplxana/abel-ruffini-theorem.html">Next chapter: Bonus: Topological Abel-Ruffini Theorem</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 33 </span>Holomorphic square roots and logarithms</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">In this chapter we’ll make sense of a holomorphic square root and logarithm.
+The main results are <a href="#thm:nth_root" title="Theorem 33.3.2 (Existence of holomorphic 𝑛th roots) ‣ 33.3 Covering projections ‣ Chapter 33 Holomorphic square roots and logarithms ‣ Part IX Complex Analysis ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">33.3.2</span></a>, <a href="#thm:holomorphic_log" title="Theorem 33.4.2 (Existence of logarithms) ‣ 33.4 Complex logarithms ‣ Chapter 33 Holomorphic square roots and logarithms ‣ Part IX Complex Analysis ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">33.4.2</span></a>,
+<a href="#cor:nonvanishing" title="Corollary 33.5.1 (Nonvanishing functions from simply connected domains) ‣ 33.5 Some special cases ‣ Chapter 33 Holomorphic square roots and logarithms ‣ Part IX Complex Analysis ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Corollary</span> <span class="ltx_text ltx_ref_tag">33.5.1</span></a>, and <a href="#cor:principal" title="Theorem 33.5.2 (Branch cut functions) ‣ 33.5 Some special cases ‣ Chapter 33 Holomorphic square roots and logarithms ‣ Part IX Complex Analysis ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">33.5.2</span></a>.
+If you like, you can read just these four results, and skip the discussion of how they came to be.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">Let <math id="p2.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> be a holomorphic function.
+A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> holomorphic <math id="p2.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th root</span> of <math id="p2.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is a function <math id="p2.m4" class="ltx_Math" alttext="g\colon U\to\mathbb{C}" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>
+such that <math id="p2.m5" class="ltx_Math" alttext="f(z)=g(z)^{n}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mi>n</mi></msup></mrow></mrow></math> for all <math id="p2.m6" class="ltx_Math" alttext="z\in U" display="inline"><mrow><mi>z</mi><mo>∈</mo><mi>U</mi></mrow></math>.
+A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> logarithm</span> of <math id="p2.m7" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is a function <math id="p2.m8" class="ltx_Math" alttext="g\colon U\to\mathbb{C}" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>
+such that <math id="p2.m9" class="ltx_Math" alttext="f(z)=e^{g(z)}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>e</mi><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></msup></mrow></math> for all <math id="p2.m10" class="ltx_Math" alttext="z\in U" display="inline"><mrow><mi>z</mi><mo>∈</mo><mi>U</mi></mrow></math>.
+The main question we’ll try to figure out is: when do these exist?
+In particular, what if <math id="p2.m11" class="ltx_Math" alttext="f=\mathrm{id}" display="inline"><mrow><mi>f</mi><mo>=</mo><mi>id</mi></mrow></math>?</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">33.1 </span>Motivation: square root of a complex number</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">To start us off, can we define <math id="S1.p1.m1" class="ltx_Math" alttext="\sqrt{z}" display="inline"><msqrt><mi>z</mi></msqrt></math> for any complex number <math id="S1.p1.m2" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>?</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">The first obvious problem that comes up is that for any <math id="S1.p2.m1" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>, there are
+<em class="ltx_emph ltx_font_italic">two</em> numbers <math id="S1.p2.m2" class="ltx_Math" alttext="w" display="inline"><mi>w</mi></math> such that <math id="S1.p2.m3" class="ltx_Math" alttext="w^{2}=z" display="inline"><mrow><msup><mi>w</mi><mn>2</mn></msup><mo>=</mo><mi>z</mi></mrow></math>.
+How can we pick one to use?
+For our ordinary square root function, we had a notion of “positive”,
+and so we simply took the positive root.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Let’s expand on this: given
+<math id="S1.p3.m1" class="ltx_Math" alttext="z=r\left(\cos\theta+i\sin\theta\right)" display="inline"><mrow><mi>z</mi><mo>=</mo><mrow><mi>r</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow><mo>+</mo><mrow><mi>i</mi><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math>
+(here <math id="S1.p3.m2" class="ltx_Math" alttext="r\geq 0" display="inline"><mrow><mi>r</mi><mo>≥</mo><mn>0</mn></mrow></math>) we should take the root to be</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="w=\sqrt{r}\left(\cos\alpha+i\sin\alpha\right)." display="block"><mrow><mrow><mi>w</mi><mo>=</mo><mrow><msqrt><mi>r</mi></msqrt><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>α</mi></mrow><mo>+</mo><mrow><mi>i</mi><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>α</mi></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">such that <math id="S1.p3.m3" class="ltx_Math" alttext="2\alpha\equiv\theta\pmod{2\pi}" display="inline"><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>α</mi></mrow><mo>≡</mo><mrow><mi>θ</mi><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>;
+there are two choices for <math id="S1.p3.m4" class="ltx_Math" alttext="\alpha\pmod{2\pi}" display="inline"><mrow><mi>α</mi><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math>, differing by <math id="S1.p3.m5" class="ltx_Math" alttext="\pi" display="inline"><mi>π</mi></math>.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">For complex numbers, we don’t have an obvious way to pick <math id="S1.p4.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.
+Nonetheless, perhaps we can also get away with an arbitrary distinction:
+let’s see what happens if we just choose the <math id="S1.p4.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> with <math id="S1.p4.m3" class="ltx_Math" alttext="-\frac{1}{2}\pi&lt;\alpha\leq\frac{1}{2}\pi" display="inline"><mrow><mrow><mo>−</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mi>π</mi></mrow></mrow><mo>&lt;</mo><mi>α</mi><mo>≤</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mi>π</mi></mrow></mrow></math>.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">Pictured below are some points (in red)
+and their images (in blue) under this “upper-half” square root.
+The condition on <math id="S1.p5.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> means we are forcing the blue points to lie on the right-half plane.</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S1.p6" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='198.069752pt' height='198.069752pt' viewBox='155.444325 152.893144 198.069752 198.069752'>
+<defs>
+<path id='asymptote-33-1-g1-48' d='M3.897385-2.542466C3.897385-3.395268 3.809714-3.913325 3.5467-4.423412C3.196015-5.124782 2.550436-5.300125 2.11208-5.300125C1.107846-5.300125 .74122-4.550934 .629639-4.327771C.342715-3.745953 .326775-2.956912 .326775-2.542466C.326775-2.016438 .350685-1.211457 .73325-.573848C1.099875 .01594 1.689664 .167372 2.11208 .167372C2.494645 .167372 3.180075 .047821 3.57858-.74122C3.873474-1.315068 3.897385-2.024408 3.897385-2.542466ZM2.11208-.055791C1.841096-.055791 1.291158-.183313 1.123786-1.020174C1.036115-1.474471 1.036115-2.223661 1.036115-2.638107C1.036115-3.188045 1.036115-3.745953 1.123786-4.184309C1.291158-4.99726 1.912827-5.076961 2.11208-5.076961C2.383064-5.076961 2.933001-4.941469 3.092403-4.216189C3.188045-3.777833 3.188045-3.180075 3.188045-2.638107C3.188045-2.16787 3.188045-1.45056 3.092403-1.004234C2.925031-.167372 2.375093-.055791 2.11208-.055791Z'/>
+<path id='asymptote-33-1-g1-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-33-1-g1-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-33-1-g1-51' d='M2.016438-2.662017C2.646077-2.662017 3.044583-2.199751 3.044583-1.362889C3.044583-.366625 2.478705-.071731 2.056289-.071731C1.617933-.071731 1.020174-.231133 .74122-.653549C1.028144-.653549 1.227397-.836862 1.227397-1.099875C1.227397-1.354919 1.044085-1.538232 .789041-1.538232C.573848-1.538232 .350685-1.40274 .350685-1.083935C.350685-.326775 1.163636 .167372 2.072229 .167372C3.132254 .167372 3.873474-.565878 3.873474-1.362889C3.873474-2.024408 3.347447-2.630137 2.534496-2.805479C3.164134-3.028643 3.634371-3.57061 3.634371-4.208219S2.917061-5.300125 2.088169-5.300125C1.235367-5.300125 .589788-4.837858 .589788-4.23213C.589788-3.937235 .789041-3.809714 .996264-3.809714C1.243337-3.809714 1.40274-3.985056 1.40274-4.216189C1.40274-4.511083 1.147696-4.622665 .972354-4.630635C1.307098-5.068991 1.920797-5.092902 2.064259-5.092902C2.271482-5.092902 2.87721-5.029141 2.87721-4.208219C2.87721-3.650311 2.646077-3.315567 2.534496-3.188045C2.295392-2.940971 2.11208-2.925031 1.625903-2.893151C1.474471-2.885181 1.41071-2.87721 1.41071-2.773599C1.41071-2.662017 1.482441-2.662017 1.617933-2.662017H2.016438Z'/>
+<path id='asymptote-33-1-g1-52' d='M3.140224-5.156663C3.140224-5.316065 3.140224-5.379826 2.972852-5.379826C2.86924-5.379826 2.86127-5.371856 2.781569-5.260274L.239103-1.570112V-1.307098H2.486675V-.645579C2.486675-.350685 2.462765-.263014 1.849066-.263014H1.665753V0C2.343213-.02391 2.359153-.02391 2.81345-.02391S3.283686-.02391 3.961146 0V-.263014H3.777833C3.164134-.263014 3.140224-.350685 3.140224-.645579V-1.307098H3.985056V-1.570112H3.140224V-5.156663ZM2.542466-4.511083V-1.570112H.518057L2.542466-4.511083Z'/>
+<path id='asymptote-33-1-g1-53' d='M1.115816-4.479203C1.219427-4.447323 1.538232-4.367621 1.872976-4.367621C2.86924-4.367621 3.474969-5.068991 3.474969-5.188543C3.474969-5.276214 3.419178-5.300125 3.379328-5.300125C3.363387-5.300125 3.347447-5.300125 3.275716-5.260274C2.964882-5.140722 2.598257-5.045081 2.16787-5.045081C1.697634-5.045081 1.307098-5.164633 1.060025-5.260274C.980324-5.300125 .964384-5.300125 .956413-5.300125C.852802-5.300125 .852802-5.212453 .852802-5.068991V-2.733748C.852802-2.590286 .852802-2.494645 .980324-2.494645C1.044085-2.494645 1.067995-2.526526 1.107846-2.590286C1.203487-2.709838 1.506351-3.116314 2.183811-3.116314C2.630137-3.116314 2.84533-2.749689 2.917061-2.598257C3.052553-2.311333 3.068493-1.944707 3.068493-1.633873C3.068493-1.338979 3.060523-.908593 2.83736-.557908C2.685928-.318804 2.367123-.071731 1.944707-.071731C1.42665-.071731 .916563-.398506 .73325-.916563C.757161-.908593 .804981-.908593 .812951-.908593C1.036115-.908593 1.211457-1.052055 1.211457-1.299128C1.211457-1.594022 .980324-1.697634 .820922-1.697634C.67746-1.697634 .422416-1.617933 .422416-1.275218C.422416-.557908 1.044085 .167372 1.960648 .167372C2.956912 .167372 3.801743-.605729 3.801743-1.594022C3.801743-2.518555 3.132254-3.339477 2.191781-3.339477C1.793275-3.339477 1.41868-3.211955 1.115816-2.940971V-4.479203Z'/>
+<path id='asymptote-33-1-g1-54' d='M1.099875-2.638107C1.099875-3.299626 1.155666-3.881445 1.44259-4.367621C1.681694-4.766127 2.088169-5.092902 2.590286-5.092902C2.749689-5.092902 3.116314-5.068991 3.299626-4.790037C2.940971-4.774097 2.909091-4.503113 2.909091-4.415442C2.909091-4.176339 3.092403-4.040847 3.283686-4.040847C3.427148-4.040847 3.658281-4.128518 3.658281-4.431382C3.658281-4.909589 3.299626-5.300125 2.582316-5.300125C1.474471-5.300125 .350685-4.24807 .350685-2.526526C.350685-.366625 1.354919 .167372 2.12802 .167372C2.510585 .167372 2.925031 .063761 3.283686-.278954C3.602491-.589788 3.873474-.924533 3.873474-1.617933C3.873474-2.662017 3.084433-3.395268 2.199751-3.395268C1.625903-3.395268 1.283188-3.028643 1.099875-2.638107ZM2.12802-.071731C1.705604-.071731 1.44259-.366625 1.323039-.589788C1.139726-.948443 1.123786-1.490411 1.123786-1.793275C1.123786-2.582316 1.554172-3.172105 2.16787-3.172105C2.566376-3.172105 2.805479-2.964882 2.956912-2.685928C3.124284-2.391034 3.124284-2.032379 3.124284-1.625903S3.124284-.868742 2.964882-.581818C2.757659-.215193 2.478705-.071731 2.12802-.071731Z'/>
+<path id='asymptote-33-1-g1-55' d='M4.032877-4.853798C4.104608-4.941469 4.104608-4.95741 4.104608-5.132752H2.080199C1.880946-5.132752 1.633873-5.140722 1.43462-5.156663C1.020174-5.188543 1.012204-5.260274 .988294-5.387796H.74122L.470237-3.706102H.71731C.73325-3.825654 .820922-4.375592 .932503-4.439352C1.020174-4.479203 1.617933-4.479203 1.737484-4.479203H3.427148L2.606227-3.379328C1.697634-2.16787 1.506351-.908593 1.506351-.278954C1.506351-.199253 1.506351 .167372 1.880946 .167372S2.255542-.191283 2.255542-.286924V-.669489C2.255542-1.817186 2.446824-2.757659 2.83736-3.275716L4.032877-4.853798Z'/>
+<path id='asymptote-33-1-g0-119' d='M5.039999-3.698181C5.094544-3.938181 5.203635-4.341817 5.203635-4.407271C5.203635-4.603635 5.050908-4.701817 4.887271-4.701817C4.756362-4.701817 4.559999-4.614544 4.483635-4.396362C4.450908-4.319999 3.938181-2.236363 3.861817-1.952727C3.785453-1.625454 3.763635-1.429091 3.763635-1.232727C3.763635-1.112727 3.763635-1.090909 3.774544-1.036363C3.523635-.458182 3.196363-.12 2.770908-.12C1.898181-.12 1.898181-.927272 1.898181-1.112727C1.898181-1.461818 1.952727-1.887272 2.465454-3.22909C2.585454-3.556363 2.650908-3.70909 2.650908-3.927272C2.650908-4.418181 2.290908-4.821817 1.756363-4.821817C.72-4.821817 .316364-3.239999 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.054545 .621818-3.22909C.916363-4.243635 1.341818-4.581817 1.723636-4.581817C1.821818-4.581817 1.996363-4.570908 1.996363-4.221817C1.996363-3.94909 1.876363-3.643635 1.799999-3.458181C1.32-2.170908 1.189091-1.66909 1.189091-1.254545C1.189091-.261818 1.919999 .12 2.738181 .12C2.923636 .12 3.436363 .12 3.872726-.643636C4.156362 .054545 4.90909 .12 5.236362 .12C6.054544 .12 6.534544-.567273 6.81818-1.221818C7.189089-2.072727 7.53818-3.534544 7.53818-4.058181C7.53818-4.658181 7.243634-4.821817 7.05818-4.821817C6.785453-4.821817 6.512725-4.538181 6.512725-4.298181C6.512725-4.156362 6.57818-4.090908 6.676362-4.003635C6.796362-3.883635 7.069089-3.599999 7.069089-3.076363C7.069089-2.705454 6.752725-1.636363 6.469089-1.08C6.185453-.501818 5.803635-.12 5.269089-.12C4.756362-.12 4.461817-.447273 4.461817-1.069091C4.461817-1.374545 4.538181-1.712727 4.581817-1.865454L5.039999-3.698181Z'/>
+<path id='asymptote-33-1-g0-122' d='M1.450909-.905454C2.039999-1.538181 2.356363-1.810909 2.74909-2.14909C2.74909-2.159999 3.425454-2.738181 3.818181-3.130908C4.854544-4.145453 5.094544-4.66909 5.094544-4.712726C5.094544-4.821817 4.996362-4.821817 4.974544-4.821817C4.89818-4.821817 4.865453-4.799999 4.810908-4.701817C4.483635-4.178181 4.254544-4.003635 3.992726-4.003635S3.599999-4.167272 3.436363-4.352726C3.22909-4.603635 3.043636-4.821817 2.683636-4.821817C1.865454-4.821817 1.363636-3.807272 1.363636-3.578181C1.363636-3.523635 1.396363-3.458181 1.494545-3.458181S1.614545-3.512726 1.636363-3.578181C1.843636-4.079999 2.476363-4.090908 2.563636-4.090908C2.792726-4.090908 2.999999-4.014544 3.250908-3.927272C3.687272-3.763635 3.807272-3.763635 4.090908-3.763635C3.698181-3.294545 2.781817-2.50909 2.574545-2.334545L1.592727-1.418181C.850909-.687273 .469091-.065455 .469091 .010909C.469091 .12 .578182 .12 .6 .12C.687273 .12 .709091 .098182 .774545-.021818C1.025454-.403636 1.352727-.698182 1.701818-.698182C1.952727-.698182 2.061818-.6 2.334545-.283636C2.519999-.054545 2.716363 .12 3.032726 .12C4.112726 .12 4.745453-1.265454 4.745453-1.56C4.745453-1.614545 4.701817-1.66909 4.614544-1.66909C4.516362-1.66909 4.494544-1.603636 4.461817-1.527272C4.210908-.818182 3.512726-.610909 3.152726-.610909C2.934545-.610909 2.738181-.676363 2.50909-.752727C2.138181-.894545 1.974545-.938182 1.745454-.938182C1.723636-.938182 1.54909-.938182 1.450909-.905454Z'/>
+<path id='asymptote-33-1-g2-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-33-1-g2-73' d='M2.454545-6.599998C2.454545-6.992725 2.487272-7.112725 3.34909-7.112725H3.632726V-7.450907C3.250908-7.41818 2.38909-7.41818 1.974545-7.41818C1.54909-7.41818 .687273-7.41818 .305454-7.450907V-7.112725H.589091C1.450909-7.112725 1.483636-6.992725 1.483636-6.599998V-.850909C1.483636-.458182 1.450909-.338182 .589091-.338182H.305454V0C.687273-.032727 1.54909-.032727 1.963636-.032727C2.38909-.032727 3.250908-.032727 3.632726 0V-.338182H3.34909C2.487272-.338182 2.454545-.458182 2.454545-.850909V-6.599998Z'/>
+<path id='asymptote-33-1-g2-82' d='M2.443636-3.850908V-6.676362C2.443636-6.927271 2.443636-7.05818 2.683636-7.090907C2.792726-7.112725 3.10909-7.112725 3.327272-7.112725C4.30909-7.112725 5.530908-7.069089 5.530908-5.487271C5.530908-4.734544 5.269089-3.850908 3.654544-3.850908H2.443636ZM4.745453-3.70909C5.803635-3.970908 6.654544-4.636362 6.654544-5.487271C6.654544-6.534544 5.410908-7.450907 3.807272-7.450907H.381818V-7.112725H.643636C1.483636-7.112725 1.505454-6.992725 1.505454-6.599998V-.850909C1.505454-.458182 1.483636-.338182 .643636-.338182H.381818V0C.774545-.032727 1.54909-.032727 1.974545-.032727S3.174545-.032727 3.567272 0V-.338182H3.305454C2.465454-.338182 2.443636-.458182 2.443636-.850909V-3.610908H3.698181C3.872726-3.610908 4.330908-3.610908 4.712726-3.239999C5.127271-2.847272 5.127271-2.50909 5.127271-1.778181C5.127271-1.069091 5.127271-.632727 5.574544-.218182C6.021817 .174545 6.621816 .24 6.949089 .24C7.799998 .24 7.985452-.654545 7.985452-.96C7.985452-1.025454 7.985452-1.145454 7.843634-1.145454C7.723634-1.145454 7.723634-1.047272 7.712725-.970909C7.647271-.196364 7.265453 0 6.992725 0C6.45818 0 6.370907-.556363 6.21818-1.570909L6.076362-2.443636C5.879998-3.141817 5.345453-3.501817 4.745453-3.70909Z'/>
+<path id='asymptote-33-1-g2-101' d='M1.221818-2.74909C1.287272-4.374544 2.203636-4.647271 2.574545-4.647271C3.698181-4.647271 3.807272-3.174545 3.807272-2.74909H1.221818ZM1.210909-2.519999H4.254544C4.494544-2.519999 4.527271-2.519999 4.527271-2.74909C4.527271-3.82909 3.938181-4.887271 2.574545-4.887271C1.309091-4.887271 .305454-3.763635 .305454-2.399999C.305454-.938182 1.450909 .12 2.705454 .12C4.036363 .12 4.527271-1.090909 4.527271-1.298181C4.527271-1.407272 4.439999-1.429091 4.385453-1.429091C4.287272-1.429091 4.265453-1.363636 4.243635-1.276363C3.861817-.152727 2.879999-.152727 2.770908-.152727C2.225454-.152727 1.78909-.48 1.538181-.883636C1.210909-1.407272 1.210909-2.127272 1.210909-2.519999Z'/>
+<path id='asymptote-33-1-g2-109' d='M1.2-3.752726V-.829091C1.2-.338182 1.08-.338182 .349091-.338182V0C.730909-.010909 1.287272-.032727 1.581818-.032727C1.865454-.032727 2.432727-.010909 2.803636 0V-.338182C2.072727-.338182 1.952727-.338182 1.952727-.829091V-2.836363C1.952727-3.970908 2.727272-4.581817 3.425454-4.581817C4.112726-4.581817 4.232726-3.992726 4.232726-3.370908V-.829091C4.232726-.338182 4.112726-.338182 3.381817-.338182V0C3.763635-.010909 4.319999-.032727 4.614544-.032727C4.89818-.032727 5.465453-.010909 5.836362 0V-.338182C5.105453-.338182 4.985453-.338182 4.985453-.829091V-2.836363C4.985453-3.970908 5.759998-4.581817 6.45818-4.581817C7.145453-4.581817 7.265453-3.992726 7.265453-3.370908V-.829091C7.265453-.338182 7.145453-.338182 6.414544-.338182V0C6.796362-.010909 7.352725-.032727 7.647271-.032727C7.930907-.032727 8.498179-.010909 8.869088 0V-.338182C8.301816-.338182 8.029089-.338182 8.01818-.665454V-2.74909C8.01818-3.687272 8.01818-4.025453 7.679998-4.418181C7.527271-4.603635 7.167271-4.821817 6.534544-4.821817C5.61818-4.821817 5.13818-4.167272 4.952726-3.752726C4.799999-4.701817 3.992726-4.821817 3.501817-4.821817C2.705454-4.821817 2.192727-4.352726 1.887272-3.676363V-4.821817L.349091-4.701817V-4.363635C1.112727-4.363635 1.2-4.287272 1.2-3.752726Z'/>
+</defs>
+<g id='asymptote-33-1-page1'>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 7.77906V191.033' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 .250937L97.3891 7.77906H101.423L99.4063 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 .250937L97.3891 7.77906H101.423L99.4063 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 198.562L101.423 191.033H97.3891L99.4063 198.562Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 198.562L101.423 191.033H97.3891L99.4063 198.562Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 187.544H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 165.51H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 143.475H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 121.441H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 99.4063H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 77.3717H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 55.3372H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 33.3027H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 11.2682H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='234.884214' y='161.933551' href='#asymptote-33-1-g2-73'/>
+<use x='238.823613' y='161.933551' href='#asymptote-33-1-g2-109'/>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M191.033 99.4063H7.77906' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M198.562 99.4063L191.033 97.3891V101.423L198.562 99.4063Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M198.562 99.4063L191.033 97.3891V101.423L198.562 99.4063Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M.250937 99.4063L7.77906 101.423V97.3891L.250937 99.4063Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M.250937 99.4063L7.77906 101.423V97.3891L.250937 99.4063Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M11.2682 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M33.3027 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M55.3372 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M77.3717 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M121.441 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M143.475 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M165.51 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M187.544 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='338.99321' y='265.891031' href='#asymptote-33-1-g2-82'/>
+<use x='347.023527' y='265.891031' href='#asymptote-33-1-g2-101'/>
+<use x='256.829553' y='261.244834' href='#asymptote-33-1-g2-48'/>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='99.4063' cy='99.4063' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 99.4063H6.86129' fill='none' stroke="var(--asymptote-color-808080)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='2.0075'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='78.2531' cy='75.1683' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='235.755443' y='223.73769' href='#asymptote-33-1-g0-122'/>
+<use x='240.828712' y='225.37404' href='#asymptote-33-1-g1-48'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='68.9597' cy='52.732' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='226.496752' y='201.385217' href='#asymptote-33-1-g0-122'/>
+<use x='231.570021' y='203.021567' href='#asymptote-33-1-g1-49'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='46.5234' cy='43.4386' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='204.14428' y='192.126526' href='#asymptote-33-1-g0-122'/>
+<use x='209.217548' y='193.762876' href='#asymptote-33-1-g1-50'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='24.0871' cy='52.732' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='167.293183' y='201.385217' href='#asymptote-33-1-g0-122'/>
+<use x='172.366451' y='203.021567' href='#asymptote-33-1-g1-51'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='14.7937' cy='75.1683' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='157.075153' y='228.684578' href='#asymptote-33-1-g0-122'/>
+<use x='162.148421' y='230.320928' href='#asymptote-33-1-g1-52'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='24.0871' cy='97.6046' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='172.369955' y='257.975387' href='#asymptote-33-1-g0-122'/>
+<use x='177.443223' y='259.611737' href='#asymptote-33-1-g1-53'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='46.5234' cy='106.898' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='196.89496' y='267.347164' href='#asymptote-33-1-g0-122'/>
+<use x='201.968228' y='268.983515' href='#asymptote-33-1-g1-54'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='68.9597' cy='97.6046' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='221.419995' y='257.975387' href='#asymptote-33-1-g0-122'/>
+<use x='226.493264' y='259.611737' href='#asymptote-33-1-g1-55'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M78.2531 75.1683C78.2531 66.753 74.9102 58.6825 68.9597 52.732S54.9387 43.4386 46.5234 43.4386C38.1082 43.4386 30.0376 46.7815 24.0871 52.732C18.1367 58.6825 14.7937 66.753 14.7937 75.1683C14.7937 83.5835 18.1367 91.6541 24.0871 97.6046C30.0376 103.555 38.1082 106.898 46.5234 106.898C54.9387 106.898 63.0092 103.555 68.9597 97.6046C74.9102 91.6541 78.2531 83.5835 78.2531 75.1683Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='110.424' cy='75.1683' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='267.80565' y='234.764029' href='#asymptote-33-1-g0-119'/>
+<use x='275.615658' y='236.400379' href='#asymptote-33-1-g1-48'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='116.095' cy='68.594' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='274.314977' y='224.408514' href='#asymptote-33-1-g0-119'/>
+<use x='282.124985' y='226.044864' href='#asymptote-33-1-g1-49'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='115.707' cy='61.5783' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='273.92794' y='214.004323' href='#asymptote-33-1-g0-119'/>
+<use x='281.737948' y='215.640673' href='#asymptote-33-1-g1-50'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='111.506' cy='56.9088' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='268.884414' y='205.546431' href='#asymptote-33-1-g0-119'/>
+<use x='276.694422' y='207.182781' href='#asymptote-33-1-g1-51'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='105.529' cy='55.7956' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='256.851383' y='203.578484' href='#asymptote-33-1-g0-119'/>
+<use x='264.66139' y='205.214835' href='#asymptote-33-1-g1-52'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='99.8935' cy='58.6649' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='239.552195' y='209.321703' href='#asymptote-33-1-g0-119'/>
+<use x='247.362203' y='210.958053' href='#asymptote-33-1-g1-53'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='101.818' cy='133.627' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='241.469717' y='290.978806' href='#asymptote-33-1-g0-119'/>
+<use x='249.279725' y='292.615157' href='#asymptote-33-1-g1-54'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='100.172' cy='73.4937' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='241.579748' y='233.291265' href='#asymptote-33-1-g0-119'/>
+<use x='249.389756' y='234.927615' href='#asymptote-33-1-g1-55'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M100.172 73.4937C102.971 76.0025 106.972 76.6561 110.424 75.1683C113.213 73.9658 115.245 71.5133 116.095 68.594C116.77 66.2772 116.658 63.7957 115.707 61.5783C114.858 59.6015 113.387 57.9537 111.506 56.9088C109.688 55.8985 107.59 55.5103 105.529 55.7956C103.382 56.0929 101.397 57.1035 99.8935 58.6649' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">Here, <math id="S1.p7.m1" class="ltx_Math" alttext="w_{i}^{2}=z_{i}" display="inline"><mrow><msubsup><mi>w</mi><mi>i</mi><mn>2</mn></msubsup><mo>=</mo><msub><mi>z</mi><mi>i</mi></msub></mrow></math> for each <math id="S1.p7.m2" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>, and we are constraining the <math id="S1.p7.m3" class="ltx_Math" alttext="w_{i}" display="inline"><msub><mi>w</mi><mi>i</mi></msub></math>
+to lie in the right half of the complex plane.
+We see there is an obvious issue: there is a big discontinuity near
+the points <math id="S1.p7.m4" class="ltx_Math" alttext="w_{5}" display="inline"><msub><mi>w</mi><mn>5</mn></msub></math> and <math id="S1.p7.m5" class="ltx_Math" alttext="w_{7}" display="inline"><msub><mi>w</mi><mn>7</mn></msub></math>!
+The nearby point <math id="S1.p7.m6" class="ltx_Math" alttext="w_{6}" display="inline"><msub><mi>w</mi><mn>6</mn></msub></math> has been mapped very far away.
+This discontinuity occurs since the points on the negative real axis are
+at the “boundary”.
+For example, given <math id="S1.p7.m7" class="ltx_Math" alttext="-4" display="inline"><mrow><mo>−</mo><mn>4</mn></mrow></math>, we send it to <math id="S1.p7.m8" class="ltx_Math" alttext="-2i" display="inline"><mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>i</mi></mrow></mrow></math>, but we have hit the boundary:
+in our interval <math id="S1.p7.m9" class="ltx_Math" alttext="-\frac{1}{2}\pi\leq\alpha&lt;\frac{1}{2}\pi" display="inline"><mrow><mrow><mo>−</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mi>π</mi></mrow></mrow><mo>≤</mo><mi>α</mi><mo>&lt;</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mi>π</mi></mrow></mrow></math>, we are at the very left edge.</p>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">The negative real axis that we must not touch
+is what we will later call a <em class="ltx_emph ltx_font_italic">branch cut</em>,
+but for now I call it a <span class="ltx_text ltx_font_bold">ray of death</span>.
+It is a warning to the red points: if you cross this line, you will die!
+However, if we move the red circle just a little upwards
+(so that it misses the negative real axis) this issue is avoided entirely,
+and we get what seems to be a “nice” square root.</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S1.p9" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='197.838639pt' height='189.027658pt' viewBox='159.734258 148.372097 197.838639 189.027658'>
+<defs>
+<path id='asymptote-33-2-g1-48' d='M3.897385-2.542466C3.897385-3.395268 3.809714-3.913325 3.5467-4.423412C3.196015-5.124782 2.550436-5.300125 2.11208-5.300125C1.107846-5.300125 .74122-4.550934 .629639-4.327771C.342715-3.745953 .326775-2.956912 .326775-2.542466C.326775-2.016438 .350685-1.211457 .73325-.573848C1.099875 .01594 1.689664 .167372 2.11208 .167372C2.494645 .167372 3.180075 .047821 3.57858-.74122C3.873474-1.315068 3.897385-2.024408 3.897385-2.542466ZM2.11208-.055791C1.841096-.055791 1.291158-.183313 1.123786-1.020174C1.036115-1.474471 1.036115-2.223661 1.036115-2.638107C1.036115-3.188045 1.036115-3.745953 1.123786-4.184309C1.291158-4.99726 1.912827-5.076961 2.11208-5.076961C2.383064-5.076961 2.933001-4.941469 3.092403-4.216189C3.188045-3.777833 3.188045-3.180075 3.188045-2.638107C3.188045-2.16787 3.188045-1.45056 3.092403-1.004234C2.925031-.167372 2.375093-.055791 2.11208-.055791Z'/>
+<path id='asymptote-33-2-g1-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-33-2-g1-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-33-2-g1-51' d='M2.016438-2.662017C2.646077-2.662017 3.044583-2.199751 3.044583-1.362889C3.044583-.366625 2.478705-.071731 2.056289-.071731C1.617933-.071731 1.020174-.231133 .74122-.653549C1.028144-.653549 1.227397-.836862 1.227397-1.099875C1.227397-1.354919 1.044085-1.538232 .789041-1.538232C.573848-1.538232 .350685-1.40274 .350685-1.083935C.350685-.326775 1.163636 .167372 2.072229 .167372C3.132254 .167372 3.873474-.565878 3.873474-1.362889C3.873474-2.024408 3.347447-2.630137 2.534496-2.805479C3.164134-3.028643 3.634371-3.57061 3.634371-4.208219S2.917061-5.300125 2.088169-5.300125C1.235367-5.300125 .589788-4.837858 .589788-4.23213C.589788-3.937235 .789041-3.809714 .996264-3.809714C1.243337-3.809714 1.40274-3.985056 1.40274-4.216189C1.40274-4.511083 1.147696-4.622665 .972354-4.630635C1.307098-5.068991 1.920797-5.092902 2.064259-5.092902C2.271482-5.092902 2.87721-5.029141 2.87721-4.208219C2.87721-3.650311 2.646077-3.315567 2.534496-3.188045C2.295392-2.940971 2.11208-2.925031 1.625903-2.893151C1.474471-2.885181 1.41071-2.87721 1.41071-2.773599C1.41071-2.662017 1.482441-2.662017 1.617933-2.662017H2.016438Z'/>
+<path id='asymptote-33-2-g1-52' d='M3.140224-5.156663C3.140224-5.316065 3.140224-5.379826 2.972852-5.379826C2.86924-5.379826 2.86127-5.371856 2.781569-5.260274L.239103-1.570112V-1.307098H2.486675V-.645579C2.486675-.350685 2.462765-.263014 1.849066-.263014H1.665753V0C2.343213-.02391 2.359153-.02391 2.81345-.02391S3.283686-.02391 3.961146 0V-.263014H3.777833C3.164134-.263014 3.140224-.350685 3.140224-.645579V-1.307098H3.985056V-1.570112H3.140224V-5.156663ZM2.542466-4.511083V-1.570112H.518057L2.542466-4.511083Z'/>
+<path id='asymptote-33-2-g1-53' d='M1.115816-4.479203C1.219427-4.447323 1.538232-4.367621 1.872976-4.367621C2.86924-4.367621 3.474969-5.068991 3.474969-5.188543C3.474969-5.276214 3.419178-5.300125 3.379328-5.300125C3.363387-5.300125 3.347447-5.300125 3.275716-5.260274C2.964882-5.140722 2.598257-5.045081 2.16787-5.045081C1.697634-5.045081 1.307098-5.164633 1.060025-5.260274C.980324-5.300125 .964384-5.300125 .956413-5.300125C.852802-5.300125 .852802-5.212453 .852802-5.068991V-2.733748C.852802-2.590286 .852802-2.494645 .980324-2.494645C1.044085-2.494645 1.067995-2.526526 1.107846-2.590286C1.203487-2.709838 1.506351-3.116314 2.183811-3.116314C2.630137-3.116314 2.84533-2.749689 2.917061-2.598257C3.052553-2.311333 3.068493-1.944707 3.068493-1.633873C3.068493-1.338979 3.060523-.908593 2.83736-.557908C2.685928-.318804 2.367123-.071731 1.944707-.071731C1.42665-.071731 .916563-.398506 .73325-.916563C.757161-.908593 .804981-.908593 .812951-.908593C1.036115-.908593 1.211457-1.052055 1.211457-1.299128C1.211457-1.594022 .980324-1.697634 .820922-1.697634C.67746-1.697634 .422416-1.617933 .422416-1.275218C.422416-.557908 1.044085 .167372 1.960648 .167372C2.956912 .167372 3.801743-.605729 3.801743-1.594022C3.801743-2.518555 3.132254-3.339477 2.191781-3.339477C1.793275-3.339477 1.41868-3.211955 1.115816-2.940971V-4.479203Z'/>
+<path id='asymptote-33-2-g1-54' d='M1.099875-2.638107C1.099875-3.299626 1.155666-3.881445 1.44259-4.367621C1.681694-4.766127 2.088169-5.092902 2.590286-5.092902C2.749689-5.092902 3.116314-5.068991 3.299626-4.790037C2.940971-4.774097 2.909091-4.503113 2.909091-4.415442C2.909091-4.176339 3.092403-4.040847 3.283686-4.040847C3.427148-4.040847 3.658281-4.128518 3.658281-4.431382C3.658281-4.909589 3.299626-5.300125 2.582316-5.300125C1.474471-5.300125 .350685-4.24807 .350685-2.526526C.350685-.366625 1.354919 .167372 2.12802 .167372C2.510585 .167372 2.925031 .063761 3.283686-.278954C3.602491-.589788 3.873474-.924533 3.873474-1.617933C3.873474-2.662017 3.084433-3.395268 2.199751-3.395268C1.625903-3.395268 1.283188-3.028643 1.099875-2.638107ZM2.12802-.071731C1.705604-.071731 1.44259-.366625 1.323039-.589788C1.139726-.948443 1.123786-1.490411 1.123786-1.793275C1.123786-2.582316 1.554172-3.172105 2.16787-3.172105C2.566376-3.172105 2.805479-2.964882 2.956912-2.685928C3.124284-2.391034 3.124284-2.032379 3.124284-1.625903S3.124284-.868742 2.964882-.581818C2.757659-.215193 2.478705-.071731 2.12802-.071731Z'/>
+<path id='asymptote-33-2-g1-55' d='M4.032877-4.853798C4.104608-4.941469 4.104608-4.95741 4.104608-5.132752H2.080199C1.880946-5.132752 1.633873-5.140722 1.43462-5.156663C1.020174-5.188543 1.012204-5.260274 .988294-5.387796H.74122L.470237-3.706102H.71731C.73325-3.825654 .820922-4.375592 .932503-4.439352C1.020174-4.479203 1.617933-4.479203 1.737484-4.479203H3.427148L2.606227-3.379328C1.697634-2.16787 1.506351-.908593 1.506351-.278954C1.506351-.199253 1.506351 .167372 1.880946 .167372S2.255542-.191283 2.255542-.286924V-.669489C2.255542-1.817186 2.446824-2.757659 2.83736-3.275716L4.032877-4.853798Z'/>
+<path id='asymptote-33-2-g0-119' d='M5.039999-3.698181C5.094544-3.938181 5.203635-4.341817 5.203635-4.407271C5.203635-4.603635 5.050908-4.701817 4.887271-4.701817C4.756362-4.701817 4.559999-4.614544 4.483635-4.396362C4.450908-4.319999 3.938181-2.236363 3.861817-1.952727C3.785453-1.625454 3.763635-1.429091 3.763635-1.232727C3.763635-1.112727 3.763635-1.090909 3.774544-1.036363C3.523635-.458182 3.196363-.12 2.770908-.12C1.898181-.12 1.898181-.927272 1.898181-1.112727C1.898181-1.461818 1.952727-1.887272 2.465454-3.22909C2.585454-3.556363 2.650908-3.70909 2.650908-3.927272C2.650908-4.418181 2.290908-4.821817 1.756363-4.821817C.72-4.821817 .316364-3.239999 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.054545 .621818-3.22909C.916363-4.243635 1.341818-4.581817 1.723636-4.581817C1.821818-4.581817 1.996363-4.570908 1.996363-4.221817C1.996363-3.94909 1.876363-3.643635 1.799999-3.458181C1.32-2.170908 1.189091-1.66909 1.189091-1.254545C1.189091-.261818 1.919999 .12 2.738181 .12C2.923636 .12 3.436363 .12 3.872726-.643636C4.156362 .054545 4.90909 .12 5.236362 .12C6.054544 .12 6.534544-.567273 6.81818-1.221818C7.189089-2.072727 7.53818-3.534544 7.53818-4.058181C7.53818-4.658181 7.243634-4.821817 7.05818-4.821817C6.785453-4.821817 6.512725-4.538181 6.512725-4.298181C6.512725-4.156362 6.57818-4.090908 6.676362-4.003635C6.796362-3.883635 7.069089-3.599999 7.069089-3.076363C7.069089-2.705454 6.752725-1.636363 6.469089-1.08C6.185453-.501818 5.803635-.12 5.269089-.12C4.756362-.12 4.461817-.447273 4.461817-1.069091C4.461817-1.374545 4.538181-1.712727 4.581817-1.865454L5.039999-3.698181Z'/>
+<path id='asymptote-33-2-g0-122' d='M1.450909-.905454C2.039999-1.538181 2.356363-1.810909 2.74909-2.14909C2.74909-2.159999 3.425454-2.738181 3.818181-3.130908C4.854544-4.145453 5.094544-4.66909 5.094544-4.712726C5.094544-4.821817 4.996362-4.821817 4.974544-4.821817C4.89818-4.821817 4.865453-4.799999 4.810908-4.701817C4.483635-4.178181 4.254544-4.003635 3.992726-4.003635S3.599999-4.167272 3.436363-4.352726C3.22909-4.603635 3.043636-4.821817 2.683636-4.821817C1.865454-4.821817 1.363636-3.807272 1.363636-3.578181C1.363636-3.523635 1.396363-3.458181 1.494545-3.458181S1.614545-3.512726 1.636363-3.578181C1.843636-4.079999 2.476363-4.090908 2.563636-4.090908C2.792726-4.090908 2.999999-4.014544 3.250908-3.927272C3.687272-3.763635 3.807272-3.763635 4.090908-3.763635C3.698181-3.294545 2.781817-2.50909 2.574545-2.334545L1.592727-1.418181C.850909-.687273 .469091-.065455 .469091 .010909C.469091 .12 .578182 .12 .6 .12C.687273 .12 .709091 .098182 .774545-.021818C1.025454-.403636 1.352727-.698182 1.701818-.698182C1.952727-.698182 2.061818-.6 2.334545-.283636C2.519999-.054545 2.716363 .12 3.032726 .12C4.112726 .12 4.745453-1.265454 4.745453-1.56C4.745453-1.614545 4.701817-1.66909 4.614544-1.66909C4.516362-1.66909 4.494544-1.603636 4.461817-1.527272C4.210908-.818182 3.512726-.610909 3.152726-.610909C2.934545-.610909 2.738181-.676363 2.50909-.752727C2.138181-.894545 1.974545-.938182 1.745454-.938182C1.723636-.938182 1.54909-.938182 1.450909-.905454Z'/>
+<path id='asymptote-33-2-g2-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-33-2-g2-73' d='M2.454545-6.599998C2.454545-6.992725 2.487272-7.112725 3.34909-7.112725H3.632726V-7.450907C3.250908-7.41818 2.38909-7.41818 1.974545-7.41818C1.54909-7.41818 .687273-7.41818 .305454-7.450907V-7.112725H.589091C1.450909-7.112725 1.483636-6.992725 1.483636-6.599998V-.850909C1.483636-.458182 1.450909-.338182 .589091-.338182H.305454V0C.687273-.032727 1.54909-.032727 1.963636-.032727C2.38909-.032727 3.250908-.032727 3.632726 0V-.338182H3.34909C2.487272-.338182 2.454545-.458182 2.454545-.850909V-6.599998Z'/>
+<path id='asymptote-33-2-g2-82' d='M2.443636-3.850908V-6.676362C2.443636-6.927271 2.443636-7.05818 2.683636-7.090907C2.792726-7.112725 3.10909-7.112725 3.327272-7.112725C4.30909-7.112725 5.530908-7.069089 5.530908-5.487271C5.530908-4.734544 5.269089-3.850908 3.654544-3.850908H2.443636ZM4.745453-3.70909C5.803635-3.970908 6.654544-4.636362 6.654544-5.487271C6.654544-6.534544 5.410908-7.450907 3.807272-7.450907H.381818V-7.112725H.643636C1.483636-7.112725 1.505454-6.992725 1.505454-6.599998V-.850909C1.505454-.458182 1.483636-.338182 .643636-.338182H.381818V0C.774545-.032727 1.54909-.032727 1.974545-.032727S3.174545-.032727 3.567272 0V-.338182H3.305454C2.465454-.338182 2.443636-.458182 2.443636-.850909V-3.610908H3.698181C3.872726-3.610908 4.330908-3.610908 4.712726-3.239999C5.127271-2.847272 5.127271-2.50909 5.127271-1.778181C5.127271-1.069091 5.127271-.632727 5.574544-.218182C6.021817 .174545 6.621816 .24 6.949089 .24C7.799998 .24 7.985452-.654545 7.985452-.96C7.985452-1.025454 7.985452-1.145454 7.843634-1.145454C7.723634-1.145454 7.723634-1.047272 7.712725-.970909C7.647271-.196364 7.265453 0 6.992725 0C6.45818 0 6.370907-.556363 6.21818-1.570909L6.076362-2.443636C5.879998-3.141817 5.345453-3.501817 4.745453-3.70909Z'/>
+<path id='asymptote-33-2-g2-101' d='M1.221818-2.74909C1.287272-4.374544 2.203636-4.647271 2.574545-4.647271C3.698181-4.647271 3.807272-3.174545 3.807272-2.74909H1.221818ZM1.210909-2.519999H4.254544C4.494544-2.519999 4.527271-2.519999 4.527271-2.74909C4.527271-3.82909 3.938181-4.887271 2.574545-4.887271C1.309091-4.887271 .305454-3.763635 .305454-2.399999C.305454-.938182 1.450909 .12 2.705454 .12C4.036363 .12 4.527271-1.090909 4.527271-1.298181C4.527271-1.407272 4.439999-1.429091 4.385453-1.429091C4.287272-1.429091 4.265453-1.363636 4.243635-1.276363C3.861817-.152727 2.879999-.152727 2.770908-.152727C2.225454-.152727 1.78909-.48 1.538181-.883636C1.210909-1.407272 1.210909-2.127272 1.210909-2.519999Z'/>
+<path id='asymptote-33-2-g2-109' d='M1.2-3.752726V-.829091C1.2-.338182 1.08-.338182 .349091-.338182V0C.730909-.010909 1.287272-.032727 1.581818-.032727C1.865454-.032727 2.432727-.010909 2.803636 0V-.338182C2.072727-.338182 1.952727-.338182 1.952727-.829091V-2.836363C1.952727-3.970908 2.727272-4.581817 3.425454-4.581817C4.112726-4.581817 4.232726-3.992726 4.232726-3.370908V-.829091C4.232726-.338182 4.112726-.338182 3.381817-.338182V0C3.763635-.010909 4.319999-.032727 4.614544-.032727C4.89818-.032727 5.465453-.010909 5.836362 0V-.338182C5.105453-.338182 4.985453-.338182 4.985453-.829091V-2.836363C4.985453-3.970908 5.759998-4.581817 6.45818-4.581817C7.145453-4.581817 7.265453-3.992726 7.265453-3.370908V-.829091C7.265453-.338182 7.145453-.338182 6.414544-.338182V0C6.796362-.010909 7.352725-.032727 7.647271-.032727C7.930907-.032727 8.498179-.010909 8.869088 0V-.338182C8.301816-.338182 8.029089-.338182 8.01818-.665454V-2.74909C8.01818-3.687272 8.01818-4.025453 7.679998-4.418181C7.527271-4.603635 7.167271-4.821817 6.534544-4.821817C5.61818-4.821817 5.13818-4.167272 4.952726-3.752726C4.799999-4.701817 3.992726-4.821817 3.501817-4.821817C2.705454-4.821817 2.192727-4.352726 1.887272-3.676363V-4.821817L.349091-4.701817V-4.363635C1.112727-4.363635 1.2-4.287272 1.2-3.752726Z'/>
+</defs>
+<g id='asymptote-33-2-page1'>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M103.712 7.77906V181.957' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M103.712 .250937L101.695 7.77906H105.729L103.712 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M103.712 .250937L101.695 7.77906H105.729L103.712 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M103.712 189.486L105.729 181.957H101.695L103.712 189.486Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M103.712 189.486L105.729 181.957H101.695L103.712 189.486Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M100.701 178.973H106.724' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M100.701 157.946H106.724' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M100.701 136.92H106.724' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M100.701 115.894H106.724' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M100.701 94.8683H106.724' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M100.701 73.8422H106.724' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M100.701 52.8161H106.724' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M100.701 31.79H106.724' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M100.701 10.764H106.724' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='243.464085' y='157.412496' href='#asymptote-33-2-g2-73'/>
+<use x='247.403483' y='157.412496' href='#asymptote-33-2-g2-109'/>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M190.801 94.8683H16.6231' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M198.33 94.8683L190.801 92.8511V96.8854L198.33 94.8683Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M198.33 94.8683L190.801 92.8511V96.8854L198.33 94.8683Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M9.09496 94.8683L16.6231 96.8854V92.8511L9.09496 94.8683Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M9.09496 94.8683L16.6231 96.8854V92.8511L9.09496 94.8683Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M19.608 91.857V97.8795' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M40.6341 91.857V97.8795' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M61.6601 91.857V97.8795' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M82.6862 91.857V97.8795' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M103.712 91.857V97.8795' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M124.738 91.857V97.8795' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M145.764 91.857V97.8795' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M166.79 91.857V97.8795' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M187.817 91.857V97.8795' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='343.052025' y='256.848935' href='#asymptote-33-2-g2-82'/>
+<use x='351.082342' y='256.848935' href='#asymptote-33-2-g2-101'/>
+<use x='265.409408' y='252.202738' href='#asymptote-33-2-g2-48'/>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='103.712' cy='94.8683' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M103.712 94.8683H15.4028' fill='none' stroke="var(--asymptote-color-808080)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='2.0075'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='75.1168' cy='54.9187' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='236.920797' y='199.042713' href='#asymptote-33-2-g0-122'/>
+<use x='241.994065' y='200.679064' href='#asymptote-33-2-g1-48'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='66.2487' cy='33.5093' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='228.08584' y='177.713245' href='#asymptote-33-2-g0-122'/>
+<use x='233.159109' y='179.349595' href='#asymptote-33-2-g1-49'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='44.8393' cy='24.6412' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='206.756371' y='168.878303' href='#asymptote-33-2-g0-122'/>
+<use x='211.82964' y='170.514653' href='#asymptote-33-2-g1-50'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='23.4298' cy='33.5093' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='170.928263' y='177.713245' href='#asymptote-33-2-g0-122'/>
+<use x='176.001532' y='179.349595' href='#asymptote-33-2-g1-51'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='14.5617' cy='54.9187' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='161.133968' y='203.989617' href='#asymptote-33-2-g0-122'/>
+<use x='166.207236' y='205.625967' href='#asymptote-33-2-g1-52'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='23.4298' cy='76.3282' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='170.928263' y='231.398537' href='#asymptote-33-2-g0-122'/>
+<use x='176.001532' y='233.034887' href='#asymptote-33-2-g1-53'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='44.8393' cy='85.1963' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='206.756371' y='240.233493' href='#asymptote-33-2-g0-122'/>
+<use x='211.82964' y='241.869844' href='#asymptote-33-2-g1-54'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='66.2487' cy='76.3282' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='228.08584' y='231.398537' href='#asymptote-33-2-g0-122'/>
+<use x='233.159109' y='233.034887' href='#asymptote-33-2-g1-55'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M75.1168 54.9187C75.1168 46.8886 71.9269 39.1874 66.2487 33.5093C60.5706 27.8311 52.8694 24.6412 44.8393 24.6412S29.108 27.8311 23.4298 33.5093C17.7517 39.1874 14.5617 46.8886 14.5617 54.9187S17.7517 70.65 23.4298 76.3282C29.108 82.0063 36.8092 85.1963 44.8393 85.1963S60.5706 82.0063 66.2487 76.3282C71.9269 70.65 75.1168 62.9488 75.1168 54.9187Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='118.405' cy='66.2829' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='280.047053' y='221.390823' href='#asymptote-33-2-g0-119'/>
+<use x='287.85706' y='223.027173' href='#asymptote-33-2-g1-48'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='122.737' cy='60.9617' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='285.222119' y='212.283618' href='#asymptote-33-2-g0-119'/>
+<use x='293.032127' y='213.919968' href='#asymptote-33-2-g1-49'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='122.272' cy='55.0895' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='284.759134' y='203.018694' href='#asymptote-33-2-g0-119'/>
+<use x='292.569142' y='204.655044' href='#asymptote-33-2-g1-50'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='118.487' cy='51.207' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='274.050147' y='194.485949' href='#asymptote-33-2-g0-119'/>
+<use x='281.860155' y='196.122299' href='#asymptote-33-2-g1-51'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='113.189' cy='50.548' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='263.693386' y='193.829429' href='#asymptote-33-2-g0-119'/>
+<use x='271.503393' y='195.46578' href='#asymptote-33-2-g1-52'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='108.425' cy='53.5132' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='252.342215' y='199.668221' href='#asymptote-33-2-g0-119'/>
+<use x='260.152222' y='201.304571' href='#asymptote-33-2-g1-53'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='106.593' cy='59.5672' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='250.516329' y='212.674562' href='#asymptote-33-2-g0-119'/>
+<use x='258.326336' y='214.310912' href='#asymptote-33-2-g1-54'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<circle cx='110.464' cy='66.0013' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='261.836549' y='222.031776' href='#asymptote-33-2-g0-119'/>
+<use x='269.646556' y='223.668126' href='#asymptote-33-2-g1-55'/>
+</g>
+<g transform='translate(159.734 148.372)scale(.996264)'>
+<path d='M118.405 66.2829C120.535 65.2036 122.094 63.2623 122.737 60.9617C123.283 59.01 123.129 56.9262 122.272 55.0895C121.486 53.4036 120.154 52.0311 118.487 51.207C116.846 50.396 114.979 50.1653 113.189 50.548C111.304 50.9508 109.625 52.0054 108.425 53.5132C107.065 55.2232 106.415 57.3894 106.593 59.5672C106.808 62.2061 108.21 64.6178 110.464 66.0013C112.874 67.4801 115.881 67.5616 118.405 66.2829Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div id="S1.p10" class="ltx_para">
+<p class="ltx_p">In fact, the ray of death is fairly arbitrary:
+it is the set of “boundary issues”
+that arose when we picked <math id="S1.p10.m1" class="ltx_Math" alttext="-\frac{1}{2}\pi&lt;\alpha\leq\frac{1}{2}\pi" display="inline"><mrow><mrow><mo>−</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mi>π</mi></mrow></mrow><mo>&lt;</mo><mi>α</mi><mo>≤</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mi>π</mi></mrow></mrow></math>.
+Suppose we instead insisted on the interval <math id="S1.p10.m2" class="ltx_Math" alttext="0\leq\alpha&lt;\pi" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>α</mi><mo>&lt;</mo><mi>π</mi></mrow></math>;
+then the ray of death would be the <em class="ltx_emph ltx_font_italic">positive</em> real axis instead.
+The earlier circle we had now works just fine.</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S1.p11" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='198.069752pt' height='198.069752pt' viewBox='155.444325 152.893144 198.069752 198.069752'>
+<defs>
+<path id='asymptote-33-3-g1-48' d='M3.897385-2.542466C3.897385-3.395268 3.809714-3.913325 3.5467-4.423412C3.196015-5.124782 2.550436-5.300125 2.11208-5.300125C1.107846-5.300125 .74122-4.550934 .629639-4.327771C.342715-3.745953 .326775-2.956912 .326775-2.542466C.326775-2.016438 .350685-1.211457 .73325-.573848C1.099875 .01594 1.689664 .167372 2.11208 .167372C2.494645 .167372 3.180075 .047821 3.57858-.74122C3.873474-1.315068 3.897385-2.024408 3.897385-2.542466ZM2.11208-.055791C1.841096-.055791 1.291158-.183313 1.123786-1.020174C1.036115-1.474471 1.036115-2.223661 1.036115-2.638107C1.036115-3.188045 1.036115-3.745953 1.123786-4.184309C1.291158-4.99726 1.912827-5.076961 2.11208-5.076961C2.383064-5.076961 2.933001-4.941469 3.092403-4.216189C3.188045-3.777833 3.188045-3.180075 3.188045-2.638107C3.188045-2.16787 3.188045-1.45056 3.092403-1.004234C2.925031-.167372 2.375093-.055791 2.11208-.055791Z'/>
+<path id='asymptote-33-3-g1-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-33-3-g1-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-33-3-g1-51' d='M2.016438-2.662017C2.646077-2.662017 3.044583-2.199751 3.044583-1.362889C3.044583-.366625 2.478705-.071731 2.056289-.071731C1.617933-.071731 1.020174-.231133 .74122-.653549C1.028144-.653549 1.227397-.836862 1.227397-1.099875C1.227397-1.354919 1.044085-1.538232 .789041-1.538232C.573848-1.538232 .350685-1.40274 .350685-1.083935C.350685-.326775 1.163636 .167372 2.072229 .167372C3.132254 .167372 3.873474-.565878 3.873474-1.362889C3.873474-2.024408 3.347447-2.630137 2.534496-2.805479C3.164134-3.028643 3.634371-3.57061 3.634371-4.208219S2.917061-5.300125 2.088169-5.300125C1.235367-5.300125 .589788-4.837858 .589788-4.23213C.589788-3.937235 .789041-3.809714 .996264-3.809714C1.243337-3.809714 1.40274-3.985056 1.40274-4.216189C1.40274-4.511083 1.147696-4.622665 .972354-4.630635C1.307098-5.068991 1.920797-5.092902 2.064259-5.092902C2.271482-5.092902 2.87721-5.029141 2.87721-4.208219C2.87721-3.650311 2.646077-3.315567 2.534496-3.188045C2.295392-2.940971 2.11208-2.925031 1.625903-2.893151C1.474471-2.885181 1.41071-2.87721 1.41071-2.773599C1.41071-2.662017 1.482441-2.662017 1.617933-2.662017H2.016438Z'/>
+<path id='asymptote-33-3-g1-52' d='M3.140224-5.156663C3.140224-5.316065 3.140224-5.379826 2.972852-5.379826C2.86924-5.379826 2.86127-5.371856 2.781569-5.260274L.239103-1.570112V-1.307098H2.486675V-.645579C2.486675-.350685 2.462765-.263014 1.849066-.263014H1.665753V0C2.343213-.02391 2.359153-.02391 2.81345-.02391S3.283686-.02391 3.961146 0V-.263014H3.777833C3.164134-.263014 3.140224-.350685 3.140224-.645579V-1.307098H3.985056V-1.570112H3.140224V-5.156663ZM2.542466-4.511083V-1.570112H.518057L2.542466-4.511083Z'/>
+<path id='asymptote-33-3-g1-53' d='M1.115816-4.479203C1.219427-4.447323 1.538232-4.367621 1.872976-4.367621C2.86924-4.367621 3.474969-5.068991 3.474969-5.188543C3.474969-5.276214 3.419178-5.300125 3.379328-5.300125C3.363387-5.300125 3.347447-5.300125 3.275716-5.260274C2.964882-5.140722 2.598257-5.045081 2.16787-5.045081C1.697634-5.045081 1.307098-5.164633 1.060025-5.260274C.980324-5.300125 .964384-5.300125 .956413-5.300125C.852802-5.300125 .852802-5.212453 .852802-5.068991V-2.733748C.852802-2.590286 .852802-2.494645 .980324-2.494645C1.044085-2.494645 1.067995-2.526526 1.107846-2.590286C1.203487-2.709838 1.506351-3.116314 2.183811-3.116314C2.630137-3.116314 2.84533-2.749689 2.917061-2.598257C3.052553-2.311333 3.068493-1.944707 3.068493-1.633873C3.068493-1.338979 3.060523-.908593 2.83736-.557908C2.685928-.318804 2.367123-.071731 1.944707-.071731C1.42665-.071731 .916563-.398506 .73325-.916563C.757161-.908593 .804981-.908593 .812951-.908593C1.036115-.908593 1.211457-1.052055 1.211457-1.299128C1.211457-1.594022 .980324-1.697634 .820922-1.697634C.67746-1.697634 .422416-1.617933 .422416-1.275218C.422416-.557908 1.044085 .167372 1.960648 .167372C2.956912 .167372 3.801743-.605729 3.801743-1.594022C3.801743-2.518555 3.132254-3.339477 2.191781-3.339477C1.793275-3.339477 1.41868-3.211955 1.115816-2.940971V-4.479203Z'/>
+<path id='asymptote-33-3-g1-54' d='M1.099875-2.638107C1.099875-3.299626 1.155666-3.881445 1.44259-4.367621C1.681694-4.766127 2.088169-5.092902 2.590286-5.092902C2.749689-5.092902 3.116314-5.068991 3.299626-4.790037C2.940971-4.774097 2.909091-4.503113 2.909091-4.415442C2.909091-4.176339 3.092403-4.040847 3.283686-4.040847C3.427148-4.040847 3.658281-4.128518 3.658281-4.431382C3.658281-4.909589 3.299626-5.300125 2.582316-5.300125C1.474471-5.300125 .350685-4.24807 .350685-2.526526C.350685-.366625 1.354919 .167372 2.12802 .167372C2.510585 .167372 2.925031 .063761 3.283686-.278954C3.602491-.589788 3.873474-.924533 3.873474-1.617933C3.873474-2.662017 3.084433-3.395268 2.199751-3.395268C1.625903-3.395268 1.283188-3.028643 1.099875-2.638107ZM2.12802-.071731C1.705604-.071731 1.44259-.366625 1.323039-.589788C1.139726-.948443 1.123786-1.490411 1.123786-1.793275C1.123786-2.582316 1.554172-3.172105 2.16787-3.172105C2.566376-3.172105 2.805479-2.964882 2.956912-2.685928C3.124284-2.391034 3.124284-2.032379 3.124284-1.625903S3.124284-.868742 2.964882-.581818C2.757659-.215193 2.478705-.071731 2.12802-.071731Z'/>
+<path id='asymptote-33-3-g1-55' d='M4.032877-4.853798C4.104608-4.941469 4.104608-4.95741 4.104608-5.132752H2.080199C1.880946-5.132752 1.633873-5.140722 1.43462-5.156663C1.020174-5.188543 1.012204-5.260274 .988294-5.387796H.74122L.470237-3.706102H.71731C.73325-3.825654 .820922-4.375592 .932503-4.439352C1.020174-4.479203 1.617933-4.479203 1.737484-4.479203H3.427148L2.606227-3.379328C1.697634-2.16787 1.506351-.908593 1.506351-.278954C1.506351-.199253 1.506351 .167372 1.880946 .167372S2.255542-.191283 2.255542-.286924V-.669489C2.255542-1.817186 2.446824-2.757659 2.83736-3.275716L4.032877-4.853798Z'/>
+<path id='asymptote-33-3-g0-119' d='M5.039999-3.698181C5.094544-3.938181 5.203635-4.341817 5.203635-4.407271C5.203635-4.603635 5.050908-4.701817 4.887271-4.701817C4.756362-4.701817 4.559999-4.614544 4.483635-4.396362C4.450908-4.319999 3.938181-2.236363 3.861817-1.952727C3.785453-1.625454 3.763635-1.429091 3.763635-1.232727C3.763635-1.112727 3.763635-1.090909 3.774544-1.036363C3.523635-.458182 3.196363-.12 2.770908-.12C1.898181-.12 1.898181-.927272 1.898181-1.112727C1.898181-1.461818 1.952727-1.887272 2.465454-3.22909C2.585454-3.556363 2.650908-3.70909 2.650908-3.927272C2.650908-4.418181 2.290908-4.821817 1.756363-4.821817C.72-4.821817 .316364-3.239999 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.054545 .621818-3.22909C.916363-4.243635 1.341818-4.581817 1.723636-4.581817C1.821818-4.581817 1.996363-4.570908 1.996363-4.221817C1.996363-3.94909 1.876363-3.643635 1.799999-3.458181C1.32-2.170908 1.189091-1.66909 1.189091-1.254545C1.189091-.261818 1.919999 .12 2.738181 .12C2.923636 .12 3.436363 .12 3.872726-.643636C4.156362 .054545 4.90909 .12 5.236362 .12C6.054544 .12 6.534544-.567273 6.81818-1.221818C7.189089-2.072727 7.53818-3.534544 7.53818-4.058181C7.53818-4.658181 7.243634-4.821817 7.05818-4.821817C6.785453-4.821817 6.512725-4.538181 6.512725-4.298181C6.512725-4.156362 6.57818-4.090908 6.676362-4.003635C6.796362-3.883635 7.069089-3.599999 7.069089-3.076363C7.069089-2.705454 6.752725-1.636363 6.469089-1.08C6.185453-.501818 5.803635-.12 5.269089-.12C4.756362-.12 4.461817-.447273 4.461817-1.069091C4.461817-1.374545 4.538181-1.712727 4.581817-1.865454L5.039999-3.698181Z'/>
+<path id='asymptote-33-3-g0-122' d='M1.450909-.905454C2.039999-1.538181 2.356363-1.810909 2.74909-2.14909C2.74909-2.159999 3.425454-2.738181 3.818181-3.130908C4.854544-4.145453 5.094544-4.66909 5.094544-4.712726C5.094544-4.821817 4.996362-4.821817 4.974544-4.821817C4.89818-4.821817 4.865453-4.799999 4.810908-4.701817C4.483635-4.178181 4.254544-4.003635 3.992726-4.003635S3.599999-4.167272 3.436363-4.352726C3.22909-4.603635 3.043636-4.821817 2.683636-4.821817C1.865454-4.821817 1.363636-3.807272 1.363636-3.578181C1.363636-3.523635 1.396363-3.458181 1.494545-3.458181S1.614545-3.512726 1.636363-3.578181C1.843636-4.079999 2.476363-4.090908 2.563636-4.090908C2.792726-4.090908 2.999999-4.014544 3.250908-3.927272C3.687272-3.763635 3.807272-3.763635 4.090908-3.763635C3.698181-3.294545 2.781817-2.50909 2.574545-2.334545L1.592727-1.418181C.850909-.687273 .469091-.065455 .469091 .010909C.469091 .12 .578182 .12 .6 .12C.687273 .12 .709091 .098182 .774545-.021818C1.025454-.403636 1.352727-.698182 1.701818-.698182C1.952727-.698182 2.061818-.6 2.334545-.283636C2.519999-.054545 2.716363 .12 3.032726 .12C4.112726 .12 4.745453-1.265454 4.745453-1.56C4.745453-1.614545 4.701817-1.66909 4.614544-1.66909C4.516362-1.66909 4.494544-1.603636 4.461817-1.527272C4.210908-.818182 3.512726-.610909 3.152726-.610909C2.934545-.610909 2.738181-.676363 2.50909-.752727C2.138181-.894545 1.974545-.938182 1.745454-.938182C1.723636-.938182 1.54909-.938182 1.450909-.905454Z'/>
+<path id='asymptote-33-3-g2-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-33-3-g2-73' d='M2.454545-6.599998C2.454545-6.992725 2.487272-7.112725 3.34909-7.112725H3.632726V-7.450907C3.250908-7.41818 2.38909-7.41818 1.974545-7.41818C1.54909-7.41818 .687273-7.41818 .305454-7.450907V-7.112725H.589091C1.450909-7.112725 1.483636-6.992725 1.483636-6.599998V-.850909C1.483636-.458182 1.450909-.338182 .589091-.338182H.305454V0C.687273-.032727 1.54909-.032727 1.963636-.032727C2.38909-.032727 3.250908-.032727 3.632726 0V-.338182H3.34909C2.487272-.338182 2.454545-.458182 2.454545-.850909V-6.599998Z'/>
+<path id='asymptote-33-3-g2-82' d='M2.443636-3.850908V-6.676362C2.443636-6.927271 2.443636-7.05818 2.683636-7.090907C2.792726-7.112725 3.10909-7.112725 3.327272-7.112725C4.30909-7.112725 5.530908-7.069089 5.530908-5.487271C5.530908-4.734544 5.269089-3.850908 3.654544-3.850908H2.443636ZM4.745453-3.70909C5.803635-3.970908 6.654544-4.636362 6.654544-5.487271C6.654544-6.534544 5.410908-7.450907 3.807272-7.450907H.381818V-7.112725H.643636C1.483636-7.112725 1.505454-6.992725 1.505454-6.599998V-.850909C1.505454-.458182 1.483636-.338182 .643636-.338182H.381818V0C.774545-.032727 1.54909-.032727 1.974545-.032727S3.174545-.032727 3.567272 0V-.338182H3.305454C2.465454-.338182 2.443636-.458182 2.443636-.850909V-3.610908H3.698181C3.872726-3.610908 4.330908-3.610908 4.712726-3.239999C5.127271-2.847272 5.127271-2.50909 5.127271-1.778181C5.127271-1.069091 5.127271-.632727 5.574544-.218182C6.021817 .174545 6.621816 .24 6.949089 .24C7.799998 .24 7.985452-.654545 7.985452-.96C7.985452-1.025454 7.985452-1.145454 7.843634-1.145454C7.723634-1.145454 7.723634-1.047272 7.712725-.970909C7.647271-.196364 7.265453 0 6.992725 0C6.45818 0 6.370907-.556363 6.21818-1.570909L6.076362-2.443636C5.879998-3.141817 5.345453-3.501817 4.745453-3.70909Z'/>
+<path id='asymptote-33-3-g2-101' d='M1.221818-2.74909C1.287272-4.374544 2.203636-4.647271 2.574545-4.647271C3.698181-4.647271 3.807272-3.174545 3.807272-2.74909H1.221818ZM1.210909-2.519999H4.254544C4.494544-2.519999 4.527271-2.519999 4.527271-2.74909C4.527271-3.82909 3.938181-4.887271 2.574545-4.887271C1.309091-4.887271 .305454-3.763635 .305454-2.399999C.305454-.938182 1.450909 .12 2.705454 .12C4.036363 .12 4.527271-1.090909 4.527271-1.298181C4.527271-1.407272 4.439999-1.429091 4.385453-1.429091C4.287272-1.429091 4.265453-1.363636 4.243635-1.276363C3.861817-.152727 2.879999-.152727 2.770908-.152727C2.225454-.152727 1.78909-.48 1.538181-.883636C1.210909-1.407272 1.210909-2.127272 1.210909-2.519999Z'/>
+<path id='asymptote-33-3-g2-109' d='M1.2-3.752726V-.829091C1.2-.338182 1.08-.338182 .349091-.338182V0C.730909-.010909 1.287272-.032727 1.581818-.032727C1.865454-.032727 2.432727-.010909 2.803636 0V-.338182C2.072727-.338182 1.952727-.338182 1.952727-.829091V-2.836363C1.952727-3.970908 2.727272-4.581817 3.425454-4.581817C4.112726-4.581817 4.232726-3.992726 4.232726-3.370908V-.829091C4.232726-.338182 4.112726-.338182 3.381817-.338182V0C3.763635-.010909 4.319999-.032727 4.614544-.032727C4.89818-.032727 5.465453-.010909 5.836362 0V-.338182C5.105453-.338182 4.985453-.338182 4.985453-.829091V-2.836363C4.985453-3.970908 5.759998-4.581817 6.45818-4.581817C7.145453-4.581817 7.265453-3.992726 7.265453-3.370908V-.829091C7.265453-.338182 7.145453-.338182 6.414544-.338182V0C6.796362-.010909 7.352725-.032727 7.647271-.032727C7.930907-.032727 8.498179-.010909 8.869088 0V-.338182C8.301816-.338182 8.029089-.338182 8.01818-.665454V-2.74909C8.01818-3.687272 8.01818-4.025453 7.679998-4.418181C7.527271-4.603635 7.167271-4.821817 6.534544-4.821817C5.61818-4.821817 5.13818-4.167272 4.952726-3.752726C4.799999-4.701817 3.992726-4.821817 3.501817-4.821817C2.705454-4.821817 2.192727-4.352726 1.887272-3.676363V-4.821817L.349091-4.701817V-4.363635C1.112727-4.363635 1.2-4.287272 1.2-3.752726Z'/>
+</defs>
+<g id='asymptote-33-3-page1'>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 7.77906V191.033' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 .250937L97.3891 7.77906H101.423L99.4063 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 .250937L97.3891 7.77906H101.423L99.4063 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 198.562L101.423 191.033H97.3891L99.4063 198.562Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 198.562L101.423 191.033H97.3891L99.4063 198.562Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 187.544H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 165.51H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 143.475H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 121.441H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 99.4063H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 77.3717H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 55.3372H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 33.3027H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M96.395 11.2682H102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='234.884214' y='161.933551' href='#asymptote-33-3-g2-73'/>
+<use x='238.823613' y='161.933551' href='#asymptote-33-3-g2-109'/>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M191.033 99.4063H7.77906' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M198.562 99.4063L191.033 97.3891V101.423L198.562 99.4063Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M198.562 99.4063L191.033 97.3891V101.423L198.562 99.4063Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M.250937 99.4063L7.77906 101.423V97.3891L.250937 99.4063Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M.250937 99.4063L7.77906 101.423V97.3891L.250937 99.4063Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M11.2682 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M33.3027 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M55.3372 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M77.3717 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M121.441 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M143.475 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M165.51 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M187.544 96.395V102.418' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='338.99321' y='265.891031' href='#asymptote-33-3-g2-82'/>
+<use x='347.023527' y='265.891031' href='#asymptote-33-3-g2-101'/>
+<use x='256.829553' y='261.244834' href='#asymptote-33-3-g2-48'/>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='99.4063' cy='99.4063' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M99.4063 99.4063H191.951' fill='none' stroke="var(--asymptote-color-808080)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='2.0075'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='78.2531' cy='75.1683' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='236.714782' y='229.817141' href='#asymptote-33-3-g0-122'/>
+<use x='241.788051' y='231.453491' href='#asymptote-33-3-g1-48'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='68.9597' cy='52.732' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='226.496752' y='201.385217' href='#asymptote-33-3-g0-122'/>
+<use x='231.570021' y='203.021567' href='#asymptote-33-3-g1-49'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='46.5234' cy='43.4386' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='204.14428' y='192.126526' href='#asymptote-33-3-g0-122'/>
+<use x='209.217548' y='193.762876' href='#asymptote-33-3-g1-50'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='24.0871' cy='52.732' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='167.293183' y='201.385217' href='#asymptote-33-3-g0-122'/>
+<use x='172.366451' y='203.021567' href='#asymptote-33-3-g1-51'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='14.7937' cy='75.1683' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='157.075153' y='228.684578' href='#asymptote-33-3-g0-122'/>
+<use x='162.148421' y='230.320928' href='#asymptote-33-3-g1-52'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='24.0871' cy='97.6046' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='172.369955' y='257.975387' href='#asymptote-33-3-g0-122'/>
+<use x='177.443223' y='259.611737' href='#asymptote-33-3-g1-53'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='46.5234' cy='106.898' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='196.89496' y='267.347164' href='#asymptote-33-3-g0-122'/>
+<use x='201.968228' y='268.983515' href='#asymptote-33-3-g1-54'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='68.9597' cy='97.6046' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='221.419995' y='257.975387' href='#asymptote-33-3-g0-122'/>
+<use x='226.493264' y='259.611737' href='#asymptote-33-3-g1-55'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M78.2531 75.1683C78.2531 66.753 74.9102 58.6825 68.9597 52.732S54.9387 43.4386 46.5234 43.4386C38.1082 43.4386 30.0376 46.7815 24.0871 52.732C18.1367 58.6825 14.7937 66.753 14.7937 75.1683C14.7937 83.5835 18.1367 91.6541 24.0871 97.6046C30.0376 103.555 38.1082 106.898 46.5234 106.898C54.9387 106.898 63.0092 103.555 68.9597 97.6046C74.9102 91.6541 78.2531 83.5835 78.2531 75.1683Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='110.424' cy='75.1683' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='267.80565' y='234.764029' href='#asymptote-33-3-g0-119'/>
+<use x='275.615658' y='236.400379' href='#asymptote-33-3-g1-48'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='116.095' cy='68.594' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='274.314977' y='224.408514' href='#asymptote-33-3-g0-119'/>
+<use x='282.124985' y='226.044864' href='#asymptote-33-3-g1-49'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='115.707' cy='61.5783' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='273.92794' y='214.004323' href='#asymptote-33-3-g0-119'/>
+<use x='281.737948' y='215.640673' href='#asymptote-33-3-g1-50'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='111.506' cy='56.9088' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='268.884414' y='205.546431' href='#asymptote-33-3-g0-119'/>
+<use x='276.694422' y='207.182781' href='#asymptote-33-3-g1-51'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='105.529' cy='55.7956' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='256.851383' y='203.578484' href='#asymptote-33-3-g0-119'/>
+<use x='264.66139' y='205.214835' href='#asymptote-33-3-g1-52'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='99.8935' cy='58.6649' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='239.552195' y='209.321703' href='#asymptote-33-3-g0-119'/>
+<use x='247.362203' y='210.958053' href='#asymptote-33-3-g1-53'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='96.9943' cy='65.1854' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='236.21928' y='219.305291' href='#asymptote-33-3-g0-119'/>
+<use x='244.029288' y='220.941641' href='#asymptote-33-3-g1-54'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<circle cx='100.172' cy='73.4937' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='241.579748' y='233.291265' href='#asymptote-33-3-g0-119'/>
+<use x='249.389756' y='234.927615' href='#asymptote-33-3-g1-55'/>
+</g>
+<g transform='translate(155.444 152.893)scale(.996264)'>
+<path d='M110.424 75.1683C113.211 73.9619 115.244 71.5123 116.095 68.594C116.771 66.2774 116.659 63.7956 115.707 61.5783C114.858 59.6018 113.386 57.9545 111.506 56.9088C109.688 55.8975 107.59 55.5072 105.529 55.7956C103.384 56.0959 101.405 57.1129 99.8935 58.6649C98.1825 60.4215 97.1796 62.74 96.9943 65.1854C96.7581 68.3027 97.8603 71.3959 100.172 73.4937C102.958 76.0212 106.97 76.6633 110.424 75.1683Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div id="S1.p12" class="ltx_para">
+<p class="ltx_p">What we see is that picking a particular <math id="S1.p12.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>-interval
+leads to a different set of edge cases, and hence a different ray of death.
+The only thing these rays have in common is their starting point of zero.
+In other words, given a red circle and a restriction of <math id="S1.p12.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>,
+I can make a nice “square rooted” blue circle as long as the
+ray of death misses it.</p>
+</div>
+<div id="S1.p13" class="ltx_para">
+<p class="ltx_p">So, what exactly is going on?</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">33.2 </span>Square roots of holomorphic functions</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">To get a picture of what’s happening, we would like to consider a more
+general problem: let <math id="S2.p1.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> be holomorphic.
+Then we want to decide whether there is a holomorphic <math id="S2.p1.m2" class="ltx_Math" alttext="g\colon U\to\mathbb{C}" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>
+such that</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="f(z)=g(z)^{2}." display="block"><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Our previous discussion with <math id="S2.p1.m3" class="ltx_Math" alttext="f=\mathrm{id}" display="inline"><mrow><mi>f</mi><mo>=</mo><mi>id</mi></mrow></math>
+tells us we cannot hope to achieve this for <math id="S2.p1.m4" class="ltx_Math" alttext="U=\mathbb{C}" display="inline"><mrow><mi>U</mi><mo>=</mo><mi>ℂ</mi></mrow></math>;
+there is a “half-ray” which causes problems.
+However, there are certainly functions <math id="S2.p1.m5" class="ltx_Math" alttext="f\colon\mathbb{C}\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℂ</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> such that a <math id="S2.p1.m6" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> exists.
+As a simplest example, <math id="S2.p1.m7" class="ltx_Math" alttext="f(z)=z^{2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>z</mi><mn>2</mn></msup></mrow></math> should definitely have a square root!</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Now let’s see if we can fudge together a square root.
+Earlier, what we did was try to specify a rule to force one of the two choices at each point.
+This is unnecessarily strict.
+Perhaps we can do something like:
+start at a point in <math id="S2.p2.m1" class="ltx_Math" alttext="z_{0}\in U" display="inline"><mrow><msub><mi>z</mi><mn>0</mn></msub><mo>∈</mo><mi>U</mi></mrow></math>, pick a square root <math id="S2.p2.m2" class="ltx_Math" alttext="w_{0}" display="inline"><msub><mi>w</mi><mn>0</mn></msub></math> of <math id="S2.p2.m3" class="ltx_Math" alttext="f(z_{0})" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>z</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>,
+and then try to “fudge” from there the square roots of the other points.
+What do I mean by fudge?
+Well, suppose <math id="S2.p2.m4" class="ltx_Math" alttext="z_{1}" display="inline"><msub><mi>z</mi><mn>1</mn></msub></math> is a point very close to <math id="S2.p2.m5" class="ltx_Math" alttext="z_{0}" display="inline"><msub><mi>z</mi><mn>0</mn></msub></math>,
+and we want to pick a square root <math id="S2.p2.m6" class="ltx_Math" alttext="w_{1}" display="inline"><msub><mi>w</mi><mn>1</mn></msub></math> of <math id="S2.p2.m7" class="ltx_Math" alttext="f(z_{1})" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>z</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>.
+While there are two choices, we also would expect <math id="S2.p2.m8" class="ltx_Math" alttext="w_{0}" display="inline"><msub><mi>w</mi><mn>0</mn></msub></math> to be close to <math id="S2.p2.m9" class="ltx_Math" alttext="w_{1}" display="inline"><msub><mi>w</mi><mn>1</mn></msub></math>.
+Unless we are highly unlucky, this should tell us which choice of <math id="S2.p2.m10" class="ltx_Math" alttext="w_{1}" display="inline"><msub><mi>w</mi><mn>1</mn></msub></math> to pick.
+(Stupid concrete example: if I have taken the square root <math id="S2.p2.m11" class="ltx_Math" alttext="-4.12i" display="inline"><mrow><mo>−</mo><mrow><mn>4.12</mn><mo>⁢</mo><mi>i</mi></mrow></mrow></math> of <math id="S2.p2.m12" class="ltx_Math" alttext="-17" display="inline"><mrow><mo>−</mo><mn>17</mn></mrow></math>
+and then ask you to continue this square root to <math id="S2.p2.m13" class="ltx_Math" alttext="-16" display="inline"><mrow><mo>−</mo><mn>16</mn></mrow></math>,
+which sign should you pick for <math id="S2.p2.m14" class="ltx_Math" alttext="\pm 4i" display="inline"><mrow><mo>±</mo><mrow><mn>4</mn><mo>⁢</mo><mi>i</mi></mrow></mrow></math>?)</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">There are two possible ways we could get unlucky in the scheme above:
+first, if <math id="S2.p3.m1" class="ltx_Math" alttext="w_{0}=0" display="inline"><mrow><msub><mi>w</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow></math>, then we’re sunk.
+But even if we avoid that, we have to worry that
+if we run a full loop in the complex plane,
+we might end up in a different place from where we started.
+For concreteness, consider the following situation, again with <math id="S2.p3.m2" class="ltx_Math" alttext="f=\mathrm{id}" display="inline"><mrow><mi>f</mi><mo>=</mo><mi>id</mi></mrow></math>:</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S2.p4" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='198.405323pt' height='198.405324pt' viewBox='155.612111 153.060929 198.405323 198.405324'>
+<defs>
+<path id='asymptote-33-4-g1-48' d='M3.897385-2.542466C3.897385-3.395268 3.809714-3.913325 3.5467-4.423412C3.196015-5.124782 2.550436-5.300125 2.11208-5.300125C1.107846-5.300125 .74122-4.550934 .629639-4.327771C.342715-3.745953 .326775-2.956912 .326775-2.542466C.326775-2.016438 .350685-1.211457 .73325-.573848C1.099875 .01594 1.689664 .167372 2.11208 .167372C2.494645 .167372 3.180075 .047821 3.57858-.74122C3.873474-1.315068 3.897385-2.024408 3.897385-2.542466ZM2.11208-.055791C1.841096-.055791 1.291158-.183313 1.123786-1.020174C1.036115-1.474471 1.036115-2.223661 1.036115-2.638107C1.036115-3.188045 1.036115-3.745953 1.123786-4.184309C1.291158-4.99726 1.912827-5.076961 2.11208-5.076961C2.383064-5.076961 2.933001-4.941469 3.092403-4.216189C3.188045-3.777833 3.188045-3.180075 3.188045-2.638107C3.188045-2.16787 3.188045-1.45056 3.092403-1.004234C2.925031-.167372 2.375093-.055791 2.11208-.055791Z'/>
+<path id='asymptote-33-4-g1-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-33-4-g1-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-33-4-g1-51' d='M2.016438-2.662017C2.646077-2.662017 3.044583-2.199751 3.044583-1.362889C3.044583-.366625 2.478705-.071731 2.056289-.071731C1.617933-.071731 1.020174-.231133 .74122-.653549C1.028144-.653549 1.227397-.836862 1.227397-1.099875C1.227397-1.354919 1.044085-1.538232 .789041-1.538232C.573848-1.538232 .350685-1.40274 .350685-1.083935C.350685-.326775 1.163636 .167372 2.072229 .167372C3.132254 .167372 3.873474-.565878 3.873474-1.362889C3.873474-2.024408 3.347447-2.630137 2.534496-2.805479C3.164134-3.028643 3.634371-3.57061 3.634371-4.208219S2.917061-5.300125 2.088169-5.300125C1.235367-5.300125 .589788-4.837858 .589788-4.23213C.589788-3.937235 .789041-3.809714 .996264-3.809714C1.243337-3.809714 1.40274-3.985056 1.40274-4.216189C1.40274-4.511083 1.147696-4.622665 .972354-4.630635C1.307098-5.068991 1.920797-5.092902 2.064259-5.092902C2.271482-5.092902 2.87721-5.029141 2.87721-4.208219C2.87721-3.650311 2.646077-3.315567 2.534496-3.188045C2.295392-2.940971 2.11208-2.925031 1.625903-2.893151C1.474471-2.885181 1.41071-2.87721 1.41071-2.773599C1.41071-2.662017 1.482441-2.662017 1.617933-2.662017H2.016438Z'/>
+<path id='asymptote-33-4-g1-52' d='M3.140224-5.156663C3.140224-5.316065 3.140224-5.379826 2.972852-5.379826C2.86924-5.379826 2.86127-5.371856 2.781569-5.260274L.239103-1.570112V-1.307098H2.486675V-.645579C2.486675-.350685 2.462765-.263014 1.849066-.263014H1.665753V0C2.343213-.02391 2.359153-.02391 2.81345-.02391S3.283686-.02391 3.961146 0V-.263014H3.777833C3.164134-.263014 3.140224-.350685 3.140224-.645579V-1.307098H3.985056V-1.570112H3.140224V-5.156663ZM2.542466-4.511083V-1.570112H.518057L2.542466-4.511083Z'/>
+<path id='asymptote-33-4-g1-53' d='M1.115816-4.479203C1.219427-4.447323 1.538232-4.367621 1.872976-4.367621C2.86924-4.367621 3.474969-5.068991 3.474969-5.188543C3.474969-5.276214 3.419178-5.300125 3.379328-5.300125C3.363387-5.300125 3.347447-5.300125 3.275716-5.260274C2.964882-5.140722 2.598257-5.045081 2.16787-5.045081C1.697634-5.045081 1.307098-5.164633 1.060025-5.260274C.980324-5.300125 .964384-5.300125 .956413-5.300125C.852802-5.300125 .852802-5.212453 .852802-5.068991V-2.733748C.852802-2.590286 .852802-2.494645 .980324-2.494645C1.044085-2.494645 1.067995-2.526526 1.107846-2.590286C1.203487-2.709838 1.506351-3.116314 2.183811-3.116314C2.630137-3.116314 2.84533-2.749689 2.917061-2.598257C3.052553-2.311333 3.068493-1.944707 3.068493-1.633873C3.068493-1.338979 3.060523-.908593 2.83736-.557908C2.685928-.318804 2.367123-.071731 1.944707-.071731C1.42665-.071731 .916563-.398506 .73325-.916563C.757161-.908593 .804981-.908593 .812951-.908593C1.036115-.908593 1.211457-1.052055 1.211457-1.299128C1.211457-1.594022 .980324-1.697634 .820922-1.697634C.67746-1.697634 .422416-1.617933 .422416-1.275218C.422416-.557908 1.044085 .167372 1.960648 .167372C2.956912 .167372 3.801743-.605729 3.801743-1.594022C3.801743-2.518555 3.132254-3.339477 2.191781-3.339477C1.793275-3.339477 1.41868-3.211955 1.115816-2.940971V-4.479203Z'/>
+<path id='asymptote-33-4-g1-54' d='M1.099875-2.638107C1.099875-3.299626 1.155666-3.881445 1.44259-4.367621C1.681694-4.766127 2.088169-5.092902 2.590286-5.092902C2.749689-5.092902 3.116314-5.068991 3.299626-4.790037C2.940971-4.774097 2.909091-4.503113 2.909091-4.415442C2.909091-4.176339 3.092403-4.040847 3.283686-4.040847C3.427148-4.040847 3.658281-4.128518 3.658281-4.431382C3.658281-4.909589 3.299626-5.300125 2.582316-5.300125C1.474471-5.300125 .350685-4.24807 .350685-2.526526C.350685-.366625 1.354919 .167372 2.12802 .167372C2.510585 .167372 2.925031 .063761 3.283686-.278954C3.602491-.589788 3.873474-.924533 3.873474-1.617933C3.873474-2.662017 3.084433-3.395268 2.199751-3.395268C1.625903-3.395268 1.283188-3.028643 1.099875-2.638107ZM2.12802-.071731C1.705604-.071731 1.44259-.366625 1.323039-.589788C1.139726-.948443 1.123786-1.490411 1.123786-1.793275C1.123786-2.582316 1.554172-3.172105 2.16787-3.172105C2.566376-3.172105 2.805479-2.964882 2.956912-2.685928C3.124284-2.391034 3.124284-2.032379 3.124284-1.625903S3.124284-.868742 2.964882-.581818C2.757659-.215193 2.478705-.071731 2.12802-.071731Z'/>
+<path id='asymptote-33-4-g1-55' d='M4.032877-4.853798C4.104608-4.941469 4.104608-4.95741 4.104608-5.132752H2.080199C1.880946-5.132752 1.633873-5.140722 1.43462-5.156663C1.020174-5.188543 1.012204-5.260274 .988294-5.387796H.74122L.470237-3.706102H.71731C.73325-3.825654 .820922-4.375592 .932503-4.439352C1.020174-4.479203 1.617933-4.479203 1.737484-4.479203H3.427148L2.606227-3.379328C1.697634-2.16787 1.506351-.908593 1.506351-.278954C1.506351-.199253 1.506351 .167372 1.880946 .167372S2.255542-.191283 2.255542-.286924V-.669489C2.255542-1.817186 2.446824-2.757659 2.83736-3.275716L4.032877-4.853798Z'/>
+<path id='asymptote-33-4-g0-119' d='M5.039999-3.698181C5.094544-3.938181 5.203635-4.341817 5.203635-4.407271C5.203635-4.603635 5.050908-4.701817 4.887271-4.701817C4.756362-4.701817 4.559999-4.614544 4.483635-4.396362C4.450908-4.319999 3.938181-2.236363 3.861817-1.952727C3.785453-1.625454 3.763635-1.429091 3.763635-1.232727C3.763635-1.112727 3.763635-1.090909 3.774544-1.036363C3.523635-.458182 3.196363-.12 2.770908-.12C1.898181-.12 1.898181-.927272 1.898181-1.112727C1.898181-1.461818 1.952727-1.887272 2.465454-3.22909C2.585454-3.556363 2.650908-3.70909 2.650908-3.927272C2.650908-4.418181 2.290908-4.821817 1.756363-4.821817C.72-4.821817 .316364-3.239999 .316364-3.141817C.316364-3.032726 .425454-3.032726 .447273-3.032726C.556363-3.032726 .567273-3.054545 .621818-3.22909C.916363-4.243635 1.341818-4.581817 1.723636-4.581817C1.821818-4.581817 1.996363-4.570908 1.996363-4.221817C1.996363-3.94909 1.876363-3.643635 1.799999-3.458181C1.32-2.170908 1.189091-1.66909 1.189091-1.254545C1.189091-.261818 1.919999 .12 2.738181 .12C2.923636 .12 3.436363 .12 3.872726-.643636C4.156362 .054545 4.90909 .12 5.236362 .12C6.054544 .12 6.534544-.567273 6.81818-1.221818C7.189089-2.072727 7.53818-3.534544 7.53818-4.058181C7.53818-4.658181 7.243634-4.821817 7.05818-4.821817C6.785453-4.821817 6.512725-4.538181 6.512725-4.298181C6.512725-4.156362 6.57818-4.090908 6.676362-4.003635C6.796362-3.883635 7.069089-3.599999 7.069089-3.076363C7.069089-2.705454 6.752725-1.636363 6.469089-1.08C6.185453-.501818 5.803635-.12 5.269089-.12C4.756362-.12 4.461817-.447273 4.461817-1.069091C4.461817-1.374545 4.538181-1.712727 4.581817-1.865454L5.039999-3.698181Z'/>
+<path id='asymptote-33-4-g0-122' d='M1.450909-.905454C2.039999-1.538181 2.356363-1.810909 2.74909-2.14909C2.74909-2.159999 3.425454-2.738181 3.818181-3.130908C4.854544-4.145453 5.094544-4.66909 5.094544-4.712726C5.094544-4.821817 4.996362-4.821817 4.974544-4.821817C4.89818-4.821817 4.865453-4.799999 4.810908-4.701817C4.483635-4.178181 4.254544-4.003635 3.992726-4.003635S3.599999-4.167272 3.436363-4.352726C3.22909-4.603635 3.043636-4.821817 2.683636-4.821817C1.865454-4.821817 1.363636-3.807272 1.363636-3.578181C1.363636-3.523635 1.396363-3.458181 1.494545-3.458181S1.614545-3.512726 1.636363-3.578181C1.843636-4.079999 2.476363-4.090908 2.563636-4.090908C2.792726-4.090908 2.999999-4.014544 3.250908-3.927272C3.687272-3.763635 3.807272-3.763635 4.090908-3.763635C3.698181-3.294545 2.781817-2.50909 2.574545-2.334545L1.592727-1.418181C.850909-.687273 .469091-.065455 .469091 .010909C.469091 .12 .578182 .12 .6 .12C.687273 .12 .709091 .098182 .774545-.021818C1.025454-.403636 1.352727-.698182 1.701818-.698182C1.952727-.698182 2.061818-.6 2.334545-.283636C2.519999-.054545 2.716363 .12 3.032726 .12C4.112726 .12 4.745453-1.265454 4.745453-1.56C4.745453-1.614545 4.701817-1.66909 4.614544-1.66909C4.516362-1.66909 4.494544-1.603636 4.461817-1.527272C4.210908-.818182 3.512726-.610909 3.152726-.610909C2.934545-.610909 2.738181-.676363 2.50909-.752727C2.138181-.894545 1.974545-.938182 1.745454-.938182C1.723636-.938182 1.54909-.938182 1.450909-.905454Z'/>
+<path id='asymptote-33-4-g2-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-33-4-g2-73' d='M2.454545-6.599998C2.454545-6.992725 2.487272-7.112725 3.34909-7.112725H3.632726V-7.450907C3.250908-7.41818 2.38909-7.41818 1.974545-7.41818C1.54909-7.41818 .687273-7.41818 .305454-7.450907V-7.112725H.589091C1.450909-7.112725 1.483636-6.992725 1.483636-6.599998V-.850909C1.483636-.458182 1.450909-.338182 .589091-.338182H.305454V0C.687273-.032727 1.54909-.032727 1.963636-.032727C2.38909-.032727 3.250908-.032727 3.632726 0V-.338182H3.34909C2.487272-.338182 2.454545-.458182 2.454545-.850909V-6.599998Z'/>
+<path id='asymptote-33-4-g2-82' d='M2.443636-3.850908V-6.676362C2.443636-6.927271 2.443636-7.05818 2.683636-7.090907C2.792726-7.112725 3.10909-7.112725 3.327272-7.112725C4.30909-7.112725 5.530908-7.069089 5.530908-5.487271C5.530908-4.734544 5.269089-3.850908 3.654544-3.850908H2.443636ZM4.745453-3.70909C5.803635-3.970908 6.654544-4.636362 6.654544-5.487271C6.654544-6.534544 5.410908-7.450907 3.807272-7.450907H.381818V-7.112725H.643636C1.483636-7.112725 1.505454-6.992725 1.505454-6.599998V-.850909C1.505454-.458182 1.483636-.338182 .643636-.338182H.381818V0C.774545-.032727 1.54909-.032727 1.974545-.032727S3.174545-.032727 3.567272 0V-.338182H3.305454C2.465454-.338182 2.443636-.458182 2.443636-.850909V-3.610908H3.698181C3.872726-3.610908 4.330908-3.610908 4.712726-3.239999C5.127271-2.847272 5.127271-2.50909 5.127271-1.778181C5.127271-1.069091 5.127271-.632727 5.574544-.218182C6.021817 .174545 6.621816 .24 6.949089 .24C7.799998 .24 7.985452-.654545 7.985452-.96C7.985452-1.025454 7.985452-1.145454 7.843634-1.145454C7.723634-1.145454 7.723634-1.047272 7.712725-.970909C7.647271-.196364 7.265453 0 6.992725 0C6.45818 0 6.370907-.556363 6.21818-1.570909L6.076362-2.443636C5.879998-3.141817 5.345453-3.501817 4.745453-3.70909Z'/>
+<path id='asymptote-33-4-g2-101' d='M1.221818-2.74909C1.287272-4.374544 2.203636-4.647271 2.574545-4.647271C3.698181-4.647271 3.807272-3.174545 3.807272-2.74909H1.221818ZM1.210909-2.519999H4.254544C4.494544-2.519999 4.527271-2.519999 4.527271-2.74909C4.527271-3.82909 3.938181-4.887271 2.574545-4.887271C1.309091-4.887271 .305454-3.763635 .305454-2.399999C.305454-.938182 1.450909 .12 2.705454 .12C4.036363 .12 4.527271-1.090909 4.527271-1.298181C4.527271-1.407272 4.439999-1.429091 4.385453-1.429091C4.287272-1.429091 4.265453-1.363636 4.243635-1.276363C3.861817-.152727 2.879999-.152727 2.770908-.152727C2.225454-.152727 1.78909-.48 1.538181-.883636C1.210909-1.407272 1.210909-2.127272 1.210909-2.519999Z'/>
+<path id='asymptote-33-4-g2-109' d='M1.2-3.752726V-.829091C1.2-.338182 1.08-.338182 .349091-.338182V0C.730909-.010909 1.287272-.032727 1.581818-.032727C1.865454-.032727 2.432727-.010909 2.803636 0V-.338182C2.072727-.338182 1.952727-.338182 1.952727-.829091V-2.836363C1.952727-3.970908 2.727272-4.581817 3.425454-4.581817C4.112726-4.581817 4.232726-3.992726 4.232726-3.370908V-.829091C4.232726-.338182 4.112726-.338182 3.381817-.338182V0C3.763635-.010909 4.319999-.032727 4.614544-.032727C4.89818-.032727 5.465453-.010909 5.836362 0V-.338182C5.105453-.338182 4.985453-.338182 4.985453-.829091V-2.836363C4.985453-3.970908 5.759998-4.581817 6.45818-4.581817C7.145453-4.581817 7.265453-3.992726 7.265453-3.370908V-.829091C7.265453-.338182 7.145453-.338182 6.414544-.338182V0C6.796362-.010909 7.352725-.032727 7.647271-.032727C7.930907-.032727 8.498179-.010909 8.869088 0V-.338182C8.301816-.338182 8.029089-.338182 8.01818-.665454V-2.74909C8.01818-3.687272 8.01818-4.025453 7.679998-4.418181C7.527271-4.603635 7.167271-4.821817 6.534544-4.821817C5.61818-4.821817 5.13818-4.167272 4.952726-3.752726C4.799999-4.701817 3.992726-4.821817 3.501817-4.821817C2.705454-4.821817 2.192727-4.352726 1.887272-3.676363V-4.821817L.349091-4.701817V-4.363635C1.112727-4.363635 1.2-4.287272 1.2-3.752726Z'/>
+</defs>
+<g id='asymptote-33-4-page1'>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 7.77906V191.37' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 .250937L97.5575 7.77906H101.592L99.5747 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 .250937L97.5575 7.77906H101.592L99.5747 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 198.898L101.592 191.37H97.5575L99.5747 198.898Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 198.898L101.592 191.37H97.5575L99.5747 198.898Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 187.862H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 165.79H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 143.719H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 121.647H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 99.5747H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 77.5027H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 55.4308H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 33.3588H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 11.2869H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='235.219778' y='162.101333' href='#asymptote-33-4-g2-73'/>
+<use x='239.159177' y='162.101333' href='#asymptote-33-4-g2-109'/>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M191.37 99.5747H7.77906' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M198.898 99.5747L191.37 97.5575V101.592L198.898 99.5747Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M198.898 99.5747L191.37 97.5575V101.592L198.898 99.5747Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M.250937 99.5747L7.77906 101.592V97.5575L.250937 99.5747Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M.250937 99.5747L7.77906 101.592V97.5575L.250937 99.5747Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M11.2869 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M33.3588 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M55.4308 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M77.5027 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M121.647 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M143.719 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M165.79 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M187.862 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='339.496556' y='266.226595' href='#asymptote-33-4-g2-82'/>
+<use x='347.526873' y='266.226595' href='#asymptote-33-4-g2-101'/>
+<use x='257.165117' y='261.580399' href='#asymptote-33-4-g2-48'/>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='99.5747' cy='99.5747' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='171.088' cy='99.5747' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='328.411037' y='248.220662' href='#asymptote-33-4-g0-122'/>
+<use x='333.484305' y='249.857012' href='#asymptote-33-4-g1-48'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='150.142' cy='49.0073' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='307.543596' y='197.842198' href='#asymptote-33-4-g0-122'/>
+<use x='312.616864' y='199.478548' href='#asymptote-33-4-g1-49'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='99.5747' cy='28.0616' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='257.165117' y='176.974742' href='#asymptote-33-4-g0-122'/>
+<use x='262.238385' y='178.611092' href='#asymptote-33-4-g1-50'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='49.0073' cy='49.0073' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='192.288014' y='197.842198' href='#asymptote-33-4-g0-122'/>
+<use x='197.361283' y='199.478548' href='#asymptote-33-4-g1-51'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='28.0616' cy='99.5747' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='171.420573' y='248.220662' href='#asymptote-33-4-g0-122'/>
+<use x='176.493842' y='249.857012' href='#asymptote-33-4-g1-52'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='49.0073' cy='150.142' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='197.364786' y='310.484365' href='#asymptote-33-4-g0-122'/>
+<use x='202.438055' y='312.120716' href='#asymptote-33-4-g1-53'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='99.5747' cy='171.088' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='257.165117' y='330.492936' href='#asymptote-33-4-g0-122'/>
+<use x='262.238385' y='332.129286' href='#asymptote-33-4-g1-54'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='150.142' cy='150.142' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='307.543596' y='309.62548' href='#asymptote-33-4-g0-122'/>
+<use x='312.616864' y='311.26183' href='#asymptote-33-4-g1-55'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M171.088 99.5747C171.088 80.6082 163.553 62.4186 150.142 49.0073S118.541 28.0616 99.5747 28.0616C80.6082 28.0616 62.4186 35.596 49.0073 49.0073S28.0616 80.6082 28.0616 99.5747C28.0616 118.541 35.596 136.731 49.0073 150.142S80.6082 171.088 99.5747 171.088C118.541 171.088 136.731 163.553 150.142 150.142S171.088 118.541 171.088 99.5747Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='139.304' cy='99.5747' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='292.455249' y='259.908066' href='#asymptote-33-4-g0-119'/>
+<use x='300.265257' y='261.544416' href='#asymptote-33-4-g1-48'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='136.28' cy='84.3709' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='294.592148' y='240.294194' href='#asymptote-33-4-g0-119'/>
+<use x='302.402156' y='241.930544' href='#asymptote-33-4-g1-49'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='127.668' cy='71.4817' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='286.01205' y='224.038426' href='#asymptote-33-4-g0-119'/>
+<use x='293.822057' y='225.674777' href='#asymptote-33-4-g1-50'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='114.778' cy='62.8694' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='272.312142' y='211.652531' href='#asymptote-33-4-g0-119'/>
+<use x='280.12215' y='213.288881' href='#asymptote-33-4-g1-51'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='99.5747' cy='59.8452' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='257.165117' y='208.639599' href='#asymptote-33-4-g0-119'/>
+<use x='264.975125' y='210.275949' href='#asymptote-33-4-g1-52'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='84.3709' cy='62.8694' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='224.782721' y='211.652531' href='#asymptote-33-4-g0-119'/>
+<use x='232.592729' y='213.288881' href='#asymptote-33-4-g1-53'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='71.4817' cy='71.4817' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='211.637968' y='221.362487' href='#asymptote-33-4-g0-119'/>
+<use x='219.447976' y='222.998837' href='#asymptote-33-4-g1-54'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='62.8694' cy='84.3709' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='203.361601' y='233.073651' href='#asymptote-33-4-g0-119'/>
+<use x='211.171608' y='234.710002' href='#asymptote-33-4-g1-55'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M139.304 99.5747C139.304 94.3573 138.277 89.1911 136.28 84.3709C134.283 79.5506 131.357 75.1709 127.668 71.4817C123.978 67.7925 119.599 64.866 114.778 62.8694C109.958 60.8728 104.792 59.8452 99.5747 59.8452C94.3573 59.8452 89.1911 60.8728 84.3709 62.8694C79.5506 64.866 75.1709 67.7925 71.4817 71.4817S64.866 79.5506 62.8694 84.3709C60.8728 89.1911 59.8452 94.3573 59.8452 99.5747' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">We started at the point <math id="S2.p5.m1" class="ltx_Math" alttext="z_{0}" display="inline"><msub><mi>z</mi><mn>0</mn></msub></math>, with one of its square roots as <math id="S2.p5.m2" class="ltx_Math" alttext="w_{0}" display="inline"><msub><mi>w</mi><mn>0</mn></msub></math>.
+We then wound a full red circle around the origin, only to find that at the end of it,
+the blue arc is at a different place where it started!</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">The interval construction from earlier doesn’t work either:
+no matter how we pick the interval for <math id="S2.p6.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>,
+any ray of death must hit our red circle.
+The problem somehow lies with the fact that we have enclosed the
+very special point <math id="S2.p6.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>.</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">Nevertheless, we know that if we take <math id="S2.p7.m1" class="ltx_Math" alttext="f(z)=z^{2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>z</mi><mn>2</mn></msup></mrow></math>, then we don’t run into any problems
+with our “make it up as you go” procedure.
+So, what exactly is going on?</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">33.3 </span>Covering projections</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">By now, if you have read the part on algebraic topology,
+this should all seem quite familiar.
+The “fudging” procedure exactly describes the idea of a lifting.</p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">More precisely, recall that there is a covering projection</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="(-)^{2}\colon\mathbb{C}\setminus\{0\}\to\mathbb{C}\setminus\{0\}." display="block"><mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">−</mo><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Let <math id="S3.p2.m1" class="ltx_Math" alttext="V=\left\{z\in U\mid f(z)\neq 0\right\}" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mo>{</mo><mrow><mi>z</mi><mo>∈</mo><mi>U</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow><mo>}</mo></mrow></mrow></math>.
+For <math id="S3.p2.m2" class="ltx_Math" alttext="z\in U\setminus V" display="inline"><mrow><mi>z</mi><mo>∈</mo><mrow><mi>U</mi><mo>∖</mo><mi>V</mi></mrow></mrow></math>, we already have the square root <math id="S3.p2.m3" class="ltx_Math" alttext="g(z)=\sqrt{f(z)}=\sqrt{0}=0" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msqrt><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></msqrt><mo>=</mo><msqrt><mn>0</mn></msqrt><mo>=</mo><mn>0</mn></mrow></math>.
+So the burden is completing <math id="S3.p2.m4" class="ltx_Math" alttext="g\colon V\to\mathbb{C}" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Then essentially, what we are trying to do is construct a lifting <math id="S3.p3.m1" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> in the diagram</p>
+<svg id="S3.p3.pic1" class="ltx_picture ltx_centering" height="96.67" overflow="visible" version="1.1" width="155.94"><g transform="translate(0,96.67) matrix(1 0 0 -1 0 0) translate(77.97,0) translate(0,54.03)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -77.97 -42.64)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 73.31)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 15.44)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 25.07 0) translate(89.34,0) matrix(1.0 0.0 0.0 1.0 -33.56 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="67.13" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.p3.pic1.m1" class="ltx_Math" alttext="{E=\mathbb{C}\setminus\{0\}}" display="inline"><mrow><mi>E</mi><mo>=</mo><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 76.76)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(11.53,0) matrix(1.0 0.0 0.0 1.0 -5.57 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="11.15" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.p3.pic1.m2" class="ltx_Math" alttext="{V}" display="inline"><mi>V</mi></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 23.06 0) translate(91.35,0) matrix(1.0 0.0 0.0 1.0 -35.58 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="71.15" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.p3.pic1.m3" class="ltx_Math" alttext="{B=\mathbb{C}\setminus\{0\}.}" display="inline"><mrow><mrow><mi>B</mi><mo>=</mo><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M 36.44 9.88 L 36.44 -20.56" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 36.44 -20.56)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 39.69 -10.63)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="20.02" height="7.97" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.p3.pic1.m4" class="ltx_Math" alttext="\scriptstyle{p=\bullet^{2}}" display="inline"><mrow><mi>p</mi><mo rspace="0em">=</mo><msup><mo lspace="0em">∙</mo><mn>2</mn></msup></mrow></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -54.63 -32.15 L 10.41 6.62" style="fill:none"></path><g transform="matrix(0.85898 0.51202 -0.51202 0.85898 10.41 6.62)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -27.6 -6)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="4.97" height="6.05" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.p3.pic1.m5" class="ltx_Math" alttext="\scriptstyle{g}" display="inline"><mi>g</mi></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -54.63 -39.19 L -11.74 -39.19" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 -11.74 -39.19)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -32.89 -49.17)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="5.78" height="8.61" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.p3.pic1.m6" class="ltx_Math" alttext="\scriptstyle{f}" display="inline"><mi>f</mi></math></foreignObject></g></g></g></svg>
+<p class="ltx_p">Our map <math id="S3.p3.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> can be described as “winding around twice”.
+Our <a href="../algtop1/covering-projections.html#thm:lifting" title="Theorem 66.2.5 (General lifting criterion) ‣ 66.2 Lifting theorem ‣ Chapter 66 Covering projections ‣ Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">66.2.5</span></a> now tells us that this lifting exists if and only if</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="f_{\ast}^{\text{img}}(\pi_{1}(V))\subseteq p_{\ast}^{\text{img}}(\pi_{1}(E))" display="block"><mrow><mrow><msubsup><mi>f</mi><mo>∗</mo><mtext>img</mtext></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mrow><msubsup><mi>p</mi><mo>∗</mo><mtext>img</mtext></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is a subset of the image of <math id="S3.p3.m3" class="ltx_Math" alttext="\pi_{1}(E)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>E</mi><mo stretchy="false">)</mo></mrow></mrow></math> by <math id="S3.p3.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+Since <math id="S3.p3.m5" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> and <math id="S3.p3.m6" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math> are both punctured planes, we can identify them with <math id="S3.p3.m7" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math>.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 33.3.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that the image under <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is
+exactly <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="2\mathbb{Z}" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>ℤ</mi></mrow></math> once we identify <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\pi_{1}(B)=\mathbb{Z}" display="inline"><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>ℤ</mi></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">That means that for any loop <math id="S3.p4.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> in <math id="S3.p4.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>, we need <math id="S3.p4.m3" class="ltx_Math" alttext="f\circ\gamma" display="inline"><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>γ</mi></mrow></math> to have an
+<em class="ltx_emph ltx_font_italic">even</em> winding number around <math id="S3.p4.m4" class="ltx_Math" alttext="0\in B" display="inline"><mrow><mn>0</mn><mo>∈</mo><mi>B</mi></mrow></math>.
+This amounts to</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\frac{1}{2\pi}\oint_{\gamma}\frac{f^{\prime}}{f}\;dz\in 2\mathbb{Z}" display="block"><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mfrac linethickness="0.6px"><msup><mi>f</mi><mo>′</mo></msup><mi>f</mi></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow><mo>∈</mo><mrow><mn>2</mn><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">since <math id="S3.p4.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> has no poles.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Replacing <math id="S3.p5.m1" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> with <math id="S3.p5.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> and carrying over the discussion gives the first main result.</p>
+</div>
+<div id="thm:nth_root" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 33.3.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Existence of holomorphic <math id="S3.Thmtheorem2.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th roots)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> be holomorphic.
+Then <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> has a holomorphic <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th root if and only if</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\frac{1}{2\pi i}\oint_{\gamma}\frac{f^{\prime}}{f}\;dz\in n\mathbb{Z}" display="block"><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mfrac linethickness="0.6px"><msup><mi>f</mi><mo>′</mo></msup><mi>f</mi></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow><mo>∈</mo><mrow><mi>n</mi><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for every contour <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> in <math id="S3.Thmtheorem2.p1.m5" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">33.4 </span>Complex logarithms</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">The multivalued nature of the complex logarithm comes from the fact that</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\exp(z+2\pi i)=\exp(z)." display="block"><mrow><mrow><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>exp</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So if <math id="S4.p1.m1" class="ltx_Math" alttext="e^{w}=z" display="inline"><mrow><msup><mi>e</mi><mi>w</mi></msup><mo>=</mo><mi>z</mi></mrow></math>, then any complex number <math id="S4.p1.m2" class="ltx_Math" alttext="w+2\pi ik" display="inline"><mrow><mi>w</mi><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>k</mi></mrow></mrow></math> is also a solution.</p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">We can handle this in the same way as before:
+it amounts to a lifting of the following diagram.</p>
+<svg id="S4.p2.pic1" class="ltx_picture ltx_centering" height="92.29" overflow="visible" version="1.1" width="151.91"><g transform="translate(0,92.29) matrix(1 0 0 -1 0 0) translate(75.95,0) translate(0,51.84)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -75.95 -40.45)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 68.93)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 14.52)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 38.72 0) translate(73.58,0) matrix(1.0 0.0 0.0 1.0 -17.81 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="35.61" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p2.pic1.m1" class="ltx_Math" alttext="{E=\mathbb{C}}" display="inline"><mrow><mi>E</mi><mo>=</mo><mi>ℂ</mi></mrow></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 72.38)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(11.44,0) matrix(1.0 0.0 0.0 1.0 -5.48 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="10.96" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p2.pic1.m2" class="ltx_Math" alttext="{U}" display="inline"><mi>U</mi></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 22.87 0) translate(89.42,0) matrix(1.0 0.0 0.0 1.0 -33.65 0)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="67.31" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p2.pic1.m3" class="ltx_Math" alttext="{B=\mathbb{C}\setminus\{0\}}" display="inline"><mrow><mi>B</mi><mo>=</mo><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M 36.34 12.07 L 36.34 -18.37" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 36.34 -18.37)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 39.6 -7.48)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="27.2" height="6.05" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p2.pic1.m4" class="ltx_Math" alttext="\scriptstyle{p=\exp}" display="inline"><mrow><mi>p</mi><mo>=</mo><mi>exp</mi></mrow></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -52.81 -30.28 L 15.48 8.9" style="fill:none"></path><g transform="matrix(0.86739 0.49765 -0.49765 0.86739 15.48 8.9)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -24.12 -3.96)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="4.97" height="6.05" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p2.pic1.m5" class="ltx_Math" alttext="\scriptstyle{g}" display="inline"><mi>g</mi></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -52.81 -36.99 L -9.91 -36.99" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 -9.91 -36.99)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -31.07 -46.98)" fill="var(--asymptote-color-000000)" stroke="var(--asymptote-color-000000)"><foreignObject width="5.78" height="8.61" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p2.pic1.m6" class="ltx_Math" alttext="\scriptstyle{f}" display="inline"><mi>f</mi></math></foreignObject></g></g></g></svg>
+<p class="ltx_p">There is no longer a need to work with a separate <math id="S4.p2.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> since:</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 33.4.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that if <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> has any zeros then <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> can’t possibly exist.</span></p>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">In fact, the map <math id="S4.p3.m1" class="ltx_Math" alttext="\exp\colon\mathbb{C}\to\mathbb{C}\setminus\{0\}" display="inline"><mrow><mi>exp</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℂ</mi><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></mrow></math> is a universal cover,
+since <math id="S4.p3.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> is simply connected.
+Thus, <math id="S4.p3.m3" class="ltx_Math" alttext="p^{\text{img}}(\pi_{1}(\mathbb{C}))" display="inline"><mrow><msup><mi>p</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ℂ</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is <em class="ltx_emph ltx_font_italic">trivial</em>.
+So in addition to being zero-free, <math id="S4.p3.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> cannot have any winding number around <math id="S4.p3.m5" class="ltx_Math" alttext="0\in B" display="inline"><mrow><mn>0</mn><mo>∈</mo><mi>B</mi></mrow></math> at all.
+In other words:</p>
+</div>
+<div id="thm:holomorphic_log" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 33.4.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Existence of logarithms)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> be holomorphic.
+Then <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> has a logarithm if and only if</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\frac{1}{2\pi i}\oint_{\gamma}\frac{f^{\prime}}{f}\;dz=0" display="block"><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mfrac linethickness="0.6px"><msup><mi>f</mi><mo>′</mo></msup><mi>f</mi></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for every contour <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> in <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.</p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">33.5 </span>Some special cases</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">The most common special case is</p>
+</div>
+<div id="cor:nonvanishing" class="ltx_theorem ltx_theorem_corollary">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Corollary 33.5.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Nonvanishing functions from simply connected domains)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f\colon\Omega\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> be continuous, where <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> is simply connected.
+If <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="f(z)\neq 0" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow></math> for every <math id="S5.Thmtheorem1.p1.m4" class="ltx_Math" alttext="z\in\Omega" display="inline"><mrow><mi>z</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi></mrow></math>,
+then <math id="S5.Thmtheorem1.p1.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> has both a logarithm and holomorphic <math id="S5.Thmtheorem1.p1.m6" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th root.</p>
+</div>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">Finally, let’s return to the question of <math id="S5.p2.m1" class="ltx_Math" alttext="f=\mathrm{id}" display="inline"><mrow><mi>f</mi><mo>=</mo><mi>id</mi></mrow></math> from the very beginning.
+What’s the best domain <math id="S5.p2.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> such that</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\sqrt{-}\colon U\to\mathbb{C}" display="block"><mrow><msqrt><mo>−</mo></msqrt><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is well-defined? Clearly <math id="S5.p2.m3" class="ltx_Math" alttext="U=\mathbb{C}" display="inline"><mrow><mi>U</mi><mo>=</mo><mi>ℂ</mi></mrow></math> cannot be made to work,
+but we can do almost as well.
+For note that the only zero of <math id="S5.p2.m4" class="ltx_Math" alttext="f=\mathrm{id}" display="inline"><mrow><mi>f</mi><mo>=</mo><mi>id</mi></mrow></math> is at the origin.
+Thus if we want to make a logarithm exist,
+all we have to do is make an incision in the complex plane
+that renders it impossible to make a loop around the origin.
+The usual choice is to delete negative half of the real axis, our very first ray of death;
+we call this a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> branch cut</span>, with <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> branch point</span> at <math id="S5.p2.m5" class="ltx_Math" alttext="0\in\mathbb{C}" display="inline"><mrow><mn>0</mn><mo>∈</mo><mi>ℂ</mi></mrow></math>
+(the point which we cannot circle around).
+This gives</p>
+</div>
+<div id="cor:principal" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 33.5.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Branch cut functions)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">There exist holomorphic functions</p>
+<div class="table-container"><table id="A5.S3.EGx94" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex10"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex10.m1" class="ltx_Math" alttext="\displaystyle\log" display="inline"><mi>log</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex10.m2" class="ltx_Math" alttext="\displaystyle:\mathbb{C}\setminus(-\infty,0]\to\mathbb{C}" display="inline"><mrow><mi></mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex11"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex11.m1" class="ltx_Math" alttext="\displaystyle\sqrt[n]{-}" display="inline"><mroot><mo>−</mo><mi>n</mi></mroot></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex11.m2" class="ltx_Math" alttext="\displaystyle:\mathbb{C}\setminus(-\infty,0]\to\mathbb{C}" display="inline"><mrow><mi></mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">satisfying the obvious properties.</p>
+</div>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">There are many possible choices of such functions (<math id="S5.p3.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> choices for the <math id="S5.p3.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th root
+and infinitely many for <math id="S5.p3.m3" class="ltx_Math" alttext="\log" display="inline"><mi>log</mi></math>);
+a choice of such a function is called a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> branch</span>.
+So this is what is meant by a “branch” of a logarithm.</p>
+</div>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> principal branch</span> is the “canonical” branch, analogous
+to the way we arbitrarily pick the positive branch
+to define <math id="S5.p4.m1" class="ltx_Math" alttext="\sqrt{-}\colon\mathbb{R}_{\geq 0}\to\mathbb{R}_{\geq 0}" display="inline"><mrow><msqrt><mo>−</mo></msqrt><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>ℝ</mi><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></msub><mo stretchy="false">→</mo><msub><mi>ℝ</mi><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></msub></mrow></mrow></math>.
+For <math id="S5.p4.m2" class="ltx_Math" alttext="\log" display="inline"><mi>log</mi></math>, we take the <math id="S5.p4.m3" class="ltx_Math" alttext="w" display="inline"><mi>w</mi></math> such that <math id="S5.p4.m4" class="ltx_Math" alttext="e^{w}=z" display="inline"><mrow><msup><mi>e</mi><mi>w</mi></msup><mo>=</mo><mi>z</mi></mrow></math>
+and the imaginary part of <math id="S5.p4.m5" class="ltx_Math" alttext="w" display="inline"><mi>w</mi></math> lies in <math id="S5.p4.m6" class="ltx_Math" alttext="(-\pi,\pi]" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mi>π</mi></mrow><mo>,</mo><mi>π</mi><mo stretchy="false">]</mo></mrow></math> (since we can shift by integer multiples of <math id="S5.p4.m7" class="ltx_Math" alttext="2\pi i" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></math>).
+Often, authors will write <math id="S5.p4.m8" class="ltx_Math" alttext="\operatorname{Log}z" display="inline"><mrow><mi>Log</mi><mo lspace="0.167em">⁡</mo><mi>z</mi></mrow></math> to emphasize this choice.</p>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">33.6 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 33A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Show that a holomorphic function <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>
+has a holomorphic logarithm if and only if it
+has a holomorphic <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th root for every integer <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 33B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Show that the function <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>
+by <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="z\mapsto z(z-1)" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mrow><mi>z</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> has a holomorphic square root,
+where <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> is the entire complex plane minus the closed interval <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math>.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../cmplxana/meromorphic-fn.html">Previous chapter: Meromorphic functions</a><br />
+<a href="../cmplxana/abel-ruffini-theorem.html">Next chapter: Bonus: Topological Abel-Ruffini Theorem</a>
+</nav>
+
+		</main>
+	</body>
+</html>

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Bonus: Topological Abel-Ruffini Theorem</title>
+		<meta property="og:title" content="Bonus: Topological Abel-Ruffini Theorem" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../cmplxana/complex-log.html">Previous chapter: Holomorphic square roots and logarithms</a><br />
+<a href="../measure/measure-space.html">Next chapter: Measure spaces</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 34 </span>Bonus: Topological Abel-Ruffini Theorem</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">We’ve already shown the Fundamental Theorem of Algebra.
+Now, with our earlier intuition on holomorphic <math id="p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th roots,
+we can now show that there is no general formula for
+the roots of a quintic polynomial.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">34.1 </span>The Game Plan</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Firstly, what do we even mean by “formula” here?</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 34.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> quintic formula</span> would be a formula taking in the coefficients
+<math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="(a_{0},\dots,a_{5})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>a</mi><mn>5</mn></msub><mo stretchy="false">)</mo></mrow></math> of a degree <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math> polynomial <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math>,
+using the operations <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="+" display="inline"><mo>+</mo></math>, <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="-" display="inline"><mo>−</mo></math>, <math id="S1.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math>, <math id="S1.Thmtheorem1.p1.m7" class="ltx_Math" alttext="\div" display="inline"><mo>÷</mo></math>, <math id="S1.Thmtheorem1.p1.m8" class="ltx_Math" alttext="\sqrt[n]{}" display="inline"><mroot><mi></mi><mi>n</mi></mroot></math>
+finitely many times, that maps to the five roots <math id="S1.Thmtheorem1.p1.m9" class="ltx_Math" alttext="(z_{1},\cdots,z_{5})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>z</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">⋯</mi><mo>,</mo><msub><mi>z</mi><mn>5</mn></msub><mo stretchy="false">)</mo></mrow></math> of <math id="S1.Thmtheorem1.p1.m10" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math>.</p>
+</div>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Now, any proposed quintic formula <math id="S1.p2.m1" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> receives the same coefficients when the roots are the same,
+and thus gives the same output. This is fine at first glance, but swapping two roots continuously
+might pose more issues. <math id="S1.p2.m2" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> must create and preserve some order of the roots under these permutations.</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 34.1.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself any <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> indeed must track which root is which when moving roots along
+smooth paths.</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 34.1.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">This isn’t true if we bring even more complicated functions
+such as <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Bring Radicals</span> to the table.
+But this wasn’t really considered “fair game.”</p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">34.2 </span>Step 1: The Simplest Case</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">Let’s first ignore the <math id="S2.p1.m1" class="ltx_Math" alttext="\sqrt[n]{}" display="inline"><mroot><mi></mi><mi>n</mi></mroot></math> operator for motivation.
+Suppose I told you that some rational function <math id="S2.p1.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> always finds
+a root of a quintic polynomial <math id="S2.p1.m3" class="ltx_Math" alttext="P(z)=(z-z_{1})(z-z_{2})(z-z_{3})(z-z_{4})(z-z_{5})" display="inline"><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><msub><mi>z</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><msub><mi>z</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><msub><mi>z</mi><mn>3</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><msub><mi>z</mi><mn>4</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><msub><mi>z</mi><mn>5</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+For simplicity, let all the roots be distinct.</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Suppose that initially <math id="S2.p2.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> outputs <math id="S2.p2.m2" class="ltx_Math" alttext="z_{1}" display="inline"><msub><mi>z</mi><mn>1</mn></msub></math>. Consider what happens we smoothly swap the roots <math id="S2.p2.m3" class="ltx_Math" alttext="z_{1}" display="inline"><msub><mi>z</mi><mn>1</mn></msub></math> and <math id="S2.p2.m4" class="ltx_Math" alttext="z_{2}" display="inline"><msub><mi>z</mi><mn>2</mn></msub></math>
+along two non-intersecting paths that doesn’t go through other roots.</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S2.p3" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='198.405323pt' height='198.405324pt' viewBox='155.612111 153.060929 198.405323 198.405324'>
+<defs>
+<path id='asymptote-34-1-g1-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-34-1-g1-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-34-1-g1-51' d='M2.016438-2.662017C2.646077-2.662017 3.044583-2.199751 3.044583-1.362889C3.044583-.366625 2.478705-.071731 2.056289-.071731C1.617933-.071731 1.020174-.231133 .74122-.653549C1.028144-.653549 1.227397-.836862 1.227397-1.099875C1.227397-1.354919 1.044085-1.538232 .789041-1.538232C.573848-1.538232 .350685-1.40274 .350685-1.083935C.350685-.326775 1.163636 .167372 2.072229 .167372C3.132254 .167372 3.873474-.565878 3.873474-1.362889C3.873474-2.024408 3.347447-2.630137 2.534496-2.805479C3.164134-3.028643 3.634371-3.57061 3.634371-4.208219S2.917061-5.300125 2.088169-5.300125C1.235367-5.300125 .589788-4.837858 .589788-4.23213C.589788-3.937235 .789041-3.809714 .996264-3.809714C1.243337-3.809714 1.40274-3.985056 1.40274-4.216189C1.40274-4.511083 1.147696-4.622665 .972354-4.630635C1.307098-5.068991 1.920797-5.092902 2.064259-5.092902C2.271482-5.092902 2.87721-5.029141 2.87721-4.208219C2.87721-3.650311 2.646077-3.315567 2.534496-3.188045C2.295392-2.940971 2.11208-2.925031 1.625903-2.893151C1.474471-2.885181 1.41071-2.87721 1.41071-2.773599C1.41071-2.662017 1.482441-2.662017 1.617933-2.662017H2.016438Z'/>
+<path id='asymptote-34-1-g1-52' d='M3.140224-5.156663C3.140224-5.316065 3.140224-5.379826 2.972852-5.379826C2.86924-5.379826 2.86127-5.371856 2.781569-5.260274L.239103-1.570112V-1.307098H2.486675V-.645579C2.486675-.350685 2.462765-.263014 1.849066-.263014H1.665753V0C2.343213-.02391 2.359153-.02391 2.81345-.02391S3.283686-.02391 3.961146 0V-.263014H3.777833C3.164134-.263014 3.140224-.350685 3.140224-.645579V-1.307098H3.985056V-1.570112H3.140224V-5.156663ZM2.542466-4.511083V-1.570112H.518057L2.542466-4.511083Z'/>
+<path id='asymptote-34-1-g1-53' d='M1.115816-4.479203C1.219427-4.447323 1.538232-4.367621 1.872976-4.367621C2.86924-4.367621 3.474969-5.068991 3.474969-5.188543C3.474969-5.276214 3.419178-5.300125 3.379328-5.300125C3.363387-5.300125 3.347447-5.300125 3.275716-5.260274C2.964882-5.140722 2.598257-5.045081 2.16787-5.045081C1.697634-5.045081 1.307098-5.164633 1.060025-5.260274C.980324-5.300125 .964384-5.300125 .956413-5.300125C.852802-5.300125 .852802-5.212453 .852802-5.068991V-2.733748C.852802-2.590286 .852802-2.494645 .980324-2.494645C1.044085-2.494645 1.067995-2.526526 1.107846-2.590286C1.203487-2.709838 1.506351-3.116314 2.183811-3.116314C2.630137-3.116314 2.84533-2.749689 2.917061-2.598257C3.052553-2.311333 3.068493-1.944707 3.068493-1.633873C3.068493-1.338979 3.060523-.908593 2.83736-.557908C2.685928-.318804 2.367123-.071731 1.944707-.071731C1.42665-.071731 .916563-.398506 .73325-.916563C.757161-.908593 .804981-.908593 .812951-.908593C1.036115-.908593 1.211457-1.052055 1.211457-1.299128C1.211457-1.594022 .980324-1.697634 .820922-1.697634C.67746-1.697634 .422416-1.617933 .422416-1.275218C.422416-.557908 1.044085 .167372 1.960648 .167372C2.956912 .167372 3.801743-.605729 3.801743-1.594022C3.801743-2.518555 3.132254-3.339477 2.191781-3.339477C1.793275-3.339477 1.41868-3.211955 1.115816-2.940971V-4.479203Z'/>
+<path id='asymptote-34-1-g0-122' d='M1.450909-.905454C2.039999-1.538181 2.356363-1.810909 2.74909-2.14909C2.74909-2.159999 3.425454-2.738181 3.818181-3.130908C4.854544-4.145453 5.094544-4.66909 5.094544-4.712726C5.094544-4.821817 4.996362-4.821817 4.974544-4.821817C4.89818-4.821817 4.865453-4.799999 4.810908-4.701817C4.483635-4.178181 4.254544-4.003635 3.992726-4.003635S3.599999-4.167272 3.436363-4.352726C3.22909-4.603635 3.043636-4.821817 2.683636-4.821817C1.865454-4.821817 1.363636-3.807272 1.363636-3.578181C1.363636-3.523635 1.396363-3.458181 1.494545-3.458181S1.614545-3.512726 1.636363-3.578181C1.843636-4.079999 2.476363-4.090908 2.563636-4.090908C2.792726-4.090908 2.999999-4.014544 3.250908-3.927272C3.687272-3.763635 3.807272-3.763635 4.090908-3.763635C3.698181-3.294545 2.781817-2.50909 2.574545-2.334545L1.592727-1.418181C.850909-.687273 .469091-.065455 .469091 .010909C.469091 .12 .578182 .12 .6 .12C.687273 .12 .709091 .098182 .774545-.021818C1.025454-.403636 1.352727-.698182 1.701818-.698182C1.952727-.698182 2.061818-.6 2.334545-.283636C2.519999-.054545 2.716363 .12 3.032726 .12C4.112726 .12 4.745453-1.265454 4.745453-1.56C4.745453-1.614545 4.701817-1.66909 4.614544-1.66909C4.516362-1.66909 4.494544-1.603636 4.461817-1.527272C4.210908-.818182 3.512726-.610909 3.152726-.610909C2.934545-.610909 2.738181-.676363 2.50909-.752727C2.138181-.894545 1.974545-.938182 1.745454-.938182C1.723636-.938182 1.54909-.938182 1.450909-.905454Z'/>
+<path id='asymptote-34-1-g2-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-34-1-g2-73' d='M2.454545-6.599998C2.454545-6.992725 2.487272-7.112725 3.34909-7.112725H3.632726V-7.450907C3.250908-7.41818 2.38909-7.41818 1.974545-7.41818C1.54909-7.41818 .687273-7.41818 .305454-7.450907V-7.112725H.589091C1.450909-7.112725 1.483636-6.992725 1.483636-6.599998V-.850909C1.483636-.458182 1.450909-.338182 .589091-.338182H.305454V0C.687273-.032727 1.54909-.032727 1.963636-.032727C2.38909-.032727 3.250908-.032727 3.632726 0V-.338182H3.34909C2.487272-.338182 2.454545-.458182 2.454545-.850909V-6.599998Z'/>
+<path id='asymptote-34-1-g2-82' d='M2.443636-3.850908V-6.676362C2.443636-6.927271 2.443636-7.05818 2.683636-7.090907C2.792726-7.112725 3.10909-7.112725 3.327272-7.112725C4.30909-7.112725 5.530908-7.069089 5.530908-5.487271C5.530908-4.734544 5.269089-3.850908 3.654544-3.850908H2.443636ZM4.745453-3.70909C5.803635-3.970908 6.654544-4.636362 6.654544-5.487271C6.654544-6.534544 5.410908-7.450907 3.807272-7.450907H.381818V-7.112725H.643636C1.483636-7.112725 1.505454-6.992725 1.505454-6.599998V-.850909C1.505454-.458182 1.483636-.338182 .643636-.338182H.381818V0C.774545-.032727 1.54909-.032727 1.974545-.032727S3.174545-.032727 3.567272 0V-.338182H3.305454C2.465454-.338182 2.443636-.458182 2.443636-.850909V-3.610908H3.698181C3.872726-3.610908 4.330908-3.610908 4.712726-3.239999C5.127271-2.847272 5.127271-2.50909 5.127271-1.778181C5.127271-1.069091 5.127271-.632727 5.574544-.218182C6.021817 .174545 6.621816 .24 6.949089 .24C7.799998 .24 7.985452-.654545 7.985452-.96C7.985452-1.025454 7.985452-1.145454 7.843634-1.145454C7.723634-1.145454 7.723634-1.047272 7.712725-.970909C7.647271-.196364 7.265453 0 6.992725 0C6.45818 0 6.370907-.556363 6.21818-1.570909L6.076362-2.443636C5.879998-3.141817 5.345453-3.501817 4.745453-3.70909Z'/>
+<path id='asymptote-34-1-g2-101' d='M1.221818-2.74909C1.287272-4.374544 2.203636-4.647271 2.574545-4.647271C3.698181-4.647271 3.807272-3.174545 3.807272-2.74909H1.221818ZM1.210909-2.519999H4.254544C4.494544-2.519999 4.527271-2.519999 4.527271-2.74909C4.527271-3.82909 3.938181-4.887271 2.574545-4.887271C1.309091-4.887271 .305454-3.763635 .305454-2.399999C.305454-.938182 1.450909 .12 2.705454 .12C4.036363 .12 4.527271-1.090909 4.527271-1.298181C4.527271-1.407272 4.439999-1.429091 4.385453-1.429091C4.287272-1.429091 4.265453-1.363636 4.243635-1.276363C3.861817-.152727 2.879999-.152727 2.770908-.152727C2.225454-.152727 1.78909-.48 1.538181-.883636C1.210909-1.407272 1.210909-2.127272 1.210909-2.519999Z'/>
+<path id='asymptote-34-1-g2-109' d='M1.2-3.752726V-.829091C1.2-.338182 1.08-.338182 .349091-.338182V0C.730909-.010909 1.287272-.032727 1.581818-.032727C1.865454-.032727 2.432727-.010909 2.803636 0V-.338182C2.072727-.338182 1.952727-.338182 1.952727-.829091V-2.836363C1.952727-3.970908 2.727272-4.581817 3.425454-4.581817C4.112726-4.581817 4.232726-3.992726 4.232726-3.370908V-.829091C4.232726-.338182 4.112726-.338182 3.381817-.338182V0C3.763635-.010909 4.319999-.032727 4.614544-.032727C4.89818-.032727 5.465453-.010909 5.836362 0V-.338182C5.105453-.338182 4.985453-.338182 4.985453-.829091V-2.836363C4.985453-3.970908 5.759998-4.581817 6.45818-4.581817C7.145453-4.581817 7.265453-3.992726 7.265453-3.370908V-.829091C7.265453-.338182 7.145453-.338182 6.414544-.338182V0C6.796362-.010909 7.352725-.032727 7.647271-.032727C7.930907-.032727 8.498179-.010909 8.869088 0V-.338182C8.301816-.338182 8.029089-.338182 8.01818-.665454V-2.74909C8.01818-3.687272 8.01818-4.025453 7.679998-4.418181C7.527271-4.603635 7.167271-4.821817 6.534544-4.821817C5.61818-4.821817 5.13818-4.167272 4.952726-3.752726C4.799999-4.701817 3.992726-4.821817 3.501817-4.821817C2.705454-4.821817 2.192727-4.352726 1.887272-3.676363V-4.821817L.349091-4.701817V-4.363635C1.112727-4.363635 1.2-4.287272 1.2-3.752726Z'/>
+</defs>
+<g id='asymptote-34-1-page1'>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 7.77906V191.37' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 .250937L97.5575 7.77906H101.592L99.5747 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 .250937L97.5575 7.77906H101.592L99.5747 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 198.898L101.592 191.37H97.5575L99.5747 198.898Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 198.898L101.592 191.37H97.5575L99.5747 198.898Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 187.862H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 165.79H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 143.719H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 121.647H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 99.5747H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 77.5027H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 55.4308H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 33.3588H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M96.5634 11.2869H102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='235.219778' y='162.101333' href='#asymptote-34-1-g2-73'/>
+<use x='239.159177' y='162.101333' href='#asymptote-34-1-g2-109'/>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M191.37 99.5747H7.77906' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M198.898 99.5747L191.37 97.5575V101.592L198.898 99.5747Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M198.898 99.5747L191.37 97.5575V101.592L198.898 99.5747Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M.250937 99.5747L7.77906 101.592V97.5575L.250937 99.5747Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M.250937 99.5747L7.77906 101.592V97.5575L.250937 99.5747Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M11.2869 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M33.3588 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M55.4308 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M77.5027 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M99.5747 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M121.647 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M143.719 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M165.79 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M187.862 96.5634V102.586' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='339.496556' y='266.226595' href='#asymptote-34-1-g2-82'/>
+<use x='347.526873' y='266.226595' href='#asymptote-34-1-g2-101'/>
+<use x='257.165117' y='261.580399' href='#asymptote-34-1-g2-48'/>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='99.5747' cy='99.5747' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='129.581' cy='85.5827' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='287.720015' y='236.91502' href='#asymptote-34-1-g0-122'/>
+<use x='292.793284' y='238.55137' href='#asymptote-34-1-g1-49'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='78.6063' cy='63.2564' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='224.535874' y='211.510744' href='#asymptote-34-1-g0-122'/>
+<use x='229.609143' y='213.147094' href='#asymptote-34-1-g1-50'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='74.5697' cy='87.9147' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='217.093887' y='239.238309' href='#asymptote-34-1-g0-122'/>
+<use x='222.167156' y='240.874659' href='#asymptote-34-1-g1-51'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='83.3024' cy='110.969' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='226.083203' y='269.206008' href='#asymptote-34-1-g0-122'/>
+<use x='231.156472' y='270.842358' href='#asymptote-34-1-g1-52'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<circle cx='132.119' cy='122.363' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='289.959846' y='280.557392' href='#asymptote-34-1-g0-122'/>
+<use x='295.033115' y='282.193742' href='#asymptote-34-1-g1-53'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M85.9851 61.812C94.5565 60.8905 103.271 62.522 110.998 66.5901C119.029 70.818 125.529 77.4615 129.581 85.5827' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M78.6063 63.2564C81.1611 63.197 83.6988 63.362 86.1925 63.7415L85.7732 59.8413C83.3019 60.7536 80.9022 61.8936 78.6063 63.2564Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M78.6063 63.2564C81.1611 63.197 83.6988 63.362 86.1925 63.7415L85.7732 59.8413C83.3019 60.7536 80.9022 61.8936 78.6063 63.2564Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M122.202 87.0271C113.63 87.9486 104.916 86.3171 97.1885 82.249C89.1578 78.0211 82.6578 71.3776 78.6063 63.2564' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M129.581 85.5827C127.026 85.6421 124.488 85.4771 121.994 85.0976L122.414 88.9978C124.885 88.0855 127.285 86.9455 129.581 85.5827Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(155.612 153.061)scale(.996264)'>
+<path d='M129.581 85.5827C127.026 85.6421 124.488 85.4771 121.994 85.0976L122.414 88.9978C124.885 88.0855 127.285 86.9455 129.581 85.5827Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Since <math id="S2.p4.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is continuous, it must be tracking the same root. However, once we finish
+swapping <math id="S2.p4.m2" class="ltx_Math" alttext="z_{1}" display="inline"><msub><mi>z</mi><mn>1</mn></msub></math> and <math id="S2.p4.m3" class="ltx_Math" alttext="z_{2}" display="inline"><msub><mi>z</mi><mn>2</mn></msub></math>, the coefficients of <math id="S2.p4.m4" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> are the same as they were initially.
+But this means that <math id="S2.p4.m5" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> has been tricked into changing the root it outputs, contradiction!</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">The bigger picture here is that we were able to find an operation that fixes <math id="S2.p5.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> while changing the order
+of the roots in <math id="S2.p5.m2" class="ltx_Math" alttext="S_{5}" display="inline"><msub><mi>S</mi><mn>5</mn></msub></math>.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">34.3 </span>Step 2: Nested Roots</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Once we add <math id="S3.p1.m1" class="ltx_Math" alttext="\sqrt[n]{}" display="inline"><mroot><mi></mi><mi>n</mi></mroot></math> back to the picture, this idea no longer works right out of the box.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 34.3.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Quadratic Formula)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">If you’ve done any competition math, you know that for a polynomial
+<math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="P(z)=az^{2}+bz+c=(z-z_{1})(z-z_{2})" display="inline"><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>z</mi></mrow><mo>+</mo><mi>c</mi></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><msub><mi>z</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><msub><mi>z</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, it follows that the two branches of</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\frac{-b\pm\sqrt{b^{2}-4ac}}{2a}" display="block"><mfrac linethickness="0.6px"><mrow><mrow><mo>−</mo><mi>b</mi></mrow><mo>±</mo><msqrt><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>4</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>c</mi></mrow></mrow></msqrt></mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow></mfrac></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">give <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="z_{1}" display="inline"><msub><mi>z</mi><mn>1</mn></msub></math> and <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="z_{2}" display="inline"><msub><mi>z</mi><mn>2</mn></msub></math>.</p>
+</div>
+<div id="S3.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">So why can’t swapping <math id="S3.Thmtheorem1.p2.m1" class="ltx_Math" alttext="z_{1}" display="inline"><msub><mi>z</mi><mn>1</mn></msub></math> and <math id="S3.Thmtheorem1.p2.m2" class="ltx_Math" alttext="z_{2}" display="inline"><msub><mi>z</mi><mn>2</mn></msub></math> yield a contradiction here?
+It’s because while all the coefficients end up in the starting position,
+the liftings of how <math id="S3.Thmtheorem1.p2.m3" class="ltx_Math" alttext="\sqrt{b^{2}-4ac}" display="inline"><msqrt><mrow><msup><mi>b</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>4</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>c</mi></mrow></mrow></msqrt></math> travels may not.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 34.3.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Consider the polynomial <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="z^{2}-1" display="inline"><mrow><msup><mi>z</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></math>. Then smoothly swap the roots to get the intermediary
+polynomials of <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="(z-e^{it})(z+e^{it})" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><msup><mi>e</mi><mrow><mi>i</mi><mo>⁢</mo><mi>t</mi></mrow></msup></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>+</mo><msup><mi>e</mi><mrow><mi>i</mi><mo>⁢</mo><mi>t</mi></mrow></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math>. See that the two roots given by the quadratic formula
+also swap position.</span></p>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Let’s now consider the next simplest case of the <math id="S3.p2.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th root of a rational function
+<math id="S3.p2.m2" class="ltx_Math" alttext="\sqrt[n]{R}" display="inline"><mroot><mi>R</mi><mi>n</mi></mroot></math>, and try to fix it with a nontrivial permutation of the roots.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Swapping the roots <math id="S3.p3.m1" class="ltx_Math" alttext="z_{1}" display="inline"><msub><mi>z</mi><mn>1</mn></msub></math> and <math id="S3.p3.m2" class="ltx_Math" alttext="z_{2}" display="inline"><msub><mi>z</mi><mn>2</mn></msub></math>, we keep <math id="S3.p3.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> the same, but <math id="S3.p3.m4" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>’s path <math id="S3.p3.m5" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> around
+the origin may have accumulated some change in phase <math id="S3.p3.m6" class="ltx_Math" alttext="2\pi a" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>a</mi></mrow></math>. If we were to unswap
+<math id="S3.p3.m7" class="ltx_Math" alttext="z_{1}" display="inline"><msub><mi>z</mi><mn>1</mn></msub></math> and <math id="S3.p3.m8" class="ltx_Math" alttext="z_{2}" display="inline"><msub><mi>z</mi><mn>2</mn></msub></math> in the same manner, we’d undo the change in phase, but we’d also be back
+to doing nothing.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">However, while changes in phase are <em class="ltx_emph ltx_font_italic">abelian</em>, permutations are not. Let’s consider
+another operation of swapping the roots <math id="S3.p4.m1" class="ltx_Math" alttext="z_{2}" display="inline"><msub><mi>z</mi><mn>2</mn></msub></math> and <math id="S3.p4.m2" class="ltx_Math" alttext="z_{3}" display="inline"><msub><mi>z</mi><mn>3</mn></msub></math>. Taking a commutator of the two
+operations, we keep all the phases the same, but end up with a permutation
+<math id="S3.p4.m3" class="ltx_Math" alttext="(12)(23)(12)^{-1}(23)^{-1}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>23</mn><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mn>12</mn><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mn>23</mn><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math>.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">If we mark the second operation’s path with <math id="S3.p5.m1" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>, this corresponds to
+<math id="S3.p5.m2" class="ltx_Math" alttext="\alpha\beta\alpha^{-1}\beta^{-1}" display="inline"><mrow><mi>α</mi><mo>⁢</mo><mi>β</mi><mo>⁢</mo><msup><mi>α</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msup><mi>β</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math>.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='198.440273pt' height='198.440273pt' viewBox='155.629586 153.078405 198.440273 198.440273'>
+<defs>
+<path id='asymptote-34-2-g0-11' d='M5.203635-2.574545C5.203635-4.287272 4.18909-4.821817 3.381817-4.821817C1.887272-4.821817 .447273-3.261817 .447273-1.723636C.447273-.709091 1.101818 .12 2.214545 .12C2.901817 .12 3.687272-.130909 4.516362-.796363C4.658181-.218182 5.01818 .12 5.509089 .12C6.087271 .12 6.425453-.48 6.425453-.654545C6.425453-.730909 6.359998-.763636 6.294544-.763636C6.21818-.763636 6.185453-.730909 6.152726-.654545C5.956362-.12 5.563635-.12 5.541817-.12C5.203635-.12 5.203635-.970909 5.203635-1.232727C5.203635-1.461818 5.203635-1.483636 5.312726-1.614545C6.33818-2.901817 6.567271-4.167272 6.567271-4.178181C6.567271-4.199999 6.556362-4.287272 6.436362-4.287272C6.327271-4.287272 6.327271-4.254544 6.272726-4.058181C6.076362-3.370908 5.716362-2.541817 5.203635-1.898181V-2.574545ZM4.472726-1.08C3.512726-.24 2.672727-.12 2.236363-.12C1.581818-.12 1.254545-.610909 1.254545-1.309091C1.254545-1.843636 1.538181-3.021817 1.887272-3.578181C2.399999-4.374544 2.98909-4.581817 3.370908-4.581817C4.450908-4.581817 4.450908-3.152726 4.450908-2.301818C4.450908-1.898181 4.450908-1.265454 4.472726-1.08Z'/>
+<path id='asymptote-34-2-g0-12' d='M6.272726-6.207271C6.272726-7.025453 5.672726-7.701816 4.78909-7.701816C4.156362-7.701816 3.850908-7.527271 3.46909-7.243634C2.86909-6.807271 2.26909-5.749089 2.061818-4.919999L.327273 2.007272C.316364 2.050909 .370909 2.116363 .458182 2.116363S.578182 2.094545 .589091 2.061818L1.352727-.949091C1.56-.294545 2.039999 .109091 2.836363 .109091S4.450908-.272727 4.941817-.752727C5.465453-1.254545 5.814544-1.952727 5.814544-2.759999C5.814544-3.545454 5.410908-4.112726 5.01818-4.385453C5.650908-4.745453 6.272726-5.421817 6.272726-6.207271ZM4.30909-4.396362C4.167272-4.341817 4.047272-4.319999 3.785453-4.319999C3.632726-4.319999 3.414545-4.30909 3.305454-4.363635C3.327272-4.472726 3.719999-4.450908 3.839999-4.450908C4.06909-4.450908 4.167272-4.450908 4.30909-4.396362ZM5.661817-6.45818C5.661817-5.694544 5.247271-4.90909 4.679999-4.570908C4.385453-4.679999 4.167272-4.701817 3.839999-4.701817C3.610908-4.701817 2.999999-4.712726 2.999999-4.352726C2.98909-4.047272 3.556363-4.079999 3.752726-4.079999C4.156362-4.079999 4.319999-4.090908 4.647271-4.221817C5.061817-3.82909 5.116362-3.490908 5.127271-2.98909C5.149089-2.356363 4.887271-1.538181 4.581817-1.112727C4.156362-.523636 3.425454-.130909 2.803636-.130909C1.974545-.130909 1.56-.763636 1.56-1.538181C1.56-1.647272 1.56-1.810909 1.614545-2.018181L2.312727-4.77818C2.552727-5.716362 3.338181-7.450907 4.647271-7.450907C5.279999-7.450907 5.661817-7.112725 5.661817-6.45818Z'/>
+<path id='asymptote-34-2-g0-82' d='M4.090908-6.69818C4.156362-6.959998 4.18909-7.069089 4.396362-7.101816C4.494544-7.112725 4.843635-7.112725 5.061817-7.112725C5.836362-7.112725 7.047271-7.112725 7.047271-6.032726C7.047271-5.661817 6.872725-4.90909 6.447271-4.483635C6.163635-4.199999 5.585453-3.850908 4.603635-3.850908H3.381817L4.090908-6.69818ZM5.661817-3.70909C6.763634-3.94909 8.061816-4.712726 8.061816-5.814544C8.061816-6.752725 7.079998-7.450907 5.650908-7.450907H2.541817C2.323636-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.323636-7.112725 2.530908-7.112725C2.552727-7.112725 2.759999-7.112725 2.945454-7.090907C3.141817-7.069089 3.239999-7.05818 3.239999-6.916362C3.239999-6.872725 3.22909-6.839998 3.196363-6.709089L1.734545-.850909C1.625454-.425454 1.603636-.338182 .741818-.338182C.545454-.338182 .447273-.338182 .447273-.12C.447273 0 .578182 0 .6 0C.905454 0 1.66909-.032727 1.974545-.032727S3.054545 0 3.359999 0C3.447272 0 3.578181 0 3.578181-.218182C3.578181-.338182 3.479999-.338182 3.272726-.338182C2.86909-.338182 2.563636-.338182 2.563636-.534545C2.563636-.6 2.585454-.654545 2.596363-.72L3.316363-3.610908H4.614544C5.607271-3.610908 5.803635-2.999999 5.803635-2.618181C5.803635-2.454545 5.716362-2.116363 5.650908-1.865454C5.574544-1.56 5.476362-1.156363 5.476362-.938182C5.476362 .24 6.785453 .24 6.927271 .24C7.854543 .24 8.236361-.861818 8.236361-1.014545C8.236361-1.145454 8.116361-1.145454 8.105452-1.145454C8.00727-1.145454 7.985452-1.069091 7.963634-.992727C7.690907-.185454 7.221816 0 6.970907 0C6.610907 0 6.534544-.24 6.534544-.665454C6.534544-1.003636 6.599998-1.56 6.643635-1.90909C6.665453-2.061818 6.687271-2.26909 6.687271-2.421818C6.687271-3.261817 5.956362-3.599999 5.661817-3.70909Z'/>
+<path id='asymptote-34-2-g1-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-34-2-g1-73' d='M2.454545-6.599998C2.454545-6.992725 2.487272-7.112725 3.34909-7.112725H3.632726V-7.450907C3.250908-7.41818 2.38909-7.41818 1.974545-7.41818C1.54909-7.41818 .687273-7.41818 .305454-7.450907V-7.112725H.589091C1.450909-7.112725 1.483636-6.992725 1.483636-6.599998V-.850909C1.483636-.458182 1.450909-.338182 .589091-.338182H.305454V0C.687273-.032727 1.54909-.032727 1.963636-.032727C2.38909-.032727 3.250908-.032727 3.632726 0V-.338182H3.34909C2.487272-.338182 2.454545-.458182 2.454545-.850909V-6.599998Z'/>
+<path id='asymptote-34-2-g1-82' d='M2.443636-3.850908V-6.676362C2.443636-6.927271 2.443636-7.05818 2.683636-7.090907C2.792726-7.112725 3.10909-7.112725 3.327272-7.112725C4.30909-7.112725 5.530908-7.069089 5.530908-5.487271C5.530908-4.734544 5.269089-3.850908 3.654544-3.850908H2.443636ZM4.745453-3.70909C5.803635-3.970908 6.654544-4.636362 6.654544-5.487271C6.654544-6.534544 5.410908-7.450907 3.807272-7.450907H.381818V-7.112725H.643636C1.483636-7.112725 1.505454-6.992725 1.505454-6.599998V-.850909C1.505454-.458182 1.483636-.338182 .643636-.338182H.381818V0C.774545-.032727 1.54909-.032727 1.974545-.032727S3.174545-.032727 3.567272 0V-.338182H3.305454C2.465454-.338182 2.443636-.458182 2.443636-.850909V-3.610908H3.698181C3.872726-3.610908 4.330908-3.610908 4.712726-3.239999C5.127271-2.847272 5.127271-2.50909 5.127271-1.778181C5.127271-1.069091 5.127271-.632727 5.574544-.218182C6.021817 .174545 6.621816 .24 6.949089 .24C7.799998 .24 7.985452-.654545 7.985452-.96C7.985452-1.025454 7.985452-1.145454 7.843634-1.145454C7.723634-1.145454 7.723634-1.047272 7.712725-.970909C7.647271-.196364 7.265453 0 6.992725 0C6.45818 0 6.370907-.556363 6.21818-1.570909L6.076362-2.443636C5.879998-3.141817 5.345453-3.501817 4.745453-3.70909Z'/>
+<path id='asymptote-34-2-g1-101' d='M1.221818-2.74909C1.287272-4.374544 2.203636-4.647271 2.574545-4.647271C3.698181-4.647271 3.807272-3.174545 3.807272-2.74909H1.221818ZM1.210909-2.519999H4.254544C4.494544-2.519999 4.527271-2.519999 4.527271-2.74909C4.527271-3.82909 3.938181-4.887271 2.574545-4.887271C1.309091-4.887271 .305454-3.763635 .305454-2.399999C.305454-.938182 1.450909 .12 2.705454 .12C4.036363 .12 4.527271-1.090909 4.527271-1.298181C4.527271-1.407272 4.439999-1.429091 4.385453-1.429091C4.287272-1.429091 4.265453-1.363636 4.243635-1.276363C3.861817-.152727 2.879999-.152727 2.770908-.152727C2.225454-.152727 1.78909-.48 1.538181-.883636C1.210909-1.407272 1.210909-2.127272 1.210909-2.519999Z'/>
+<path id='asymptote-34-2-g1-109' d='M1.2-3.752726V-.829091C1.2-.338182 1.08-.338182 .349091-.338182V0C.730909-.010909 1.287272-.032727 1.581818-.032727C1.865454-.032727 2.432727-.010909 2.803636 0V-.338182C2.072727-.338182 1.952727-.338182 1.952727-.829091V-2.836363C1.952727-3.970908 2.727272-4.581817 3.425454-4.581817C4.112726-4.581817 4.232726-3.992726 4.232726-3.370908V-.829091C4.232726-.338182 4.112726-.338182 3.381817-.338182V0C3.763635-.010909 4.319999-.032727 4.614544-.032727C4.89818-.032727 5.465453-.010909 5.836362 0V-.338182C5.105453-.338182 4.985453-.338182 4.985453-.829091V-2.836363C4.985453-3.970908 5.759998-4.581817 6.45818-4.581817C7.145453-4.581817 7.265453-3.992726 7.265453-3.370908V-.829091C7.265453-.338182 7.145453-.338182 6.414544-.338182V0C6.796362-.010909 7.352725-.032727 7.647271-.032727C7.930907-.032727 8.498179-.010909 8.869088 0V-.338182C8.301816-.338182 8.029089-.338182 8.01818-.665454V-2.74909C8.01818-3.687272 8.01818-4.025453 7.679998-4.418181C7.527271-4.603635 7.167271-4.821817 6.534544-4.821817C5.61818-4.821817 5.13818-4.167272 4.952726-3.752726C4.799999-4.701817 3.992726-4.821817 3.501817-4.821817C2.705454-4.821817 2.192727-4.352726 1.887272-3.676363V-4.821817L.349091-4.701817V-4.363635C1.112727-4.363635 1.2-4.287272 1.2-3.752726Z'/>
+</defs>
+<g id='asymptote-34-2-page1'>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M99.5922 7.77906V191.405' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M99.5922 .250937L97.5751 7.77906H101.609L99.5922 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M99.5922 .250937L97.5751 7.77906H101.609L99.5922 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M99.5922 198.933L101.609 191.405H97.5751L99.5922 198.933Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M99.5922 198.933L101.609 191.405H97.5751L99.5922 198.933Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M96.581 187.896H102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M96.581 165.82H102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M96.581 143.744H102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M96.581 121.668H102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M96.581 99.5922H102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M96.581 77.5164H102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M96.581 55.4405H102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M96.581 33.3647H102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M96.581 11.2889H102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='235.254727' y='162.1188' href='#asymptote-34-2-g1-73'/>
+<use x='239.194126' y='162.1188' href='#asymptote-34-2-g1-109'/>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M191.405 99.5922H7.77906' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M198.933 99.5922L191.405 97.5751V101.609L198.933 99.5922Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M198.933 99.5922L191.405 97.5751V101.609L198.933 99.5922Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M.250937 99.5922L7.77906 101.609V97.5751L.250937 99.5922Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M.250937 99.5922L7.77906 101.609V97.5751L.250937 99.5922Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M11.2889 96.581V102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M33.3647 96.581V102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M55.4405 96.581V102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M77.5164 96.581V102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M99.5922 96.581V102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M121.668 96.581V102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M143.744 96.581V102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M165.82 96.581V102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M187.896 96.581V102.603' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='339.548987' y='266.261544' href='#asymptote-34-2-g1-82'/>
+<use x='347.579304' y='266.261544' href='#asymptote-34-2-g1-101'/>
+<use x='257.200066' y='261.615347' href='#asymptote-34-2-g1-48'/>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<circle cx='99.5922' cy='99.5922' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<circle cx='132.706' cy='99.5922' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<circle cx='132.706' cy='99.5922' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='290.190123' y='262.039584' href='#asymptote-34-2-g0-82'/>
+<use x='218.354024' y='204.933298' href='#asymptote-34-2-g0-11'/>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M138.227 94.5563C142.16 89.0634 142.817 81.5854 139.329 75.3088C135.831 69.0153 128.815 65.5486 121.668 66.4785C91.3762 70.4195 103.563 124.551 73.1012 128.291C43.9954 131.864 27.7179 84.0031 66.4785 55.4405C76.1704 48.2986 87.6144 43.3226 99.5922 44.4026C126.479 46.8269 143.219 74.7278 132.706 99.5922' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M132.706 99.5922C135.47 98.8687 137.917 97.5397 139.942 95.7835L136.6 93.3907C135.766 95.6385 134.469 97.7548 132.706 99.5922Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M132.706 99.5922C135.47 98.8687 137.917 97.5397 139.942 95.7835L136.6 93.3907C135.766 95.6385 134.469 97.7548 132.706 99.5922Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='264.676454' y='240.200825' href='#asymptote-34-2-g0-12'/>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M127.197 104.484C120.387 107.023 111.593 101.849 112.838 92.9695C113.072 91.2967 113.851 89.749 115.045 88.5543C123.06 80.5353 136.402 88.8739 132.706 99.5922' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M132.706 99.5922C130.892 101.547 128.771 102.607 126.625 102.949L127.809 106.125C130.055 104.854 131.88 102.692 132.706 99.5922Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(155.63 153.078)scale(.996264)'>
+<path d='M132.706 99.5922C130.892 101.547 128.771 102.607 126.625 102.949L127.809 106.125C130.055 104.854 131.88 102.692 132.706 99.5922Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 34.3.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that this permutation operation is nontrivial.</span></p>
+</div>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">We now have better tools:
+We have permutations in <math id="S3.p7.m1" class="ltx_Math" alttext="S_{5}" display="inline"><msub><mi>S</mi><mn>5</mn></msub></math> that fix the <math id="S3.p7.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th roots of rational functions,
+and their compositions under <math id="S3.p7.m3" class="ltx_Math" alttext="+" display="inline"><mo>+</mo></math>, <math id="S3.p7.m4" class="ltx_Math" alttext="-" display="inline"><mo>−</mo></math>, <math id="S3.p7.m5" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math>, <math id="S3.p7.m6" class="ltx_Math" alttext="\div" display="inline"><mo>÷</mo></math>.</p>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">How do we handle the nested radicals now?</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 34.3.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Cubic Formula)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The cubic formula contains a nasty term</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\sqrt[3]{\frac{2b^{3}-9abc+27a^{2}d+\sqrt{(2b^{3}-9abc+27a^{d})^{2}-4(b^{3}-3%
+ac)^{3}}}{2}}." display="block"><mrow><mroot><mfrac linethickness="0.6px"><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>b</mi><mn>3</mn></msup></mrow><mo>−</mo><mrow><mn>9</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow><mo>+</mo><mrow><mn>27</mn><mo>⁢</mo><msup><mi>a</mi><mn>2</mn></msup><mo>⁢</mo><mi>d</mi></mrow><mo>+</mo><msqrt><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><msup><mi>b</mi><mn>3</mn></msup></mrow><mo>−</mo><mrow><mn>9</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow><mo>+</mo><mrow><mn>27</mn><mo>⁢</mo><msup><mi>a</mi><mi>d</mi></msup></mrow></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>−</mo><mrow><mn>4</mn><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><msup><mi>b</mi><mn>3</mn></msup><mo>−</mo><mrow><mn>3</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>c</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mn>3</mn></msup></mrow></mrow></msqrt></mrow><mn>2</mn></mfrac><mn>3</mn></mroot><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Here, we’ve taken multiple roots.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 34.3.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Define the degree of a nested radical as the maximum number
+of times radicals can be found in other radicals.</p>
+</div>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">Let’s now consider nested radicals of degree <math id="S3.p9.m1" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>, such as say
+<math id="S3.p9.m2" class="ltx_Math" alttext="\sqrt[3]{\sqrt{ab+c}-\sqrt{d}}" display="inline"><mroot><mrow><msqrt><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo>+</mo><mi>c</mi></mrow></msqrt><mo>−</mo><msqrt><mi>d</mi></msqrt></mrow><mn>3</mn></mroot></math>. We know that we have nontrivial commutators
+<math id="S3.p9.m3" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math> and <math id="S3.p9.m4" class="ltx_Math" alttext="\rho" display="inline"><mi>ρ</mi></math> that fix the interior of the cube root, but once again the phase
+may not be preserved under each operation individually. Once again,
+we can again consider the <em class="ltx_emph ltx_font_italic">commutators</em> of these commutators,
+say <math id="S3.p9.m5" class="ltx_Math" alttext="\sigma\rho\sigma^{-1}\rho^{-1}" display="inline"><mrow><mi>σ</mi><mo>⁢</mo><mi>ρ</mi><mo>⁢</mo><msup><mi>σ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><msup><mi>ρ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math>
+which by the same logic fixes the issues with phase.</p>
+</div>
+<div id="S3.p10" class="ltx_para">
+<p class="ltx_p">There’s no reason, we can’t consider the commutators of commutators of commutators to fix
+radicals of degree <math id="S3.p10.m1" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math> and so on. It thus just remains that we always can keep getting
+nontrivial commutators.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">34.4 </span>Step 3: Normal Groups</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">We’ve reduced this to a group theory problem. Given a chain of commutators</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="S_{5}=G\supseteq G^{(1)}\supseteq G^{(2)}\supseteq\dots" display="block"><mrow><msub><mi>S</mi><mn>5</mn></msub><mo>=</mo><mi>G</mi><mo>⊇</mo><msup><mi>G</mi><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msup><mo>⊇</mo><msup><mi>G</mi><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></msup><mo>⊇</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where each group is the commutator subgroup of the next,
+we want to show that <math id="S4.p1.m1" class="ltx_Math" alttext="G^{(n)}" display="inline"><msup><mi>G</mi><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></msup></math> never becomes trivial.
+This chain is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> derived series</span>.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 34.4.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that for the commutator subgroup <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="[G,G]" display="inline"><mrow><mo stretchy="false">[</mo><mi>G</mi><mo>,</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></math> of a group <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>,
+we have that <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="[G,G]\trianglelefteq G" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>G</mi><mo>,</mo><mi>G</mi><mo stretchy="false">]</mo></mrow><mo>⁢</mo><mi mathvariant="normal">⊴</mi><mo>⁢</mo><mi>G</mi></mrow></math>, and that <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="G/[G,G]" display="inline"><mrow><mi>G</mi><mo>/</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo>,</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math> is Abelian.</span></p>
+</div>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 34.4.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">A group <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> solvable</span> if its derived series is nontrivial.</p>
+</div>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">So all that remains is showing that <math id="S4.p2.m1" class="ltx_Math" alttext="S_{5}" display="inline"><msub><mi>S</mi><mn>5</mn></msub></math> is not solvable.
+This is a calculation that isn’t relevant to the topology ideas in this chapter,
+so we defer it to <a href="#prob:A_5_not_solvable" title="Problem 34A. ‣ 34.6 A few harder problems to think about ‣ Chapter 34 Bonus: Topological Abel-Ruffini Theorem ‣ Part IX Complex Analysis ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">34A</span></a>.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">34.5 </span>Summary</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">While this is indeed a valid proof, it has some pros and cons.
+As a con, we haven’t shown that any polynomial such as <math id="S5.p1.m1" class="ltx_Math" alttext="z^{5}-z-1" display="inline"><mrow><msup><mi>z</mi><mn>5</mn></msup><mo>−</mo><mi>z</mi><mo>−</mo><mn>1</mn></mrow></math>
+has a root that can’t be expressed using nested <math id="S5.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th roots. We’ve only
+that we don’t have a formula for all degree <math id="S5.p1.m3" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math> polynomials.</p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">As a pro, this argument makes it easy to add even more functions such
+as <math id="S5.p2.m1" class="ltx_Math" alttext="\exp" display="inline"><mi>exp</mi></math>, <math id="S5.p2.m2" class="ltx_Math" alttext="\sin" display="inline"><mi>sin</mi></math>, and <math id="S5.p2.m3" class="ltx_Math" alttext="\cos" display="inline"><mi>cos</mi></math> to the mix and show even then that no such formula exists.
+It also allows you to broadly understand what people mean when they compare
+this theorem to a fact that <math id="S5.p2.m4" class="ltx_Math" alttext="A_{5}" display="inline"><msub><mi>A</mi><mn>5</mn></msub></math> is not solvable.</p>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">34.6 </span>A few harder problems to think about</h2>
+
+<div id="prob:A_5_not_solvable" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 34A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem1.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem1.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem1.p2" class="ltx_para">
+<p class="ltx_p">Show that <math id="Thmproblem1.p2.m1" class="ltx_Math" alttext="A_{5}" display="inline"><msub><mi>A</mi><mn>5</mn></msub></math> is not solvable.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../cmplxana/complex-log.html">Previous chapter: Holomorphic square roots and logarithms</a><br />
+<a href="../measure/measure-space.html">Next chapter: Measure spaces</a>
+</nav>
+
+		</main>
+	</body>
+</html>

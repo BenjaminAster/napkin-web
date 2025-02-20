@@ -1,0 +1,729 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 37 Lebesgue integration ‣ Part X Measure Theory ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="ch_caratheodory_measure.html" title="Chapter 36 Constructing the Borel and Lebesgue measure ‣ Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="next" href="ch_swapsum_measure.html" title="Chapter 38 Swapping order with Lebesgue integrals ‣ Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_measure_space.html" title="Chapter 35 Measure spaces ‣ Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_caratheodory_measure.html" title="Chapter 36 Constructing the Borel and Lebesgue measure ‣ Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_swapsum_measure.html" title="Chapter 38 Swapping order with Lebesgue integrals ‣ Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_pontryagin.html" title="Chapter 39 Bonus: A hint of Pontryagin duality ‣ Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_startout/" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_linalg/" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_calc/" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_diffgeo/" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop1/" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st2/" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">X </span>Measure Theory</span></a><a href="ch_caratheodory_measure.html" title="In Part X Measure Theory ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">36 </span>Constructing the Borel and Lebesgue measure</span></a><a href="ch_swapsum_measure.html" title="In Part X Measure Theory ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">38 </span>Swapping order with Lebesgue integrals</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 37 </span>Lebesgue integration</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">On any measure space <math id="p1.m1" class="ltx_Math" alttext="(\Omega,\mathscr{A},\mu)" display="inline"><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mi class="ltx_font_mathscript">𝒜</mi><mo>,</mo><mi>μ</mi><mo stretchy="false">)</mo></mrow></math> we can then,
+for a function <math id="p1.m2" class="ltx_Math" alttext="f\colon\Omega\to[0,\infty]" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>
+define an integral</p>
+<table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu." display="block"><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This integral may be <math id="p1.m3" class="ltx_Math" alttext="+\infty" display="inline"><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></math> (even if <math id="p1.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is finite).
+As the details of the construction won’t matter for us later on,
+we will state the relevant definitions,
+skip all the proofs,
+and also state all the properties that we actually care about.
+Consequently, this chapter will be quite short.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">37.1 </span>The definition</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">The construction is done in four steps.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 37.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is a measurable set of <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>,
+then the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> indicator function</span>
+<math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathbf{1}_{A}\colon\Omega\to\mathbb{R}" display="inline"><mrow><msub><mn>𝟏</mn><mi>A</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> is defined by</p>
+<table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\mathbf{1}_{A}(\omega)=\begin{cases}1&amp;\omega\in A\\
+0&amp;\omega\notin A.\end{cases}" display="block"><mrow><mrow><msub><mn>𝟏</mn><mi>A</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mn>1</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>ω</mi><mo>∈</mo><mi>A</mi></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mi>ω</mi><mo>∉</mo><mi>A</mi></mrow><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="Thmstep1" class="ltx_theorem ltx_theorem_step">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Step 1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Indicator functions)</span> — </span>
+</h6>
+<div id="Thmstep1.p1" class="ltx_para">
+<p class="ltx_p">For an indicator function, we require</p>
+<table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\int_{\Omega}\mathbf{1}_{A}\;d\mu\coloneqq\mu(A)" display="block"><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><msub><mn>𝟏</mn><mi>A</mi></msub><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>≔</mo><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">(which may be infinite).</p>
+</div>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">We extend this linearly now for nonnegative functions
+which are sums of indicators:
+these functions are called <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> simple functions</span>.</p>
+</div>
+<div id="Thmstep2" class="ltx_theorem ltx_theorem_step">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Step 2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Simple functions)</span> — </span>
+</h6>
+<div id="Thmstep2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmstep2.p1.m1" class="ltx_Math" alttext="A_{1}" display="inline"><msub><mi>A</mi><mn>1</mn></msub></math>, …, <math id="Thmstep2.p1.m2" class="ltx_Math" alttext="A_{n}" display="inline"><msub><mi>A</mi><mi>n</mi></msub></math> be a finite collection of measurable sets.
+Let <math id="Thmstep2.p1.m3" class="ltx_Math" alttext="c_{1}" display="inline"><msub><mi>c</mi><mn>1</mn></msub></math>, …, <math id="Thmstep2.p1.m4" class="ltx_Math" alttext="c_{n}" display="inline"><msub><mi>c</mi><mi>n</mi></msub></math> be either nonnegative real numbers or <math id="Thmstep2.p1.m5" class="ltx_Math" alttext="+\infty" display="inline"><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></math>.
+Then we define</p>
+<table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\int_{\Omega}\left(\sum_{i=1}^{n}c_{i}\mathbf{1}_{A_{i}}\right)\;d\mu\coloneqq%
+\sum_{i=1}^{n}c_{i}\mu(A_{i})." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mrow><mo lspace="0em">(</mo><mrow><munderover><mo lspace="0em" movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><msub><mi>c</mi><mi>i</mi></msub><mo>⁢</mo><msub><mn>𝟏</mn><msub><mi>A</mi><mi>i</mi></msub></msub></mrow></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo rspace="0.111em">≔</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><msub><mi>c</mi><mi>i</mi></msub><mo>⁢</mo><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">If <math id="Thmstep2.p1.m6" class="ltx_Math" alttext="c_{i}=\infty" display="inline"><mrow><msub><mi>c</mi><mi>i</mi></msub><mo>=</mo><mi mathvariant="normal">∞</mi></mrow></math> and <math id="Thmstep2.p1.m7" class="ltx_Math" alttext="\mu(A_{i})=0" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>, we treat <math id="Thmstep2.p1.m8" class="ltx_Math" alttext="c_{i}\mu(A_{i})=0" display="inline"><mrow><mrow><msub><mi>c</mi><mi>i</mi></msub><mo>⁢</mo><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>A</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">One can check the resulting sum does not depend
+on the representation of the simple function as <math id="S1.p3.m1" class="ltx_Math" alttext="\sum c_{i}\mathbf{1}_{A_{i}}" display="inline"><mrow><mo>∑</mo><mrow><msub><mi>c</mi><mi>i</mi></msub><mo>⁢</mo><msub><mn>𝟏</mn><msub><mi>A</mi><mi>i</mi></msub></msub></mrow></mrow></math>.
+In particular, it is compatible with the previous step.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">Conveniently, this is already enough to define the integral
+for <math id="S1.p4.m1" class="ltx_Math" alttext="f\colon\Omega\to[0,+\infty]" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+Note that <math id="S1.p4.m2" class="ltx_Math" alttext="[0,+\infty]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo stretchy="false">]</mo></mrow></math> can be thought of as a topological space
+where we add new open sets <math id="S1.p4.m3" class="ltx_Math" alttext="(a,+\infty]" display="inline"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo stretchy="false">]</mo></mrow></math> for each real number <math id="S1.p4.m4" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> to our usual basis of open intervals.
+Thus we can equip it with the Borel sigma-algebra.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>We
+<em class="ltx_emph ltx_font_italic">could</em> also try to define a measure on it,
+but we will not: it is a good enough for us
+that it is a measurable space.</span></span></span></p>
+</div>
+<div id="Thmstep3" class="ltx_theorem ltx_theorem_step">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Step 3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Nonnegative functions)</span> — </span>
+</h6>
+<div id="Thmstep3.p1" class="ltx_para">
+<p class="ltx_p">For each measurable function <math id="Thmstep3.p1.m1" class="ltx_Math" alttext="f\colon\Omega\to[0,+\infty]" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>, let</p>
+<table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu\coloneqq\sup_{0\leq s\leq f}\left(\int_{\Omega}s\;d\mu\right)" display="block"><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo rspace="0.1389em">≔</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">sup</mo><mrow><mn>0</mn><mo>≤</mo><mi>s</mi><mo>≤</mo><mi>f</mi></mrow></munder><mrow><mo>(</mo><mrow><msub><mo lspace="0em">∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>s</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where the supremum is taken over all <em class="ltx_emph ltx_font_italic">simple</em> <math id="Thmstep3.p1.m2" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math>
+such that <math id="Thmstep3.p1.m3" class="ltx_Math" alttext="0\leq s\leq f" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>s</mi><mo>≤</mo><mi>f</mi></mrow></math>.
+As before, this integral may be <math id="Thmstep3.p1.m4" class="ltx_Math" alttext="+\infty" display="inline"><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">That is,</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 37.1.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We define the integral <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu" display="inline"><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow></math> by approximating it from below with simple functions,
+for which we know how to integrate.</p>
+</div>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">One can check this is compatible with the previous definitions.
+At this point, we introduce an important term.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 37.1.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">A measurable (nonnegative) function <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f\colon\Omega\to[0,+\infty]" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>
+is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> absolutely integrable</span>
+or just <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> integrable</span> if <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu&lt;\infty" display="inline"><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">Warning: I find “integrable” to be <em class="ltx_emph ltx_font_italic">really</em> confusing terminology.
+Indeed, <em class="ltx_emph ltx_font_italic">every</em> measurable function from <math id="S1.p7.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> to <math id="S1.p7.m2" class="ltx_Math" alttext="[0,+\infty]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo stretchy="false">]</mo></mrow></math>
+can be assigned a Lebesgue integral, it’s just that
+this integral may be <math id="S1.p7.m3" class="ltx_Math" alttext="+\infty" display="inline"><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></math>.
+So the definition is far more stringent than the name suggests.
+Even constant functions can fail to be integrable:</p>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 37.1.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(We really should call it “finitely integrable”)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The constant function <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> is <em class="ltx_emph ltx_font_italic">not</em> integrable on <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>,
+since <math id="S1.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\int_{\mathbb{R}}1\;d\mu=\mu(\mathbb{R})=+\infty" display="inline"><mrow><mrow><msub><mo>∫</mo><mi>ℝ</mi></msub><mrow><mn>1</mn><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>=</mo><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ℝ</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">For this reason, I will usually prefer the term “absolutely integrable”.
+(If it were up to me, I would call it “finitely integrable”,
+and usually do so privately.)</p>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 37.1.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Why don’t we approximate the integral from above?)</span> — </span>
+</h6>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">For bounded functions on measure spaces with <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="|\Omega|&lt;\infty" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow></math>, we can equivalently define</p>
+<table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu\coloneqq\inf_{0\leq f\leq s}\left(\int_{\Omega}s\;d\mu\right)" display="block"><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo rspace="0.1389em">≔</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">inf</mo><mrow><mn>0</mn><mo>≤</mo><mi>f</mi><mo>≤</mo><mi>s</mi></mrow></munder><mrow><mo>(</mo><mrow><msub><mo lspace="0em">∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>s</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where the infimum is taken over all simple <math id="S1.Thmtheorem5.p1.m2" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> such that <math id="S1.Thmtheorem5.p1.m3" class="ltx_Math" alttext="f\leq s" display="inline"><mrow><mi>f</mi><mo>≤</mo><mi>s</mi></mrow></math>.
+However, if the functions are unbounded or <math id="S1.Thmtheorem5.p1.m4" class="ltx_Math" alttext="|\Omega|=\infty" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><mi mathvariant="normal">∞</mi></mrow></math>, the situation is not that
+simple:</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="f(x)=x^{-2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>x</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></math> defined over <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="\Omega=(1,\infty)" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow></mrow></math> is absolutely integrable,
+yet for all simple <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> such that <math id="S1.I1.i1.p1.m4" class="ltx_Math" alttext="f\leq s" display="inline"><mrow><mi>f</mi><mo>≤</mo><mi>s</mi></mrow></math> we have <math id="S1.I1.i1.p1.m5" class="ltx_Math" alttext="\int_{\Omega}s\;d\mu=\infty" display="inline"><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>s</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>=</mo><mi mathvariant="normal">∞</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="f(x)=x^{-0.5}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>x</mi><mrow><mo>−</mo><mn>0.5</mn></mrow></msup></mrow></math> defined over <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="\Omega=(0,1)" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math> is absolutely integrable,
+yet there’s no simple <math id="S1.I1.i2.p1.m3" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> such that <math id="S1.I1.i2.p1.m4" class="ltx_Math" alttext="f\leq s" display="inline"><mrow><mi>f</mi><mo>≤</mo><mi>s</mi></mrow></math> and <math id="S1.I1.i2.p1.m5" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> is finite almost everywhere.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S1.p9" class="ltx_para">
+<p class="ltx_p">Finally, this lets us integrate general functions.</p>
+</div>
+<div id="S1.Thmtheorem6" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 37.1.6</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">In general, a measurable function <math id="S1.Thmtheorem6.p1.m1" class="ltx_Math" alttext="f\colon\Omega\to[-\infty,\infty]" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>
+is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> absolutely integrable</span> or just <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> integrable</span> if <math id="S1.Thmtheorem6.p1.m2" class="ltx_Math" alttext="|f|" display="inline"><mrow><mo stretchy="false">|</mo><mi>f</mi><mo stretchy="false">|</mo></mrow></math> is.</p>
+</div>
+</div>
+<div id="S1.p10" class="ltx_para">
+<p class="ltx_p">Since we’ll be using the first word, this is easy to remember:
+“absolutely integrable” requires taking absolute values.</p>
+</div>
+<div id="Thmstep4" class="ltx_theorem ltx_theorem_step">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Step 4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Absolutely integrable functions)</span> — </span>
+</h6>
+<div id="Thmstep4.p1" class="ltx_para">
+<p class="ltx_p">If <math id="Thmstep4.p1.m1" class="ltx_Math" alttext="f\colon\Omega\to[-\infty,\infty]" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> is absolutely integrable,
+then we define</p>
+<table id="A5.S3.EGx96" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex7.m1" class="ltx_Math" alttext="\displaystyle f^{+}(x)" display="inline"><mrow><msup><mi>f</mi><mo>+</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex7.m2" class="ltx_Math" alttext="\displaystyle=\max\left\{f(x),0\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>max</mi><mo>⁡</mo><mrow><mo>{</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>0</mn><mo>}</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex8.m1" class="ltx_Math" alttext="\displaystyle f^{-}(x)" display="inline"><mrow><msup><mi>f</mi><mo>−</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex8.m2" class="ltx_Math" alttext="\displaystyle=\min\left\{f(x),0\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>min</mi><mo>⁡</mo><mrow><mo>{</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>0</mn><mo>}</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and set</p>
+<table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu=\int_{\Omega}|f^{+}|\;d\mu-\int_{\Omega}|f^{-}|\;d\mu" display="block"><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mrow><msub><mo rspace="0em">∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mrow><mo stretchy="false">|</mo><msup><mi>f</mi><mo>+</mo></msup><mo stretchy="false">|</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo rspace="0.055em">−</mo><mrow><msub><mo rspace="0em">∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mrow><mo stretchy="false">|</mo><msup><mi>f</mi><mo>−</mo></msup><mo stretchy="false">|</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">which in particular is finite.</p>
+</div>
+</div>
+<div id="S1.p11" class="ltx_para">
+<p class="ltx_p">That said, calling it “finitely integrable” here would also make it as easy to remember:</p>
+</div>
+<div id="S1.Thmtheorem7" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 37.1.7</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S1.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S1.Thmtheorem7.p1.m1" class="ltx_Math" alttext="\int_{\Omega}|f|d\mu&lt;\infty" display="inline"><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mrow><mo lspace="0em" stretchy="false">|</mo><mi>f</mi><mo stretchy="false">|</mo></mrow><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow></math> if and only if
+<math id="S1.Thmtheorem7.p1.m2" class="ltx_Math" alttext="\int_{\Omega}|f^{+}|d\mu&lt;\infty" display="inline"><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mrow><mo lspace="0em" stretchy="false">|</mo><msup><mi>f</mi><mo>+</mo></msup><mo stretchy="false">|</mo></mrow><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow></math> and
+<math id="S1.Thmtheorem7.p1.m3" class="ltx_Math" alttext="\int_{\Omega}|f^{-}|d\mu&lt;\infty" display="inline"><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mrow><mo lspace="0em" stretchy="false">|</mo><msup><mi>f</mi><mo>−</mo></msup><mo stretchy="false">|</mo></mrow><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S1.p12" class="ltx_para">
+<p class="ltx_p">You may already start to see that we really like nonnegative functions:
+with the theory of measures, it is possible to integrate them,
+and it’s even okay to throw in <math id="S1.p12.m1" class="ltx_Math" alttext="+\infty" display="inline"><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></math>’s everywhere.
+But once we start dealing with functions that can be either positive or negative,
+we have to start adding finiteness restrictions —
+actually essentially what we’re doing is splitting
+the function into its positive and negative part,
+requiring both are finite, and then integrating.</p>
+</div>
+<div id="S1.p13" class="ltx_para">
+<p class="ltx_p">To finish this section, we state for completeness
+some results that you probably could have guessed were true.
+Fix <math id="S1.p13.m1" class="ltx_Math" alttext="\Omega=(\Omega,\mathscr{A},\mu)" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mi class="ltx_font_mathscript">𝒜</mi><mo>,</mo><mi>μ</mi><mo stretchy="false">)</mo></mrow></mrow></math>, and
+let <math id="S1.p13.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S1.p13.m3" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> be measurable real-valued functions
+such that <math id="S1.p13.m4" class="ltx_Math" alttext="f(x)=g(x)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> almost everywhere.</p>
+<ul id="S1.I2" class="ltx_itemize">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">(Almost-everywhere preservation)
+The function <math id="S1.I2.i1.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is absolutely integrable if and only if <math id="S1.I2.i1.p1.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> is,
+and if so, their Lebesgue integrals match.</p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">(Additivity)
+If <math id="S1.I2.i2.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S1.I2.i2.p1.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> are absolutely integrable then</p>
+<table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\int_{\Omega}f+g\;d\mu=\int_{\Omega}f\;d\mu+\int_{\Omega}g\;d\mu." display="block"><mrow><mrow><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mi>f</mi></mrow><mo>+</mo><mrow><mi>g</mi><mo lspace="0.280em">⁢</mo><mi>d</mi><mo>⁢</mo><mi>μ</mi></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo rspace="0.055em">+</mo><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>g</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">The “absolutely integrable” hypothesis can be dropped
+if <math id="S1.I2.i2.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S1.I2.i2.p1.m4" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> are nonnegative.</p>
+</div>
+</li>
+<li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">(Scaling) If <math id="S1.I2.i3.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is absolutely integrable and <math id="S1.I2.i3.p1.m2" class="ltx_Math" alttext="c\in\mathbb{R}" display="inline"><mrow><mi>c</mi><mo>∈</mo><mi>ℝ</mi></mrow></math>
+then <math id="S1.I2.i3.p1.m3" class="ltx_Math" alttext="cf" display="inline"><mrow><mi>c</mi><mo>⁢</mo><mi>f</mi></mrow></math> is absolutely integrable and</p>
+<table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\int_{\Omega}cf\;d\mu=c\int_{\Omega}f\;d\mu." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>c</mi><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">The “absolutely integrable” hypothesis can be dropped
+if <math id="S1.I2.i3.p1.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is nonnegative and <math id="S1.I2.i3.p1.m5" class="ltx_Math" alttext="c&gt;0" display="inline"><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i4.p1" class="ltx_para">
+<p class="ltx_p">(Monotoncity)
+If <math id="S1.I2.i4.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S1.I2.i4.p1.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> are absolutely integrable and <math id="S1.I2.i4.p1.m3" class="ltx_Math" alttext="f\leq g" display="inline"><mrow><mi>f</mi><mo>≤</mo><mi>g</mi></mrow></math>, then</p>
+<table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu\leq\int_{\Omega}g\;d\mu." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo rspace="0.111em">≤</mo><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>g</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">The “absolutely integrable” hypothesis can be dropped
+if <math id="S1.I2.i4.p1.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S1.I2.i4.p1.m5" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> are nonnegative.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">There are more famous results like monotone/dominated convergence
+that are also true, but we won’t state them here
+as we won’t really have a use for them in the context of probability.
+(They appear later on in a bonus chapter.)</p>
+</div>
+</section>
+<section id="sec:lebesgue_int_equivalent_def" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">37.2 </span>An equivalent definition</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">The Lebesgue integral can also be defined as follows — which should be more intuitive on the various
+choices of the definitions we made in the steps.</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">In this definition,</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 37.2.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">The integral <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu" display="inline"><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow></math> is just the volume of the region under the graph of <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>.</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Let us define it:</p>
+</div>
+<div id="Thmstep1a" class="ltx_theorem ltx_theorem_step">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Step 1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(The region under the graph)</span> — </span>
+</h6>
+<div id="Thmstep1a.p1" class="ltx_para">
+<p class="ltx_p">For a nonnegative function <math id="Thmstep1a.p1.m1" class="ltx_Math" alttext="f\colon\Omega\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>, define the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> region under the function</span>
+<math id="Thmstep1a.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, <math id="Thmstep1a.p1.m3" class="ltx_Math" alttext="R(f)" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math>, to be <math id="Thmstep1a.p1.m4" class="ltx_Math" alttext="\{(x,y)\in\Omega\times\mathbb{R},0\leq y\leq f(x)\}" display="inline"><mrow><mo stretchy="false">{</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><mi mathvariant="normal">Ω</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi></mrow></mrow><mo>,</mo><mrow><mn>0</mn><mo>≤</mo><mi>y</mi><mo>≤</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 37.2.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">It should be clear why we only define this for nonnegative function initially —
+for general function <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, the only way we could sensibly define the region would be something like
+the following:</p>
+<table id="A5.S3.EGx97" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex13"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex13.m1" class="ltx_Math" alttext="\displaystyle R^{+}(f)" display="inline"><mrow><msup><mi>R</mi><mo>+</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex13.m2" class="ltx_Math" alttext="\displaystyle=\{(x,y)\in\Omega\times\mathbb{R},f(x)\geq 0,0\leq y\leq f(x)\}," display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><mi mathvariant="normal">Ω</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi></mrow></mrow><mo>,</mo><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mn>0</mn></mrow><mo>,</mo><mrow><mn>0</mn><mo>≤</mo><mi>y</mi><mo>≤</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex14"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex14.m1" class="ltx_Math" alttext="\displaystyle R^{-}(f)" display="inline"><mrow><msup><mi>R</mi><mo>−</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex14.m2" class="ltx_Math" alttext="\displaystyle=\{(x,y)\in\Omega\times\mathbb{R},f(x)\leq 0,0\geq y\geq f(x)\}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mrow><mi mathvariant="normal">Ω</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi></mrow></mrow><mo>,</mo><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mn>0</mn></mrow><mo>,</mo><mrow><mn>0</mn><mo>≥</mo><mi>y</mi><mo>≥</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Nevertheless, notice that <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="R^{+}(f)" display="inline"><mrow><msup><mi>R</mi><mo>+</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math> is simply the region under the function
+<math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="f^{+}(x)=\max\{f(x),0\}" display="inline"><mrow><mrow><msup><mi>f</mi><mo>+</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>max</mi><mo>⁡</mo><mrow><mo stretchy="false">{</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math>, and <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="R^{-}(f)" display="inline"><mrow><msup><mi>R</mi><mo>−</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math> has the same measure as the region under the function
+<math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="f^{-}(x)=\min\{f(x),0\}" display="inline"><mrow><mrow><msup><mi>f</mi><mo>−</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>min</mi><mo>⁡</mo><mrow><mo stretchy="false">{</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math>, so defining <math id="S2.Thmtheorem2.p1.m6" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu" display="inline"><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow></math> for nonnegative functions first
+would actually simplify the definition.</p>
+</div>
+</div>
+<div id="Thmstep2a" class="ltx_theorem ltx_theorem_step">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Step 2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Making <math id="Thmstep2a.m1" class="ltx_Math" alttext="\Omega\times\mathbb{R}" display="inline"><mrow><mi mathcolor="#186118" mathvariant="normal">Ω</mi><mo lspace="0.222em" mathcolor="#186118" rspace="0.222em">×</mo><mi mathcolor="#186118">ℝ</mi></mrow></math> into a measure space)</span> — </span>
+</h6>
+<div id="Thmstep2a.p1" class="ltx_para">
+<p class="ltx_p">We define a pre-measure on <math id="Thmstep2a.p1.m1" class="ltx_Math" alttext="\Omega\times\mathbb{R}" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℝ</mi></mrow></math> the obvious way:
+if <math id="Thmstep2a.p1.m2" class="ltx_Math" alttext="X\subseteq\Omega" display="inline"><mrow><mi>X</mi><mo>⊆</mo><mi mathvariant="normal">Ω</mi></mrow></math> and <math id="Thmstep2a.p1.m3" class="ltx_Math" alttext="Y\subseteq\mathbb{R}" display="inline"><mrow><mi>Y</mi><mo>⊆</mo><mi>ℝ</mi></mrow></math> are measurable subsets respectively,
+then assign <math id="Thmstep2a.p1.m4" class="ltx_Math" alttext="|X\times Y|=|X|\times|Y|" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>Y</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">|</mo><mi>X</mi><mo rspace="0.055em" stretchy="false">|</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo stretchy="false">|</mo><mi>Y</mi><mo stretchy="false">|</mo></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="Thmstep2a.p2" class="ltx_para">
+<p class="ltx_p">The pre-measure can be extended to a measure, as we have done in the previous chapter.</p>
+</div>
+</div>
+<div id="Thmstep3a" class="ltx_theorem ltx_theorem_step">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Step 3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Nonnegative functions)</span> — </span>
+</h6>
+<div id="Thmstep3a.p1" class="ltx_para">
+<p class="ltx_p">For each function <math id="Thmstep3a.p1.m1" class="ltx_Math" alttext="f\colon\Omega\to[0,+\infty]" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>, let</p>
+<table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu\coloneqq|R(f)|." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>≔</mo><mrow><mo stretchy="false">|</mo><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">The integral is well-defined whenever <math id="Thmstep3a.p1.m2" class="ltx_Math" alttext="R(f)" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math> is measurable.</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">As promised in <a href="ch_measure_space.html#sec:measurable_functions" title="35.7 Measurable functions ‣ Chapter 35 Measure spaces ‣ Part X Measure Theory ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Section</span> <span class="ltx_text ltx_ref_tag">35.7</span></a>, the definition of measurable function satisfies:</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 37.2.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">A nonnegative function <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is measurable if and only if we can “measure” the region below the graph
+of <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>.</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">The last step is exactly the same as in the previous section.</p>
+</div>
+<div id="Thmstep4a" class="ltx_theorem ltx_theorem_step">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Step 4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Absolutely integrable functions)</span> — </span>
+</h6>
+<div id="Thmstep4a.p1" class="ltx_para">
+<p class="ltx_p">If <math id="Thmstep4a.p1.m1" class="ltx_Math" alttext="f\colon\Omega\to[-\infty,\infty]" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> is absolutely integrable,
+then we define</p>
+<table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu=\int_{\Omega}|f^{+}|\;d\mu-\int_{\Omega}|f^{-}|\;d\mu." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mrow><msub><mo rspace="0em">∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mrow><mo stretchy="false">|</mo><msup><mi>f</mi><mo>+</mo></msup><mo stretchy="false">|</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo rspace="0.055em">−</mo><mrow><msub><mo rspace="0em">∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mrow><mo stretchy="false">|</mo><msup><mi>f</mi><mo>−</mo></msup><mo stretchy="false">|</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">37.3 </span>Relation to Riemann integrals (or: actually computing Lebesgue integrals)</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">For closed intervals, this actually just works out of the box.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 37.3.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Lebesgue integral generalizes Riemann integral)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f\colon[a,b]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> be a Riemann integrable function
+(where <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math> is equipped with the Borel measure).
+Then <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is also Lebesgue integrable and the integrals agree:</p>
+<table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="\int_{a}^{b}f(x)\;dx=\int_{[a,b]}f\;d\mu." display="block"><mrow><mrow><mrow><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∫</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Note that a Riemann integrable function <em class="ltx_emph ltx_font_italic">must be bounded</em>,
+which means if you try to construct a function <math id="S3.p2.m1" class="ltx_Math" alttext="f\colon[0,1]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+in the same vein as <a href="#prob:sin_improper" title="Problem 37B (An improper Riemann integral with sign changes). ‣ 37.4 A few harder problems to think about ‣ Chapter 37 Lebesgue integration ‣ Part X Measure Theory ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">37B</span></a> by</p>
+<table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="f(x)=\begin{cases}\frac{\sin(1/x)}{x}&amp;x&gt;0\\
+0&amp;x=0\end{cases}" display="block"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mstyle displaystyle="false"><mfrac><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mi>x</mi></mfrac></mstyle></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>x</mi><mo>&gt;</mo><mn>0</mn></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">the function <math id="S3.p2.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> will in fact <em class="ltx_emph ltx_font_italic">not</em> be Riemann integrable!
+Although of course, the improper Riemann integral <math id="S3.p2.m3" class="ltx_Math" alttext="\lim_{\varepsilon\to 0^{+}}\int_{\varepsilon}^{1}f(x)\;dx" display="inline"><mrow><msub><mo>lim</mo><mrow><mi>ε</mi><mo stretchy="false">→</mo><msup><mn>0</mn><mo>+</mo></msup></mrow></msub><mrow><msubsup><mo lspace="0.167em">∫</mo><mi>ε</mi><mn>1</mn></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></math> exists.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Thus in practice, we do all theory with Lebesgue integrals (they’re nicer),
+but when we actually need to compute <math id="S3.p3.m1" class="ltx_Math" alttext="\int_{[1,4]}x^{2}\;d\mu" display="inline"><mrow><msub><mo>∫</mo><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow></msub><mrow><msup><mi>x</mi><mn>2</mn></msup><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow></math>
+we just revert back to our usual antics with the
+Fundamental Theorem of Calculus.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 37.3.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Integrating <math id="S3.Thmtheorem2.m1" class="ltx_Math" alttext="x^{2}" display="inline"><msup><mi mathcolor="#8C0000">x</mi><mn mathcolor="#8C0000">2</mn></msup></math> over <math id="S3.Thmtheorem2.m2" class="ltx_Math" alttext="[1,4]" display="inline"><mrow><mo mathcolor="#8C0000" stretchy="false">[</mo><mn mathcolor="#8C0000">1</mn><mo mathcolor="#8C0000">,</mo><mn mathcolor="#8C0000">4</mn><mo mathcolor="#8C0000" stretchy="false">]</mo></mrow></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Reprising our old example:</p>
+<table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="\int_{[1,4]}x^{2}\;d\mu=\int_{1}^{4}x^{2}\;dx=\frac{1}{3}\cdot 4^{3}-\frac{1}{%
+3}\cdot 1^{3}=21." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow></msub><mrow><msup><mi>x</mi><mn>2</mn></msup><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msubsup><mo>∫</mo><mn>1</mn><mn>4</mn></msubsup><mrow><msup><mi>x</mi><mn>2</mn></msup><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>4</mn><mn>3</mn></msup></mrow><mo>−</mo><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>1</mn><mn>3</mn></msup></mrow></mrow><mo>=</mo><mn>21</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">This even works for <em class="ltx_emph ltx_font_italic">improper</em> integrals,
+if the functions are nonnegative.
+The statement is a bit cumbersome to write down, but here it is.</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 37.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Improper integrals are nice Lebesgue ones)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f\geq 0" display="inline"><mrow><mi>f</mi><mo>≥</mo><mn>0</mn></mrow></math> be a <em class="ltx_emph ltx_font_italic">nonnegative</em>
+continuous function defined on <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="(a,b)\subseteq\mathbb{R}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo>⊆</mo><mi>ℝ</mi></mrow></math>,
+possibly allowing <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="a=-\infty" display="inline"><mrow><mi>a</mi><mo>=</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow></mrow></math> or <math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="b=\infty" display="inline"><mrow><mi>b</mi><mo>=</mo><mi mathvariant="normal">∞</mi></mrow></math>.
+Then</p>
+<table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\int_{(a,b)}f\;d\mu=\lim_{\begin{subarray}{c}a^{\prime}\to a^{+}\\
+b^{\prime}\to b^{-}\end{subarray}}\int_{a^{\prime}}^{b^{\prime}}f(x)\;dx" display="block"><mrow><mrow><msub><mo>∫</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">lim</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><msup><mi>a</mi><mo>′</mo></msup><mo stretchy="false">→</mo><msup><mi>a</mi><mo>+</mo></msup></mrow></mtd></mtr><mtr><mtd><mrow><msup><mi>b</mi><mo>′</mo></msup><mo stretchy="false">→</mo><msup><mi>b</mi><mo>−</mo></msup></mrow></mtd></mtr></mtable></munder><mrow><msubsup><mo>∫</mo><msup><mi>a</mi><mo>′</mo></msup><msup><mi>b</mi><mo>′</mo></msup></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where we allow both sides to be <math id="S3.Thmtheorem3.p1.m5" class="ltx_Math" alttext="+\infty" display="inline"><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></math>
+if <math id="S3.Thmtheorem3.p1.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is not absolutely integrable.</p>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">The right-hand side makes sense since <math id="S3.p5.m1" class="ltx_Math" alttext="[a^{\prime},b^{\prime}]\subsetneq(a,b)" display="inline"><mrow><mrow><mo stretchy="false">[</mo><msup><mi>a</mi><mo>′</mo></msup><mo>,</mo><msup><mi>b</mi><mo>′</mo></msup><mo stretchy="false">]</mo></mrow><mo>⊊</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+is a compact interval on which <math id="S3.p5.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is continuous.
+This means that improper Riemann integrals of nonnegative
+functions can just be regarded as Lebesgue ones
+over the corresponding open intervals.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">It’s probably better to just look at an example though.</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 37.3.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Integrating <math id="S3.Thmtheorem4.m1" class="ltx_Math" alttext="1/\sqrt{x}" display="inline"><mrow><mn mathcolor="#8C0000">1</mn><mo mathcolor="#8C0000">/</mo><msqrt mathcolor="#8C0000"><mi mathcolor="#8C0000">x</mi></msqrt></mrow></math> on <math id="S3.Thmtheorem4.m2" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo mathcolor="#8C0000" stretchy="false">(</mo><mn mathcolor="#8C0000">0</mn><mo mathcolor="#8C0000">,</mo><mn mathcolor="#8C0000">1</mn><mo mathcolor="#8C0000" stretchy="false">)</mo></mrow></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">For example, you might be familiar with improper integrals like</p>
+<table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="\int_{0}^{1}\frac{1}{\sqrt{x}}\;dx\coloneqq\lim_{\varepsilon\to 0^{+}}\int_{%
+\varepsilon}^{1}\frac{1}{\sqrt{x}}\;dx=\lim_{\varepsilon\to 0^{+}}\left(2\sqrt%
+{1}-2\sqrt{\varepsilon}\right)=2." display="block"><mrow><mrow><mrow><msubsup><mo>∫</mo><mn>0</mn><mn>1</mn></msubsup><mrow><mfrac><mn>1</mn><msqrt><mi>x</mi></msqrt></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo rspace="0.1389em">≔</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">lim</mo><mrow><mi>ε</mi><mo stretchy="false">→</mo><msup><mn>0</mn><mo>+</mo></msup></mrow></munder><mrow><msubsup><mo>∫</mo><mi>ε</mi><mn>1</mn></msubsup><mrow><mfrac><mn>1</mn><msqrt><mi>x</mi></msqrt></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">lim</mo><mrow><mi>ε</mi><mo stretchy="false">→</mo><msup><mn>0</mn><mo>+</mo></msup></mrow></munder><mrow><mo>(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><msqrt><mn>1</mn></msqrt></mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msqrt><mi>ε</mi></msqrt></mrow></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mn>2</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">(Note this appeared before as <a href="../part_calc/ch_riemann_integrals.html#prob:improper" title="Problem 30C (Improper integrals). ‣ 30.5 A few harder problems to think about ‣ Chapter 30 Riemann integrals ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">30C</span></a>.)
+In the Riemann integration situation, we needed the limit as <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\varepsilon\to 0^{+}" display="inline"><mrow><mi>ε</mi><mo stretchy="false">→</mo><msup><mn>0</mn><mo>+</mo></msup></mrow></math>
+since otherwise <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\frac{1}{\sqrt{x}}" display="inline"><mfrac><mn>1</mn><msqrt><mi>x</mi></msqrt></mfrac></math> is not defined as a function <math id="S3.Thmtheorem4.p1.m3" class="ltx_Math" alttext="[0,1]\to\mathbb{R}" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>.
+However, it is a <em class="ltx_emph ltx_font_italic">measurable nonnegative</em>
+function <math id="S3.Thmtheorem4.p1.m4" class="ltx_Math" alttext="(0,1)\to[0,+\infty]" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></math>, and hence</p>
+<table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="\int_{(0,1)}\frac{1}{\sqrt{x}}\;d\mu=2." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></msub><mrow><mfrac><mn>1</mn><msqrt><mi>x</mi></msqrt></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow><mo>=</mo><mn>2</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">If <math id="S3.p7.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is not nonnegative, then all bets are off.
+Indeed <a href="#prob:sin_improper" title="Problem 37B (An improper Riemann integral with sign changes). ‣ 37.4 A few harder problems to think about ‣ Chapter 37 Lebesgue integration ‣ Part X Measure Theory ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">37B</span></a> is the famous counterexample.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">37.4 </span>A few harder problems to think about</h2>
+
+<div id="prob:1QQ" class="ltx_theorem ltx_theorem_sproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 37A</span></span><span class="ltx_text ltx_font_bold"> </span>(The indicator of the rationals)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Take the indicator function
+<math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="\mathbf{1}_{\mathbb{Q}}\colon\mathbb{R}\to\{0,1\}\subseteq\mathbb{R}" display="inline"><mrow><msub><mn>𝟏</mn><mi>ℚ</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow><mo>⊆</mo><mi>ℝ</mi></mrow></mrow></math>
+for the rational numbers.</p>
+<ol id="S4.I1" class="ltx_enumerate">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Prove that <math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbf{1}_{\mathbb{Q}}" display="inline"><msub><mn>𝟏</mn><mi>ℚ</mi></msub></math> is not Riemann integrable.</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Show that <math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="\int_{\mathbb{R}}\mathbf{1}_{\mathbb{Q}}" display="inline"><mrow><msub><mo>∫</mo><mi>ℝ</mi></msub><msub><mn>𝟏</mn><mi>ℚ</mi></msub></mrow></math> exists
+and determine its value — the one you expect!</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="prob:sin_improper" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 37B</span></span><span class="ltx_text ltx_font_bold"> </span>(An improper Riemann integral with sign changes)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Define <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="f\colon(1,\infty)\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> by <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="f(x)=\frac{\sin(x)}{x}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mi>x</mi></mfrac></mrow></math>.
+Show that <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is not absolutely integrable,
+but that the improper Riemann integral</p>
+<table id="Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex23.m1" class="ltx_Math" alttext="\int_{1}^{\infty}f(x)\;dx\coloneqq\lim_{b\to\infty}\int_{1}^{b}f(x)\;dx" display="block"><mrow><mrow><msubsup><mo>∫</mo><mn>1</mn><mi mathvariant="normal">∞</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo rspace="0.1389em">≔</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">lim</mo><mrow><mi>b</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mrow><msubsup><mo>∫</mo><mn>1</mn><mi>b</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">nonetheless exists.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="ch_caratheodory_measure.html" title="In Part X Measure Theory ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">36 </span>Constructing the Borel and Lebesgue measure</span></a><a href="ch_swapsum_measure.html" title="In Part X Measure Theory ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">38 </span>Swapping order with Lebesgue integrals</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

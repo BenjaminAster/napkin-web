@@ -1,0 +1,1734 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Homomorphisms and quotient groups</title>
+		<meta property="og:title" content="Homomorphisms and quotient groups" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../startout/metric-space.html">Previous chapter: Metric spaces</a><br />
+<a href="../absalg/rings-ideals.html">Next chapter: Rings and ideals</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 3 </span>Homomorphisms and quotient groups</h1>
+
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3.1 </span>Generators and group presentations</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="D_{2n}=\left&lt;r,s\mid r^{n}=s^{2}=1\right&gt;" display="inline"><mrow><msub><mi>D</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub><mo>=</mo><mrow><mo>⟨</mo><mrow><mi>r</mi><mo>,</mo><mi>s</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msup><mi>r</mi><mi>n</mi></msup><mo>=</mo><msup><mi>s</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><mo>⟩</mo></mrow></mrow></math></em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.p2.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> be a group.
+Recall that for some element <math id="S1.p2.m2" class="ltx_Math" alttext="x\in G" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>G</mi></mrow></math>,
+we could consider the subgroup</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\left\{\dots,x^{-2},x^{-1},1,x,x^{2},\dots\right\}" display="block"><mrow><mo>{</mo><mi mathvariant="normal">…</mi><mo>,</mo><msup><mi>x</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup><mo>,</mo><msup><mi>x</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>,</mo><mn>1</mn><mo>,</mo><mi>x</mi><mo>,</mo><msup><mi>x</mi><mn>2</mn></msup><mo>,</mo><mi mathvariant="normal">…</mi><mo>}</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">of <math id="S1.p2.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+Here’s a more pictorial version of what we did:
+<span class="ltx_text ltx_font_bold">put <math id="S1.p2.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> in a box, seal it tightly, and shake vigorously</span>.
+Using just the element <math id="S1.p2.m5" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>,
+we get a pretty explosion that produces the subgroup above.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">What happens if we put two elements <math id="S1.p3.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>, <math id="S1.p3.m2" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> in the box?
+Among the elements that get produced are things like</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="xyxyx,\quad x^{2}y^{9}x^{-5}y^{3},\quad y^{-2015},\quad\dots" display="block"><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi><mo>⁢</mo><mi>x</mi></mrow><mo rspace="1.167em">,</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>y</mi><mn>9</mn></msup><mo>⁢</mo><msup><mi>x</mi><mrow><mo>−</mo><mn>5</mn></mrow></msup><mo>⁢</mo><msup><mi>y</mi><mn>3</mn></msup></mrow><mo rspace="1.167em">,</mo><msup><mi>y</mi><mrow><mo>−</mo><mn>2015</mn></mrow></msup><mo rspace="1.167em">,</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Essentially, I can create any finite product of <math id="S1.p3.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>, <math id="S1.p3.m4" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>, <math id="S1.p3.m5" class="ltx_Math" alttext="x^{-1}" display="inline"><msup><mi>x</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math>, <math id="S1.p3.m6" class="ltx_Math" alttext="y^{-1}" display="inline"><msup><mi>y</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math>.
+This leads us to define:</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 3.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> be a subset of <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+The subgroup <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> generated</span> by <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>,
+denoted <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\left&lt;S\right&gt;" display="inline"><mrow><mo>⟨</mo><mi>S</mi><mo>⟩</mo></mrow></math>,
+is the set of elements which can be written as a
+finite product of elements in <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> (and their inverses).
+If <math id="S1.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\left&lt;S\right&gt;=G" display="inline"><mrow><mrow><mo>⟨</mo><mi>S</mi><mo>⟩</mo></mrow><mo>=</mo><mi>G</mi></mrow></math> then we say <math id="S1.Thmtheorem1.p1.m7" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is a set of
+<span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> generators</span> for <math id="S1.Thmtheorem1.p1.m8" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>,
+as the elements of <math id="S1.Thmtheorem1.p1.m9" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> together create all of <math id="S1.Thmtheorem1.p1.m10" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 3.1.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Why is the condition “and their inverses”
+not necessary if <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is a finite group?
+(As usual, assume Lagrange’s theorem.)</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 3.1.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(<math id="S1.Thmtheorem3.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is the infinite cyclic group)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Consider <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> as an element of <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\mathbb{Z}=(\mathbb{Z},+)" display="inline"><mrow><mi>ℤ</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>ℤ</mi><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">+</mo><mo stretchy="false">)</mo></mrow></mrow></math>.
+We see <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\left&lt;1\right&gt;=\mathbb{Z}" display="inline"><mrow><mrow><mo>⟨</mo><mn>1</mn><mo>⟩</mo></mrow><mo>=</mo><mi>ℤ</mi></mrow></math>, meaning <math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\{1\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></math> generates <math id="S1.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>.
+It’s important that <math id="S1.Thmtheorem3.p1.m6" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>, the inverse of <math id="S1.Thmtheorem3.p1.m7" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> is also allowed:
+we need it to write all integers as the sum of <math id="S1.Thmtheorem3.p1.m8" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> and <math id="S1.Thmtheorem3.p1.m9" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">This gives us an idea for a way to try and express groups compactly.
+Why not just write down a list of generators for the groups?
+For example, we could write</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\mathbb{Z}\cong\left&lt;a\right&gt;" display="block"><mrow><mi>ℤ</mi><mo>≅</mo><mrow><mo>⟨</mo><mi>a</mi><mo>⟩</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">meaning that <math id="S1.p4.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is just the group generated by one element.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">There’s one issue: the generators usually satisfy certain properties.
+For example, consider <math id="S1.p5.m1" class="ltx_Math" alttext="\mathbb{Z}/100\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>100</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math>.
+It’s also generated by a single element <math id="S1.p5.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>,
+but this <math id="S1.p5.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> has the additional property that <math id="S1.p5.m4" class="ltx_Math" alttext="x^{100}=1" display="inline"><mrow><msup><mi>x</mi><mn>100</mn></msup><mo>=</mo><mn>1</mn></mrow></math>.
+This motivates us to write</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\mathbb{Z}/100\mathbb{Z}=\left&lt;x\mid x^{100}=1\right&gt;." display="block"><mrow><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>100</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>=</mo><mrow><mo>⟨</mo><mi>x</mi><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msup><mi>x</mi><mn>100</mn></msup><mo>=</mo><mn>1</mn></mrow><mo>⟩</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">I’m sure you can see where this is going.
+All we have to do is specify a set of generators and
+<span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> relations</span> between the generators,
+and say that two elements are equal if and only if
+you can get from one to the other using relations.
+Such an expression is appropriately called a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> group presentation</span>.</p>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 3.1.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Dihedral group)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The dihedral group of order <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="2n" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></math> has a presentation</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="D_{2n}=\left&lt;r,s\mid r^{n}=s^{2}=1,rs=sr^{-1}\right&gt;." display="block"><mrow><mrow><msub><mi>D</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub><mo>=</mo><mrow><mo>⟨</mo><mrow><mi>r</mi><mo>,</mo><mi>s</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mi>r</mi><mi>n</mi></msup><mo>=</mo><msup><mi>s</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><mo>,</mo><mrow><mrow><mi>r</mi><mo>⁢</mo><mi>s</mi></mrow><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow></mrow><mo>⟩</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Thus each element of <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="D_{2n}" display="inline"><msub><mi>D</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub></math> can be written uniquely in the form <math id="S1.Thmtheorem4.p1.m3" class="ltx_Math" alttext="r^{\alpha}" display="inline"><msup><mi>r</mi><mi>α</mi></msup></math>
+or <math id="S1.Thmtheorem4.p1.m4" class="ltx_Math" alttext="sr^{\alpha}" display="inline"><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mi>α</mi></msup></mrow></math>, where <math id="S1.Thmtheorem4.p1.m5" class="ltx_Math" alttext="\alpha=0,1,\dots,n-1" display="inline"><mrow><mi>α</mi><mo>=</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 3.1.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Klein four group)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Klein four group</span>,
+isomorphic to <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/2\mathbb{Z}" display="inline"><mrow><mrow><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℤ</mi></mrow><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math>, is given by the presentation</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\left&lt;a,b\mid a^{2}=b^{2}=1,ab=ba\right&gt;." display="block"><mrow><mrow><mo>⟨</mo><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>=</mo><msup><mi>b</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><mo>,</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo>=</mo><mrow><mi>b</mi><mo>⁢</mo><mi>a</mi></mrow></mrow></mrow><mo>⟩</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S1.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 3.1.6</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Free group)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> free group on <math id="S1.Thmtheorem6.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> elements</span> is the group
+whose presentation has <math id="S1.Thmtheorem6.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> generators and no relations at all.
+It is denoted <math id="S1.Thmtheorem6.p1.m3" class="ltx_Math" alttext="F_{n}" display="inline"><msub><mi>F</mi><mi>n</mi></msub></math>, so</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="F_{n}=\left&lt;x_{1},x_{2},\dots,x_{n}\right&gt;." display="block"><mrow><mrow><msub><mi>F</mi><mi>n</mi></msub><mo>=</mo><mrow><mo>⟨</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo>⟩</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In other words, <math id="S1.Thmtheorem6.p1.m4" class="ltx_Math" alttext="F_{2}=\left&lt;a,b\right&gt;" display="inline"><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>=</mo><mrow><mo>⟨</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>⟩</mo></mrow></mrow></math> is the set of strings
+formed by appending finitely many copies of <math id="S1.Thmtheorem6.p1.m5" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, <math id="S1.Thmtheorem6.p1.m6" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>, <math id="S1.Thmtheorem6.p1.m7" class="ltx_Math" alttext="a^{-1}" display="inline"><msup><mi>a</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math>, <math id="S1.Thmtheorem6.p1.m8" class="ltx_Math" alttext="b^{-1}" display="inline"><msup><mi>b</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></math> together.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem7" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 3.1.7</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Notice that <math id="S1.Thmtheorem7.p1.m1" class="ltx_Math" alttext="F_{1}\cong\mathbb{Z}" display="inline"><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>≅</mo><mi>ℤ</mi></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem8" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 3.1.8</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">One might unfortunately notice that “subgroup generated by <math id="S1.Thmtheorem8.p1.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S1.Thmtheorem8.p1.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>”
+has exactly the same notation as the free group <math id="S1.Thmtheorem8.p1.m3" class="ltx_Math" alttext="\left&lt;a,b\right&gt;" display="inline"><mrow><mo>⟨</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>⟩</mo></mrow></math>.
+We’ll try to be clear based on context which one we mean.</p>
+</div>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">Presentations are nice because they provide a compact way to write down groups.
+They do have some shortcomings, though.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Actually, determining whether two elements of a presentation are equal is undecidable.
+In fact, it is undecidable to even determine if a group is finite from its presentation.</span></span></span></p>
+</div>
+<div id="S1.Thmtheorem9" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 3.1.9</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Presentations can look very different)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">The same group can have very different presentations.
+For instance consider</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="D_{2n}=\left&lt;x,y\mid x^{2}=y^{2}=1,(xy)^{n}=1\right&gt;." display="block"><mrow><mrow><msub><mi>D</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub><mo>=</mo><mrow><mo>⟨</mo><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><msup><mi>y</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><mo>,</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msup><mo>=</mo><mn>1</mn></mrow></mrow><mo>⟩</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">(To see why this is equivalent, set <math id="S1.Thmtheorem9.p1.m1" class="ltx_Math" alttext="x=s" display="inline"><mrow><mi>x</mi><mo>=</mo><mi>s</mi></mrow></math>, <math id="S1.Thmtheorem9.p1.m2" class="ltx_Math" alttext="y=rs" display="inline"><mrow><mi>y</mi><mo>=</mo><mrow><mi>r</mi><mo>⁢</mo><mi>s</mi></mrow></mrow></math>.)</p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3.2 </span>Homomorphisms</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> The “mod out by <math id="S2.p1.m1" class="ltx_Math" alttext="100" display="inline"><mn>100</mn></math>” map, <math id="S2.p1.m2" class="ltx_Math" alttext="\mathbb{Z}\to\mathbb{Z}/100\mathbb{Z}" display="inline"><mrow><mi>ℤ</mi><mo stretchy="false">→</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>100</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">How can groups talk to each other?</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Two groups are “the same” if we can write an isomorphism between them.
+And as we saw, two metric spaces are “the same”
+if we can write a homeomorphism between them.
+But what’s the group analogy of a continuous map?
+We simply drop the “bijection” condition.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 3.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="G=(G,\star)" display="inline"><mrow><mi>G</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">⋆</mo><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="H=(H,\ast)" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>H</mi><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">∗</mo><mo stretchy="false">)</mo></mrow></mrow></math> be groups.
+A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> group homomorphism</span> is a map <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\phi\colon G\to H" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></mrow></math>
+such that for any <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="g_{1},g_{2}\in G" display="inline"><mrow><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>,</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo>∈</mo><mi>G</mi></mrow></math> we have</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\phi(g_{1}\star g_{2})=\phi(g_{1})\ast\phi(g_{2})." display="block"><mrow><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">⋆</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>g</mi><mn>1</mn></msub><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">∗</mo><mi>ϕ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">(Not to be confused with “homeomorphism” from
+last chapter: note the spelling.)</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 3.2.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of homomorphisms)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> and <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> be groups.</p>
+<ol id="S2.I1" class="ltx_enumerate">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Any isomorphism <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="G\to H" display="inline"><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></math> is a homomorphism.
+In particular, the identity map <math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="G\to G" display="inline"><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>G</mi></mrow></math> is a homomorphism.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> trivial homomorphism</span> <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="G\to H" display="inline"><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></math> sends
+everything to <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="1_{H}" display="inline"><msub><mn>1</mn><mi>H</mi></msub></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S2.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">There is a homomorphism from <math id="S2.I1.i3.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> to <math id="S2.I1.i3.p1.m2" class="ltx_Math" alttext="\mathbb{Z}/100\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>100</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math> by
+sending each integer to its residue modulo <math id="S2.I1.i3.p1.m3" class="ltx_Math" alttext="100" display="inline"><mn>100</mn></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S2.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">There is a homomorphism from <math id="S2.I1.i4.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> to itself by <math id="S2.I1.i4.p1.m2" class="ltx_Math" alttext="x\mapsto 10x" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><mrow><mn>10</mn><mo>⁢</mo><mi>x</mi></mrow></mrow></math>
+which is injective but not surjective.</p>
+</div>
+</li>
+<li id="S2.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(e)</span> 
+<div id="S2.I1.i5.p1" class="ltx_para">
+<p class="ltx_p">There is a homomorphism from <math id="S2.I1.i5.p1.m1" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math> to <math id="S2.I1.i5.p1.m2" class="ltx_Math" alttext="S_{n+1}" display="inline"><msub><mi>S</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math> by “embedding”:
+every permutation on <math id="S2.I1.i5.p1.m3" class="ltx_Math" alttext="\{1,\dots,n\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>n</mi><mo stretchy="false">}</mo></mrow></math> can be thought of as a permutation
+on <math id="S2.I1.i5.p1.m4" class="ltx_Math" alttext="\{1,\dots,n+1\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></math> if we simply let <math id="S2.I1.i5.p1.m5" class="ltx_Math" alttext="n+1" display="inline"><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></math> be a fixed point.</p>
+</div>
+</li>
+<li id="S2.I1.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(f)</span> 
+<div id="S2.I1.i6.p1" class="ltx_para">
+<p class="ltx_p">A homomorphism <math id="S2.I1.i6.p1.m1" class="ltx_Math" alttext="\phi:D_{12}\to D_{6}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>D</mi><mn>12</mn></msub><mo stretchy="false">→</mo><msub><mi>D</mi><mn>6</mn></msub></mrow></mrow></math>
+is given by <math id="S2.I1.i6.p1.m2" class="ltx_Math" alttext="s_{12}\mapsto s_{6}" display="inline"><mrow><msub><mi>s</mi><mn>12</mn></msub><mo stretchy="false">↦</mo><msub><mi>s</mi><mn>6</mn></msub></mrow></math>
+and <math id="S2.I1.i6.p1.m3" class="ltx_Math" alttext="r_{12}\mapsto r_{6}" display="inline"><mrow><msub><mi>r</mi><mn>12</mn></msub><mo stretchy="false">↦</mo><msub><mi>r</mi><mn>6</mn></msub></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i7" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(g)</span> 
+<div id="S2.I1.i7.p1" class="ltx_para">
+<p class="ltx_p">Specifying a homomorphism <math id="S2.I1.i7.p1.m1" class="ltx_Math" alttext="\mathbb{Z}\to G" display="inline"><mrow><mi>ℤ</mi><mo stretchy="false">→</mo><mi>G</mi></mrow></math> is the same as
+specifying just the image of the element <math id="S2.I1.i7.p1.m2" class="ltx_Math" alttext="1\in\mathbb{Z}" display="inline"><mrow><mn>1</mn><mo>∈</mo><mi>ℤ</mi></mrow></math>. Why?</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">The last two examples illustrate something: suppose we have a presentation of <math id="S2.p5.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+To specify a homomorphism <math id="S2.p5.m2" class="ltx_Math" alttext="G\to H" display="inline"><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></math>, we only have to specify where each generator of <math id="S2.p5.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> goes, in such a way that the relations are all satisfied.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Important remark:
+the right way to think about an isomorphism is as a “bijective homomorphism”.
+To be explicit,</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 3.2.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="G\cong H" display="inline"><mrow><mi>G</mi><mo>≅</mo><mi>H</mi></mrow></math> if and only if there exist
+homomorphisms <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\phi\colon G\to H" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></mrow></math> and <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\psi\colon H\to G" display="inline"><mrow><mi>ψ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>H</mi><mo stretchy="false">→</mo><mi>G</mi></mrow></mrow></math>
+such that <math id="S2.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\phi\circ\psi=\mathrm{id}_{H}" display="inline"><mrow><mrow><mi>ϕ</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>ψ</mi></mrow><mo>=</mo><msub><mi>id</mi><mi>H</mi></msub></mrow></math> and <math id="S2.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\psi\circ\phi=\mathrm{id}_{G}" display="inline"><mrow><mrow><mi>ψ</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>ϕ</mi></mrow><mo>=</mo><msub><mi>id</mi><mi>G</mi></msub></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">So the definitions of homeomorphism of metric spaces
+and isomorphism of groups are not too different.</p>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Some obvious properties of homomorphisms follow.</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_fact">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Fact 3.2.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\phi\colon G\to H" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></mrow></math> be a homomorphism.
+Then <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\phi(1_{G})=1_{H}" display="inline"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mn>1</mn><mi>G</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mn>1</mn><mi>H</mi></msub></mrow></math> and <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\phi(g^{-1})=\phi(g)^{-1}" display="inline"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">Boring, and I’m sure you could do it yourself if you wanted to.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">Now let me define a very important property of a homomorphism.</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 3.2.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> kernel</span> of a homomorphism <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\phi\colon G\to H" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></mrow></math> is defined by</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\ker\phi\coloneqq\left\{g\in G:\phi(g)=1_{H}\right\}." display="block"><mrow><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>ϕ</mi></mrow><mo>≔</mo><mrow><mo>{</mo><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mn>1</mn><mi>H</mi></msub></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">It is a <em class="ltx_emph ltx_font_italic">subgroup</em> of <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>
+(in particular, <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="1_{G}\in\ker\phi" display="inline"><mrow><msub><mn>1</mn><mi>G</mi></msub><mo>∈</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>ϕ</mi></mrow></mrow></math> for obvious reasons).</p>
+</div>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 3.2.6</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify that <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\ker\phi" display="inline"><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>ϕ</mi></mrow></math> is in fact a subgroup of <math id="S2.Thmtheorem6.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.</span></p>
+</div>
+</div>
+<div id="S2.p11" class="ltx_para">
+<p class="ltx_p">We also have the following important fact, which we also encourage the reader to verify.</p>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 3.2.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Kernel determines injectivity)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">The map <math id="S2.Thmtheorem7.p1.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is injective if and only if <math id="S2.Thmtheorem7.p1.m2" class="ltx_Math" alttext="\ker\phi=\{1_{G}\}" display="inline"><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>ϕ</mi></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><msub><mn>1</mn><mi>G</mi></msub><mo stretchy="false">}</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p12" class="ltx_para">
+<p class="ltx_p">To make this concrete, let’s compute the kernel of each of our examples.</p>
+</div>
+<div id="S2.Thmtheorem8" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 3.2.8</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of kernels)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S2.I2" class="ltx_enumerate">
+<li id="S2.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">The kernel of any isomorphism <math id="S2.I2.i1.p1.m1" class="ltx_Math" alttext="G\to H" display="inline"><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></math> is trivial,
+since an isomorphism is injective.
+In particular, the kernel of the identity map <math id="S2.I2.i1.p1.m2" class="ltx_Math" alttext="G\to G" display="inline"><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>G</mi></mrow></math> is <math id="S2.I2.i1.p1.m3" class="ltx_Math" alttext="\{1_{G}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mn>1</mn><mi>G</mi></msub><mo stretchy="false">}</mo></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The kernel of the trivial homomorphism <math id="S2.I2.i2.p1.m1" class="ltx_Math" alttext="G\to H" display="inline"><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></math>
+(by <math id="S2.I2.i2.p1.m2" class="ltx_Math" alttext="g\mapsto 1_{H}" display="inline"><mrow><mi>g</mi><mo stretchy="false">↦</mo><msub><mn>1</mn><mi>H</mi></msub></mrow></math>) is all of <math id="S2.I2.i2.p1.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.</p>
+</div>
+</li>
+<li id="S2.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S2.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">The kernel of the homomorphism <math id="S2.I2.i3.p1.m1" class="ltx_Math" alttext="\mathbb{Z}\to\mathbb{Z}/100\mathbb{Z}" display="inline"><mrow><mi>ℤ</mi><mo stretchy="false">→</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>100</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math> by <math id="S2.I2.i3.p1.m2" class="ltx_Math" alttext="n\mapsto\overline{n}" display="inline"><mrow><mi>n</mi><mo stretchy="false">↦</mo><mover accent="true"><mi>n</mi><mo>¯</mo></mover></mrow></math>
+is precisely</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="100\mathbb{Z}=\{\dots,-200,-100,0,100,200,\dots\}." display="block"><mrow><mrow><mrow><mn>100</mn><mo>⁢</mo><mi>ℤ</mi></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mo>−</mo><mn>200</mn></mrow><mo>,</mo><mrow><mo>−</mo><mn>100</mn></mrow><mo>,</mo><mn>0</mn><mo>,</mo><mn>100</mn><mo>,</mo><mn>200</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+<li id="S2.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S2.I2.i4.p1" class="ltx_para">
+<p class="ltx_p">The kernel of the map <math id="S2.I2.i4.p1.m1" class="ltx_Math" alttext="\mathbb{Z}\to\mathbb{Z}" display="inline"><mrow><mi>ℤ</mi><mo stretchy="false">→</mo><mi>ℤ</mi></mrow></math> by <math id="S2.I2.i4.p1.m2" class="ltx_Math" alttext="x\mapsto 10x" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><mrow><mn>10</mn><mo>⁢</mo><mi>x</mi></mrow></mrow></math> is trivial: <math id="S2.I2.i4.p1.m3" class="ltx_Math" alttext="\{0\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I2.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(e)</span> 
+<div id="S2.I2.i5.p1" class="ltx_para">
+<p class="ltx_p">There is a homomorphism from <math id="S2.I2.i5.p1.m1" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math> to <math id="S2.I2.i5.p1.m2" class="ltx_Math" alttext="S_{n+1}" display="inline"><msub><mi>S</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></math> by “embedding”,
+but it also has trivial kernel because it is injective.</p>
+</div>
+</li>
+<li id="S2.I2.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(f)</span> 
+<div id="S2.I2.i6.p1" class="ltx_para">
+<p class="ltx_p">A homomorphism <math id="S2.I2.i6.p1.m1" class="ltx_Math" alttext="\phi\colon D_{12}\to D_{6}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>D</mi><mn>12</mn></msub><mo stretchy="false">→</mo><msub><mi>D</mi><mn>6</mn></msub></mrow></mrow></math>
+is given by <math id="S2.I2.i6.p1.m2" class="ltx_Math" alttext="s_{12}\mapsto s_{6}" display="inline"><mrow><msub><mi>s</mi><mn>12</mn></msub><mo stretchy="false">↦</mo><msub><mi>s</mi><mn>6</mn></msub></mrow></math> and <math id="S2.I2.i6.p1.m3" class="ltx_Math" alttext="r_{12}\mapsto r_{6}" display="inline"><mrow><msub><mi>r</mi><mn>12</mn></msub><mo stretchy="false">↦</mo><msub><mi>r</mi><mn>6</mn></msub></mrow></math>.
+You can check that</p>
+<div class="table-container"><table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="\ker\phi=\left\{1,r_{12}^{3}\right\}\cong\mathbb{Z}/2\mathbb{Z}." display="block"><mrow><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>ϕ</mi></mrow><mo>=</mo><mrow><mo>{</mo><mn>1</mn><mo>,</mo><msubsup><mi>r</mi><mn>12</mn><mn>3</mn></msubsup><mo>}</mo></mrow><mo>≅</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+<li id="S2.I2.i7" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(g)</span> 
+<div id="S2.I2.i7.p1" class="ltx_para">
+<p class="ltx_p">Exercise below.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S2.Thmtheorem9" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 3.2.9</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Fix any <math id="S2.Thmtheorem9.p1.m1" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>.
+Suppose we have a homomorphism <math id="S2.Thmtheorem9.p1.m2" class="ltx_Math" alttext="\mathbb{Z}\to G" display="inline"><mrow><mi>ℤ</mi><mo stretchy="false">→</mo><mi>G</mi></mrow></math> by <math id="S2.Thmtheorem9.p1.m3" class="ltx_Math" alttext="n\mapsto g^{n}" display="inline"><mrow><mi>n</mi><mo stretchy="false">↦</mo><msup><mi>g</mi><mi>n</mi></msup></mrow></math>.
+What is the kernel?</span></p>
+</div>
+</div>
+<div id="S2.Thmtheorem10" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 3.2.10</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that for any homomorphism <math id="S2.Thmtheorem10.p1.m1" class="ltx_Math" alttext="\phi:G\to H" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></mrow></math>,
+the image <math id="S2.Thmtheorem10.p1.m2" class="ltx_Math" alttext="\phi^{\text{img}}(G)" display="inline"><mrow><msup><mi>ϕ</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a subgroup of <math id="S2.Thmtheorem10.p1.m3" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>.
+Hence, we’ll be especially interested in the case where <math id="S2.Thmtheorem10.p1.m4" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is surjective.</span></p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3.3 </span>Cosets and modding out</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Modding out by <math id="S3.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>: <math id="S3.p1.m2" class="ltx_Math" alttext="\mathbb{Z}/(n\cdot\mathbb{Z})\cong\mathbb{Z}/n\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>ℤ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mi>n</mi></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>.</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic">The next few sections are a bit dense.
+If this exposition doesn’t work for you, try <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:gowers</span>]</cite>.</em></p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p3.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> and <math id="S3.p3.m2" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> be groups, and suppose there exists
+a <em class="ltx_emph ltx_font_italic">surjective</em> homomorphism</p>
+<div class="table-container"><table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\phi\colon G\twoheadrightarrow Q." display="block"><mrow><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">↠</mo><mi>Q</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In other words, if <math id="S3.p3.m3" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is injective then <math id="S3.p3.m4" class="ltx_Math" alttext="\phi\colon G\to Q" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>Q</mi></mrow></mrow></math> is a bijection,
+and hence an isomorphism.
+But suppose we’re not so lucky and <math id="S3.p3.m5" class="ltx_Math" alttext="\ker\phi" display="inline"><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>ϕ</mi></mrow></math> is bigger than just <math id="S3.p3.m6" class="ltx_Math" alttext="\{1_{G}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mn>1</mn><mi>G</mi></msub><mo stretchy="false">}</mo></mrow></math>.
+What is the correct interpretation of a more general homomorphism?</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Let’s look at the special case where <math id="S3.p4.m1" class="ltx_Math" alttext="\phi\colon\mathbb{Z}\to\mathbb{Z}/100\mathbb{Z}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℤ</mi><mo stretchy="false">→</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>100</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></mrow></math> is “modding out by <math id="S3.p4.m2" class="ltx_Math" alttext="100" display="inline"><mn>100</mn></math>”.
+We already saw that the kernel of this map is</p>
+<div class="table-container"><table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\ker\phi=100\mathbb{Z}=\left\{\dots,-200,-100,0,100,200,\dots\right\}." display="block"><mrow><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>ϕ</mi></mrow><mo>=</mo><mrow><mn>100</mn><mo>⁢</mo><mi>ℤ</mi></mrow><mo>=</mo><mrow><mo>{</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mo>−</mo><mn>200</mn></mrow><mo>,</mo><mrow><mo>−</mo><mn>100</mn></mrow><mo>,</mo><mn>0</mn><mo>,</mo><mn>100</mn><mo>,</mo><mn>200</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Recall now that <math id="S3.p4.m3" class="ltx_Math" alttext="\ker\phi" display="inline"><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>ϕ</mi></mrow></math> is a subgroup of <math id="S3.p4.m4" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+What this means is that <math id="S3.p4.m5" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math><span class="ltx_text ltx_font_bold"> is indifferent to the subgroup <math id="S3.p4.m6" class="ltx_Math" alttext="100\mathbb{Z}" display="inline"><mrow><mn>100</mn><mo>⁢</mo><mi>ℤ</mi></mrow></math> of <math id="S3.p4.m7" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math></span>:</p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\phi(15)=\phi(2000+15)=\phi(-300+15)=\phi(700+15)=\dots." display="block"><mrow><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>15</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2000</mn><mo>+</mo><mn>15</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mo>−</mo><mn>300</mn></mrow><mo>+</mo><mn>15</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>700</mn><mo>+</mo><mn>15</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi mathvariant="normal">…</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So <math id="S3.p4.m8" class="ltx_Math" alttext="\mathbb{Z}/100\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>100</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math> is what we get when we “mod out by <math id="S3.p4.m9" class="ltx_Math" alttext="100" display="inline"><mn>100</mn></math>”. Cool.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">In other words, let <math id="S3.p5.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> be a group and <math id="S3.p5.m2" class="ltx_Math" alttext="\phi\colon G\twoheadrightarrow Q" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">↠</mo><mi>Q</mi></mrow></mrow></math>
+be a surjective homomorphism with kernel <math id="S3.p5.m3" class="ltx_Math" alttext="N\subseteq G" display="inline"><mrow><mi>N</mi><mo>⊆</mo><mi>G</mi></mrow></math>.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 3.3.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We claim that <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> should be thought of as the quotient of <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> by <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>.</p>
+</div>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">To formalize this, we will define a so-called
+<span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> quotient group</span> <math id="S3.p6.m1" class="ltx_Math" alttext="G/N" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>N</mi></mrow></math>
+in terms of <math id="S3.p6.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> and <math id="S3.p6.m3" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> only (without referencing <math id="S3.p6.m4" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math>)
+which will be naturally isomorphic to <math id="S3.p6.m5" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math>.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">For motivation, let’s give a concrete description of <math id="S3.p7.m1" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> using just <math id="S3.p7.m2" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> and <math id="S3.p7.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+Continuing our previous example, let <math id="S3.p7.m4" class="ltx_Math" alttext="N=100\mathbb{Z}" display="inline"><mrow><mi>N</mi><mo>=</mo><mrow><mn>100</mn><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math> be our subgroup of <math id="S3.p7.m5" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+Consider the sets</p>
+<div class="table-container"><table id="A5.S3.EGx4" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex16"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex16.m1" class="ltx_Math" alttext="\displaystyle N" display="inline"><mi>N</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex16.m2" class="ltx_Math" alttext="\displaystyle=\left\{\dots,-200,-100,0,100,200,\dots\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mo>−</mo><mn>200</mn></mrow><mo>,</mo><mrow><mo>−</mo><mn>100</mn></mrow><mo>,</mo><mn>0</mn><mo>,</mo><mn>100</mn><mo>,</mo><mn>200</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex17"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex17.m1" class="ltx_Math" alttext="\displaystyle 1+N" display="inline"><mrow><mn>1</mn><mo>+</mo><mi>N</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex17.m2" class="ltx_Math" alttext="\displaystyle=\left\{\dots,-199,-99,1,101,201,\dots\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mo>−</mo><mn>199</mn></mrow><mo>,</mo><mrow><mo>−</mo><mn>99</mn></mrow><mo>,</mo><mn>1</mn><mo>,</mo><mn>101</mn><mo>,</mo><mn>201</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex18"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex18.m1" class="ltx_Math" alttext="\displaystyle 2+N" display="inline"><mrow><mn>2</mn><mo>+</mo><mi>N</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex18.m2" class="ltx_Math" alttext="\displaystyle=\left\{\dots,-198,-98,2,102,202,\dots\right\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mo>−</mo><mn>198</mn></mrow><mo>,</mo><mrow><mo>−</mo><mn>98</mn></mrow><mo>,</mo><mn>2</mn><mo>,</mo><mn>102</mn><mo>,</mo><mn>202</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex19"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex19.m1" class="ltx_Math" alttext="\displaystyle\vdots" display="inline"><mi mathvariant="normal">⋮</mi></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex20"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex20.m1" class="ltx_Math" alttext="\displaystyle 99+N" display="inline"><mrow><mn>99</mn><mo>+</mo><mi>N</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex20.m2" class="ltx_Math" alttext="\displaystyle=\left\{\dots,-101,-1,99,199,299,\dots\right\}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mo>−</mo><mn>101</mn></mrow><mo>,</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>99</mn><mo>,</mo><mn>199</mn><mo>,</mo><mn>299</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The elements of each set all have the same image when we apply <math id="S3.p7.m6" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math>,
+and moreover any two elements in different sets have different images.
+Then the main idea is to notice that</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 3.3.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We can think of <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> as the group
+whose <em class="ltx_emph ltx_font_italic">elements</em> are the <em class="ltx_emph ltx_font_italic">sets</em> above.</p>
+</div>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">Thus, given <math id="S3.p8.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> we define an equivalence relation <math id="S3.p8.m2" class="ltx_Math" alttext="\sim_{N}" display="inline"><msub><mo>∼</mo><mi>N</mi></msub></math>
+on <math id="S3.p8.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> by saying <math id="S3.p8.m4" class="ltx_Math" alttext="x\sim_{N}y" display="inline"><mrow><mi>x</mi><msub><mo>∼</mo><mi>N</mi></msub><mi>y</mi></mrow></math> for <math id="S3.p8.m5" class="ltx_Math" alttext="\phi(x)=\phi(y)" display="inline"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+This <math id="S3.p8.m6" class="ltx_Math" alttext="\sim_{N}" display="inline"><msub><mo>∼</mo><mi>N</mi></msub></math> divides <math id="S3.p8.m7" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> into several equivalence classes in <math id="S3.p8.m8" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>
+which are in obvious bijection with <math id="S3.p8.m9" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math>, as above.
+Now we claim that we can write these equivalence classes very explicitly.</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 3.3.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="x\sim_{N}y" display="inline"><mrow><mi>x</mi><msub><mo>∼</mo><mi>N</mi></msub><mi>y</mi></mrow></math> if and only if <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="x=yn" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><mi>y</mi><mo>⁢</mo><mi>n</mi></mrow></mrow></math> for some <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="n\in N" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>N</mi></mrow></math>
+(in the mod <math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="100" display="inline"><mn>100</mn></math> example, this means they “differ by some multiple of <math id="S3.Thmtheorem3.p1.m5" class="ltx_Math" alttext="100" display="inline"><mn>100</mn></math>”).
+Thus for any <math id="S3.Thmtheorem3.p1.m6" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>, the equivalence class of <math id="S3.Thmtheorem3.p1.m7" class="ltx_Math" alttext="\sim_{N}" display="inline"><msub><mo>∼</mo><mi>N</mi></msub></math> which contains <math id="S3.Thmtheorem3.p1.m8" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>
+is given explicitly by</span></p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="gN\coloneqq\left\{gn\mid n\in N\right\}." display="block"><mrow><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>N</mi></mrow><mo>≔</mo><mrow><mo>{</mo><mrow><mi>g</mi><mo>⁢</mo><mi>n</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>n</mi><mo>∈</mo><mi>N</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">Here’s the word that describes the types of sets we’re running into now.</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 3.3.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> be any subgroup of <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> (not necessarily the kernel of some homomorphism).
+A set of the form <math id="S3.Thmtheorem4.p1.m3" class="ltx_Math" alttext="gH" display="inline"><mrow><mi>g</mi><mo>⁢</mo><mi>H</mi></mrow></math> is called a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> left coset</span> of <math id="S3.Thmtheorem4.p1.m4" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 3.3.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Although the notation might not suggest it,
+keep in mind that <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="g_{1}N" display="inline"><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><mi>N</mi></mrow></math> is often equal to <math id="S3.Thmtheorem5.p1.m2" class="ltx_Math" alttext="g_{2}N" display="inline"><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><mi>N</mi></mrow></math> even if <math id="S3.Thmtheorem5.p1.m3" class="ltx_Math" alttext="g_{1}\neq g_{2}" display="inline"><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>≠</mo><msub><mi>g</mi><mn>2</mn></msub></mrow></math>.
+In the “mod <math id="S3.Thmtheorem5.p1.m4" class="ltx_Math" alttext="100" display="inline"><mn>100</mn></math>” example, <math id="S3.Thmtheorem5.p1.m5" class="ltx_Math" alttext="3+N=103+N" display="inline"><mrow><mrow><mn>3</mn><mo>+</mo><mi>N</mi></mrow><mo>=</mo><mrow><mn>103</mn><mo>+</mo><mi>N</mi></mrow></mrow></math>.
+In other words, these cosets are <em class="ltx_emph ltx_font_italic">sets</em>.</p>
+</div>
+<div id="S3.Thmtheorem5.p2" class="ltx_para">
+<p class="ltx_p">This means that if I write “let <math id="S3.Thmtheorem5.p2.m1" class="ltx_Math" alttext="gH" display="inline"><mrow><mi>g</mi><mo>⁢</mo><mi>H</mi></mrow></math> be a coset” without telling you what <math id="S3.Thmtheorem5.p2.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> is,
+you can’t figure out which <math id="S3.Thmtheorem5.p2.m3" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> I chose from just the coset itself.
+If you don’t believe me, here’s an example of what I mean:</p>
+<div class="table-container"><table id="remark:coset_warning" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="x+100\mathbb{Z}=\left\{\dots,-97,3,103,203,\dots\right\}\implies x={?}." display="block"><mrow><mrow><mrow><mi>x</mi><mo>+</mo><mrow><mn>100</mn><mo>⁢</mo><mi>ℤ</mi></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mo>−</mo><mn>97</mn></mrow><mo>,</mo><mn>3</mn><mo>,</mo><mn>103</mn><mo>,</mo><mn>203</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>}</mo></mrow><mo stretchy="false">⟹</mo><mi>x</mi><mo>=</mo><mi mathvariant="normal">?</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">There’s no reason to think I picked <math id="S3.Thmtheorem5.p2.m4" class="ltx_Math" alttext="x=3" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>3</mn></mrow></math>. (I actually picked <math id="S3.Thmtheorem5.p2.m5" class="ltx_Math" alttext="x=-13597" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><mo>−</mo><mn>13597</mn></mrow></mrow></math>.)</p>
+</div>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 3.3.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Given cosets <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="g_{1}H" display="inline"><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><mi>H</mi></mrow></math> and <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="g_{2}H" display="inline"><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><mi>H</mi></mrow></math>,
+you can check that the map <math id="S3.Thmtheorem6.p1.m3" class="ltx_Math" alttext="x\mapsto g_{2}g_{1}^{-1}x" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><msubsup><mi>g</mi><mn>1</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mi>x</mi></mrow></mrow></math> is a bijection between them.
+So actually, all cosets have the same cardinality.</p>
+</div>
+</div>
+<div id="S3.p10" class="ltx_para">
+<p class="ltx_p">So, long story short,</p>
+</div>
+<div id="S3.Thmtheorem7" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 3.3.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Elements of the group <math id="S3.Thmtheorem7.p1.m1" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> are naturally identified with left cosets of <math id="S3.Thmtheorem7.p1.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>.</p>
+</div>
+</div>
+<div id="S3.p11" class="ltx_para">
+<p class="ltx_p">In practice, people often still prefer to picture elements of <math id="S3.p11.m1" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> as single points
+(for example it’s easier to think of <math id="S3.p11.m2" class="ltx_Math" alttext="\mathbb{Z}/2\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math> as <math id="S3.p11.m3" class="ltx_Math" alttext="\{0,1\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></math>
+rather than <math id="S3.p11.m4" class="ltx_Math" alttext="\big{\{}\{\dots,-2,0,2,\dots\},\{\dots,-1,1,3,\dots\}\big{\}}" display="inline"><mrow><mo maxsize="120%" minsize="120%">{</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mo>−</mo><mn>2</mn></mrow><mo>,</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow><mo>,</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn><mo>,</mo><mn>3</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow><mo maxsize="120%" minsize="120%">}</mo></mrow></math>).
+If you like this picture,
+then you might then draw <math id="S3.p11.m5" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> as a bunch of equally tall fibers (the cosets),
+which are then “collapsed” onto <math id="S3.p11.m6" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math>.</p>
+</div>
+<div id="S3.p12" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='255.118111pt' height='201.448038pt' viewBox='39.95674 204.801119 255.118111 201.448038'>
+<defs>
+<path id='asymptote-3-1-g1-71' d='M8.290907-7.581816C8.290907-7.614543 8.269089-7.690907 8.170907-7.690907C8.13818-7.690907 8.12727-7.679998 8.00727-7.559998L7.243634-6.719998C7.145453-6.872725 6.643635-7.690907 5.432726-7.690907C2.999999-7.690907 .545454-5.279999 .545454-2.74909C.545454-1.014545 1.756363 .24 3.523635 .24C4.003635 .24 4.494544 .141818 4.887271-.021818C5.432726-.24 5.639998-.469091 5.836362-.687273C5.934544-.414545 6.21818-.010909 6.327271-.010909C6.381816-.010909 6.403635-.043636 6.403635-.054545C6.425453-.076364 6.534544-.490909 6.589089-.72L6.796362-1.56C6.839998-1.745454 6.894544-1.930909 6.93818-2.116363C7.05818-2.607272 7.069089-2.62909 7.690907-2.639999C7.745452-2.639999 7.865452-2.650908 7.865452-2.858181C7.865452-2.934545 7.810907-2.978181 7.723634-2.978181C7.472725-2.978181 6.829089-2.945454 6.57818-2.945454C6.239998-2.945454 5.389089-2.978181 5.050908-2.978181C4.952726-2.978181 4.821817-2.978181 4.821817-2.759999C4.821817-2.639999 4.90909-2.639999 5.149089-2.639999C5.159999-2.639999 5.476362-2.639999 5.727271-2.618181C6.010907-2.585454 6.065453-2.552727 6.065453-2.410908C6.065453-2.312727 5.945453-1.821818 5.836362-1.418181C5.530908-.218182 4.112726-.098182 3.730908-.098182C2.683636-.098182 1.538181-.72 1.538181-2.38909C1.538181-2.727272 1.647272-4.527271 2.792726-5.945453C3.381817-6.687271 4.439999-7.352725 5.519998-7.352725C6.632725-7.352725 7.276362-6.512725 7.276362-5.247271C7.276362-4.810908 7.243634-4.799999 7.243634-4.690908S7.363634-4.581817 7.407271-4.581817C7.549089-4.581817 7.549089-4.603635 7.603634-4.799999L8.290907-7.581816Z'/>
+<path id='asymptote-3-1-g1-81' d='M4.77818-.065455C6.469089-.709091 8.072725-2.650908 8.072725-4.756362C8.072725-6.512725 6.916362-7.690907 5.290908-7.690907C2.934545-7.690907 .534545-5.214544 .534545-2.672727C.534545-.861818 1.756363 .24 3.327272 .24C3.599999 .24 3.970908 .196364 4.396362 .076364C4.352726 .752727 4.352726 .774545 4.352726 .916363C4.352726 1.265454 4.352726 2.116363 5.25818 2.116363C6.556362 2.116363 7.079998 .12 7.079998 0C7.079998-.076364 7.003634-.109091 6.959998-.109091C6.872725-.109091 6.850907-.054545 6.829089 .010909C6.567271 .785454 5.934544 1.058182 5.552726 1.058182C5.050908 1.058182 4.887271 .763636 4.77818-.065455ZM2.716363-.152727C1.865454-.490909 1.494545-1.341818 1.494545-2.323636C1.494545-3.076363 1.778181-4.625453 2.607272-5.803635C3.403635-6.916362 4.42909-7.41818 5.225453-7.41818C6.316362-7.41818 7.112725-6.567271 7.112725-5.105453C7.112725-4.014544 6.556362-1.461818 4.723635-.436364C4.66909-.818182 4.559999-1.614545 3.763635-1.614545C3.185454-1.614545 2.650908-1.069091 2.650908-.501818C2.650908-.283636 2.716363-.163636 2.716363-.152727ZM3.392726-.032727C3.239999-.032727 2.890908-.032727 2.890908-.501818C2.890908-.938182 3.305454-1.374545 3.763635-1.374545S4.42909-1.112727 4.42909-.447273C4.42909-.283636 4.418181-.272727 4.30909-.229091C4.025453-.109091 3.698181-.032727 3.392726-.032727Z'/>
+<path id='asymptote-3-1-g2-61' d='M7.494543-3.567272C7.65818-3.567272 7.865452-3.567272 7.865452-3.785453S7.65818-4.003635 7.505452-4.003635H.970909C.818182-4.003635 .610909-4.003635 .610909-3.785453S.818182-3.567272 .981818-3.567272H7.494543ZM7.505452-1.450909C7.65818-1.450909 7.865452-1.450909 7.865452-1.66909S7.65818-1.887272 7.494543-1.887272H.981818C.818182-1.887272 .610909-1.887272 .610909-1.66909S.818182-1.450909 .970909-1.450909H7.505452Z'/>
+<path id='asymptote-3-1-g0-40' d='M9.916361-1.450909C10.101815-1.450909 10.298179-1.450909 10.298179-1.66909S10.101815-1.887272 9.905452-1.887272H2.978181C2.519999-2.279999 1.963636-2.563636 1.603636-2.727272C1.996363-2.901817 2.530908-3.185454 2.978181-3.567272H9.905452C10.101815-3.567272 10.298179-3.567272 10.298179-3.785453S10.101815-4.003635 9.916361-4.003635H3.46909C3.992726-4.505453 4.559999-5.465453 4.559999-5.607271C4.559999-5.727271 4.418181-5.727271 4.352726-5.727271C4.265453-5.727271 4.18909-5.727271 4.145453-5.639998C3.916363-5.225453 3.610908-4.647271 2.901817-4.014544C2.14909-3.34909 1.418181-3.054545 .850909-2.890908C.665454-2.825454 .654545-2.814545 .632727-2.792726C.610909-2.781817 .610909-2.74909 .610909-2.727272S.610909-2.683636 .621818-2.661817L.654545-2.639999C.676363-2.62909 .687273-2.618181 .894545-2.552727C2.367272-2.116363 3.458181-1.123636 4.06909 .043636C4.18909 .261818 4.199999 .272727 4.352726 .272727C4.418181 .272727 4.559999 .272727 4.559999 .152727C4.559999 .010909 4.003635-.938182 3.46909-1.450909H9.916361Z'/>
+</defs>
+<g id='asymptote-3-1-page1'>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<path d='M27.9732 151.509V.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='27.9732' cy='124.816' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='27.9732' cy='107.021' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='27.9732' cy='75.8799' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='27.9732' cy='44.7386' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='27.9732' cy='26.9435' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='27.9732' cy='18.046' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='matrix(0 -1.4 1.4 0 -480.4413 488.45698)'>
+<use x='68.715705' y='394.255885' href='#asymptote-3-1-g0-40'/>
+<use x='77.806675' y='394.255885' href='#asymptote-3-1-g2-61'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='27.9732' cy='195.997' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<path d='M72.4609 151.509V.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='72.4609' cy='124.816' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='72.4609' cy='107.021' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='72.4609' cy='75.8799' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='72.4609' cy='44.7386' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='72.4609' cy='26.9435' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='72.4609' cy='18.046' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='matrix(0 -1.4 1.4 0 -436.12 550.5068)'>
+<use x='113.03714' y='394.255885' href='#asymptote-3-1-g0-40'/>
+<use x='122.12811' y='394.255885' href='#asymptote-3-1-g2-61'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='72.4609' cy='195.997' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<path d='M116.948 151.509V.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='116.948' cy='124.816' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='116.948' cy='107.021' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='116.948' cy='75.8799' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='116.948' cy='44.7386' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='116.948' cy='26.9435' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='116.948' cy='18.046' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='matrix(0 -1.4 1.4 0 -391.798 612.5576)'>
+<use x='157.35856' y='394.255885' href='#asymptote-3-1-g0-40'/>
+<use x='166.44953' y='394.255885' href='#asymptote-3-1-g2-61'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='116.948' cy='195.997' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<path d='M161.436 151.509V.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='161.436' cy='124.816' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='161.436' cy='107.021' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='161.436' cy='75.8799' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='161.436' cy='44.7386' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='161.436' cy='26.9435' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='161.436' cy='18.046' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='matrix(0 -1.4 1.4 0 -347.477 674.607)'>
+<use x='201.679979' y='394.255885' href='#asymptote-3-1-g0-40'/>
+<use x='210.77095' y='394.255885' href='#asymptote-3-1-g2-61'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='161.436' cy='195.997' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<path d='M205.924 151.509V.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='205.924' cy='124.816' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='205.924' cy='107.021' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='205.924' cy='75.8799' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='205.924' cy='44.7386' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='205.924' cy='26.9435' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='205.924' cy='18.046' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='matrix(0 -1.4 1.4 0 -303.156 736.6564)'>
+<use x='246.001414' y='394.255885' href='#asymptote-3-1-g0-40'/>
+<use x='255.092385' y='394.255885' href='#asymptote-3-1-g2-61'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='205.924' cy='195.997' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<path d='M250.411 151.509V.250937' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='250.411' cy='124.816' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='250.411' cy='107.021' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='250.411' cy='75.8799' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='250.411' cy='44.7386' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='250.411' cy='26.9435' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='250.411' cy='18.046' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='matrix(0 -1.4 1.4 0 -258.834 798.7072)'>
+<use x='290.322834' y='394.255885' href='#asymptote-3-1-g0-40'/>
+<use x='299.413805' y='394.255885' href='#asymptote-3-1-g2-61'/>
+</g>
+<g transform='translate(39.9567 204.801)scale(.996264)'>
+<circle cx='250.411' cy='195.997' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='41.379951' y='226.446951' href='#asymptote-3-1-g1-71'/>
+<use x='41.356464' y='402.671972' href='#asymptote-3-1-g1-81'/>
+</g>
+</svg>
+</div>
+</div>
+<div id="S3.p13" class="ltx_para">
+<p class="ltx_p">Now that we’ve done this, we can give an <em class="ltx_emph ltx_font_italic">intrinsic</em>
+definition for the quotient group we alluded to earlier.</p>
+</div>
+<div id="S3.Thmtheorem8" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 3.3.8</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">A subgroup <math id="S3.Thmtheorem8.p1.m1" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> of <math id="S3.Thmtheorem8.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is called <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> normal</span> if it is the
+kernel of some homomorphism.
+We write this as <math id="S3.Thmtheorem8.p1.m3" class="ltx_Math" alttext="N\trianglelefteq G" display="inline"><mrow><mi>N</mi><mo>⁢</mo><mi mathvariant="normal">⊴</mi><mo>⁢</mo><mi>G</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem9" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 3.3.9</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem9.p1.m1" class="ltx_Math" alttext="N\trianglelefteq G" display="inline"><mrow><mi>N</mi><mo>⁢</mo><mi mathvariant="normal">⊴</mi><mo>⁢</mo><mi>G</mi></mrow></math>.
+Then the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> quotient group</span>, denoted <math id="S3.Thmtheorem9.p1.m2" class="ltx_Math" alttext="G/N" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>N</mi></mrow></math>
+(and read “<math id="S3.Thmtheorem9.p1.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> mod <math id="S3.Thmtheorem9.p1.m4" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>”),
+is the group defined as follows.</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The elements of <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="G/N" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>N</mi></mrow></math> will be the left cosets of <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">We want to define the product of two cosets <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="C_{1}" display="inline"><msub><mi>C</mi><mn>1</mn></msub></math> and <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="C_{2}" display="inline"><msub><mi>C</mi><mn>2</mn></msub></math> in <math id="S3.I1.i2.p1.m3" class="ltx_Math" alttext="G/N" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>N</mi></mrow></math>.
+Recall that the cosets are in bijection with elements of <math id="S3.I1.i2.p1.m4" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math>.
+So let <math id="S3.I1.i2.p1.m5" class="ltx_Math" alttext="q_{1}" display="inline"><msub><mi>q</mi><mn>1</mn></msub></math> be the value associated to the coset <math id="S3.I1.i2.p1.m6" class="ltx_Math" alttext="C_{1}" display="inline"><msub><mi>C</mi><mn>1</mn></msub></math>,
+and <math id="S3.I1.i2.p1.m7" class="ltx_Math" alttext="q_{2}" display="inline"><msub><mi>q</mi><mn>2</mn></msub></math> the one for <math id="S3.I1.i2.p1.m8" class="ltx_Math" alttext="C_{2}" display="inline"><msub><mi>C</mi><mn>2</mn></msub></math>.
+Then we can take the product to be the coset corresponding to <math id="S3.I1.i2.p1.m9" class="ltx_Math" alttext="q_{1}q_{2}" display="inline"><mrow><msub><mi>q</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>q</mi><mn>2</mn></msub></mrow></math>.</p>
+</div>
+<div id="S3.I1.i2.p2" class="ltx_para">
+<p class="ltx_p">Quite importantly,
+<span class="ltx_text ltx_font_bold">we can also do this in terms of representatives of the cosets</span>.
+Let <math id="S3.I1.i2.p2.m1" class="ltx_Math" alttext="g_{1}\in C_{1}" display="inline"><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>∈</mo><msub><mi>C</mi><mn>1</mn></msub></mrow></math> and <math id="S3.I1.i2.p2.m2" class="ltx_Math" alttext="g_{2}\in C_{2}" display="inline"><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>∈</mo><msub><mi>C</mi><mn>2</mn></msub></mrow></math>,
+so <math id="S3.I1.i2.p2.m3" class="ltx_Math" alttext="C_{1}=g_{1}N" display="inline"><mrow><msub><mi>C</mi><mn>1</mn></msub><mo>=</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><mi>N</mi></mrow></mrow></math> and <math id="S3.I1.i2.p2.m4" class="ltx_Math" alttext="C_{2}=g_{2}N" display="inline"><mrow><msub><mi>C</mi><mn>2</mn></msub><mo>=</mo><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><mi>N</mi></mrow></mrow></math>.
+Then <math id="S3.I1.i2.p2.m5" class="ltx_Math" alttext="C_{1}\cdot C_{2}" display="inline"><mrow><msub><mi>C</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mi>C</mi><mn>2</mn></msub></mrow></math> should be the coset which contains <math id="S3.I1.i2.p2.m6" class="ltx_Math" alttext="g_{1}g_{2}" display="inline"><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub></mrow></math>.
+This is the same as the above definition since
+<math id="S3.I1.i2.p2.m7" class="ltx_Math" alttext="\phi(g_{1}g_{2})=\phi(g_{1})\phi(g_{2})=q_{1}q_{2}" display="inline"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>g</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>g</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>q</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>q</mi><mn>2</mn></msub></mrow></mrow></math>;
+all we’ve done is define the product in terms of elements of <math id="S3.I1.i2.p2.m8" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>,
+rather than values in <math id="S3.I1.i2.p2.m9" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>.</p>
+</div>
+<div id="S3.I1.i2.p3" class="ltx_para">
+<p class="ltx_p">Using the <math id="S3.I1.i2.p3.m1" class="ltx_Math" alttext="gN" display="inline"><mrow><mi>g</mi><mo>⁢</mo><mi>N</mi></mrow></math> notation,
+and with <a href="#remark:coset_warning" title="Remark 3.3.5 — ‣ 3.3 Cosets and modding out ‣ Chapter 3 Homomorphisms and quotient groups ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Remark</span> <span class="ltx_text ltx_ref_tag">3.3.5</span></a> in mind,
+we can write this even more succinctly:</p>
+<div class="table-container"><table id="Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex23.m1" class="ltx_Math" alttext="(g_{1}N)\cdot(g_{2}N)\coloneqq(g_{1}g_{2})N." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><mi>N</mi></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><mi>N</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>N</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S3.p14" class="ltx_para">
+<p class="ltx_p">And now you know why the integers modulo <math id="S3.p14.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> are often written <math id="S3.p14.m2" class="ltx_Math" alttext="\mathbb{Z}/n\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mi>n</mi></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math>!</p>
+</div>
+<div id="S3.Thmtheorem10" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 3.3.10</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Take a moment to digest the above definition.</span></p>
+</div>
+</div>
+<div id="S3.p15" class="ltx_para">
+<p class="ltx_p">By the way we’ve built it, the resulting group <math id="S3.p15.m1" class="ltx_Math" alttext="G/N" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>N</mi></mrow></math> is isomorphic to <math id="S3.p15.m2" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math>.
+In a sense we think of <math id="S3.p15.m3" class="ltx_Math" alttext="G/N" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>N</mi></mrow></math> as “<math id="S3.p15.m4" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> modulo the condition that <math id="S3.p15.m5" class="ltx_Math" alttext="n=1" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow></math>
+for all <math id="S3.p15.m6" class="ltx_Math" alttext="n\in N" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>N</mi></mrow></math>”.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3.4 </span>(Optional) Proof of Lagrange’s theorem</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">As an aside, with the language of cosets
+we can now show Lagrange’s theorem in the general case.</p>
+</div>
+<div id="thm:lagrange_grp" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 3.4.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Lagrange’s theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> be a finite group, and let <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> be any subgroup.
+Then <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\left\lvert H\right\rvert" display="inline"><mrow><mo>|</mo><mi>H</mi><mo>|</mo></mrow></math> divides <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\left\lvert G\right\rvert" display="inline"><mrow><mo>|</mo><mi>G</mi><mo>|</mo></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">The proof is very simple: note that the cosets of <math id="S4.p2.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>
+all have the same size and form a partition of <math id="S4.p2.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>
+(even when <math id="S4.p2.m3" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> is not necessarily normal).
+Hence if <math id="S4.p2.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is the number of cosets,
+then <math id="S4.p2.m5" class="ltx_Math" alttext="n\cdot\left\lvert H\right\rvert=\left\lvert G\right\rvert" display="inline"><mrow><mrow><mi>n</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo>|</mo><mi>H</mi><mo>|</mo></mrow></mrow><mo>=</mo><mrow><mo>|</mo><mi>G</mi><mo>|</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 3.4.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Conclude that <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="x^{\left\lvert G\right\rvert}=1" display="inline"><mrow><msup><mi>x</mi><mrow><mo>|</mo><mi>G</mi><mo>|</mo></mrow></msup><mo>=</mo><mn>1</mn></mrow></math>
+by taking <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="H=\left&lt;x\right&gt;\subseteq G" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mo>⟨</mo><mi>x</mi><mo>⟩</mo></mrow><mo>⊆</mo><mi>G</mi></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 3.4.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">It should be mentioned at this point that
+in general, if <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is a finite group and <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> is normal,
+then <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="|G/N|=|G|/|N|" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>G</mi><mo>/</mo><mi>N</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow><mo>/</mo><mrow><mo stretchy="false">|</mo><mi>N</mi><mo stretchy="false">|</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3.5 </span>Eliminating the homomorphism</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Again <math id="S5.p1.m1" class="ltx_Math" alttext="\mathbb{Z}/n\mathbb{Z}\cong\mathbb{Z}/n\mathbb{Z}" display="inline"><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mi>n</mi></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>≅</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mi>n</mi></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>.</em></p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">Let’s look at the last definition of <math id="S5.p2.m1" class="ltx_Math" alttext="G/N" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>N</mi></mrow></math> we provided.
+The short version is:</p>
+<ul id="S5.I1" class="ltx_itemize">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The elements of <math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="G/N" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>N</mi></mrow></math> are cosets <math id="S5.I1.i1.p1.m2" class="ltx_Math" alttext="gN" display="inline"><mrow><mi>g</mi><mo>⁢</mo><mi>N</mi></mrow></math>, which you can think
+of as equivalence classes of a relation <math id="S5.I1.i1.p1.m3" class="ltx_Math" alttext="\sim_{N}" display="inline"><msub><mo>∼</mo><mi>N</mi></msub></math>
+(where <math id="S5.I1.i1.p1.m4" class="ltx_Math" alttext="g_{1}\sim_{N}g_{2}" display="inline"><mrow><msub><mi>g</mi><mn>1</mn></msub><msub><mo>∼</mo><mi>N</mi></msub><msub><mi>g</mi><mn>2</mn></msub></mrow></math> if <math id="S5.I1.i1.p1.m5" class="ltx_Math" alttext="g_{1}=g_{2}n" display="inline"><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>=</mo><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><mi>n</mi></mrow></mrow></math> for some <math id="S5.I1.i1.p1.m6" class="ltx_Math" alttext="n\in N" display="inline"><mrow><mi>n</mi><mo>∈</mo><mi>N</mi></mrow></math>).</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Given cosets <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="g_{1}N" display="inline"><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><mi>N</mi></mrow></math> and <math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="g_{2}N" display="inline"><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><mi>N</mi></mrow></math> the group operation is</p>
+<div class="table-container"><table id="Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex24.m1" class="ltx_Math" alttext="g_{1}N\cdot g_{2}N\coloneqq(g_{1}g_{2})N." display="block"><mrow><mrow><mrow><mrow><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><mi>N</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo>⁢</mo><mi>N</mi></mrow><mo>≔</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>N</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Question: where do we actually use the fact that <math id="S5.p2.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> is normal?
+We don’t talk about <math id="S5.p2.m3" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> or <math id="S5.p2.m4" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> anywhere in this definition.</p>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">The answer is in <a href="#remark:coset_warning" title="Remark 3.3.5 — ‣ 3.3 Cosets and modding out ‣ Chapter 3 Homomorphisms and quotient groups ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Remark</span> <span class="ltx_text ltx_ref_tag">3.3.5</span></a>.
+The group operation takes in two cosets,
+so it doesn’t know what <math id="S5.p3.m1" class="ltx_Math" alttext="g_{1}" display="inline"><msub><mi>g</mi><mn>1</mn></msub></math> and <math id="S5.p3.m2" class="ltx_Math" alttext="g_{2}" display="inline"><msub><mi>g</mi><mn>2</mn></msub></math> are.
+But behind the scenes,
+<span class="ltx_text ltx_font_bold">the normal condition guarantees that the group operation can pick
+any <math id="S5.p3.m3" class="ltx_Math" alttext="g_{1}" display="inline"><msub><mi>g</mi><mn>1</mn></msub></math> and <math id="S5.p3.m4" class="ltx_Math" alttext="g_{2}" display="inline"><msub><mi>g</mi><mn>2</mn></msub></math> it wants and still end up with the same coset.</span>
+If we didn’t have this property, then it would be hard to define the
+product of two cosets <math id="S5.p3.m5" class="ltx_Math" alttext="C_{1}" display="inline"><msub><mi>C</mi><mn>1</mn></msub></math> and <math id="S5.p3.m6" class="ltx_Math" alttext="C_{2}" display="inline"><msub><mi>C</mi><mn>2</mn></msub></math> because it might make a difference
+which <math id="S5.p3.m7" class="ltx_Math" alttext="g_{1}\in C_{1}" display="inline"><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>∈</mo><msub><mi>C</mi><mn>1</mn></msub></mrow></math> and <math id="S5.p3.m8" class="ltx_Math" alttext="g_{2}\in C_{2}" display="inline"><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>∈</mo><msub><mi>C</mi><mn>2</mn></msub></mrow></math> we picked.
+The fact that <math id="S5.p3.m9" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> came from a homomorphism meant we could pick any representatives
+<math id="S5.p3.m10" class="ltx_Math" alttext="g_{1}" display="inline"><msub><mi>g</mi><mn>1</mn></msub></math> and <math id="S5.p3.m11" class="ltx_Math" alttext="g_{2}" display="inline"><msub><mi>g</mi><mn>2</mn></msub></math> of the cosets we wanted, because they all had the same <math id="S5.p3.m12" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math>-value.</p>
+</div>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">We want some conditions which force this to be true without referencing <math id="S5.p4.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> at all.
+Suppose <math id="S5.p4.m2" class="ltx_Math" alttext="\phi\colon G\to K" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>K</mi></mrow></mrow></math> is a homomorphism of groups with <math id="S5.p4.m3" class="ltx_Math" alttext="H=\ker\phi" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>ϕ</mi></mrow></mrow></math>.
+Aside from the fact <math id="S5.p4.m4" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> is a group, we can get an “obvious” property:</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 3.5.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that if <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="h\in H" display="inline"><mrow><mi>h</mi><mo>∈</mo><mi>H</mi></mrow></math>, <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>,
+then <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="ghg^{-1}\in H" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>∈</mo><mi>H</mi></mrow></math>.
+(Check <math id="S5.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\phi(ghg^{-1})=1_{K}" display="inline"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mn>1</mn><mi>K</mi></msub></mrow></math>.)</span></p>
+</div>
+</div>
+<div id="ex:dihedral_normal_subgroup" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 3.5.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Example of a non-normal subgroup)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="D_{12}=\left&lt;r,s\mid r^{6}=s^{2}=1,rs=sr^{-1}\right&gt;" display="inline"><mrow><msub><mi>D</mi><mn>12</mn></msub><mo>=</mo><mrow><mo>⟨</mo><mrow><mi>r</mi><mo>,</mo><mi>s</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mi>r</mi><mn>6</mn></msup><mo>=</mo><msup><mi>s</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><mo>,</mo><mrow><mrow><mi>r</mi><mo>⁢</mo><mi>s</mi></mrow><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow></mrow><mo>⟩</mo></mrow></mrow></math>.
+Consider the subgroup of order two <math id="S5.Thmtheorem2.p1.m2" class="ltx_Math" alttext="H=\{1,s\}" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi>s</mi><mo stretchy="false">}</mo></mrow></mrow></math>
+and notice that</p>
+<div class="table-container"><table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="rsr^{-1}=r(sr^{-1})=r(rs)=r^{2}s\notin H." display="block"><mrow><mrow><mrow><mi>r</mi><mo>⁢</mo><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>=</mo><mrow><mi>r</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>r</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo>⁢</mo><mi>s</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>⁢</mo><mi>s</mi></mrow><mo>∉</mo><mi>H</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Hence <math id="S5.Thmtheorem2.p1.m3" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> is not normal, and cannot be the kernel of any homomorphism.</p>
+</div>
+</div>
+<div id="S5.p5" class="ltx_para">
+<p class="ltx_p">Well, duh – so what?
+Amazingly it turns out that this is the <em class="ltx_emph ltx_font_italic">sufficient</em> condition we want.
+Specifically, it makes the nice “coset multiplication” we wanted work out.</p>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 3.5.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(For math contest enthusiasts)</span> — </span>
+</h5>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">This coincidence is really a lot like functional equations at the IMO.
+We all know that normal subgroups <math id="S5.Thmtheorem3.p1.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> satisfy <math id="S5.Thmtheorem3.p1.m2" class="ltx_Math" alttext="ghg^{-1}\in H" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>∈</mo><mi>H</mi></mrow></math>;
+the surprise is that from the latter seemingly weaker condition,
+we can deduce <math id="S5.Thmtheorem3.p1.m3" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> is normal.</p>
+</div>
+</div>
+<div id="S5.p6" class="ltx_para">
+<p class="ltx_p">Thus we have a new criterion for “normal” subgroups which does not
+make any external references to <math id="S5.p6.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math>.</p>
+</div>
+<div id="S5.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 3.5.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Algebraic condition for normal subgroups)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem4.p1.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> be a subgroup of <math id="S5.Thmtheorem4.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+Then the following are equivalent:</p>
+<ul id="S5.I2" class="ltx_itemize">
+<li id="S5.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I2.i1.p1.m1" class="ltx_Math" alttext="H\trianglelefteq G" display="inline"><mrow><mi>H</mi><mo>⁢</mo><mi mathvariant="normal">⊴</mi><mo>⁢</mo><mi>G</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S5.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">For every <math id="S5.I2.i2.p1.m1" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math> and <math id="S5.I2.i2.p1.m2" class="ltx_Math" alttext="h\in H" display="inline"><mrow><mi>h</mi><mo>∈</mo><mi>H</mi></mrow></math>, <math id="S5.I2.i2.p1.m3" class="ltx_Math" alttext="ghg^{-1}\in H" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>∈</mo><mi>H</mi></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S5.p7" class="ltx_para">
+<p class="ltx_p">We already showed one direction.</p>
+</div>
+<div id="S5.p8" class="ltx_para">
+<p class="ltx_p">For the other direction, we need to build a homomorphism with kernel <math id="S5.p8.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>.
+So we simply <em class="ltx_emph ltx_font_italic">define</em> the group <math id="S5.p8.m2" class="ltx_Math" alttext="G/H" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>H</mi></mrow></math> as the cosets.
+To put a group operation, we need to verify:</p>
+</div>
+<div id="S5.Thmtheorem5" class="ltx_theorem ltx_theorem_claim">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Claim 3.5.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S5.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S5.Thmtheorem5.p1.m1" class="ltx_Math" alttext="g_{1}^{\prime}\sim_{H}g_{1}" display="inline"><mrow><msubsup><mi>g</mi><mn>1</mn><mo>′</mo></msubsup><msub><mo>∼</mo><mi>H</mi></msub><msub><mi>g</mi><mn>1</mn></msub></mrow></math> and <math id="S5.Thmtheorem5.p1.m2" class="ltx_Math" alttext="g_{2}^{\prime}\sim_{H}g_{2}" display="inline"><mrow><msubsup><mi>g</mi><mn>2</mn><mo>′</mo></msubsup><msub><mo>∼</mo><mi>H</mi></msub><msub><mi>g</mi><mn>2</mn></msub></mrow></math> then <math id="S5.Thmtheorem5.p1.m3" class="ltx_Math" alttext="g_{1}^{\prime}g_{2}^{\prime}\sim_{H}g_{1}g_{2}" display="inline"><mrow><mrow><msubsup><mi>g</mi><mn>1</mn><mo>′</mo></msubsup><mo>⁢</mo><msubsup><mi>g</mi><mn>2</mn><mo>′</mo></msubsup></mrow><msub><mo>∼</mo><mi>H</mi></msub><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub></mrow></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S5.p9" class="ltx_para">
+<p class="ltx_p">Boring algebraic manipulation (again functional equation style).
+Let <math id="S5.p9.m1" class="ltx_Math" alttext="g_{1}^{\prime}=g_{1}h_{1}" display="inline"><mrow><msubsup><mi>g</mi><mn>1</mn><mo>′</mo></msubsup><mo>=</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>h</mi><mn>1</mn></msub></mrow></mrow></math> and <math id="S5.p9.m2" class="ltx_Math" alttext="g_{2}^{\prime}=g_{2}h_{2}" display="inline"><mrow><msubsup><mi>g</mi><mn>2</mn><mo>′</mo></msubsup><mo>=</mo><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>h</mi><mn>2</mn></msub></mrow></mrow></math>, so we want to show that
+<math id="S5.p9.m3" class="ltx_Math" alttext="g_{1}h_{1}g_{2}h_{2}\sim_{H}g_{1}g_{2}" display="inline"><mrow><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>h</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>h</mi><mn>2</mn></msub></mrow><msub><mo>∼</mo><mi>H</mi></msub><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub></mrow></mrow></math>.
+Since <math id="S5.p9.m4" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> has the property, <math id="S5.p9.m5" class="ltx_Math" alttext="g_{2}^{-1}h_{1}g_{2}" display="inline"><mrow><msubsup><mi>g</mi><mn>2</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><msub><mi>h</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub></mrow></math> is some element of <math id="S5.p9.m6" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>, say <math id="S5.p9.m7" class="ltx_Math" alttext="h_{3}" display="inline"><msub><mi>h</mi><mn>3</mn></msub></math>.
+Thus <math id="S5.p9.m8" class="ltx_Math" alttext="h_{1}g_{2}=g_{2}h_{3}" display="inline"><mrow><mrow><msub><mi>h</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo>=</mo><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>h</mi><mn>3</mn></msub></mrow></mrow></math>, and the left-hand side becomes <math id="S5.p9.m9" class="ltx_Math" alttext="g_{1}g_{2}(h_{3}h_{2})" display="inline"><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>h</mi><mn>3</mn></msub><mo>⁢</mo><msub><mi>h</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math>,
+which is fine since <math id="S5.p9.m10" class="ltx_Math" alttext="h_{3}h_{2}\in H" display="inline"><mrow><mrow><msub><mi>h</mi><mn>3</mn></msub><mo>⁢</mo><msub><mi>h</mi><mn>2</mn></msub></mrow><mo>∈</mo><mi>H</mi></mrow></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S5.p10" class="ltx_para">
+<p class="ltx_p">With that settled we can just <em class="ltx_emph ltx_font_italic">define</em> the
+product of two cosets (of normal subgroups) by</p>
+<div class="table-container"><table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="(g_{1}H)\cdot(g_{2}H)=(g_{1}g_{2})H." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><mi>H</mi></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><mi>H</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>H</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S5.p11" class="ltx_para">
+<p class="ltx_p">Thus the claim above shows that this multiplication is well-defined
+(this verification is the “content” of the theorem).
+So <math id="S5.p11.m1" class="ltx_Math" alttext="G/H" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>H</mi></mrow></math> is indeed a group!
+Moreover there is an obvious “projection” homomorphism
+<math id="S5.p11.m2" class="ltx_Math" alttext="G\to G/H" display="inline"><mrow><mi>G</mi><mo stretchy="false">→</mo><mrow><mi>G</mi><mo>/</mo><mi>H</mi></mrow></mrow></math> (with kernel <math id="S5.p11.m3" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>), by <math id="S5.p11.m4" class="ltx_Math" alttext="g\mapsto gH" display="inline"><mrow><mi>g</mi><mo stretchy="false">↦</mo><mrow><mi>g</mi><mo>⁢</mo><mi>H</mi></mrow></mrow></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S5.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 3.5.6</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Modding out in the product group)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Consider again the product group <math id="S5.Thmtheorem6.p1.m1" class="ltx_Math" alttext="G\times H" display="inline"><mrow><mi>G</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>H</mi></mrow></math>.
+Earlier we identified a subgroup</p>
+<div class="table-container"><table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="G^{\prime}=\left\{(g,1_{H})\mid g\in G\right\}\cong G." display="block"><mrow><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>=</mo><mrow><mo>{</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo>,</mo><msub><mn>1</mn><mi>H</mi></msub><mo stretchy="false">)</mo></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow><mo>}</mo></mrow><mo>≅</mo><mi>G</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">You can easily see that <math id="S5.Thmtheorem6.p1.m2" class="ltx_Math" alttext="G^{\prime}\trianglelefteq G\times H" display="inline"><mrow><mrow><msup><mi>G</mi><mo>′</mo></msup><mo>⁢</mo><mi mathvariant="normal">⊴</mi><mo>⁢</mo><mi>G</mi></mrow><mo lspace="0.222em" rspace="0.222em">×</mo><mi>H</mi></mrow></math>.
+(Easy calculation.)</p>
+</div>
+<div id="S5.Thmtheorem6.p2" class="ltx_para">
+<p class="ltx_p">Moreover, you can check that</p>
+<div class="table-container"><table id="Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex28.m1" class="ltx_Math" alttext="(G\times H)/(G^{\prime})\cong H." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>G</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>H</mi></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>G</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mi>H</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Indeed, we have <math id="S5.Thmtheorem6.p2.m1" class="ltx_Math" alttext="(g,h)\sim_{G^{\prime}}(1_{G},h)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>g</mi><mo>,</mo><mi>h</mi><mo stretchy="false">)</mo></mrow><msub><mo>∼</mo><msup><mi>G</mi><mo>′</mo></msup></msub><mrow><mo stretchy="false">(</mo><msub><mn>1</mn><mi>G</mi></msub><mo>,</mo><mi>h</mi><mo stretchy="false">)</mo></mrow></mrow></math> for all <math id="S5.Thmtheorem6.p2.m2" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math> and <math id="S5.Thmtheorem6.p2.m3" class="ltx_Math" alttext="h\in H" display="inline"><mrow><mi>h</mi><mo>∈</mo><mi>H</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem7" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 3.5.7</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Quotients and products don’t necessarily cancel)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">It is not necessarily true that <math id="S5.Thmtheorem7.p1.m1" class="ltx_Math" alttext="(G/H)\times H\cong G" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>G</mi><mo>/</mo><mi>H</mi></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">×</mo><mi>H</mi></mrow><mo>≅</mo><mi>G</mi></mrow></math>.
+For example, consider <math id="S5.Thmtheorem7.p1.m2" class="ltx_Math" alttext="G=\mathbb{Z}/4\mathbb{Z}" display="inline"><mrow><mi>G</mi><mo>=</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>4</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>
+and the normal subgroup <math id="S5.Thmtheorem7.p1.m3" class="ltx_Math" alttext="H=\{0,2\}\cong\mathbb{Z}/2\mathbb{Z}" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">}</mo></mrow><mo>≅</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>.
+Then <math id="S5.Thmtheorem7.p1.m4" class="ltx_Math" alttext="G/H\cong\mathbb{Z}/2\mathbb{Z}" display="inline"><mrow><mrow><mi>G</mi><mo>/</mo><mi>H</mi></mrow><mo>≅</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>,
+but <math id="S5.Thmtheorem7.p1.m5" class="ltx_Math" alttext="\mathbb{Z}/4\mathbb{Z}\not\cong\mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/2\mathbb%
+{Z}" display="inline"><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>4</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>≇</mo><mrow><mrow><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℤ</mi></mrow><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>.
+(Footnote: the precise condition for this kind of “canceling” is called the Schur-Zassenhaus lemma.)</p>
+</div>
+</div>
+<div id="S5.Thmtheorem8" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 3.5.8</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Another explicit computation)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem8.p1.m1" class="ltx_Math" alttext="\phi:D_{8}\to\mathbb{Z}/4\mathbb{Z}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>D</mi><mn>8</mn></msub><mo stretchy="false">→</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>4</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></mrow></math> be defined by</p>
+<div class="table-container"><table id="Ex29" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex29.m1" class="ltx_Math" alttext="r\mapsto\overline{2},\quad s\mapsto\overline{2}." display="block"><mrow><mrow><mrow><mi>r</mi><mo stretchy="false">↦</mo><mover accent="true"><mn>2</mn><mo>¯</mo></mover></mrow><mo rspace="1.167em">,</mo><mrow><mi>s</mi><mo stretchy="false">↦</mo><mover accent="true"><mn>2</mn><mo>¯</mo></mover></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The kernel of this map is <math id="S5.Thmtheorem8.p1.m2" class="ltx_Math" alttext="N=\{1,r^{2},sr,sr^{3}\}" display="inline"><mrow><mi>N</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><msup><mi>r</mi><mn>2</mn></msup><mo>,</mo><mrow><mi>s</mi><mo>⁢</mo><mi>r</mi></mrow><mo>,</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mn>3</mn></msup></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S5.Thmtheorem8.p2" class="ltx_para">
+<p class="ltx_p">We can do a quick computation of all the elements of <math id="S5.Thmtheorem8.p2.m1" class="ltx_Math" alttext="D_{8}" display="inline"><msub><mi>D</mi><mn>8</mn></msub></math> to get</p>
+<div class="table-container"><table id="Ex30" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex30.m1" class="ltx_Math" alttext="\phi(1)=\phi(r^{2})=\phi(sr)=\phi(sr^{3})=\overline{0}\text{ and }\phi(r)=\phi%
+(r^{3})=\phi(s)=\phi(sr^{2})=\overline{2}." display="block"><mrow><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>r</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo>⁢</mo><mi>r</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mn>3</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mover accent="true"><mn>0</mn><mo>¯</mo></mover><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>r</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>r</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mover accent="true"><mn>2</mn><mo>¯</mo></mover></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The two relevant fibers are</p>
+<div class="table-container"><table id="Ex31" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex31.m1" class="ltx_Math" alttext="\phi^{\text{pre}}(\overline{0})=1N=r^{2}N=srN=sr^{3}N=\{1,r^{2},sr,sr^{3}\}" display="block"><mrow><mrow><msup><mi>ϕ</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mn>0</mn><mo>¯</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>⁢</mo><mi>N</mi></mrow><mo>=</mo><mrow><msup><mi>r</mi><mn>2</mn></msup><mo>⁢</mo><mi>N</mi></mrow><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><mi>r</mi><mo>⁢</mo><mi>N</mi></mrow><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mn>3</mn></msup><mo>⁢</mo><mi>N</mi></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><msup><mi>r</mi><mn>2</mn></msup><mo>,</mo><mrow><mi>s</mi><mo>⁢</mo><mi>r</mi></mrow><mo>,</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mn>3</mn></msup></mrow><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and</p>
+<div class="table-container"><table id="Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex32.m1" class="ltx_Math" alttext="\phi^{\text{pre}}(\overline{2})=rN=r^{3}N=sN=sr^{2}N=\{r,r^{3},s,sr^{2}\}." display="block"><mrow><mrow><mrow><msup><mi>ϕ</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mover accent="true"><mn>2</mn><mo>¯</mo></mover><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>r</mi><mo>⁢</mo><mi>N</mi></mrow><mo>=</mo><mrow><msup><mi>r</mi><mn>3</mn></msup><mo>⁢</mo><mi>N</mi></mrow><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><mi>N</mi></mrow><mo>=</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup><mo>⁢</mo><mi>N</mi></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>r</mi><mo>,</mo><msup><mi>r</mi><mn>3</mn></msup><mo>,</mo><mi>s</mi><mo>,</mo><mrow><mi>s</mi><mo>⁢</mo><msup><mi>r</mi><mn>2</mn></msup></mrow><mo stretchy="false">}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So we see that <math id="S5.Thmtheorem8.p2.m2" class="ltx_Math" alttext="|D_{8}/N|=2" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi>D</mi><mn>8</mn></msub><mo>/</mo><mi>N</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>2</mn></mrow></math> is a group of order two, or <math id="S5.Thmtheorem8.p2.m3" class="ltx_Math" alttext="\mathbb{Z}/2\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math>.
+Indeed, the image of <math id="S5.Thmtheorem8.p2.m4" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is</p>
+<div class="table-container"><table id="Ex33" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex33.m1" class="ltx_Math" alttext="\left\{\overline{0},\overline{2}\right\}\cong\mathbb{Z}/2\mathbb{Z}." display="block"><mrow><mrow><mrow><mo>{</mo><mover accent="true"><mn>0</mn><mo>¯</mo></mover><mo>,</mo><mover accent="true"><mn>2</mn><mo>¯</mo></mover><mo>}</mo></mrow><mo>≅</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S5.Thmtheorem9" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 3.5.9</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S5.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Suppose <math id="S5.Thmtheorem9.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is abelian.
+Why does it follow that any subgroup of <math id="S5.Thmtheorem9.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is normal?</span></p>
+</div>
+</div>
+<div id="S5.p12" class="ltx_para">
+<p class="ltx_p">Finally here’s some food for thought:
+suppose one has a group presentation for a group <math id="S5.p12.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>
+that uses <math id="S5.p12.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> generators.
+Can you write it as a quotient of the form <math id="S5.p12.m3" class="ltx_Math" alttext="F_{n}/N" display="inline"><mrow><msub><mi>F</mi><mi>n</mi></msub><mo>/</mo><mi>N</mi></mrow></math>,
+where <math id="S5.p12.m4" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> is a normal subgroup of <math id="S5.p12.m5" class="ltx_Math" alttext="F_{n}" display="inline"><msub><mi>F</mi><mi>n</mi></msub></math>?</p>
+</div>
+</section>
+<section id="sec:first_isomorphism_thm" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3.6 </span>(Digression) The first isomorphism theorem</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p">One quick word about what other sources usually say.</p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">Most textbooks actually <em class="ltx_emph ltx_font_italic">define</em> normal using the <math id="S6.p2.m1" class="ltx_Math" alttext="ghg^{-1}\in H" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>∈</mo><mi>H</mi></mrow></math> property.
+Then they define <math id="S6.p2.m2" class="ltx_Math" alttext="G/H" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>H</mi></mrow></math> for normal <math id="S6.p2.m3" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> in the way I did above,
+using the coset definition</p>
+<div class="table-container"><table id="Ex34" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex34.m1" class="ltx_Math" alttext="(g_{1}H)\cdot(g_{2}H)=g_{1}g_{2}H." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><mi>H</mi></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><mi>H</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub><mo>⁢</mo><mi>H</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Using purely algebraic manipulations (like I did) this is well-defined,
+and so now you have this group <math id="S6.p2.m4" class="ltx_Math" alttext="G/H" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>H</mi></mrow></math> or something.
+The underlying homomorphism isn’t mentioned at all,
+or is just mentioned in passing.</p>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">I think this is incredibly dumb.
+The normal condition looks like it gets pulled out of thin air
+and no one has any clue what’s going on,
+because no one has any clue what a normal subgroup actually should look like.</p>
+</div>
+<div id="S6.p4" class="ltx_para">
+<p class="ltx_p">Other sources like to also write the so-called first isomorphism theorem.<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>There
+is a second and third isomorphism theorem.
+But four years after learning about them, I <em class="ltx_emph ltx_font_italic">still</em> don’t remember what they are.
+So I’m guessing they weren’t very important.</span></span></span>
+It goes like this.</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 3.6.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(First isomorphism theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\phi\colon G\to H" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></mrow></math> be a homomorphism.
+Then <math id="S6.Thmtheorem1.p1.m2" class="ltx_Math" alttext="G/\ker\phi" display="inline"><mrow><mi>G</mi><mo>/</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>ϕ</mi></mrow></mrow></math> is isomorphic to <math id="S6.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\phi^{\text{img}}(G)" display="inline"><mrow><msup><mi>ϕ</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S6.p5" class="ltx_para">
+<p class="ltx_p">To me, this is just a clumsier way of stating the same idea.</p>
+</div>
+<div id="S6.p6" class="ltx_para">
+<p class="ltx_p">About the only merit this claim has is that if <math id="S6.p6.m1" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is injective,
+then the image <math id="S6.p6.m2" class="ltx_Math" alttext="\phi^{\text{img}}(G)" display="inline"><mrow><msup><mi>ϕ</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></math> is an <em class="ltx_emph ltx_font_italic">isomorphic copy</em>
+of <math id="S6.p6.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> inside the group <math id="S6.p6.m4" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>.
+(Try to see this directly!)
+This is a pattern we’ll often see in other branches of mathematics:
+whenever we have an <em class="ltx_emph ltx_font_italic">injective structure-preserving map</em>,
+often the image of this map will be some “copy” of <math id="S6.p6.m5" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+(Here “structure” refers to the group multiplication,
+but we’ll see some more other examples of “types of objects” later!)</p>
+</div>
+<div id="S6.p7" class="ltx_para">
+<p class="ltx_p">In that sense an injective homomorphism <math id="S6.p7.m1" class="ltx_Math" alttext="\phi\colon G\hookrightarrow H" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">↪</mo><mi>H</mi></mrow></mrow></math>
+is an <em class="ltx_emph ltx_font_italic">embedding</em> of <math id="S6.p7.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> into <math id="S6.p7.m3" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>.</p>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">3.7 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 3A</span></span><span class="ltx_text ltx_font_bold"> </span>(18.701 at MIT)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Determine all groups <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> for which the map <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="\phi\colon G\to G" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>G</mi></mrow></mrow></math> defined by</p>
+<div class="table-container"><table id="Ex35" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex35.m1" class="ltx_Math" alttext="\phi(g)=g^{2}" display="block"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>g</mi><mn>2</mn></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is a homomorphism.
+
+Write it out: <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="\phi(ab)=\phi(a)\phi(b)" display="inline"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+
+
+Abelian groups: <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="abab=a^{2}b^{2}\iff ab=ba" display="inline"><mrow><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo>=</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow><mo stretchy="false">⇔</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo>=</mo><mrow><mi>b</mi><mo>⁢</mo><mi>a</mi></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 3B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Consider the dihedral group <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="G=D_{10}" display="inline"><mrow><mi>G</mi><mo>=</mo><msub><mi>D</mi><mn>10</mn></msub></mrow></math>.</p>
+<ol id="S7.I1" class="ltx_enumerate">
+<li id="S7.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S7.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Is <math id="S7.I1.i1.p1.m1" class="ltx_Math" alttext="H=\left&lt;r\right&gt;" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mo>⟨</mo><mi>r</mi><mo>⟩</mo></mrow></mrow></math> a normal subgroup of <math id="S7.I1.i1.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>?
+If so, compute <math id="S7.I1.i1.p1.m3" class="ltx_Math" alttext="G/H" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>H</mi></mrow></math> up to isomorphism.</p>
+</div>
+</li>
+<li id="S7.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S7.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Is <math id="S7.I1.i2.p1.m1" class="ltx_Math" alttext="H=\left&lt;s\right&gt;" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mo>⟨</mo><mi>s</mi><mo>⟩</mo></mrow></mrow></math> a normal subgroup of <math id="S7.I1.i2.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>?
+If so, compute <math id="S7.I1.i2.p1.m3" class="ltx_Math" alttext="G/H" display="inline"><mrow><mi>G</mi><mo>/</mo><mi>H</mi></mrow></math> up to isomorphism.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">Yes, no.
+
+
+Yes to (a): you can check this directly
+from the <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="ghg^{-1}" display="inline"><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math> definition.
+For example, for (a)
+it is enough to compute <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="(r^{a}s)r^{n}(r^{a}s)^{-1}=r^{-n}\in H" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msup><mi>r</mi><mi>a</mi></msup><mo>⁢</mo><mi>s</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msup><mi>r</mi><mi>n</mi></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><msup><mi>r</mi><mi>a</mi></msup><mo>⁢</mo><mi>s</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>=</mo><msup><mi>r</mi><mrow><mo>−</mo><mi>n</mi></mrow></msup><mo>∈</mo><mi>H</mi></mrow></math>.
+The quotient group is <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="\mathbb{Z}/2\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math>.</p>
+</div>
+<div id="Thmproblem2.p2" class="ltx_para">
+<p class="ltx_p">The answer is no for (b) by following
+<a href="#ex:dihedral_normal_subgroup" title="Example 3.5.2 (Example of a non-normal subgroup) ‣ 3.5 Eliminating the homomorphism ‣ Chapter 3 Homomorphisms and quotient groups ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Example</span> <span class="ltx_text ltx_ref_tag">3.5.2</span></a>.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 3C</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Does <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="S_{4}" display="inline"><msub><mi>S</mi><mn>4</mn></msub></math> have a normal subgroup of order <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>?
+
+No.
+
+
+A subgroup of order <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math> must be generated by
+an element of order <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>, since <math id="Thmproblem3.p1.m5" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math> is prime.
+So we may assume WLOG that <math id="Thmproblem3.p1.m6" class="ltx_Math" alttext="H=\left&lt;(1\;2\;3)\right&gt;" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mo>⟨</mo><mrow><mo stretchy="false">(</mo><mn>1 2 3</mn><mo stretchy="false">)</mo></mrow><mo>⟩</mo></mrow></mrow></math>
+(by renaming elements appropriately).
+But then let <math id="Thmproblem3.p1.m7" class="ltx_Math" alttext="g=(3\;4)" display="inline"><mrow><mi>g</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>3 4</mn><mo stretchy="false">)</mo></mrow></mrow></math>; one can check <math id="Thmproblem3.p1.m8" class="ltx_Math" alttext="gHg^{-1}\neq H" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>H</mi><mo>⁢</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>≠</mo><mi>H</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 3D</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> and <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> be finite groups, where <math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="\left\lvert G\right\rvert=1000" display="inline"><mrow><mrow><mo>|</mo><mi>G</mi><mo>|</mo></mrow><mo>=</mo><mn>1000</mn></mrow></math>
+and <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="\left\lvert H\right\rvert=999" display="inline"><mrow><mrow><mo>|</mo><mi>H</mi><mo>|</mo></mrow><mo>=</mo><mn>999</mn></mrow></math>.
+Show that a homomorphism <math id="Thmproblem4.p1.m5" class="ltx_Math" alttext="G\to H" display="inline"><mrow><mi>G</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></math> must be trivial.
+
+<math id="Thmproblem4.p1.m6" class="ltx_Math" alttext="\gcd(1000,999)=1" display="inline"><mrow><mrow><mi>gcd</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>1000</mn><mo>,</mo><mn>999</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>.
+
+
+<math id="Thmproblem4.p1.m7" class="ltx_Math" alttext="G/\ker G" display="inline"><mrow><mi>G</mi><mo>/</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>G</mi></mrow></mrow></math> is isomorphic to a subgroup of <math id="Thmproblem4.p1.m8" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>.
+The order of the former divides <math id="Thmproblem4.p1.m9" class="ltx_Math" alttext="1000" display="inline"><mn>1000</mn></math>;
+the order of the latter divides <math id="Thmproblem4.p1.m10" class="ltx_Math" alttext="999" display="inline"><mn>999</mn></math>.
+This can only occur if <math id="Thmproblem4.p1.m11" class="ltx_Math" alttext="G/\ker G=\{1\}" display="inline"><mrow><mrow><mi>G</mi><mo>/</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>G</mi></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math>
+so <math id="Thmproblem4.p1.m12" class="ltx_Math" alttext="\ker G=G" display="inline"><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>G</mi></mrow><mo>=</mo><mi>G</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem5" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 3E</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p1.m1" class="ltx_Math" alttext="\mathbb{C}^{\times}" display="inline"><msup><mi>ℂ</mi><mo>×</mo></msup></math> denote the nonzero complex numbers under multiplication.
+Show that there are five homomorphisms <math id="Thmproblem5.p1.m2" class="ltx_Math" alttext="\mathbb{Z}/5\mathbb{Z}\to\mathbb{C}^{\times}" display="inline"><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>5</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo stretchy="false">→</mo><msup><mi>ℂ</mi><mo>×</mo></msup></mrow></math>
+but only two homomorphisms <math id="Thmproblem5.p1.m3" class="ltx_Math" alttext="D_{10}\to\mathbb{C}^{\times}" display="inline"><mrow><msub><mi>D</mi><mn>10</mn></msub><mo stretchy="false">→</mo><msup><mi>ℂ</mi><mo>×</mo></msup></mrow></math>,
+even though <math id="Thmproblem5.p1.m4" class="ltx_Math" alttext="\mathbb{Z}/5\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>5</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math> is a subgroup of <math id="Thmproblem5.p1.m5" class="ltx_Math" alttext="D_{10}" display="inline"><msub><mi>D</mi><mn>10</mn></msub></math>.</p>
+</div>
+</div>
+<div id="Thmproblem6" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 3F</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem6.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem6.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem6.p2" class="ltx_para">
+<p class="ltx_p">Find a non-abelian group <math id="Thmproblem6.p2.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>
+such that every subgroup of <math id="Thmproblem6.p2.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is normal.
+(These groups are called <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Hamiltonian</span>.)
+
+Find an example of order <math id="Thmproblem6.p2.m3" class="ltx_Math" alttext="8" display="inline"><mn>8</mn></math>.
+
+
+Quaternion group.</p>
+</div>
+</div>
+<div id="Thmproblem7" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 3G</span></span><span class="ltx_text ltx_font_bold"> </span>(PRIMES entrance exam, 2018)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem7.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem7.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem7.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem7.p2.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> be a group with presentation given by</p>
+<div class="table-container"><table id="Ex36" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex36.m1" class="ltx_Math" alttext="G=\left&lt;a,b,c\mid ab=c^{2}a^{4},\;bc=ca^{6},\;ac=ca^{8},\;c^{2018}=b^{2019}%
+\right&gt;." display="block"><mrow><mrow><mi>G</mi><mo>=</mo><mrow><mo>⟨</mo><mrow><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo>=</mo><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>a</mi><mn>4</mn></msup></mrow></mrow><mo rspace="0.447em">,</mo><mrow><mrow><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><msup><mi>a</mi><mn>6</mn></msup></mrow></mrow><mo rspace="0.447em">,</mo><mrow><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>c</mi></mrow><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><msup><mi>a</mi><mn>8</mn></msup></mrow></mrow><mo rspace="0.447em">,</mo><mrow><msup><mi>c</mi><mn>2018</mn></msup><mo>=</mo><msup><mi>b</mi><mn>2019</mn></msup></mrow></mrow></mrow></mrow><mo>⟩</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Determine the order of <math id="Thmproblem7.p2.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+
+Try to show <math id="Thmproblem7.p2.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is the dihedral group of order <math id="Thmproblem7.p2.m4" class="ltx_Math" alttext="18" display="inline"><mn>18</mn></math>.
+There is not much group theory content here — just manipulation.
+
+
+The answer is <math id="Thmproblem7.p2.m5" class="ltx_Math" alttext="|G|=18" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>18</mn></mrow></math>.</p>
+</div>
+<div id="Thmproblem7.p3" class="ltx_para">
+<p class="ltx_p">First, observe that by induction we have</p>
+<div class="table-container"><table id="Ex37" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex37.m1" class="ltx_Math" alttext="a^{n}c=ca^{8n}" display="block"><mrow><mrow><msup><mi>a</mi><mi>n</mi></msup><mo>⁢</mo><mi>c</mi></mrow><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><msup><mi>a</mi><mrow><mn>8</mn><mo>⁢</mo><mi>n</mi></mrow></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for all <math id="Thmproblem7.p3.m1" class="ltx_Math" alttext="n\geq 1" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></math>.
+We then note that</p>
+<div class="table-container"><table id="A5.S3.EGx5" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex38"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex38.m1" class="ltx_Math" alttext="\displaystyle a(bc)" display="inline"><mrow><mi>a</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex38.m2" class="ltx_Math" alttext="\displaystyle=(ab)c" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>c</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex39"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex39.m1" class="ltx_Math" alttext="\displaystyle a\cdot ca^{6}" display="inline"><mrow><mrow><mi>a</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>c</mi></mrow><mo>⁢</mo><msup><mi>a</mi><mn>6</mn></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex39.m2" class="ltx_Math" alttext="\displaystyle=c^{2}a^{4}\cdot c" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>a</mi><mn>4</mn></msup></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>c</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex40"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex40.m1" class="ltx_Math" alttext="\displaystyle ca^{8}\cdot a^{6}" display="inline"><mrow><mrow><mi>c</mi><mo>⁢</mo><msup><mi>a</mi><mn>8</mn></msup></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mi>a</mi><mn>6</mn></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex40.m2" class="ltx_Math" alttext="\displaystyle=c^{2}a^{4}\cdot c" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>a</mi><mn>4</mn></msup></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>c</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex41"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex41.m1" class="ltx_Math" alttext="\displaystyle a^{14}" display="inline"><msup><mi>a</mi><mn>14</mn></msup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex41.m2" class="ltx_Math" alttext="\displaystyle=c(a^{4}c)=c^{2}a^{32}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>a</mi><mn>4</mn></msup><mo>⁢</mo><mi>c</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>a</mi><mn>32</mn></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Hence we conclude <math id="Thmproblem7.p3.m2" class="ltx_Math" alttext="c^{2}=a^{-18}" display="inline"><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>=</mo><msup><mi>a</mi><mrow><mo>−</mo><mn>18</mn></mrow></msup></mrow></math>.
+Then <math id="Thmproblem7.p3.m3" class="ltx_Math" alttext="ab=c^{2}a^{4}\implies b=a^{-15}" display="inline"><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>b</mi></mrow><mo>=</mo><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>a</mi><mn>4</mn></msup></mrow><mo stretchy="false">⟹</mo><mi>b</mi><mo>=</mo><msup><mi>a</mi><mrow><mo>−</mo><mn>15</mn></mrow></msup></mrow></math>.</p>
+</div>
+<div id="Thmproblem7.p4" class="ltx_para">
+<p class="ltx_p">In that case, since <math id="Thmproblem7.p4.m1" class="ltx_Math" alttext="c^{2018}=b^{2019}" display="inline"><mrow><msup><mi>c</mi><mn>2018</mn></msup><mo>=</mo><msup><mi>b</mi><mn>2019</mn></msup></mrow></math>,
+we conclude <math id="Thmproblem7.p4.m2" class="ltx_Math" alttext="1=a^{-1009\cdot 18+2019\cdot 15}=a^{12123}" display="inline"><mrow><mn>1</mn><mo>=</mo><msup><mi>a</mi><mrow><mrow><mo>−</mo><mrow><mn>1009</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>18</mn></mrow></mrow><mo>+</mo><mrow><mn>2019</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>15</mn></mrow></mrow></msup><mo>=</mo><msup><mi>a</mi><mn>12123</mn></msup></mrow></math>.
+Finally,</p>
+<div class="table-container"><table id="A5.S3.EGx6" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex42"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex42.m1" class="ltx_Math" alttext="\displaystyle bc" display="inline"><mrow><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex42.m2" class="ltx_Math" alttext="\displaystyle=ca^{6}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><msup><mi>a</mi><mn>6</mn></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex43"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex43.m1" class="ltx_Math" alttext="\displaystyle a^{-15}c" display="inline"><mrow><msup><mi>a</mi><mrow><mo>−</mo><mn>15</mn></mrow></msup><mo>⁢</mo><mi>c</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex43.m2" class="ltx_Math" alttext="\displaystyle=ca^{6}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><msup><mi>a</mi><mn>6</mn></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex44"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex44.m1" class="ltx_Math" alttext="\displaystyle a^{-15}c^{2}" display="inline"><mrow><msup><mi>a</mi><mrow><mo>−</mo><mn>15</mn></mrow></msup><mo>⁢</mo><msup><mi>c</mi><mn>2</mn></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex44.m2" class="ltx_Math" alttext="\displaystyle=c(a^{6}c)=c^{2}a^{48}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>a</mi><mn>6</mn></msup><mo>⁢</mo><mi>c</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>⁢</mo><msup><mi>a</mi><mn>48</mn></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex45"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex45.m1" class="ltx_Math" alttext="\displaystyle a^{-33}" display="inline"><msup><mi>a</mi><mrow><mo>−</mo><mn>33</mn></mrow></msup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex45.m2" class="ltx_Math" alttext="\displaystyle=a^{30}" display="inline"><mrow><mi></mi><mo>=</mo><msup><mi>a</mi><mn>30</mn></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex46"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex46.m1" class="ltx_Math" alttext="\displaystyle\implies a^{63}" display="inline"><mrow><mi></mi><mo stretchy="false">⟹</mo><msup><mi>a</mi><mn>63</mn></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex46.m2" class="ltx_Math" alttext="\displaystyle=1." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mn>1</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Since <math id="Thmproblem7.p4.m3" class="ltx_Math" alttext="\gcd(12123,63)=9" display="inline"><mrow><mrow><mi>gcd</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mn>12123</mn><mo>,</mo><mn>63</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>9</mn></mrow></math>, we find <math id="Thmproblem7.p4.m4" class="ltx_Math" alttext="a^{9}=1" display="inline"><mrow><msup><mi>a</mi><mn>9</mn></msup><mo>=</mo><mn>1</mn></mrow></math>, hence finally <math id="Thmproblem7.p4.m5" class="ltx_Math" alttext="c^{2}=1" display="inline"><mrow><msup><mi>c</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow></math>.
+So the presentation above simplifies to</p>
+<div class="table-container"><table id="Ex47" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex47.m1" class="ltx_Math" alttext="G=\left&lt;a,c\mid a^{9}=c^{2}=1,\;ac=ca^{-1}\right&gt;" display="block"><mrow><mi>G</mi><mo>=</mo><mrow><mo>⟨</mo><mrow><mi>a</mi><mo>,</mo><mi>c</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mi>a</mi><mn>9</mn></msup><mo>=</mo><msup><mi>c</mi><mn>2</mn></msup><mo>=</mo><mn>1</mn></mrow><mo rspace="0.447em">,</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>c</mi></mrow><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><msup><mi>a</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow></mrow><mo>⟩</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which is the presentation of the dihedral group of order <math id="Thmproblem7.p4.m6" class="ltx_Math" alttext="18" display="inline"><mn>18</mn></math>.
+This completes the proof.
+
+</p>
+</div>
+</div>
+<div id="Thmproblem8" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 3H</span></span><span class="ltx_text ltx_font_bold"> </span>(Homophony group)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem8.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem8.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem8.p2" class="ltx_para">
+<p class="ltx_p">The homophony group (of English) is the group
+with <math id="Thmproblem8.p2.m1" class="ltx_Math" alttext="26" display="inline"><mn>26</mn></math> generators <math id="Thmproblem8.p2.m2" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, <math id="Thmproblem8.p2.m3" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>, …, <math id="Thmproblem8.p2.m4" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>
+and one relation for every pair of English words
+which sound the same.
+For example <math id="Thmproblem8.p2.m5" class="ltx_Math" alttext="knight=night" display="inline"><mrow><mrow><mi>k</mi><mo>⁢</mo><mi>n</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><mi>t</mi></mrow><mo>=</mo><mrow><mi>n</mi><mo>⁢</mo><mi>i</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><mi>t</mi></mrow></mrow></math> (and hence <math id="Thmproblem8.p2.m6" class="ltx_Math" alttext="k=1" display="inline"><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow></math>).
+Prove that the group is trivial.
+
+Get yourself a list of English homophones, I guess.
+Don’t try too hard.
+Letter <math id="Thmproblem8.p2.m7" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math> is the worst; maybe <math id="Thmproblem8.p2.m8" class="ltx_Math" alttext="felt=veldt" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>t</mi></mrow><mo>=</mo><mrow><mi>v</mi><mo>⁢</mo><mi>e</mi><mo>⁢</mo><mi>l</mi><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>t</mi></mrow></mrow></math>?
+
+
+You can find many solutions by searching “homophone group”;
+one is <a href="https://math.stackexchange.com/q/843966/229197" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://math.stackexchange.com/q/843966/229197</a>.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../startout/metric-space.html">Previous chapter: Metric spaces</a><br />
+<a href="../absalg/rings-ideals.html">Next chapter: Rings and ideals</a>
+</nav>
+
+		</main>
+	</body>
+</html>

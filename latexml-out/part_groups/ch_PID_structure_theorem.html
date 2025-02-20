@@ -1,0 +1,1316 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 18 The PID structure theorem ‣ Part V More on Groups ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="ch_sylow.html" title="Chapter 17 Find all groups ‣ Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="next" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_group_actions.html" title="Chapter 16 Group actions overkill AIME problems ‣ Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_sylow.html" title="Chapter 17 Find all groups ‣ Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_startout/" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_linalg/" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_calc/" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_measure/" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_diffgeo/" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop1/" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st2/" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">V </span>More on Groups</span></a><a href="ch_sylow.html" title="In Part V More on Groups ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">17 </span>Find all groups</span></a><a href="../part_repth/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">VI </span>Representation Theory</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 18 </span>The PID structure theorem</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">The main point of this chapter is to discuss a classification
+theorem for finitely generated abelian groups.
+This won’t take long to do, and if you like, you can read
+just the first section and then move on.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">However, since I’m here, I will go ahead and state the result as a
+special case of the much more general <em class="ltx_emph ltx_font_italic">structure theorem</em>.
+Its corollaries include</p>
+<ul id="S0.I1" class="ltx_itemize">
+<li id="S0.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S0.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">All finite-dimensional vector spaces are <math id="S0.I1.i1.p1.m1" class="ltx_Math" alttext="k^{\oplus n}" display="inline"><msup><mi>k</mi><mrow><mo rspace="0em">⊕</mo><mi>n</mi></mrow></msup></math>.</p>
+</div>
+</li>
+<li id="S0.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S0.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The classification theorem for finitely generated abelian groups,</p>
+</div>
+</li>
+<li id="S0.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S0.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The Jordan decomposition of a matrix from before,</p>
+</div>
+</li>
+<li id="S0.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S0.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">Another canonical form for a matrix: “Frobenius normal form”.</p>
+</div>
+</li>
+</ul>
+</div>
+<section id="sec:FTFGAG" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">18.1 </span>Finitely generated abelian groups</h2>
+
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 18.1.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We talk about abelian groups in what follows, but really the
+morally correct way to think about these structures is as <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>-modules.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 18.1.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">An abelian group <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="G=(G,+)" display="inline"><mrow><mi>G</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">+</mo><mo stretchy="false">)</mo></mrow></mrow></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> finitely generated</span>
+if it is finitely generated as a <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>-module.
+(That is, there exists a finite collection <math id="S1.Thmtheorem2.p1.m3" class="ltx_Math" alttext="b_{1},\dots,b_{m}\in G" display="inline"><mrow><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>m</mi></msub></mrow><mo>∈</mo><mi>G</mi></mrow></math>,
+such that every <math id="S1.Thmtheorem2.p1.m4" class="ltx_Math" alttext="x\in G" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>G</mi></mrow></math> can be written in the form
+<math id="S1.Thmtheorem2.p1.m5" class="ltx_Math" alttext="c_{1}b_{1}+\dots+c_{m}b_{m}" display="inline"><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>b</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>c</mi><mi>m</mi></msub><mo>⁢</mo><msub><mi>b</mi><mi>m</mi></msub></mrow></mrow></math> for some <math id="S1.Thmtheorem2.p1.m6" class="ltx_Math" alttext="c_{1},\dots,c_{m}\in\mathbb{Z}" display="inline"><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>c</mi><mi>m</mi></msub></mrow><mo>∈</mo><mi>ℤ</mi></mrow></math>.)</p>
+</div>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 18.1.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of finitely generated abelian groups)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S1.I1" class="ltx_enumerate">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is finitely generated (by <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>).</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{Z}/n\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mi>n</mi></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math> is finitely generated (by <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>).</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="\mathbb{Z}^{\oplus 2}" display="inline"><msup><mi>ℤ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup></math> is finitely generated (by two elements <math id="S1.I1.i3.p1.m2" class="ltx_Math" alttext="(1,0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math> and <math id="S1.I1.i3.p1.m3" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math>).</p>
+</div>
+</li>
+<li id="S1.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S1.I1.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i4.p1.m1" class="ltx_Math" alttext="\mathbb{Z}^{\oplus 3}\oplus\mathbb{Z}/9\mathbb{Z}\oplus\mathbb{Z}/2016\mathbb{Z}" display="inline"><mrow><msup><mi>ℤ</mi><mrow><mo rspace="0em">⊕</mo><mn>3</mn></mrow></msup><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>9</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2016</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math> is
+finitely generated by five elements.</p>
+</div>
+</li>
+<li id="S1.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(e)</span> 
+<div id="S1.I1.i5.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i5.p1.m1" class="ltx_Math" alttext="\mathbb{Z}/3\mathbb{Z}\oplus\mathbb{Z}/5\mathbb{Z}" display="inline"><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>3</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>5</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math> is finitely generated by two elements.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 18.1.4</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">In fact <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathbb{Z}/3\mathbb{Z}\oplus\mathbb{Z}/5\mathbb{Z}" display="inline"><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>3</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>5</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math> is generated by <em class="ltx_emph ltx_font_italic">one</em> element.
+What is it?</span></p>
+</div>
+</div>
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">You might notice that these examples are not very diverse.
+That’s because they are actually the only examples:</p>
+</div>
+<div id="thm:fund_fg_abelian_group" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 18.1.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Fundamental theorem of finitely generated abelian groups)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> be a finitely generated abelian group.
+Then there exists an integer <math id="S1.Thmtheorem5.p1.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>,
+prime powers <math id="S1.Thmtheorem5.p1.m3" class="ltx_Math" alttext="q_{1}" display="inline"><msub><mi>q</mi><mn>1</mn></msub></math>, …, <math id="S1.Thmtheorem5.p1.m4" class="ltx_Math" alttext="q_{m}" display="inline"><msub><mi>q</mi><mi>m</mi></msub></math> (not necessarily distinct) such that</p>
+<table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="G\cong\mathbb{Z}^{\oplus r}\oplus\mathbb{Z}/q_{1}\mathbb{Z}\oplus\mathbb{Z}/q_%
+{2}\mathbb{Z}\oplus\dots\oplus\mathbb{Z}/q_{m}\mathbb{Z}." display="block"><mrow><mrow><mi>G</mi><mo>≅</mo><mrow><msup><mi>ℤ</mi><mrow><mo rspace="0em">⊕</mo><mi>r</mi></mrow></msup><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><msub><mi>q</mi><mn>1</mn></msub></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><msub><mi>q</mi><mn>2</mn></msub></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><msub><mi>q</mi><mi>m</mi></msub></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This decomposition is unique up to permutation of the <math id="S1.Thmtheorem5.p1.m5" class="ltx_Math" alttext="\mathbb{Z}/q_{i}\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><msub><mi>q</mi><mi>i</mi></msub></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem6" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 18.1.6</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> rank</span> of a finitely generated abelian group <math id="S1.Thmtheorem6.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is the integer <math id="S1.Thmtheorem6.p1.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> above.</p>
+</div>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Now, we could prove this theorem, but it is more interesting to go for the gold
+and state and prove the entire structure theorem.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">18.2 </span>Some ring theory prerequisites</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S2.p1.m1" class="ltx_Math" alttext="R=\mathbb{Z}" display="inline"><mrow><mi>R</mi><mo>=</mo><mi>ℤ</mi></mrow></math>.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Before I can state the main theorem, I need to define a few terms for UFD’s,
+which behave much like <math id="S2.p2.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 18.2.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Our intuition from the case <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="R=\mathbb{Z}" display="inline"><mrow><mi>R</mi><mo>=</mo><mi>ℤ</mi></mrow></math> basically carries over verbatim.</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">We don’t even need to deal with prime ideals and can factor elements instead.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 18.2.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a UFD, then <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="p\in R" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>R</mi></mrow></math> is a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> prime element</span>
+if <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="(p)" display="inline"><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></math> is a prime ideal and <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="p\neq 0" display="inline"><mrow><mi>p</mi><mo>≠</mo><mn>0</mn></mrow></math>.
+For UFD’s this is equivalent to:
+if <math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="p=xy" display="inline"><mrow><mi>p</mi><mo>=</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></mrow></math> then either <math id="S2.Thmtheorem2.p1.m6" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> or <math id="S2.Thmtheorem2.p1.m7" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> is a unit.</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">So for example in <math id="S2.p4.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> the set of prime elements is <math id="S2.p4.m2" class="ltx_Math" alttext="\{\pm 2,\pm 3,\pm 5,\dots\}" display="inline"><mrow><mo stretchy="false">{</mo><mrow><mo>±</mo><mn>2</mn></mrow><mo>,</mo><mrow><mo>±</mo><mn>3</mn></mrow><mo>,</mo><mrow><mo>±</mo><mn>5</mn></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow></math>.
+Now, since <math id="S2.p4.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a UFD, every element <math id="S2.p4.m4" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> factors into a product of prime elements</p>
+<table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="r=up_{1}^{e_{1}}p_{2}^{e_{2}}\dots p_{m}^{e_{m}}" display="block"><mrow><mi>r</mi><mo>=</mo><mrow><mi>u</mi><mo>⁢</mo><msubsup><mi>p</mi><mn>1</mn><msub><mi>e</mi><mn>1</mn></msub></msubsup><mo>⁢</mo><msubsup><mi>p</mi><mn>2</mn><msub><mi>e</mi><mn>2</mn></msub></msubsup><mo>⁢</mo><mi mathvariant="normal">…</mi><mo>⁢</mo><msubsup><mi>p</mi><mi>m</mi><msub><mi>e</mi><mi>m</mi></msub></msubsup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 18.2.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">We say <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> divides</span> <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> if <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="s=r^{\prime}r" display="inline"><mrow><mi>s</mi><mo>=</mo><mrow><msup><mi>r</mi><mo>′</mo></msup><mo>⁢</mo><mi>r</mi></mrow></mrow></math>
+for some <math id="S2.Thmtheorem3.p1.m4" class="ltx_Math" alttext="r^{\prime}\in R" display="inline"><mrow><msup><mi>r</mi><mo>′</mo></msup><mo>∈</mo><mi>R</mi></mrow></math>. This is written <math id="S2.Thmtheorem3.p1.m5" class="ltx_Math" alttext="r\mid s" display="inline"><mrow><mi>r</mi><mo>∣</mo><mi>s</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 18.2.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Divisibility in <math id="S2.Thmtheorem4.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi mathcolor="#8C0000">ℤ</mi></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The number <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> is divisible by every element of <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>.
+All other divisibility as expected.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 18.2.5</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="r\mid s" display="inline"><mrow><mi>r</mi><mo>∣</mo><mi>s</mi></mrow></math> if and only if the exponent of each prime in <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> is
+less than or equal to the corresponding exponent in <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math>.</span></p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Now, the case of interest is the even stronger case when <math id="S2.p5.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a PID:</p>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Proposition 18.2.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(PID’s are Noetherian UFD’s)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a PID, then it is Noetherian and also a UFD.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">The fact that <math id="S2.p6.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is Noetherian is obvious.
+For <math id="S2.p6.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> to be a UFD we essentially repeat the proof for <math id="S2.p6.m3" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>,
+using the fact that <math id="S2.p6.m4" class="ltx_Math" alttext="(a,b)" display="inline"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></math> is principal in order to extract
+<math id="S2.p6.m5" class="ltx_Math" alttext="\gcd(a,b)" display="inline"><mrow><mi>gcd</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">In this case, we have a Chinese remainder theorem for elements.</p>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 18.2.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Chinese remainder theorem for rings)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem7.p1.m1" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> and <math id="S2.Thmtheorem7.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> be relatively prime elements, meaning <math id="S2.Thmtheorem7.p1.m3" class="ltx_Math" alttext="(m)+(n)=(1)" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><mo>+</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>.
+Then</p>
+<table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="R/(mn)\cong R/(m)\times R/(n)." display="block"><mrow><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>m</mi><mo>⁢</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">×</mo><mi>R</mi></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Here the ring product is as defined in <a href="../part_absalg/ch_rings_ideals.html#ex:product_ring" title="Example 4.3.8 (Product ring) ‣ 4.3 Definition and examples of rings ‣ Chapter 4 Rings and ideals ‣ Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Example</span> <span class="ltx_text ltx_ref_tag">4.3.8</span></a>.</p>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">This is the same as the proof of the usual Chinese remainder theorem.
+First, since <math id="S2.p9.m1" class="ltx_Math" alttext="(m,n)=(1)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math> we have <math id="S2.p9.m2" class="ltx_Math" alttext="am+bn=1" display="inline"><mrow><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>m</mi></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>n</mi></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math> for some <math id="S2.p9.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S2.p9.m4" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>.
+Then we have a map</p>
+<table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="R/(m)\times R/(n)\to R/(mn)\quad\text{by}\quad(r,s)\mapsto r\cdot bn+s\cdot am." display="block"><mrow><mrow><mrow><mrow><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mi>m</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">×</mo><mi>R</mi></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><mi>m</mi><mo>⁢</mo><mi>n</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mspace width="1em"></mspace><mtext>by</mtext></mrow></mrow><mspace width="1em"></mspace><mrow><mrow><mo stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>s</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mrow><mrow><mi>r</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>b</mi></mrow><mo>⁢</mo><mi>n</mi></mrow><mo>+</mo><mrow><mrow><mi>s</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>a</mi></mrow><mo>⁢</mo><mi>m</mi></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">One can check that this map is well-defined and an isomorphism of rings.
+(Diligent readers invited to do so.)
+∎</p>
+</div>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">Finally, we need to introduce the concept of a Noetherian <math id="S2.p10.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-module.</p>
+</div>
+<div id="S2.Thmtheorem8" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 18.2.8</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">An <math id="S2.Thmtheorem8.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-module <math id="S2.Thmtheorem8.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Noetherian</span>
+if it satisfies one of the two equivalent conditions:</p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Its submodules obey the ascending chain condition:
+there is no infinite sequence of modules
+<math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="M_{1}\subsetneq M_{2}\subsetneq\dots" display="inline"><mrow><msub><mi>M</mi><mn>1</mn></msub><mo>⊊</mo><msub><mi>M</mi><mn>2</mn></msub><mo>⊊</mo><mi mathvariant="normal">…</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">All submodules of <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> (including <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> itself) are finitely generated.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S2.p11" class="ltx_para">
+<p class="ltx_p">This generalizes the notion of a Noetherian ring:
+a Noetherian ring <math id="S2.p11.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is one for which <math id="S2.p11.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is Noetherian as an <math id="S2.p11.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-module.</p>
+</div>
+<div id="S2.Thmtheorem9" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 18.2.9</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check these two conditions are equivalent. (Copy the proof for rings.)</span></p>
+</div>
+</div>
+</section>
+<section id="sec:structure_thm" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">18.3 </span>The structure theorem</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Our structure theorem takes two forms:</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 18.3.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Structure theorem, invariant form)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> be a PID and let <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be any finitely generated <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-module. Then</p>
+<table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="M\cong\bigoplus_{i=1}^{m}R/(s_{i})" display="block"><mrow><mi>M</mi><mo rspace="0.111em">≅</mo><mrow><munderover><mo movablelimits="false">⨁</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>s</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">for some <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="s_{i}" display="inline"><msub><mi>s</mi><mi>i</mi></msub></math> (possibly zero)
+satisfying <math id="S3.Thmtheorem1.p1.m5" class="ltx_Math" alttext="s_{1}\mid s_{2}\mid\dots\mid s_{m}" display="inline"><mrow><mrow><msub><mi>s</mi><mn>1</mn></msub><mo lspace="0em">⁢</mo><mrow><mo fence="true" rspace="0em">∣</mo><msub><mi>s</mi><mn>2</mn></msub><mo fence="true" lspace="0em">∣</mo></mrow><mo lspace="0em">⁢</mo><mi mathvariant="normal">…</mi></mrow><mo>∣</mo><msub><mi>s</mi><mi>m</mi></msub></mrow></math>.</p>
+</div>
+</div>
+<div id="cor:structure_theorem_primary" class="ltx_theorem ltx_theorem_corollary">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Corollary 18.3.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Structure theorem, primary form)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> be a PID and let <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be any finitely generated <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-module. Then</p>
+<table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="M\cong R^{\oplus r}\oplus R/(q_{1})\oplus R/(q_{2})\oplus\dots\oplus R/(q_{m})" display="block"><mrow><mi>M</mi><mo>≅</mo><mrow><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>r</mi></mrow></msup><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="q_{i}=p_{i}^{e_{i}}" display="inline"><mrow><msub><mi>q</mi><mi>i</mi></msub><mo>=</mo><msubsup><mi>p</mi><mi>i</mi><msub><mi>e</mi><mi>i</mi></msub></msubsup></mrow></math> for some prime element <math id="S3.Thmtheorem2.p1.m5" class="ltx_Math" alttext="p_{i}" display="inline"><msub><mi>p</mi><mi>i</mi></msub></math> and integer <math id="S3.Thmtheorem2.p1.m6" class="ltx_Math" alttext="e_{i}\geq 1" display="inline"><mrow><msub><mi>e</mi><mi>i</mi></msub><mo>≥</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of corollary.</h6>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Factor each <math id="S3.p2.m1" class="ltx_Math" alttext="s_{i}" display="inline"><msub><mi>s</mi><mi>i</mi></msub></math> into prime factors (since <math id="S3.p2.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a UFD),
+then use the Chinese remainder theorem.
+∎</p>
+</div>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 18.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">In both theorems the decomposition is unique up to
+permutations of the summands.</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">18.4 </span>Reduction to maps of free <math id="S4.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-modules</h2>
+
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 18.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> free <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi mathcolor="#0000FF">R</mi></math>-module</span> is a module of the form <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="R^{\oplus n}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>n</mi></mrow></msup></math>
+(or more generally, <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\bigoplus_{I}R" display="inline"><mrow><msub><mo>⨁</mo><mi>I</mi></msub><mi>R</mi></mrow></math> for some indexing set <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>,
+just to allow an infinite basis).</p>
+</div>
+</div>
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">The proof of the structure theorem proceeds in two main steps.
+First, we reduce the problem to a <em class="ltx_emph ltx_font_italic">linear algebra</em> problem
+involving free <math id="S4.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-modules <math id="S4.p1.m2" class="ltx_Math" alttext="R^{\oplus d}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>d</mi></mrow></msup></math>.
+Once that’s done, we just have to play with matrices;
+this is done in the next section.</p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S4.p2.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is finitely generated by <math id="S4.p2.m2" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> elements.
+Then there is a surjective map of <math id="S4.p2.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-modules</p>
+<table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="R^{\oplus d}\twoheadrightarrow M" display="block"><mrow><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>d</mi></mrow></msup><mo stretchy="false">↠</mo><mi>M</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">whose image on the basis of <math id="S4.p2.m4" class="ltx_Math" alttext="R^{\oplus d}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>d</mi></mrow></msup></math> are the generators of <math id="S4.p2.m5" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+Let <math id="S4.p2.m6" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> denote the kernel.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">We claim that <math id="S4.p3.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> is finitely generated as well.
+To this end we prove that</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Lemma 18.4.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Direct sum of Noetherian modules is Noetherian)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> be two Noetherian <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-modules.
+Then the direct sum <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="M\oplus N" display="inline"><mrow><mi>M</mi><mo>⊕</mo><mi>N</mi></mrow></math> is also a Noetherian <math id="S4.Thmtheorem2.p1.m5" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-module.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">It suffices to show that if <math id="S4.p4.m1" class="ltx_Math" alttext="L\subseteq M\oplus N" display="inline"><mrow><mi>L</mi><mo>⊆</mo><mrow><mi>M</mi><mo>⊕</mo><mi>N</mi></mrow></mrow></math>,
+then <math id="S4.p4.m2" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> is finitely generated.
+One guess is that <math id="S4.p4.m3" class="ltx_Math" alttext="L=P\oplus Q" display="inline"><mrow><mi>L</mi><mo>=</mo><mrow><mi>P</mi><mo>⊕</mo><mi>Q</mi></mrow></mrow></math>,
+where <math id="S4.p4.m4" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> and <math id="S4.p4.m5" class="ltx_Math" alttext="Q" display="inline"><mi>Q</mi></math> are the projections of <math id="S4.p4.m6" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> onto <math id="S4.p4.m7" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and <math id="S4.p4.m8" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>.
+Unfortunately this is false
+(take <math id="S4.p4.m9" class="ltx_Math" alttext="M=N=\mathbb{Z}" display="inline"><mrow><mi>M</mi><mo>=</mo><mi>N</mi><mo>=</mo><mi>ℤ</mi></mrow></math> and <math id="S4.p4.m10" class="ltx_Math" alttext="L=\{(n,n)\mid n\in\mathbb{Z}\}" display="inline"><mrow><mi>L</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo>,</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>n</mi><mo>∈</mo><mi>ℤ</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math>)
+so we will have to be more careful.</p>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Consider the submodules</p>
+<table id="A5.S3.EGx56" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex8.m1" class="ltx_Math" alttext="\displaystyle A" display="inline"><mi>A</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex8.m2" class="ltx_Math" alttext="\displaystyle=\left\{x\in M\mid(x,0)\in L\right\}\subseteq M" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mrow><mi>x</mi><mo>∈</mo><mi>M</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>L</mi></mrow><mo>}</mo></mrow><mo>⊆</mo><mi>M</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex9"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex9.m1" class="ltx_Math" alttext="\displaystyle B" display="inline"><mi>B</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex9.m2" class="ltx_Math" alttext="\displaystyle=\left\{y\in N\mid\exists x\in M:(x,y)\in L\right\}\subseteq N." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mrow><mi>y</mi><mo>∈</mo><mi>N</mi></mrow><mo fence="true" lspace="0em" rspace="0.167em">∣</mo><mrow><mrow><mrow><mo rspace="0.167em">∃</mo><mi>x</mi></mrow><mo>∈</mo><mi>M</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>L</mi></mrow></mrow><mo>}</mo></mrow><mo>⊆</mo><mi>N</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">(Note the asymmetry for <math id="S4.p5.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> and <math id="S4.p5.m2" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>: the proof doesn’t work otherwise.)
+Then <math id="S4.p5.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is finitely generated by <math id="S4.p5.m4" class="ltx_Math" alttext="a_{1}" display="inline"><msub><mi>a</mi><mn>1</mn></msub></math>, …, <math id="S4.p5.m5" class="ltx_Math" alttext="a_{k}" display="inline"><msub><mi>a</mi><mi>k</mi></msub></math>,
+and <math id="S4.p5.m6" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> is finitely generated by <math id="S4.p5.m7" class="ltx_Math" alttext="b_{1}" display="inline"><msub><mi>b</mi><mn>1</mn></msub></math>, …, <math id="S4.p5.m8" class="ltx_Math" alttext="b_{\ell}" display="inline"><msub><mi>b</mi><mi mathvariant="normal">ℓ</mi></msub></math>.
+Let <math id="S4.p5.m9" class="ltx_Math" alttext="x_{i}=(a_{i},0)" display="inline"><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mi>i</mi></msub><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> and let <math id="S4.p5.m10" class="ltx_Math" alttext="y_{i}=(\ast,b_{i})" display="inline"><mrow><msub><mi>y</mi><mi>i</mi></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0em">∗</mo><mo>,</mo><msub><mi>b</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> be elements of <math id="S4.p5.m11" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math>
+(where the <math id="S4.p5.m12" class="ltx_Math" alttext="\ast" display="inline"><mo>∗</mo></math>’s are arbitrary things we don’t care about).
+Then <math id="S4.p5.m13" class="ltx_Math" alttext="x_{i}" display="inline"><msub><mi>x</mi><mi>i</mi></msub></math> and <math id="S4.p5.m14" class="ltx_Math" alttext="y_{i}" display="inline"><msub><mi>y</mi><mi>i</mi></msub></math> together generate <math id="S4.p5.m15" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math>.
+∎</p>
+</div>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 18.4.3</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Deduce that for <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> a PID, <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="R^{\oplus d}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>d</mi></mrow></msup></math> is Noetherian.</span></p>
+</div>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">Hence <math id="S4.p6.m1" class="ltx_Math" alttext="K\subseteq R^{\oplus d}" display="inline"><mrow><mi>K</mi><mo>⊆</mo><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>d</mi></mrow></msup></mrow></math> is finitely generated as claimed.
+So we can find another surjective map <math id="S4.p6.m2" class="ltx_Math" alttext="R^{\oplus f}\twoheadrightarrow K" display="inline"><mrow><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>f</mi></mrow></msup><mo stretchy="false">↠</mo><mi>K</mi></mrow></math>.
+Consequently, we have a composition</p>
+<svg id="S4.p6.pic1" class="ltx_picture ltx_centering" height="76.16" overflow="visible" version="1.1" width="216.9"><g transform="translate(0,76.16) matrix(1 0 0 -1 0 0) translate(108.45,0) translate(0,42.78)" fill="#000000" stroke="#000000"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -108.45 -33.38)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 55.625)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 14.52)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 33.18 0) translate(45.54,0) matrix(1.0 0.0 0.0 1.0 -6.37 0)" fill="#000000" stroke="#000000"><foreignObject width="12.74" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p6.pic1.m1" class="ltx_Math" alttext="{K}" display="inline"><mi>K</mi></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 61.7)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(16.59,0) matrix(1.0 0.0 0.0 1.0 -10.63 0)" fill="#000000" stroke="#000000"><foreignObject width="21.27" height="12.15" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p6.pic1.m2" class="ltx_Math" alttext="{R^{\oplus f}}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>f</mi></mrow></msup></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 91.05 0) translate(49.5,0) matrix(1.0 0.0 0.0 1.0 -10.34 0)" fill="#000000" stroke="#000000"><foreignObject width="20.67" height="12.15" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p6.pic1.m3" class="ltx_Math" alttext="{R^{\oplus d}}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>d</mi></mrow></msup></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 156.85 0) translate(46.63,0) matrix(1.0 0.0 0.0 1.0 -7.47 0)" fill="#000000" stroke="#000000"><foreignObject width="14.93" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p6.pic1.m4" class="ltx_Math" alttext="{M}" display="inline"><mi>M</mi></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M -11.33 3.22 L 10.47 -13.42" style="fill:none"></path><g transform="matrix(-0.79495 0.60666 -0.60666 -0.79495 -11.33 3.22)"><clipPath id="pgfcp1"><path d="M 0 -8.94 h 9.23 v 17.87 h -9.23 Z"></path></clipPath><g clip-path="url(#pgfcp1)"><g transform="matrix(1.0 0.0 0.0 1.0 -1.53 -7.89)"><foreignObject width="10.76" height="8" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p6.pic1.m5" class="ltx_Math" alttext="\supset" display="inline"><mo>⊃</mo></math></foreignObject></g><g></g></g></g><g transform="matrix(0.79495 -0.60666 0.60666 0.79495 10.47 -13.42)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M -74.99 -17.11 L -46.39 4.61" style="fill:none"></path><g transform="matrix(0.79637 0.6048 -0.6048 0.79637 -50.02 1.85)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(0.79637 0.6048 -0.6048 0.79637 -46.39 4.61)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M -74.99 -29.92 L 9.16 -29.92" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 9.16 -29.92)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -33.23 -39.8)" fill="#000000" stroke="#000000"><foreignObject width="7.01" height="6.62" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S4.p6.pic1.m6" class="ltx_Math" alttext="\scriptstyle{T}" display="inline"><mi mathsize="70%">T</mi></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M 48.67 -29.92 L 74.96 -29.92" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 70.4 -29.92)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 74.96 -29.92)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g></g></svg>
+<p class="ltx_p">Observe that <math id="S4.p6.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is the <em class="ltx_emph ltx_font_italic">cokernel</em> of the linear map <math id="S4.p6.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>,
+i.e. we have that</p>
+<table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="M\cong R^{\oplus d}/\operatorname{im}(T)." display="block"><mrow><mrow><mi>M</mi><mo>≅</mo><mrow><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>d</mi></mrow></msup><mo>/</mo><mrow><mi>im</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">So it suffices to understand the map <math id="S4.p6.m5" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> well.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">18.5 </span>Uniqueness of primary form</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">In this section, we will prove that if <math id="S5.p1.m1" class="ltx_Math" alttext="M\cong R^{\oplus r}\oplus R/(q_{1})\oplus R/(q_{2})\oplus\cdots\oplus R/(q_{m})" display="inline"><mrow><mi>M</mi><mo>≅</mo><mrow><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>r</mi></mrow></msup><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>, then the integer <math id="S5.p1.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> and the prime powers <math id="S5.p1.m3" class="ltx_Math" alttext="q_{i}" display="inline"><msub><mi>q</mi><mi>i</mi></msub></math> are unique, up to permutations.</p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">First, we consider the case where <math id="S5.p2.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is free.</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 18.5.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Uniqueness of free module’s rank)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">For a commutative integral domain <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>,
+if a free module <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> has a finite basis, then every other basis has the same number of elements.</p>
+</div>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">It was mentioned once in <a href="../part_linalg/ch_vector_spaces.html#thm:dimension_theorem" title="Theorem 9.4.7 (Dimension theorem for vector spaces) ‣ 9.4 Linear independence, spans, and basis ‣ Chapter 9 Vector spaces ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">9.4.7</span></a> that the strategy of the proof is to pass to the
+field case. Indeed, we’re going to pass to the field <math id="S5.p3.m1" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> being the fraction field of <math id="S5.p3.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>,
+then directly apply the dimension theorem for vector spaces.</p>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">As before, but we prove by contradiction this time.
+Assume <math id="S5.p4.m1" class="ltx_Math" alttext="v_{1},\dots,v_{n}" display="inline"><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>v</mi><mi>n</mi></msub></mrow></math> is a basis for the free module <math id="S5.p4.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> of rank <math id="S5.p4.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>,
+while <math id="S5.p4.m4" class="ltx_Math" alttext="w_{1},\dots,w_{m}" display="inline"><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>w</mi><mi>m</mi></msub></mrow></math> are any elements of <math id="S5.p4.m5" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> such that <math id="S5.p4.m6" class="ltx_Math" alttext="m&gt;n" display="inline"><mrow><mi>m</mi><mo>&gt;</mo><mi>n</mi></mrow></math>.</p>
+</div>
+<div id="S5.p5" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.p5.m1" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> be the fraction field of <math id="S5.p5.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>, and embed the <math id="S5.p5.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-module <math id="S5.p5.m4" class="ltx_Math" alttext="M\cong R^{n}" display="inline"><mrow><mi>M</mi><mo>≅</mo><msup><mi>R</mi><mi>n</mi></msup></mrow></math>
+into the <math id="S5.p5.m5" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math>-vector space <math id="S5.p5.m6" class="ltx_Math" alttext="V\cong F^{n}" display="inline"><mrow><mi>V</mi><mo>≅</mo><msup><mi>F</mi><mi>n</mi></msup></mrow></math>.</p>
+</div>
+<div id="S5.p6" class="ltx_para">
+<p class="ltx_p">Then, because <math id="S5.p6.m1" class="ltx_Math" alttext="m&gt;n" display="inline"><mrow><mi>m</mi><mo>&gt;</mo><mi>n</mi></mrow></math>, as elements of <math id="S5.p6.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>, the elements <math id="S5.p6.m3" class="ltx_Math" alttext="w_{1},\dots,w_{m}" display="inline"><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>w</mi><mi>m</mi></msub></mrow></math> are linearly dependent,
+which means there are some elements <math id="S5.p6.m4" class="ltx_Math" alttext="f_{1},\dots,f_{m}\in F" display="inline"><mrow><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub></mrow><mo>∈</mo><mi>F</mi></mrow></math> not all zero, such that <math id="S5.p6.m5" class="ltx_Math" alttext="f_{1}w_{1}+\cdots+f_{m}w_{m}=0" display="inline"><mrow><mrow><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>w</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>f</mi><mi>m</mi></msub><mo>⁢</mo><msub><mi>w</mi><mi>m</mi></msub></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S5.p7" class="ltx_para">
+<p class="ltx_p">By clearing denominators, we can obtain ring elements <math id="S5.p7.m1" class="ltx_Math" alttext="r_{1},\dots,r_{m}\in R" display="inline"><mrow><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>r</mi><mi>m</mi></msub></mrow><mo>∈</mo><mi>R</mi></mrow></math> not all zero
+such that <math id="S5.p7.m2" class="ltx_Math" alttext="r_{1}w_{1}+\cdots+r_{m}w_{m}=0" display="inline"><mrow><mrow><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>w</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>r</mi><mi>m</mi></msub><mo>⁢</mo><msub><mi>w</mi><mi>m</mi></msub></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>. This means <math id="S5.p7.m3" class="ltx_Math" alttext="w_{1},\dots,w_{m}" display="inline"><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>w</mi><mi>m</mi></msub></mrow></math> cannot be a basis for <math id="S5.p7.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+∎</p>
+</div>
+</div>
+<div id="S5.p8" class="ltx_para">
+<p class="ltx_p">Next, we prove the case where the rank <math id="S5.p8.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> is <math id="S5.p8.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>.
+This case needs a different strategy, but it still boils down to applying the dimension theorem for
+appropriately constructed vector spaces.</p>
+</div>
+<div id="thm:uniqueness_primary_form_one_prime_torsion_module" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 18.5.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> be a PID, let <math id="S5.Thmtheorem2.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> be a prime element of <math id="S5.Thmtheorem2.p1.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>,
+and let <math id="S5.Thmtheorem2.p1.m4" class="ltx_Math" alttext="M\cong R/(p^{e_{1}})\oplus R/(p^{e_{2}})\oplus\cdots\oplus R/(p^{e_{m}})" display="inline"><mrow><mi>M</mi><mo>≅</mo><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>1</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>2</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mi>m</mi></msub></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>
+for positive integers <math id="S5.Thmtheorem2.p1.m5" class="ltx_Math" alttext="e_{1},\dots,e_{m}" display="inline"><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>e</mi><mi>m</mi></msub></mrow></math>.
+Then the <math id="S5.Thmtheorem2.p1.m6" class="ltx_Math" alttext="e_{i}" display="inline"><msub><mi>e</mi><mi>i</mi></msub></math> are unique, up to permutations.</p>
+</div>
+</div>
+<div id="S5.p9" class="ltx_para">
+<p class="ltx_p">Intuitively, what the following proof is trying to do is:</p>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 18.5.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">If we can compute the exponents <math id="S5.Thmtheorem3.p1.m1" class="ltx_Math" alttext="e_{i}" display="inline"><msub><mi>e</mi><mi>i</mi></msub></math> from intrinsic properties of <math id="S5.Thmtheorem3.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, then the exponents must be
+unique.</p>
+</div>
+</div>
+<div id="S5.p10" class="ltx_para">
+<p class="ltx_p">Let us consider a simple case — consider <math id="S5.p10.m1" class="ltx_Math" alttext="R=\mathbb{Z}" display="inline"><mrow><mi>R</mi><mo>=</mo><mi>ℤ</mi></mrow></math> and <math id="S5.p10.m2" class="ltx_Math" alttext="M=\mathbb{Z}/4\mathbb{Z}" display="inline"><mrow><mi>M</mi><mo>=</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>4</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>. This module has <math id="S5.p10.m3" class="ltx_Math" alttext="4" display="inline"><mn>4</mn></math> elements, but
+it’s not the same as <math id="S5.p10.m4" class="ltx_Math" alttext="\mathbb{Z}/2\mathbb{Z}\oplus\mathbb{Z}/2\mathbb{Z}" display="inline"><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>. In this case, the difference between the two modules can be
+detected by the fact that in <math id="S5.p10.m5" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, the element <math id="S5.p10.m6" class="ltx_Math" alttext="1\pmod{4}" display="inline"><mrow><mn>1</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is not zero when multiplied by <math id="S5.p10.m7" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>, on the
+other hand, multiplying by <math id="S5.p10.m8" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> makes every element in <math id="S5.p10.m9" class="ltx_Math" alttext="\mathbb{Z}/2\mathbb{Z}\oplus\mathbb{Z}/2\mathbb{Z}" display="inline"><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math> zero.</p>
+</div>
+<div id="S5.p11" class="ltx_para">
+<p class="ltx_p">For notational convenience,</p>
+</div>
+<div id="S5.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 18.5.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S5.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">For <math id="S5.Thmtheorem4.p1.m1" class="ltx_Math" alttext="r\in R" display="inline"><mrow><mi>r</mi><mo>∈</mo><mi>R</mi></mrow></math> and a <math id="S5.Thmtheorem4.p1.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-module <math id="S5.Thmtheorem4.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, define <math id="S5.Thmtheorem4.p1.m4" class="ltx_Math" alttext="rM=\{rm\mid m\in M\}" display="inline"><mrow><mrow><mi>r</mi><mo>⁢</mo><mi>M</mi></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>r</mi><mo>⁢</mo><mi>m</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>m</mi><mo>∈</mo><mi>M</mi></mrow><mo stretchy="false">}</mo></mrow></mrow></math>. (Check that this is still
+a <math id="S5.Thmtheorem4.p1.m5" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-module.)</p>
+</div>
+</div>
+<div id="S5.p12" class="ltx_para">
+<p class="ltx_p">Then, what the paragraph above says is that <math id="S5.p12.m1" class="ltx_Math" alttext="M\not\cong\mathbb{Z}/2\mathbb{Z}\oplus\mathbb{Z}/2\mathbb{Z}" display="inline"><mrow><mi>M</mi><mo>≇</mo><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></mrow></math> because <math id="S5.p12.m2" class="ltx_Math" alttext="|2M|=2\neq 1=|2(\mathbb{Z}/2\mathbb{Z}\oplus\mathbb{Z}/2\mathbb{Z})|" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mn>2</mn><mo>⁢</mo><mi>M</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>2</mn><mo>≠</mo><mn>1</mn><mo>=</mo><mrow><mo stretchy="false">|</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow></mrow></math>.
+In other words, in this case, counting the number of elements of <math id="S5.p12.m3" class="ltx_Math" alttext="2M" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>M</mi></mrow></math> suffices to distinguish the two
+modules.</p>
+</div>
+<div id="S5.p13" class="ltx_para">
+<p class="ltx_p">For modules of the form
+<math id="S5.p13.m1" class="ltx_Math" alttext="M\cong R/(p^{e_{1}})\oplus R/(p^{e_{2}})\oplus\cdots\oplus R/(p^{e_{m}})" display="inline"><mrow><mi>M</mi><mo>≅</mo><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>1</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>2</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mi>m</mi></msub></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> where <math id="S5.p13.m2" class="ltx_Math" alttext="R=\mathbb{Z}" display="inline"><mrow><mi>R</mi><mo>=</mo><mi>ℤ</mi></mrow></math>,
+this almost works in general — except we also need to consider the number of elements in
+<math id="S5.p13.m3" class="ltx_Math" alttext="pM" display="inline"><mrow><mi>p</mi><mo>⁢</mo><mi>M</mi></mrow></math>, <math id="S5.p13.m4" class="ltx_Math" alttext="p^{2}M" display="inline"><mrow><msup><mi>p</mi><mn>2</mn></msup><mo>⁢</mo><mi>M</mi></mrow></math>, <math id="S5.p13.m5" class="ltx_Math" alttext="p^{3}M" display="inline"><mrow><msup><mi>p</mi><mn>3</mn></msup><mo>⁢</mo><mi>M</mi></mrow></math>, etc.</p>
+</div>
+<div id="S5.p14" class="ltx_para">
+<p class="ltx_p">Equivalently, we may also consider the number of elements in the successive quotients:
+<math id="S5.p14.m1" class="ltx_Math" alttext="M/pM" display="inline"><mrow><mrow><mi>M</mi><mo>/</mo><mi>p</mi></mrow><mo>⁢</mo><mi>M</mi></mrow></math>, <math id="S5.p14.m2" class="ltx_Math" alttext="pM/p^{2}M" display="inline"><mrow><mrow><mrow><mi>p</mi><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mi>p</mi><mn>2</mn></msup></mrow><mo>⁢</mo><mi>M</mi></mrow></math>, <math id="S5.p14.m3" class="ltx_Math" alttext="p^{2}M/p^{3}M" display="inline"><mrow><mrow><mrow><msup><mi>p</mi><mn>2</mn></msup><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mi>p</mi><mn>3</mn></msup></mrow><mo>⁢</mo><mi>M</mi></mrow></math>, etc.</p>
+</div>
+<div id="S5.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 18.5.5</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem5.p1.m1" class="ltx_Math" alttext="R=\mathbb{Z}" display="inline"><mrow><mi>R</mi><mo>=</mo><mi>ℤ</mi></mrow></math>, <math id="S5.Thmtheorem5.p1.m2" class="ltx_Math" alttext="p=3" display="inline"><mrow><mi>p</mi><mo>=</mo><mn>3</mn></mrow></math>, and <math id="S5.Thmtheorem5.p1.m3" class="ltx_Math" alttext="M=\mathbb{Z}/3^{2}\mathbb{Z}\oplus\mathbb{Z}/3^{5}\mathbb{Z}" display="inline"><mrow><mi>M</mi><mo>=</mo><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><msup><mn>3</mn><mn>2</mn></msup></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><msup><mn>3</mn><mn>5</mn></msup></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></mrow></math>. Then:</p>
+<ul id="S5.I1" class="ltx_itemize">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="|M/3M|=9" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mrow><mi>M</mi><mo>/</mo><mn>3</mn></mrow><mo>⁢</mo><mi>M</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>9</mn></mrow></math>,</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="|3M/3^{2}M|=9" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mrow><mrow><mn>3</mn><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mn>3</mn><mn>2</mn></msup></mrow><mo>⁢</mo><mi>M</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>9</mn></mrow></math>,</p>
+</div>
+</li>
+<li id="S5.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i3.p1.m1" class="ltx_Math" alttext="|3^{2}M/3^{3}M|=3" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mrow><mrow><msup><mn>3</mn><mn>2</mn></msup><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mn>3</mn><mn>3</mn></msup></mrow><mo>⁢</mo><mi>M</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>3</mn></mrow></math>,</p>
+</div>
+</li>
+<li id="S5.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i4.p1.m1" class="ltx_Math" alttext="|3^{3}M/3^{4}M|=3" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mrow><mrow><msup><mn>3</mn><mn>3</mn></msup><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mn>3</mn><mn>4</mn></msup></mrow><mo>⁢</mo><mi>M</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>3</mn></mrow></math>,</p>
+</div>
+</li>
+<li id="S5.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i5.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i5.p1.m1" class="ltx_Math" alttext="|3^{4}M/3^{5}M|=3" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mrow><mrow><msup><mn>3</mn><mn>4</mn></msup><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mn>3</mn><mn>5</mn></msup></mrow><mo>⁢</mo><mi>M</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>3</mn></mrow></math>,</p>
+</div>
+</li>
+<li id="S5.I1.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i6.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i6.p1.m1" class="ltx_Math" alttext="|3^{e}M/3^{e+1}M|=1" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mrow><mrow><msup><mn>3</mn><mi>e</mi></msup><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mn>3</mn><mrow><mi>e</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mo>⁢</mo><mi>M</mi></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>1</mn></mrow></math> for all integer <math id="S5.I1.i6.p1.m2" class="ltx_Math" alttext="e\geq 5" display="inline"><mrow><mi>e</mi><mo>≥</mo><mn>5</mn></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">You can already see where this is going — each decrement of the size of the quotient
+corresponds to a prime power <math id="S5.Thmtheorem5.p1.m4" class="ltx_Math" alttext="p^{e_{i}}" display="inline"><msup><mi>p</mi><msub><mi>e</mi><mi>i</mi></msub></msup></math>.</p>
+</div>
+</div>
+<div id="S5.p15" class="ltx_para">
+<p class="ltx_p">When the quotient is infinite however, we can no longer do this. However, note that:</p>
+</div>
+<div id="S5.Thmtheorem6" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Lemma 18.5.6</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">For each integer <math id="S5.Thmtheorem6.p1.m1" class="ltx_Math" alttext="e\geq 0" display="inline"><mrow><mi>e</mi><mo>≥</mo><mn>0</mn></mrow></math>, then <math id="S5.Thmtheorem6.p1.m2" class="ltx_Math" alttext="p^{e}M/p^{e+1}M" display="inline"><mrow><mrow><mrow><msup><mi>p</mi><mi>e</mi></msup><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mi>p</mi><mrow><mi>e</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mo>⁢</mo><mi>M</mi></mrow></math> is a <math id="S5.Thmtheorem6.p1.m3" class="ltx_Math" alttext="R/(p)" display="inline"><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math>-vector space.</p>
+</div>
+</div>
+<div id="S5.p16" class="ltx_para">
+<p class="ltx_p">Thus, instead of counting the number of elements in <math id="S5.p16.m1" class="ltx_Math" alttext="p^{e}M/p^{e+1}M" display="inline"><mrow><mrow><mrow><msup><mi>p</mi><mi>e</mi></msup><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mi>p</mi><mrow><mi>e</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mo>⁢</mo><mi>M</mi></mrow></math>, we count the <em class="ltx_emph ltx_font_italic">dimension</em> of
+the <math id="S5.p16.m2" class="ltx_Math" alttext="p^{e}M/p^{e+1}M" display="inline"><mrow><mrow><mrow><msup><mi>p</mi><mi>e</mi></msup><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mi>p</mi><mrow><mi>e</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mo>⁢</mo><mi>M</mi></mrow></math> as a <math id="S5.p16.m3" class="ltx_Math" alttext="R/(p)" display="inline"><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math>-vector space — by <a href="../part_linalg/ch_vector_spaces.html#thm:dimension_theorem" title="Theorem 9.4.7 (Dimension theorem for vector spaces) ‣ 9.4 Linear independence, spans, and basis ‣ Chapter 9 Vector spaces ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">9.4.7</span></a>, this is indeed
+intrinsic to the module <math id="S5.p16.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of <a href="#thm:uniqueness_primary_form_one_prime_torsion_module" title="Theorem 18.5.2 ‣ 18.5 Uniqueness of primary form ‣ Chapter 18 The PID structure theorem ‣ Part V More on Groups ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">18.5.2</span></a>.</h6>
+<div id="S5.p17" class="ltx_para">
+<p class="ltx_p">Note that, since <math id="S5.p17.m1" class="ltx_Math" alttext="M\cong R/(p^{e_{1}})\oplus R/(p^{e_{2}})\oplus\cdots\oplus R/(p^{e_{m}})" display="inline"><mrow><mi>M</mi><mo>≅</mo><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>1</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>2</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mi>m</mi></msub></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>, we have</p>
+<table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\pi(M)\cong\pi(R/(p^{e_{1}}))\oplus\pi(R/(p^{e_{2}}))\oplus\cdots\oplus\pi(R/(%
+p^{e_{m}}))" display="block"><mrow><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>1</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>2</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mi>m</mi></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S5.p17.m2" class="ltx_Math" alttext="\pi(M)=p^{e}M/p^{e+1}M" display="inline"><mrow><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><msup><mi>p</mi><mi>e</mi></msup><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mi>p</mi><mrow><mi>e</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mo>⁢</mo><mi>M</mi></mrow></mrow></math> for any integer <math id="S5.p17.m3" class="ltx_Math" alttext="e\geq 0" display="inline"><mrow><mi>e</mi><mo>≥</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S5.p18" class="ltx_para">
+<p class="ltx_p">This means, as <math id="S5.p18.m1" class="ltx_Math" alttext="R/(p)" display="inline"><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math>-vector space,</p>
+<table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="\dim\pi(M)=\dim\pi(R/(p^{e_{1}}))+\dim\pi(R/(p^{e_{2}}))+\cdots+\dim\pi(R/(p^{%
+e_{m}}))." display="block"><mrow><mrow><mrow><mo rspace="0.167em">dim</mo><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>1</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mo lspace="0em" rspace="0.167em">dim</mo><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>2</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><mo lspace="0em" rspace="0.167em">dim</mo><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mi>m</mi></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="S5.p19" class="ltx_para">
+<p class="ltx_p">Note that, for each term <math id="S5.p19.m1" class="ltx_Math" alttext="R/(p^{e_{1}})" display="inline"><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>1</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow></math>, then</p>
+<table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\dim p^{e}(R/(p^{e_{i}}))/p^{e+1}(R/(p^{e_{1}}))=\begin{cases}1&amp;e&lt;e_{i}\\
+0&amp;\text{otherwise}.\end{cases}" display="block"><mrow><mrow><mo rspace="0.167em">dim</mo><mrow><mrow><mrow><msup><mi>p</mi><mi>e</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mi>i</mi></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><msup><mi>p</mi><mrow><mi>e</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msup><mi>p</mi><msub><mi>e</mi><mn>1</mn></msub></msup><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mn>1</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>e</mi><mo>&lt;</mo><msub><mi>e</mi><mi>i</mi></msub></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>otherwise</mtext><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">With some arithmetic, you can see that the values <math id="S5.p19.m2" class="ltx_Math" alttext="e_{i}" display="inline"><msub><mi>e</mi><mi>i</mi></msub></math> are indeed uniquely determined by <math id="S5.p19.m3" class="ltx_Math" alttext="\dim p^{e}M/p^{e+1}M" display="inline"><mrow><mo rspace="0.167em">dim</mo><mrow><mrow><mrow><msup><mi>p</mi><mi>e</mi></msup><mo>⁢</mo><mi>M</mi></mrow><mo>/</mo><msup><mi>p</mi><mrow><mi>e</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mo>⁢</mo><mi>M</mi></mrow></mrow></math>, up to permutation.
+∎</p>
+</div>
+</div>
+<div id="S5.p20" class="ltx_para">
+<p class="ltx_p">Note that this can be easily generalized to the case where the primes in the denominator may be different
+– because for different primes <math id="S5.p20.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S5.p20.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> of <math id="S5.p20.m3" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>, then <math id="S5.p20.m4" class="ltx_Math" alttext="p^{e}(R/(q))/p^{e+1}(R/(q))" display="inline"><mrow><mrow><mrow><msup><mi>p</mi><mi>e</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><msup><mi>p</mi><mrow><mi>e</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is a
+<math id="S5.p20.m5" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>-dimensional <math id="S5.p20.m6" class="ltx_Math" alttext="R/(p)" display="inline"><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math>-vector space.</p>
+</div>
+<div id="S5.p21" class="ltx_para">
+<p class="ltx_p">Finally, we handle the general case.</p>
+</div>
+<div id="S5.Thmtheorem7" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 18.5.7</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S5.Thmtheorem7.p1.m1" class="ltx_Math" alttext="M\cong R^{\oplus r}\oplus R/(q_{1})\oplus R/(q_{2})\oplus\cdots\oplus R/(q_{m})" display="inline"><mrow><mi>M</mi><mo>≅</mo><mrow><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>r</mi></mrow></msup><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>,
+then the integer <math id="S5.Thmtheorem7.p1.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> and the prime powers <math id="S5.Thmtheorem7.p1.m3" class="ltx_Math" alttext="q_{i}" display="inline"><msub><mi>q</mi><mi>i</mi></msub></math> are unique, up to permutations.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S5.p22" class="ltx_para">
+<p class="ltx_p">From the two theorems above, it suffices if we can prove that the <math id="S5.p22.m1" class="ltx_Math" alttext="R^{\oplus r}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>r</mi></mrow></msup></math> part and the
+<math id="S5.p22.m2" class="ltx_Math" alttext="R/(q_{1})\oplus R/(q_{2})\oplus\cdots\oplus R/(q_{m})" display="inline"><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> part are uniquely determined from <math id="S5.p22.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+<div id="S5.p23" class="ltx_para">
+<p class="ltx_p">For notational convenience, we call an element <math id="S5.p23.m1" class="ltx_Math" alttext="a\in M" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>M</mi></mrow></math> a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> torsion element</span> if there is <math id="S5.p23.m2" class="ltx_Math" alttext="r\in R" display="inline"><mrow><mi>r</mi><mo>∈</mo><mi>R</mi></mrow></math>, <math id="S5.p23.m3" class="ltx_Math" alttext="r\neq 0" display="inline"><mrow><mi>r</mi><mo>≠</mo><mn>0</mn></mrow></math> such that <math id="S5.p23.m4" class="ltx_Math" alttext="ra=0" display="inline"><mrow><mrow><mi>r</mi><mo>⁢</mo><mi>a</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S5.p24" class="ltx_para">
+<p class="ltx_p">Then,</p>
+<ul id="S5.I2" class="ltx_itemize">
+<li id="S5.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">If an element <math id="S5.I2.i1.p1.m1" class="ltx_Math" alttext="a\in M" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>M</mi></mrow></math> has the <math id="S5.I2.i1.p1.m2" class="ltx_Math" alttext="R^{\oplus r}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>r</mi></mrow></msup></math> component zero, then <math id="S5.I2.i1.p1.m3" class="ltx_Math" alttext="q_{1}q_{2}\cdots q_{m}\cdot a=0" display="inline"><mrow><mrow><mrow><msub><mi>q</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>q</mi><mn>2</mn></msub><mo>⁢</mo><mi mathvariant="normal">⋯</mi><mo>⁢</mo><msub><mi>q</mi><mi>m</mi></msub></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>a</mi></mrow><mo>=</mo><mn>0</mn></mrow></math>, thus <math id="S5.I2.i1.p1.m4" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> is a torsion element.</p>
+</div>
+</li>
+<li id="S5.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">If an element <math id="S5.I2.i2.p1.m1" class="ltx_Math" alttext="a\in M" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>M</mi></mrow></math> has the <math id="S5.I2.i2.p1.m2" class="ltx_Math" alttext="R^{\oplus r}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>r</mi></mrow></msup></math> component nonzero, then <math id="S5.I2.i2.p1.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> is not a torsion
+element.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S5.p25" class="ltx_para">
+<p class="ltx_p">In other words, the submodule consisting of all torsion elements is identical to the submodule of the
+elements with <math id="S5.p25.m1" class="ltx_Math" alttext="R^{\oplus r}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>r</mi></mrow></msup></math> component zero, thus is isomorphic to
+<math id="S5.p25.m2" class="ltx_Math" alttext="R/(q_{1})\oplus R/(q_{2})\oplus\cdots\oplus R/(q_{m})" display="inline"><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S5.p26" class="ltx_para">
+<p class="ltx_p">For notation convenience, let <math id="S5.p26.m1" class="ltx_Math" alttext="\operatorname{Tor}(M)" display="inline"><mrow><mi>Tor</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow></math> be the submodule of <math id="S5.p26.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> consisting of all torsion elements.
+Then <math id="S5.p26.m3" class="ltx_Math" alttext="\operatorname{Tor}(M)\cong R/(q_{1})\oplus R/(q_{2})\oplus\cdots\oplus R/(q_{m})" display="inline"><mrow><mrow><mi>Tor</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> and <math id="S5.p26.m4" class="ltx_Math" alttext="M/\operatorname{Tor}(M)\cong R^{\oplus r}" display="inline"><mrow><mrow><mi>M</mi><mo>/</mo><mrow><mi>Tor</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>≅</mo><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>r</mi></mrow></msup></mrow></math>, in other words, the <math id="S5.p26.m5" class="ltx_Math" alttext="R^{\oplus r}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>r</mi></mrow></msup></math> part and the
+<math id="S5.p26.m6" class="ltx_Math" alttext="R/(q_{1})\oplus R/(q_{2})\oplus\cdots\oplus R/(q_{m})" display="inline"><mrow><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><mi>R</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> part are uniquely determined from <math id="S5.p26.m7" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, so we’re
+done.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">18.6 </span>Smith normal form</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p">The idea is now that we have reduced our problem to studying
+linear maps <math id="S6.p1.m1" class="ltx_Math" alttext="T\colon R^{\oplus m}\to R^{\oplus n}" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>m</mi></mrow></msup><mo stretchy="false">→</mo><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>n</mi></mrow></msup></mrow></mrow></math>,
+which can be thought of as a generic matrix</p>
+<table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="T=\begin{bmatrix}a_{11}&amp;\dots&amp;a_{1m}\\
+\vdots&amp;\ddots&amp;\vdots\\
+a_{n1}&amp;\dots&amp;a_{nm}\end{bmatrix}" display="block"><mrow><mi>T</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>a</mi><mn>11</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>a</mi><mrow><mn>1</mn><mo>⁢</mo><mi>m</mi></mrow></msub></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mn>1</mn></mrow></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mi>m</mi></mrow></msub></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">for a basis <math id="S6.p1.m2" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, …, <math id="S6.p1.m3" class="ltx_Math" alttext="e_{m}" display="inline"><msub><mi>e</mi><mi>m</mi></msub></math> of <math id="S6.p1.m4" class="ltx_Math" alttext="R^{\oplus m}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>m</mi></mrow></msup></math>
+and <math id="S6.p1.m5" class="ltx_Math" alttext="f_{1}" display="inline"><msub><mi>f</mi><mn>1</mn></msub></math>, …, <math id="S6.p1.m6" class="ltx_Math" alttext="f_{n}" display="inline"><msub><mi>f</mi><mi>n</mi></msub></math> of <math id="S6.p1.m7" class="ltx_Math" alttext="R^{\oplus n}" display="inline"><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>n</mi></mrow></msup></math>.</p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">Of course, as you might expect it ought to be possible to change the
+given basis of <math id="S6.p2.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> such that <math id="S6.p2.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> has a nicer matrix form.
+We already saw this in <em class="ltx_emph ltx_font_italic">Jordan form</em>,
+where we had a map <math id="S6.p2.m3" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> and changed the basis
+so that <math id="S6.p2.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> was “almost diagonal”.
+This time, we have <em class="ltx_emph ltx_font_italic">two</em> sets of bases we can change,
+so we would hope to get a diagonal basis, or even better.</p>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">Before proceeding let’s think about how we might edit the matrix:
+what operations are permitted? Here are some examples:</p>
+<ul id="S6.I1" class="ltx_itemize">
+<li id="S6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Swapping rows and columns, which just corresponds
+to re-ordering the basis.</p>
+</div>
+</li>
+<li id="S6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Adding a multiple of a column to another column.
+For example, if we add <math id="S6.I1.i2.p1.m1" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math> times the first column to the second column,
+this is equivalent to replacing the basis</p>
+<table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="(e_{1},e_{2},e_{3},\dots,e_{m})\mapsto(e_{1},e_{2}+3e_{1},e_{3},\dots,e_{m})." display="block"><mrow><mrow><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><msub><mi>e</mi><mn>2</mn></msub><mo>,</mo><msub><mi>e</mi><mn>3</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>e</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><mrow><msub><mi>e</mi><mn>2</mn></msub><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow></mrow><mo>,</mo><msub><mi>e</mi><mn>3</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>e</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</li>
+<li id="S6.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Adding a multiple of a row to another row.
+One can see that adding <math id="S6.I1.i3.p1.m1" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math> times the first row to the second row
+is equivalent to replacing the basis</p>
+<table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="(f_{1},f_{2},f_{3},\dots,f_{n})\mapsto(f_{1}-3f_{2},f_{2},f_{3},\dots,f_{n})." display="block"><mrow><mrow><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo>,</mo><msub><mi>f</mi><mn>3</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>−</mo><mrow><mn>3</mn><mo>⁢</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></mrow><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo>,</mo><msub><mi>f</mi><mn>3</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</li>
+</ul>
+<p class="ltx_p">More generally,</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 18.6.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is an invertible <math id="S6.Thmtheorem1.p1.m2" class="ltx_Math" alttext="n\times n" display="inline"><mrow><mi>n</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>n</mi></mrow></math> matrix we can
+replace <math id="S6.Thmtheorem1.p1.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> with <math id="S6.Thmtheorem1.p1.m4" class="ltx_Math" alttext="AT" display="inline"><mrow><mi>A</mi><mo>⁢</mo><mi>T</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S6.p4" class="ltx_para">
+<p class="ltx_p">This corresponds to replacing</p>
+<table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="(f_{1},\dots,f_{n})\mapsto((FA^{-1})_{1},\dots,(FA^{-1})_{n})" display="block"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><msub><mrow><mo stretchy="false">(</mo><mrow><mi>F</mi><mo>⁢</mo><msup><mi>A</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo stretchy="false">)</mo></mrow><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mrow><mo stretchy="false">(</mo><mrow><mi>F</mi><mo>⁢</mo><msup><mi>A</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">(the “invertible” condition just guarantees the latter is a basis).
+Here, <math id="S6.p4.m1" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is the <math id="S6.p4.m2" class="ltx_Math" alttext="n\times n" display="inline"><mrow><mi>n</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>n</mi></mrow></math> matrix with columns being <math id="S6.p4.m3" class="ltx_Math" alttext="f_{1},\dots,f_{n}" display="inline"><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>n</mi></msub></mrow></math>, and <math id="S6.p4.m4" class="ltx_Math" alttext="(FA^{-1})_{1}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><mi>F</mi><mo>⁢</mo><msup><mi>A</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo stretchy="false">)</mo></mrow><mn>1</mn></msub></math> denotes the
+first column of <math id="S6.p4.m5" class="ltx_Math" alttext="FA^{-1}" display="inline"><mrow><mi>F</mi><mo>⁢</mo><msup><mi>A</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math>.</p>
+</div>
+<div id="S6.p5" class="ltx_para">
+<p class="ltx_p">Of course similarly we can replace <math id="S6.p5.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> with <math id="S6.p5.m2" class="ltx_Math" alttext="TB" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mi>B</mi></mrow></math>
+where <math id="S6.p5.m3" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> is an invertible <math id="S6.p5.m4" class="ltx_Math" alttext="m\times m" display="inline"><mrow><mi>m</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>m</mi></mrow></math> matrix;
+this corresponds to</p>
+<table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="(e_{1},\dots,e_{m})\mapsto((EB)_{1},\dots,(EB)_{m})" display="block"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>e</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><msub><mrow><mo stretchy="false">(</mo><mrow><mi>E</mi><mo>⁢</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mrow><mo stretchy="false">(</mo><mrow><mi>E</mi><mo>⁢</mo><mi>B</mi></mrow><mo stretchy="false">)</mo></mrow><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S6.p5.m5" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math> is the <math id="S6.p5.m6" class="ltx_Math" alttext="m\times m" display="inline"><mrow><mi>m</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>m</mi></mrow></math> matrix with columns being <math id="S6.p5.m7" class="ltx_Math" alttext="e_{1},\dots,e_{m}" display="inline"><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>e</mi><mi>m</mi></msub></mrow></math>.</p>
+</div>
+<div id="S6.p6" class="ltx_para">
+<p class="ltx_p">Armed with this knowledge, we can now approach:</p>
+</div>
+<div id="S6.Thmtheorem2" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 18.6.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Smith normal form)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S6.Thmtheorem2.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> be a PID.
+Let <math id="S6.Thmtheorem2.p1.m2" class="ltx_Math" alttext="M=R^{\oplus m}" display="inline"><mrow><mi>M</mi><mo>=</mo><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>m</mi></mrow></msup></mrow></math> and <math id="S6.Thmtheorem2.p1.m3" class="ltx_Math" alttext="N=R^{\oplus n}" display="inline"><mrow><mi>N</mi><mo>=</mo><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>n</mi></mrow></msup></mrow></math> be free <math id="S6.Thmtheorem2.p1.m4" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>-modules
+and let <math id="S6.Thmtheorem2.p1.m5" class="ltx_Math" alttext="T\colon M\to N" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> be a linear map.
+Set <math id="S6.Thmtheorem2.p1.m6" class="ltx_Math" alttext="k=\min\{m,n\}" display="inline"><mrow><mi>k</mi><mo>=</mo><mrow><mi>min</mi><mo>⁡</mo><mrow><mo stretchy="false">{</mo><mi>m</mi><mo>,</mo><mi>n</mi><mo stretchy="false">}</mo></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S6.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">Then we can select a pair of new bases for <math id="S6.Thmtheorem2.p2.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and <math id="S6.Thmtheorem2.p2.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> such that
+<math id="S6.Thmtheorem2.p2.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> has only diagonal entries <math id="S6.Thmtheorem2.p2.m4" class="ltx_Math" alttext="s_{1}" display="inline"><msub><mi>s</mi><mn>1</mn></msub></math>, <math id="S6.Thmtheorem2.p2.m5" class="ltx_Math" alttext="s_{2}" display="inline"><msub><mi>s</mi><mn>2</mn></msub></math>, …, <math id="S6.Thmtheorem2.p2.m6" class="ltx_Math" alttext="s_{k}" display="inline"><msub><mi>s</mi><mi>k</mi></msub></math>
+and <math id="S6.Thmtheorem2.p2.m7" class="ltx_Math" alttext="s_{1}\mid s_{2}\mid\dots\mid s_{k}" display="inline"><mrow><mrow><msub><mi>s</mi><mn>1</mn></msub><mo lspace="0em">⁢</mo><mrow><mo fence="true" rspace="0em">∣</mo><msub><mi>s</mi><mn>2</mn></msub><mo fence="true" lspace="0em">∣</mo></mrow><mo lspace="0em">⁢</mo><mi mathvariant="normal">…</mi></mrow><mo>∣</mo><msub><mi>s</mi><mi>k</mi></msub></mrow></math>.</p>
+</div>
+</div>
+<div id="S6.p7" class="ltx_para">
+<p class="ltx_p">So if <math id="S6.p7.m1" class="ltx_Math" alttext="m&gt;n" display="inline"><mrow><mi>m</mi><mo>&gt;</mo><mi>n</mi></mrow></math>, the matrix should take the form</p>
+<table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="\begin{bmatrix}s_{1}&amp;0&amp;0&amp;0&amp;\dots&amp;0\\
+0&amp;s_{2}&amp;0&amp;0&amp;\dots&amp;0\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\dots&amp;\vdots\\
+0&amp;0&amp;0&amp;s_{n}&amp;\dots&amp;0\end{bmatrix}." display="block"><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>s</mi><mn>1</mn></msub></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msub><mi>s</mi><mn>2</mn></msub></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><msub><mi>s</mi><mi>n</mi></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>]</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and similarly when <math id="S6.p7.m2" class="ltx_Math" alttext="m\leq n" display="inline"><mrow><mi>m</mi><mo>≤</mo><mi>n</mi></mrow></math>.</p>
+</div>
+<div id="S6.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 18.6.3</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S6.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that Smith normal form implies the structure theorem.</span></p>
+</div>
+</div>
+<div id="S6.Thmtheorem4" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 18.6.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S6.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Note that this is not a generalization of Jordan form.</p>
+<ul id="S6.I2" class="ltx_itemize">
+<li id="S6.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">In Jordan form we consider maps <math id="S6.I2.i1.p1.m1" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math>;
+note that the source and target space are the <em class="ltx_emph ltx_font_italic">same</em>,
+and we are considering one basis for the space <math id="S6.I2.i1.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.</p>
+</div>
+</li>
+<li id="S6.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">In Smith form the maps <math id="S6.I2.i2.p1.m1" class="ltx_Math" alttext="T\colon M\to N" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> are between
+<em class="ltx_emph ltx_font_italic">different</em> modules, and we pick <em class="ltx_emph ltx_font_italic">two</em> sets of bases
+(one for <math id="S6.I2.i2.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and one for <math id="S6.I2.i2.p1.m3" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>).</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S6.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 18.6.5</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Example of Smith normal form)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">To give a flavor of the idea of the proof,
+let’s work through a concrete example with the <math id="S6.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>-matrix</p>
+<table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\begin{bmatrix}18&amp;38&amp;48\\
+14&amp;30&amp;32\end{bmatrix}." display="block"><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>18</mn></mtd><mtd><mn>38</mn></mtd><mtd><mn>48</mn></mtd></mtr><mtr><mtd><mn>14</mn></mtd><mtd><mn>30</mn></mtd><mtd><mn>32</mn></mtd></mtr></mtable><mo>]</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">The GCD of all the entries is <math id="S6.Thmtheorem5.p1.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>, and so motivated by this,
+we perform the <span class="ltx_text ltx_font_bold">Euclidean algorithm on the left column</span>:
+subtract the second row from the first row,
+then three times the first row from the second:</p>
+<table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="\begin{bmatrix}18&amp;38&amp;48\\
+14&amp;30&amp;32\end{bmatrix}\mapsto\begin{bmatrix}4&amp;8&amp;16\\
+14&amp;30&amp;32\end{bmatrix}\mapsto\begin{bmatrix}4&amp;8&amp;16\\
+2&amp;6&amp;-16\end{bmatrix}." display="block"><mrow><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>18</mn></mtd><mtd><mn>38</mn></mtd><mtd><mn>48</mn></mtd></mtr><mtr><mtd><mn>14</mn></mtd><mtd><mn>30</mn></mtd><mtd><mn>32</mn></mtd></mtr></mtable><mo>]</mo></mrow><mo stretchy="false">↦</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>4</mn></mtd><mtd><mn>8</mn></mtd><mtd><mn>16</mn></mtd></mtr><mtr><mtd><mn>14</mn></mtd><mtd><mn>30</mn></mtd><mtd><mn>32</mn></mtd></mtr></mtable><mo>]</mo></mrow><mo stretchy="false">↦</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>4</mn></mtd><mtd><mn>8</mn></mtd><mtd><mn>16</mn></mtd></mtr><mtr><mtd><mn>2</mn></mtd><mtd><mn>6</mn></mtd><mtd><mrow><mo>−</mo><mn>16</mn></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Now that the GCD of <math id="S6.Thmtheorem5.p1.m3" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> is present, we move it to the upper-left
+by switching the two rows,
+and then kill off all the entries in the same row/column;
+since <math id="S6.Thmtheorem5.p1.m4" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> was the GCD all along, we isolate <math id="S6.Thmtheorem5.p1.m5" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> completely:</p>
+<table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="\begin{bmatrix}4&amp;8&amp;16\\
+2&amp;6&amp;-16\end{bmatrix}\mapsto\begin{bmatrix}2&amp;6&amp;-16\\
+4&amp;8&amp;16\end{bmatrix}\mapsto\begin{bmatrix}2&amp;6&amp;-16\\
+0&amp;-4&amp;48\\
+\end{bmatrix}\mapsto\begin{bmatrix}2&amp;0&amp;0\\
+0&amp;-4&amp;48\end{bmatrix}." display="block"><mrow><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>4</mn></mtd><mtd><mn>8</mn></mtd><mtd><mn>16</mn></mtd></mtr><mtr><mtd><mn>2</mn></mtd><mtd><mn>6</mn></mtd><mtd><mrow><mo>−</mo><mn>16</mn></mrow></mtd></mtr></mtable><mo>]</mo></mrow><mo stretchy="false">↦</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>2</mn></mtd><mtd><mn>6</mn></mtd><mtd><mrow><mo>−</mo><mn>16</mn></mrow></mtd></mtr><mtr><mtd><mn>4</mn></mtd><mtd><mn>8</mn></mtd><mtd><mn>16</mn></mtd></mtr></mtable><mo>]</mo></mrow><mo stretchy="false">↦</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>2</mn></mtd><mtd><mn>6</mn></mtd><mtd><mrow><mo>−</mo><mn>16</mn></mrow></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><mn>4</mn></mrow></mtd><mtd><mn>48</mn></mtd></mtr></mtable><mo>]</mo></mrow><mo stretchy="false">↦</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>2</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><mn>4</mn></mrow></mtd><mtd><mn>48</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This reduces the problem to a <math id="S6.Thmtheorem5.p1.m6" class="ltx_Math" alttext="1\times 2" display="inline"><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>2</mn></mrow></math> matrix.
+So we just apply the Euclidean algorithm again there:</p>
+<table id="Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex23.m1" class="ltx_Math" alttext="\begin{bmatrix}2&amp;0&amp;0\\
+0&amp;-4&amp;0\end{bmatrix}\mapsto\begin{bmatrix}2&amp;0&amp;0\\
+0&amp;4&amp;0\end{bmatrix}." display="block"><mrow><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>2</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><mn>4</mn></mrow></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>]</mo></mrow><mo stretchy="false">↦</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>2</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>4</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S6.p8" class="ltx_para">
+<p class="ltx_p">Now all we have to do is generalize this proof to work
+with any PID. It’s intuitively clear how to do this:
+the PID condition more or less lets you perform a Euclidean algorithm.</p>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Smith normal form.</h6>
+<div id="S6.p9" class="ltx_para">
+<p class="ltx_p">Begin with a generic matrix</p>
+<table id="Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex24.m1" class="ltx_Math" alttext="T=\begin{bmatrix}a_{11}&amp;\dots&amp;a_{1m}\\
+\vdots&amp;\ddots&amp;\vdots\\
+a_{n1}&amp;\dots&amp;a_{nm}\end{bmatrix}" display="block"><mrow><mi>T</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>a</mi><mn>11</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>a</mi><mrow><mn>1</mn><mo>⁢</mo><mi>m</mi></mrow></msub></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mn>1</mn></mrow></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mi>m</mi></mrow></msub></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">We want to show, by a series of operations (gradually changing the given basis)
+that we can rearrange the matrix into Smith normal form.</p>
+</div>
+<div id="S6.p10" class="ltx_para">
+<p class="ltx_p">Define <math id="S6.p10.m1" class="ltx_Math" alttext="\gcd(x,y)" display="inline"><mrow><mi>gcd</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></math> to be any generator of the principal ideal <math id="S6.p10.m2" class="ltx_Math" alttext="(x,y)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+<div id="S6.Thmtheorem6" class="ltx_theorem ltx_theorem_claim">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Claim 18.6.6</span></span><span class="ltx_text ltx_font_bold"> </span>(“Euclidean algorithm”)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S6.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S6.Thmtheorem6.p1.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S6.Thmtheorem6.p1.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> are entries in the same row or column,
+we can change bases to replace <math id="S6.Thmtheorem6.p1.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> with <math id="S6.Thmtheorem6.p1.m4" class="ltx_Math" alttext="\gcd(a,b)" display="inline"><mrow><mi>gcd</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+and <math id="S6.Thmtheorem6.p1.m5" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> with something else.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S6.p11" class="ltx_para">
+<p class="ltx_p">We do just the case of columns.
+By hypothesis, <math id="S6.p11.m1" class="ltx_Math" alttext="\gcd(a,b)=xa+yb" display="inline"><mrow><mrow><mi>gcd</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>a</mi></mrow><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><mi>b</mi></mrow></mrow></mrow></math> for some <math id="S6.p11.m2" class="ltx_Math" alttext="x,y\in R" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><mi>R</mi></mrow></math>.
+We must have <math id="S6.p11.m3" class="ltx_Math" alttext="(x,y)=(1)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math> now (we’re in a UFD).
+So there are <math id="S6.p11.m4" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> and <math id="S6.p11.m5" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math> such that <math id="S6.p11.m6" class="ltx_Math" alttext="xu+yv=1" display="inline"><mrow><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>u</mi></mrow><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><mi>v</mi></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>.
+Then</p>
+<table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="\begin{bmatrix}x&amp;y\\
+-v&amp;u\end{bmatrix}\begin{bmatrix}a\\
+b\end{bmatrix}=\begin{bmatrix}\gcd(a,b)\\
+\text{something}\end{bmatrix}" display="block"><mrow><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>x</mi></mtd><mtd><mi>y</mi></mtd></mtr><mtr><mtd><mrow><mo>−</mo><mi>v</mi></mrow></mtd><mtd><mi>u</mi></mtd></mtr></mtable><mo>]</mo></mrow><mo>⁢</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>a</mi></mtd></mtr><mtr><mtd><mi>b</mi></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo>=</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><mi>gcd</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mtext>something</mtext></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and the first matrix is invertible (check this!), as desired.
+∎</p>
+</div>
+</div>
+<div id="S6.p12" class="ltx_para">
+<p class="ltx_p">Let <math id="S6.p12.m1" class="ltx_Math" alttext="s_{1}=(a_{ij})_{i,j}" display="inline"><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>=</mo><msub><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo stretchy="false">)</mo></mrow><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow></msub></mrow></math> be the GCD of all entries.
+Now by repeatedly applying this algorithm,
+we can cause <math id="S6.p12.m2" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> to appear in the upper left hand corner.
+Then, we use it to kill off all the entries in the first
+row and the first column, thus arriving at a matrix</p>
+<table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="\begin{bmatrix}s_{1}&amp;0&amp;0&amp;\dots&amp;0\\
+0&amp;a_{22}^{\prime}&amp;a_{23}^{\prime}&amp;\dots&amp;a_{2n}^{\prime}\\
+0&amp;a_{32}^{\prime}&amp;a_{33}^{\prime}&amp;\dots&amp;a_{3n}^{\prime}\\
+\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;a_{m2}^{\prime}&amp;a_{m3}^{\prime}&amp;\dots&amp;a_{mn}^{\prime}\\
+\end{bmatrix}." display="block"><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>s</mi><mn>1</mn></msub></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msubsup><mi>a</mi><mn>22</mn><mo>′</mo></msubsup></mtd><mtd><msubsup><mi>a</mi><mn>23</mn><mo>′</mo></msubsup></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msubsup><mi>a</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow><mo>′</mo></msubsup></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msubsup><mi>a</mi><mn>32</mn><mo>′</mo></msubsup></mtd><mtd><msubsup><mi>a</mi><mn>33</mn><mo>′</mo></msubsup></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msubsup><mi>a</mi><mrow><mn>3</mn><mo>⁢</mo><mi>n</mi></mrow><mo>′</mo></msubsup></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msubsup><mi>a</mi><mrow><mi>m</mi><mo>⁢</mo><mn>2</mn></mrow><mo>′</mo></msubsup></mtd><mtd><msubsup><mi>a</mi><mrow><mi>m</mi><mo>⁢</mo><mn>3</mn></mrow><mo>′</mo></msubsup></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msubsup><mi>a</mi><mrow><mi>m</mi><mo>⁢</mo><mi>n</mi></mrow><mo>′</mo></msubsup></mtd></mtr></mtable><mo>]</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Now we repeat the same procedure with this lower-right
+<math id="S6.p12.m3" class="ltx_Math" alttext="(m-1)\times(n-1)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> matrix, and so on.
+This gives the Smith normal form.
+∎</p>
+</div>
+</div>
+<div id="S6.p13" class="ltx_para">
+<p class="ltx_p">With the Smith normal form, we have in the original situation that</p>
+<table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="M\cong R^{\oplus d}/\operatorname{im}T" display="block"><mrow><mi>M</mi><mo>≅</mo><mrow><msup><mi>R</mi><mrow><mo rspace="0em">⊕</mo><mi>d</mi></mrow></msup><mo>/</mo><mrow><mi>im</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and applying the theorem to <math id="S6.p13.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> completes the proof of the structure theorem.</p>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">18.7 </span>A few harder problems to think about</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p">Now, we can apply our structure theorem!</p>
+</div>
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 18A</span></span><span class="ltx_text ltx_font_bold"> </span>(Finite-dimensional vector spaces are all isomorphic)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">A vector space <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> over a field <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> has a finite spanning set of vectors.
+Show that <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="V\cong k^{\oplus n}" display="inline"><mrow><mi>V</mi><mo>≅</mo><msup><mi>k</mi><mrow><mo rspace="0em">⊕</mo><mi>n</mi></mrow></msup></mrow></math> for some <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+
+In the structure theorem, <math id="Thmproblem1.p1.m5" class="ltx_Math" alttext="k/(s_{i})\in\{0,k\}" display="inline"><mrow><mrow><mi>k</mi><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>s</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mi>k</mi><mo stretchy="false">}</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 18B</span></span><span class="ltx_text ltx_font_bold"> </span>(Frobenius normal form)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> where <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is a finite-dimensional vector space
+over an arbitrary field <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> (not necessarily algebraically closed).
+Show that one can write <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> as a block-diagonal matrix whose blocks
+are all of the form</p>
+<table id="Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex28.m1" class="ltx_Math" alttext="\begin{bmatrix}0&amp;0&amp;0&amp;\dots&amp;0&amp;\ast\\
+1&amp;0&amp;0&amp;\dots&amp;0&amp;\ast\\
+0&amp;1&amp;0&amp;\dots&amp;0&amp;\ast\\
+\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;\vdots&amp;\vdots\\
+0&amp;0&amp;0&amp;\dots&amp;1&amp;\ast\\
+\end{bmatrix}." display="block"><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd><mtd><mo>∗</mo></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd><mtd><mo>∗</mo></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd><mtd><mo>∗</mo></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>1</mn></mtd><mtd><mo>∗</mo></mtd></mtr></mtable><mo>]</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">(View <math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> as a <math id="Thmproblem2.p1.m6" class="ltx_Math" alttext="k[x]" display="inline"><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math>-module with action <math id="Thmproblem2.p1.m7" class="ltx_Math" alttext="x\cdot v=T(v)" display="inline"><mrow><mrow><mi>x</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>v</mi></mrow><mo>=</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.)
+
+By theorem <math id="Thmproblem2.p1.m8" class="ltx_Math" alttext="V\cong\bigoplus_{i}k[x]/(s_{i})" display="inline"><mrow><mi>V</mi><mo rspace="0.111em">≅</mo><mrow><msub><mo>⨁</mo><mi>i</mi></msub><mrow><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mrow><mo stretchy="false">(</mo><msub><mi>s</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> for some polynomials <math id="Thmproblem2.p1.m9" class="ltx_Math" alttext="s_{i}" display="inline"><msub><mi>s</mi><mi>i</mi></msub></math>.
+Write each block in the form described.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 18C</span></span><span class="ltx_text ltx_font_bold"> </span>(Jordan normal form)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> where <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is a finite-dimensional vector space
+over an arbitrary field <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> which is algebraically closed.
+Prove that <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> can be written in Jordan form.
+
+Copy the previous proof, except using the other form of the structure theorem.
+Since <math id="Thmproblem3.p1.m5" class="ltx_Math" alttext="k[x]" display="inline"><mrow><mi>k</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is algebraically closed each <math id="Thmproblem3.p1.m6" class="ltx_Math" alttext="p_{i}" display="inline"><msub><mi>p</mi><mi>i</mi></msub></math> is a linear factor.</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 18D</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem4.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem4.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem4.p2" class="ltx_para">
+<p class="ltx_p">Find two abelian groups <math id="Thmproblem4.p2.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> and <math id="Thmproblem4.p2.m2" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> which are not isomorphic,
+but for which there are injective homomorphisms
+<math id="Thmproblem4.p2.m3" class="ltx_Math" alttext="G\hookrightarrow H" display="inline"><mrow><mi>G</mi><mo stretchy="false">↪</mo><mi>H</mi></mrow></math> and <math id="Thmproblem4.p2.m4" class="ltx_Math" alttext="H\hookrightarrow G" display="inline"><mrow><mi>H</mi><mo stretchy="false">↪</mo><mi>G</mi></mrow></math>.
+
+The structure theorem is an anti-result here:
+it more or less implies that finitely generated abelian groups won’t work.
+So, look for an infinitely generated example.
+
+
+Take <math id="Thmproblem4.p2.m5" class="ltx_Math" alttext="G=\mathbb{Z}/3\mathbb{Z}\oplus\mathbb{Z}/9\mathbb{Z}\oplus\mathbb{Z}/9\mathbb{%
+Z}\oplus\mathbb{Z}/9\mathbb{Z}\oplus\dots" display="inline"><mrow><mi>G</mi><mo>=</mo><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>3</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>9</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>9</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>9</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>
+and <math id="Thmproblem4.p2.m6" class="ltx_Math" alttext="H=\mathbb{Z}/9\mathbb{Z}\oplus\mathbb{Z}/9\mathbb{Z}\oplus\mathbb{Z}/9\mathbb{%
+Z}\oplus\mathbb{Z}/9\mathbb{Z}\oplus\dots" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>9</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>9</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>9</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>9</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>.
+Then there are maps <math id="Thmproblem4.p2.m7" class="ltx_Math" alttext="G\hookrightarrow H" display="inline"><mrow><mi>G</mi><mo stretchy="false">↪</mo><mi>H</mi></mrow></math> and <math id="Thmproblem4.p2.m8" class="ltx_Math" alttext="H\hookrightarrow G" display="inline"><mrow><mi>H</mi><mo stretchy="false">↪</mo><mi>G</mi></mrow></math>,
+but the groups are not isomorphic since e.g. <math id="Thmproblem4.p2.m9" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> has an element <math id="Thmproblem4.p2.m10" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math> of order <math id="Thmproblem4.p2.m11" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>
+for which there’s no <math id="Thmproblem4.p2.m12" class="ltx_Math" alttext="g^{\prime}\in G" display="inline"><mrow><msup><mi>g</mi><mo>′</mo></msup><mo>∈</mo><mi>G</mi></mrow></math> with <math id="Thmproblem4.p2.m13" class="ltx_Math" alttext="g=3g^{\prime}" display="inline"><mrow><mi>g</mi><mo>=</mo><mrow><mn>3</mn><mo>⁢</mo><msup><mi>g</mi><mo>′</mo></msup></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem5" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 18E</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem5.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem5.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem5.p1.g2" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem5.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p2.m1" class="ltx_Math" alttext="A\subseteq B\subseteq C" display="inline"><mrow><mi>A</mi><mo>⊆</mo><mi>B</mi><mo>⊆</mo><mi>C</mi></mrow></math> be rings.
+Suppose <math id="Thmproblem5.p2.m2" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> is a finitely generated <math id="Thmproblem5.p2.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>-module.
+Does it follow that <math id="Thmproblem5.p2.m4" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> is a finitely generated <math id="Thmproblem5.p2.m5" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>-module?
+
+I think the result is true if you add the assumption <math id="Thmproblem5.p2.m6" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is Noetherian,
+so look for trouble by picking <math id="Thmproblem5.p2.m7" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> not Noetherian.
+
+
+Nope! Pick</p>
+<table id="A5.S3.EGx57" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex29"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex29.m1" class="ltx_Math" alttext="\displaystyle A" display="inline"><mi>A</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex29.m2" class="ltx_Math" alttext="\displaystyle=\mathbb{Z}[x_{1},x_{2},\dots]" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex30"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex30.m1" class="ltx_Math" alttext="\displaystyle B" display="inline"><mi>B</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex30.m2" class="ltx_Math" alttext="\displaystyle=\mathbb{Z}[x_{1},x_{2},\dots,\varepsilon x_{1},\varepsilon x_{2}%
+,\dots]" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>ε</mi><mo>⁢</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mo>,</mo><mrow><mi>ε</mi><mo>⁢</mo><msub><mi>x</mi><mn>2</mn></msub></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex31"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex31.m1" class="ltx_Math" alttext="\displaystyle C" display="inline"><mi>C</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex31.m2" class="ltx_Math" alttext="\displaystyle=\mathbb{Z}[x_{1},x_{2},\dots,\varepsilon]." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>ε</mi><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where <math id="Thmproblem5.p2.m8" class="ltx_Math" alttext="\varepsilon\neq 0" display="inline"><mrow><mi>ε</mi><mo>≠</mo><mn>0</mn></mrow></math> but <math id="Thmproblem5.p2.m9" class="ltx_Math" alttext="\varepsilon^{2}=0" display="inline"><mrow><msup><mi>ε</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow></math>.
+I think the result is true if you add the assumption <math id="Thmproblem5.p2.m10" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is Noetherian.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="ch_sylow.html" title="In Part V More on Groups ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">17 </span>Find all groups</span></a><a href="../part_repth/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">VI </span>Representation Theory</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

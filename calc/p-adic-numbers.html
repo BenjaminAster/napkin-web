@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Bonus: A hint of p-adic numbers</title>
+		<meta property="og:title" content="Bonus: A hint of p-adic numbers" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../calc/calc-limits.html">Previous chapter: Limits and series</a><br />
+<a href="../calc/differentiation.html">Next chapter: Differentiation</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 27 </span>Bonus: A hint of <math id="m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic numbers</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">This is a bonus chapter meant for those
+who have also read about <span class="ltx_text ltx_font_bold">rings and fields</span>:
+it’s a nice tidbit at the intersection of algebra and analysis.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">In this chapter, we are going to redo most of the previous chapter
+with the absolute value <math id="p2.m1" class="ltx_Math" alttext="\left\lvert-\right\rvert" display="inline"><mrow><mo>|</mo><mo lspace="0em" rspace="0em">−</mo><mo>|</mo></mrow></math>
+replaced by the <math id="p2.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic one.
+This will give us the <math id="p2.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic integers <math id="p2.m4" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math>,
+and the <math id="p2.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic numbers <math id="p2.m6" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>.
+The one-sentence description is that these are
+“integers/rationals carrying full mod <math id="p2.m7" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math> information”
+(and only that information).</p>
+</div>
+<div id="p3" class="ltx_para">
+<p class="ltx_p">In everything that follows <math id="p3.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is always assumed to denote a prime.
+The first four sections will cover the founding definitions
+culminating in a short solution to a USA TST problem.
+We will then state (mostly without proof) some more
+surprising results about continuous functions <math id="p3.m2" class="ltx_Math" alttext="f\colon\mathbb{Z}_{p}\to\mathbb{Q}_{p}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>ℤ</mi><mi>p</mi></msub><mo stretchy="false">→</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow></mrow></math>;
+finally we close with the famous proof of the Skolem-Mahler-Lech theorem
+using <math id="p3.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic analysis.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">27.1 </span>Motivation</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Before really telling you what <math id="S1.p1.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> and <math id="S1.p1.m2" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> are,
+let me tell you what you might expect them to do.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">In elementary/olympiad number theory,
+we’re already well-familiar with the following two ideas:</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Taking modulo a prime <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> or prime power <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math>, and</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Looking at the exponent <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\nu_{p}" display="inline"><msub><mi>ν</mi><mi>p</mi></msub></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Let me expand on the first point.
+Suppose we have some Diophantine equation.
+In olympiad contexts, one can take an equation modulo <math id="S1.p3.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>
+to gain something else to work with.
+Unfortunately, taking modulo <math id="S1.p3.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> loses some information:
+the reduction <math id="S1.p3.m3" class="ltx_Math" alttext="\mathbb{Z}\twoheadrightarrow\mathbb{Z}/p" display="inline"><mrow><mi>ℤ</mi><mo stretchy="false">↠</mo><mrow><mi>ℤ</mi><mo>/</mo><mi>p</mi></mrow></mrow></math> is far from injective.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">If we want finer control, we could consider instead
+taking modulo <math id="S1.p4.m1" class="ltx_Math" alttext="p^{2}" display="inline"><msup><mi>p</mi><mn>2</mn></msup></math>, rather than taking modulo <math id="S1.p4.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+This can also give some new information (cubes modulo <math id="S1.p4.m3" class="ltx_Math" alttext="9" display="inline"><mn>9</mn></math>, anyone?),
+but it has the disadvantage that <math id="S1.p4.m4" class="ltx_Math" alttext="\mathbb{Z}/p^{2}" display="inline"><mrow><mi>ℤ</mi><mo>/</mo><msup><mi>p</mi><mn>2</mn></msup></mrow></math> isn’t a field,
+so we lose a lot of the nice algebraic properties that we
+got if we take modulo <math id="S1.p4.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">One of the goals of <math id="S1.p5.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic numbers is that we can get around
+these two issues I described.
+The <math id="S1.p5.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic numbers we introduce is going to have the following properties:</p>
+<ol id="S1.I2" class="ltx_enumerate">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">You can “take modulo <math id="S1.I2.i1.p1.m1" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math> for all <math id="S1.I2.i1.p1.m2" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math> at once”.</span>
+In olympiad contexts, we are used to picking a particular modulus and then
+seeing what happens if we take that modulus.
+But with <math id="S1.I2.i1.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic numbers, we won’t have to make that choice.
+An equation of <math id="S1.I2.i1.p1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic numbers carries enough information
+to take modulo <math id="S1.I2.i1.p1.m5" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math>.</p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">The numbers <math id="S1.I2.i2.p1.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> form a field</span>,
+the nicest possible algebraic structure:
+<math id="S1.I2.i2.p1.m2" class="ltx_Math" alttext="1/p" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>p</mi></mrow></math> makes sense.
+Contrast this with <math id="S1.I2.i2.p1.m3" class="ltx_Math" alttext="\mathbb{Z}/p^{2}" display="inline"><mrow><mi>ℤ</mi><mo>/</mo><msup><mi>p</mi><mn>2</mn></msup></mrow></math>, which is not even an integral domain.</p>
+</div>
+</li>
+<li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span> 
+<div id="S1.I2.i3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">It doesn’t lose as much information</span>
+as taking modulo <math id="S1.I2.i3.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> does:
+rather than the surjective <math id="S1.I2.i3.p1.m2" class="ltx_Math" alttext="\mathbb{Z}\twoheadrightarrow\mathbb{Z}/p" display="inline"><mrow><mi>ℤ</mi><mo stretchy="false">↠</mo><mrow><mi>ℤ</mi><mo>/</mo><mi>p</mi></mrow></mrow></math> we have an
+<em class="ltx_emph ltx_font_italic">injective</em> map <math id="S1.I2.i3.p1.m3" class="ltx_Math" alttext="\mathbb{Z}\hookrightarrow\mathbb{Z}_{p}" display="inline"><mrow><mi>ℤ</mi><mo stretchy="false">↪</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span> 
+<div id="S1.I2.i4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Despite this, you “ignore” some “irrelevant” data</span>.
+Just like taking modulo <math id="S1.I2.i4.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, you want to zoom-in on
+a particular type of algebraic information,
+and this means necessarily
+losing sight of other things.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>To draw an analogy: the equation
+<math id="footnote1.m1" class="ltx_Math" alttext="a^{2}+b^{2}+c^{2}+d^{2}=-1" display="inline"><mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup><mo>+</mo><msup><mi>c</mi><mn>2</mn></msup><mo>+</mo><msup><mi>d</mi><mn>2</mn></msup></mrow><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math>
+has no integer solutions, because, well, squares are nonnegative.
+But you will find that this equation has solutions modulo any prime <math id="footnote1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+because once you take modulo <math id="footnote1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> you stop being able to
+talk about numbers being nonnegative.
+The same thing will happen if we work in <math id="footnote1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adics:
+the above equation has a solution in <math id="footnote1.m5" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> for every prime <math id="footnote1.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</span></span></span></p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">So, you can think of <math id="S1.p5.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic numbers as the right tool to use
+if you only really care about modulo <math id="S1.p5.m4" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math> information,
+but normal <math id="S1.p5.m5" class="ltx_Math" alttext="\mathbb{Z}/p^{e}" display="inline"><mrow><mi>ℤ</mi><mo>/</mo><msup><mi>p</mi><mi>e</mi></msup></mrow></math> isn’t quite powerful enough.</p>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">To be more concrete, I’ll give a poster example now:</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 27.1.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(USA TST 2002/2)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">For a prime <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, show the value of</p>
+<div class="table-container"><table id="ex:token" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="f_{p}(x)=\sum_{k=1}^{p-1}\frac{1}{(px+k)^{2}}\pmod{p^{3}}" display="block"><mrow><mrow><msub><mi>f</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></munderover><mfrac linethickness="0.6px"><mn>1</mn><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>p</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mi>k</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac></mrow><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" movablelimits="false" rspace="0.167em">mod</mo><msup><mi>p</mi><mn>3</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">does not depend on <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>.</p>
+</div>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">Here is a problem where we <em class="ltx_emph ltx_font_italic">clearly</em> only care
+about <math id="S1.p7.m1" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math>-type information.
+Yet it’s a nontrivial challenge to do the
+necessary manipulations mod <math id="S1.p7.m2" class="ltx_Math" alttext="p^{3}" display="inline"><msup><mi>p</mi><mn>3</mn></msup></math> (try it!).
+The basic issue is that there is no good way to deal with
+the denominators modulo <math id="S1.p7.m3" class="ltx_Math" alttext="p^{3}" display="inline"><msup><mi>p</mi><mn>3</mn></msup></math>
+(in part <math id="S1.p7.m4" class="ltx_Math" alttext="\mathbb{Z}/p^{3}" display="inline"><mrow><mi>ℤ</mi><mo>/</mo><msup><mi>p</mi><mn>3</mn></msup></mrow></math> is not even an integral domain).</p>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">However, with <math id="S1.p8.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic analysis we’re going to be able
+to overcome these limitations and give a “straightforward” proof
+by using the identity</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\left(1+\frac{px}{k}\right)^{-2}=\sum_{n\geq 0}\binom{-2}{n}\left(\frac{px}{k}%
+\right)^{n}." display="block"><mrow><mrow><msup><mrow><mo>(</mo><mrow><mn>1</mn><mo>+</mo><mfrac linethickness="0.6px"><mrow><mi>p</mi><mo>⁢</mo><mi>x</mi></mrow><mi>k</mi></mfrac></mrow><mo>)</mo></mrow><mrow><mo>−</mo><mn>2</mn></mrow></msup><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></munder><mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mrow><mo>−</mo><mn>2</mn></mrow><mi>n</mi></mfrac><mo>)</mo></mrow><mo>⁢</mo><msup><mrow><mo>(</mo><mfrac linethickness="0.6px"><mrow><mi>p</mi><mo>⁢</mo><mi>x</mi></mrow><mi>k</mi></mfrac><mo>)</mo></mrow><mi>n</mi></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Such an identity makes no sense over <math id="S1.p8.m2" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> or <math id="S1.p8.m3" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> for convergence reasons,
+but it will work fine over <math id="S1.p8.m4" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>, which is all we need.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">27.2 </span>Algebraic perspective</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S2.p1.m1" class="ltx_Math" alttext="-1/2=1+3+3^{2}+3^{3}+\dots\in\mathbb{Z}_{3}" display="inline"><mrow><mrow><mo>−</mo><mrow><mn>1</mn><mo>/</mo><mn>2</mn></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mn>3</mn><mo>+</mo><msup><mn>3</mn><mn>2</mn></msup><mo>+</mo><msup><mn>3</mn><mn>3</mn></msup><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow><mo>∈</mo><msub><mi>ℤ</mi><mn>3</mn></msub></mrow></math>.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">We now construct <math id="S2.p2.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> and <math id="S2.p2.m2" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>.
+I promised earlier that a <math id="S2.p2.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic integer will let you look at
+“all residues modulo <math id="S2.p2.m4" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math>” at once.
+This definition will formalize this.</p>
+</div>
+<section id="S2.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">27.2.i </span>Definition of <math id="S2.SS1.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math>
+</h3>
+
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 27.2.1</span></span><span class="ltx_text ltx_font_bold"> </span>(Introducing <math id="S2.Thmtheorem1.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math>)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic integer</span> is a sequence</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="x=(x_{1}\bmod p,\;x_{2}\bmod{p^{2}},\;x_{3}\bmod{p^{3}},\;\dots)" display="block"><mrow><mi>x</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>mod</mo><mi>p</mi></mrow><mo rspace="0.447em">,</mo><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>mod</mo><msup><mi>p</mi><mn>2</mn></msup></mrow><mo rspace="0.447em">,</mo><mrow><msub><mi>x</mi><mn>3</mn></msub><mo>mod</mo><msup><mi>p</mi><mn>3</mn></msup></mrow><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">of residues <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="x_{e}" display="inline"><msub><mi>x</mi><mi>e</mi></msub></math> modulo <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math> for each integer <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math>,
+satisfying the compatibility relations
+<math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="x_{i}\equiv x_{j}\pmod{p^{i}}" display="inline"><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>≡</mo><mrow><msub><mi>x</mi><mi>j</mi></msub><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><msup><mi>p</mi><mi>i</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for <math id="S2.Thmtheorem1.p1.m6" class="ltx_Math" alttext="i&lt;j" display="inline"><mrow><mi>i</mi><mo>&lt;</mo><mi>j</mi></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">The set <math id="S2.Thmtheorem1.p2.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> of <math id="S2.Thmtheorem1.p2.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic integers forms a ring
+under component-wise addition and multiplication.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 27.2.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Some <math id="S2.Thmtheorem2.m1" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>-adic integers)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="p=3" display="inline"><mrow><mi>p</mi><mo>=</mo><mn>3</mn></mrow></math>.
+Every usual integer <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> generates
+a (compatible) sequence of residues modulo <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math> for each <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math>,
+so we can view each ordinary integer as <math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic one:</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="50=\left(2\bmod 3,\;5\bmod 9,\;23\bmod{27},\;50\bmod{81},\;50\bmod{243},\;%
+\dots\right)." display="block"><mrow><mrow><mn>50</mn><mo>=</mo><mrow><mo>(</mo><mrow><mn>2</mn><mo>mod</mo><mn>3</mn></mrow><mo>,</mo><mrow><mn> 5</mn><mo>mod</mo><mn>9</mn></mrow><mo>,</mo><mrow><mn> 23</mn><mo>mod</mo><mn>27</mn></mrow><mo>,</mo><mrow><mn> 50</mn><mo>mod</mo><mn>81</mn></mrow><mo>,</mo><mrow><mn> 50</mn><mo>mod</mo><mn>243</mn></mrow><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">On the other hand, there are sequences of residues
+which do not correspond to any usual integer despite
+satisfying compatibility relations, such as</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\left(1\bmod 3,\;4\bmod 9,\;13\bmod{27},\;40\bmod{81},\;\dots\right)" display="block"><mrow><mo>(</mo><mrow><mn>1</mn><mo>mod</mo><mn>3</mn></mrow><mo>,</mo><mrow><mn> 4</mn><mo>mod</mo><mn>9</mn></mrow><mo>,</mo><mrow><mn> 13</mn><mo>mod</mo><mn>27</mn></mrow><mo>,</mo><mrow><mn> 40</mn><mo>mod</mo><mn>81</mn></mrow><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi><mo>)</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which can be thought of as <math id="S2.Thmtheorem2.p1.m6" class="ltx_Math" alttext="x=1+p+p^{2}+\dots" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mi>p</mi><mo>+</mo><msup><mi>p</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.SS1.p1" class="ltx_para">
+<p class="ltx_p">In this way we get an injective map</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\mathbb{Z}\hookrightarrow\mathbb{Z}_{p}\qquad n\mapsto\left(n\bmod p,n\bmod{p^%
+{2}},n\bmod{p^{3}},\dots\right)" display="block"><mrow><mrow><mi>ℤ</mi><mo stretchy="false">↪</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow><mspace width="2em"></mspace><mrow><mi>n</mi><mo stretchy="false">↦</mo><mrow><mo>(</mo><mrow><mi>n</mi><mo>mod</mo><mi>p</mi></mrow><mo>,</mo><mrow><mi>n</mi><mo>mod</mo><msup><mi>p</mi><mn>2</mn></msup></mrow><mo>,</mo><mrow><mi>n</mi><mo>mod</mo><msup><mi>p</mi><mn>3</mn></msup></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which is not surjective.
+So there are more <math id="S2.SS1.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic integers than usual integers.</p>
+</div>
+<div id="S2.SS1.p2" class="ltx_para">
+<p class="ltx_p">(Remark for experts:
+those of you familiar with category theory might recognize
+that this definition can be written concisely as</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}\coloneqq\varprojlim\mathbb{Z}/p^{e}\mathbb{Z}" display="block"><mrow><msub><mi>ℤ</mi><mi>p</mi></msub><mo>≔</mo><mrow><munder accentunder="true"><mi>lim</mi><mo stretchy="false">←</mo></munder><mo lspace="0.167em">⁡</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><msup><mi>p</mi><mi>e</mi></msup></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where the inverse limit is taken across <math id="S2.SS1.p2.m1" class="ltx_Math" alttext="e\geq 1" display="inline"><mrow><mi>e</mi><mo>≥</mo><mn>1</mn></mrow></math>.)</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 27.2.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check that <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> is an integral domain.</span></p>
+</div>
+</div>
+</section>
+<section id="S2.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">27.2.ii </span>Base <math id="S2.SS2.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> expansion</h3>
+
+<div id="S2.SS2.p1" class="ltx_para">
+<p class="ltx_p">Here is another way to think about <math id="S2.SS2.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic integers using “base <math id="S2.SS2.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>”.
+As in the example earlier, every usual integer can be written in base <math id="S2.SS2.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+for example</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="50=\overline{1212}_{3}=2\cdot 3^{0}+1\cdot 3^{1}+2\cdot 3^{2}+1\cdot 3^{3}." display="block"><mrow><mrow><mn>50</mn><mo>=</mo><msub><mover accent="true"><mn>1212</mn><mo>¯</mo></mover><mn>3</mn></msub><mo>=</mo><mrow><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>3</mn><mn>0</mn></msup></mrow><mo>+</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>3</mn><mn>1</mn></msup></mrow><mo>+</mo><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>3</mn><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>3</mn><mn>3</mn></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">More generally, given any <math id="S2.SS2.p1.m4" class="ltx_Math" alttext="x=(x_{1},\dots)\in\mathbb{Z}_{p}" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow></math>,
+we can write down a “base <math id="S2.SS2.p1.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>” expansion in the sense
+that there are exactly <math id="S2.SS2.p1.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> choices of <math id="S2.SS2.p1.m7" class="ltx_Math" alttext="x_{k}" display="inline"><msub><mi>x</mi><mi>k</mi></msub></math> given <math id="S2.SS2.p1.m8" class="ltx_Math" alttext="x_{k-1}" display="inline"><msub><mi>x</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub></math>.
+Continuing the example earlier, we would write</p>
+<div class="table-container"><table id="A5.S3.EGx73" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex9"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex9.m1" class="ltx_Math" alttext="\displaystyle\left(1\bmod 3,\;4\bmod 9,\;13\bmod{27},\;40\bmod{81},\;\dots\right)" display="inline"><mrow><mo>(</mo><mrow><mn>1</mn><mo>mod</mo><mn>3</mn></mrow><mo>,</mo><mrow><mn> 4</mn><mo>mod</mo><mn>9</mn></mrow><mo>,</mo><mrow><mn> 13</mn><mo>mod</mo><mn>27</mn></mrow><mo>,</mo><mrow><mn> 40</mn><mo>mod</mo><mn>81</mn></mrow><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi><mo>)</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex9.m2" class="ltx_Math" alttext="\displaystyle=1+3+3^{2}+\dots" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mn>3</mn><mo>+</mo><msup><mn>3</mn><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">…</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex10"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex10.m1" class="ltx_Math" alttext="\displaystyle=\overline{\dots 1111}_{3}" display="inline"><mrow><mi></mi><mo>=</mo><msub><mover accent="true"><mrow><mi mathvariant="normal">…</mi><mo>⁢</mo><mn>1111</mn></mrow><mo>¯</mo></mover><mn>3</mn></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and in general we can write</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="x=\sum_{k\geq 0}a_{k}p^{k}=\overline{\dots a_{2}a_{1}a_{0}}_{p}" display="block"><mrow><mi>x</mi><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow></munder><mrow><msub><mi>a</mi><mi>k</mi></msub><mo>⁢</mo><msup><mi>p</mi><mi>k</mi></msup></mrow></mrow><mo>=</mo><msub><mover accent="true"><mrow><mi mathvariant="normal">…</mi><mo>⁢</mo><msub><mi>a</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>a</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>a</mi><mn>0</mn></msub></mrow><mo>¯</mo></mover><mi>p</mi></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S2.SS2.p1.m9" class="ltx_Math" alttext="a_{k}\in\{0,\dots,p-1\}" display="inline"><mrow><msub><mi>a</mi><mi>k</mi></msub><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math>,
+such that the equation holds modulo <math id="S2.SS2.p1.m10" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math> for each <math id="S2.SS2.p1.m11" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math>.
+Note the expansion is infinite to the <em class="ltx_emph ltx_font_italic">left</em>,
+which is different from what you’re used to.</p>
+</div>
+<div id="S2.SS2.p2" class="ltx_para">
+<p class="ltx_p">(Amusingly, negative integers also have infinite base <math id="S2.SS2.p2.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> expansions:
+<math id="S2.SS2.p2.m2" class="ltx_Math" alttext="-4=\overline{\dots 222212}_{3}" display="inline"><mrow><mrow><mo>−</mo><mn>4</mn></mrow><mo>=</mo><msub><mover accent="true"><mrow><mi mathvariant="normal">…</mi><mo>⁢</mo><mn>222212</mn></mrow><mo>¯</mo></mover><mn>3</mn></msub></mrow></math>, corresponding to
+<math id="S2.SS2.p2.m3" class="ltx_Math" alttext="(2\bmod 3,\;5\bmod 9,\;23\bmod{27},\;77\bmod{81}\dots)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>mod</mo><mn>3</mn></mrow><mo>,</mo><mrow><mn> 5</mn><mo>mod</mo><mn>9</mn></mrow><mo>,</mo><mrow><mn> 23</mn><mo>mod</mo><mn>27</mn></mrow><mo>,</mo><mrow><mn> 77</mn><mo>mod</mo><mrow><mn>81</mn><mo>⁢</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></math>.)</p>
+</div>
+<div id="S2.SS2.p3" class="ltx_para">
+<p class="ltx_p">Thus you may often hear the advertisement that a <math id="S2.SS2.p3.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic integer
+is a “possibly infinite base <math id="S2.SS2.p3.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> expansion”.
+This is correct, but later on we’ll be thinking of <math id="S2.SS2.p3.m3" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> in
+a more and more “analytic” way,
+and so I prefer to think of this as</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 27.2.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic integers are Taylor series with base <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+</div>
+<div id="S2.SS2.p4" class="ltx_para">
+<p class="ltx_p">Indeed, much of your intuition from generating functions <math id="S2.SS2.p4.m1" class="ltx_Math" alttext="K[[X]]" display="inline"><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">]</mo></mrow></mrow></math>
+(where <math id="S2.SS2.p4.m2" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> is a field) will carry over to <math id="S2.SS2.p4.m3" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math>.</p>
+</div>
+</section>
+<section id="S2.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">27.2.iii </span>Constructing <math id="S2.SS3.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>
+</h3>
+
+<div id="S2.SS3.p1" class="ltx_para">
+<p class="ltx_p">Here is one way in which your intuition from generating functions carries over:</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 27.2.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Non-multiples of <math id="S2.Thmtheorem5.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> are all invertible)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">The number <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="x\in\mathbb{Z}_{p}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow></math> is invertible if and only if <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="x_{1}\neq 0" display="inline"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>≠</mo><mn>0</mn></mrow></math>.
+In symbols,</p>
+<div class="table-container"><table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="x\in\mathbb{Z}_{p}^{\times}\iff x\not\equiv 0\pmod{p}." display="block"><mrow><mrow><mrow><mi>x</mi><mo>∈</mo><msubsup><mi>ℤ</mi><mi>p</mi><mo>×</mo></msubsup></mrow><mo stretchy="false">⇔</mo><mrow><mi>x</mi><mo>≢</mo><mrow><mn>0</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" movablelimits="false" rspace="0.167em">mod</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S2.SS3.p2" class="ltx_para">
+<p class="ltx_p">Contrast this with the corresponding statement for <math id="S2.SS3.p2.m1" class="ltx_Math" alttext="K[[X]]" display="inline"><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">]</mo></mrow></mrow></math>:
+a generating function <math id="S2.SS3.p2.m2" class="ltx_Math" alttext="F\in K[[X]]" display="inline"><mrow><mi>F</mi><mo>∈</mo><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math> is invertible iff <math id="S2.SS3.p2.m3" class="ltx_Math" alttext="F(0)\neq 0" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.SS3.p3" class="ltx_para">
+<p class="ltx_p">If <math id="S2.SS3.p3.m1" class="ltx_Math" alttext="x\equiv 0\pmod{p}" display="inline"><mrow><mi>x</mi><mo>≡</mo><mrow><mn>0</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> then <math id="S2.SS3.p3.m2" class="ltx_Math" alttext="x_{1}=0" display="inline"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>=</mo><mn>0</mn></mrow></math>,
+so clearly not invertible.
+Otherwise, <math id="S2.SS3.p3.m3" class="ltx_Math" alttext="x_{e}\not\equiv 0\pmod{p}" display="inline"><mrow><msub><mi>x</mi><mi>e</mi></msub><mo>≢</mo><mrow><mn>0</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for all <math id="S2.SS3.p3.m4" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math>,
+so we can take an inverse <math id="S2.SS3.p3.m5" class="ltx_Math" alttext="y_{e}" display="inline"><msub><mi>y</mi><mi>e</mi></msub></math> modulo <math id="S2.SS3.p3.m6" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math>,
+with <math id="S2.SS3.p3.m7" class="ltx_Math" alttext="x_{e}y_{e}\equiv 1\pmod{p^{e}}" display="inline"><mrow><mrow><msub><mi>x</mi><mi>e</mi></msub><mo>⁢</mo><msub><mi>y</mi><mi>e</mi></msub></mrow><mo>≡</mo><mrow><mn>1</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><msup><mi>p</mi><mi>e</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+As the <math id="S2.SS3.p3.m8" class="ltx_Math" alttext="y_{e}" display="inline"><msub><mi>y</mi><mi>e</mi></msub></math> are themselves compatible,
+the element <math id="S2.SS3.p3.m9" class="ltx_Math" alttext="(y_{1},y_{2},\dots)" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">)</mo></mrow></math> is an inverse.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 27.2.6</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(We have <math id="S2.Thmtheorem6.m1" class="ltx_Math" alttext="-\frac{1}{2}=\overline{\dots 1111}_{3}\in\mathbb{Z}_{3}" display="inline"><mrow><mrow><mo>−</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mrow><mo>=</mo><msub><mover accent="true"><mrow><mi mathvariant="normal">…</mi><mo>⁢</mo><mn>1111</mn></mrow><mo>¯</mo></mover><mn>3</mn></msub><mo>∈</mo><msub><mi>ℤ</mi><mn>3</mn></msub></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">We claim the earlier example is actually</p>
+<div class="table-container"><table id="A5.S3.EGx74" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex13"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex13.m1" class="ltx_Math" alttext="\displaystyle-\frac{1}{2}=\left(1\bmod 3,\;4\bmod 9,\;13\bmod{27},\;40\bmod{81%
+},\;\dots\right)" display="inline"><mrow><mrow><mo>−</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mstyle></mrow><mo>=</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>mod</mo><mn>3</mn></mrow><mo>,</mo><mrow><mn> 4</mn><mo>mod</mo><mn>9</mn></mrow><mo>,</mo><mrow><mn> 13</mn><mo>mod</mo><mn>27</mn></mrow><mo>,</mo><mrow><mn> 40</mn><mo>mod</mo><mn>81</mn></mrow><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex13.m2" class="ltx_Math" alttext="\displaystyle=1+3+3^{2}+\dots" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mn>3</mn><mo>+</mo><msup><mn>3</mn><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">…</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex14"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex14.m1" class="ltx_Math" alttext="\displaystyle=\overline{\dots 1111}_{3}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><msub><mover accent="true"><mrow><mi mathvariant="normal">…</mi><mo>⁢</mo><mn>1111</mn></mrow><mo>¯</mo></mover><mn>3</mn></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Indeed, multiplying it by <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="-2" display="inline"><mrow><mo>−</mo><mn>2</mn></mrow></math> gives</p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\left(-2\bmod 3,\;-8\bmod 9,\;-26\bmod{27},\;-80\bmod{81},\;\dots\right)=1." display="block"><mrow><mrow><mrow><mo>(</mo><mrow><mrow><mo>−</mo><mn>2</mn></mrow><mo>mod</mo><mn>3</mn></mrow><mo rspace="0.447em">,</mo><mrow><mrow><mo>−</mo><mn>8</mn></mrow><mo>mod</mo><mn>9</mn></mrow><mo rspace="0.447em">,</mo><mrow><mrow><mo>−</mo><mn>26</mn></mrow><mo>mod</mo><mn>27</mn></mrow><mo rspace="0.447em">,</mo><mrow><mrow><mo>−</mo><mn>80</mn></mrow><mo>mod</mo><mn>81</mn></mrow><mo rspace="0.447em">,</mo><mi mathvariant="normal">…</mi><mo>)</mo></mrow><mo>=</mo><mn>1</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">(Compare this with the “geometric series”
+<math id="S2.Thmtheorem6.p1.m2" class="ltx_Math" alttext="1+3+3^{2}+\dots=\frac{1}{1-3}" display="inline"><mrow><mrow><mn>1</mn><mo>+</mo><mn>3</mn><mo>+</mo><msup><mn>3</mn><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>1</mn><mo>−</mo><mn>3</mn></mrow></mfrac></mrow></math>.
+We’ll actually be able to formalize this later, but not yet.)</p>
+</div>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 27.2.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(<math id="S2.Thmtheorem7.m1" class="ltx_Math" alttext="\frac{1}{2}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></math> is an integer for <math id="S2.Thmtheorem7.m2" class="ltx_Math" alttext="p&gt;2" display="inline"><mrow><mi>p</mi><mo>&gt;</mo><mn>2</mn></mrow></math>)</span> — </span>
+</h5>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">The earlier proposition implies that <math id="S2.Thmtheorem7.p1.m1" class="ltx_Math" alttext="\frac{1}{2}\in\mathbb{Z}_{3}" display="inline"><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>∈</mo><msub><mi>ℤ</mi><mn>3</mn></msub></mrow></math>
+(among other things);
+your intuition about what is an “integer” is different here!
+In olympiad terms, we already knew <math id="S2.Thmtheorem7.p1.m2" class="ltx_Math" alttext="\frac{1}{2}\pmod{3}" display="inline"><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mn>3</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math> made sense,
+which is why calling <math id="S2.Thmtheorem7.p1.m3" class="ltx_Math" alttext="\frac{1}{2}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></math> an “integer”
+in the <math id="S2.Thmtheorem7.p1.m4" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>-adics is correct,
+even though it doesn’t correspond to any element of <math id="S2.Thmtheorem7.p1.m5" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem8" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 27.2.8</span></span><span class="ltx_text ltx_font_bold"> </span>(Unimportant but tricky)
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Rational numbers correspond exactly to
+eventually periodic base <math id="S2.Thmtheorem8.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> expansions.</span></p>
+</div>
+</div>
+<div id="S2.SS3.p4" class="ltx_para">
+<p class="ltx_p">With this observation, here is now the definition of <math id="S2.SS3.p4.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>.</p>
+</div>
+<div id="S2.Thmtheorem9" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 27.2.9</span></span><span class="ltx_text ltx_font_bold"> </span>(Introducing <math id="S2.Thmtheorem9.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">Since <math id="S2.Thmtheorem9.p1.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> is an integral domain,
+we let <math id="S2.Thmtheorem9.p1.m2" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> denote its field of fractions.
+These are the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> <math id="S2.Thmtheorem9.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic numbers</span>.</p>
+</div>
+</div>
+<div id="S2.SS3.p5" class="ltx_para">
+<p class="ltx_p">Continuing our generating functions analogy:</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}\text{ is to }\mathbb{Q}_{p}\quad\text{as}\quad K[[X]]\text{ is %
+to }K((X))." display="block"><mrow><mrow><mrow><msub><mi>ℤ</mi><mi>p</mi></msub><mo>⁢</mo><mtext> is to </mtext><mo>⁢</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow><mspace width="1em"></mspace><mtext>as</mtext><mspace width="1em"></mspace><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">]</mo></mrow><mo>⁢</mo><mtext> is to </mtext><mo>⁢</mo><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This means</p>
+</div>
+<div id="S2.Thmtheorem10" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 27.2.10</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.Thmtheorem10.p1.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> can be thought of as Laurent series with base <math id="S2.Thmtheorem10.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+</div>
+<div id="S2.SS3.p6" class="ltx_para">
+<p class="ltx_p">and in particular according to the earlier proposition we deduce:</p>
+</div>
+<div id="S2.Thmtheorem11" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 27.2.11</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<math id="S2.Thmtheorem11.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> looks like formal Laurent series)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem11.p1" class="ltx_para">
+<p class="ltx_p">Every nonzero element of <math id="S2.Thmtheorem11.p1.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> is uniquely of the form</p>
+<div class="table-container"><table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="p^{k}u\qquad\text{ where }k\in\mathbb{Z},\;u\in\mathbb{Z}_{p}^{\times}." display="block"><mrow><mrow><mrow><mrow><mrow><msup><mi>p</mi><mi>k</mi></msup><mo>⁢</mo><mi>u</mi></mrow><mspace width="2em"></mspace><mrow><mtext> where </mtext><mo>⁢</mo><mi>k</mi></mrow></mrow><mo>∈</mo><mi>ℤ</mi></mrow><mo rspace="0.447em">,</mo><mrow><mi>u</mi><mo>∈</mo><msubsup><mi>ℤ</mi><mi>p</mi><mo>×</mo></msubsup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S2.SS3.p7" class="ltx_para">
+<p class="ltx_p">Thus, continuing our base <math id="S2.SS3.p7.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> analogy,
+elements of <math id="S2.SS3.p7.m2" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> are in bijection with “Laurent series”</p>
+<div class="table-container"><table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="\sum_{k\geq-n}a_{k}p^{k}=\overline{\dots a_{2}a_{1}a_{0}.a_{-1}a_{-2}\dots a_{%
+-n}}_{p}" display="block"><mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>≥</mo><mrow><mo>−</mo><mi>n</mi></mrow></mrow></munder><mrow><msub><mi>a</mi><mi>k</mi></msub><mo>⁢</mo><msup><mi>p</mi><mi>k</mi></msup></mrow></mrow><mo>=</mo><msub><mover accent="true"><mrow><mrow><mi mathvariant="normal">…</mi><mo>⁢</mo><msub><mi>a</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>a</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>a</mi><mn>0</mn></msub></mrow><mo lspace="0em" rspace="0.167em">.</mo><mrow><msub><mi>a</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub><mo>⁢</mo><msub><mi>a</mi><mrow><mo>−</mo><mn>2</mn></mrow></msub><mo>⁢</mo><mi mathvariant="normal">…</mi><mo>⁢</mo><msub><mi>a</mi><mrow><mo>−</mo><mi>n</mi></mrow></msub></mrow></mrow><mo>¯</mo></mover><mi>p</mi></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for <math id="S2.SS3.p7.m3" class="ltx_Math" alttext="a_{k}\in\left\{0,\dots,p-1\right\}" display="inline"><mrow><msub><mi>a</mi><mi>k</mi></msub><mo>∈</mo><mrow><mo>{</mo><mn>0</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow><mo>}</mo></mrow></mrow></math>.
+So the base <math id="S2.SS3.p7.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> representations of elements of <math id="S2.SS3.p7.m5" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>
+can be thought of as the same as usual,
+but extending infinitely far to the left
+(rather than to the right).</p>
+</div>
+<div id="S2.Thmtheorem12" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 27.2.12</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Warning)</span> — </span>
+</h5>
+<div id="S2.Thmtheorem12.p1" class="ltx_para">
+<p class="ltx_p">The field <math id="S2.Thmtheorem12.p1.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> has characteristic <em class="ltx_emph ltx_font_italic">zero</em>, not <math id="S2.Thmtheorem12.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem13" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 27.2.13</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Warning on fraction field)</span> — </span>
+</h5>
+<div id="S2.Thmtheorem13.p1" class="ltx_para">
+<p class="ltx_p">This result implies that you shouldn’t think about elements of <math id="S2.Thmtheorem13.p1.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>
+as <math id="S2.Thmtheorem13.p1.m2" class="ltx_Math" alttext="x/y" display="inline"><mrow><mi>x</mi><mo>/</mo><mi>y</mi></mrow></math> (for <math id="S2.Thmtheorem13.p1.m3" class="ltx_Math" alttext="x,y\in\mathbb{Z}_{p}" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow></math>) in practice,
+even though this is the official definition
+(and what you’d expect from the name <math id="S2.Thmtheorem13.p1.m4" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>).
+The only denominators you need are powers of <math id="S2.Thmtheorem13.p1.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+<div id="S2.Thmtheorem13.p2" class="ltx_para">
+<p class="ltx_p">To keep pushing the formal Laurent series analogy,
+<math id="S2.Thmtheorem13.p2.m1" class="ltx_Math" alttext="K((X))" display="inline"><mrow><mi>K</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is usually not thought of as quotient of generating functions
+but rather as “formal series with some negative exponents”.
+You should apply the same intuition on <math id="S2.Thmtheorem13.p2.m2" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem14" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 27.2.14</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem14.p1" class="ltx_para">
+<p class="ltx_p">At this point I want to make a remark about the fact <math id="S2.Thmtheorem14.p1.m1" class="ltx_Math" alttext="1/p\in\mathbb{Q}_{p}" display="inline"><mrow><mrow><mn>1</mn><mo>/</mo><mi>p</mi></mrow><mo>∈</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow></math>,
+connecting it to the wish-list of properties I had before.
+In elementary number theory you can take equations modulo <math id="S2.Thmtheorem14.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+but if you do the quantity <math id="S2.Thmtheorem14.p1.m3" class="ltx_Math" alttext="n/p\bmod{p}" display="inline"><mrow><mrow><mi>n</mi><mo>/</mo><mi>p</mi></mrow><mo>mod</mo><mi>p</mi></mrow></math> doesn’t make sense
+unless you know <math id="S2.Thmtheorem14.p1.m4" class="ltx_Math" alttext="n\bmod{p^{2}}" display="inline"><mrow><mi>n</mi><mo>mod</mo><msup><mi>p</mi><mn>2</mn></msup></mrow></math>.
+You can’t fix this by just taking modulo <math id="S2.Thmtheorem14.p1.m5" class="ltx_Math" alttext="p^{2}" display="inline"><msup><mi>p</mi><mn>2</mn></msup></math>
+since then you need <math id="S2.Thmtheorem14.p1.m6" class="ltx_Math" alttext="n\bmod{p^{3}}" display="inline"><mrow><mi>n</mi><mo>mod</mo><msup><mi>p</mi><mn>3</mn></msup></mrow></math> to get <math id="S2.Thmtheorem14.p1.m7" class="ltx_Math" alttext="n/p\bmod{p^{2}}" display="inline"><mrow><mrow><mi>n</mi><mo>/</mo><mi>p</mi></mrow><mo>mod</mo><msup><mi>p</mi><mn>2</mn></msup></mrow></math>, ad infinitum.
+You can work around issues like this,
+but the nice feature of <math id="S2.Thmtheorem14.p1.m8" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> and <math id="S2.Thmtheorem14.p1.m9" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>
+is that you have modulo <math id="S2.Thmtheorem14.p1.m10" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math> information for “all <math id="S2.Thmtheorem14.p1.m11" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math> at once”:
+the information of <math id="S2.Thmtheorem14.p1.m12" class="ltx_Math" alttext="x\in\mathbb{Q}_{p}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow></math> packages all the modulo <math id="S2.Thmtheorem14.p1.m13" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math>
+information simultaneously.
+So you can divide by <math id="S2.Thmtheorem14.p1.m14" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> with no repercussions.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">27.3 </span>Analytic perspective</h2>
+
+<section id="S3.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">27.3.i </span>Definition</h3>
+
+<div id="S3.SS1.p1" class="ltx_para">
+<p class="ltx_p">Up until now we’ve been thinking about things mostly algebraically,
+but moving forward it will be helpful to start using the language of analysis.
+Usually, two real numbers are considered “close” if
+they are close on the number of line,
+but for <math id="S3.SS1.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic purposes we only care about modulo <math id="S3.SS1.p1.m2" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math> information.
+So, we’ll instead think of two elements of <math id="S3.SS1.p1.m3" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> or <math id="S3.SS1.p1.m4" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>
+as “close” if they differ by a large multiple of <math id="S3.SS1.p1.m5" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math>.</p>
+</div>
+<div id="S3.SS1.p2" class="ltx_para">
+<p class="ltx_p">For this we’ll borrow the familiar <math id="S3.SS1.p2.m1" class="ltx_Math" alttext="\nu_{p}" display="inline"><msub><mi>ν</mi><mi>p</mi></msub></math> from elementary number theory.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 27.3.1</span></span><span class="ltx_text ltx_font_bold"> </span>(<math id="S3.Thmtheorem1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic valuation and absolute value)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We define the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic valuation</span> <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\nu_{p}\colon\mathbb{Q}_{p}^{\times}\to\mathbb{Z}" display="inline"><mrow><msub><mi>ν</mi><mi>p</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msubsup><mi>ℚ</mi><mi>p</mi><mo>×</mo></msubsup><mo stretchy="false">→</mo><mi>ℤ</mi></mrow></mrow></math>
+in the following two equivalent ways:</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">For <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="x=(x_{1},x_{2},\dots)\in\mathbb{Z}_{p}" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">)</mo></mrow><mo>∈</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow></math> we let
+<math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="\nu_{p}(x)" display="inline"><mrow><msub><mi>ν</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> be the largest <math id="S3.I1.i1.p1.m3" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math> such that
+<math id="S3.I1.i1.p1.m4" class="ltx_Math" alttext="x_{e}\equiv 0\pmod{p^{e}}" display="inline"><mrow><msub><mi>x</mi><mi>e</mi></msub><mo>≡</mo><mrow><mn>0</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><msup><mi>p</mi><mi>e</mi></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> (or <math id="S3.I1.i1.p1.m5" class="ltx_Math" alttext="e=0" display="inline"><mrow><mi>e</mi><mo>=</mo><mn>0</mn></mrow></math> if <math id="S3.I1.i1.p1.m6" class="ltx_Math" alttext="x\in\mathbb{Z}_{p}^{\times}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msubsup><mi>ℤ</mi><mi>p</mi><mo>×</mo></msubsup></mrow></math>).
+Then extend to all of <math id="S3.I1.i1.p1.m7" class="ltx_Math" alttext="\mathbb{Q}_{p}^{\times}" display="inline"><msubsup><mi>ℚ</mi><mi>p</mi><mo>×</mo></msubsup></math>
+by <math id="S3.I1.i1.p1.m8" class="ltx_Math" alttext="\nu_{p}(xy)=\nu_{p}(x)+\nu_{p}(y)" display="inline"><mrow><mrow><msub><mi>ν</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>ν</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><msub><mi>ν</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Each <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="x\in\mathbb{Q}_{p}^{\times}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msubsup><mi>ℚ</mi><mi>p</mi><mo>×</mo></msubsup></mrow></math> can be written
+uniquely as <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="p^{k}u" display="inline"><mrow><msup><mi>p</mi><mi>k</mi></msup><mo>⁢</mo><mi>u</mi></mrow></math> for <math id="S3.I1.i2.p1.m3" class="ltx_Math" alttext="u\in\mathbb{Z}_{p}^{\times}" display="inline"><mrow><mi>u</mi><mo>∈</mo><msubsup><mi>ℤ</mi><mi>p</mi><mo>×</mo></msubsup></mrow></math>, <math id="S3.I1.i2.p1.m4" class="ltx_Math" alttext="k\in\mathbb{Z}" display="inline"><mrow><mi>k</mi><mo>∈</mo><mi>ℤ</mi></mrow></math>.
+We let <math id="S3.I1.i2.p1.m5" class="ltx_Math" alttext="\nu_{p}(x)=k" display="inline"><mrow><mrow><msub><mi>ν</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>k</mi></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">By convention we set <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\nu_{p}(0)=+\infty" display="inline"><mrow><mrow><msub><mi>ν</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></mrow></math>.
+Finally, define the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic absolute value</span>
+<math id="S3.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\left\lvert\bullet\right\rvert_{p}" display="inline"><msub><mrow><mo>|</mo><mo lspace="0em" rspace="0em">∙</mo><mo>|</mo></mrow><mi>p</mi></msub></math> by</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="\left\lvert x\right\rvert_{p}=p^{-\nu_{p}(x)}." display="block"><mrow><mrow><msub><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow><mi>p</mi></msub><mo>=</mo><msup><mi>p</mi><mrow><mo>−</mo><mrow><msub><mi>ν</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></msup></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In particular <math id="S3.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\left\lvert 0\right\rvert_{p}=0" display="inline"><mrow><msub><mrow><mo>|</mo><mn>0</mn><mo>|</mo></mrow><mi>p</mi></msub><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.SS1.p3" class="ltx_para">
+<p class="ltx_p">This fulfills the promise that <math id="S3.SS1.p3.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> and <math id="S3.SS1.p3.m2" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> are close
+if they look the same modulo <math id="S3.SS1.p3.m3" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math> for large <math id="S3.SS1.p3.m4" class="ltx_Math" alttext="e" display="inline"><mi>e</mi></math>;
+in that case <math id="S3.SS1.p3.m5" class="ltx_Math" alttext="\nu_{p}(x-y)" display="inline"><mrow><msub><mi>ν</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is large
+and accordingly <math id="S3.SS1.p3.m6" class="ltx_Math" alttext="\left\lvert x-y\right\rvert_{p}" display="inline"><msub><mrow><mo>|</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo>|</mo></mrow><mi>p</mi></msub></math> is small.</p>
+</div>
+</section>
+<section id="S3.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">27.3.ii </span>Ultrametric space</h3>
+
+<div id="S3.SS2.p1" class="ltx_para">
+<p class="ltx_p">In this way, <math id="S3.SS2.p1.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> and <math id="S3.SS2.p1.m2" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> becomes a metric space
+with metric given by <math id="S3.SS2.p1.m3" class="ltx_Math" alttext="\left\lvert x-y\right\rvert_{p}" display="inline"><msub><mrow><mo>|</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo>|</mo></mrow><mi>p</mi></msub></math>.</p>
+</div>
+<div id="exer:alternating" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 27.3.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Suppose <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f\colon\mathbb{Z}_{p}\to\mathbb{Q}_{p}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>ℤ</mi><mi>p</mi></msub><mo stretchy="false">→</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow></mrow></math> is continuous
+and <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="f(n)=(-1)^{n}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msup></mrow></math> for every <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="n\in\mathbb{Z}_{\geq 0}" display="inline"><mrow><mi>n</mi><mo>∈</mo><msub><mi>ℤ</mi><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></msub></mrow></math>.
+Prove that <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="p=2" display="inline"><mrow><mi>p</mi><mo>=</mo><mn>2</mn></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S3.SS2.p2" class="ltx_para">
+<p class="ltx_p">In fact, these spaces satisfy a stronger
+form of the triangle inequality than you are used to from <math id="S3.SS2.p2.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 27.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<math id="S3.Thmtheorem3.m1" class="ltx_Math" alttext="\left\lvert\bullet\right\rvert_{p}" display="inline"><msub><mrow><mo>|</mo><mo lspace="0em" rspace="0em">∙</mo><mo>|</mo></mrow><mi>p</mi></msub></math> is an ultrametric)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">For any <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="x,y\in\mathbb{Z}_{p}" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow></math>, we have the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> strong triangle inequality</span></p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\left\lvert x+y\right\rvert_{p}\leq\max\left\{\left\lvert x\right\rvert_{p},%
+\left\lvert y\right\rvert_{p}\right\}." display="block"><mrow><mrow><msub><mrow><mo>|</mo><mrow><mi>x</mi><mo>+</mo><mi>y</mi></mrow><mo>|</mo></mrow><mi>p</mi></msub><mo>≤</mo><mrow><mi>max</mi><mo>⁡</mo><mrow><mo>{</mo><msub><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow><mi>p</mi></msub><mo>,</mo><msub><mrow><mo>|</mo><mi>y</mi><mo>|</mo></mrow><mi>p</mi></msub><mo>}</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Equality holds if (but not only if)
+<math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\left\lvert x\right\rvert_{p}\neq\left\lvert y\right\rvert_{p}" display="inline"><mrow><msub><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow><mi>p</mi></msub><mo>≠</mo><msub><mrow><mo>|</mo><mi>y</mi><mo>|</mo></mrow><mi>p</mi></msub></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.SS2.p3" class="ltx_para">
+<p class="ltx_p">However, <math id="S3.SS2.p3.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> is more than just a metric space:
+it is a field, with its own addition and multiplication.
+This means we can do analysis just like in <math id="S3.SS2.p3.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> or <math id="S3.SS2.p3.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>:
+basically, any notion such as “continuous function”,
+“convergent series”, et cetera has a <math id="S3.SS2.p3.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic analog.
+In particular, we can define what it means for an infinite sum to converge:</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 27.3.4</span></span><span class="ltx_text ltx_font_bold"> </span>(Convergence notions)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Here are some examples of <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic analogs of “real-world” notions.</p>
+<ul id="S3.I2" class="ltx_itemize">
+<li id="S3.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">A sequence <math id="S3.I2.i1.p1.m1" class="ltx_Math" alttext="s_{1}" display="inline"><msub><mi>s</mi><mn>1</mn></msub></math>, … converges to a limit <math id="S3.I2.i1.p1.m2" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math>
+if <math id="S3.I2.i1.p1.m3" class="ltx_Math" alttext="\lim_{n\to\infty}\left\lvert s_{n}-L\right\rvert_{p}=0" display="inline"><mrow><mrow><msub><mo>lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></msub><msub><mrow><mo lspace="0em">|</mo><mrow><msub><mi>s</mi><mi>n</mi></msub><mo>−</mo><mi>L</mi></mrow><mo>|</mo></mrow><mi>p</mi></msub></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The infinite series <math id="S3.I2.i2.p1.m1" class="ltx_Math" alttext="\sum_{k}x_{k}" display="inline"><mrow><msub><mo>∑</mo><mi>k</mi></msub><msub><mi>x</mi><mi>k</mi></msub></mrow></math> converges
+if the sequence of partial sums <math id="S3.I2.i2.p1.m2" class="ltx_Math" alttext="s_{1}=x_{1}" display="inline"><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>=</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></math>,
+<math id="S3.I2.i2.p1.m3" class="ltx_Math" alttext="s_{2}=x_{1}+x_{2}" display="inline"><mrow><msub><mi>s</mi><mn>2</mn></msub><mo>=</mo><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></mrow></math>, …, converges to some limit.</p>
+</div>
+</li>
+<li id="S3.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">… et cetera …</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S3.SS2.p4" class="ltx_para">
+<p class="ltx_p">With this definition in place,
+the “base <math id="S3.SS2.p4.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>” discussion we had earlier is now true
+in the analytic sense: if <math id="S3.SS2.p4.m2" class="ltx_Math" alttext="x=\overline{\dots a_{2}a_{1}a_{0}}_{p}\in\mathbb{Z}_{p}" display="inline"><mrow><mi>x</mi><mo>=</mo><msub><mover accent="true"><mrow><mi mathvariant="normal">…</mi><mo>⁢</mo><msub><mi>a</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>a</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>a</mi><mn>0</mn></msub></mrow><mo>¯</mo></mover><mi>p</mi></msub><mo>∈</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow></math> then</p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="\sum_{k=0}^{\infty}a_{k}p^{k}\quad\text{converges to }x." display="block"><mrow><mrow><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mi mathvariant="normal">∞</mi></munderover><mrow><msub><mi>a</mi><mi>k</mi></msub><mo>⁢</mo><msup><mi>p</mi><mi>k</mi></msup></mrow></mrow><mspace width="1em"></mspace><mrow><mtext>converges to </mtext><mo>⁢</mo><mi>x</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Indeed, the difference between <math id="S3.SS2.p4.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> and the <math id="S3.SS2.p4.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th partial sum is divisible by <math id="S3.SS2.p4.m5" class="ltx_Math" alttext="p^{n}" display="inline"><msup><mi>p</mi><mi>n</mi></msup></math>,
+hence the partial sums approach <math id="S3.SS2.p4.m6" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> as <math id="S3.SS2.p4.m7" class="ltx_Math" alttext="n\to\infty" display="inline"><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></math>.</p>
+</div>
+<div id="S3.SS2.p5" class="ltx_para">
+<p class="ltx_p">While the definitions are all the same,
+there are some changes in properties that should be true.
+For example, in <math id="S3.SS2.p5.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> convergence of partial sums is simpler:</p>
+</div>
+<div id="noharmonic" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 27.3.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<math id="S3.Thmtheorem5.m1" class="ltx_Math" alttext="|x_{k}|_{p}\to 0" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="false">|</mo></mrow><mi>p</mi></msub><mo stretchy="false">→</mo><mn>0</mn></mrow></math> iff convergence of series)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">A series <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\sum_{k=1}^{\infty}x_{k}" display="inline"><mrow><msubsup><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></msubsup><msub><mi>x</mi><mi>k</mi></msub></mrow></math> in <math id="S3.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>
+converges to some limit if and only if
+<math id="S3.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\lim_{k\to\infty}|x_{k}|_{p}=0" display="inline"><mrow><mrow><msub><mo>lim</mo><mrow><mi>k</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></msub><msub><mrow><mo lspace="0em" stretchy="false">|</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="false">|</mo></mrow><mi>p</mi></msub></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.SS2.p6" class="ltx_para">
+<p class="ltx_p">Contrast this with <math id="S3.SS2.p6.m1" class="ltx_Math" alttext="\sum\frac{1}{n}=\infty" display="inline"><mrow><mrow><mo>∑</mo><mfrac linethickness="0.6px"><mn>1</mn><mi>n</mi></mfrac></mrow><mo>=</mo><mi mathvariant="normal">∞</mi></mrow></math> in <math id="S3.SS2.p6.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.
+You can think of this as a consequence of strong triangle inequality.</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.SS2.p7" class="ltx_para">
+<p class="ltx_p">By multiplying by a large enough power of <math id="S3.SS2.p7.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+we may assume <math id="S3.SS2.p7.m2" class="ltx_Math" alttext="x_{k}\in\mathbb{Z}_{p}" display="inline"><mrow><msub><mi>x</mi><mi>k</mi></msub><mo>∈</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow></math>.
+(This isn’t actually necessary, but makes the notation nicer.)</p>
+</div>
+<div id="S3.SS2.p8" class="ltx_para">
+<p class="ltx_p">Observe that <math id="S3.SS2.p8.m1" class="ltx_Math" alttext="x_{k}\pmod{p}" display="inline"><mrow><msub><mi>x</mi><mi>k</mi></msub><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> must eventually stabilize,
+since for large enough <math id="S3.SS2.p8.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> we have
+<math id="S3.SS2.p8.m3" class="ltx_Math" alttext="\left\lvert x_{n}\right\rvert_{p}&lt;1\iff\nu_{p}(x_{n})\geq 1" display="inline"><mrow><mrow><msub><mrow><mo>|</mo><msub><mi>x</mi><mi>n</mi></msub><mo>|</mo></mrow><mi>p</mi></msub><mo>&lt;</mo><mn>1</mn></mrow><mo stretchy="false">⇔</mo><mrow><mrow><msub><mi>ν</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mn>1</mn></mrow></mrow></math>.
+So let <math id="S3.SS2.p8.m4" class="ltx_Math" alttext="a_{1}" display="inline"><msub><mi>a</mi><mn>1</mn></msub></math> be the eventual residue modulo <math id="S3.SS2.p8.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>
+of <math id="S3.SS2.p8.m6" class="ltx_Math" alttext="\sum_{k=0}^{N}x_{k}\pmod{p}" display="inline"><mrow><mrow><msubsup><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mi>N</mi></msubsup><msub><mi>x</mi><mi>k</mi></msub></mrow><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math> for large <math id="S3.SS2.p8.m7" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>.
+In the same way let <math id="S3.SS2.p8.m8" class="ltx_Math" alttext="a_{2}" display="inline"><msub><mi>a</mi><mn>2</mn></msub></math> be the eventual residue modulo <math id="S3.SS2.p8.m9" class="ltx_Math" alttext="p^{2}" display="inline"><msup><mi>p</mi><mn>2</mn></msup></math>, and so on.
+Then one can check we approach the limit <math id="S3.SS2.p8.m10" class="ltx_Math" alttext="a=(a_{1},a_{2},\dots)" display="inline"><mrow><mi>a</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+</section>
+<section id="S3.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">27.3.iii </span>More fun with geometric series</h3>
+
+<div id="S3.SS3.p1" class="ltx_para">
+<p class="ltx_p">Let’s finally state the <math id="S3.SS3.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic analog of the geometric series formula.</p>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 27.3.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Geometric series)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="x\in\mathbb{Z}_{p}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow></math> with <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="\left\lvert x\right\rvert_{p}&lt;1" display="inline"><mrow><msub><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow><mi>p</mi></msub><mo>&lt;</mo><mn>1</mn></mrow></math>.
+Then</p>
+<div class="table-container"><table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="\frac{1}{1-x}=1+x+x^{2}+x^{3}+\dots." display="block"><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>1</mn><mo>−</mo><mi>x</mi></mrow></mfrac><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mi>x</mi><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>x</mi><mn>3</mn></msup><mo>+</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.SS3.p2" class="ltx_para">
+<p class="ltx_p">Note that the partial sums satisfy
+<math id="S3.SS3.p2.m1" class="ltx_Math" alttext="1+x+x^{2}+\dots+x^{n}=\frac{1-x^{n}}{1-x}" display="inline"><mrow><mrow><mn>1</mn><mo>+</mo><mi>x</mi><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msup><mi>x</mi><mi>n</mi></msup></mrow><mo>=</mo><mfrac linethickness="0.6px"><mrow><mn>1</mn><mo>−</mo><msup><mi>x</mi><mi>n</mi></msup></mrow><mrow><mn>1</mn><mo>−</mo><mi>x</mi></mrow></mfrac></mrow></math>,
+and <math id="S3.SS3.p2.m2" class="ltx_Math" alttext="x^{n}\to 0" display="inline"><mrow><msup><mi>x</mi><mi>n</mi></msup><mo stretchy="false">→</mo><mn>0</mn></mrow></math> as <math id="S3.SS3.p2.m3" class="ltx_Math" alttext="n\to\infty" display="inline"><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></math> since
+<math id="S3.SS3.p2.m4" class="ltx_Math" alttext="\left\lvert x\right\rvert_{p}&lt;1" display="inline"><mrow><msub><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow><mi>p</mi></msub><mo>&lt;</mo><mn>1</mn></mrow></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.SS3.p3" class="ltx_para">
+<p class="ltx_p">So, <math id="S3.SS3.p3.m1" class="ltx_Math" alttext="1+3+3^{2}+\dots=-\frac{1}{2}" display="inline"><mrow><mrow><mn>1</mn><mo>+</mo><mn>3</mn><mo>+</mo><msup><mn>3</mn><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow><mo>=</mo><mrow><mo>−</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mrow></mrow></math> is really a correct convergence
+in <math id="S3.SS3.p3.m2" class="ltx_Math" alttext="\mathbb{Z}_{3}" display="inline"><msub><mi>ℤ</mi><mn>3</mn></msub></math>.
+And so on.</p>
+</div>
+<div id="S3.SS3.p4" class="ltx_para">
+<p class="ltx_p">If you buy the analogy that <math id="S3.SS3.p4.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> is generating functions
+with base <math id="S3.SS3.p4.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, then all the olympiad generating functions
+you might be used to have <math id="S3.SS3.p4.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic analogs.
+For example, you can prove more generally that:</p>
+</div>
+<div id="S3.Thmtheorem7" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 27.3.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Generalized binomial theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.Thmtheorem7.p1.m1" class="ltx_Math" alttext="x\in\mathbb{Z}_{p}" display="inline"><mrow><mi>x</mi><mo>∈</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow></math> and <math id="S3.Thmtheorem7.p1.m2" class="ltx_Math" alttext="\left\lvert x\right\rvert_{p}&lt;1" display="inline"><mrow><msub><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow><mi>p</mi></msub><mo>&lt;</mo><mn>1</mn></mrow></math>,
+then for any <math id="S3.Thmtheorem7.p1.m3" class="ltx_Math" alttext="r\in\mathbb{Q}" display="inline"><mrow><mi>r</mi><mo>∈</mo><mi>ℚ</mi></mrow></math> we have the series convergence</p>
+<div class="table-container"><table id="Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex23.m1" class="ltx_Math" alttext="\sum_{n\geq 0}\binom{r}{n}x^{n}=(1+x)^{r}." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></munder><mrow><mrow><mo lspace="0em">(</mo><mfrac linethickness="0pt"><mi>r</mi><mi>n</mi></mfrac><mo>)</mo></mrow><mo>⁢</mo><msup><mi>x</mi><mi>n</mi></msup></mrow></mrow><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow><mi>r</mi></msup></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.SS3.p5" class="ltx_para">
+<p class="ltx_p">(I haven’t defined <math id="S3.SS3.p5.m1" class="ltx_Math" alttext="(1+x)^{r}" display="inline"><msup><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow><mi>r</mi></msup></math>, but it has the properties you expect.)</p>
+</div>
+</section>
+<section id="S3.SS4" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">27.3.iv </span>Completeness</h3>
+
+<div id="S3.SS4.p1" class="ltx_para">
+<p class="ltx_p">Note that the definition of <math id="S3.SS4.p1.m1" class="ltx_Math" alttext="\left\lvert\bullet\right\rvert_{p}" display="inline"><msub><mrow><mo>|</mo><mo lspace="0em" rspace="0em">∙</mo><mo>|</mo></mrow><mi>p</mi></msub></math>
+could have been given for <math id="S3.SS4.p1.m2" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> as well;
+we didn’t need <math id="S3.SS4.p1.m3" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> to introduce it
+(after all, we have <math id="S3.SS4.p1.m4" class="ltx_Math" alttext="\nu_{p}" display="inline"><msub><mi>ν</mi><mi>p</mi></msub></math> in olympiads already).
+The big important theorem I must state now is:</p>
+</div>
+<div id="S3.Thmtheorem8" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 27.3.8</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<math id="S3.Thmtheorem8.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> is complete)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">The space <math id="S3.Thmtheorem8.p1.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> is the completion of <math id="S3.Thmtheorem8.p1.m2" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>
+with respect to <math id="S3.Thmtheorem8.p1.m3" class="ltx_Math" alttext="\left\lvert\bullet\right\rvert_{p}" display="inline"><msub><mrow><mo>|</mo><mo lspace="0em" rspace="0em">∙</mo><mo>|</mo></mrow><mi>p</mi></msub></math>.</p>
+</div>
+</div>
+<div id="S3.SS4.p2" class="ltx_para">
+<p class="ltx_p">This is the definition of <math id="S3.SS4.p2.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> you’ll see more frequently;
+one then defines <math id="S3.SS4.p2.m2" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> in terms of <math id="S3.SS4.p2.m3" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>
+(rather than vice-versa) according to</p>
+<div class="table-container"><table id="Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex24.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}=\left\{x\in\mathbb{Q}_{p}:\left\lvert x\right\rvert_{p}\leq 1%
+\right\}." display="block"><mrow><mrow><msub><mi>ℤ</mi><mi>p</mi></msub><mo>=</mo><mrow><mo>{</mo><mrow><mi>x</mi><mo>∈</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mrow><mo>|</mo><mi>x</mi><mo>|</mo></mrow><mi>p</mi></msub><mo>≤</mo><mn>1</mn></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</section>
+<section id="S3.SS5" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">27.3.v </span>Philosophical notes</h3>
+
+<div id="S3.SS5.p1" class="ltx_para">
+<p class="ltx_p">Let me justify why this definition is philosophically nice.
+Suppose you are an ancient Greek mathematician who is given:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Problem for Ancient Greeks.</span>
+Estimate the value of the sum</p>
+<div class="table-container"><table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="S=\frac{1}{1^{2}}+\frac{1}{2^{2}}+\dots+\frac{1}{10000^{2}}" display="block"><mrow><mi>S</mi><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msup><mn>1</mn><mn>2</mn></msup></mfrac><mo>+</mo><mfrac linethickness="0.6px"><mn>1</mn><msup><mn>2</mn><mn>2</mn></msup></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mfrac linethickness="0.6px"><mn>1</mn><msup><mn>10000</mn><mn>2</mn></msup></mfrac></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">to within <math id="S3.SS5.p1.m1" class="ltx_Math" alttext="0.001" display="inline"><mn>0.001</mn></math>.</p>
+</blockquote>
+<p class="ltx_p">The sum <math id="S3.SS5.p1.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> consists entirely of rational numbers,
+so the problem statement would be fair game for ancient Greece.
+But it turns out that in order to get a good estimate,
+it <em class="ltx_emph ltx_font_italic">really helps</em> if you know about the real numbers:
+because then you can construct the infinite series
+<math id="S3.SS5.p1.m3" class="ltx_Math" alttext="\sum_{n\geq 1}n^{-2}=\frac{1}{6}\pi^{2}" display="inline"><mrow><mrow><msub><mo>∑</mo><mrow><mi>n</mi><mo>≥</mo><mn>1</mn></mrow></msub><msup><mi>n</mi><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>6</mn></mfrac><mo>⁢</mo><msup><mi>π</mi><mn>2</mn></msup></mrow></mrow></math>,
+and deduce that <math id="S3.SS5.p1.m4" class="ltx_Math" alttext="S\approx\frac{\pi^{2}}{6}" display="inline"><mrow><mi>S</mi><mo>≈</mo><mfrac linethickness="0.6px"><msup><mi>π</mi><mn>2</mn></msup><mn>6</mn></mfrac></mrow></math>,
+up to some small error term from the terms past <math id="S3.SS5.p1.m5" class="ltx_Math" alttext="\frac{1}{10001^{2}}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><msup><mn>10001</mn><mn>2</mn></msup></mfrac></math>,
+which can be bounded.</p>
+</div>
+<div id="S3.SS5.p2" class="ltx_para">
+<p class="ltx_p">Of course, in order to have access to enough theory
+to prove that <math id="S3.SS5.p2.m1" class="ltx_Math" alttext="S=\pi^{2}/6" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><msup><mi>π</mi><mn>2</mn></msup><mo>/</mo><mn>6</mn></mrow></mrow></math>, you need to have the real numbers;
+it’s impossible to do calculus in <math id="S3.SS5.p2.m2" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>
+(the sequence <math id="S3.SS5.p2.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="S3.SS5.p2.m4" class="ltx_Math" alttext="1.4" display="inline"><mn>1.4</mn></math>, <math id="S3.SS5.p2.m5" class="ltx_Math" alttext="1.41" display="inline"><mn>1.41</mn></math>, <math id="S3.SS5.p2.m6" class="ltx_Math" alttext="1.414" display="inline"><mn>1.414</mn></math>,
+is considered “not convergent”!)</p>
+</div>
+<div id="S3.SS5.p3" class="ltx_para">
+<p class="ltx_p">Now fast-forward to 2002, and suppose you are given</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Problem from USA TST 2002.</span>
+Estimate the sum</p>
+<div class="table-container"><table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="f_{p}(x)=\sum_{k=1}^{p-1}\frac{1}{(px+k)^{2}}" display="block"><mrow><mrow><msub><mi>f</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></munderover><mfrac linethickness="0.6px"><mn>1</mn><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>p</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mi>k</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">to within mod <math id="S3.SS5.p3.m1" class="ltx_Math" alttext="p^{3}" display="inline"><msup><mi>p</mi><mn>3</mn></msup></math>.</p>
+</blockquote>
+<p class="ltx_p">Even though <math id="S3.SS5.p3.m2" class="ltx_Math" alttext="f_{p}(x)" display="inline"><mrow><msub><mi>f</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a rational number,
+it still helps to be able to do analysis with infinite sums,
+and then bound the error term (i.e. take mod <math id="S3.SS5.p3.m3" class="ltx_Math" alttext="p^{3}" display="inline"><msup><mi>p</mi><mn>3</mn></msup></math>).
+But the space <math id="S3.SS5.p3.m4" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> is not complete with respect
+to <math id="S3.SS5.p3.m5" class="ltx_Math" alttext="\left\lvert\bullet\right\rvert_{p}" display="inline"><msub><mrow><mo>|</mo><mo lspace="0em" rspace="0em">∙</mo><mo>|</mo></mrow><mi>p</mi></msub></math> either,
+and thus it makes sense to work in the completion of <math id="S3.SS5.p3.m6" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>
+with respect to <math id="S3.SS5.p3.m7" class="ltx_Math" alttext="\left\lvert\bullet\right\rvert_{p}" display="inline"><msub><mrow><mo>|</mo><mo lspace="0em" rspace="0em">∙</mo><mo>|</mo></mrow><mi>p</mi></msub></math>.
+This is exactly <math id="S3.SS5.p3.m8" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math>.</p>
+</div>
+<div id="S3.SS5.p4" class="ltx_para">
+<p class="ltx_p">In any case, let’s finally solve <a href="#ex:token" title="Example 27.1.1 (USA TST 2002/2) ‣ 27.1 Motivation ‣ Chapter 27 Bonus: A hint of 𝑝-adic numbers ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Example</span> <span class="ltx_text ltx_ref_tag">27.1.1</span></a>.</p>
+</div>
+<div id="S3.Thmtheorem9" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 27.3.9</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(USA TST 2002)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">We will now compute</p>
+<div class="table-container"><table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="f_{p}(x)=\sum_{k=1}^{p-1}\frac{1}{(px+k)^{2}}\pmod{p^{3}}." display="block"><mrow><mrow><mrow><msub><mi>f</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></munderover><mfrac linethickness="0.6px"><mn>1</mn><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>p</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mi>k</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac></mrow><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" movablelimits="false" rspace="0.167em">mod</mo><msup><mi>p</mi><mn>3</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Armed with the generalized binomial theorem,
+this becomes straightforward.</p>
+<div class="table-container"><table id="A5.S3.EGx75" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex28"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex28.m1" class="ltx_Math" alttext="\displaystyle f_{p}(x)" display="inline"><mrow><msub><mi>f</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex28.m2" class="ltx_Math" alttext="\displaystyle=\sum_{k=1}^{p-1}\frac{1}{(px+k)^{2}}=\sum_{k=1}^{p-1}\frac{1}{k^%
+{2}}\left(1+\frac{px}{k}\right)^{-2}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></munderover></mstyle><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><msup><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>p</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mi>k</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac></mstyle></mrow><mo>=</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></munderover></mstyle><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>k</mi><mn>2</mn></msup></mfrac></mstyle><mo>⁢</mo><msup><mrow><mo>(</mo><mrow><mn>1</mn><mo>+</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><mi>p</mi><mo>⁢</mo><mi>x</mi></mrow><mi>k</mi></mfrac></mstyle></mrow><mo>)</mo></mrow><mrow><mo>−</mo><mn>2</mn></mrow></msup></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex29"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex29.m1" class="ltx_Math" alttext="\displaystyle=\sum_{k=1}^{p-1}\frac{1}{k^{2}}\sum_{n\geq 0}\binom{-2}{n}\left(%
+\frac{px}{k}\right)^{n}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></munderover></mstyle><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>k</mi><mn>2</mn></msup></mfrac></mstyle><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></munder></mstyle><mrow><mrow><mo>(</mo><mstyle displaystyle="true"><mfrac linethickness="0pt"><mrow><mo>−</mo><mn>2</mn></mrow><mi>n</mi></mfrac></mstyle><mo>)</mo></mrow><mo>⁢</mo><msup><mrow><mo>(</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><mi>p</mi><mo>⁢</mo><mi>x</mi></mrow><mi>k</mi></mfrac></mstyle><mo>)</mo></mrow><mi>n</mi></msup></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex30"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex30.m1" class="ltx_Math" alttext="\displaystyle=\sum_{n\geq 0}\binom{-2}{n}\sum_{k=1}^{p-1}\frac{1}{k^{2}}\left(%
+\frac{x}{k}\right)^{n}p^{n}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></munder></mstyle><mrow><mrow><mo>(</mo><mstyle displaystyle="true"><mfrac linethickness="0pt"><mrow><mo>−</mo><mn>2</mn></mrow><mi>n</mi></mfrac></mstyle><mo>)</mo></mrow><mo>⁢</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></munderover></mstyle><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>k</mi><mn>2</mn></msup></mfrac></mstyle><mo>⁢</mo><msup><mrow><mo>(</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mi>x</mi><mi>k</mi></mfrac></mstyle><mo>)</mo></mrow><mi>n</mi></msup><mo>⁢</mo><msup><mi>p</mi><mi>n</mi></msup></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex31"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex31.m1" class="ltx_Math" alttext="\displaystyle\equiv\sum_{k=1}^{p-1}\frac{1}{k^{2}}-2x\left(\sum_{k=1}^{p-1}%
+\frac{1}{k^{3}}\right)p+3x^{2}\left(\sum_{k=1}^{p-1}\frac{1}{k^{4}}\right)p^{2%
+}\pmod{p^{3}}." display="inline"><mrow><mrow><mi></mi><mo>≡</mo><mrow><mrow><mrow><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></munderover></mstyle><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>k</mi><mn>2</mn></msup></mfrac></mstyle></mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></munderover></mstyle><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>k</mi><mn>3</mn></msup></mfrac></mstyle></mrow><mo>)</mo></mrow><mo>⁢</mo><mi>p</mi></mrow></mrow><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></munderover></mstyle><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>k</mi><mn>4</mn></msup></mfrac></mstyle></mrow><mo>)</mo></mrow><mo>⁢</mo><msup><mi>p</mi><mn>2</mn></msup></mrow></mrow><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" movablelimits="false" rspace="0.167em">mod</mo><msup><mi>p</mi><mn>3</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Using the elementary facts that
+<math id="S3.Thmtheorem9.p1.m1" class="ltx_Math" alttext="p^{2}\mid\sum_{k}k^{-3}" display="inline"><mrow><msup><mi>p</mi><mn>2</mn></msup><mo rspace="0.111em">∣</mo><mrow><msub><mo>∑</mo><mi>k</mi></msub><msup><mi>k</mi><mrow><mo>−</mo><mn>3</mn></mrow></msup></mrow></mrow></math> and <math id="S3.Thmtheorem9.p1.m2" class="ltx_Math" alttext="p\mid\sum_{k}k^{-4}" display="inline"><mrow><mi>p</mi><mo rspace="0.111em">∣</mo><mrow><msub><mo>∑</mo><mi>k</mi></msub><msup><mi>k</mi><mrow><mo>−</mo><mn>4</mn></mrow></msup></mrow></mrow></math>,
+this solves the problem.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">27.4 </span>Mahler coefficients</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">One of the big surprises of <math id="S4.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic analysis is that:</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 27.4.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We can basically describe all continuous functions <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}\to\mathbb{Q}_{p}" display="inline"><mrow><msub><mi>ℤ</mi><mi>p</mi></msub><mo stretchy="false">→</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">They are given by a basis of functions</p>
+<div class="table-container"><table id="Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex32.m1" class="ltx_Math" alttext="\binom{x}{n}\coloneqq\frac{x(x-1)\dots(x-(n-1))}{n!}" display="block"><mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>x</mi><mi>n</mi></mfrac><mo>)</mo></mrow><mo>≔</mo><mfrac linethickness="0.6px"><mrow><mi>x</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi mathvariant="normal">…</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>n</mi><mo>!</mo></mrow></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">in the following way.</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 27.4.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Mahler; see <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:schikof</span>, Theorem 51.1, Exercise 51.b]</cite>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f\colon\mathbb{Z}_{p}\to\mathbb{Q}_{p}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>ℤ</mi><mi>p</mi></msub><mo stretchy="false">→</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow></mrow></math> be continuous, and define</p>
+<div class="table-container"><table id="eq:mahler" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="E1.m1" class="ltx_Math" alttext="a_{n}=\sum_{k=0}^{n}\binom{n}{k}(-1)^{n-k}f(k)." display="block"><mrow><mrow><msub><mi>a</mi><mi>n</mi></msub><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mi>n</mi></munderover><mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>n</mi><mi>k</mi></mfrac><mo>)</mo></mrow><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow></msup><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>k</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+<td rowspan="1" class="ltx_eqn_cell ltx_eqn_eqno ltx_align_middle ltx_align_right"><span class="ltx_tag ltx_tag_equation ltx_align_right">(27.1)</span></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Then <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\lim_{n}a_{n}=0" display="inline"><mrow><mrow><msub><mo>lim</mo><mi>n</mi></msub><msub><mi>a</mi><mi>n</mi></msub></mrow><mo>=</mo><mn>0</mn></mrow></math> and</p>
+<div class="table-container"><table id="Ex33" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex33.m1" class="ltx_Math" alttext="f(x)=\sum_{n\geq 0}a_{n}\binom{x}{n}." display="block"><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></munder><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>x</mi><mi>n</mi></mfrac><mo>)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S4.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">Conversely, if <math id="S4.Thmtheorem2.p2.m1" class="ltx_Math" alttext="a_{n}" display="inline"><msub><mi>a</mi><mi>n</mi></msub></math> is any sequence converging to zero,
+then <math id="S4.Thmtheorem2.p2.m2" class="ltx_Math" alttext="f(x)=\sum_{n\geq 0}a_{n}\binom{x}{n}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></msub><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>x</mi><mi>n</mi></mfrac><mo>)</mo></mrow></mrow></mrow></mrow></math>
+defines a continuous function satisfying (<a href="#eq:mahler" title="Equation 27.1 ‣ Theorem 27.4.2 (Mahler; see [ref:schikof, Theorem 51.1, Exercise 51.b]) ‣ 27.4 Mahler coefficients ‣ Chapter 27 Bonus: A hint of 𝑝-adic numbers ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">27.1</span></a>).</p>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">The <math id="S4.p3.m1" class="ltx_Math" alttext="a_{i}" display="inline"><msub><mi>a</mi><mi>i</mi></msub></math> are called the <em class="ltx_emph ltx_font_italic">Mahler coefficients</em> of <math id="S4.p3.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>.</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 27.4.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Last post we proved that if <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f\colon\mathbb{Z}_{p}\to\mathbb{Q}_{p}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>ℤ</mi><mi>p</mi></msub><mo stretchy="false">→</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow></mrow></math> is continuous
+and <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="f(n)=(-1)^{n}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msup></mrow></math> for every <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="n\in\mathbb{Z}_{\geq 0}" display="inline"><mrow><mi>n</mi><mo>∈</mo><msub><mi>ℤ</mi><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></msub></mrow></math> then <math id="S4.Thmtheorem3.p1.m4" class="ltx_Math" alttext="p=2" display="inline"><mrow><mi>p</mi><mo>=</mo><mn>2</mn></mrow></math>.
+Re-prove this using Mahler’s theorem,
+and this time show conversely that a unique such <math id="S4.Thmtheorem3.p1.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> exists when <math id="S4.Thmtheorem3.p1.m6" class="ltx_Math" alttext="p=2" display="inline"><mrow><mi>p</mi><mo>=</mo><mn>2</mn></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">You’ll note that these are the same finite differences that one
+uses on polynomials in high school math contests,
+which is why they are also called “Mahler differences”.</p>
+<div class="table-container"><table id="A5.S3.EGx76" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex34"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex34.m1" class="ltx_Math" alttext="\displaystyle a_{0}" display="inline"><msub><mi>a</mi><mn>0</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex34.m2" class="ltx_Math" alttext="\displaystyle=f(0)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex35"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex35.m1" class="ltx_Math" alttext="\displaystyle a_{1}" display="inline"><msub><mi>a</mi><mn>1</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex35.m2" class="ltx_Math" alttext="\displaystyle=f(1)-f(0)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex36"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex36.m1" class="ltx_Math" alttext="\displaystyle a_{2}" display="inline"><msub><mi>a</mi><mn>2</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex36.m2" class="ltx_Math" alttext="\displaystyle=f(2)-2f(1)+f(0)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex37"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex37.m1" class="ltx_Math" alttext="\displaystyle a_{3}" display="inline"><msub><mi>a</mi><mn>3</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex37.m2" class="ltx_Math" alttext="\displaystyle=f(3)-3f(2)+3f(1)-f(0)." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mn>3</mn><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Thus one can think of <math id="S4.p4.m1" class="ltx_Math" alttext="a_{n}\to 0" display="inline"><mrow><msub><mi>a</mi><mi>n</mi></msub><mo stretchy="false">→</mo><mn>0</mn></mrow></math> as saying that
+the values of <math id="S4.p4.m2" class="ltx_Math" alttext="f(0)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S4.p4.m3" class="ltx_Math" alttext="f(1)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>, … behave like a polynomial modulo <math id="S4.p4.m4" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math>
+for every <math id="S4.p4.m5" class="ltx_Math" alttext="e\geq 0" display="inline"><mrow><mi>e</mi><mo>≥</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">The notion “analytic” also has a Mahler interpretation.
+First, the definition.</p>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 27.4.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">We say that a function <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="f\colon\mathbb{Z}_{p}\to\mathbb{Q}_{p}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>ℤ</mi><mi>p</mi></msub><mo stretchy="false">→</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow></mrow></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> analytic</span>
+if it has a power series expansion</p>
+<div class="table-container"><table id="Ex38" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex38.m1" class="ltx_Math" alttext="\sum_{n\geq 0}c_{n}x^{n}\quad c_{n}\in\mathbb{Q}_{p}\qquad\text{ converging %
+for }x\in\mathbb{Z}_{p}." display="block"><mrow><mrow><mrow><mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></munder><mrow><msub><mi>c</mi><mi>n</mi></msub><mo>⁢</mo><msup><mi>x</mi><mi>n</mi></msup></mrow></mrow><mspace width="1em"></mspace><msub><mi>c</mi><mi>n</mi></msub></mrow><mo>∈</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow><mspace width="2em"></mspace><mrow><mrow><mtext> converging for </mtext><mo>⁢</mo><mi>x</mi></mrow><mo>∈</mo><msub><mi>ℤ</mi><mi>p</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 27.4.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:schikof</span>, Theorem 54.4]</cite>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="f(x)=\sum_{n\geq 0}a_{n}\binom{x}{n}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></msub><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>x</mi><mi>n</mi></mfrac><mo>)</mo></mrow></mrow></mrow></mrow></math> is analytic
+if and only if</p>
+<div class="table-container"><table id="Ex39" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex39.m1" class="ltx_Math" alttext="\lim_{n\to\infty}\frac{a_{n}}{n!}=0." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mfrac linethickness="0.6px"><msub><mi>a</mi><mi>n</mi></msub><mrow><mi>n</mi><mo>!</mo></mrow></mfrac></mrow><mo>=</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">Analytic functions also satisfy the following niceness result:</p>
+</div>
+<div id="S4.Thmtheorem6" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 27.4.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Strassmann’s theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem6.p1.m1" class="ltx_Math" alttext="f\colon\mathbb{Z}_{p}\to\mathbb{Q}_{p}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>ℤ</mi><mi>p</mi></msub><mo stretchy="false">→</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow></mrow></math> be analytic.
+Then <math id="S4.Thmtheorem6.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> has finitely many zeros.</p>
+</div>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">To give an application of these results,
+we will prove the following result,
+which was interesting even before <math id="S4.p7.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adics came along!</p>
+</div>
+<div id="S4.Thmtheorem7" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 27.4.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Skolem-Mahler-Lech)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem7.p1.m1" class="ltx_Math" alttext="(x_{i})_{i\geq 0}" display="inline"><msub><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>i</mi><mo>≥</mo><mn>0</mn></mrow></msub></math> be an integral linear recurrence,
+meaning <math id="S4.Thmtheorem7.p1.m2" class="ltx_Math" alttext="(x_{i})_{i\geq 0}" display="inline"><msub><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>i</mi><mo>≥</mo><mn>0</mn></mrow></msub></math> is a sequence of integers</p>
+<div class="table-container"><table id="Ex40" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex40.m1" class="ltx_Math" alttext="x_{n}=c_{1}x_{n-1}+c_{2}x_{n-2}+\dots+c_{k}x_{n-k}\qquad n=1,2,\dots" display="block"><mrow><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>=</mo><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>x</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo>+</mo><mrow><msub><mi>c</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>x</mi><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>c</mi><mi>k</mi></msub><mo>⁢</mo><msub><mi>x</mi><mrow><mi>n</mi><mo>−</mo><mi>k</mi></mrow></msub></mrow></mrow></mrow><mspace width="2em"></mspace><mrow><mi>n</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">holds for some choice of integers <math id="S4.Thmtheorem7.p1.m3" class="ltx_Math" alttext="c_{1}" display="inline"><msub><mi>c</mi><mn>1</mn></msub></math>, …, <math id="S4.Thmtheorem7.p1.m4" class="ltx_Math" alttext="c_{k}" display="inline"><msub><mi>c</mi><mi>k</mi></msub></math>.
+Then the set of indices <math id="S4.Thmtheorem7.p1.m5" class="ltx_Math" alttext="\{i\mid x_{i}=0\}" display="inline"><mrow><mo stretchy="false">{</mo><mi>i</mi><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mn>0</mn></mrow><mo stretchy="false">}</mo></mrow></math>
+is eventually periodic.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">According to the theory of linear recurrences,
+there exists a matrix <math id="S4.p8.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> such that we can write
+<math id="S4.p8.m2" class="ltx_Math" alttext="x_{i}" display="inline"><msub><mi>x</mi><mi>i</mi></msub></math> as a dot product</p>
+<div class="table-container"><table id="Ex41" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex41.m1" class="ltx_Math" alttext="x_{i}=\left&lt;A^{i}u,v\right&gt;." display="block"><mrow><mrow><msub><mi>x</mi><mi>i</mi></msub><mo>=</mo><mrow><mo>⟨</mo><mrow><msup><mi>A</mi><mi>i</mi></msup><mo>⁢</mo><mi>u</mi></mrow><mo>,</mo><mi>v</mi><mo>⟩</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Let <math id="S4.p8.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> be a prime not dividing <math id="S4.p8.m4" class="ltx_Math" alttext="\det A" display="inline"><mrow><mo rspace="0.167em">det</mo><mi>A</mi></mrow></math>.
+Let <math id="S4.p8.m5" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> be an integer such that <math id="S4.p8.m6" class="ltx_Math" alttext="A^{T}\equiv\mathrm{id}\pmod{p}" display="inline"><mrow><msup><mi>A</mi><mi>T</mi></msup><mo>≡</mo><mrow><mi>id</mi><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+(with <math id="S4.p8.m7" class="ltx_Math" alttext="\mathrm{id}" display="inline"><mi>id</mi></math> denoting the identity matrix).</p>
+</div>
+<div id="S4.p9" class="ltx_para">
+<p class="ltx_p">Fix any <math id="S4.p9.m1" class="ltx_Math" alttext="0\leq r&lt;N" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>r</mi><mo>&lt;</mo><mi>N</mi></mrow></math>.
+We will prove that either all the terms</p>
+<div class="table-container"><table id="Ex42" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex42.m1" class="ltx_Math" alttext="f(n)=x_{nT+r}\qquad n=0,1,\dots" display="block"><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>x</mi><mrow><mrow><mi>n</mi><mo>⁢</mo><mi>T</mi></mrow><mo>+</mo><mi>r</mi></mrow></msub></mrow><mspace width="2em"></mspace><mrow><mi>n</mi><mo>=</mo><mrow><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">are zero, or at most finitely many of them are.
+This will conclude the proof.</p>
+</div>
+<div id="S4.p10" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.p10.m1" class="ltx_Math" alttext="A^{T}=\mathrm{id}+pB" display="inline"><mrow><msup><mi>A</mi><mi>T</mi></msup><mo>=</mo><mrow><mi>id</mi><mo>+</mo><mrow><mi>p</mi><mo>⁢</mo><mi>B</mi></mrow></mrow></mrow></math> for some integer matrix <math id="S4.p10.m2" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>.
+We have</p>
+<div class="table-container"><table id="A5.S3.EGx77" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex43"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex43.m1" class="ltx_Math" alttext="\displaystyle f(n)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex43.m2" class="ltx_Math" alttext="\displaystyle=\left&lt;A^{nT+r}u,v\right&gt;=\left&lt;(\mathrm{id}+pB)^{n}A^{r}u,v\right&gt;" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>⟨</mo><mrow><msup><mi>A</mi><mrow><mrow><mi>n</mi><mo>⁢</mo><mi>T</mi></mrow><mo>+</mo><mi>r</mi></mrow></msup><mo>⁢</mo><mi>u</mi></mrow><mo>,</mo><mi>v</mi><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>⟨</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>id</mi><mo>+</mo><mrow><mi>p</mi><mo>⁢</mo><mi>B</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msup><mo>⁢</mo><msup><mi>A</mi><mi>r</mi></msup><mo>⁢</mo><mi>u</mi></mrow><mo>,</mo><mi>v</mi><mo>⟩</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex44"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex44.m1" class="ltx_Math" alttext="\displaystyle=\sum_{k\geq 0}\binom{n}{k}\cdot p^{n}\left&lt;B^{n}A^{r}u,v\right&gt;" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow></munder></mstyle><mrow><mrow><mrow><mo>(</mo><mstyle displaystyle="true"><mfrac linethickness="0pt"><mi>n</mi><mi>k</mi></mfrac></mstyle><mo rspace="0.055em">)</mo></mrow><mo rspace="0.222em">⋅</mo><msup><mi>p</mi><mi>n</mi></msup></mrow><mo>⁢</mo><mrow><mo>⟨</mo><mrow><msup><mi>B</mi><mi>n</mi></msup><mo>⁢</mo><msup><mi>A</mi><mi>r</mi></msup><mo>⁢</mo><mi>u</mi></mrow><mo>,</mo><mi>v</mi><mo>⟩</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex45"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex45.m1" class="ltx_Math" alttext="\displaystyle=\sum_{k\geq 0}a_{n}\binom{n}{k}\qquad\text{ where }a_{n}=p^{n}%
+\left&lt;B^{n}A^{r}u,v\right&gt;\in p^{n}\mathbb{Z}." display="inline"><mrow><mrow><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow></munder></mstyle><mrow><msub><mi>a</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo>(</mo><mstyle displaystyle="true"><mfrac linethickness="0pt"><mi>n</mi><mi>k</mi></mfrac></mstyle><mo>)</mo></mrow></mrow></mrow></mrow><mspace width="2em"></mspace><mrow><mrow><mtext> where </mtext><mo>⁢</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><mo>=</mo><mrow><msup><mi>p</mi><mi>n</mi></msup><mo>⁢</mo><mrow><mo>⟨</mo><mrow><msup><mi>B</mi><mi>n</mi></msup><mo>⁢</mo><msup><mi>A</mi><mi>r</mi></msup><mo>⁢</mo><mi>u</mi></mrow><mo>,</mo><mi>v</mi><mo>⟩</mo></mrow></mrow><mo>∈</mo><mrow><msup><mi>p</mi><mi>n</mi></msup><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Thus we have written <math id="S4.p10.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> in Mahler form.
+Initially, we define <math id="S4.p10.m4" class="ltx_Math" alttext="f\colon\mathbb{Z}_{\geq 0}\to\mathbb{Z}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>ℤ</mi><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></msub><mo stretchy="false">→</mo><mi>ℤ</mi></mrow></mrow></math>,
+but by Mahler’s theorem (since <math id="S4.p10.m5" class="ltx_Math" alttext="\lim_{n}a_{n}=0" display="inline"><mrow><mrow><msub><mo>lim</mo><mi>n</mi></msub><msub><mi>a</mi><mi>n</mi></msub></mrow><mo>=</mo><mn>0</mn></mrow></math>)
+it follows that <math id="S4.p10.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> extends to a function <math id="S4.p10.m7" class="ltx_Math" alttext="f\colon\mathbb{Z}_{p}\to\mathbb{Q}_{p}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>ℤ</mi><mi>p</mi></msub><mo stretchy="false">→</mo><msub><mi>ℚ</mi><mi>p</mi></msub></mrow></mrow></math>.
+Also, we can check that <math id="S4.p10.m8" class="ltx_Math" alttext="\lim_{n}\frac{a_{n}}{n!}=0" display="inline"><mrow><mrow><msub><mo>lim</mo><mi>n</mi></msub><mfrac linethickness="0.6px"><msub><mi>a</mi><mi>n</mi></msub><mrow><mi>n</mi><mo>!</mo></mrow></mfrac></mrow><mo>=</mo><mn>0</mn></mrow></math>
+hence <math id="S4.p10.m9" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is even analytic.</p>
+</div>
+<div id="S4.p11" class="ltx_para">
+<p class="ltx_p">Thus by Strassman’s theorem, <math id="S4.p11.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is either identically zero,
+or else it has finitely many zeros, as desired.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">27.5 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_dproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 27A</span></span><span class="ltx_text ltx_font_bold"> </span>(<math id="Thmproblem1.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> is compact)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Show that <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> is not compact, but <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> is.
+(For the latter, I recommend using sequential continuity.)</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_dproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 27B</span></span><span class="ltx_text ltx_font_bold"> </span>(Totally disconnected)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Show that both <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="\mathbb{Z}_{p}" display="inline"><msub><mi>ℤ</mi><mi>p</mi></msub></math> and <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="\mathbb{Q}_{p}" display="inline"><msub><mi>ℚ</mi><mi>p</mi></msub></math> are <em class="ltx_emph ltx_font_italic">totally disconnected</em>:
+there are no connected sets other than the empty set and singleton sets.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 27C</span></span><span class="ltx_text ltx_font_bold"> </span>(Mentioned in <a href="https://mathoverflow.net/a/81377/70654" title="" class="ltx_ref ltx_href">MathOverflow</a>)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> be a prime.
+Find a sequence <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="q_{1}" display="inline"><msub><mi>q</mi><mn>1</mn></msub></math>, <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="q_{2}" display="inline"><msub><mi>q</mi><mn>2</mn></msub></math>, … of rational numbers such that:</p>
+<ul id="S5.I1" class="ltx_itemize">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">the sequence <math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="q_{n}" display="inline"><msub><mi>q</mi><mi>n</mi></msub></math> converges to <math id="S5.I1.i1.p1.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> in the real sense;</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">the sequence <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="q_{n}" display="inline"><msub><mi>q</mi><mi>n</mi></msub></math> converges to <math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="2021" display="inline"><mn>2021</mn></math> in the <math id="S5.I1.i2.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic sense.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 27D</span></span><span class="ltx_text ltx_font_bold"> </span>(USA TST 2011)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> be a prime.
+We say that a sequence of integers <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="\{z_{n}\}_{n=0}^{\infty}" display="inline"><msubsup><mrow><mo stretchy="false">{</mo><msub><mi>z</mi><mi>n</mi></msub><mo stretchy="false">}</mo></mrow><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mi mathvariant="normal">∞</mi></msubsup></math>
+is a <em class="ltx_emph ltx_font_italic"><math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-pod</em> if for each <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="e\geq 0" display="inline"><mrow><mi>e</mi><mo>≥</mo><mn>0</mn></mrow></math>,
+there is an <math id="Thmproblem4.p1.m5" class="ltx_Math" alttext="N\geq 0" display="inline"><mrow><mi>N</mi><mo>≥</mo><mn>0</mn></mrow></math> such that whenever <math id="Thmproblem4.p1.m6" class="ltx_Math" alttext="m\geq N" display="inline"><mrow><mi>m</mi><mo>≥</mo><mi>N</mi></mrow></math>,
+<math id="Thmproblem4.p1.m7" class="ltx_Math" alttext="p^{e}" display="inline"><msup><mi>p</mi><mi>e</mi></msup></math> divides the sum</p>
+<div class="table-container"><table id="Ex46" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex46.m1" class="ltx_Math" alttext="\sum_{k=0}^{m}(-1)^{k}\binom{m}{k}z_{k}." display="block"><mrow><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>=</mo><mn>0</mn></mrow><mi>m</mi></munderover><mrow><msup><mrow><mo lspace="0em" stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mi>k</mi></msup><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mi>m</mi><mi>k</mi></mfrac><mo>)</mo></mrow><mo>⁢</mo><msub><mi>z</mi><mi>k</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Prove that if both sequences <math id="Thmproblem4.p1.m8" class="ltx_Math" alttext="\{x_{n}\}_{n=0}^{\infty}" display="inline"><msubsup><mrow><mo stretchy="false">{</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">}</mo></mrow><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mi mathvariant="normal">∞</mi></msubsup></math>
+and <math id="Thmproblem4.p1.m9" class="ltx_Math" alttext="\{y_{n}\}_{n=0}^{\infty}" display="inline"><msubsup><mrow><mo stretchy="false">{</mo><msub><mi>y</mi><mi>n</mi></msub><mo stretchy="false">}</mo></mrow><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mi mathvariant="normal">∞</mi></msubsup></math> are <math id="Thmproblem4.p1.m10" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-pods,
+then the sequence <math id="Thmproblem4.p1.m11" class="ltx_Math" alttext="\{x_{n}y_{n}\}_{n=0}^{\infty}" display="inline"><msubsup><mrow><mo stretchy="false">{</mo><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>⁢</mo><msub><mi>y</mi><mi>n</mi></msub></mrow><mo stretchy="false">}</mo></mrow><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow><mi mathvariant="normal">∞</mi></msubsup></math> is a <math id="Thmproblem4.p1.m12" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-pod.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../calc/calc-limits.html">Previous chapter: Limits and series</a><br />
+<a href="../calc/differentiation.html">Next chapter: Differentiation</a>
+</nav>
+
+		</main>
+	</body>
+</html>

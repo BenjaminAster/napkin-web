@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Meromorphic functions</title>
+		<meta property="og:title" content="Meromorphic functions" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../cmplxana/holomorphic-functions.html">Previous chapter: Holomorphic functions</a><br />
+<a href="../cmplxana/complex-log.html">Next chapter: Holomorphic square roots and logarithms</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 32 </span>Meromorphic functions</h1>
+
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">32.1 </span>The second nicest functions on earth</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">If holomorphic functions are like polynomials,
+then <em class="ltx_emph ltx_font_italic">meromorphic</em> functions are like rational functions.
+Basically, a meromorphic function is a function of the form
+<math id="S1.p1.m1" class="ltx_Math" alttext="\frac{A(z)}{B(z)}" display="inline"><mfrac linethickness="0.6px"><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>B</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></math>
+where <math id="S1.p1.m2" class="ltx_Math" alttext="A,B\colon U\to\mathbb{C}" display="inline"><mrow><mrow><mi>A</mi><mo>,</mo><mi>B</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> are holomorphic and <math id="S1.p1.m3" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> is not zero.
+The most important example of a meromorphic function is <math id="S1.p1.m4" class="ltx_Math" alttext="\frac{1}{z}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></math>.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">We are going to see that meromorphic functions behave
+like “almost-holomorphic” functions.
+Specifically, a meromorphic function <math id="S1.p2.m1" class="ltx_Math" alttext="A/B" display="inline"><mrow><mi>A</mi><mo>/</mo><mi>B</mi></mrow></math> will be holomorphic at all points
+except the zeros of <math id="S1.p2.m2" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> (called <em class="ltx_emph ltx_font_italic">poles</em>).
+By the identity theorem, there cannot be too many zeros of <math id="S1.p2.m3" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>!
+So meromorphic functions can be thought of as “almost holomorphic”
+(like <math id="S1.p2.m4" class="ltx_Math" alttext="\frac{1}{z}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></math>, which is holomorphic everywhere but the origin).
+We saw that</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\frac{1}{2\pi i}\oint_{\gamma}\frac{1}{z}\;dz=1" display="block"><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for <math id="S1.p2.m5" class="ltx_Math" alttext="\gamma(t)=e^{it}" display="inline"><mrow><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>e</mi><mrow><mi>i</mi><mo>⁢</mo><mi>t</mi></mrow></msup></mrow></math> the unit circle.
+We will extend our results on contours to such situations.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">It turns out that, instead of just getting <math id="S1.p3.m1" class="ltx_Math" alttext="\oint_{\gamma}f(z)\;dz=0" display="inline"><mrow><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>
+like we did in the holomorphic case,
+the contour integrals will actually be used to
+<em class="ltx_emph ltx_font_italic">count the number of poles</em> inside the loop <math id="S1.p3.m2" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>.
+It’s ridiculous, I know.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">32.2 </span>Meromorphic functions</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S2.p1.m1" class="ltx_Math" alttext="\frac{1}{z}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></math>, with a pole of order <math id="S2.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> and residue <math id="S2.p1.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> at <math id="S2.p1.m4" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p2.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> be an open subset of <math id="S2.p2.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> again.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 32.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A function <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> meromorphic</span>
+if there exists holomorphic functions <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="A,B\colon U\to\mathbb{C}" display="inline"><mrow><mrow><mi>A</mi><mo>,</mo><mi>B</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>
+with <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> not identically zero in any open neighborhood,
+and <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="f(z)=A(z)/B(z)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>B</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> whenever <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="B(z)\neq 0" display="inline"><mrow><mrow><mi>B</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Let’s see how this function <math id="S2.p3.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> behaves.
+If <math id="S2.p3.m2" class="ltx_Math" alttext="z\in U" display="inline"><mrow><mi>z</mi><mo>∈</mo><mi>U</mi></mrow></math> has <math id="S2.p3.m3" class="ltx_Math" alttext="B(z)\neq 0" display="inline"><mrow><mrow><mi>B</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mn>0</mn></mrow></math>,
+then in some small open neighborhood the function <math id="S2.p3.m4" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> isn’t zero
+at all, and thus <math id="S2.p3.m5" class="ltx_Math" alttext="A/B" display="inline"><mrow><mi>A</mi><mo>/</mo><mi>B</mi></mrow></math> is in fact <em class="ltx_emph ltx_font_italic">holomorphic</em>;
+thus <math id="S2.p3.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is holomorphic at <math id="S2.p3.m7" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>.
+(Concrete example: <math id="S2.p3.m8" class="ltx_Math" alttext="\frac{1}{z}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></math> is holomorphic
+in any disk not containing <math id="S2.p3.m9" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>.)</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">On the other hand, suppose <math id="S2.p4.m1" class="ltx_Math" alttext="p\in U" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>U</mi></mrow></math> has <math id="S2.p4.m2" class="ltx_Math" alttext="B(p)=0" display="inline"><mrow><mrow><mi>B</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>: without loss of generality, <math id="S2.p4.m3" class="ltx_Math" alttext="p=0" display="inline"><mrow><mi>p</mi><mo>=</mo><mn>0</mn></mrow></math>
+to ease notation.
+By using the Taylor series at <math id="S2.p4.m4" class="ltx_Math" alttext="p=0" display="inline"><mrow><mi>p</mi><mo>=</mo><mn>0</mn></mrow></math> we can put</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="B(z)=c_{k}z^{k}+c_{k+1}z^{k+1}+\cdots" display="block"><mrow><mrow><mi>B</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>c</mi><mi>k</mi></msub><mo>⁢</mo><msup><mi>z</mi><mi>k</mi></msup></mrow><mo>+</mo><mrow><msub><mi>c</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⁢</mo><msup><mi>z</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">with <math id="S2.p4.m5" class="ltx_Math" alttext="c_{k}\neq 0" display="inline"><mrow><msub><mi>c</mi><mi>k</mi></msub><mo>≠</mo><mn>0</mn></mrow></math>
+(certainly some coefficient is nonzero since <math id="S2.p4.m6" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> is not identically zero!).
+Then we can write</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\frac{1}{B(z)}=\frac{1}{z^{k}}\cdot\frac{1}{c_{k}+c_{k+1}z+\cdots}." display="block"><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>B</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>z</mi><mi>k</mi></msup></mfrac><mo lspace="0.222em" rspace="0.222em">⋅</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><msub><mi>c</mi><mi>k</mi></msub><mo>+</mo><mrow><msub><mi>c</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⁢</mo><mi>z</mi></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">But the fraction on the right is a
+holomorphic function in this open neighborhood!
+So all that’s happened is that we have an extra <math id="S2.p4.m7" class="ltx_Math" alttext="z^{-k}" display="inline"><msup><mi>z</mi><mrow><mo>−</mo><mi>k</mi></mrow></msup></math> kicking around.</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">This gives us an equivalent way of viewing meromorphic functions:</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 32.2.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> as usual.
+A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> meromorphic</span> function is a function which is holomorphic on <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>
+except at an isolated set <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> of points
+(meaning it is holomorphic as a function <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="U\setminus S\to\mathbb{C}" display="inline"><mrow><mrow><mi>U</mi><mo>∖</mo><mi>S</mi></mrow><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math>).
+For each <math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="p\in S" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>S</mi></mrow></math>, called a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> pole</span> of <math id="S2.Thmtheorem2.p1.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>,
+the function <math id="S2.Thmtheorem2.p1.m7" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is further required to admit a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Laurent series</span>, meaning that</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="f(z)=\frac{c_{-m}}{(z-p)^{m}}+\frac{c_{-m+1}}{(z-p)^{m-1}}+\dots+\frac{c_{-1}}%
+{z-p}+c_{0}+c_{1}(z-p)+\dots" display="block"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mo>−</mo><mi>m</mi></mrow></msub><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow><mi>m</mi></msup></mfrac><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mrow><mo>−</mo><mi>m</mi></mrow><mo>+</mo><mn>1</mn></mrow></msub><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msup></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow></mfrac><mo>+</mo><msub><mi>c</mi><mn>0</mn></msub><mo>+</mo><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mi mathvariant="normal">…</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for all <math id="S2.Thmtheorem2.p1.m8" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> in some open neighborhood of <math id="S2.Thmtheorem2.p1.m9" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, other than <math id="S2.Thmtheorem2.p1.m10" class="ltx_Math" alttext="z=p" display="inline"><mrow><mi>z</mi><mo>=</mo><mi>p</mi></mrow></math>.
+Here <math id="S2.Thmtheorem2.p1.m11" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> is a positive integer, and <math id="S2.Thmtheorem2.p1.m12" class="ltx_Math" alttext="c_{-m}\neq 0" display="inline"><mrow><msub><mi>c</mi><mrow><mo>−</mo><mi>m</mi></mrow></msub><mo>≠</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Note that the trailing end <em class="ltx_emph ltx_font_italic">must</em> terminate.
+By “isolated set”, I mean that we can draw
+open neighborhoods around each pole in <math id="S2.p6.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>,
+in such a way that no two open neighborhoods intersect.</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 32.2.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Example of a meromorphic function)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Consider the function</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\frac{z+1}{\sin z}." display="block"><mrow><mfrac linethickness="0.6px"><mrow><mi>z</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>z</mi></mrow></mfrac><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">It is meromorphic, because it is holomorphic everywhere except at the zeros of <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\sin z" display="inline"><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>z</mi></mrow></math>.
+At each of these points we can put a Laurent series: for example at <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> we have</p>
+<div class="table-container"><table id="A5.S3.EGx89" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex6"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex6.m1" class="ltx_Math" alttext="\displaystyle\frac{z+1}{\sin z}" display="inline"><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><mi>z</mi><mo>+</mo><mn>1</mn></mrow><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>z</mi></mrow></mfrac></mstyle></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex6.m2" class="ltx_Math" alttext="\displaystyle=(z+1)\cdot\frac{1}{z-\frac{z^{3}}{3!}+\frac{z^{5}}{5!}-\dotsb}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>+</mo><mn>1</mn></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⋅</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mrow><mrow><mi>z</mi><mo>−</mo><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>3</mn></msup><mrow><mn>3</mn><mo>!</mo></mrow></mfrac></mrow><mo>+</mo><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>5</mn></msup><mrow><mn>5</mn><mo>!</mo></mrow></mfrac></mrow><mo>−</mo><mi mathvariant="normal">⋯</mi></mrow></mfrac></mstyle></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex7.m1" class="ltx_Math" alttext="\displaystyle=\frac{1}{z}\cdot\frac{z+1}{1-\left(\frac{z^{2}}{3!}-\frac{z^{4}}%
+{5!}+\frac{z^{6}}{7!}-\dotsb\right)}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></mstyle><mo lspace="0.222em" rspace="0.222em">⋅</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><mi>z</mi><mo>+</mo><mn>1</mn></mrow><mrow><mn>1</mn><mo>−</mo><mrow><mo>(</mo><mrow><mrow><mrow><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>2</mn></msup><mrow><mn>3</mn><mo>!</mo></mrow></mfrac><mo>−</mo><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>4</mn></msup><mrow><mn>5</mn><mo>!</mo></mrow></mfrac></mrow><mo>+</mo><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>6</mn></msup><mrow><mn>7</mn><mo>!</mo></mrow></mfrac></mrow><mo>−</mo><mi mathvariant="normal">⋯</mi></mrow><mo>)</mo></mrow></mrow></mfrac></mstyle></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex8.m1" class="ltx_Math" alttext="\displaystyle=\frac{1}{z}\cdot(z+1)\sum_{k\geq 0}\left(\frac{z^{2}}{3!}-\frac{%
+z^{4}}{5!}+\frac{z^{6}}{7!}-\dotsb\right)^{k}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></mstyle><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow></munder></mstyle><msup><mrow><mo>(</mo><mrow><mrow><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>2</mn></msup><mrow><mn>3</mn><mo>!</mo></mrow></mfrac></mstyle><mo>−</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>4</mn></msup><mrow><mn>5</mn><mo>!</mo></mrow></mfrac></mstyle></mrow><mo>+</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>6</mn></msup><mrow><mn>7</mn><mo>!</mo></mrow></mfrac></mstyle></mrow><mo>−</mo><mi mathvariant="normal">⋯</mi></mrow><mo>)</mo></mrow><mi>k</mi></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">If we expand out the horrible sum (which I won’t do),
+then you get <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\frac{1}{z}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></math> times a perfectly
+fine Taylor series, i.e. a Laurent series.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 32.2.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">We’ll often say something like
+“consider the function <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="f\colon\mathbb{C}\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℂ</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>
+by <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="z\mapsto\frac{1}{z}" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></mrow></math>”.
+Of course this isn’t completely correct,
+because <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> doesn’t have a value at <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>.
+If I was going to be completely rigorous
+I would just set <math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="f(0)=2015" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>2015</mn></mrow></math> or something and move on
+with life, but for all intents
+let’s just think of it as “undefined at <math id="S2.Thmtheorem4.p1.m6" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>”.</p>
+</div>
+<div id="S2.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">Why don’t I just write <math id="S2.Thmtheorem4.p2.m1" class="ltx_Math" alttext="g\colon\mathbb{C}\setminus\{0\}\to\mathbb{C}" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>?
+The reason I have to do this is that it’s still important
+for <math id="S2.Thmtheorem4.p2.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to remember it’s “trying” to be holomorphic on <math id="S2.Thmtheorem4.p2.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>,
+even if isn’t assigned a value at <math id="S2.Thmtheorem4.p2.m4" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>.
+As a function <math id="S2.Thmtheorem4.p2.m5" class="ltx_Math" alttext="\mathbb{C}\setminus\{0\}\to\mathbb{C}" display="inline"><mrow><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math> the function <math id="S2.Thmtheorem4.p2.m6" class="ltx_Math" alttext="\frac{1}{z}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></math> is actually holomorphic.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 32.2.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">I have shown that any function <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="A(z)/B(z)" display="inline"><mrow><mrow><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>/</mo><mi>B</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+has this characterization with poles,
+but an important result is
+that the converse is true too:
+if <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="f\colon U\setminus S\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>U</mi><mo>∖</mo><mi>S</mi></mrow><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> is holomorphic for some isolated set <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>,
+and moreover <math id="S2.Thmtheorem5.p1.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> admits a Laurent series at each point in <math id="S2.Thmtheorem5.p1.m5" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>,
+then <math id="S2.Thmtheorem5.p1.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> can be written as a rational quotient of holomorphic functions.
+I won’t prove this here, but it is good to be aware of.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 32.2.6</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> be a pole of a meromorphic function <math id="S2.Thmtheorem6.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, with Laurent series</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="f(z)=\frac{c_{-m}}{(z-p)^{m}}+\frac{c_{-m+1}}{(z-p)^{m-1}}+\dots+\frac{c_{-1}}%
+{z-p}+c_{0}+c_{1}(z-p)+\dots." display="block"><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mo>−</mo><mi>m</mi></mrow></msub><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow><mi>m</mi></msup></mfrac><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mrow><mo>−</mo><mi>m</mi></mrow><mo>+</mo><mn>1</mn></mrow></msub><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msup></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow></mfrac><mo>+</mo><msub><mi>c</mi><mn>0</mn></msub><mo>+</mo><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The integer <math id="S2.Thmtheorem6.p1.m3" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> order</span> of the pole.
+A pole of order <math id="S2.Thmtheorem6.p1.m4" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> is called a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> simple pole</span>.</p>
+</div>
+<div id="S2.Thmtheorem6.p2" class="ltx_para">
+<p class="ltx_p">We also give the coefficient <math id="S2.Thmtheorem6.p2.m1" class="ltx_Math" alttext="c_{-1}" display="inline"><msub><mi>c</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub></math> a name, the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> residue</span> of <math id="S2.Thmtheorem6.p2.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> at <math id="S2.Thmtheorem6.p2.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+which we write <math id="S2.Thmtheorem6.p2.m4" class="ltx_Math" alttext="\operatorname{Res}(f;p)" display="inline"><mrow><mi>Res</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>;</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">The order of a pole tells you how “bad” the pole is.
+The order of a pole is the “opposite” concept of the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> multiplicity</span> of a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> zero</span>.
+If <math id="S2.p7.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> has a pole at zero, then its Laurent series near <math id="S2.p7.m2" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> might look something like</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="f(z)=\frac{1}{z^{5}}+\frac{8}{z^{3}}-\frac{2}{z^{2}}+\frac{4}{z}+9-3z+8z^{2}+\dotsb" display="block"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>z</mi><mn>5</mn></msup></mfrac><mo>+</mo><mfrac linethickness="0.6px"><mn>8</mn><msup><mi>z</mi><mn>3</mn></msup></mfrac></mrow><mo>−</mo><mfrac linethickness="0.6px"><mn>2</mn><msup><mi>z</mi><mn>2</mn></msup></mfrac></mrow><mo>+</mo><mfrac linethickness="0.6px"><mn>4</mn><mi>z</mi></mfrac><mo>+</mo><mn>9</mn></mrow><mo>−</mo><mrow><mn>3</mn><mo>⁢</mo><mi>z</mi></mrow></mrow><mo>+</mo><mrow><mn>8</mn><mo>⁢</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and so <math id="S2.p7.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> has a pole of order five.
+By analogy, if <math id="S2.p7.m4" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> has a zero at <math id="S2.p7.m5" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>, it might look something like</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="g(z)=3z^{3}+2z^{4}+9z^{5}+\dotsb" display="block"><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mn>3</mn><mo>⁢</mo><msup><mi>z</mi><mn>3</mn></msup></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>z</mi><mn>4</mn></msup></mrow><mo>+</mo><mrow><mn>9</mn><mo>⁢</mo><msup><mi>z</mi><mn>5</mn></msup></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and so <math id="S2.p7.m6" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> has a zero of multiplicity three.
+These orders are additive: <math id="S2.p7.m7" class="ltx_Math" alttext="f(z)g(z)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></math> still has a pole of order <math id="S2.p7.m8" class="ltx_Math" alttext="5-3=2" display="inline"><mrow><mrow><mn>5</mn><mo>−</mo><mn>3</mn></mrow><mo>=</mo><mn>2</mn></mrow></math>,
+but <math id="S2.p7.m9" class="ltx_Math" alttext="f(z)g(z)^{2}" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>g</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></math> is completely patched now, and in fact has a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> simple zero</span> now
+(that is, a zero of degree <math id="S2.p7.m10" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>).</p>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 32.2.7</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself that orders are additive as described above.
+(This is obvious once you understand that you
+are multiplying Taylor/Laurent series.)</span></p>
+</div>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Metaphorically, poles can be thought of as “negative zeros”.</p>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">We can now give many more examples.</p>
+</div>
+<div id="S2.Thmtheorem8" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 32.2.8</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of meromorphic functions)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S2.I1" class="ltx_enumerate">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Any holomorphic function is a meromorphic function which happens to have no poles.
+Stupid, yes.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{C}\to\mathbb{C}" display="inline"><mrow><mi>ℂ</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math> by <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="z\mapsto 100z^{-1}" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mrow><mn>100</mn><mo>⁢</mo><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow></math> for <math id="S2.I1.i2.p1.m3" class="ltx_Math" alttext="z\neq 0" display="inline"><mrow><mi>z</mi><mo>≠</mo><mn>0</mn></mrow></math>
+but undefined at zero is a meromorphic function.
+Its only pole is at zero, which has order <math id="S2.I1.i2.p1.m4" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> and residue <math id="S2.I1.i2.p1.m5" class="ltx_Math" alttext="100" display="inline"><mn>100</mn></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S2.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S2.I1.i3.p1.m1" class="ltx_Math" alttext="\mathbb{C}\to\mathbb{C}" display="inline"><mrow><mi>ℂ</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math> by <math id="S2.I1.i3.p1.m2" class="ltx_Math" alttext="z\mapsto z^{-3}+z^{2}+z^{9}" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mrow><msup><mi>z</mi><mrow><mo>−</mo><mn>3</mn></mrow></msup><mo>+</mo><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><msup><mi>z</mi><mn>9</mn></msup></mrow></mrow></math> is also a meromorphic function.
+Its only pole is at zero, and it has order <math id="S2.I1.i3.p1.m3" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>, and residue <math id="S2.I1.i3.p1.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S2.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S2.I1.i4.p1.m1" class="ltx_Math" alttext="\mathbb{C}\to\mathbb{C}" display="inline"><mrow><mi>ℂ</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math> by <math id="S2.I1.i4.p1.m2" class="ltx_Math" alttext="z\mapsto\frac{e^{z}}{z^{2}}" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mfrac linethickness="0.6px"><msup><mi>e</mi><mi>z</mi></msup><msup><mi>z</mi><mn>2</mn></msup></mfrac></mrow></math> is meromorphic,
+with the Laurent series at <math id="S2.I1.i4.p1.m3" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> given by</p>
+<div class="table-container"><table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="\frac{e^{z}}{z^{2}}=\frac{1}{z^{2}}+\frac{1}{z}+\frac{1}{2}+\frac{z}{6}+\frac{%
+z^{2}}{24}+\frac{z^{3}}{120}+\dotsb." display="block"><mrow><mrow><mfrac linethickness="0.6px"><msup><mi>e</mi><mi>z</mi></msup><msup><mi>z</mi><mn>2</mn></msup></mfrac><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>z</mi><mn>2</mn></msup></mfrac><mo>+</mo><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac><mo>+</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mfrac linethickness="0.6px"><mi>z</mi><mn>6</mn></mfrac><mo>+</mo><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>2</mn></msup><mn>24</mn></mfrac><mo>+</mo><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>3</mn></msup><mn>120</mn></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Hence the pole <math id="S2.I1.i4.p1.m4" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> has order <math id="S2.I1.i4.p1.m5" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math> and residue <math id="S2.I1.i4.p1.m6" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S2.Thmtheorem9" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 32.2.9</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(A rational meromorphic function)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">Consider the function <math id="S2.Thmtheorem9.p1.m1" class="ltx_Math" alttext="\mathbb{C}\to\mathbb{C}" display="inline"><mrow><mi>ℂ</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math> given by</p>
+<div class="table-container"><table id="A5.S3.EGx90" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex13"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex13.m1" class="ltx_Math" alttext="\displaystyle z" display="inline"><mi>z</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex13.m2" class="ltx_Math" alttext="\displaystyle\mapsto\frac{z^{4}+1}{z^{2}-1}=z^{2}+1+\frac{2}{(z-1)(z+1)}" display="inline"><mrow><mi></mi><mo stretchy="false">↦</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><msup><mi>z</mi><mn>4</mn></msup><mo>+</mo><mn>1</mn></mrow><mrow><msup><mi>z</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mfrac></mstyle><mo>=</mo><mrow><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><mo>+</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>2</mn><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex14"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex14.m1" class="ltx_Math" alttext="\displaystyle=z^{2}+1+\frac{1}{z-1}\cdot\frac{1}{1+\frac{z-1}{2}}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><msup><mi>z</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mstyle><mo lspace="0.222em" rspace="0.222em">⋅</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mfrac linethickness="0.6px"><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></mfrac></mrow></mfrac></mstyle></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex15"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex15.m1" class="ltx_Math" alttext="\displaystyle=\frac{1}{z-1}+\frac{3}{2}+\frac{9}{4}(z-1)+\frac{7}{8}(z-1)^{2}-\dots" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>3</mn><mn>2</mn></mfrac></mstyle><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>9</mn><mn>4</mn></mfrac></mstyle><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>7</mn><mn>8</mn></mfrac></mstyle><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mrow></mrow><mo>−</mo><mi mathvariant="normal">…</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">It has a pole of order <math id="S2.Thmtheorem9.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> and residue <math id="S2.Thmtheorem9.p1.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> at <math id="S2.Thmtheorem9.p1.m4" class="ltx_Math" alttext="z=1" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>1</mn></mrow></math>.
+(It also has a pole of order <math id="S2.Thmtheorem9.p1.m5" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> at <math id="S2.Thmtheorem9.p1.m6" class="ltx_Math" alttext="z=-1" display="inline"><mrow><mi>z</mi><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math>; you are invited to compute the residue.)</p>
+</div>
+</div>
+<div id="S2.Thmtheorem10" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 32.2.10</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Function with infinitely many poles)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S2.Thmtheorem10.p1.m1" class="ltx_Math" alttext="\mathbb{C}\to\mathbb{C}" display="inline"><mrow><mi>ℂ</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math> by</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="z\mapsto\frac{1}{\sin(z)}" display="block"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">has infinitely many poles: the numbers <math id="S2.Thmtheorem10.p1.m2" class="ltx_Math" alttext="z=\pi k" display="inline"><mrow><mi>z</mi><mo>=</mo><mrow><mi>π</mi><mo>⁢</mo><mi>k</mi></mrow></mrow></math>, where <math id="S2.Thmtheorem10.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> is an integer.
+Let’s compute the Laurent series at just <math id="S2.Thmtheorem10.p1.m4" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>:</p>
+<div class="table-container"><table id="A5.S3.EGx91" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex17"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex17.m1" class="ltx_Math" alttext="\displaystyle\frac{1}{\sin(2\pi z)}" display="inline"><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>z</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex17.m2" class="ltx_Math" alttext="\displaystyle=\frac{1}{\frac{z}{1!}-\frac{z^{3}}{3!}+\frac{z^{5}}{5!}-\dotsb}" display="inline"><mrow><mi></mi><mo>=</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mrow><mrow><mfrac linethickness="0.6px"><mi>z</mi><mrow><mn>1</mn><mo>!</mo></mrow></mfrac><mo>−</mo><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>3</mn></msup><mrow><mn>3</mn><mo>!</mo></mrow></mfrac></mrow><mo>+</mo><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>5</mn></msup><mrow><mn>5</mn><mo>!</mo></mrow></mfrac></mrow><mo>−</mo><mi mathvariant="normal">⋯</mi></mrow></mfrac></mstyle></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex18"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex18.m1" class="ltx_Math" alttext="\displaystyle=\frac{1}{z}\cdot\frac{1}{1-\left(\frac{z^{2}}{3!}-\frac{z^{4}}{5%
+!}+\dotsb\right)}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></mstyle><mo lspace="0.222em" rspace="0.222em">⋅</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>1</mn><mo>−</mo><mrow><mo>(</mo><mrow><mrow><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>2</mn></msup><mrow><mn>3</mn><mo>!</mo></mrow></mfrac><mo>−</mo><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>4</mn></msup><mrow><mn>5</mn><mo>!</mo></mrow></mfrac></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow><mo>)</mo></mrow></mrow></mfrac></mstyle></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex19"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex19.m1" class="ltx_Math" alttext="\displaystyle=\frac{1}{z}\sum_{k\geq 0}\left(\frac{z^{2}}{3!}-\frac{z^{4}}{5!}%
++\dotsb\right)^{k}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></mstyle><mo>⁢</mo><mrow><mstyle displaystyle="true"><munder><mo movablelimits="false">∑</mo><mrow><mi>k</mi><mo>≥</mo><mn>0</mn></mrow></munder></mstyle><msup><mrow><mo>(</mo><mrow><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>2</mn></msup><mrow><mn>3</mn><mo>!</mo></mrow></mfrac></mstyle><mo>−</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><msup><mi>z</mi><mn>4</mn></msup><mrow><mn>5</mn><mo>!</mo></mrow></mfrac></mstyle></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow><mo>)</mo></mrow><mi>k</mi></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which is a Laurent series, though I have no clue what the coefficients are.
+You can at least see the residue; the constant term of that huge sum is <math id="S2.Thmtheorem10.p1.m5" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>,
+so the residue is <math id="S2.Thmtheorem10.p1.m6" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.
+Also, the pole has order <math id="S2.Thmtheorem10.p1.m7" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem11" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 32.2.11</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(A function that is not meromorphic)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem11.p1" class="ltx_para">
+<p class="ltx_p">Consider the function</p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="z\mapsto\frac{1}{\sin(1/z)}." display="block"><mrow><mrow><mi>z</mi><mo stretchy="false">↦</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>/</mo><mi>z</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">It is a holomorphic function on</p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="U=\mathbb{C}\setminus\{0\}\setminus S" display="block"><mrow><mi>U</mi><mo>=</mo><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow><mo>∖</mo><mi>S</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where we define <math id="S2.Thmtheorem11.p1.m1" class="ltx_Math" alttext="S=\{\frac{1}{\pi k}\mid k\in\mathbb{Z}\setminus\{0\}\}" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>π</mi><mo>⁢</mo><mi>k</mi></mrow></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>k</mi><mo>∈</mo><mrow><mi>ℤ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.
+Similar to <math id="S2.Thmtheorem11.p1.m2" class="ltx_Math" alttext="z\mapsto\frac{1}{\sin(z)}" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow></math>,
+each point in the set <math id="S2.Thmtheorem11.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> has a pole of order <math id="S2.Thmtheorem11.p1.m4" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.</p>
+</div>
+<div id="S2.Thmtheorem11.p2" class="ltx_para">
+<p class="ltx_p">However, at <math id="S2.Thmtheorem11.p2.m1" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>, the function admits no Laurent series — if it were, there would be a
+neighborhood around <math id="S2.Thmtheorem11.p2.m2" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math> where the function is defined, but there is no such set.</p>
+</div>
+<div id="S2.Thmtheorem11.p3" class="ltx_para">
+<p class="ltx_p">However, <math id="S2.Thmtheorem11.p3.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is meromorphic on <math id="S2.Thmtheorem11.p3.m2" class="ltx_Math" alttext="\mathbb{C}\setminus\{0\}" display="inline"><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math> — the set <math id="S2.Thmtheorem11.p3.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is isolated, but <math id="S2.Thmtheorem11.p3.m4" class="ltx_Math" alttext="S\cup\{0\}" display="inline"><mrow><mi>S</mi><mo>∪</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math> is not isolated.</p>
+</div>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">The Laurent series, if it exists, is unique (as you might have guessed),
+and by our result on holomorphic functions it is actually valid for <em class="ltx_emph ltx_font_italic">any</em>
+disk centered at <math id="S2.p10.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> (minus the point <math id="S2.p10.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>).
+The part <math id="S2.p10.m3" class="ltx_Math" alttext="\frac{c_{-1}}{z-p}+\dots+\frac{c_{-m}}{(z-p)^{m}}" display="inline"><mrow><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mo>−</mo><mi>m</mi></mrow></msub><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow><mi>m</mi></msup></mfrac></mrow></math> is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> principal part</span>,
+and the rest of the series <math id="S2.p10.m4" class="ltx_Math" alttext="c_{0}+c_{1}(z-p)+\dotsb" display="inline"><mrow><msub><mi>c</mi><mn>0</mn></msub><mo>+</mo><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></math> is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> analytic part</span>.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">32.3 </span>Winding numbers and the residue theorem</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Recall that for a counterclockwise circle <math id="S3.p1.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> and a point <math id="S3.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> inside it, we had</p>
+<div class="table-container"><table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="\oint_{\gamma}(z-p)^{m}\;dz=\begin{cases}0&amp;m\neq-1\\
+2\pi i&amp;m=-1\end{cases}" display="block"><mrow><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><msup><mrow><mo lspace="0em" stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow><mi>m</mi></msup><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>m</mi><mo>≠</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>m</mi><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S3.p1.m3" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> is an integer.
+One can extend this result to in fact show that <math id="S3.p1.m4" class="ltx_Math" alttext="\oint_{\gamma}(z-p)^{m}\;dz=0" display="inline"><mrow><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><msup><mrow><mo lspace="0em" stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow><mo stretchy="false">)</mo></mrow><mi>m</mi></msup><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>
+for <em class="ltx_emph ltx_font_italic">any</em> loop <math id="S3.p1.m5" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>, where <math id="S3.p1.m6" class="ltx_Math" alttext="m\neq-1" display="inline"><mrow><mi>m</mi><mo>≠</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math>.
+So we associate a special name for the nonzero value at <math id="S3.p1.m7" class="ltx_Math" alttext="m=-1" display="inline"><mrow><mi>m</mi><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math>.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 32.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">For a point <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="p\in\mathbb{C}" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>ℂ</mi></mrow></math> and a loop <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> not passing through it,
+we define the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> winding number</span>, denoted <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\operatorname{\mathbf{I}}(\gamma,p)" display="inline"><mrow><mi>𝐈</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo>,</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math>, by</p>
+<div class="table-container"><table id="Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex23.m1" class="ltx_Math" alttext="\operatorname{\mathbf{I}}(\gamma,p)=\frac{1}{2\pi i}\oint_{\gamma}\frac{1}{z-p%
+}\;dz" display="block"><mrow><mrow><mi>𝐈</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo>,</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>z</mi><mo>−</mo><mi>p</mi></mrow></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">For example, by our previous results we see that if <math id="S3.p2.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> is a circle, we have</p>
+<div class="table-container"><table id="Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex24.m1" class="ltx_Math" alttext="\operatorname{\mathbf{I}}(\text{circle},p)=\begin{cases}1&amp;\text{$p$ inside the%
+ circle}\\
+0&amp;\text{$p$ outside the circle}.\end{cases}" display="block"><mrow><mrow><mi>𝐈</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mtext>circle</mtext><mo>,</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mn>1</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>p</mi><mtext> inside the circle</mtext></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mi>p</mi><mtext> outside the circle</mtext></mrow><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">If you’ve read the chapter on fundamental groups, then this is just the fundamental group
+associated to <math id="S3.p2.m2" class="ltx_Math" alttext="\mathbb{C}\setminus\{p\}" display="inline"><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mi>p</mi><mo stretchy="false">}</mo></mrow></mrow></math>.
+In particular, the winding number is always an integer.
+(Essentially, it uses the complex logarithm to track how the argument of the function changes.
+The details are more complicated, so we omit them here).
+In the simplest case the winding numbers are either <math id="S3.p2.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> or <math id="S3.p2.m4" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 32.3.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We say a loop <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> regular</span> if <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\operatorname{\mathbf{I}}(\gamma,p)=1" display="inline"><mrow><mrow><mi>𝐈</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo>,</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>
+for all points <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> in the interior of <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> (for example,
+if <math id="S3.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> is a counterclockwise circle).</p>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">With all these ingredients we get a stunning generalization of the Cauchy-Goursat theorem:</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 32.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Cauchy’s residue theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f\colon\Omega\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> be meromorphic, where <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> is simply connected.
+Then for any loop <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> not passing through any of its poles, we have</p>
+<div class="table-container"><table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="\frac{1}{2\pi i}\oint_{\gamma}f(z)\;dz=\sum_{\text{pole $p$}}\operatorname{%
+\mathbf{I}}(\gamma,p)\operatorname{Res}(f;p)." display="block"><mrow><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mtext>pole </mtext><mi>p</mi></mrow></munder><mrow><mrow><mi>𝐈</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo>,</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>Res</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>;</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In particular, if <math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> is regular then the contour integral
+is the sum of all the residues, in the form</p>
+<div class="table-container"><table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="\frac{1}{2\pi i}\oint_{\gamma}f(z)\;dz=\sum_{\begin{subarray}{c}\text{pole $p$%
+}\\
+\text{inside $\gamma$}\end{subarray}}\operatorname{Res}(f;p)." display="block"><mrow><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mtext>pole </mtext><mi>p</mi></mrow></mtd></mtr><mtr><mtd><mrow><mtext>inside </mtext><mi>γ</mi></mrow></mtd></mtr></mtable></munder><mrow><mi>Res</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>;</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 32.3.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify that this result coincides
+with what you expect when you integrate <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\oint_{\gamma}cz^{-1}\;dz" display="inline"><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mi>c</mi><mo>⁢</mo><msup><mi>z</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></math>
+for <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> a counter-clockwise circle.</span></p>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">The proof from here is not really too impressive – the “work” was already
+done in our statements about the winding number.</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Let the poles with nonzero winding number be <math id="S3.p5.m1" class="ltx_Math" alttext="p_{1},\dots,p_{k}" display="inline"><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>p</mi><mi>k</mi></msub></mrow></math>
+(the others do not affect the sum).<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>To show
+that there must be finitely many such poles: recall that all our contours <math id="footnote1.m1" class="ltx_Math" alttext="\gamma\colon[a,b]\to\mathbb{C}" display="inline"><mrow><mi>γ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>
+are in fact bounded, so there is some big closed disk <math id="footnote1.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> which contains all of <math id="footnote1.m3" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>.
+The poles outside <math id="footnote1.m4" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> thus have winding number zero.
+Now we cannot have infinitely many poles inside the disk <math id="footnote1.m5" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, for <math id="footnote1.m6" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> is compact and the
+set of poles is a closed and isolated set!</span></span></span>
+Then we can write <math id="S3.p5.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> in the form</p>
+<div class="table-container"><table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="f(z)=g(z)+\sum_{i=1}^{k}P_{i}\left(\frac{1}{z-p_{i}}\right)" display="block"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.055em">+</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><mrow><msub><mi>P</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>z</mi><mo>−</mo><msub><mi>p</mi><mi>i</mi></msub></mrow></mfrac><mo>)</mo></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S3.p5.m3" class="ltx_Math" alttext="P_{i}\left(\frac{1}{z-p_{i}}\right)" display="inline"><mrow><msub><mi>P</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo>(</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>z</mi><mo>−</mo><msub><mi>p</mi><mi>i</mi></msub></mrow></mfrac><mo>)</mo></mrow></mrow></math> is the principal part of the pole <math id="S3.p5.m4" class="ltx_Math" alttext="p_{i}" display="inline"><msub><mi>p</mi><mi>i</mi></msub></math>.
+(For example, if <math id="S3.p5.m5" class="ltx_Math" alttext="f(z)=\frac{z^{3}-z+1}{z(z+1)}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac linethickness="0.6px"><mrow><mrow><msup><mi>z</mi><mn>3</mn></msup><mo>−</mo><mi>z</mi></mrow><mo>+</mo><mn>1</mn></mrow><mrow><mi>z</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow></math> we would write <math id="S3.p5.m6" class="ltx_Math" alttext="f(z)=(z-1)+\frac{1}{z}-\frac{1}{1+z}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></mrow><mo>−</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mi>z</mi></mrow></mfrac></mrow></mrow></math>.)</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">The point of doing so is that the function <math id="S3.p6.m1" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> is holomorphic (we’ve removed all the “bad” parts), so</p>
+<div class="table-container"><table id="Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex28.m1" class="ltx_Math" alttext="\oint_{\gamma}g(z)\;dz=0" display="block"><mrow><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">by Cauchy-Goursat.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">On the other hand, if <math id="S3.p7.m1" class="ltx_Math" alttext="P_{i}(x)=c_{1}x+c_{2}x^{2}+\dots+c_{d}x^{d}" display="inline"><mrow><mrow><msub><mi>P</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mrow><msub><mi>c</mi><mn>2</mn></msub><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>c</mi><mi>d</mi></msub><mo>⁢</mo><msup><mi>x</mi><mi>d</mi></msup></mrow></mrow></mrow></math> then</p>
+<div class="table-container"><table id="A5.S3.EGx92" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex29"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex29.m1" class="ltx_Math" alttext="\displaystyle\oint_{\gamma}P_{i}\left(\frac{1}{z-p_{i}}\right)\;dz" display="inline"><mrow><mstyle displaystyle="true"><msub><mo>∮</mo><mi>γ</mi></msub></mstyle><mrow><msub><mi>P</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo>(</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>z</mi><mo>−</mo><msub><mi>p</mi><mi>i</mi></msub></mrow></mfrac></mstyle><mo>)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex29.m2" class="ltx_Math" alttext="\displaystyle=\oint_{\gamma}c_{1}\cdot\left(\frac{1}{z-p_{i}}\right)\;dz+\oint%
+_{\gamma}c_{2}\cdot\left(\frac{1}{z-p_{i}}\right)^{2}\;dz+\dots" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mstyle displaystyle="true"><msub><mo>∮</mo><mi>γ</mi></msub></mstyle><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo>(</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>z</mi><mo>−</mo><msub><mi>p</mi><mi>i</mi></msub></mrow></mfrac></mstyle><mo>)</mo></mrow></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><msub><mo>∮</mo><mi>γ</mi></msub></mstyle><mrow><mrow><msub><mi>c</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mrow><mo>(</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>z</mi><mo>−</mo><msub><mi>p</mi><mi>i</mi></msub></mrow></mfrac></mstyle><mo>)</mo></mrow><mn>2</mn></msup></mrow><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow><mo>+</mo><mi mathvariant="normal">…</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex30"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex30.m1" class="ltx_Math" alttext="\displaystyle=c_{1}\cdot\operatorname{\mathbf{I}}(\gamma,p_{i})+0+0+\dots" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mi>𝐈</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo>,</mo><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn><mo>+</mo><mi mathvariant="normal">…</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex31"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex31.m1" class="ltx_Math" alttext="\displaystyle=\operatorname{\mathbf{I}}(\gamma,p_{i})\operatorname{Res}(f;p_{i%
+})." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>𝐈</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo>,</mo><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0.167em">⁢</mo><mrow><mi>Res</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>;</mo><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which gives the conclusion.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="remark:cauchy_integral_intuition" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 32.3.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Intuition behind Cauchy’s integral formula)</span> — </span>
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">In the setting of <a href="ch_holomorphic_functions.html#thm:cauchy_integral_formula" title="Theorem 31.5.1 (Cauchy’s integral formula) ‣ 31.5 Cauchy’s integral theorem ‣ Chapter 31 Holomorphic functions ‣ Part IX Complex Analysis ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">31.5.1</span></a>,
+note that if <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is meromorphic in the disk <math id="S3.Thmtheorem5.p1.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, we can compute the Laurent series of <math id="S3.Thmtheorem5.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> at the
+point <math id="S3.Thmtheorem5.p1.m4" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>:</p>
+<div class="table-container"><table id="Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex32.m1" class="ltx_Math" alttext="f(z)=\frac{c_{-m}}{(z-a)^{m}}+\frac{c_{-m+1}}{(z-a)^{m-1}}+\dots+\frac{c_{-1}}%
+{z-a}+c_{0}+c_{1}(z-a)+\cdots" display="block"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mo>−</mo><mi>m</mi></mrow></msub><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow><mi>m</mi></msup></mfrac><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mrow><mo>−</mo><mi>m</mi></mrow><mo>+</mo><mn>1</mn></mrow></msub><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mi>m</mi><mo>−</mo><mn>1</mn></mrow></msup></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow></mfrac><mo>+</mo><msub><mi>c</mi><mn>0</mn></msub><mo>+</mo><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S3.Thmtheorem5.p2" class="ltx_para">
+<p class="ltx_p">By the residue theorem, integrating <math id="S3.Thmtheorem5.p2.m1" class="ltx_Math" alttext="f(z)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></math> around the boundary of <math id="S3.Thmtheorem5.p2.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>
+results in the <math id="S3.Thmtheorem5.p2.m3" class="ltx_Math" alttext="c_{-1}" display="inline"><msub><mi>c</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub></math> coefficient in the Laurent series:</p>
+<div class="table-container"><table id="Ex33" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex33.m1" class="ltx_Math" alttext="\frac{1}{2\pi i}\oint_{\gamma}f(z)\;dz=\operatorname{Res}(f;a)=c_{-1}." display="block"><mrow><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow><mo>=</mo><mrow><mi>Res</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>;</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>c</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Of course, this is useless — <math id="S3.Thmtheorem5.p2.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is holomorphic at <math id="S3.Thmtheorem5.p2.m5" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, so <math id="S3.Thmtheorem5.p2.m6" class="ltx_Math" alttext="c_{-1}=0" display="inline"><mrow><msub><mi>c</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mn>0</mn></mrow></math>.
+We want to compute <math id="S3.Thmtheorem5.p2.m7" class="ltx_Math" alttext="c_{0}=f(a)" display="inline"><mrow><msub><mi>c</mi><mn>0</mn></msub><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> instead.</p>
+</div>
+<div id="S3.Thmtheorem5.p3" class="ltx_para">
+<p class="ltx_p">Nevertheless, the trick is that <em class="ltx_emph ltx_font_italic">we can manipulate the function <math id="S3.Thmtheorem5.p3.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math></em> in order to move the
+coefficient we want to compute to the coefficient corresponding to <math id="S3.Thmtheorem5.p3.m2" class="ltx_Math" alttext="(z-a)^{-1}" display="inline"><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mo>−</mo><mn>1</mn></mrow></msup></math>.
+How are we going to do that? By dividing by <math id="S3.Thmtheorem5.p3.m3" class="ltx_Math" alttext="z-a" display="inline"><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow></math>, of course!</p>
+</div>
+<div id="S3.Thmtheorem5.p4" class="ltx_para">
+<p class="ltx_p">So, <math id="S3.Thmtheorem5.p4.m1" class="ltx_Math" alttext="\frac{f(z)}{z-a}" display="inline"><mfrac linethickness="0.6px"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow></mfrac></math> is meromorphic in the disk <math id="S3.Thmtheorem5.p4.m2" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, with Laurent series expansion around <math id="S3.Thmtheorem5.p4.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>
+being</p>
+<div class="table-container"><table id="Ex34" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex34.m1" class="ltx_Math" alttext="\frac{f(z)}{z-a}=\frac{c_{-m}}{(z-a)^{m+1}}+\frac{c_{-m+1}}{(z-a)^{m}}+\dots+%
+\frac{c_{-1}}{(z-a)^{2}}+\frac{c_{0}}{z-a}+c_{1}+c_{2}(z-a)+\cdots" display="block"><mrow><mfrac linethickness="0.6px"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow></mfrac><mo>=</mo><mrow><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mo>−</mo><mi>m</mi></mrow></msub><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></msup></mfrac><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mrow><mo>−</mo><mi>m</mi></mrow><mo>+</mo><mn>1</mn></mrow></msub><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow><mi>m</mi></msup></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>c</mi><mrow><mo>−</mo><mn>1</mn></mrow></msub><msup><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup></mfrac><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>c</mi><mn>0</mn></msub><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow></mfrac><mo>+</mo><msub><mi>c</mi><mn>1</mn></msub><mo>+</mo><mrow><msub><mi>c</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Because <math id="S3.Thmtheorem5.p4.m4" class="ltx_Math" alttext="\frac{f(z)}{z-a}" display="inline"><mfrac linethickness="0.6px"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow></mfrac></math> has no other poles in <math id="S3.Thmtheorem5.p4.m5" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> except at <math id="S3.Thmtheorem5.p4.m6" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>,
+the residue theorem immediately tells us the integral
+<math id="S3.Thmtheorem5.p4.m7" class="ltx_Math" alttext="\frac{1}{2\pi i}\oint_{\gamma}\frac{f(z)}{z-a}\;dz" display="inline"><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mfrac linethickness="0.6px"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow></math> equals <math id="S3.Thmtheorem5.p4.m8" class="ltx_Math" alttext="\operatorname{Res}(\frac{f(z)}{z-a};a)" display="inline"><mrow><mi>Res</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mfrac linethickness="0.6px"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>z</mi><mo>−</mo><mi>a</mi></mrow></mfrac><mo>;</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+which equals <math id="S3.Thmtheorem5.p4.m9" class="ltx_Math" alttext="c_{0}" display="inline"><msub><mi>c</mi><mn>0</mn></msub></math> looking at the Laurent series above.</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">32.4 </span>Argument principle</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">One tricky application is as follows.
+Given a polynomial <math id="S4.p1.m1" class="ltx_Math" alttext="P(x)=(x-a_{1})^{e_{1}}(x-a_{2})^{e_{2}}\dots(x-a_{n})^{e_{n}}" display="inline"><mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><msub><mi>e</mi><mn>1</mn></msub></msup><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><msub><mi>a</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><msub><mi>e</mi><mn>2</mn></msub></msup><mo>⁢</mo><mi mathvariant="normal">…</mi><mo>⁢</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><msub><mi>a</mi><mi>n</mi></msub></mrow><mo stretchy="false">)</mo></mrow><msub><mi>e</mi><mi>n</mi></msub></msup></mrow></mrow></math>, you might know that we have</p>
+<div class="table-container"><table id="Ex35" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex35.m1" class="ltx_Math" alttext="\frac{P^{\prime}(x)}{P(x)}=\frac{e_{1}}{x-a_{1}}+\frac{e_{2}}{x-a_{2}}+\dots+%
+\frac{e_{n}}{x-a_{n}}." display="block"><mrow><mrow><mfrac linethickness="0.6px"><mrow><msup><mi>P</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>=</mo><mrow><mfrac linethickness="0.6px"><msub><mi>e</mi><mn>1</mn></msub><mrow><mi>x</mi><mo>−</mo><msub><mi>a</mi><mn>1</mn></msub></mrow></mfrac><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>e</mi><mn>2</mn></msub><mrow><mi>x</mi><mo>−</mo><msub><mi>a</mi><mn>2</mn></msub></mrow></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>e</mi><mi>n</mi></msub><mrow><mi>x</mi><mo>−</mo><msub><mi>a</mi><mi>n</mi></msub></mrow></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The quantity <math id="S4.p1.m2" class="ltx_Math" alttext="P^{\prime}/P" display="inline"><mrow><msup><mi>P</mi><mo>′</mo></msup><mo>/</mo><mi>P</mi></mrow></math> is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> logarithmic derivative</span>, as it is the derivative of <math id="S4.p1.m3" class="ltx_Math" alttext="\log P" display="inline"><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>P</mi></mrow></math>.
+This trick allows us to convert zeros of <math id="S4.p1.m4" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> into poles of <math id="S4.p1.m5" class="ltx_Math" alttext="P^{\prime}/P" display="inline"><mrow><msup><mi>P</mi><mo>′</mo></msup><mo>/</mo><mi>P</mi></mrow></math> with order <math id="S4.p1.m6" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>;
+moreover the residues of these poles are the multiplicities of the roots.</p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">In an analogous fashion, we can obtain a similar result for any meromorphic function <math id="S4.p2.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 32.4.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(The logarithmic derivative)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> be a meromorphic function.
+Then the logarithmic derivative <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="f^{\prime}/f" display="inline"><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>/</mo><mi>f</mi></mrow></math> is meromorphic as a function from <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> to <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>;
+its only poles are:</p>
+<ol id="S4.I1" class="ltx_enumerate">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(i)</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">A pole at each zero of <math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> whose residue is the multiplicity, and</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(ii)</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">A pole at each pole of <math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> whose residue is the negative of the pole’s order.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Again, you can almost think of a pole as a zero of negative multiplicity.
+This spirit is exemplified below.</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Dead easy with Laurent series.
+Let <math id="S4.p4.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> be a zero/pole of <math id="S4.p4.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, and WLOG set <math id="S4.p4.m3" class="ltx_Math" alttext="a=0" display="inline"><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow></math> for convenience.
+We take the Laurent series at zero to get</p>
+<div class="table-container"><table id="Ex36" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex36.m1" class="ltx_Math" alttext="f(z)=c_{k}z^{k}+c_{k+1}z^{k+1}+\dots" display="block"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>c</mi><mi>k</mi></msub><mo>⁢</mo><msup><mi>z</mi><mi>k</mi></msup></mrow><mo>+</mo><mrow><msub><mi>c</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⁢</mo><msup><mi>z</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><mo>+</mo><mi mathvariant="normal">…</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S4.p4.m4" class="ltx_Math" alttext="k&lt;0" display="inline"><mrow><mi>k</mi><mo>&lt;</mo><mn>0</mn></mrow></math> if <math id="S4.p4.m5" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> is a pole and <math id="S4.p4.m6" class="ltx_Math" alttext="k&gt;0" display="inline"><mrow><mi>k</mi><mo>&gt;</mo><mn>0</mn></mrow></math> if <math id="S4.p4.m7" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> is a zero.
+Taking the derivative gives</p>
+<div class="table-container"><table id="Ex37" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex37.m1" class="ltx_Math" alttext="f^{\prime}(z)=kc_{k}z^{k-1}+(k+1)c_{k+1}z^{k}+\dots." display="block"><mrow><mrow><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>k</mi><mo>⁢</mo><msub><mi>c</mi><mi>k</mi></msub><mo>⁢</mo><msup><mi>z</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>c</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⁢</mo><msup><mi>z</mi><mi>k</mi></msup></mrow><mo>+</mo><mi mathvariant="normal">…</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Now look at <math id="S4.p4.m8" class="ltx_Math" alttext="f^{\prime}/f" display="inline"><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>/</mo><mi>f</mi></mrow></math>; with some computation, it equals</p>
+<div class="table-container"><table id="Ex38" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex38.m1" class="ltx_Math" alttext="\frac{f^{\prime}(z)}{f(z)}=\frac{1}{z}\frac{kc_{k}+(k+1)c_{k+1}z+\dots}{c_{k}+%
+c_{k+1}z+\dots}." display="block"><mrow><mrow><mfrac linethickness="0.6px"><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac><mo>⁢</mo><mfrac linethickness="0.6px"><mrow><mrow><mi>k</mi><mo>⁢</mo><msub><mi>c</mi><mi>k</mi></msub></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>c</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⁢</mo><mi>z</mi></mrow><mo>+</mo><mi mathvariant="normal">…</mi></mrow><mrow><msub><mi>c</mi><mi>k</mi></msub><mo>+</mo><mrow><msub><mi>c</mi><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>⁢</mo><mi>z</mi></mrow><mo>+</mo><mi mathvariant="normal">…</mi></mrow></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So we get a simple pole at <math id="S4.p4.m9" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>, with residue <math id="S4.p4.m10" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Using this trick you can determine the number of zeros and poles inside a regular closed curve,
+using the so-called Argument Principle.<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>So-called because the <em class="ltx_emph ltx_font_italic">argument</em> of a complex
+number <math id="footnote2.m1" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> is the angle formed by the real axis and the vector representing <math id="footnote2.m2" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>, not because you
+need to use any argument. If <math id="footnote2.m3" class="ltx_Math" alttext="z\in\mathbb{C}" display="inline"><mrow><mi>z</mi><mo>∈</mo><mi>ℂ</mi></mrow></math> is interpreted as a point in <math id="footnote2.m4" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>,
+the argument of <math id="footnote2.m5" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> is the same as <math id="footnote2.m6" class="ltx_Math" alttext="\theta(z)" display="inline"><mrow><mi>θ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></math> defined in <a href="../diffgeo/forms-diffgeo.html#ex:angle_form" title="Example 44.7.4 (The angle form) ‣ 44.7 Closed and exact forms ‣ Chapter 44 Differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Example</span> <span class="ltx_text ltx_ref_tag">44.7.4</span></a>.</span></span></span></p>
+</div>
+<div id="thm:arg_principle" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 32.4.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Argument principle)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> be a regular curve.
+Suppose <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="f\colon U\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> is meromorphic inside and on <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>, and
+none of its zeros or poles lie on <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>.
+Then</p>
+<div class="table-container"><table id="Ex39" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex39.m1" class="ltx_Math" alttext="\frac{1}{2\pi i}\oint_{\gamma}\frac{f^{\prime}}{f}\;dz=\frac{1}{2\pi i}\oint_{%
+f\circ\gamma}\frac{1}{z}\;dz=Z-P" display="block"><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mfrac linethickness="0.6px"><msup><mi>f</mi><mo>′</mo></msup><mi>f</mi></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>γ</mi></mrow></msub><mrow><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow><mo>=</mo><mrow><mi>Z</mi><mo>−</mo><mi>P</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S4.Thmtheorem2.p1.m5" class="ltx_Math" alttext="Z" display="inline"><mi>Z</mi></math> is the number of zeros inside <math id="S4.Thmtheorem2.p1.m6" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> (counted with multiplicity)
+and <math id="S4.Thmtheorem2.p1.m7" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> is the number of poles inside <math id="S4.Thmtheorem2.p1.m8" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> (again with multiplicity).</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">Immediate by applying Cauchy’s residue theorem alongside the preceding proposition.
+In fact you can generalize to any curve <math id="S4.p6.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> via the winding number:
+the integral is</p>
+<div class="table-container"><table id="Ex40" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex40.m1" class="ltx_Math" alttext="\frac{1}{2\pi i}\oint_{\gamma}\frac{f^{\prime}}{f}\;dz=\sum_{\text{zero $z$}}%
+\operatorname{\mathbf{I}}(\gamma,z)-\sum_{\text{pole $p$}}\operatorname{%
+\mathbf{I}}(\gamma,p)" display="block"><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mfrac linethickness="0.6px"><msup><mi>f</mi><mo>′</mo></msup><mi>f</mi></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mrow><munder><mo movablelimits="false">∑</mo><mrow><mtext>zero </mtext><mi>z</mi></mrow></munder><mrow><mi>𝐈</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="0.055em">−</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mtext>pole </mtext><mi>p</mi></mrow></munder><mrow><mi>𝐈</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>γ</mi><mo>,</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where the sums are with multiplicity.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">Thus the Argument Principle allows one to count zeros and poles inside any region of choice.</p>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">Computers can use this to get information on functions whose values can be computed but whose behavior as a whole
+is hard to understand.
+Suppose you have a holomorphic function <math id="S4.p8.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, and you want to understand where its zeros are.
+Then just start picking various circles <math id="S4.p8.m2" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>.
+Even with machine rounding error, the integral will be close enough to the true integer value that
+we can decide how many zeros are in any given circle.
+Numerical evidence for the Riemann Hypothesis (concerning the zeros of the Riemann zeta function)
+can be obtained in this way.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">32.5 </span>Digression: the Argument Principle viewed geometrically</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">There is another, more geometric, way to understand the Argument Principle.</p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">Assume a function <math id="S5.p2.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is holomorphic on a connected open set <math id="S5.p2.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> containing <math id="S5.p2.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>,
+and possibly has a zero or a
+pole at <math id="S5.p2.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>. Let <math id="S5.p2.m5" class="ltx_Math" alttext="\gamma\colon[0,2\pi]\to U" display="inline"><mrow><mi>γ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>U</mi></mrow></mrow></math> be some curve contained in <math id="S5.p2.m6" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>, such that <math id="S5.p2.m7" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> is
+not in the image of the curve.</p>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.p3.m1" class="ltx_Math" alttext="a=\gamma(0)" display="inline"><mrow><mi>a</mi><mo>=</mo><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math> be the starting point of <math id="S5.p3.m2" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>, and <math id="S5.p3.m3" class="ltx_Math" alttext="b=\gamma(2\pi)" display="inline"><mrow><mi>b</mi><mo>=</mo><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> be the ending
+point of <math id="S5.p3.m4" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>.</p>
+</div>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">We all know that <math id="S5.p4.m1" class="ltx_Math" alttext="z\mapsto\log z" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>z</mi></mrow></mrow></math> is not an actual function — even ignoring the singularity
+at <math id="S5.p4.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, it has a branch cut (we will formally handle this in <a href="ch_complex_log.html" title="Chapter 33 Holomorphic square roots and logarithms ‣ Part IX Complex Analysis ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Chapter</span> <span class="ltx_text ltx_ref_tag">33</span></a>).</p>
+</div>
+<div id="S5.p5" class="ltx_para">
+<p class="ltx_p">Nevertheless, if we close our eyes and shuffling some symbols around, we get:</p>
+<div class="table-container"><table id="A5.S3.EGx93" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex41"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex41.m1" class="ltx_Math" alttext="\displaystyle\frac{1}{2\pi i}\oint_{\gamma}\frac{f^{\prime}(z)}{f(z)}\;dz" display="inline"><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac></mstyle><mo>⁢</mo><mrow><mstyle displaystyle="true"><msub><mo>∮</mo><mi>γ</mi></msub></mstyle><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mstyle><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex41.m2" class="ltx_Math" alttext="\displaystyle=\frac{1}{2\pi i}\oint_{\gamma}\frac{d}{dz}\log f(z)\;dz" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac></mstyle><mo>⁢</mo><mrow><mstyle displaystyle="true"><msub><mo>∮</mo><mi>γ</mi></msub></mstyle><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mi>d</mi><mrow><mi>d</mi><mo>⁢</mo><mi>z</mi></mrow></mfrac></mstyle><mo lspace="0.167em">⁢</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex42"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex42.m1" class="ltx_Math" alttext="\displaystyle=\frac{1}{2\pi i}\oint_{\gamma}d(\log f(z))" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac></mstyle><mo>⁢</mo><mrow><mstyle displaystyle="true"><msub><mo>∮</mo><mi>γ</mi></msub></mstyle><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex43"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex43.m1" class="ltx_Math" alttext="\displaystyle=\frac{1}{2\pi i}\cdot(\log f(b)-\log f(a))." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac></mstyle><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Miraculously, everything seems to cancel out so nicely! This is not a coincidence.</p>
+</div>
+<div id="S5.p6" class="ltx_para">
+<p class="ltx_p">Now, if <math id="S5.p6.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> is a circle, then <math id="S5.p6.m2" class="ltx_Math" alttext="a=b" display="inline"><mrow><mi>a</mi><mo>=</mo><mi>b</mi></mrow></math>, so the formula above seemingly states that the
+integral will be <math id="S5.p6.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>?
+Fortunately for us, no — <math id="S5.p6.m4" class="ltx_Math" alttext="\log" display="inline"><mi>log</mi></math> is in fact not a function.</p>
+</div>
+<div id="S5.p7" class="ltx_para">
+<p class="ltx_p">So, does the formula above means anything?
+It does! While we won’t prove this rigorously, the point is that:</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 32.5.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">If we let a point <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> smoothly moves from <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> to <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>, and let <math id="S5.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\log f(p)" display="inline"><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> follows the value,
+then <math id="S5.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\log f(b)-\log f(a)" display="inline"><mrow><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> represents the change in value of <math id="S5.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\log f(p)" display="inline"><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S5.p8" class="ltx_para">
+<p class="ltx_p">In the notation of <a href="../algtop1/covering-projections.html#sec:lifting_thm" title="66.2 Lifting theorem ‣ Chapter 66 Covering projections ‣ Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Section</span> <span class="ltx_text ltx_ref_tag">66.2</span></a>,
+we have the mouse moves along <math id="S5.p8.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> from <math id="S5.p8.m2" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> to <math id="S5.p8.m3" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>, the first robot moves along <math id="S5.p8.m4" class="ltx_Math" alttext="f\circ\gamma" display="inline"><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>γ</mi></mrow></math>
+from <math id="S5.p8.m5" class="ltx_Math" alttext="f(a)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></math> to <math id="S5.p8.m6" class="ltx_Math" alttext="f(b)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></math>, and the second robot moves from <math id="S5.p8.m7" class="ltx_Math" alttext="\log f(a)" display="inline"><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></math> to <math id="S5.p8.m8" class="ltx_Math" alttext="\log f(b)" display="inline"><mrow><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S5.p9" class="ltx_para">
+<p class="ltx_p">If we forget about the mouse for a moment, note that:</p>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 32.5.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The quantity <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\frac{1}{2\pi i}\oint_{\gamma}\frac{f^{\prime}(z)}{f(z)}\;dz" display="inline"><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>i</mi></mrow></mfrac><mo>⁢</mo><mrow><msub><mo>∮</mo><mi>γ</mi></msub><mrow><mfrac linethickness="0.6px"><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow></math> is equal to
+the number of times the <em class="ltx_emph ltx_font_italic">first</em> robot winds around the origin.</p>
+</div>
+</div>
+<div id="S5.p10" class="ltx_para">
+<p class="ltx_p">That is, <math id="S5.p10.m1" class="ltx_Math" alttext="\operatorname{\mathbf{I}}(f\circ\gamma,0)" display="inline"><mrow><mi>𝐈</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>γ</mi></mrow><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math>. (This is essentially obvious to see, because of all the work we
+have done to prove <math id="S5.p10.m2" class="ltx_Math" alttext="\oint d\log z=\oint\frac{1}{z}\;dz" display="inline"><mrow><mrow><mo>∮</mo><mrow><mi>d</mi><mo lspace="0.167em">⁢</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mi>z</mi></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mo>∮</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>z</mi></mrow></mrow></mrow></mrow></math> equals the winding number.)</p>
+</div>
+<div id="S5.p11" class="ltx_para">
+<p class="ltx_p">Finally, if we look at some simple examples like <math id="S5.p11.m1" class="ltx_Math" alttext="z^{3}" display="inline"><msup><mi>z</mi><mn>3</mn></msup></math>:</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='170.0554pt' height='170.055399pt' viewBox='141.437149 138.885968 170.0554 170.055399'>
+<defs>
+<path id='asymptote-32-1-g1-48' d='M3.897385-2.542466C3.897385-3.395268 3.809714-3.913325 3.5467-4.423412C3.196015-5.124782 2.550436-5.300125 2.11208-5.300125C1.107846-5.300125 .74122-4.550934 .629639-4.327771C.342715-3.745953 .326775-2.956912 .326775-2.542466C.326775-2.016438 .350685-1.211457 .73325-.573848C1.099875 .01594 1.689664 .167372 2.11208 .167372C2.494645 .167372 3.180075 .047821 3.57858-.74122C3.873474-1.315068 3.897385-2.024408 3.897385-2.542466ZM2.11208-.055791C1.841096-.055791 1.291158-.183313 1.123786-1.020174C1.036115-1.474471 1.036115-2.223661 1.036115-2.638107C1.036115-3.188045 1.036115-3.745953 1.123786-4.184309C1.291158-4.99726 1.912827-5.076961 2.11208-5.076961C2.383064-5.076961 2.933001-4.941469 3.092403-4.216189C3.188045-3.777833 3.188045-3.180075 3.188045-2.638107C3.188045-2.16787 3.188045-1.45056 3.092403-1.004234C2.925031-.167372 2.375093-.055791 2.11208-.055791Z'/>
+<path id='asymptote-32-1-g1-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-32-1-g1-51' d='M2.016438-2.662017C2.646077-2.662017 3.044583-2.199751 3.044583-1.362889C3.044583-.366625 2.478705-.071731 2.056289-.071731C1.617933-.071731 1.020174-.231133 .74122-.653549C1.028144-.653549 1.227397-.836862 1.227397-1.099875C1.227397-1.354919 1.044085-1.538232 .789041-1.538232C.573848-1.538232 .350685-1.40274 .350685-1.083935C.350685-.326775 1.163636 .167372 2.072229 .167372C3.132254 .167372 3.873474-.565878 3.873474-1.362889C3.873474-2.024408 3.347447-2.630137 2.534496-2.805479C3.164134-3.028643 3.634371-3.57061 3.634371-4.208219S2.917061-5.300125 2.088169-5.300125C1.235367-5.300125 .589788-4.837858 .589788-4.23213C.589788-3.937235 .789041-3.809714 .996264-3.809714C1.243337-3.809714 1.40274-3.985056 1.40274-4.216189C1.40274-4.511083 1.147696-4.622665 .972354-4.630635C1.307098-5.068991 1.920797-5.092902 2.064259-5.092902C2.271482-5.092902 2.87721-5.029141 2.87721-4.208219C2.87721-3.650311 2.646077-3.315567 2.534496-3.188045C2.295392-2.940971 2.11208-2.925031 1.625903-2.893151C1.474471-2.885181 1.41071-2.87721 1.41071-2.773599C1.41071-2.662017 1.482441-2.662017 1.617933-2.662017H2.016438Z'/>
+<path id='asymptote-32-1-g1-54' d='M1.099875-2.638107C1.099875-3.299626 1.155666-3.881445 1.44259-4.367621C1.681694-4.766127 2.088169-5.092902 2.590286-5.092902C2.749689-5.092902 3.116314-5.068991 3.299626-4.790037C2.940971-4.774097 2.909091-4.503113 2.909091-4.415442C2.909091-4.176339 3.092403-4.040847 3.283686-4.040847C3.427148-4.040847 3.658281-4.128518 3.658281-4.431382C3.658281-4.909589 3.299626-5.300125 2.582316-5.300125C1.474471-5.300125 .350685-4.24807 .350685-2.526526C.350685-.366625 1.354919 .167372 2.12802 .167372C2.510585 .167372 2.925031 .063761 3.283686-.278954C3.602491-.589788 3.873474-.924533 3.873474-1.617933C3.873474-2.662017 3.084433-3.395268 2.199751-3.395268C1.625903-3.395268 1.283188-3.028643 1.099875-2.638107ZM2.12802-.071731C1.705604-.071731 1.44259-.366625 1.323039-.589788C1.139726-.948443 1.123786-1.490411 1.123786-1.793275C1.123786-2.582316 1.554172-3.172105 2.16787-3.172105C2.566376-3.172105 2.805479-2.964882 2.956912-2.685928C3.124284-2.391034 3.124284-2.032379 3.124284-1.625903S3.124284-.868742 2.964882-.581818C2.757659-.215193 2.478705-.071731 2.12802-.071731Z'/>
+<path id='asymptote-32-1-g0-122' d='M1.450909-.905454C2.039999-1.538181 2.356363-1.810909 2.74909-2.14909C2.74909-2.159999 3.425454-2.738181 3.818181-3.130908C4.854544-4.145453 5.094544-4.66909 5.094544-4.712726C5.094544-4.821817 4.996362-4.821817 4.974544-4.821817C4.89818-4.821817 4.865453-4.799999 4.810908-4.701817C4.483635-4.178181 4.254544-4.003635 3.992726-4.003635S3.599999-4.167272 3.436363-4.352726C3.22909-4.603635 3.043636-4.821817 2.683636-4.821817C1.865454-4.821817 1.363636-3.807272 1.363636-3.578181C1.363636-3.523635 1.396363-3.458181 1.494545-3.458181S1.614545-3.512726 1.636363-3.578181C1.843636-4.079999 2.476363-4.090908 2.563636-4.090908C2.792726-4.090908 2.999999-4.014544 3.250908-3.927272C3.687272-3.763635 3.807272-3.763635 4.090908-3.763635C3.698181-3.294545 2.781817-2.50909 2.574545-2.334545L1.592727-1.418181C.850909-.687273 .469091-.065455 .469091 .010909C.469091 .12 .578182 .12 .6 .12C.687273 .12 .709091 .098182 .774545-.021818C1.025454-.403636 1.352727-.698182 1.701818-.698182C1.952727-.698182 2.061818-.6 2.334545-.283636C2.519999-.054545 2.716363 .12 3.032726 .12C4.112726 .12 4.745453-1.265454 4.745453-1.56C4.745453-1.614545 4.701817-1.66909 4.614544-1.66909C4.516362-1.66909 4.494544-1.603636 4.461817-1.527272C4.210908-.818182 3.512726-.610909 3.152726-.610909C2.934545-.610909 2.738181-.676363 2.50909-.752727C2.138181-.894545 1.974545-.938182 1.745454-.938182C1.723636-.938182 1.54909-.938182 1.450909-.905454Z'/>
+<path id='asymptote-32-1-g2-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-32-1-g2-73' d='M2.454545-6.599998C2.454545-6.992725 2.487272-7.112725 3.34909-7.112725H3.632726V-7.450907C3.250908-7.41818 2.38909-7.41818 1.974545-7.41818C1.54909-7.41818 .687273-7.41818 .305454-7.450907V-7.112725H.589091C1.450909-7.112725 1.483636-6.992725 1.483636-6.599998V-.850909C1.483636-.458182 1.450909-.338182 .589091-.338182H.305454V0C.687273-.032727 1.54909-.032727 1.963636-.032727C2.38909-.032727 3.250908-.032727 3.632726 0V-.338182H3.34909C2.487272-.338182 2.454545-.458182 2.454545-.850909V-6.599998Z'/>
+<path id='asymptote-32-1-g2-82' d='M2.443636-3.850908V-6.676362C2.443636-6.927271 2.443636-7.05818 2.683636-7.090907C2.792726-7.112725 3.10909-7.112725 3.327272-7.112725C4.30909-7.112725 5.530908-7.069089 5.530908-5.487271C5.530908-4.734544 5.269089-3.850908 3.654544-3.850908H2.443636ZM4.745453-3.70909C5.803635-3.970908 6.654544-4.636362 6.654544-5.487271C6.654544-6.534544 5.410908-7.450907 3.807272-7.450907H.381818V-7.112725H.643636C1.483636-7.112725 1.505454-6.992725 1.505454-6.599998V-.850909C1.505454-.458182 1.483636-.338182 .643636-.338182H.381818V0C.774545-.032727 1.54909-.032727 1.974545-.032727S3.174545-.032727 3.567272 0V-.338182H3.305454C2.465454-.338182 2.443636-.458182 2.443636-.850909V-3.610908H3.698181C3.872726-3.610908 4.330908-3.610908 4.712726-3.239999C5.127271-2.847272 5.127271-2.50909 5.127271-1.778181C5.127271-1.069091 5.127271-.632727 5.574544-.218182C6.021817 .174545 6.621816 .24 6.949089 .24C7.799998 .24 7.985452-.654545 7.985452-.96C7.985452-1.025454 7.985452-1.145454 7.843634-1.145454C7.723634-1.145454 7.723634-1.047272 7.712725-.970909C7.647271-.196364 7.265453 0 6.992725 0C6.45818 0 6.370907-.556363 6.21818-1.570909L6.076362-2.443636C5.879998-3.141817 5.345453-3.501817 4.745453-3.70909Z'/>
+<path id='asymptote-32-1-g2-101' d='M1.221818-2.74909C1.287272-4.374544 2.203636-4.647271 2.574545-4.647271C3.698181-4.647271 3.807272-3.174545 3.807272-2.74909H1.221818ZM1.210909-2.519999H4.254544C4.494544-2.519999 4.527271-2.519999 4.527271-2.74909C4.527271-3.82909 3.938181-4.887271 2.574545-4.887271C1.309091-4.887271 .305454-3.763635 .305454-2.399999C.305454-.938182 1.450909 .12 2.705454 .12C4.036363 .12 4.527271-1.090909 4.527271-1.298181C4.527271-1.407272 4.439999-1.429091 4.385453-1.429091C4.287272-1.429091 4.265453-1.363636 4.243635-1.276363C3.861817-.152727 2.879999-.152727 2.770908-.152727C2.225454-.152727 1.78909-.48 1.538181-.883636C1.210909-1.407272 1.210909-2.127272 1.210909-2.519999Z'/>
+<path id='asymptote-32-1-g2-109' d='M1.2-3.752726V-.829091C1.2-.338182 1.08-.338182 .349091-.338182V0C.730909-.010909 1.287272-.032727 1.581818-.032727C1.865454-.032727 2.432727-.010909 2.803636 0V-.338182C2.072727-.338182 1.952727-.338182 1.952727-.829091V-2.836363C1.952727-3.970908 2.727272-4.581817 3.425454-4.581817C4.112726-4.581817 4.232726-3.992726 4.232726-3.370908V-.829091C4.232726-.338182 4.112726-.338182 3.381817-.338182V0C3.763635-.010909 4.319999-.032727 4.614544-.032727C4.89818-.032727 5.465453-.010909 5.836362 0V-.338182C5.105453-.338182 4.985453-.338182 4.985453-.829091V-2.836363C4.985453-3.970908 5.759998-4.581817 6.45818-4.581817C7.145453-4.581817 7.265453-3.992726 7.265453-3.370908V-.829091C7.265453-.338182 7.145453-.338182 6.414544-.338182V0C6.796362-.010909 7.352725-.032727 7.647271-.032727C7.930907-.032727 8.498179-.010909 8.869088 0V-.338182C8.301816-.338182 8.029089-.338182 8.01818-.665454V-2.74909C8.01818-3.687272 8.01818-4.025453 7.679998-4.418181C7.527271-4.603635 7.167271-4.821817 6.534544-4.821817C5.61818-4.821817 5.13818-4.167272 4.952726-3.752726C4.799999-4.701817 3.992726-4.821817 3.501817-4.821817C2.705454-4.821817 2.192727-4.352726 1.887272-3.676363V-4.821817L.349091-4.701817V-4.363635C1.112727-4.363635 1.2-4.287272 1.2-3.752726Z'/>
+</defs>
+<g id='asymptote-32-1-page1'>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M85.3466 7.77906V162.914' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M85.3466 .250937L83.3294 7.77906H87.3637L85.3466 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M85.3466 .250937L83.3294 7.77906H87.3637L85.3466 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M85.3466 170.442L87.3637 162.914H83.3294L85.3466 170.442Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M85.3466 170.442L87.3637 162.914H83.3294L85.3466 170.442Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M82.3353 160.987H88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M82.3353 142.077H88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M82.3353 123.167H88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M82.3353 104.257H88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M82.3353 85.3466H88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M82.3353 66.4364H88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M82.3353 47.5263H88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M82.3353 28.6161H88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M82.3353 9.70601H88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='206.869853' y='147.926386' href='#asymptote-32-1-g2-73'/>
+<use x='210.809251' y='147.926386' href='#asymptote-32-1-g2-109'/>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M162.914 85.3466H7.77906' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M170.442 85.3466L162.914 83.3294V87.3637L170.442 85.3466Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M170.442 85.3466L162.914 83.3294V87.3637L170.442 85.3466Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M.250937 85.3466L7.77906 87.3637V83.3294L.250937 85.3466Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M.250937 85.3466L7.77906 87.3637V83.3294L.250937 85.3466Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M9.70601 82.3353V88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M28.6161 82.3353V88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M47.5263 82.3353V88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M66.4364 82.3353V88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M85.3466 82.3353V88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M104.257 82.3353V88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M123.167 82.3353V88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M142.077 82.3353V88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M160.987 82.3353V88.3578' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='296.971668' y='237.876685' href='#asymptote-32-1-g2-82'/>
+<use x='305.001985' y='237.876685' href='#asymptote-32-1-g2-101'/>
+<use x='228.815191' y='233.230488' href='#asymptote-32-1-g2-48'/>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='85.3466' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='108.039' cy='85.3466' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='118.023' cy='85.3466' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='108.039' cy='85.3466' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='102.035' cy='68.6581' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='118.023' cy='85.3466' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='59.3517' cy='59.3517' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='108.039' cy='85.3466' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='102.035' cy='68.6581' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='60.8003' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='118.023' cy='85.3466' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='59.3517' cy='59.3517' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='126.705' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='108.039' cy='85.3466' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='102.035' cy='68.6581' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='60.8003' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='67.2946' cy='67.2946' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='118.023' cy='85.3466' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='59.3517' cy='59.3517' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='126.705' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='118.248' cy='52.445' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='108.039' cy='85.3466' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='102.035' cy='68.6581' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='60.8003' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='67.2946' cy='67.2946' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='58.7947' cy='85.3466' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='118.023' cy='85.3466' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='59.3517' cy='59.3517' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='126.705' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='118.248' cy='52.445' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='32.9992' cy='85.3466' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='108.039' cy='85.3466' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='102.035' cy='68.6581' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='60.8003' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='67.2946' cy='67.2946' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='58.7947' cy='85.3466' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='65.8196' cy='104.874' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='118.023' cy='85.3466' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='59.3517' cy='59.3517' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='126.705' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='118.248' cy='52.445' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='32.9992' cy='85.3466' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='126.99' cy='126.99' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='108.039' cy='85.3466' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='102.035' cy='68.6581' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='60.8003' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='67.2946' cy='67.2946' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='58.7947' cy='85.3466' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='65.8196' cy='104.874' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='114.068' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='118.023' cy='85.3466' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='59.3517' cy='59.3517' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='126.705' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='118.248' cy='52.445' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='32.9992' cy='85.3466' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='126.99' cy='126.99' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<circle cx='85.3466' cy='19.0909' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M108.039 85.3466C108.302 79.2119 106.146 73.2192 102.035 68.6581C97.7549 63.9093 91.7328 61.1158 85.3466 60.8003C78.7077 60.4723 72.2252 62.8357 67.2946 67.2946C62.1662 71.9322 59.1362 78.4399 58.7947 85.3466C58.4396 92.5267 61.0055 99.5332 65.8196 104.874C70.8318 110.434 77.8678 113.746 85.3466 114.068' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(141.437 138.886)scale(.996264)'>
+<path d='M118.023 85.3466C117.508 55.2373 82.0003 39.5054 59.3517 59.3517C33.6114 81.9071 49.4237 125.195 85.3466 126.705C123.681 128.317 144.917 81.9199 118.248 52.445C89.1625 20.2992 34.9375 40.4217 32.9992 85.3466C30.9263 133.39 89.1816 160.298 126.99 126.99C169.956 89.1378 142.602 18.2627 85.3466 19.0909' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='243.933379' y='236.267227' href='#asymptote-32-1-g0-122'/>
+<use x='249.006648' y='239.198085' href='#asymptote-32-1-g1-48'/>
+<use x='230.94265' y='214.271008' href='#asymptote-32-1-g0-122'/>
+<use x='236.015919' y='215.907358' href='#asymptote-32-1-g1-49'/>
+<use x='229.787163' y='253.997917' href='#asymptote-32-1-g0-122'/>
+<use x='234.860431' y='255.634267' href='#asymptote-32-1-g1-54'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='253.880635' y='236.267227' href='#asymptote-32-1-g0-122'/>
+<use x='259.433687' y='232.308409' href='#asymptote-32-1-g1-51'/>
+<use x='258.953904' y='239.198085' href='#asymptote-32-1-g1-48'/>
+<use x='187.939027' y='192.678502' href='#asymptote-32-1-g0-122'/>
+<use x='193.492079' y='188.719685' href='#asymptote-32-1-g1-51'/>
+<use x='193.012296' y='195.60936' href='#asymptote-32-1-g1-49'/>
+<use x='212.864812' y='160.927604' href='#asymptote-32-1-g0-122'/>
+<use x='218.417864' y='156.968786' href='#asymptote-32-1-g1-51'/>
+<use x='217.938081' y='163.858462' href='#asymptote-32-1-g1-54'/>
+</g>
+</g>
+</svg>
+</div>
+<p class="ltx_p">We can immediately see the relation between the winding number and the multiplicity of a zero:</p>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 32.5.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S5.Thmtheorem3.p1.m1" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> moves around the origin in a circle once, then <math id="S5.Thmtheorem3.p1.m2" class="ltx_Math" alttext="z^{n}" display="inline"><msup><mi>z</mi><mi>n</mi></msup></math> moves around the origin in a circle
+<math id="S5.Thmtheorem3.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> times.</p>
+</div>
+</div>
+<div id="S5.p12" class="ltx_para">
+<p class="ltx_p"><math id="S5.p12.m1" class="ltx_Math" alttext="z^{-n}" display="inline"><msup><mi>z</mi><mrow><mo>−</mo><mi>n</mi></mrow></msup></math> is not much different — it moves around the origin in a circle <math id="S5.p12.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> times, just in the
+opposite direction.</p>
+</div>
+<div id="S5.p13" class="ltx_para">
+<p class="ltx_p">Piecing all these pieces together, we get the Argument Principle — the logarithmic derivative can
+be used to count the multiplicity of the roots and the order of the poles.</p>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">32.6 </span>Philosophy: why are holomorphic functions so nice?</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p">All the fun we’ve had with holomorphic and meromorphic functions comes down to the fact that
+complex differentiability is such a strong requirement.
+It’s a small miracle that <math id="S6.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>, which <em class="ltx_emph ltx_font_italic">a priori</em> looks only like <math id="S6.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>,
+is in fact a field.
+Moreover, <math id="S6.p1.m3" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> has the nice property that one can draw nontrivial loops
+(it’s also true for real functions that <math id="S6.p1.m4" class="ltx_Math" alttext="\int_{a}^{a}f\;dx=0" display="inline"><mrow><mrow><msubsup><mo>∫</mo><mi>a</mi><mi>a</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>, but this is not so interesting!),
+and this makes the theory much more interesting.</p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">As another piece of intuition from Siu<span id="footnote3" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup><span class="ltx_tag ltx_tag_note">3</span>Harvard professor.</span></span></span>:
+If you try to get (left) differentiable functions over <em class="ltx_emph ltx_font_italic">quaternions</em>,
+you find yourself with just linear functions.</p>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">32.7 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 32A</span></span><span class="ltx_text ltx_font_bold"> </span>(Fundamental theorem of algebra)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Prove that if <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is a nonzero polynomial of degree <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>
+then it has <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> roots.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_dproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 32B</span></span><span class="ltx_text ltx_font_bold"> </span>(Rouché’s theorem)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="f,g\colon U\to\mathbb{C}" display="inline"><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> be holomorphic functions,
+where <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> contains the unit disk.
+Suppose that <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="\left\lvert f(z)\right\rvert&gt;\left\lvert g(z)\right\rvert" display="inline"><mrow><mrow><mo>|</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mo>&gt;</mo><mrow><mo>|</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow></mrow></math>
+for all <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> on the unit circle.
+Prove that <math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="Thmproblem2.p1.m6" class="ltx_Math" alttext="f+g" display="inline"><mrow><mi>f</mi><mo>+</mo><mi>g</mi></mrow></math> have the same number of zeros
+which lie strictly inside the unit circle (counting multiplicities).</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 32C</span></span><span class="ltx_text ltx_font_bold"> </span>(Wedge contour)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem3.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem3.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem3.p2" class="ltx_para">
+<p class="ltx_p">For each odd integer <math id="Thmproblem3.p2.m1" class="ltx_Math" alttext="n\geq 3" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>3</mn></mrow></math>, evaluate the improper integral</p>
+<div class="table-container"><table id="Ex44" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex44.m1" class="ltx_Math" alttext="\int_{0}^{\infty}\frac{1}{1+x^{n}}\;dx." display="block"><mrow><mrow><msubsup><mo>∫</mo><mn>0</mn><mi mathvariant="normal">∞</mi></msubsup><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>1</mn><mo>+</mo><msup><mi>x</mi><mi>n</mi></msup></mrow></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This is called a “wedge contour”.
+Try to integrate over a wedge shape
+consisting of a sector of a circle of radius <math id="Thmproblem3.p2.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>,
+with central angle <math id="Thmproblem3.p2.m3" class="ltx_Math" alttext="\frac{2\pi}{n}" display="inline"><mfrac linethickness="0.6px"><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow><mi>n</mi></mfrac></math>.
+Take the limit as <math id="Thmproblem3.p2.m4" class="ltx_Math" alttext="r\to\infty" display="inline"><mrow><mi>r</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></math> then.
+
+
+See <a href="https://math.stackexchange.com/q/242514/229197" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://math.stackexchange.com/q/242514/229197</a>,
+which does it with <math id="Thmproblem3.p2.m5" class="ltx_Math" alttext="2019" display="inline"><mn>2019</mn></math> replaced by <math id="Thmproblem3.p2.m6" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>.</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 32D</span></span><span class="ltx_text ltx_font_bold"> </span>(Another contour)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem4.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem4.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem4.p1.g2" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem4.p2" class="ltx_para">
+<p class="ltx_p">Prove that the integral</p>
+<div class="table-container"><table id="Ex45" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex45.m1" class="ltx_Math" alttext="\int_{-\infty}^{\infty}\frac{\cos x}{x^{2}+1}\;dx" display="block"><mrow><msubsup><mo>∫</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><mi mathvariant="normal">∞</mi></msubsup><mrow><mfrac linethickness="0.6px"><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>x</mi></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">converges and determine its value.
+
+It’s <math id="Thmproblem4.p2.m1" class="ltx_Math" alttext="\lim_{a\to\infty}\int_{-a}^{a}\frac{\cos x}{x^{2}+1}\;dx" display="inline"><mrow><msub><mo>lim</mo><mrow><mi>a</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></msub><mrow><msubsup><mo lspace="0.167em">∫</mo><mrow><mo>−</mo><mi>a</mi></mrow><mi>a</mi></msubsup><mrow><mfrac linethickness="0.6px"><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>x</mi></mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></math>.
+For each <math id="Thmproblem4.p2.m2" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, construct a semicircle.
+
+</p>
+</div>
+</div>
+<div id="Thmproblem5" class="ltx_theorem ltx_theorem_sproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 32E</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem5.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem5.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem5.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p2.m1" class="ltx_Math" alttext="f\colon U\to\mathbb{C}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> be a nonconstant holomorphic function.</p>
+<ol id="S7.I1" class="ltx_enumerate">
+<li id="S7.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S7.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">(Open mapping theorem)
+Prove that <math id="S7.I1.i1.p1.m1" class="ltx_Math" alttext="f^{\text{img}}(U)" display="inline"><mrow><msup><mi>f</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math> is open in <math id="S7.I1.i1.p1.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.<span id="footnote4" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup><span class="ltx_tag ltx_tag_note">4</span>Thus
+the image of <em class="ltx_emph ltx_font_italic">any</em>
+open set <math id="footnote4.m1" class="ltx_Math" alttext="V\subseteq U" display="inline"><mrow><mi>V</mi><mo>⊆</mo><mi>U</mi></mrow></math> is open in <math id="footnote4.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>
+(by repeating the proof for the restriction of <math id="footnote4.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to <math id="footnote4.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>).</span></span></span></p>
+</div>
+</li>
+<li id="S7.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S7.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">(Maximum modulus principle)
+Show that <math id="S7.I1.i2.p1.m1" class="ltx_Math" alttext="\left\lvert f\right\rvert" display="inline"><mrow><mo>|</mo><mi>f</mi><mo>|</mo></mrow></math>
+cannot have a maximum over <math id="S7.I1.i2.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.
+That is, show that for any <math id="S7.I1.i2.p1.m3" class="ltx_Math" alttext="z\in U" display="inline"><mrow><mi>z</mi><mo>∈</mo><mi>U</mi></mrow></math>,
+there is some <math id="S7.I1.i2.p1.m4" class="ltx_Math" alttext="z^{\prime}\in U" display="inline"><mrow><msup><mi>z</mi><mo>′</mo></msup><mo>∈</mo><mi>U</mi></mrow></math> such that
+<math id="S7.I1.i2.p1.m5" class="ltx_Math" alttext="\left\lvert f(z)\right\rvert&lt;\left\lvert f(z^{\prime})\right\rvert" display="inline"><mrow><mrow><mo>|</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mo>&lt;</mo><mrow><mo>|</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>z</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../cmplxana/holomorphic-functions.html">Previous chapter: Holomorphic functions</a><br />
+<a href="../cmplxana/complex-log.html">Next chapter: Holomorphic square roots and logarithms</a>
+</nav>
+
+		</main>
+	</body>
+</html>

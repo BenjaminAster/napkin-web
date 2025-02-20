@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>The ring of integers</title>
+		<meta property="og:title" content="The ring of integers" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../algnt1/algebraic-integers.html">Previous chapter: Algebraic integers</a><br />
+<a href="../algnt1/unique-factorization.html">Next chapter: Unique factorization (finally!)</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 54 </span>The ring of integers</h1>
+
+<section id="sec:norms_traces" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">54.1 </span>Norms and traces</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="a+b\sqrt{2}" display="inline"><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow></math> as an element of <math id="S1.p1.m2" class="ltx_Math" alttext="\mathbb{Q}(\sqrt{2})" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>2</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></math> has norm <math id="S1.p1.m3" class="ltx_Math" alttext="a^{2}-2b^{2}" display="inline"><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow></math> and trace <math id="S1.p1.m4" class="ltx_Math" alttext="2a" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow></math>.</em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Remember when you did olympiads and we had like <math id="S1.p2.m1" class="ltx_Math" alttext="a^{2}+b^{2}" display="inline"><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></math> was the “norm” of <math id="S1.p2.m2" class="ltx_Math" alttext="a+bi" display="inline"><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>i</mi></mrow></mrow></math>?
+Cool, let me tell you what’s actually happening.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">First, let me make precise the notion of a conjugate.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 54.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> be an algebraic number, and let <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="P(x)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> be its minimal polynomial,
+of degree <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>.
+Then the <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> roots of <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> are the (Galois) <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> conjugates</span> of <math id="S1.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.</p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">It’s worth showing at the moment that there are no repeated conjugates.</p>
+</div>
+<div id="lem:irred_complex" class="ltx_theorem ltx_theorem_lemma">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Lemma 54.1.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Irreducible polynomials have distinct roots)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">An irreducible polynomial in <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathbb{Q}[x]" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> cannot have a complex double root.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.p5.m1" class="ltx_Math" alttext="f(x)\in\mathbb{Q}[x]" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> be the irreducible polynomial and assume it has a double root <math id="S1.p5.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.
+<span class="ltx_text ltx_font_bold">Take the derivative <math id="S1.p5.m3" class="ltx_Math" alttext="f^{\prime}(x)" display="inline"><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</span>
+This derivative has three interesting properties.</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The degree of <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="f^{\prime}" display="inline"><msup><mi>f</mi><mo>′</mo></msup></math> is one less than the degree of <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The polynomials <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="f^{\prime}" display="inline"><msup><mi>f</mi><mo>′</mo></msup></math> are not relatively prime
+because they share a factor <math id="S1.I1.i2.p1.m3" class="ltx_Math" alttext="x-\alpha" display="inline"><mrow><mi>x</mi><mo>−</mo><mi>α</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The coefficients of <math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="f^{\prime}" display="inline"><msup><mi>f</mi><mo>′</mo></msup></math> are also in <math id="S1.I1.i3.p1.m2" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Consider <math id="S1.p5.m4" class="ltx_Math" alttext="g=\gcd(f,f^{\prime})" display="inline"><mrow><mi>g</mi><mo>=</mo><mrow><mi>gcd</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><msup><mi>f</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. We must have <math id="S1.p5.m5" class="ltx_Math" alttext="g\in\mathbb{Q}[x]" display="inline"><mrow><mi>g</mi><mo>∈</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> by Euclidean algorithm.
+But the first two facts about <math id="S1.p5.m6" class="ltx_Math" alttext="f^{\prime}" display="inline"><msup><mi>f</mi><mo>′</mo></msup></math> ensure that <math id="S1.p5.m7" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> is nonconstant
+and <math id="S1.p5.m8" class="ltx_Math" alttext="\deg g&lt;\deg f" display="inline"><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>g</mi></mrow><mo>&lt;</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow></mrow></math>.
+Yet <math id="S1.p5.m9" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> divides <math id="S1.p5.m10" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>,
+contradiction to the fact that <math id="S1.p5.m11" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> should be a minimal polynomial.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">Hence <math id="S1.p6.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> has exactly as many conjugates as the degree of <math id="S1.p6.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.</p>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">Now, we would <em class="ltx_emph ltx_font_italic">like</em> to define the <em class="ltx_emph ltx_font_italic">norm</em> of an element <math id="S1.p7.m1" class="ltx_Math" alttext="\operatorname{N}(\alpha)" display="inline"><mrow><mi mathvariant="normal">N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+as the product of its conjugates.
+For example, we want <math id="S1.p7.m2" class="ltx_Math" alttext="2+i" display="inline"><mrow><mn>2</mn><mo>+</mo><mi>i</mi></mrow></math> to have norm <math id="S1.p7.m3" class="ltx_Math" alttext="(2+i)(2-i)=5" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>+</mo><mi>i</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>−</mo><mi>i</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>5</mn></mrow></math>,
+and in general for <math id="S1.p7.m4" class="ltx_Math" alttext="a+bi" display="inline"><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>i</mi></mrow></mrow></math> to have norm <math id="S1.p7.m5" class="ltx_Math" alttext="a^{2}+b^{2}" display="inline"><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></math>.
+It would be <em class="ltx_emph ltx_font_italic">really cool</em> if the norm was multiplicative;
+we already know this is true for complex numbers!</p>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">Unfortunately, this doesn’t quite work: consider</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\operatorname{N}(2+i)=5\text{ and }\operatorname{N}(2-i)=5." display="block"><mrow><mrow><mrow><mi mathvariant="normal">N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>+</mo><mi>i</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>5</mn><mo>⁢</mo><mtext> and </mtext><mo lspace="0.167em">⁢</mo><mrow><mi mathvariant="normal">N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>−</mo><mi>i</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mn>5</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">But <math id="S1.p8.m1" class="ltx_Math" alttext="(2+i)(2-i)=5" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>+</mo><mi>i</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>−</mo><mi>i</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>5</mn></mrow></math>, which doesn’t have norm <math id="S1.p8.m2" class="ltx_Math" alttext="25" display="inline"><mn>25</mn></math> like we want,
+since <math id="S1.p8.m3" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math> is degree <math id="S1.p8.m4" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> and has no conjugates at all.
+The reason this “bad” thing is happening is that we’re
+trying to define the norm of an <em class="ltx_emph ltx_font_italic">element</em>,
+when we really ought to be defining the norm of an element
+<em class="ltx_emph ltx_font_italic">with respect to a particular <math id="S1.p8.m5" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math></em>.</p>
+</div>
+<div id="S1.p9" class="ltx_para">
+<p class="ltx_p">What I’m driving at is that the norm should have
+different meanings depending on which field you’re in.
+If we think of <math id="S1.p9.m1" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math> as an element of <math id="S1.p9.m2" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>, then its norm is <math id="S1.p9.m3" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math>.
+But thought of as an element of <math id="S1.p9.m4" class="ltx_Math" alttext="\mathbb{Q}(i)" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></math>, its norm really ought to be <math id="S1.p9.m5" class="ltx_Math" alttext="25" display="inline"><mn>25</mn></math>.
+Let’s make this happen: for <math id="S1.p9.m6" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> a number field, we will now define <math id="S1.p9.m7" class="ltx_Math" alttext="\operatorname{N}_{K/\mathbb{Q}}(\alpha)" display="inline"><mrow><msub><mi mathvariant="normal">N</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+to be the norm of <math id="S1.p9.m8" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> <em class="ltx_emph ltx_font_italic">with respect to <math id="S1.p9.m9" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math></em> as follows.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 54.1.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\alpha\in K" display="inline"><mrow><mi>α</mi><mo>∈</mo><mi>K</mi></mrow></math> have degree <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, so <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\mathbb{Q}(\alpha)\subseteq K" display="inline"><mrow><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>K</mi></mrow></math>, and set <math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="k=(\deg K)/n" display="inline"><mrow><mi>k</mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>K</mi></mrow><mo stretchy="false">)</mo></mrow><mo>/</mo><mi>n</mi></mrow></mrow></math>.
+The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> norm</span> of <math id="S1.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is defined as</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\operatorname{N}_{K/\mathbb{Q}}(\alpha)\coloneqq\left(\prod\text{Galois conj %
+of $\alpha$}\right)^{k}." display="block"><mrow><mrow><mrow><msub><mi mathvariant="normal">N</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><msup><mrow><mo>(</mo><mrow><mo lspace="0em" movablelimits="false">∏</mo><mrow><mtext>Galois conj of </mtext><mi>α</mi></mrow></mrow><mo>)</mo></mrow><mi>k</mi></msup></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> trace</span> is defined as</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\operatorname{Tr}_{K/\mathbb{Q}}(\alpha)\coloneqq k\cdot\left(\sum\text{Galois%
+ conj of $\alpha$}\right)." display="block"><mrow><mrow><mrow><msub><mi>Tr</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mi>k</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo>(</mo><mrow><mo lspace="0em" movablelimits="false">∑</mo><mrow><mtext>Galois conj of </mtext><mi>α</mi></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S1.p10" class="ltx_para">
+<p class="ltx_p">The exponent of <math id="S1.p10.m1" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> is a “correction factor” that makes the norm of <math id="S1.p10.m2" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math> into <math id="S1.p10.m3" class="ltx_Math" alttext="5^{2}=25" display="inline"><mrow><msup><mn>5</mn><mn>2</mn></msup><mo>=</mo><mn>25</mn></mrow></math>
+when we view <math id="S1.p10.m4" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math> as an element of <math id="S1.p10.m5" class="ltx_Math" alttext="\mathbb{Q}(i)" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></math> rather than an element of <math id="S1.p10.m6" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>.
+For a “generic” element of <math id="S1.p10.m7" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>, we expect <math id="S1.p10.m8" class="ltx_Math" alttext="k=1" display="inline"><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 54.1.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Use what you know about nested vector spaces to convince
+yourself that <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> is actually an integer.</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 54.1.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Norm of <math id="S1.Thmtheorem5.m1" class="ltx_Math" alttext="a+b\sqrt{2}" display="inline"><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\alpha=a+b\sqrt{2}\in\mathbb{Q}(\sqrt{2})=K" display="inline"><mrow><mi>α</mi><mo>=</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow><mo>∈</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>2</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>K</mi></mrow></math>.
+If <math id="S1.Thmtheorem5.p1.m2" class="ltx_Math" alttext="b\neq 0" display="inline"><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow></math>, then <math id="S1.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and <math id="S1.Thmtheorem5.p1.m4" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> have the degree <math id="S1.Thmtheorem5.p1.m5" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>.
+Thus the only conjugates of <math id="S1.Thmtheorem5.p1.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> are <math id="S1.Thmtheorem5.p1.m7" class="ltx_Math" alttext="a\pm b\sqrt{2}" display="inline"><mrow><mi>a</mi><mo>±</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow></math>, which gives
+the norm</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="(a+b\sqrt{2})(a-b\sqrt{2})=a^{2}-2b^{2}," display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The trace is <math id="S1.Thmtheorem5.p1.m8" class="ltx_Math" alttext="(a-b\sqrt{2})+(a+b\sqrt{2})=2a" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>−</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow></mrow></math>.</p>
+</div>
+<div id="S1.Thmtheorem5.p2" class="ltx_para">
+<p class="ltx_p">Nicely, the formula <math id="S1.Thmtheorem5.p2.m1" class="ltx_Math" alttext="a^{2}-2b^{2}" display="inline"><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow></math> and <math id="S1.Thmtheorem5.p2.m2" class="ltx_Math" alttext="2a" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow></math> also works when <math id="S1.Thmtheorem5.p2.m3" class="ltx_Math" alttext="b=0" display="inline"><mrow><mi>b</mi><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 54.1.6</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Norm of <math id="S1.Thmtheorem6.m1" class="ltx_Math" alttext="a+b\sqrt[3]{2}+c\sqrt[3]{4}" display="inline"><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mroot><mn>2</mn><mn>3</mn></mroot></mrow><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><mroot><mn>4</mn><mn>3</mn></mroot></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\alpha=a+b\sqrt[3]{2}+c\sqrt[3]{4}\in\mathbb{Q}(\sqrt[3]{2})=K" display="inline"><mrow><mi>α</mi><mo>=</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mroot><mn>2</mn><mn>3</mn></mroot></mrow><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><mroot><mn>4</mn><mn>3</mn></mroot></mrow></mrow><mo>∈</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mroot><mn>2</mn><mn>3</mn></mroot><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>K</mi></mrow></math>.
+As above, if <math id="S1.Thmtheorem6.p1.m2" class="ltx_Math" alttext="b\neq 0" display="inline"><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow></math> or <math id="S1.Thmtheorem6.p1.m3" class="ltx_Math" alttext="c\neq 0" display="inline"><mrow><mi>c</mi><mo>≠</mo><mn>0</mn></mrow></math>, then <math id="S1.Thmtheorem6.p1.m4" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and <math id="S1.Thmtheorem6.p1.m5" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> have the
+same degree <math id="S1.Thmtheorem6.p1.m6" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>.
+The conjugates of <math id="S1.Thmtheorem6.p1.m7" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> are <math id="S1.Thmtheorem6.p1.m8" class="ltx_Math" alttext="a+b\sqrt[3]{2}\omega+c\sqrt[3]{4}\omega^{2}" display="inline"><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mroot><mn>2</mn><mn>3</mn></mroot><mo>⁢</mo><mi>ω</mi></mrow><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><mroot><mn>4</mn><mn>3</mn></mroot><mo>⁢</mo><msup><mi>ω</mi><mn>2</mn></msup></mrow></mrow></math>
+and <math id="S1.Thmtheorem6.p1.m9" class="ltx_Math" alttext="a+b\sqrt[3]{2}\omega^{2}+c\sqrt[3]{4}\omega" display="inline"><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mroot><mn>2</mn><mn>3</mn></mroot><mo>⁢</mo><msup><mi>ω</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><mroot><mn>4</mn><mn>3</mn></mroot><mo>⁢</mo><mi>ω</mi></mrow></mrow></math>,
+and we can compute <math id="S1.Thmtheorem6.p1.m10" class="ltx_Math" alttext="\operatorname{N}_{K/\mathbb{Q}}(\alpha)=a^{3}+2b^{3}+4c^{3}-6abc" display="inline"><mrow><mrow><msub><mi mathvariant="normal">N</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msup><mi>a</mi><mn>3</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>b</mi><mn>3</mn></msup></mrow><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><msup><mi>c</mi><mn>3</mn></msup></mrow></mrow><mo>−</mo><mrow><mn>6</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow></mrow></mrow></math> and
+<math id="S1.Thmtheorem6.p1.m11" class="ltx_Math" alttext="\operatorname{Tr}_{K/\mathbb{Q}}(\alpha)=3a" display="inline"><mrow><mrow><msub><mi>Tr</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>3</mn><mo>⁢</mo><mi>a</mi></mrow></mrow></math>.</p>
+</div>
+<div id="S1.Thmtheorem6.p2" class="ltx_para">
+<p class="ltx_p">Note that in this case the conjugates of <math id="S1.Thmtheorem6.p2.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> does not
+lie in the field <math id="S1.Thmtheorem6.p2.m2" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>!</p>
+</div>
+</div>
+<div id="S1.p11" class="ltx_para">
+<p class="ltx_p">Of importance is:</p>
+</div>
+<div id="S1.Thmtheorem7" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 54.1.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Norms and traces are rational integers)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S1.Thmtheorem7.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is an algebraic integer, its norm and trace
+are rational integers.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem8" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 54.1.8</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Prove it. (Vieta formula.)</span></p>
+</div>
+</div>
+<div id="S1.p12" class="ltx_para">
+<p class="ltx_p">That’s great, but it leaves a question unanswered:
+why is the norm multiplicative?
+To do this, I have to give a new definition of norm and trace.</p>
+</div>
+<div id="remark:norm_equal_product_embeddings" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 54.1.9</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">Another way to automatically add the “corrective factor” is to use the
+embeddings of <math id="S1.Thmtheorem9.p1.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> into <math id="S1.Thmtheorem9.p1.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.</p>
+</div>
+<div id="S1.Thmtheorem9.p2" class="ltx_para">
+<p class="ltx_p">As we will see later, in <a href="../algnt2/galois-theory.html#thm:n_embeddings" title="Theorem 59.3.1 (The 𝑛 embeddings of a number field) ‣ 59.3 Embeddings into algebraic closures for number fields ‣ Chapter 59 Things Galois ‣ Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">59.3.1</span></a>, there are exactly
+<math id="S1.Thmtheorem9.p2.m1" class="ltx_Math" alttext="d=\deg K" display="inline"><mrow><mi>d</mi><mo>=</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>K</mi></mrow></mrow></math> embeddings of <math id="S1.Thmtheorem9.p2.m2" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> into <math id="S1.Thmtheorem9.p2.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>, say <math id="S1.Thmtheorem9.p2.m4" class="ltx_Math" alttext="\sigma_{1},\dots,\sigma_{d}" display="inline"><mrow><msub><mi>σ</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>σ</mi><mi>d</mi></msub></mrow></math>.
+Then,
+<math id="S1.Thmtheorem9.p2.m5" class="ltx_Math" alttext="\operatorname{Tr}_{K/\mathbb{Q}}(\alpha)=\sum_{i=1}^{d}\sigma_{i}(\alpha)" display="inline"><mrow><mrow><msub><mi>Tr</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>d</mi></msubsup><mrow><msub><mi>σ</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> and
+<math id="S1.Thmtheorem9.p2.m6" class="ltx_Math" alttext="\operatorname{N}_{K/\mathbb{Q}}(\alpha)=\prod_{i=1}^{d}\sigma_{i}(\alpha)" display="inline"><mrow><mrow><msub><mi mathvariant="normal">N</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msubsup><mo>∏</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>d</mi></msubsup><mrow><msub><mi>σ</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem10" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 54.1.10</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Morally correct definition of norm and trace)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem10.p1.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> be a number field of degree <math id="S1.Thmtheorem10.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, and let <math id="S1.Thmtheorem10.p1.m3" class="ltx_Math" alttext="\alpha\in K" display="inline"><mrow><mi>α</mi><mo>∈</mo><mi>K</mi></mrow></math>.
+Let <math id="S1.Thmtheorem10.p1.m4" class="ltx_Math" alttext="\mu_{\alpha}\colon K\to K" display="inline"><mrow><msub><mi>μ</mi><mi>α</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>K</mi><mo stretchy="false">→</mo><mi>K</mi></mrow></mrow></math> denote the map</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="x\mapsto\alpha x" display="block"><mrow><mi>x</mi><mo stretchy="false">↦</mo><mrow><mi>α</mi><mo>⁢</mo><mi>x</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">viewed as a linear map of <math id="S1.Thmtheorem10.p1.m5" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>-vector spaces.
+Then,</p>
+<ul id="S1.I2" class="ltx_itemize">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">the norm of <math id="S1.I2.i1.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> equals the determinant <math id="S1.I2.i1.p1.m2" class="ltx_Math" alttext="\det\mu_{\alpha}" display="inline"><mrow><mo rspace="0.167em">det</mo><msub><mi>μ</mi><mi>α</mi></msub></mrow></math>, and</p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">the trace of <math id="S1.I2.i2.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> equals the trace <math id="S1.I2.i2.p1.m2" class="ltx_Math" alttext="\operatorname{Tr}\mu_{\alpha}" display="inline"><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><msub><mi>μ</mi><mi>α</mi></msub></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S1.p13" class="ltx_para">
+<p class="ltx_p">The definition of the determinant has an obvious geometrical interpretation:
+viewing <math id="S1.p13.m1" class="ltx_Math" alttext="K\cong\mathbb{Q}^{n}" display="inline"><mrow><mi>K</mi><mo>≅</mo><msup><mi>ℚ</mi><mi>n</mi></msup></mrow></math> as a vector space, the determinant measures how much <math id="S1.p13.m2" class="ltx_Math" alttext="\mathbb{Q}^{n}" display="inline"><msup><mi>ℚ</mi><mi>n</mi></msup></math> is
+stretched when multiplied by <math id="S1.p13.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.
+That is, given a parallelepiped with volume <math id="S1.p13.m4" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math> in <math id="S1.p13.m5" class="ltx_Math" alttext="\mathbb{Q}^{n}" display="inline"><msup><mi>ℚ</mi><mi>n</mi></msup></math>, it will be transformed to one with
+volume <math id="S1.p13.m6" class="ltx_Math" alttext="|\operatorname{N}(\alpha)|v" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi mathvariant="normal">N</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>⁢</mo><mi>v</mi></mrow></math> under the transformation <math id="S1.p13.m7" class="ltx_Math" alttext="\mu_{\alpha}" display="inline"><msub><mi>μ</mi><mi>α</mi></msub></math>.</p>
+</div>
+<div id="S1.p14" class="ltx_para">
+<p class="ltx_p">Since the trace and determinant don’t depend on the choice of basis,
+you can pick whatever basis you want
+and use whatever definition you got in high school.
+Fantastic, right?</p>
+</div>
+<div id="S1.Thmtheorem11" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 54.1.11</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Explicit computation of matrices for <math id="S1.Thmtheorem11.m1" class="ltx_Math" alttext="a+b\sqrt{2}" display="inline"><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem11.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem11.p1.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{2})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>2</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, and let <math id="S1.Thmtheorem11.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="S1.Thmtheorem11.p1.m3" class="ltx_Math" alttext="\sqrt{2}" display="inline"><msqrt><mn>2</mn></msqrt></math> be the basis of <math id="S1.Thmtheorem11.p1.m4" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>.
+Let</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\alpha=a+b\sqrt{2}" display="block"><mrow><mi>α</mi><mo>=</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">(possibly even <math id="S1.Thmtheorem11.p1.m5" class="ltx_Math" alttext="b=0" display="inline"><mrow><mi>b</mi><mo>=</mo><mn>0</mn></mrow></math>), and notice that</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\left(a+b\sqrt{2}\right)\left(x+y\sqrt{2}\right)=(ax+2yb)+(bx+ay)\sqrt{2}." display="block"><mrow><mrow><mrow><mrow><mo>(</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>x</mi><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>y</mi><mo>⁢</mo><mi>b</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>b</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mrow><mi>a</mi><mo>⁢</mo><mi>y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We can rewrite this in matrix form as</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\begin{bmatrix}a&amp;2b\\
+b&amp;a\end{bmatrix}\begin{bmatrix}x\\
+y\end{bmatrix}=\begin{bmatrix}ax+2yb\\
+bx+ay\end{bmatrix}." display="block"><mrow><mrow><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>a</mi></mtd><mtd><mrow><mn>2</mn><mo>⁢</mo><mi>b</mi></mrow></mtd></mtr><mtr><mtd><mi>b</mi></mtd><mtd><mi>a</mi></mtd></mtr></mtable><mo>]</mo></mrow><mo>⁢</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>x</mi></mtd></mtr><mtr><mtd><mi>y</mi></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo>=</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>y</mi><mo>⁢</mo><mi>b</mi></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mi>b</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mrow><mi>a</mi><mo>⁢</mo><mi>y</mi></mrow></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Consequently, we can interpret <math id="S1.Thmtheorem11.p1.m6" class="ltx_Math" alttext="\mu_{\alpha}" display="inline"><msub><mi>μ</mi><mi>α</mi></msub></math> as the matrix</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\mu_{\alpha}=\begin{bmatrix}a&amp;2b\\
+b&amp;a\end{bmatrix}." display="block"><mrow><mrow><msub><mi>μ</mi><mi>α</mi></msub><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>a</mi></mtd><mtd><mrow><mn>2</mn><mo>⁢</mo><mi>b</mi></mrow></mtd></mtr><mtr><mtd><mi>b</mi></mtd><mtd><mi>a</mi></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Of course, the matrix will change if we pick a different basis,
+but the determinant and trace do not: they are always given by</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\det\mu_{\alpha}=a^{2}-2b^{2}\text{ and }\operatorname{Tr}\mu_{\alpha}=2a." display="block"><mrow><mrow><mrow><mo movablelimits="false" rspace="0.167em">det</mo><msub><mi>μ</mi><mi>α</mi></msub></mrow><mo>=</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup><mo>⁢</mo><mtext> and </mtext><mo lspace="0.167em">⁢</mo><mrow><mi>Tr</mi><mo lspace="0.167em">⁡</mo><msub><mi>μ</mi><mi>α</mi></msub></mrow></mrow></mrow><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S1.p15" class="ltx_para">
+<p class="ltx_p">This interpretation explains why the same formula should work for <math id="S1.p15.m1" class="ltx_Math" alttext="a+b\sqrt{2}" display="inline"><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow></math>
+even in the case <math id="S1.p15.m2" class="ltx_Math" alttext="b=0" display="inline"><mrow><mi>b</mi><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S1.p16" class="ltx_para">
+<p class="ltx_p">I’ll prove the result for just the norm; the trace falls out similarly.
+Set</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="n=\deg\alpha,\qquad kn=\deg K." display="block"><mrow><mrow><mrow><mi>n</mi><mo>=</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>α</mi></mrow></mrow><mo rspace="2.167em">,</mo><mrow><mrow><mi>k</mi><mo>⁢</mo><mi>n</mi></mrow><mo>=</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>K</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The proof is split into two parts, depending on whether or not <math id="S1.p16.m1" class="ltx_Math" alttext="k=1" display="inline"><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof if <math id="S1.m1" class="ltx_Math" alttext="k=1" display="inline"><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow></math>.</h5>
+<div id="S1.p17" class="ltx_para">
+<p class="ltx_p">Set <math id="S1.p17.m1" class="ltx_Math" alttext="n=\deg\alpha=\deg K" display="inline"><mrow><mi>n</mi><mo>=</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>α</mi></mrow><mo>=</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>K</mi></mrow></mrow></math>.
+Thus the norm actually <em class="ltx_emph ltx_font_italic">is</em> the product of the Galois conjugates.
+Also,</p>
+<div class="table-container"><table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="\{1,\alpha,\dots,\alpha^{n-1}\}" display="block"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi>α</mi><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msup><mi>α</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">}</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is linearly independent in <math id="S1.p17.m2" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>, and hence a basis (as <math id="S1.p17.m3" class="ltx_Math" alttext="\dim K=n" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mi>K</mi></mrow><mo>=</mo><mi>n</mi></mrow></math>).
+Let’s use this as the basis for <math id="S1.p17.m4" class="ltx_Math" alttext="\mu_{\alpha}" display="inline"><msub><mi>μ</mi><mi>α</mi></msub></math>.</p>
+</div>
+<div id="S1.p18" class="ltx_para">
+<p class="ltx_p">Let</p>
+<div class="table-container"><table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="x^{n}+c_{n-1}x^{n-1}+\dots+c_{0}" display="block"><mrow><msup><mi>x</mi><mi>n</mi></msup><mo>+</mo><mrow><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>⁢</mo><msup><mi>x</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>c</mi><mn>0</mn></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">be the minimal polynomial of <math id="S1.p18.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.
+Thus <math id="S1.p18.m2" class="ltx_Math" alttext="\mu_{\alpha}(1)=\alpha" display="inline"><mrow><mrow><msub><mi>μ</mi><mi>α</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>α</mi></mrow></math>, <math id="S1.p18.m3" class="ltx_Math" alttext="\mu_{\alpha}(\alpha)=\alpha^{2}" display="inline"><mrow><mrow><msub><mi>μ</mi><mi>α</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>α</mi><mn>2</mn></msup></mrow></math>, and so on,
+but <math id="S1.p18.m4" class="ltx_Math" alttext="\mu_{\alpha}(\alpha^{n-1})=-c_{n-1}\alpha^{n-1}-\dots-c_{0}" display="inline"><mrow><mrow><msub><mi>μ</mi><mi>α</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>α</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo>−</mo><mrow><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>⁢</mo><msup><mi>α</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow><mo>−</mo><mi mathvariant="normal">⋯</mi><mo>−</mo><msub><mi>c</mi><mn>0</mn></msub></mrow></mrow></math>.
+Therefore, <math id="S1.p18.m5" class="ltx_Math" alttext="\mu_{\alpha}" display="inline"><msub><mi>μ</mi><mi>α</mi></msub></math> is given by the matrix</p>
+<div class="table-container"><table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="M=\begin{bmatrix}0&amp;0&amp;0&amp;\dots&amp;0&amp;-c_{0}\\
+1&amp;0&amp;0&amp;\dots&amp;0&amp;-c_{1}\\
+0&amp;1&amp;0&amp;\dots&amp;0&amp;-c_{2}\\
+\vdots&amp;\vdots&amp;\vdots&amp;\ddots&amp;0&amp;-c_{n-2}\\
+0&amp;0&amp;0&amp;\dots&amp;1&amp;-c_{n-1}\end{bmatrix}." display="block"><mrow><mrow><mi>M</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><msub><mi>c</mi><mn>0</mn></msub></mrow></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><msub><mi>c</mi><mn>1</mn></msub></mrow></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><msub><mi>c</mi><mn>2</mn></msub></mrow></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msub></mrow></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>1</mn></mtd><mtd><mrow><mo>−</mo><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Thus</p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\det M=(-1)^{n}c_{0}" display="block"><mrow><mrow><mo movablelimits="false" rspace="0.167em">det</mo><mi>M</mi></mrow><mo>=</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msup><mo>⁢</mo><msub><mi>c</mi><mn>0</mn></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and we’re done by Vieta’s formulas.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof if <math id="S1.m2" class="ltx_Math" alttext="k&gt;1" display="inline"><mrow><mi>k</mi><mo>&gt;</mo><mn>1</mn></mrow></math>.</h5>
+<div id="S1.p19" class="ltx_para">
+<p class="ltx_p">We have nested vector spaces</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="\mathbb{Q}\subseteq\mathbb{Q}(\alpha)\subseteq K." display="block"><mrow><mrow><mi>ℚ</mi><mo>⊆</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>K</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Let <math id="S1.p19.m1" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, …, <math id="S1.p19.m2" class="ltx_Math" alttext="e_{k}" display="inline"><msub><mi>e</mi><mi>k</mi></msub></math> be a <math id="S1.p19.m3" class="ltx_Math" alttext="\mathbb{Q}(\alpha)" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math>-basis for <math id="S1.p19.m4" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>
+(meaning: interpret <math id="S1.p19.m5" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> as a vector space over <math id="S1.p19.m6" class="ltx_Math" alttext="\mathbb{Q}(\alpha)" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math>, and pick that basis).
+Since <math id="S1.p19.m7" class="ltx_Math" alttext="\{1,\alpha,\dots,\alpha^{n-1}\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi>α</mi><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msup><mi>α</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">}</mo></mrow></math> is a <math id="S1.p19.m8" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> basis for <math id="S1.p19.m9" class="ltx_Math" alttext="\mathbb{Q}(\alpha)" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+the elements</p>
+<div class="table-container"><table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="\begin{array}[]{cccc}e_{1},&amp;e_{1}\alpha,&amp;\dots,&amp;e_{1}\alpha^{n-1}\\
+e_{2},&amp;e_{2}\alpha,&amp;\dots,&amp;e_{2}\alpha^{n-1}\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+e_{k},&amp;e_{k}\alpha,&amp;\dots,&amp;e_{k}\alpha^{n-1}\end{array}" display="block"><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo></mrow></mtd><mtd><mrow><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>⁢</mo><mi>α</mi></mrow><mo>,</mo></mrow></mtd><mtd><mrow><mi mathvariant="normal">…</mi><mo>,</mo></mrow></mtd><mtd><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>⁢</mo><msup><mi>α</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow></mtd></mtr><mtr><mtd><mrow><msub><mi>e</mi><mn>2</mn></msub><mo>,</mo></mrow></mtd><mtd><mrow><mrow><msub><mi>e</mi><mn>2</mn></msub><mo>⁢</mo><mi>α</mi></mrow><mo>,</mo></mrow></mtd><mtd><mrow><mi mathvariant="normal">…</mi><mo>,</mo></mrow></mtd><mtd><mrow><msub><mi>e</mi><mn>2</mn></msub><mo>⁢</mo><msup><mi>α</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mrow><msub><mi>e</mi><mi>k</mi></msub><mo>,</mo></mrow></mtd><mtd><mrow><mrow><msub><mi>e</mi><mi>k</mi></msub><mo>⁢</mo><mi>α</mi></mrow><mo>,</mo></mrow></mtd><mtd><mrow><mi mathvariant="normal">…</mi><mo>,</mo></mrow></mtd><mtd><mrow><msub><mi>e</mi><mi>k</mi></msub><mo>⁢</mo><msup><mi>α</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">constitute a <math id="S1.p19.m10" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>-basis of <math id="S1.p19.m11" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>.
+Using <em class="ltx_emph ltx_font_italic">this</em> basis, the map <math id="S1.p19.m12" class="ltx_Math" alttext="\mu_{\alpha}" display="inline"><msub><mi>μ</mi><mi>α</mi></msub></math> looks like</p>
+<div class="table-container"><table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="\underbrace{\begin{bmatrix}M&amp;&amp;&amp;\\
+&amp;M&amp;&amp;\\
+&amp;&amp;\ddots&amp;\\
+&amp;&amp;&amp;M\end{bmatrix}}_{\text{$k$ times}}" display="block"><munder><munder accentunder="true"><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>M</mi></mtd><mtd></mtd><mtd></mtd><mtd></mtd></mtr><mtr><mtd></mtd><mtd><mi>M</mi></mtd><mtd></mtd><mtd></mtd></mtr><mtr><mtd></mtd><mtd></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd></mtd></mtr><mtr><mtd></mtd><mtd></mtd><mtd></mtd><mtd><mi>M</mi></mtd></mtr></mtable><mo>]</mo></mrow><mo>⏟</mo></munder><mrow><mi>k</mi><mtext> times</mtext></mrow></munder></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S1.p19.m13" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is the same matrix as above:
+we just end up with one copy of our old matrix for each <math id="S1.p19.m14" class="ltx_Math" alttext="e_{i}" display="inline"><msub><mi>e</mi><mi>i</mi></msub></math>.
+Thus <math id="S1.p19.m15" class="ltx_Math" alttext="\det\mu_{\alpha}=(\det M)^{k}" display="inline"><mrow><mrow><mo rspace="0.167em">det</mo><msub><mi>μ</mi><mi>α</mi></msub></mrow><mo>=</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">det</mo><mi>M</mi></mrow><mo stretchy="false">)</mo></mrow><mi>k</mi></msup></mrow></math>, as needed. <sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S1.Thmtheorem12" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 54.1.12</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem12.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify the result for traces as well. <sub title="End of proof">◻︎</sub></span></p>
+</div>
+</div>
+</div>
+<div id="S1.p20" class="ltx_para">
+<p class="ltx_p">From this it follows immediately that</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="\operatorname{N}_{K/\mathbb{Q}}(\alpha\beta)=\operatorname{N}_{K/\mathbb{Q}}(%
+\alpha)\operatorname{N}_{K/\mathbb{Q}}(\beta)" display="block"><mrow><mrow><msub><mi mathvariant="normal">N</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mi>α</mi><mo>⁢</mo><mi>β</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi mathvariant="normal">N</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0.167em">⁢</mo><mrow><msub><mi mathvariant="normal">N</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>β</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">because by definition we have</p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\mu_{\alpha\beta}=\mu_{\alpha}\circ\mu_{\beta}," display="block"><mrow><mrow><msub><mi>μ</mi><mrow><mi>α</mi><mo>⁢</mo><mi>β</mi></mrow></msub><mo>=</mo><mrow><msub><mi>μ</mi><mi>α</mi></msub><mo lspace="0.222em" rspace="0.222em">∘</mo><msub><mi>μ</mi><mi>β</mi></msub></mrow></mrow><mo>,</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and that the determinant is multiplicative.
+In the same way, the trace is additive.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">54.2 </span>The ring of integers</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> If <math id="S2.p1.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{2})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>2</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, then <math id="S2.p1.m2" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[\sqrt{2}]" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>2</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+But if <math id="S2.p1.m3" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{5})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>5</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, then <math id="S2.p1.m4" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[\frac{1+\sqrt{5}}{2}]" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mfrac linethickness="0.6px"><mrow><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mn>2</mn></mfrac><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p"><math id="S2.p2.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> makes for better number theory than <math id="S2.p2.m2" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>.
+In the same way, focusing on the <em class="ltx_emph ltx_font_italic">algebraic integers</em> of <math id="S2.p2.m3" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>
+gives us some really nice structure, and we’ll do that here.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 54.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Given a number field <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>, we define</p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="\mathcal{O}_{K}\coloneqq K\cap\overline{\mathbb{Z}}" display="block"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>≔</mo><mrow><mi>K</mi><mo>∩</mo><mover accent="true"><mi>ℤ</mi><mo>¯</mo></mover></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">to be the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> ring of integers</span> of <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>;
+in other words <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> consists of the algebraic integers of <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>.</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">We do the classical example of a quadratic field now.
+Before proceeding, I need to write a silly number theory fact.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 54.2.2</span></span><span class="ltx_text ltx_font_bold"> </span>(Annoying but straightforward)
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> be rational numbers, and <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> a squarefree positive integer.</span></p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">If </span><math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="d\equiv 2,3\pmod{4}" display="inline"><mrow><mi>d</mi><mo>≡</mo><mrow><mn>2</mn><mo>,</mo><mrow><mn>3</mn><mspace width="0.949em"></mspace><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mn>4</mn></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, prove that
+</span><math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="2a,a^{2}-db^{2}\in\mathbb{Z}" display="inline"><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow><mo>,</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mi>d</mi><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow></mrow><mo>∈</mo><mi>ℤ</mi></mrow></math><span class="ltx_text" style="font-size:90%;"> if and only if </span><math id="S2.I1.i1.p1.m3" class="ltx_Math" alttext="a,b\in\mathbb{Z}" display="inline"><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>∈</mo><mi>ℤ</mi></mrow></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">For </span><math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="d\equiv 1\pmod{4}" display="inline"><mrow><mi>d</mi><mo>≡</mo><mrow><mn>1</mn><mspace width="0.949em"></mspace><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mn>4</mn></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, prove that
+</span><math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="2a,a^{2}-db^{2}\in\mathbb{Z}" display="inline"><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow><mo>,</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mi>d</mi><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow></mrow><mo>∈</mo><mi>ℤ</mi></mrow></math><span class="ltx_text" style="font-size:90%;"> if and only if </span><math id="S2.I1.i2.p1.m3" class="ltx_Math" alttext="a,b\in\mathbb{Z}" display="inline"><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>∈</mo><mi>ℤ</mi></mrow></math><span class="ltx_text" style="font-size:90%;">
+OR if </span><math id="S2.I1.i2.p1.m4" class="ltx_Math" alttext="a-\frac{1}{2},b-\frac{1}{2}\in\mathbb{Z}" display="inline"><mrow><mrow><mrow><mi>a</mi><mo>−</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mrow><mo>,</mo><mrow><mi>b</mi><mo>−</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mrow></mrow><mo>∈</mo><mi>ℤ</mi></mrow></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+</ul>
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">You’ll need to take mod <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="4" display="inline"><mn>4</mn></math>.</span></p>
+</div>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 54.2.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Ring of integers of <math id="S2.Thmtheorem3.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{3})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> be as above.
+We claim that</p>
+<div class="table-container"><table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[\sqrt{3}]=\left\{m+n\sqrt{3}\mid m,n\in\mathbb{Z}%
+\right\}." display="block"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mrow><mi>m</mi><mo>+</mo><mrow><mi>n</mi><mo>⁢</mo><msqrt><mn>3</mn></msqrt></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mo>∈</mo><mi>ℤ</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We set <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\alpha=a+b\sqrt{3}" display="inline"><mrow><mi>α</mi><mo>=</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mn>3</mn></msqrt></mrow></mrow></mrow></math>.
+Then <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\alpha\in\mathcal{O}_{K}" display="inline"><mrow><mi>α</mi><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></mrow></math> when the minimal polynomial has integer coefficients.</p>
+</div>
+<div id="S2.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p">If <math id="S2.Thmtheorem3.p2.m1" class="ltx_Math" alttext="b=0" display="inline"><mrow><mi>b</mi><mo>=</mo><mn>0</mn></mrow></math>, then the minimal polynomial is <math id="S2.Thmtheorem3.p2.m2" class="ltx_Math" alttext="x-\alpha=x-a" display="inline"><mrow><mrow><mi>x</mi><mo>−</mo><mi>α</mi></mrow><mo>=</mo><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow></mrow></math>,
+and thus <math id="S2.Thmtheorem3.p2.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> works if and only if it’s an integer.
+If <math id="S2.Thmtheorem3.p2.m4" class="ltx_Math" alttext="b\neq 0" display="inline"><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow></math>, then the minimal polynomial is</p>
+<div class="table-container"><table id="Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex23.m1" class="ltx_Math" alttext="(x-a)^{2}-3b^{2}=x^{2}-2a\cdot x+(a^{2}-3b^{2})." display="block"><mrow><mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>−</mo><mrow><mn>3</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow></mrow><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>3</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">From the exercise, this occurs exactly for <math id="S2.Thmtheorem3.p2.m5" class="ltx_Math" alttext="a,b\in\mathbb{Z}" display="inline"><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>∈</mo><mi>ℤ</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 54.2.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Ring of integers of <math id="S2.Thmtheorem4.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{5})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>5</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">We claim that in this case</p>
+<div class="table-container"><table id="Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex24.m1" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}\left[\frac{1+\sqrt{5}}{2}\right]=\left\{m+n\cdot%
+\frac{1+\sqrt{5}}{2}\mid m,n\in\mathbb{Z}\right\}." display="block"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo>[</mo><mfrac linethickness="0.6px"><mrow><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mn>2</mn></mfrac><mo>]</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mrow><mi>m</mi><mo>+</mo><mrow><mi>n</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mfrac linethickness="0.6px"><mrow><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mn>2</mn></mfrac></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>m</mi><mo>,</mo><mi>n</mi></mrow><mo>∈</mo><mi>ℤ</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The proof is exactly the same, except the exercise tells us instead
+that for <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="b\neq 0" display="inline"><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow></math>, we have both the possibility that <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="a,b\in\mathbb{Z}" display="inline"><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>∈</mo><mi>ℤ</mi></mrow></math>
+or that <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="a,b\in\mathbb{Z}-\frac{1}{2}" display="inline"><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>∈</mo><mrow><mi>ℤ</mi><mo>−</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mrow></mrow></math>.
+This reflects the fact that <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="\frac{1+\sqrt{5}}{2}" display="inline"><mfrac linethickness="0.6px"><mrow><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mn>2</mn></mfrac></math> is the root of <math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="x^{2}-x-1=0" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mi>x</mi><mo>−</mo><mn>1</mn></mrow><mo>=</mo><mn>0</mn></mrow></math>;
+no such thing is possible with <math id="S2.Thmtheorem4.p1.m6" class="ltx_Math" alttext="\sqrt{3}" display="inline"><msqrt><mn>3</mn></msqrt></math>.</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">In general, the ring of integers of <math id="S2.p4.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{d})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mi>d</mi></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math> is</p>
+<div class="table-container"><table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="\mathcal{O}_{K}=\begin{cases}\mathbb{Z}[\sqrt{d}]&amp;d\equiv 2,3\pmod{4}\\[10.000%
+02pt]
+\mathbb{Z}\left[\frac{1+\sqrt{d}}{2}\right]&amp;d\equiv 1\pmod{4}.\end{cases}" display="block"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mi>d</mi></msqrt><mo stretchy="false">]</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>d</mi><mo>≡</mo><mrow><mn>2</mn><mo>,</mo><mrow><mn>3</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo>[</mo><mstyle displaystyle="false"><mfrac linethickness="0.6px"><mrow><mn>1</mn><mo>+</mo><msqrt><mi>d</mi></msqrt></mrow><mn>2</mn></mfrac></mstyle><mo>]</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mi>d</mi><mo>≡</mo><mrow><mn>1</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">What we’re going to show is that <math id="S2.p4.m2" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> behaves in <math id="S2.p4.m3" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>
+a lot like the integers do in <math id="S2.p4.m4" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>.
+First we show <math id="S2.p4.m5" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> consists of quotients of numbers in <math id="S2.p4.m6" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math>.
+In fact, we can do better:</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 54.2.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Rationalizing the denominator)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">For example, consider <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{3})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+The number <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="x=\frac{1}{4+\sqrt{3}}" display="inline"><mrow><mi>x</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>4</mn><mo>+</mo><msqrt><mn>3</mn></msqrt></mrow></mfrac></mrow></math> is an element of <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>, but by
+“rationalizing the denominator” we can write</p>
+<div class="table-container"><table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="\frac{1}{4+\sqrt{3}}=\frac{4-\sqrt{3}}{13}." display="block"><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mn>4</mn><mo>+</mo><msqrt><mn>3</mn></msqrt></mrow></mfrac><mo>=</mo><mfrac linethickness="0.6px"><mrow><mn>4</mn><mo>−</mo><msqrt><mn>3</mn></msqrt></mrow><mn>13</mn></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So we see that in fact, <math id="S2.Thmtheorem5.p1.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is <math id="S2.Thmtheorem5.p1.m5" class="ltx_Math" alttext="\frac{1}{13}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>13</mn></mfrac></math> of an integer in <math id="S2.Thmtheorem5.p1.m6" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math>.</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">The theorem holds true more generally.</p>
+</div>
+<div id="thm:rationalize_denom" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 54.2.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<math id="S2.Thmtheorem6.m1" class="ltx_Math" alttext="K=\mathbb{Q}\cdot\mathcal{O}_{K}" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> be a number field, and let <math id="S2.Thmtheorem6.p1.m2" class="ltx_Math" alttext="x\in K" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>K</mi></mrow></math> be any element.
+Then there exists an integer <math id="S2.Thmtheorem6.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> such that <math id="S2.Thmtheorem6.p1.m4" class="ltx_Math" alttext="nx\in\mathcal{O}_{K}" display="inline"><mrow><mrow><mi>n</mi><mo>⁢</mo><mi>x</mi></mrow><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></mrow></math>;
+in other words,</p>
+<div class="table-container"><table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="x=\frac{1}{n}\alpha" display="block"><mrow><mi>x</mi><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mi>n</mi></mfrac><mo>⁢</mo><mi>α</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for some <math id="S2.Thmtheorem6.p1.m5" class="ltx_Math" alttext="\alpha\in\mathcal{O}_{K}" display="inline"><mrow><mi>α</mi><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 54.2.7</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Prove this yourself.
+(Start by using the fact that <math id="S2.Thmtheorem7.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> has a minimal
+polynomial with rational coefficients.
+Alternatively, take the norm.)</span></p>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Now we are going to show <math id="S2.p6.m1" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> is a ring;
+we’ll check it is closed under addition and multiplication.
+To do so, the easiest route is:</p>
+</div>
+<div id="S2.Thmtheorem8" class="ltx_theorem ltx_theorem_lemma">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Lemma 54.2.8</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<math id="S2.Thmtheorem8.m1" class="ltx_Math" alttext="\alpha\in\overline{\mathbb{Z}}" display="inline"><mrow><mi>α</mi><mo>∈</mo><mover accent="true"><mi>ℤ</mi><mo>¯</mo></mover></mrow></math> <math id="S2.Thmtheorem8.m2" class="ltx_Math" alttext="\iff" display="inline"><mo stretchy="false">⇔</mo></math> <math id="S2.Thmtheorem8.m3" class="ltx_Math" alttext="\mathbb{Z}[\alpha]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>α</mi><mo stretchy="false">]</mo></mrow></mrow></math> finitely generated)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem8.p1.m1" class="ltx_Math" alttext="\alpha\in\overline{\mathbb{Q}}" display="inline"><mrow><mi>α</mi><mo>∈</mo><mover accent="true"><mi>ℚ</mi><mo>¯</mo></mover></mrow></math>.
+Then <math id="S2.Thmtheorem8.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is an algebraic integer if and only if
+the abelian group <math id="S2.Thmtheorem8.p1.m3" class="ltx_Math" alttext="\mathbb{Z}[\alpha]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>α</mi><mo stretchy="false">]</mo></mrow></mrow></math> is finitely generated.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">Note that <math id="S2.p7.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is an algebraic integer if and only if it’s the root
+of some nonzero, monic polynomial with integer coefficients.
+Suppose first that</p>
+<div class="table-container"><table id="Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex28.m1" class="ltx_Math" alttext="\alpha^{N}=c_{N-1}\alpha^{N-1}+c_{N-2}\alpha^{N-2}+\dots+c_{0}." display="block"><mrow><mrow><msup><mi>α</mi><mi>N</mi></msup><mo>=</mo><mrow><mrow><msub><mi>c</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>⁢</mo><msup><mi>α</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>+</mo><mrow><msub><mi>c</mi><mrow><mi>N</mi><mo>−</mo><mn>2</mn></mrow></msub><mo>⁢</mo><msup><mi>α</mi><mrow><mi>N</mi><mo>−</mo><mn>2</mn></mrow></msup></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>c</mi><mn>0</mn></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Then the set <math id="S2.p7.m2" class="ltx_Math" alttext="1,\alpha,\dots,\alpha^{N-1}" display="inline"><mrow><mn>1</mn><mo>,</mo><mi>α</mi><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msup><mi>α</mi><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow></msup></mrow></math> generates <math id="S2.p7.m3" class="ltx_Math" alttext="\mathbb{Z}[\alpha]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>α</mi><mo stretchy="false">]</mo></mrow></mrow></math>,
+since we can repeatedly replace <math id="S2.p7.m4" class="ltx_Math" alttext="\alpha^{N}" display="inline"><msup><mi>α</mi><mi>N</mi></msup></math> until all powers of <math id="S2.p7.m5" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>
+are less than <math id="S2.p7.m6" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>.</p>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Conversely, suppose that <math id="S2.p8.m1" class="ltx_Math" alttext="\mathbb{Z}[\alpha]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>α</mi><mo stretchy="false">]</mo></mrow></mrow></math> is finitely generated
+by some <math id="S2.p8.m2" class="ltx_Math" alttext="b_{1},\dots,b_{m}" display="inline"><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>m</mi></msub></mrow></math>.
+Viewing the <math id="S2.p8.m3" class="ltx_Math" alttext="b_{i}" display="inline"><msub><mi>b</mi><mi>i</mi></msub></math> as polynomials in <math id="S2.p8.m4" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>, we can select a large integer
+<math id="S2.p8.m5" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> (say <math id="S2.p8.m6" class="ltx_Math" alttext="N=\deg b_{1}+\dots+\deg b_{m}+2015" display="inline"><mrow><mi>N</mi><mo>=</mo><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><msub><mi>b</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><msub><mi>b</mi><mi>m</mi></msub></mrow><mo>+</mo><mn>2015</mn></mrow></mrow></math>)
+and express <math id="S2.p8.m7" class="ltx_Math" alttext="\alpha^{N}" display="inline"><msup><mi>α</mi><mi>N</mi></msup></math> in the <math id="S2.p8.m8" class="ltx_Math" alttext="b_{i}" display="inline"><msub><mi>b</mi><mi>i</mi></msub></math>’s to get</p>
+<div class="table-container"><table id="Ex29" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex29.m1" class="ltx_Math" alttext="\alpha^{N}=c_{1}b_{1}(\alpha)+\dots+c_{m}b_{m}(\alpha)." display="block"><mrow><mrow><msup><mi>α</mi><mi>N</mi></msup><mo>=</mo><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>b</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>c</mi><mi>m</mi></msub><mo>⁢</mo><msub><mi>b</mi><mi>m</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The above gives us a monic polynomial in <math id="S2.p8.m9" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>,
+and the choice of <math id="S2.p8.m10" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> guarantees it is not zero.
+So <math id="S2.p8.m11" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is an algebraic integer.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S2.Thmtheorem9" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 54.2.9</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(<math id="S2.Thmtheorem9.m1" class="ltx_Math" alttext="\frac{1}{2}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></math> isn’t an algebraic integer)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">We already know <math id="S2.Thmtheorem9.p1.m1" class="ltx_Math" alttext="\frac{1}{2}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></math> isn’t an algebraic integer.
+So we expect</p>
+<div class="table-container"><table id="Ex30" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex30.m1" class="ltx_Math" alttext="\mathbb{Z}\left[\frac{1}{2}\right]=\left\{\frac{a}{2^{m}}\mid a,m\in\mathbb{Z}%
+\text{ and }m\geq 0\right\}" display="block"><mrow><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo>[</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>]</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mfrac linethickness="0.6px"><mi>a</mi><msup><mn>2</mn><mi>m</mi></msup></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>a</mi><mo>,</mo><mi>m</mi></mrow><mo>∈</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>m</mi></mrow><mo>≥</mo><mn>0</mn></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">to not be finitely generated, and this is the case.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem10" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 54.2.10</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">To make the last example concrete:
+name all the elements of <math id="S2.Thmtheorem10.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[\frac{1}{2}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">]</mo></mrow></mrow></math>
+that cannot be written as an integer combination of</span></p>
+<div class="table-container"><table id="Ex31" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex31.m1" class="ltx_Math" alttext="\left\{\frac{1}{2},\frac{7}{8},\frac{13}{64},\frac{2015}{4096},\frac{1}{104857%
+6}\right\}" display="block"><mrow><mo>{</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac linethickness="0.6px"><mn>7</mn><mn>8</mn></mfrac><mo>,</mo><mfrac linethickness="0.6px"><mn>13</mn><mn>64</mn></mfrac><mo>,</mo><mfrac linethickness="0.6px"><mn>2015</mn><mn>4096</mn></mfrac><mo>,</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>1048576</mn></mfrac><mo>}</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">Now we can state the theorem.</p>
+</div>
+<div id="S2.Thmtheorem11" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 54.2.11</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Algebraic integers are closed under <math id="S2.Thmtheorem11.m1" class="ltx_Math" alttext="+" display="inline"><mo>+</mo></math> and <math id="S2.Thmtheorem11.m2" class="ltx_Math" alttext="\times" display="inline"><mo>×</mo></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem11.p1" class="ltx_para">
+<p class="ltx_p">The set <math id="S2.Thmtheorem11.p1.m1" class="ltx_Math" alttext="\overline{\mathbb{Z}}" display="inline"><mover accent="true"><mi>ℤ</mi><mo>¯</mo></mover></math> is closed under addition and multiplication;
+i.e. it is a ring.
+In particular, <math id="S2.Thmtheorem11.p1.m2" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> is also a ring for any number field <math id="S2.Thmtheorem11.p1.m3" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p10.m1" class="ltx_Math" alttext="\alpha,\beta\in\overline{\mathbb{Z}}" display="inline"><mrow><mrow><mi>α</mi><mo>,</mo><mi>β</mi></mrow><mo>∈</mo><mover accent="true"><mi>ℤ</mi><mo>¯</mo></mover></mrow></math>.
+Then <math id="S2.p10.m2" class="ltx_Math" alttext="\mathbb{Z}[\alpha]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>α</mi><mo stretchy="false">]</mo></mrow></mrow></math> and <math id="S2.p10.m3" class="ltx_Math" alttext="\mathbb{Z}[\beta]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>β</mi><mo stretchy="false">]</mo></mrow></mrow></math> are finitely generated.
+Hence so is <math id="S2.p10.m4" class="ltx_Math" alttext="\mathbb{Z}[\alpha,\beta]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo stretchy="false">]</mo></mrow></mrow></math>.
+(Details: if <math id="S2.p10.m5" class="ltx_Math" alttext="\mathbb{Z}[\alpha]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>α</mi><mo stretchy="false">]</mo></mrow></mrow></math> has <math id="S2.p10.m6" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>-basis <math id="S2.p10.m7" class="ltx_Math" alttext="a_{1},\dots,a_{m}" display="inline"><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>a</mi><mi>m</mi></msub></mrow></math> and
+<math id="S2.p10.m8" class="ltx_Math" alttext="\mathbb{Z}[\beta]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>β</mi><mo stretchy="false">]</mo></mrow></mrow></math> has <math id="S2.p10.m9" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>-basis <math id="S2.p10.m10" class="ltx_Math" alttext="b_{1},\dots,b_{n}" display="inline"><mrow><msub><mi>b</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub></mrow></math>,
+then take the <math id="S2.p10.m11" class="ltx_Math" alttext="mn" display="inline"><mrow><mi>m</mi><mo>⁢</mo><mi>n</mi></mrow></math> elements <math id="S2.p10.m12" class="ltx_Math" alttext="a_{i}b_{j}" display="inline"><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>⁢</mo><msub><mi>b</mi><mi>j</mi></msub></mrow></math>.)</p>
+</div>
+<div id="S2.p11" class="ltx_para">
+<p class="ltx_p">Now <math id="S2.p11.m1" class="ltx_Math" alttext="\mathbb{Z}[\alpha\pm\beta]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>α</mi><mo>±</mo><mi>β</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></math> and <math id="S2.p11.m2" class="ltx_Math" alttext="\mathbb{Z}[\alpha\beta]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>α</mi><mo>⁢</mo><mi>β</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></math> are subsets of <math id="S2.p11.m3" class="ltx_Math" alttext="\mathbb{Z}[\alpha,\beta]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo stretchy="false">]</mo></mrow></mrow></math> and so they are also finitely generated.
+Hence <math id="S2.p11.m4" class="ltx_Math" alttext="\alpha\pm\beta" display="inline"><mrow><mi>α</mi><mo>±</mo><mi>β</mi></mrow></math> and <math id="S2.p11.m5" class="ltx_Math" alttext="\alpha\beta" display="inline"><mrow><mi>α</mi><mo>⁢</mo><mi>β</mi></mrow></math> are algebraic integers.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S2.p12" class="ltx_para">
+<p class="ltx_p">In fact, something even better is true.
+As you saw, for <math id="S2.p12.m1" class="ltx_Math" alttext="\mathbb{Q}(\sqrt{3})" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></math> we had <math id="S2.p12.m2" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[\sqrt{3}]" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow></mrow></math>;
+in other words, <math id="S2.p12.m3" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> was generated by <math id="S2.p12.m4" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> and <math id="S2.p12.m5" class="ltx_Math" alttext="\sqrt{3}" display="inline"><msqrt><mn>3</mn></msqrt></math>.
+Something similar was true for <math id="S2.p12.m6" class="ltx_Math" alttext="\mathbb{Q}(\sqrt{5})" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>5</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></math>.
+We claim that in fact, the general picture looks exactly like this.</p>
+</div>
+<div id="S2.Thmtheorem12" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 54.2.12</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<math id="S2.Thmtheorem12.m1" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> is a free <math id="S2.Thmtheorem12.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>-module of rank <math id="S2.Thmtheorem12.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem12.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem12.p1.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> be a number field of degree <math id="S2.Thmtheorem12.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+Then <math id="S2.Thmtheorem12.p1.m3" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> is a free <math id="S2.Thmtheorem12.p1.m4" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>-module of rank <math id="S2.Thmtheorem12.p1.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>,
+i.e. <math id="S2.Thmtheorem12.p1.m6" class="ltx_Math" alttext="\mathcal{O}_{K}\cong\mathbb{Z}^{\oplus n}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>≅</mo><msup><mi>ℤ</mi><mrow><mo rspace="0em">⊕</mo><mi>n</mi></mrow></msup></mrow></math> as an abelian group.
+In other words, <math id="S2.Thmtheorem12.p1.m7" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> has a <math id="S2.Thmtheorem12.p1.m8" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>-basis of <math id="S2.Thmtheorem12.p1.m9" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> elements as</p>
+<div class="table-container"><table id="thm:OK_free_Z_module" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex32.m1" class="ltx_Math" alttext="\mathcal{O}_{K}=\left\{c_{1}\alpha_{1}+\dots+c_{n-1}\alpha_{n-1}+c_{n}\alpha_{%
+n}\mid c_{i}\in\mathbb{Z}\right\}" display="block"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mo>{</mo><mrow><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>α</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>⁢</mo><msub><mi>α</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo>+</mo><mrow><msub><mi>c</mi><mi>n</mi></msub><mo>⁢</mo><msub><mi>α</mi><mi>n</mi></msub></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msub><mi>c</mi><mi>i</mi></msub><mo>∈</mo><mi>ℤ</mi></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S2.Thmtheorem12.p1.m10" class="ltx_Math" alttext="\alpha_{i}" display="inline"><msub><mi>α</mi><mi>i</mi></msub></math> are algebraic integers in <math id="S2.Thmtheorem12.p1.m11" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math>.</p>
+</div>
+</div>
+<div id="S2.p13" class="ltx_para">
+<p class="ltx_p">The proof will be postponed to a later chapter.</p>
+</div>
+<div id="S2.p14" class="ltx_para">
+<p class="ltx_p">This last theorem shows that in many ways <math id="S2.p14.m1" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> is a “lattice” in <math id="S2.p14.m2" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>.
+That is, for a number field <math id="S2.p14.m3" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> we can find <math id="S2.p14.m4" class="ltx_Math" alttext="\alpha_{1}" display="inline"><msub><mi>α</mi><mn>1</mn></msub></math>, …, <math id="S2.p14.m5" class="ltx_Math" alttext="\alpha_{n}" display="inline"><msub><mi>α</mi><mi>n</mi></msub></math>
+in <math id="S2.p14.m6" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> such that</p>
+<div class="table-container"><table id="A5.S3.EGx125" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex33"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex33.m1" class="ltx_Math" alttext="\displaystyle\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex33.m2" class="ltx_Math" alttext="\displaystyle\cong\alpha_{1}\mathbb{Z}\oplus\alpha_{2}\mathbb{Z}\oplus\dots%
+\oplus\alpha_{n}\mathbb{Z}" display="inline"><mrow><mi></mi><mo>≅</mo><mrow><mrow><msub><mi>α</mi><mn>1</mn></msub><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mrow><msub><mi>α</mi><mn>2</mn></msub><mo>⁢</mo><mi>ℤ</mi></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><msub><mi>α</mi><mi>n</mi></msub><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex34"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex34.m1" class="ltx_Math" alttext="\displaystyle K" display="inline"><mi>K</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex34.m2" class="ltx_Math" alttext="\displaystyle\cong\alpha_{1}\mathbb{Q}\oplus\alpha_{2}\mathbb{Q}\oplus\dots%
+\oplus\alpha_{n}\mathbb{Q}" display="inline"><mrow><mi></mi><mo>≅</mo><mrow><mrow><msub><mi>α</mi><mn>1</mn></msub><mo>⁢</mo><mi>ℚ</mi></mrow><mo>⊕</mo><mrow><msub><mi>α</mi><mn>2</mn></msub><mo>⁢</mo><mi>ℚ</mi></mrow><mo>⊕</mo><mi mathvariant="normal">⋯</mi><mo>⊕</mo><mrow><msub><mi>α</mi><mi>n</mi></msub><mo>⁢</mo><mi>ℚ</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">as abelian groups.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">54.3 </span>On monogenic extensions</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Recall that it turned out number fields <math id="S3.p1.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> could all be
+expressed as <math id="S3.p1.m2" class="ltx_Math" alttext="\mathbb{Q}(\alpha)" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math> for some <math id="S3.p1.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.
+We might hope that something similar is true of the ring of integers:
+that we can write</p>
+<div class="table-container"><table id="Ex35" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex35.m1" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[\theta]" display="block"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>θ</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">in which case <math id="S3.p1.m4" class="ltx_Math" alttext="\{1,\theta,\dots,\theta^{n-1}\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi>θ</mi><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msup><mi>θ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">}</mo></mrow></math>
+serves both as a basis of <math id="S3.p1.m5" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> and as the <math id="S3.p1.m6" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>-basis for <math id="S3.p1.m7" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> (here <math id="S3.p1.m8" class="ltx_math_unparsed" alttext="n=[K:\mathbb{Q}]" display="inline"><mrow><mi>n</mi><mo>=</mo><mrow><mo stretchy="false">[</mo><mi>K</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>ℚ</mi><mo stretchy="false">]</mo></mrow></mrow></math>).
+In other words, we hope that the basis of <math id="S3.p1.m9" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> is actually a “power basis”.</p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">This is true for the most common examples we use:</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">the quadratic field, and</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">the cyclotomic field in <a href="#prob:ring_int_cyclotomic" title="Problem 54E (Cyclotomic Field). ‣ 54.4 A few harder problems to think about ‣ Chapter 54 The ring of integers ‣ Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">54E</span></a>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Unfortunately, it is not true in general:
+the first counterexample is <math id="S3.p2.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\alpha)" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for <math id="S3.p2.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> a root of <math id="S3.p2.m3" class="ltx_Math" alttext="X^{3}-X^{2}-2X-8" display="inline"><mrow><msup><mi>X</mi><mn>3</mn></msup><mo>−</mo><msup><mi>X</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><mi>X</mi></mrow><mo>−</mo><mn>8</mn></mrow></math>.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">We call an extension with this nice property <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> monogenic</span>.
+As we’ll later see, monogenic extensions have a really nice factoring algorithm,
+<a href="ch_unique_factorization.html#thm:factor_alg" title="Theorem 55.5.4 (Factoring algorithm / Dedekind-Kummer theorem) ‣ 55.5 The factoring algorithm ‣ Chapter 55 Unique factorization (finally!) ‣ Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">55.5.4</span></a>.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 54.3.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(What went wrong with <math id="S3.Thmtheorem1.m1" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math>?)</span> — </span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">As we have just mentioned above, as an abelian group, <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{K}\cong\mathbb{Z}^{3}" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>≅</mo><msup><mi>ℤ</mi><mn>3</mn></msup></mrow></math>,
+so it’s generated by finitely many elements.</p>
+</div>
+<div id="S3.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">In fact, <math id="S3.Thmtheorem1.p2.m1" class="ltx_Math" alttext="\{1,\alpha,\beta\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi>α</mi><mo>,</mo><mi>β</mi><mo stretchy="false">}</mo></mrow></math> is a basis of <math id="S3.Thmtheorem1.p2.m2" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math>,
+where <math id="S3.Thmtheorem1.p2.m3" class="ltx_Math" alttext="\beta=\frac{\alpha+\alpha^{2}}{2}" display="inline"><mrow><mi>β</mi><mo>=</mo><mfrac linethickness="0.6px"><mrow><mi>α</mi><mo>+</mo><msup><mi>α</mi><mn>2</mn></msup></mrow><mn>2</mn></mfrac></mrow></math>.
+The group generated by <math id="S3.Thmtheorem1.p2.m4" class="ltx_Math" alttext="\{1,\alpha,\alpha^{2}\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi>α</mi><mo>,</mo><msup><mi>α</mi><mn>2</mn></msup><mo stretchy="false">}</mo></mrow></math> has index 2 in <math id="S3.Thmtheorem1.p2.m5" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> –
+that is, <math id="S3.Thmtheorem1.p2.m6" class="ltx_Math" alttext="|\mathcal{O}_{K}/\langle 1,\alpha,\alpha^{2}\rangle|=2" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>/</mo><mrow><mo stretchy="false">⟨</mo><mn>1</mn><mo>,</mo><mi>α</mi><mo>,</mo><msup><mi>α</mi><mn>2</mn></msup><mo stretchy="false">⟩</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>2</mn></mrow></math>, and we misses
+<math id="S3.Thmtheorem1.p2.m7" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>.</p>
+</div>
+<div id="S3.Thmtheorem1.p3" class="ltx_para">
+<p class="ltx_p">If we try to pick <math id="S3.Thmtheorem1.p3.m1" class="ltx_Math" alttext="\{1,\beta,\beta^{2}\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi>β</mi><mo>,</mo><msup><mi>β</mi><mn>2</mn></msup><mo stretchy="false">}</mo></mrow></math> as a basis instead, again we
+get <math id="S3.Thmtheorem1.p3.m2" class="ltx_Math" alttext="|\mathcal{O}_{K}/\langle 1,\beta,\beta^{2}\rangle|=2" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>/</mo><mrow><mo stretchy="false">⟨</mo><mn>1</mn><mo>,</mo><mi>β</mi><mo>,</mo><msup><mi>β</mi><mn>2</mn></msup><mo stretchy="false">⟩</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>2</mn></mrow></math>, and we misses <math id="S3.Thmtheorem1.p3.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.
+If you explicitly compute it out, you can get
+<math id="S3.Thmtheorem1.p3.m4" class="ltx_Math" alttext="\beta^{2}=\frac{3\alpha^{2}+7\alpha}{2}+6=3\beta+2\alpha+6" display="inline"><mrow><msup><mi>β</mi><mn>2</mn></msup><mo>=</mo><mrow><mfrac linethickness="0.6px"><mrow><mrow><mn>3</mn><mo>⁢</mo><msup><mi>α</mi><mn>2</mn></msup></mrow><mo>+</mo><mrow><mn>7</mn><mo>⁢</mo><mi>α</mi></mrow></mrow><mn>2</mn></mfrac><mo>+</mo><mn>6</mn></mrow><mo>=</mo><mrow><mrow><mn>3</mn><mo>⁢</mo><mi>β</mi></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>α</mi></mrow><mo>+</mo><mn>6</mn></mrow></mrow></math>.</p>
+</div>
+<div id="S3.Thmtheorem1.p4" class="ltx_para">
+<p class="ltx_p">While this is not a proof that the extension is not monogenic, hopefully it
+gives you a feeling of the structure of <math id="S3.Thmtheorem1.p4.m1" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math>.</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">54.4 </span>A few harder problems to think about</h2>
+
+<div id="prob:OK_unit_norm" class="ltx_theorem ltx_theorem_sproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 54A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Show that <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is a unit of <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> (meaning <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="\alpha^{-1}\in\mathcal{O}_{K}" display="inline"><mrow><msup><mi>α</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></mrow></math>)
+if and only if <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="\operatorname{N}_{K/\mathbb{Q}}(\alpha)=\pm 1" display="inline"><mrow><mrow><msub><mi mathvariant="normal">N</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>±</mo><mn>1</mn></mrow></mrow></math>.
+
+The norm is multiplicative and equal to product of Galois conjugates.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_sproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 54B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> be a number field.
+What is the field of fractions of <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math>?
+
+It’s isomorphic to <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math>.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 54C</span></span><span class="ltx_text ltx_font_bold"> </span>(Russian olympiad 1984)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Find all integers <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> and <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> such that</p>
+<div class="table-container"><table id="Ex36" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex36.m1" class="ltx_Math" alttext="\left(5+3\sqrt{2}\right)^{m}=\left(3+5\sqrt{2}\right)^{n}." display="block"><mrow><mrow><msup><mrow><mo>(</mo><mrow><mn>5</mn><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow><mo>)</mo></mrow><mi>m</mi></msup><mo>=</mo><msup><mrow><mo>(</mo><mrow><mn>3</mn><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow><mo>)</mo></mrow><mi>n</mi></msup></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Taking the standard norm on <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="\mathbb{Q}(\sqrt{2})" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>2</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></math> will destroy it.</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 54D</span></span><span class="ltx_text ltx_font_bold"> </span>(USA TST 2012)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Decide whether there exist <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="a,b,c&gt;2010" display="inline"><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi></mrow><mo>&gt;</mo><mn>2010</mn></mrow></math> satisfying</p>
+<div class="table-container"><table id="Ex37" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex37.m1" class="ltx_Math" alttext="a^{3}+2b^{3}+4c^{3}=6abc+1." display="block"><mrow><mrow><mrow><msup><mi>a</mi><mn>3</mn></msup><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><msup><mi>b</mi><mn>3</mn></msup></mrow><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><msup><mi>c</mi><mn>3</mn></msup></mrow></mrow><mo>=</mo><mrow><mrow><mn>6</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><mi>b</mi><mo>⁢</mo><mi>c</mi></mrow><mo>+</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Norm in <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="\mathbb{Q}(\sqrt[3]{2})" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mroot><mn>2</mn><mn>3</mn></mroot><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="prob:ring_int_cyclotomic" class="ltx_theorem ltx_theorem_dproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 54E</span></span><span class="ltx_text ltx_font_bold"> </span>(Cyclotomic Field)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem5.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem5.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem5.p1.g2" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem5.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p2.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> be an odd rational prime and <math id="Thmproblem5.p2.m2" class="ltx_Math" alttext="\zeta_{p}" display="inline"><msub><mi>ζ</mi><mi>p</mi></msub></math> a primitive <math id="Thmproblem5.p2.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>th root of unity.
+Let <math id="Thmproblem5.p2.m4" class="ltx_Math" alttext="K=\mathbb{Q}(\zeta_{p})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>ζ</mi><mi>p</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+Prove that <math id="Thmproblem5.p2.m5" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[\zeta_{p}]" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>ζ</mi><mi>p</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+(In fact, the result is true even if <math id="Thmproblem5.p2.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is not a prime.)
+
+Obviously <math id="Thmproblem5.p2.m7" class="ltx_Math" alttext="\mathbb{Z}[\zeta_{p}]\subseteq\mathcal{O}_{K}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>ζ</mi><mi>p</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>⊆</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></mrow></math>, so our goal is to show the reverse inclusion.
+Show that for any <math id="Thmproblem5.p2.m8" class="ltx_Math" alttext="\alpha\in\mathcal{O}_{K}" display="inline"><mrow><mi>α</mi><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></mrow></math>, the trace of <math id="Thmproblem5.p2.m9" class="ltx_Math" alttext="\alpha(1-\zeta_{p})" display="inline"><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><msub><mi>ζ</mi><mi>p</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is divisible by <math id="Thmproblem5.p2.m10" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+Given <math id="Thmproblem5.p2.m11" class="ltx_Math" alttext="x=a_{0}+a_{1}\zeta_{p}+\dots+a_{p-2}\zeta^{p-2}\in\mathcal{O}_{K}" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><msub><mi>a</mi><mn>0</mn></msub><mo>+</mo><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>ζ</mi><mi>p</mi></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>a</mi><mrow><mi>p</mi><mo>−</mo><mn>2</mn></mrow></msub><mo>⁢</mo><msup><mi>ζ</mi><mrow><mi>p</mi><mo>−</mo><mn>2</mn></mrow></msup></mrow></mrow><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></mrow></math> (where <math id="Thmproblem5.p2.m12" class="ltx_Math" alttext="a_{i}\in\mathbb{Q}" display="inline"><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>∈</mo><mi>ℚ</mi></mrow></math>),
+consider <math id="Thmproblem5.p2.m13" class="ltx_Math" alttext="(1-\zeta_{p})x" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><msub><mi>ζ</mi><mi>p</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mi>x</mi></mrow></math>.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../algnt1/algebraic-integers.html">Previous chapter: Algebraic integers</a><br />
+<a href="../algnt1/unique-factorization.html">Next chapter: Unique factorization (finally!)</a>
+</nav>
+
+		</main>
+	</body>
+</html>

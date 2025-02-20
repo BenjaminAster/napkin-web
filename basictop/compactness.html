@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Compactness</title>
+		<meta property="og:title" content="Compactness" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../basictop/top-more.html">Previous chapter: Topological spaces</a><br />
+<a href="../linalg/vector-spaces.html">Next chapter: Vector spaces</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 8 </span>Compactness</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">One of the most important notions of topological spaces is that of <em class="ltx_emph ltx_font_italic">compactness</em>.
+It generalizes the notion of “closed and bounded” in Euclidean space
+to any topological space
+(e.g. see <a href="#thm:bzw" title="Problem 8F (Bolzano-Weierstraß theorem for general metric spaces). ‣ 8.6 A few harder problems to think about ‣ Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8F</span></a>).</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">For metric spaces, there are two equivalent ways of formulating compactness:</p>
+<ul id="S0.I1" class="ltx_itemize">
+<li id="S0.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S0.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">A “natural” definition using <em class="ltx_emph ltx_font_italic">sequences</em>, called sequential compactness.</p>
+</div>
+</li>
+<li id="S0.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S0.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">A less natural definition using open covers.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">As I alluded to earlier, sequences in metric spaces are super nice,
+but sequences in general topological spaces <em class="ltx_emph ltx_font_italic">suck</em> (to the point where
+I didn’t bother to define convergence of general sequences).
+So it’s the second definition that will be used for general spaces.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">8.1 </span>Definition of sequential compactness</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is compact, but <math id="S1.p1.m2" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math> is not.</em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">To emphasize, compactness is one of the
+<em class="ltx_emph ltx_font_italic">best</em> possible properties that a metric space can have.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 8.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> subsequence</span> of an infinite sequence
+<math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="x_{1},x_{2},\dots" display="inline"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math> is exactly what it sounds like:
+a sequence <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="x_{i_{1}},x_{i_{2}},\dots" display="inline"><mrow><msub><mi>x</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>,</mo><msub><mi>x</mi><msub><mi>i</mi><mn>2</mn></msub></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math>
+where <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="i_{1}&lt;i_{2}&lt;\cdots" display="inline"><mrow><msub><mi>i</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>i</mi><mn>2</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi></mrow></math> are positive integers.
+Note that the sequence is required to be infinite.</p>
+</div>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Another way to think about this is “selecting infinitely many terms”
+or “deleting some terms” of the sequence, depending on whether
+your glass is half empty or half full.</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 8.1.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">A metric space <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> sequentially compact</span> if
+every sequence has a subsequence which converges.</p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">This time, let me give some non-examples before the examples.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 8.1.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Non-examples of compact metric spaces)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S1.I1" class="ltx_enumerate">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The space <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> is not compact: consider the sequence <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="1,2,3,4,\dots" display="inline"><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math>.
+Any subsequence explodes, hence <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> cannot possibly be compact.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">More generally, if a space is
+not bounded it cannot be compact.
+(You can prove this if you want.)</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The open interval <math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math> is bounded but not compact:
+consider the sequence <math id="S1.I1.i3.p1.m2" class="ltx_Math" alttext="\frac{1}{2},\frac{1}{3},\frac{1}{4},\dots" display="inline"><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>3</mn></mfrac><mo>,</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math>.
+No subsequence can converge to a point in <math id="S1.I1.i3.p1.m3" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math> because the sequence “converges to <math id="S1.I1.i3.p1.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>”.</p>
+</div>
+</li>
+<li id="S1.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S1.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">More generally, any space which is not complete cannot be compact.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">Now for the examples!</p>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 8.1.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that a finite set is compact.
+(Pigeonhole Principle.)</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 8.1.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of compact spaces)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Here are some more examples of compact spaces.
+I’ll prove they’re compact in just a moment;
+for now just convince yourself they are.</p>
+<ol id="S1.I2" class="ltx_enumerate">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I2.i1.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is compact. Convince yourself of this!
+Imagine having a large number of dots in the unit interval…</p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The surface of a sphere, <math id="S1.I2.i2.p1.m1" class="ltx_Math" alttext="S^{2}=\left\{(x,y,z)\mid x^{2}+y^{2}+z^{2}=1\right\}" display="inline"><mrow><msup><mi>S</mi><mn>2</mn></msup><mo>=</mo><mrow><mo>{</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup><mo>+</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><mo>=</mo><mn>1</mn></mrow><mo>}</mo></mrow></mrow></math> is compact.</p>
+</div>
+</li>
+<li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">The unit ball <math id="S1.I2.i3.p1.m1" class="ltx_Math" alttext="B^{2}=\left\{(x,y)\mid x^{2}+y^{2}\leq 1\right\}" display="inline"><mrow><msup><mi>B</mi><mn>2</mn></msup><mo>=</mo><mrow><mo>{</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>≤</mo><mn>1</mn></mrow><mo>}</mo></mrow></mrow></math> is compact.</p>
+</div>
+</li>
+<li id="S1.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S1.I2.i4.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Hawaiian earring</span> living in <math id="S1.I2.i4.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> is compact:
+it consists of mutually tangent circles of radius <math id="S1.I2.i4.p1.m2" class="ltx_Math" alttext="\frac{1}{n}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mi>n</mi></mfrac></math> for each <math id="S1.I2.i4.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>,
+as in <a href="#fig:hawaiian" title="In 8.1 Definition of sequential compactness ‣ Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Figure</span> <span class="ltx_text ltx_ref_tag">8.1</span></a>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<figure id="fig:hawaiian" class="ltx_figure"><div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='113.385827pt' height='113.385827pt' viewBox='56.659449 110.551181 113.385827 113.385827'>
+<g id='asymptote-8-1-page1'>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M113.56 56.9055C113.56 25.6161 88.195 .250938 56.9055 .250937C25.6161 .250937 .250937 25.6161 .250937 56.9055C.250937 88.195 25.6161 113.56 56.9055 113.56C88.195 113.56 113.56 88.195 113.56 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M56.9055 56.9055C56.9055 41.2608 44.223 28.5782 28.5782 28.5782C12.9335 28.5782 .250937 41.2608 .250937 56.9055S12.9335 85.2328 28.5782 85.2328C44.223 85.2328 56.9055 72.5502 56.9055 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M38.0207 56.9055C38.0207 46.4757 29.5656 38.0207 19.1358 38.0207C8.70598 38.0207 .250937 46.4757 .250937 56.9055S8.70598 75.7904 19.1358 75.7904C29.5656 75.7904 38.0207 67.3353 38.0207 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M28.5782 56.9055C28.5782 49.0831 22.2369 42.7419 14.4146 42.7419C6.59222 42.7419 .250937 49.0831 .250937 56.9055S6.59222 71.0692 14.4146 71.0692C22.2369 71.0692 28.5782 64.7279 28.5782 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M22.9128 56.9055C22.9128 50.6476 17.8397 45.5746 11.5819 45.5746C5.32396 45.5746 .250937 50.6476 .250937 56.9055S5.32396 68.2364 11.5819 68.2364C17.8397 68.2364 22.9128 63.1634 22.9128 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M19.1358 56.9055C19.1358 51.6906 14.9083 47.4631 9.69337 47.4631C4.47846 47.4631 .250937 51.6906 .250937 56.9055S4.47846 66.3479 9.69337 66.3479C14.9083 66.3479 19.1358 62.1204 19.1358 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M16.438 56.9055C16.438 52.4356 12.8144 48.812 8.34445 48.812C3.87453 48.812 .250937 52.4356 .250937 56.9055S3.87453 64.999 8.34445 64.999C12.8144 64.999 16.438 61.3754 16.438 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M14.4146 56.9055C14.4146 52.9943 11.2439 49.8237 7.33276 49.8237C3.42158 49.8237 .250937 52.9943 .250937 56.9055S3.42158 63.9873 7.33276 63.9873C11.2439 63.9873 14.4146 60.8167 14.4146 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M12.8408 56.9055C12.8408 53.4289 10.0225 50.6106 6.54589 50.6106S.250937 53.4289 .250937 56.9055S3.06928 63.2005 6.54589 63.2005S12.8408 60.3821 12.8408 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M11.5819 56.9055C11.5819 53.7766 9.04534 51.2401 5.91639 51.2401C2.78745 51.2401 .250937 53.7766 .250937 56.9055C.250937 60.0345 2.78745 62.571 5.91639 62.571C9.04534 62.571 11.5819 60.0345 11.5819 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M10.5518 56.9055C10.5518 54.061 8.24585 51.7551 5.40135 51.7551C2.55686 51.7551 .250937 54.061 .250937 56.9055S2.55686 62.0559 5.40135 62.0559C8.24585 62.0559 10.5518 59.75 10.5518 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M9.69337 56.9055C9.69337 54.2981 7.57961 52.1843 4.97215 52.1843C2.3647 52.1843 .250937 54.2981 .250937 56.9055C.250937 59.513 2.3647 61.6267 4.97215 61.6267C7.57961 61.6267 9.69337 59.513 9.69337 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M8.96703 56.9055C8.96703 54.4986 7.01586 52.5475 4.60898 52.5475S.250937 54.4986 .250937 56.9055S2.2021 61.2636 4.60898 61.2636S8.96703 59.3124 8.96703 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M8.34445 56.9055C8.34445 54.6706 6.53265 52.8588 4.29769 52.8588S.250937 54.6706 .250937 56.9055C.250937 59.1405 2.06273 60.9523 4.29769 60.9523S8.34445 59.1405 8.34445 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M7.80488 56.9055C7.80488 54.8195 6.11387 53.1285 4.02791 53.1285S.250937 54.8195 .250937 56.9055S1.94195 60.6825 4.02791 60.6825S7.80488 58.9915 7.80488 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(56.6594 110.551)scale(.996264)'>
+<path d='M7.80488 56.9055C7.80488 54.8195 6.11387 53.1285 4.02791 53.1285S.250937 54.8195 .250937 56.9055S1.94195 60.6825 4.02791 60.6825S7.80488 58.9915 7.80488 56.9055Z' fill="var(--asymptote-color-000000)"/>
+</g>
+</g>
+</svg>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 8.1: </span>Hawaiian Earring.</figcaption>
+</figure>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">To aid in generating more examples, we remark:</p>
+</div>
+<div id="S1.Thmtheorem6" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 8.1.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Closed subsets of compacts)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Closed subsets of sequentially compact sets are compact.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem7" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 8.1.7</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Prove this. (It should follow easily from definitions.)</span></p>
+</div>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">We need to do a bit more work for these examples, which we do in the next section.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">8.2 </span>Criteria for compactness</h2>
+
+<div id="thm:tychonoff" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 8.2.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Tychonoff’s theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> are compact spaces, then so is <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="X\times Y" display="inline"><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>Y</mi></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><a href="#prob:tychonoff" title="Problem 8E (Tychonoff’s theorem). ‣ 8.6 A few harder problems to think about ‣ Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8E</span></a>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">We also have:</p>
+</div>
+<div id="thm:interval_compact" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 8.2.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(The interval is compact)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is compact.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Killed by <a href="#thm:bzw" title="Problem 8F (Bolzano-Weierstraß theorem for general metric spaces). ‣ 8.6 A few harder problems to think about ‣ Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8F</span></a>;
+however, here is a sketch of a direct proof.
+Split <math id="S2.p3.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> into <math id="S2.p3.m2" class="ltx_Math" alttext="[0,\frac{1}{2}]\cup[\frac{1}{2},1]" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">]</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">[</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math>.
+By Pigeonhole, infinitely many terms of the sequence lie in the left half (say);
+let <math id="S2.p3.m3" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math> be the first one and then keep only the terms in the left half after <math id="S2.p3.m4" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math>.
+Now split <math id="S2.p3.m5" class="ltx_Math" alttext="[0,\frac{1}{2}]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">]</mo></mrow></math> into <math id="S2.p3.m6" class="ltx_Math" alttext="[0,\frac{1}{4}]\cup[\frac{1}{4},\frac{1}{2}]" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac><mo stretchy="false">]</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">[</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac><mo>,</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">]</mo></mrow></mrow></math>.
+Again, by Pigeonhole, infinitely many terms fall in some half; pick one of them, call it <math id="S2.p3.m7" class="ltx_Math" alttext="x_{2}" display="inline"><msub><mi>x</mi><mn>2</mn></msub></math>.
+Rinse and repeat.
+In this way we generate a sequence <math id="S2.p3.m8" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math>, <math id="S2.p3.m9" class="ltx_Math" alttext="x_{2}" display="inline"><msub><mi>x</mi><mn>2</mn></msub></math>, … which is Cauchy,
+implying that it converges since <math id="S2.p3.m10" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is complete.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Now we can prove the main theorem about Euclidean space:
+in <math id="S2.p4.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>, compactness is equivalent to being “closed and bounded”.</p>
+</div>
+<div id="thm:fakeBW" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 8.2.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Bolzano-Weierstraß)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">A subset of <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> is compact if and only if it is closed and bounded.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 8.2.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Why does this imply the spaces in our examples are compact?</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Well, look at a closed and bounded <math id="S2.p5.m1" class="ltx_Math" alttext="S\subseteq\mathbb{R}^{n}" display="inline"><mrow><mi>S</mi><mo>⊆</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow></math>.
+Since it’s bounded, it lives inside some box <math id="S2.p5.m2" class="ltx_Math" alttext="[a_{1},b_{1}]\times[a_{2},b_{2}]\times\dots\times[a_{n},b_{n}]" display="inline"><mrow><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><msub><mi>b</mi><mn>2</mn></msub><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mi mathvariant="normal">⋯</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mi>n</mi></msub><mo>,</mo><msub><mi>b</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math>.
+By Tychonoff’s theorem, since each <math id="S2.p5.m3" class="ltx_Math" alttext="[a_{i},b_{i}]" display="inline"><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mi>i</mi></msub><mo>,</mo><msub><mi>b</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></math> is compact the entire box is.
+Since <math id="S2.p5.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is a closed subset of this compact box, we’re done.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">One really has to work in <math id="S2.p6.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> for this to be true!
+In other spaces, this criterion can easily fail.</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 8.2.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Closed and bounded but not compact)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="S=\{s_{1},s_{2},\dots\}" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><msub><mi>s</mi><mn>1</mn></msub><mo>,</mo><msub><mi>s</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo stretchy="false">}</mo></mrow></mrow></math> be any infinite set equipped with the discrete metric.
+Then <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is closed (since all convergent sequences are constant sequences)
+and <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is bounded (all points are a distance <math id="S2.Thmtheorem5.p1.m4" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> from each other)
+but it’s certainly not compact since the sequence <math id="S2.Thmtheorem5.p1.m5" class="ltx_Math" alttext="s_{1},s_{2},\dots" display="inline"><mrow><msub><mi>s</mi><mn>1</mn></msub><mo>,</mo><msub><mi>s</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math> doesn’t converge.</p>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">The Bolzano-Weierstrass theorem, which is <a href="#thm:bzw" title="Problem 8F (Bolzano-Weierstraß theorem for general metric spaces). ‣ 8.6 A few harder problems to think about ‣ Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8F</span></a>, tells you exactly
+which sets are compact in metric spaces in a geometric way.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">8.3 </span>Compactness using open covers</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S3.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is compact.</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">There’s a second related notion of compactness which I’ll now define.
+The following definitions might appear very unmotivated, but bear with me.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 8.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">An open cover of a topological space <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+is a collection of open sets <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\{U_{\alpha}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>U</mi><mi>α</mi></msub><mo stretchy="false">}</mo></mrow></math>
+(possibly infinite or uncountable) which <em class="ltx_emph ltx_font_italic">cover</em> it:
+every point in <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> lies in at least one of the <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="U_{\alpha}" display="inline"><msub><mi>U</mi><mi>α</mi></msub></math>,
+so that</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="X=\bigcup U_{\alpha}." display="block"><mrow><mrow><mi>X</mi><mo rspace="0.111em">=</mo><mrow><mo movablelimits="false">⋃</mo><msub><mi>U</mi><mi>α</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Such a cover is called an <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> open cover</span>.</p>
+</div>
+<div id="S3.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> subcover</span> is exactly what it sounds like:
+it takes only some of the <math id="S3.Thmtheorem1.p2.m1" class="ltx_Math" alttext="U_{\alpha}" display="inline"><msub><mi>U</mi><mi>α</mi></msub></math>,
+while ensuring that <math id="S3.Thmtheorem1.p2.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> remains covered.</p>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Some art:</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='340.157481pt' height='186.812996pt' viewBox='230.630353 134.381854 340.157481 186.812996'>
+<defs>
+<path id='asymptote-8-2-g1-11' d='M4.064757-1.115816C4.805978-1.928767 5.068991-2.964882 5.068991-3.028643C5.068991-3.100374 5.021171-3.132254 4.94944-3.132254C4.845828-3.132254 4.837858-3.100374 4.790037-2.933001C4.566874-2.12005 4.088667-1.498381 4.064757-1.498381C4.048817-1.498381 4.048817-1.697634 4.048817-1.825156C4.032877-3.227895 3.124284-3.514819 2.582316-3.514819C1.458531-3.514819 .350685-2.422914 .350685-1.299128C.350685-.510087 .900623 .079701 1.745455 .079701C2.303362 .079701 2.893151-.119552 3.52279-.589788C3.698132 .039851 4.160399 .079701 4.303861 .079701C4.758157 .079701 5.021171-.326775 5.021171-.478207C5.021171-.573848 4.925529-.573848 4.901619-.573848C4.813948-.573848 4.798007-.549938 4.774097-.494147C4.646575-.159402 4.375592-.143462 4.335741-.143462C4.224159-.143462 4.096638-.143462 4.064757-1.115816ZM3.466999-.852802C2.901121-.342715 2.231631-.143462 1.769365-.143462C1.354919-.143462 .996264-.382565 .996264-1.020174C.996264-1.299128 1.123786-2.12005 1.498381-2.654047C1.817186-3.100374 2.247572-3.291656 2.574346-3.291656C3.012702-3.291656 3.259776-2.980822 3.363387-2.494645C3.482939-1.952677 3.419178-1.315068 3.466999-.852802Z'/>
+<path id='asymptote-8-2-g0-83' d='M7.747945 7.134247C7.747945 8.986301 6.191781 10.20274 4.558904 10.20274S1.369863 8.99726 1.369863 7.134247V.526027C1.369863 .372603 1.369863 0 .99726 0C.613699 0 .613699 .361644 .613699 .526027V7.178082C.613699 9.30411 2.421918 10.958904 4.558904 10.958904S8.50411 9.30411 8.50411 7.178082V.526027C8.50411 .372603 8.50411 0 8.131507 0C7.747945 0 7.747945 .361644 7.747945 .526027V7.134247Z'/>
+<path id='asymptote-8-2-g3-61' d='M7.494543-3.567272C7.65818-3.567272 7.865452-3.567272 7.865452-3.785453S7.65818-4.003635 7.505452-4.003635H.970909C.818182-4.003635 .610909-4.003635 .610909-3.785453S.818182-3.567272 .981818-3.567272H7.494543ZM7.505452-1.450909C7.65818-1.450909 7.865452-1.450909 7.865452-1.66909S7.65818-1.887272 7.494543-1.887272H.981818C.818182-1.887272 .610909-1.887272 .610909-1.66909S.818182-1.450909 .970909-1.450909H7.505452Z'/>
+<path id='asymptote-8-2-g2-85' d='M6.927271-6.305453C7.036362-6.752725 7.232725-7.079998 8.105452-7.112725C8.159998-7.112725 8.290907-7.123634 8.290907-7.330907C8.290907-7.341816 8.290907-7.450907 8.149089-7.450907C7.789089-7.450907 7.407271-7.41818 7.036362-7.41818S6.261816-7.450907 5.901817-7.450907C5.836362-7.450907 5.705453-7.450907 5.705453-7.232725C5.705453-7.112725 5.814544-7.112725 5.901817-7.112725C6.523635-7.101816 6.643635-6.872725 6.643635-6.632725C6.643635-6.599998 6.621816-6.436362 6.610907-6.403635L5.629089-2.50909C5.25818-1.047272 4.003635-.098182 2.912726-.098182C2.170908-.098182 1.581818-.578182 1.581818-1.516363C1.581818-1.538181 1.581818-1.887272 1.701818-2.367272L2.759999-6.610907C2.858181-7.003634 2.879999-7.112725 3.676363-7.112725C3.959999-7.112725 4.047272-7.112725 4.047272-7.330907C4.047272-7.450907 3.927272-7.450907 3.894544-7.450907C3.58909-7.450907 2.803636-7.41818 2.498181-7.41818C2.181818-7.41818 1.407272-7.450907 1.090909-7.450907C1.003636-7.450907 .883636-7.450907 .883636-7.232725C.883636-7.112725 .981818-7.112725 1.189091-7.112725C1.210909-7.112725 1.418181-7.112725 1.603636-7.090907C1.799999-7.069089 1.898181-7.05818 1.898181-6.916362C1.898181-6.850907 1.778181-6.392725 1.712727-6.141816L1.472727-5.181817C1.374545-4.756362 .850909-2.694545 .807273-2.487272C.730909-2.181818 .730909-2.018181 .730909-1.854545C.730909-.523636 1.723636 .24 2.86909 .24C4.243635 .24 5.596362-.992727 5.956362-2.432727L6.927271-6.305453Z'/>
+<path id='asymptote-8-2-g2-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+</defs>
+<g id='asymptote-8-2-page1'>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M41.8279 30.9332C21.8744 32.9054 4.77926 46.8339 8.56633 64.1948C9.96726 70.617 14.5808 75.6128 18.5448 80.8256C29.5704 95.3244 36.0437 112.674 38.5018 130.718C39.2681 136.344 39.6601 142.09 41.8279 147.349C56.0556 181.861 101.782 164.384 141.613 152.338C163.199 145.81 186.122 145.807 208.136 150.675C244.178 158.645 284.374 174.709 307.921 147.349C315.755 138.245 318.608 126.092 317.899 114.087C317.069 100.028 311.48 86.6016 311.247 72.5102C311.01 58.238 315.92 42.9678 307.921 30.9332C294.452 10.6723 266.237 20.2942 241.397 25.9439C219.645 30.8914 197.143 28.9501 174.874 29.2701C141.554 29.7489 108.327 35.3422 75.0895 32.5963C64.0008 31.6802 52.9137 29.8374 41.8279 30.9332Z' fill="var(--asymptote-color-00ffff)" opacity='0.2'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M41.8279 30.9332C21.8744 32.9054 4.77926 46.8339 8.56633 64.1948C9.96726 70.617 14.5808 75.6128 18.5448 80.8256C29.5704 95.3244 36.0437 112.674 38.5018 130.718C39.2681 136.344 39.6601 142.09 41.8279 147.349C56.0556 181.861 101.782 164.384 141.613 152.338C163.199 145.81 186.122 145.807 208.136 150.675C244.178 158.645 284.374 174.709 307.921 147.349C315.755 138.245 318.608 126.092 317.899 114.087C317.069 100.028 311.48 86.6016 311.247 72.5102C311.01 58.238 315.92 42.9678 307.921 30.9332C294.452 10.6723 266.237 20.2942 241.397 25.9439C219.645 30.8914 197.143 28.9501 174.874 29.2701C141.554 29.7489 108.327 35.3422 75.0895 32.5963C64.0008 31.6802 52.9137 29.8374 41.8279 30.9332Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.702625'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<circle cx='58.4587' cy='67.5209' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M116.666 67.5209C116.666 35.3737 90.606 9.31315 58.4587 9.31315S.250937 35.3737 .250937 67.5209C.250937 99.6682 26.3114 125.729 58.4587 125.729S116.666 99.6682 116.666 67.5209Z' fill="var(--asymptote-color-ff0000)" opacity='0.1'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M116.666 67.5209C116.666 35.3737 90.606 9.31315 58.4587 9.31315S.250937 35.3737 .250937 67.5209C.250937 99.6682 26.3114 125.729 58.4587 125.729S116.666 99.6682 116.666 67.5209Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-dasharray='3.97589,3.97589' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<circle cx='96.7095' cy='100.782' fill="var(--asymptote-color-ff8000)" r='1.50562'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M173.211 100.782C173.211 58.5318 138.96 24.2809 96.7095 24.2809C54.4588 24.2809 20.2079 58.5318 20.2079 100.782C20.2079 143.033 54.4588 177.284 96.7095 177.284C138.96 177.284 173.211 143.033 173.211 100.782Z' fill="var(--asymptote-color-ff8000)" opacity='0.1'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M173.211 100.782C173.211 58.5318 138.96 24.2809 96.7095 24.2809C54.4588 24.2809 20.2079 58.5318 20.2079 100.782C20.2079 143.033 54.4588 177.284 96.7095 177.284C138.96 177.284 173.211 143.033 173.211 100.782Z' fill='none' stroke="var(--asymptote-color-ff8000)" stroke-dasharray='4.00618,4.00618' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<circle cx='146.602' cy='85.8148' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M211.462 85.8148C211.462 49.9936 182.423 20.9547 146.602 20.9547S81.7418 49.9936 81.7418 85.8148S110.781 150.675 146.602 150.675S211.462 121.636 211.462 85.8148Z' fill="var(--asymptote-color-ff0000)" opacity='0.1'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M211.462 85.8148C211.462 49.9936 182.423 20.9547 146.602 20.9547S81.7418 49.9936 81.7418 85.8148S110.781 150.675 146.602 150.675S211.462 121.636 211.462 85.8148Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-dasharray='3.99593,3.99593' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<circle cx='198.157' cy='65.8578' fill="var(--asymptote-color-ffff00)" r='1.50562'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M246.387 65.8578C246.387 39.2215 224.794 17.6285 198.157 17.6285C171.521 17.6285 149.928 39.2215 149.928 65.8578S171.521 114.087 198.157 114.087C224.794 114.087 246.387 92.4941 246.387 65.8578Z' fill="var(--asymptote-color-ffff00)" opacity='0.1'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M246.387 65.8578C246.387 39.2215 224.794 17.6285 198.157 17.6285C171.521 17.6285 149.928 39.2215 149.928 65.8578S171.521 114.087 198.157 114.087C224.794 114.087 246.387 92.4941 246.387 65.8578Z' fill='none' stroke="var(--asymptote-color-ffff00)" stroke-dasharray='3.98784,3.98784' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<circle cx='216.451' cy='95.7933' fill="var(--asymptote-color-ff8000)" r='1.50562'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M277.985 95.7933C277.985 61.809 250.435 34.2593 216.451 34.2593S154.917 61.809 154.917 95.7933C154.917 129.778 182.467 157.327 216.451 157.327S277.985 129.778 277.985 95.7933Z' fill="var(--asymptote-color-ff8000)" opacity='0.1'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M277.985 95.7933C277.985 61.809 250.435 34.2593 216.451 34.2593S154.917 61.809 154.917 95.7933C154.917 129.778 182.467 157.327 216.451 157.327S277.985 129.778 277.985 95.7933Z' fill='none' stroke="var(--asymptote-color-ff8000)" stroke-dasharray='4.02795,4.02795' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<circle cx='181.527' cy='142.359' fill="var(--asymptote-color-ffff00)" r='1.50562'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M203.147 142.359C203.147 130.419 193.467 120.739 181.527 120.739C169.586 120.739 159.907 130.419 159.907 142.359C159.907 154.3 169.586 163.98 181.527 163.98C193.467 163.98 203.147 154.3 203.147 142.359Z' fill="var(--asymptote-color-ffff00)" opacity='0.1'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M203.147 142.359C203.147 130.419 193.467 120.739 181.527 120.739C169.586 120.739 159.907 130.419 159.907 142.359C159.907 154.3 169.586 163.98 181.527 163.98C193.467 163.98 203.147 154.3 203.147 142.359Z' fill='none' stroke="var(--asymptote-color-ffff00)" stroke-dasharray='3.99593,3.99593' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<circle cx='246.387' cy='67.5209' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M291.29 67.5209C291.29 42.7216 271.186 22.6178 246.387 22.6178C221.587 22.6178 201.483 42.7216 201.483 67.5209S221.587 112.424 246.387 112.424C271.186 112.424 291.29 92.3202 291.29 67.5209Z' fill="var(--asymptote-color-ff0000)" opacity='0.1'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M291.29 67.5209C291.29 42.7216 271.186 22.6178 246.387 22.6178C221.587 22.6178 201.483 42.7216 201.483 67.5209S221.587 112.424 246.387 112.424C271.186 112.424 291.29 92.3202 291.29 67.5209Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-dasharray='4.03106,4.03106' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<circle cx='279.648' cy='50.8901' fill="var(--asymptote-color-ff8000)" r='1.50562'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M319.562 50.8901C319.562 28.8463 301.692 10.9762 279.648 10.9762S239.734 28.8463 239.734 50.8901C239.734 72.934 257.604 90.804 279.648 90.804S319.562 72.934 319.562 50.8901Z' fill="var(--asymptote-color-ff8000)" opacity='0.1'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M319.562 50.8901C319.562 28.8463 301.692 10.9762 279.648 10.9762S239.734 28.8463 239.734 50.8901C239.734 72.934 257.604 90.804 279.648 90.804S319.562 72.934 319.562 50.8901Z' fill='none' stroke="var(--asymptote-color-ff8000)" stroke-dasharray='4.04551,4.04551' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<circle cx='274.659' cy='120.739' fill="var(--asymptote-color-ffff00)" r='1.50562'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M341.182 120.739C341.182 83.9997 311.399 54.2163 274.659 54.2163S208.136 83.9997 208.136 120.739C208.136 157.479 237.919 187.263 274.659 187.263S341.182 157.479 341.182 120.739Z' fill="var(--asymptote-color-ffff00)" opacity='0.1'/>
+</g>
+<g transform='translate(230.63 134.382)scale(.996264)'>
+<path d='M341.182 120.739C341.182 83.9997 311.399 54.2163 274.659 54.2163S208.136 83.9997 208.136 120.739C208.136 157.479 237.919 187.263 274.659 187.263S341.182 157.479 341.182 120.739Z' fill='none' stroke="var(--asymptote-color-ffff00)" stroke-dasharray='4.01958,4.01958' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='540.710206' y='168.251382' href='#asymptote-8-2-g2-88'/>
+</g>
+<g fill="var(--asymptote-color-00f)" transform='matrix(2 0 0 2 -404.855 -148.571)'>
+<use x='377.498823' y='151.048908' href='#asymptote-8-2-g2-88'/>
+<use x='390.42301' y='151.048908' href='#asymptote-8-2-g3-61'/>
+<use x='401.938133' y='142.842134' href='#asymptote-8-2-g0-83'/>
+<use x='411.070573' y='154.299307' href='#asymptote-8-2-g1-11'/>
+<use x='418.825793' y='151.048908' href='#asymptote-8-2-g2-85'/>
+<use x='426.274272' y='152.685258' href='#asymptote-8-2-g1-11'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 8.3.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">A topological space <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> quasicompact</span>
+if <em class="ltx_emph ltx_font_italic">every</em> open cover has a finite subcover.
+It is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> compact</span> if it is also Hausdorff.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 8.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">The “Hausdorff” hypothesis that I snuck in
+is a sanity condition which is not worth worrying about unless you’re
+working on the algebraic geometry chapters,
+since all the spaces you will deal with are Hausdorff.
+(In fact, some authors don’t even bother to include it.)
+For example all metric spaces are Hausdorff
+and thus this condition can be safely ignored
+if you are working with metric spaces.</p>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">What does this mean? Here’s an example:</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 8.3.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Example of a finite subcover)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Suppose we cover the unit square <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="M=[0,1]^{2}" display="inline"><mrow><mi>M</mi><mo>=</mo><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mn>2</mn></msup></mrow></math> by
+putting an open disk of diameter <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> centered at every point
+(trimming any overflow).
+This is clearly an open cover because,
+well, every point lies in <em class="ltx_emph ltx_font_italic">many</em> of the open sets,
+and in particular is the center of one.</p>
+</div>
+<div id="S3.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">But this is way overkill – we only need about four
+of these circles to cover the whole square.
+That’s what is meant by a “finite subcover”.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='113.385827pt' height='113.385827pt' viewBox='113.102362 110.551181 113.385827 113.385827'>
+<g id='asymptote-8-3-page1'>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M20.7204 93.0907H93.0907V20.7204H20.7204V93.0907Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='1.00375'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M113.56 36.4361C113.56 16.4516 97.3594 .250938 77.3749 .250938C57.3904 .250937 41.1898 16.4516 41.1898 36.4361S57.3904 72.6213 77.3749 72.6213S113.56 56.4206 113.56 36.4361Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-dasharray='0,2.0123' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M72.6213 36.4361C72.6213 16.4516 56.4206 .250938 36.4361 .250937C16.4516 .250937 .250938 16.4516 .250938 36.4361S16.4516 72.6213 36.4361 72.6213S72.6213 56.4206 72.6213 36.4361Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-dasharray='0,2.0123' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M72.6213 77.3749C72.6213 57.3904 56.4206 41.1898 36.4361 41.1898S.250937 57.3904 .250937 77.3749S16.4516 113.56 36.4361 113.56S72.6213 97.3594 72.6213 77.3749Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-dasharray='0,2.0123' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M113.56 77.3749C113.56 57.3904 97.3594 41.1898 77.3749 41.1898S41.1898 57.3904 41.1898 77.3749S57.3904 113.56 77.3749 113.56S113.56 97.3594 113.56 77.3749Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-dasharray='0,2.0123' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Why do we care?
+Because of this:</p>
+</div>
+<div id="thm:compactness_metric" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 8.3.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Sequentially compact <math id="S3.Thmtheorem5.m1" class="ltx_Math" alttext="\iff" display="inline"><mo stretchy="false">⇔</mo></math> compact)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">A metric space <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is sequentially compact if and only if it is compact.</p>
+</div>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">We defer the proof to the last section.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">This gives us the motivation we wanted for our definition.
+Sequential compactness was a condition that made sense.
+The open-cover definition looked strange,
+but it turned out to be equivalent.
+But we now prefer it, because we have seen that
+whenever possible we want to resort to open-set-only based definitions:
+so that e.g. they are preserved under homeomorphism.</p>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 8.3.6</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(An example of non-compactness)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">The space <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="X=[0,1)" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math> is not compact in either sense. We can already see it is not sequentially compact, because it is not even complete (look at <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="x_{n}=1-\frac{1}{n}" display="inline"><mrow><msub><mi>x</mi><mi>n</mi></msub><mo>=</mo><mrow><mn>1</mn><mo>−</mo><mfrac linethickness="0.6px"><mn>1</mn><mi>n</mi></mfrac></mrow></mrow></math>).
+To see it is not compact under the covering definition, consider the sets</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="U_{m}=\left[0,1-\frac{1}{m+1}\right)" display="block"><mrow><msub><mi>U</mi><mi>m</mi></msub><mo>=</mo><mrow><mo>[</mo><mn>0</mn><mo>,</mo><mrow><mn>1</mn><mo>−</mo><mfrac linethickness="0.6px"><mn>1</mn><mrow><mi>m</mi><mo>+</mo><mn>1</mn></mrow></mfrac></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for <math id="S3.Thmtheorem6.p1.m3" class="ltx_Math" alttext="m=1,2,\dots" display="inline"><mrow><mi>m</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>. Then <math id="S3.Thmtheorem6.p1.m4" class="ltx_Math" alttext="X=\bigcup U_{i}" display="inline"><mrow><mi>X</mi><mo rspace="0.111em">=</mo><mrow><mo>⋃</mo><msub><mi>U</mi><mi>i</mi></msub></mrow></mrow></math>; hence the <math id="S3.Thmtheorem6.p1.m5" class="ltx_Math" alttext="U_{i}" display="inline"><msub><mi>U</mi><mi>i</mi></msub></math> are indeed a cover.
+But no finite collection of the <math id="S3.Thmtheorem6.p1.m6" class="ltx_Math" alttext="U_{i}" display="inline"><msub><mi>U</mi><mi>i</mi></msub></math>’s will cover <math id="S3.Thmtheorem6.p1.m7" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem7" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 8.3.7</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself that <math id="S3.Thmtheorem7.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> <em class="ltx_emph ltx_font_italic">is</em> compact;
+this is a little less intuitive than it being sequentially compact.</span></p>
+</div>
+</div>
+<div id="S3.Thmtheorem8" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 8.3.8</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">Thus, we’ll never call a metric space “sequentially compact” again
+— we’ll just say “compact”.
+(Indeed, I kind of already did this in the previous few sections.)</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">8.4 </span>Applications of compactness</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">Compactness lets us reduce <em class="ltx_emph ltx_font_italic">infinite</em> open covers to finite ones.
+Actually, it lets us do this even if the open covers are <em class="ltx_emph ltx_font_italic">blithely stupid</em>.
+Very often one takes an open cover consisting
+of an open neighborhood of <math id="S4.p1.m1" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math> for every single point <math id="S4.p1.m2" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> in the space;
+this is a huge number of open sets,
+and yet compactness lets us reduce to a finite set.</p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">To give an example of a typical usage:</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 8.4.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Compact <math id="S4.Thmtheorem1.m1" class="ltx_Math" alttext="\implies" display="inline"><mo stretchy="false">⟹</mo></math> totally bounded)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be compact. Then <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is totally bounded.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof using covers.</h5>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">For every point <math id="S4.p3.m1" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>, take an <math id="S4.p3.m2" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>-neighborhood of <math id="S4.p3.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, say <math id="S4.p3.m4" class="ltx_Math" alttext="U_{p}" display="inline"><msub><mi>U</mi><mi>p</mi></msub></math>.
+These cover <math id="S4.p3.m5" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> for the horrendously stupid reason that each point <math id="S4.p3.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is
+at the very least covered by its open neighborhood <math id="S4.p3.m7" class="ltx_Math" alttext="U_{p}" display="inline"><msub><mi>U</mi><mi>p</mi></msub></math>.
+Compactness then lets us take a finite subcover.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Next, an important result about maps between compact spaces.</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 8.4.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Images of compacts are compact)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> be a continuous function, where <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is compact.
+Then the image</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="f^{\text{img}}(X)\subseteq Y" display="block"><mrow><mrow><msup><mi>f</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>Y</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is compact.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof using covers.</h5>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Take any open cover <math id="S4.p5.m1" class="ltx_Math" alttext="\{V_{\alpha}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>V</mi><mi>α</mi></msub><mo stretchy="false">}</mo></mrow></math> in <math id="S4.p5.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> of <math id="S4.p5.m3" class="ltx_Math" alttext="f^{\text{img}}(X)" display="inline"><mrow><msup><mi>f</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+By continuity of <math id="S4.p5.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>,
+it pulls back to an open cover <math id="S4.p5.m5" class="ltx_Math" alttext="\{U_{\alpha}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>U</mi><mi>α</mi></msub><mo stretchy="false">}</mo></mrow></math> of <math id="S4.p5.m6" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+Thus some finite subcover of this covers <math id="S4.p5.m7" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+The corresponding <math id="S4.p5.m8" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>’s cover <math id="S4.p5.m9" class="ltx_Math" alttext="f^{\text{img}}(X)" display="inline"><mrow><msup><mi>f</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 8.4.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Give another proof using the sequential definitions
+of continuity and compactness.
+(This is even easier.)</span></p>
+</div>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">Some nice corollaries of this:</p>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_corollary">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Corollary 8.4.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Extreme value theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be compact and consider a continuous function <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="f\colon X\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>.
+Then <math id="S4.Thmtheorem4.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> achieves a <em class="ltx_emph ltx_font_italic">maximum value</em> at some point,
+i.e. there is a point <math id="S4.Thmtheorem4.p1.m4" class="ltx_Math" alttext="p\in X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>X</mi></mrow></math> such that <math id="S4.Thmtheorem4.p1.m5" class="ltx_Math" alttext="f(p)\geq f(q)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≥</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for any
+other <math id="S4.Thmtheorem4.p1.m6" class="ltx_Math" alttext="q\in X" display="inline"><mrow><mi>q</mi><mo>∈</mo><mi>X</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_corollary">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Corollary 8.4.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Intermediate value theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Consider a continuous function <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="f\colon[0,1]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>.
+Then the image of <math id="S4.Thmtheorem5.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is of the form <math id="S4.Thmtheorem5.p1.m3" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math> for some real numbers <math id="S4.Thmtheorem5.p1.m4" class="ltx_Math" alttext="a\leq b" display="inline"><mrow><mi>a</mi><mo>≤</mo><mi>b</mi></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Sketch of Proof.</h5>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">The point is that the image of <math id="S4.p7.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is compact in <math id="S4.p7.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>,
+and hence closed and bounded.
+You can convince yourself that the closed sets are just unions of closed intervals.
+That implies the extreme value theorem.</p>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">When <math id="S4.p8.m1" class="ltx_Math" alttext="X=[0,1]" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math>, the image is also connected,
+so there should only be one closed interval in <math id="S4.p8.m2" class="ltx_Math" alttext="f^{\text{img}}([0,1])" display="inline"><mrow><msup><mi>f</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
+Since the image is bounded, we then know it’s of the form <math id="S4.p8.m3" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math>.
+(To give a full proof, you would use the so-called <em class="ltx_emph ltx_font_italic">least upper bound</em>
+property, but that’s a little involved for a bedtime story;
+also, I think <math id="S4.p8.m4" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> is boring.)
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S4.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 8.4.6</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(<math id="S4.Thmtheorem6.m1" class="ltx_Math" alttext="1/x" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">The compactness hypothesis is really important here.
+Otherwise, consider the function</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="(0,1)\to\mathbb{R}\quad\text{ by }\quad x\mapsto\frac{1}{x}." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mi>ℝ</mi><mspace width="1em"></mspace><mtext> by </mtext></mrow></mrow><mspace width="1em"></mspace><mrow><mi>x</mi><mo stretchy="false">↦</mo><mfrac linethickness="0.6px"><mn>1</mn><mi>x</mi></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This function (which you plot as a hyperbola) is not bounded;
+essentially, you can see graphically that the issue
+is we can’t extend it to a function on <math id="S4.Thmtheorem6.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> because it explodes near <math id="S4.Thmtheorem6.p1.m2" class="ltx_Math" alttext="x=0" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p9" class="ltx_para">
+<p class="ltx_p">One last application: if <math id="S4.p9.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a compact metric space,
+then continuous functions <math id="S4.p9.m2" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math>
+are continuous in an especially “nice” way:</p>
+</div>
+<div id="S4.Thmtheorem7" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 8.4.7</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">A function <math id="S4.Thmtheorem7.p1.m1" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> of metric spaces
+is called <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> uniformly continuous</span>
+if for any <math id="S4.Thmtheorem7.p1.m2" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, there exists a <math id="S4.Thmtheorem7.p1.m3" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>
+(depending only on <math id="S4.Thmtheorem7.p1.m4" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>) such that
+whenever <math id="S4.Thmtheorem7.p1.m5" class="ltx_Math" alttext="d_{M}(x,y)&lt;\delta" display="inline"><mrow><mrow><msub><mi>d</mi><mi>M</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mi>δ</mi></mrow></math> we also have <math id="S4.Thmtheorem7.p1.m6" class="ltx_Math" alttext="d_{N}(f(x),f(y))&lt;\varepsilon" display="inline"><mrow><mrow><msub><mi>d</mi><mi>N</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mi>ε</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p10" class="ltx_para">
+<p class="ltx_p">The name means that for <math id="S4.p10.m1" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,
+we need a <math id="S4.p10.m2" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> that works for <em class="ltx_emph ltx_font_italic">every point</em> of <math id="S4.p10.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+<div id="S4.Thmtheorem8" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 8.4.8</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Uniform continuity)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S4.I1" class="ltx_enumerate">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The functions <math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> to <math id="S4.I1.i1.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> of the form
+<math id="S4.I1.i1.p1.m3" class="ltx_Math" alttext="x\mapsto ax+b" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mi>b</mi></mrow></mrow></math> are all uniformly continuous,
+since one can always take <math id="S4.I1.i1.p1.m4" class="ltx_Math" alttext="\delta=\varepsilon/|a|" display="inline"><mrow><mi>δ</mi><mo>=</mo><mrow><mi>ε</mi><mo>/</mo><mrow><mo stretchy="false">|</mo><mi>a</mi><mo stretchy="false">|</mo></mrow></mrow></mrow></math> (or <math id="S4.I1.i1.p1.m5" class="ltx_Math" alttext="\delta=1" display="inline"><mrow><mi>δ</mi><mo>=</mo><mn>1</mn></mrow></math> if <math id="S4.I1.i1.p1.m6" class="ltx_Math" alttext="a=0" display="inline"><mrow><mi>a</mi><mo>=</mo><mn>0</mn></mrow></math>).</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Actually, it is true that a differentiable function <math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>
+with a bounded derivative is uniformly continuous.
+(The converse is false for the reason that uniformly continuous
+doesn’t imply differentiable at all.)</p>
+</div>
+</li>
+<li id="S4.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S4.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S4.I1.i3.p1.m1" class="ltx_Math" alttext="f\colon\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> by <math id="S4.I1.i3.p1.m2" class="ltx_Math" alttext="x\mapsto x^{2}" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math>
+is <em class="ltx_emph ltx_font_italic">not</em> uniformly continuous, since for large <math id="S4.I1.i3.p1.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>,
+tiny <math id="S4.I1.i3.p1.m4" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> changes to <math id="S4.I1.i3.p1.m5" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> lead to fairly large changes in <math id="S4.I1.i3.p1.m6" class="ltx_Math" alttext="x^{2}" display="inline"><msup><mi>x</mi><mn>2</mn></msup></math>.
+(If you like, you can try to prove this formally now.)</p>
+</div>
+<div id="S4.I1.i3.p2" class="ltx_para">
+<p class="ltx_p">Think <math id="S4.I1.i3.p2.m1" class="ltx_Math" alttext="f(2017.01)-f(2017)&gt;40" display="inline"><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2017.01</mn><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2017</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>&gt;</mo><mn>40</mn></mrow></math>;
+even when <math id="S4.I1.i3.p2.m2" class="ltx_Math" alttext="\delta=0.01" display="inline"><mrow><mi>δ</mi><mo>=</mo><mn>0.01</mn></mrow></math>, one can still cause large changes in <math id="S4.I1.i3.p2.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>.</p>
+</div>
+</li>
+<li id="S4.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S4.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">However, when restricted to <math id="S4.I1.i4.p1.m1" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math> or <math id="S4.I1.i4.p1.m2" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math>
+the function <math id="S4.I1.i4.p1.m3" class="ltx_Math" alttext="x\mapsto x^{2}" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math> becomes uniformly continuous.
+(For <math id="S4.I1.i4.p1.m4" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math> one can now pick for example <math id="S4.I1.i4.p1.m5" class="ltx_Math" alttext="\delta=\min\{1,\varepsilon\}/3" display="inline"><mrow><mi>δ</mi><mo>=</mo><mrow><mrow><mi>min</mi><mo>⁡</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi>ε</mi><mo stretchy="false">}</mo></mrow></mrow><mo>/</mo><mn>3</mn></mrow></mrow></math>.)</p>
+</div>
+</li>
+<li id="S4.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(e)</span> 
+<div id="S4.I1.i5.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S4.I1.i5.p1.m1" class="ltx_Math" alttext="(0,1)\to\mathbb{R}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math> by <math id="S4.I1.i5.p1.m2" class="ltx_Math" alttext="x\mapsto 1/x" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><mrow><mn>1</mn><mo>/</mo><mi>x</mi></mrow></mrow></math> is <em class="ltx_emph ltx_font_italic">not</em>
+uniformly continuous (same reason as before).</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S4.p11" class="ltx_para">
+<p class="ltx_p">Now, as promised:</p>
+</div>
+<div id="S4.Thmtheorem9" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 8.4.9</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Continuous on compact <math id="S4.Thmtheorem9.m1" class="ltx_Math" alttext="\implies" display="inline"><mo stretchy="false">⟹</mo></math> uniformly continuous)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S4.Thmtheorem9.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is compact and <math id="S4.Thmtheorem9.p1.m2" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> is continuous,
+then <math id="S4.Thmtheorem9.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is uniformly continuous.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof using sequences.</h5>
+<div id="S4.p12" class="ltx_para">
+<p class="ltx_p">Fix <math id="S4.p12.m1" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, and assume for contradiction that for every <math id="S4.p12.m2" class="ltx_Math" alttext="\delta=1/k" display="inline"><mrow><mi>δ</mi><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mi>k</mi></mrow></mrow></math>
+there exists points <math id="S4.p12.m3" class="ltx_Math" alttext="x_{k}" display="inline"><msub><mi>x</mi><mi>k</mi></msub></math> and <math id="S4.p12.m4" class="ltx_Math" alttext="y_{k}" display="inline"><msub><mi>y</mi><mi>k</mi></msub></math> within <math id="S4.p12.m5" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> of each
+other but with images <math id="S4.p12.m6" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math> apart.
+By compactness, take a convergent subsequence <math id="S4.p12.m7" class="ltx_Math" alttext="x_{i_{k}}\to p" display="inline"><mrow><msub><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mo stretchy="false">→</mo><mi>p</mi></mrow></math>.
+Then <math id="S4.p12.m8" class="ltx_Math" alttext="y_{i_{k}}\to p" display="inline"><mrow><msub><mi>y</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mo stretchy="false">→</mo><mi>p</mi></mrow></math> as well, since the <math id="S4.p12.m9" class="ltx_Math" alttext="x_{k}" display="inline"><msub><mi>x</mi><mi>k</mi></msub></math>’s and <math id="S4.p12.m10" class="ltx_Math" alttext="y_{k}" display="inline"><msub><mi>y</mi><mi>k</mi></msub></math>’s are close to each other.
+So both sequences <math id="S4.p12.m11" class="ltx_Math" alttext="f(x_{i_{k}})" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S4.p12.m12" class="ltx_Math" alttext="f(y_{i_{k}})" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><msub><mi>i</mi><mi>k</mi></msub></msub><mo stretchy="false">)</mo></mrow></mrow></math> should converge to <math id="S4.p12.m13" class="ltx_Math" alttext="f(p)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> by sequential continuity,
+but this can’t be true since the two sequences are always <math id="S4.p12.m14" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> apart.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">8.5 </span>(Optional) Equivalence of formulations of compactness</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">We will prove that:</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 8.5.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Heine-Borel for general metric spaces)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">For a metric space <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, the following are equivalent:</p>
+<ol id="S5.I1" class="ltx_enumerate">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(i)</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Every sequence has a convergent subsequence,</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(ii)</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The space <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is complete and totally bounded, and</p>
+</div>
+</li>
+<li id="S5.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(iii)</span> 
+<div id="S5.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Every open cover has a finite subcover.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">We leave the proof that (i) <math id="S5.p2.m1" class="ltx_Math" alttext="\iff" display="inline"><mo stretchy="false">⇔</mo></math> (ii) as <a href="#thm:bzw" title="Problem 8F (Bolzano-Weierstraß theorem for general metric spaces). ‣ 8.6 A few harder problems to think about ‣ Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8F</span></a>;
+the idea of the proof is much in the spirit of <a href="#thm:interval_compact" title="Theorem 8.2.2 (The interval is compact) ‣ 8.2 Criteria for compactness ‣ Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">8.2.2</span></a>.</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof that (i) and (ii) <math id="S5.m1" class="ltx_Math" alttext="\implies" display="inline"><mo stretchy="false">⟹</mo></math> (iii).</h5>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">We prove the following lemma, which is interesting in its own right.</p>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_lemma">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Lemma 8.5.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Lebesgue number lemma)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a compact metric space and <math id="S5.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\{U_{\alpha}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>U</mi><mi>α</mi></msub><mo stretchy="false">}</mo></mrow></math> an open cover.
+Then there exists a real number <math id="S5.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,
+called a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Lebesgue number</span> for that covering,
+such that the <math id="S5.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math>-neighborhood of any point
+<math id="S5.Thmtheorem2.p1.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> lies entirely in some <math id="S5.Thmtheorem2.p1.m6" class="ltx_Math" alttext="U_{\alpha}" display="inline"><msub><mi>U</mi><mi>α</mi></msub></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of lemma.</h5>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">Assume for contradiction that for every <math id="S5.p4.m1" class="ltx_Math" alttext="\delta=1/k" display="inline"><mrow><mi>δ</mi><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mi>k</mi></mrow></mrow></math>
+there is a point <math id="S5.p4.m2" class="ltx_Math" alttext="x_{k}\in M" display="inline"><mrow><msub><mi>x</mi><mi>k</mi></msub><mo>∈</mo><mi>M</mi></mrow></math>
+such that its <math id="S5.p4.m3" class="ltx_Math" alttext="1/k" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>k</mi></mrow></math>-neighborhood isn’t contained in any <math id="S5.p4.m4" class="ltx_Math" alttext="U_{\alpha}" display="inline"><msub><mi>U</mi><mi>α</mi></msub></math>.
+In this way we construct a sequence <math id="S5.p4.m5" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math>, <math id="S5.p4.m6" class="ltx_Math" alttext="x_{2}" display="inline"><msub><mi>x</mi><mn>2</mn></msub></math>, …;
+thus we’re allowed to take a subsequence which converges to some <math id="S5.p4.m7" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>.
+Then for every <math id="S5.p4.m8" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math> we can find an integer <math id="S5.p4.m9" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> such that <math id="S5.p4.m10" class="ltx_Math" alttext="d(x_{n},x)+1/n&lt;\varepsilon" display="inline"><mrow><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mn>1</mn><mo>/</mo><mi>n</mi></mrow></mrow><mo>&lt;</mo><mi>ε</mi></mrow></math>;
+thus the <math id="S5.p4.m11" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>-neighborhood at <math id="S5.p4.m12" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> isn’t contained in any <math id="S5.p4.m13" class="ltx_Math" alttext="U_{\alpha}" display="inline"><msub><mi>U</mi><mi>α</mi></msub></math> for every <math id="S5.p4.m14" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.
+This is impossible, because we assumed <math id="S5.p4.m15" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> was covered by some open set.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S5.p5" class="ltx_para">
+<p class="ltx_p">Now, take a Lebesgue number <math id="S5.p5.m1" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> for the covering.
+Since <math id="S5.p5.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is totally bounded, finitely many <math id="S5.p5.m3" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math>-neighborhoods cover the space,
+so finitely many <math id="S5.p5.m4" class="ltx_Math" alttext="U_{\alpha}" display="inline"><msub><mi>U</mi><mi>α</mi></msub></math> do as well.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof that (iii) <math id="S5.m2" class="ltx_Math" alttext="\implies" display="inline"><mo stretchy="false">⟹</mo></math> (ii).</h5>
+<div id="S5.p6" class="ltx_para">
+<p class="ltx_p">One step is immediate:</p>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 8.5.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that the covering condition <math id="S5.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\implies" display="inline"><mo stretchy="false">⟹</mo></math> totally bounded.</span></p>
+</div>
+</div>
+<div id="S5.p7" class="ltx_para">
+<p class="ltx_p">The tricky part is showing <math id="S5.p7.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is complete.
+Assume for contradiction it isn’t and thus that the sequence <math id="S5.p7.m2" class="ltx_Math" alttext="(x_{k})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></math> is Cauchy,
+but it doesn’t converge to any particular point.</p>
+</div>
+<div id="S5.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 8.5.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S5.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that this implies for each <math id="S5.Thmtheorem4.p1.m1" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>, there is an <math id="S5.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\varepsilon_{p}" display="inline"><msub><mi>ε</mi><mi>p</mi></msub></math>-neighborhood <math id="S5.Thmtheorem4.p1.m3" class="ltx_Math" alttext="U_{p}" display="inline"><msub><mi>U</mi><mi>p</mi></msub></math>
+which contains at most finitely many of the points of the sequence <math id="S5.Thmtheorem4.p1.m4" class="ltx_Math" alttext="(x_{k})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></math>.
+(You will have to use the fact that <math id="S5.Thmtheorem4.p1.m5" class="ltx_Math" alttext="x_{k}\not\to p" display="inline"><mrow><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="false">↛</mo><mi>p</mi></mrow></math> and <math id="S5.Thmtheorem4.p1.m6" class="ltx_Math" alttext="(x_{k})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></math> is Cauchy.)</span></p>
+</div>
+</div>
+<div id="S5.p8" class="ltx_para">
+<p class="ltx_p">Now if we consider <math id="S5.p8.m1" class="ltx_Math" alttext="M=\bigcup_{p}U_{p}" display="inline"><mrow><mi>M</mi><mo rspace="0.111em">=</mo><mrow><msub><mo>⋃</mo><mi>p</mi></msub><msub><mi>U</mi><mi>p</mi></msub></mrow></mrow></math> we get a
+finite subcover of these open neighborhoods;
+but this finite subcover can only cover finitely
+many points of the sequence, by contradiction.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">8.6 </span>A few harder problems to think about</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p">The later problems are pretty hard;
+some have the flavor of IMO 3/6-style constructions.
+It’s important to draw lots of pictures so one can tell what’s happening.
+Of these <a href="#thm:bzw" title="Problem 8F (Bolzano-Weierstraß theorem for general metric spaces). ‣ 8.6 A few harder problems to think about ‣ Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8F</span></a> is definitely my favorite.</p>
+</div>
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 8A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Show that the closed interval <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> and
+open interval <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math> are not homeomorphic.
+
+<math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is compact.
+
+
+Compactness is preserved under homeomorphism,
+but <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is compact while <math id="Thmproblem1.p1.m5" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math> is not.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 8B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a topological space with the discrete topology.
+Under what conditions is <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> compact?
+
+If and only if it is finite.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 8C</span></span><span class="ltx_text ltx_font_bold"> </span>(The cofinite topology is quasicompact only)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">We let <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be an infinite set and equip it with the
+<span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> cofinite topology</span>:
+the open sets are the empty set and complements of finite sets.
+This makes <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> into a topological space.
+Show that <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is quasicompact but not Hausdorff.</p>
+</div>
+</div>
+<div id="prob:cantor_intersect" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 8D</span></span><span class="ltx_text ltx_font_bold"> </span>(Cantor’s intersection theorem)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a compact topological space, and suppose</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="X=K_{0}\supseteq K_{1}\supseteq K_{2}\supseteq\dots" display="block"><mrow><mi>X</mi><mo>=</mo><msub><mi>K</mi><mn>0</mn></msub><mo>⊇</mo><msub><mi>K</mi><mn>1</mn></msub><mo>⊇</mo><msub><mi>K</mi><mn>2</mn></msub><mo>⊇</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is an infinite sequence of nested nonempty closed subsets.
+Show that <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="\bigcap_{n\geq 0}K_{n}\neq\varnothing" display="inline"><mrow><mrow><msub><mo>⋂</mo><mrow><mi>n</mi><mo>≥</mo><mn>0</mn></mrow></msub><msub><mi>K</mi><mi>n</mi></msub></mrow><mo>≠</mo><mi mathvariant="normal">∅</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="prob:tychonoff" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 8E</span></span><span class="ltx_text ltx_font_bold"> </span>(Tychonoff’s theorem)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="Thmproblem5.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> be compact metric spaces. Show that <math id="Thmproblem5.p1.m3" class="ltx_Math" alttext="X\times Y" display="inline"><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>Y</mi></mrow></math> is compact.
+(This is also true for general topological spaces,
+but the proof is surprisingly hard,
+and we haven’t even defined <math id="Thmproblem5.p1.m4" class="ltx_Math" alttext="X\times Y" display="inline"><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>Y</mi></mrow></math> in general yet.)
+
+
+Suppose <math id="Thmproblem5.p1.m5" class="ltx_Math" alttext="p_{i}=(x_{i},y_{i})" display="inline"><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> is a sequence in <math id="Thmproblem5.p1.m6" class="ltx_Math" alttext="X\times Y" display="inline"><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>Y</mi></mrow></math> (<math id="Thmproblem5.p1.m7" class="ltx_Math" alttext="i=1,2,\dots" display="inline"><mrow><mi>i</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>).
+Take a sub-sequence such that the <math id="Thmproblem5.p1.m8" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>-coordinate converges
+(throwing out some terms).
+Then take a sub-sequence of <em class="ltx_emph ltx_font_italic">that</em> sub-sequence
+such that <math id="Thmproblem5.p1.m9" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>-coordinate converges (throwing out more terms).
+
+
+Suppose <math id="Thmproblem5.p1.m10" class="ltx_Math" alttext="p_{i}=(x_{i},y_{i})" display="inline"><mrow><msub><mi>p</mi><mi>i</mi></msub><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><msub><mi>y</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> is a sequence in <math id="Thmproblem5.p1.m11" class="ltx_Math" alttext="X\times Y" display="inline"><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>Y</mi></mrow></math> (<math id="Thmproblem5.p1.m12" class="ltx_Math" alttext="i=1,2,\dots" display="inline"><mrow><mi>i</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>).
+Looking on the <math id="Thmproblem5.p1.m13" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> side, some subsequence converges:
+for the sake of illustration say it’s <math id="Thmproblem5.p1.m14" class="ltx_Math" alttext="x_{1},x_{4},x_{9},x_{16},\dots\to x" display="inline"><mrow><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>4</mn></msub><mo>,</mo><msub><mi>x</mi><mn>9</mn></msub><mo>,</mo><msub><mi>x</mi><mn>16</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow><mo stretchy="false">→</mo><mi>x</mi></mrow></math>.
+Then look at the corresponding sequence <math id="Thmproblem5.p1.m15" class="ltx_Math" alttext="y_{1},y_{4},y_{9},y_{16},\dots" display="inline"><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>4</mn></msub><mo>,</mo><msub><mi>y</mi><mn>9</mn></msub><mo>,</mo><msub><mi>y</mi><mn>16</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math>.
+Using compactness of <math id="Thmproblem5.p1.m16" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>, it has a convergent subsequence, say
+<math id="Thmproblem5.p1.m17" class="ltx_Math" alttext="y_{1},y_{16},y_{81},y_{256},\dots\to y" display="inline"><mrow><mrow><msub><mi>y</mi><mn>1</mn></msub><mo>,</mo><msub><mi>y</mi><mn>16</mn></msub><mo>,</mo><msub><mi>y</mi><mn>81</mn></msub><mo>,</mo><msub><mi>y</mi><mn>256</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow><mo stretchy="false">→</mo><mi>y</mi></mrow></math>.
+Then <math id="Thmproblem5.p1.m18" class="ltx_Math" alttext="p_{1},p_{16},p_{81},\dots" display="inline"><mrow><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><msub><mi>p</mi><mn>16</mn></msub><mo>,</mo><msub><mi>p</mi><mn>81</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math> will converge to <math id="Thmproblem5.p1.m19" class="ltx_Math" alttext="(x,y)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+<div id="Thmproblem5.p2" class="ltx_para">
+<p class="ltx_p">One common mistake is to just conclude
+that <math id="Thmproblem5.p2.m1" class="ltx_Math" alttext="(x_{n})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></math> has a convergent subsequence
+and that <math id="Thmproblem5.p2.m2" class="ltx_Math" alttext="(y_{n})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></math> does too.
+But these sequences could be totally unrelated.
+For this proof to work,
+you do need to apply compactness of <math id="Thmproblem5.p2.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> first,
+and then compactness of <math id="Thmproblem5.p2.m4" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> on the resulting <em class="ltx_emph ltx_font_italic">filtered</em>
+sequence like we did here.</p>
+</div>
+</div>
+<div id="thm:bzw" class="ltx_theorem ltx_theorem_dproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 8F</span></span><span class="ltx_text ltx_font_bold"> </span>(Bolzano-Weierstraß theorem for general metric spaces)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem6.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem6.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem6.p2" class="ltx_para">
+<p class="ltx_p">Prove that a metric space <math id="Thmproblem6.p2.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is sequentially compact
+if and only if it is complete and totally bounded.
+
+
+Mimic the proof of <a href="#thm:interval_compact" title="Theorem 8.2.2 (The interval is compact) ‣ 8.2 Criteria for compactness ‣ Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">8.2.2</span></a>.
+The totally bounded condition lets you do Pigeonhole.</p>
+</div>
+</div>
+<div id="Thmproblem7" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 8G</span></span><span class="ltx_text ltx_font_bold"> </span>(Almost Arzelà-Ascoli theorem)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem7.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem7.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem7.p2" class="ltx_para">
+<p class="ltx_p">Let
+<math id="Thmproblem7.p2.m1" class="ltx_Math" alttext="f_{1},f_{2},\ldots\colon[0,1]\to[-100,100]" display="inline"><mrow><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><msub><mi>f</mi><mn>2</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mrow><mo>−</mo><mn>100</mn></mrow><mo>,</mo><mn>100</mn><mo stretchy="false">]</mo></mrow></mrow></mrow></math>
+be an <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> equicontinuous</span> sequence of functions, meaning</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\forall\varepsilon&gt;0\quad\exists\delta&gt;0\quad\forall n\;\forall x,y\quad\left(%
+\left\lvert x-y\right\rvert&lt;\delta\implies\left\lvert f_{n}(x)-f_{n}(y)\right%
+\rvert&lt;\varepsilon\right)" display="block"><mrow><mrow><mrow><mo rspace="0.167em">∀</mo><mi>ε</mi></mrow><mo>&gt;</mo><mn>0</mn></mrow><mspace width="1.167em"></mspace><mrow><mrow><mo rspace="0.167em">∃</mo><mi>δ</mi></mrow><mo>&gt;</mo><mrow><mn>0</mn><mspace width="1.167em"></mspace><mrow><mo rspace="0.167em">∀</mo><mrow><mi>n</mi><mo lspace="0.447em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mi>x</mi></mrow></mrow></mrow><mo>,</mo><mi>y</mi><mspace width="1em"></mspace><mrow><mo>(</mo><mrow><mrow><mo>|</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo>|</mo></mrow><mo>&lt;</mo><mi>δ</mi><mo stretchy="false">⟹</mo><mrow><mo>|</mo><mrow><mrow><msub><mi>f</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msub><mi>f</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>|</mo></mrow><mo>&lt;</mo><mi>ε</mi></mrow><mo>)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Show that we can extract a subsequence <math id="Thmproblem7.p2.m2" class="ltx_Math" alttext="f_{i_{1}},f_{i_{2}},\dots" display="inline"><mrow><msub><mi>f</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>,</mo><msub><mi>f</mi><msub><mi>i</mi><mn>2</mn></msub></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math>
+of these functions such that for every <math id="Thmproblem7.p2.m3" class="ltx_Math" alttext="x\in[0,1]" display="inline"><mrow><mi>x</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math>,
+the sequence <math id="Thmproblem7.p2.m4" class="ltx_Math" alttext="f_{i_{1}}(x)" display="inline"><mrow><msub><mi>f</mi><msub><mi>i</mi><mn>1</mn></msub></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="Thmproblem7.p2.m5" class="ltx_Math" alttext="f_{i_{2}}(x)" display="inline"><mrow><msub><mi>f</mi><msub><mi>i</mi><mn>2</mn></msub></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>, … converges.</p>
+</div>
+</div>
+<div id="Thmproblem8" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 8H</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem8.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem8.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem8.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem8.p2.m1" class="ltx_Math" alttext="M=(M,d)" display="inline"><mrow><mi>M</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></mrow></math> be a bounded metric space.
+Suppose that whenever <math id="Thmproblem8.p2.m2" class="ltx_Math" alttext="d^{\prime}" display="inline"><msup><mi>d</mi><mo>′</mo></msup></math> is another metric on <math id="Thmproblem8.p2.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+for which <math id="Thmproblem8.p2.m4" class="ltx_Math" alttext="(M,d)" display="inline"><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><mi>d</mi><mo stretchy="false">)</mo></mrow></math> and <math id="Thmproblem8.p2.m5" class="ltx_Math" alttext="(M,d^{\prime})" display="inline"><mrow><mo stretchy="false">(</mo><mi>M</mi><mo>,</mo><msup><mi>d</mi><mo>′</mo></msup><mo stretchy="false">)</mo></mrow></math> are homeomorphic
+(i.e. have the same open sets), then <math id="Thmproblem8.p2.m6" class="ltx_Math" alttext="d^{\prime}" display="inline"><msup><mi>d</mi><mo>′</mo></msup></math> is also bounded.
+Prove that <math id="Thmproblem8.p2.m7" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is compact.
+
+Assuming <math id="Thmproblem8.p2.m8" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is not compact, construct an
+unbounded continuous function <math id="Thmproblem8.p2.m9" class="ltx_Math" alttext="F\colon M\to\mathbb{R}" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>.
+Once such a function <math id="Thmproblem8.p2.m10" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is defined, the metric</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="d^{\prime}(x,y)\coloneqq d(x,y)+\left\lvert F(x)-F(y)\right\rvert" display="block"><mrow><mrow><msup><mi>d</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mo>|</mo><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>|</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">will establish the contrapositive of the problem.</p>
+</div>
+<div id="Thmproblem8.p3" class="ltx_para">
+<p class="ltx_p">The following solution is due to Royce Yao.
+We show the contrapositive:
+if <math id="Thmproblem8.p3.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is not compact, then there exists a homeomorphic unbounded metric.</p>
+</div>
+<div id="Thmproblem8.p4" class="ltx_para">
+<p class="ltx_p">The main step is to construction
+an unbounded continuous function <math id="Thmproblem8.p4.m1" class="ltx_Math" alttext="F\colon M\to\mathbb{R}" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>.
+Once such a function <math id="Thmproblem8.p4.m2" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is defined, the metric</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="d^{\prime}(x,y)\coloneqq d(x,y)+\left\lvert F(x)-F(y)\right\rvert" display="block"><mrow><mrow><msup><mi>d</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mo>|</mo><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>|</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">will solve the problem.</p>
+</div>
+<div id="Thmproblem8.p5" class="ltx_para">
+<p class="ltx_p">So, let <math id="Thmproblem8.p5.m1" class="ltx_Math" alttext="a_{1}" display="inline"><msub><mi>a</mi><mn>1</mn></msub></math>, <math id="Thmproblem8.p5.m2" class="ltx_Math" alttext="a_{2}" display="inline"><msub><mi>a</mi><mn>2</mn></msub></math>, … be a sequence in <math id="Thmproblem8.p5.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+with no convergent subsequence.
+For each <math id="Thmproblem8.p5.m4" class="ltx_Math" alttext="a_{i}" display="inline"><msub><mi>a</mi><mi>i</mi></msub></math>, there exists a radius <math id="Thmproblem8.p5.m5" class="ltx_Math" alttext="r_{i}" display="inline"><msub><mi>r</mi><mi>i</mi></msub></math> such that</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="0&lt;r_{i}&lt;\frac{1}{2}\min_{j}d(a_{i},a_{j})" display="block"><mrow><mn>0</mn><mo>&lt;</mo><msub><mi>r</mi><mi>i</mi></msub><mo>&lt;</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo lspace="0.167em">⁢</mo><mrow><munder><mi>min</mi><mi>j</mi></munder><mo lspace="0.167em">⁡</mo><mi>d</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mi>i</mi></msub><mo>,</mo><msub><mi>a</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Define <math id="Thmproblem8.p5.m6" class="ltx_Math" alttext="C_{i}" display="inline"><msub><mi>C</mi><mi>i</mi></msub></math> as an open ball at <math id="Thmproblem8.p5.m7" class="ltx_Math" alttext="a_{i}" display="inline"><msub><mi>a</mi><mi>i</mi></msub></math> with radius <math id="Thmproblem8.p5.m8" class="ltx_Math" alttext="r_{i}" display="inline"><msub><mi>r</mi><mi>i</mi></msub></math>.
+Note that every ball is disjoint.
+Then, we define <math id="Thmproblem8.p5.m9" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> as follow</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="F(x)=\begin{cases}0&amp;x\not\in C_{i}\\
+\frac{i}{r_{1}}(r_{i}-d(x,a_{i}))&amp;x\in C_{i}\end{cases}" display="block"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>x</mi><mo>∉</mo><msub><mi>C</mi><mi>i</mi></msub></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mstyle displaystyle="false"><mfrac linethickness="0.6px"><mi>i</mi><msub><mi>r</mi><mn>1</mn></msub></mfrac></mstyle><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>r</mi><mi>i</mi></msub><mo>−</mo><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><msub><mi>a</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>x</mi><mo>∈</mo><msub><mi>C</mi><mi>i</mi></msub></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which can be seen to be continuous.
+Then, <math id="Thmproblem8.p5.m10" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is unbounded by considering <math id="Thmproblem8.p5.m11" class="ltx_Math" alttext="F(a_{i})" display="inline"><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>a</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> as <math id="Thmproblem8.p5.m12" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math> goes to infinity.</p>
+</div>
+</div>
+<div id="Thmproblem9" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 8I</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem9.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem9.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem9.p1.g2" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem9.p2" class="ltx_para">
+<p class="ltx_p">In this problem a “circle”
+refers to the boundary of a disk with <em class="ltx_emph ltx_font_italic">nonzero</em> radius.</p>
+<ol id="S6.I1" class="ltx_enumerate">
+<li id="S6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S6.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Is it possible to partition the plane <math id="S6.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>
+into disjoint circles?</p>
+</div>
+</li>
+<li id="S6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S6.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">From the plane <math id="S6.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> we delete two distinct points <math id="S6.I1.i2.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S6.I1.i2.p1.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>.
+Is it possible to partition the remaining points into disjoint circles?</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">The answer to both parts is no.</p>
+</div>
+<div id="Thmproblem9.p3" class="ltx_para">
+<p class="ltx_p">For (a) use <a href="#prob:cantor_intersect" title="Problem 8D (Cantor’s intersection theorem). ‣ 8.6 A few harder problems to think about ‣ Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8D</span></a>.</p>
+</div>
+<div id="Thmproblem9.p4" class="ltx_para">
+<p class="ltx_p">For (b), color each circle in the partition
+based on whether it contains <math id="Thmproblem9.p4.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> but not <math id="Thmproblem9.p4.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>,
+<math id="Thmproblem9.p4.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> but not <math id="Thmproblem9.p4.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, or both.
+
+
+Part (a) follows by the Cantor intersection theorem
+(<a href="#prob:cantor_intersect" title="Problem 8D (Cantor’s intersection theorem). ‣ 8.6 A few harder problems to think about ‣ Chapter 8 Compactness ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">8D</span></a>).
+Assume for contradiction such a partition existed.
+Take any of the circles <math id="Thmproblem9.p4.m5" class="ltx_Math" alttext="C_{0}" display="inline"><msub><mi>C</mi><mn>0</mn></msub></math>, and let <math id="Thmproblem9.p4.m6" class="ltx_Math" alttext="K_{0}" display="inline"><msub><mi>K</mi><mn>0</mn></msub></math> denote the closed disk
+with boundary <math id="Thmproblem9.p4.m7" class="ltx_Math" alttext="C_{0}" display="inline"><msub><mi>C</mi><mn>0</mn></msub></math>.
+Now take the circle <math id="Thmproblem9.p4.m8" class="ltx_Math" alttext="C_{1}" display="inline"><msub><mi>C</mi><mn>1</mn></msub></math> passing through the center of <math id="Thmproblem9.p4.m9" class="ltx_Math" alttext="C_{0}" display="inline"><msub><mi>C</mi><mn>0</mn></msub></math>,
+and let <math id="Thmproblem9.p4.m10" class="ltx_Math" alttext="K_{1}" display="inline"><msub><mi>K</mi><mn>1</mn></msub></math> denote the closed disk with boundary <math id="Thmproblem9.p4.m11" class="ltx_Math" alttext="C_{1}" display="inline"><msub><mi>C</mi><mn>1</mn></msub></math>.
+If we repeat in this way,
+we get a nested sequence <math id="Thmproblem9.p4.m12" class="ltx_Math" alttext="K_{0}\supseteq K_{1}\supseteq\dots" display="inline"><mrow><msub><mi>K</mi><mn>0</mn></msub><mo>⊇</mo><msub><mi>K</mi><mn>1</mn></msub><mo>⊇</mo><mi mathvariant="normal">…</mi></mrow></math>
+and the radii of <math id="Thmproblem9.p4.m13" class="ltx_Math" alttext="C_{i}" display="inline"><msub><mi>C</mi><mi>i</mi></msub></math> approach zero
+(since each is at most half the previous once).
+Thus some point <math id="Thmproblem9.p4.m14" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> lies in <math id="Thmproblem9.p4.m15" class="ltx_Math" alttext="\bigcap_{n}K_{n}" display="inline"><mrow><msub><mo>⋂</mo><mi>n</mi></msub><msub><mi>K</mi><mi>n</mi></msub></mrow></math> which is impossible.</p>
+</div>
+<div id="Thmproblem9.p5" class="ltx_para">
+<p class="ltx_p">Now for part (b),
+again assume for contradiction a partition into circles exists.
+Color a circle magenta if it contains <math id="Thmproblem9.p5.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> but not <math id="Thmproblem9.p5.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>
+and color a circle cyan if it contains <math id="Thmproblem9.p5.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> but not <math id="Thmproblem9.p5.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+Color <math id="Thmproblem9.p5.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> itself magenta and <math id="Thmproblem9.p5.m6" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> itself cyan as well.
+Finally, color a circle neon yellow if it contains both <math id="Thmproblem9.p5.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="Thmproblem9.p5.m8" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>.
+(When we refer to coloring a circle,
+we mean to color all the points on it.)</p>
+</div>
+<div id="Thmproblem9.p6" class="ltx_para">
+<p class="ltx_p">By repeating the argument in (a) there are no circles
+enclosing neither <math id="Thmproblem9.p6.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> nor <math id="Thmproblem9.p6.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>.
+Hence every point is either magenta, cyan, or neon yellow.
+Now note that given any magenta circle,
+its interior is completely magenta.
+Actually, the magenta circles can be totally ordered
+by inclusion (since they can’t intersect).
+So we consider two cases:</p>
+<ul id="S6.I2" class="ltx_itemize">
+<li id="S6.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">If there is a magenta circle which is maximal by inclusion
+(i.e. a magenta circle not contained in any other magenta circle)
+then the set of all magenta points is just a closed disk.</p>
+</div>
+</li>
+<li id="S6.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">If there is no such magenta circle,
+then the set of magenta points can also be expressed
+as the union over all magenta circles of their interiors.
+This is a union of open sets, so it is itself open.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="Thmproblem9.p7" class="ltx_para">
+<p class="ltx_p">We conclude the set of magenta points is
+either a closed disk or an open set.
+Similarly for the set of cyan points.
+Moreover, the set of such points is convex.</p>
+</div>
+<div id="Thmproblem9.p8" class="ltx_para">
+<p class="ltx_p">To finish the problem:</p>
+<ul id="S6.I3" class="ltx_itemize">
+<li id="S6.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">Suppose there are no neon yellow points.
+If the magenta points form a closed disk,
+then the cyan points are <math id="S6.I3.i1.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> minus a disk which is not convex.
+Contradiction. So the magenta points must be open.
+Similarly the cyan points must be open.
+But <math id="S6.I3.i1.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> is connected,
+so it can’t be written as the union of two open sets.</p>
+</div>
+</li>
+<li id="S6.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">Now suppose there are neon yellow points.
+We claim there is a neon yellow circle minimal by inclusion.
+If not, then repeat the argument of (a) to get a contradiction,
+since any neon yellow circle must have diameter the distance from <math id="S6.I3.i2.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S6.I3.i2.p1.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>.
+So we can find a neon yellow circle <math id="S6.I3.i2.p1.m3" class="ltx_Math" alttext="\mathscr{C}" display="inline"><mi class="ltx_font_mathscript">𝒞</mi></math> whose
+interior is all magenta and cyan.
+Now repeat the argument of the previous part,
+replacing <math id="S6.I3.i2.p1.m4" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> by the interior of <math id="S6.I3.i2.p1.m5" class="ltx_Math" alttext="\mathscr{C}" display="inline"><mi class="ltx_font_mathscript">𝒞</mi></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../basictop/top-more.html">Previous chapter: Topological spaces</a><br />
+<a href="../linalg/vector-spaces.html">Next chapter: Vector spaces</a>
+</nav>
+
+		</main>
+	</body>
+</html>

@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Breaking the continuum hypothesis</title>
+		<meta property="og:title" content="Breaking the continuum hypothesis" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../st2/forcing-set-theory.html">Previous chapter: Forcing</a><br />
+<a href="../appendix/refs.html">Next chapter: Pedagogical comments and references</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 94 </span>Breaking the continuum hypothesis</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">We now use the technique of forcing to break the
+Continuum Hypothesis by choosing a good poset <math id="p1.m1" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math>.
+As I mentioned earlier, one can also build a model
+where the Continuum Hypothesis is true;
+this is called the <em class="ltx_emph ltx_font_italic">constructible universe</em>,
+(this model is often called “<math id="p1.m2" class="ltx_Math" alttext="V=L" display="inline"><mrow><mi>V</mi><mo>=</mo><mi>L</mi></mrow></math>”).
+However, I think it’s more fun when things break…</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">94.1 </span>Adding in reals</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Starting with a <em class="ltx_emph ltx_font_italic">countable</em> transitive model <math id="S1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">We want to choose <math id="S1.p2.m1" class="ltx_Math" alttext="\mathbb{P}\in M" display="inline"><mrow><mi>ℙ</mi><mo>∈</mo><mi>M</mi></mrow></math> such that <math id="S1.p2.m2" class="ltx_Math" alttext="(\aleph_{2})^{M}" display="inline"><msup><mrow><mo stretchy="false">(</mo><msub><mi mathvariant="normal">ℵ</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><mi>M</mi></msup></math> many real numbers appear,
+and then worry about cardinal collapse later.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Recall the earlier situation where we set <math id="S1.p3.m1" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> to be the infinite complete binary tree; its nodes can be thought of as partial functions <math id="S1.p3.m2" class="ltx_Math" alttext="n\to 2" display="inline"><mrow><mi>n</mi><mo stretchy="false">→</mo><mn>2</mn></mrow></math> where <math id="S1.p3.m3" class="ltx_Math" alttext="n&lt;\omega" display="inline"><mrow><mi>n</mi><mo>&lt;</mo><mi>ω</mi></mrow></math>.
+Then <math id="S1.p3.m4" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> itself is a path down this tree; i.e. it can be encoded as a total function <math id="S1.p3.m5" class="ltx_Math" alttext="G\colon\omega\to 2" display="inline"><mrow><mi>G</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ω</mi><mo stretchy="false">→</mo><mn>2</mn></mrow></mrow></math>,
+and corresponds to a real number.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='226.771653pt' height='140.936794pt' viewBox='169.795276 117.746085 226.771653 140.936794'>
+<defs>
+<path id='asymptote-94-1-g1-71' d='M8.290907-7.581816C8.290907-7.614543 8.269089-7.690907 8.170907-7.690907C8.13818-7.690907 8.12727-7.679998 8.00727-7.559998L7.243634-6.719998C7.145453-6.872725 6.643635-7.690907 5.432726-7.690907C2.999999-7.690907 .545454-5.279999 .545454-2.74909C.545454-1.014545 1.756363 .24 3.523635 .24C4.003635 .24 4.494544 .141818 4.887271-.021818C5.432726-.24 5.639998-.469091 5.836362-.687273C5.934544-.414545 6.21818-.010909 6.327271-.010909C6.381816-.010909 6.403635-.043636 6.403635-.054545C6.425453-.076364 6.534544-.490909 6.589089-.72L6.796362-1.56C6.839998-1.745454 6.894544-1.930909 6.93818-2.116363C7.05818-2.607272 7.069089-2.62909 7.690907-2.639999C7.745452-2.639999 7.865452-2.650908 7.865452-2.858181C7.865452-2.934545 7.810907-2.978181 7.723634-2.978181C7.472725-2.978181 6.829089-2.945454 6.57818-2.945454C6.239998-2.945454 5.389089-2.978181 5.050908-2.978181C4.952726-2.978181 4.821817-2.978181 4.821817-2.759999C4.821817-2.639999 4.90909-2.639999 5.149089-2.639999C5.159999-2.639999 5.476362-2.639999 5.727271-2.618181C6.010907-2.585454 6.065453-2.552727 6.065453-2.410908C6.065453-2.312727 5.945453-1.821818 5.836362-1.418181C5.530908-.218182 4.112726-.098182 3.730908-.098182C2.683636-.098182 1.538181-.72 1.538181-2.38909C1.538181-2.727272 1.647272-4.527271 2.792726-5.945453C3.381817-6.687271 4.439999-7.352725 5.519998-7.352725C6.632725-7.352725 7.276362-6.512725 7.276362-5.247271C7.276362-4.810908 7.243634-4.799999 7.243634-4.690908S7.363634-4.581817 7.407271-4.581817C7.549089-4.581817 7.549089-4.603635 7.603634-4.799999L8.290907-7.581816Z'/>
+<path id='asymptote-94-1-g2-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-94-1-g2-49' d='M3.207272-6.981816C3.207272-7.243634 3.207272-7.265453 2.956363-7.265453C2.279999-6.567271 1.32-6.567271 .970909-6.567271V-6.229089C1.189091-6.229089 1.832727-6.229089 2.399999-6.512725V-.861818C2.399999-.469091 2.367272-.338182 1.385454-.338182H1.036363V0C1.418181-.032727 2.367272-.032727 2.803636-.032727S4.18909-.032727 4.570908 0V-.338182H4.221817C3.239999-.338182 3.207272-.458182 3.207272-.861818V-6.981816Z'/>
+<path id='asymptote-94-1-g0-63' d='M7.747945-5.950685C7.90137-6.082192 7.90137-6.147945 7.90137-6.191781C7.90137-6.4 7.70411-6.410959 7.682192-6.410959C7.605479-6.410959 7.572603-6.389041 7.375342-6.213699L6.531507-5.479452C6.30137-5.720548 5.490411-6.410959 4.263014-6.410959C2.509589-6.410959 1.041096-5.019178 1.041096-3.2C1.041096-2.169863 1.468493-1.567123 1.687671-1.249315C1.512329-1.084932 1.50137-1.073973 .854795-.515068C.635616-.317808 .613699-.29589 .613699-.19726C.613699-.065753 .70137 .021918 .832877 .021918C.909589 .021918 .931507 .021918 1.128767-.164384L1.983562-.909589C2.082192-.8 2.893151 .021918 4.252055 .021918C6.115068 .021918 7.473973-1.490411 7.473973-3.189041C7.473973-4.208219 7.035616-4.843836 6.827397-5.139726C6.838356-5.150685 6.90411-5.205479 6.947945-5.249315L7.747945-5.950685ZM2.016438-1.534247C1.479452-2.290411 1.479452-2.947945 1.479452-3.189041C1.479452-4.767123 2.739726-5.972603 4.252055-5.972603C5.424658-5.972603 6.082192-5.30411 6.191781-5.183562L2.016438-1.534247ZM6.487671-4.854795C6.849315-4.372603 7.035616-3.824658 7.035616-3.2C7.035616-1.621918 5.775342-.416438 4.263014-.416438C3.090411-.416438 2.432877-1.084932 2.323288-1.205479L6.487671-4.854795Z'/>
+</defs>
+<g id='asymptote-94-1-page1'>
+<g fill="var(--asymptote-color-f00)">
+<use x='278.923109' y='125.456418' href='#asymptote-94-1-g0-63'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='113.811' cy='12.0287' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='215.57757' y='150.644115' href='#asymptote-94-1-g2-48'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='48.6877' cy='38.078' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<use x='345.33772' y='150.644115' href='#asymptote-94-1-g2-49'/>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='178.934' cy='38.078' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='181.426082' y='177.550433' href='#asymptote-94-1-g2-48'/>
+<use x='186.880647' y='177.550433' href='#asymptote-94-1-g2-48'/>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='22.6383' cy='64.1274' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='244.274538' y='177.550433' href='#asymptote-94-1-g2-48'/>
+<use x='249.729102' y='177.550433' href='#asymptote-94-1-g2-49'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='74.737' cy='64.1274' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<use x='311.186216' y='177.550433' href='#asymptote-94-1-g2-49'/>
+<use x='316.640781' y='177.550433' href='#asymptote-94-1-g2-48'/>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='152.885' cy='64.1274' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='374.034672' y='177.550433' href='#asymptote-94-1-g2-49'/>
+<use x='379.489236' y='177.550433' href='#asymptote-94-1-g2-49'/>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='204.984' cy='64.1274' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='171.194979' y='230.85071' href='#asymptote-94-1-g2-48'/>
+<use x='176.649543' y='230.85071' href='#asymptote-94-1-g2-48'/>
+<use x='182.104108' y='230.85071' href='#asymptote-94-1-g2-48'/>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='9.61363' cy='103.201' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='197.147005' y='230.85071' href='#asymptote-94-1-g2-48'/>
+<use x='202.60157' y='230.85071' href='#asymptote-94-1-g2-48'/>
+<use x='208.056135' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='35.663' cy='103.201' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='223.099032' y='230.85071' href='#asymptote-94-1-g2-48'/>
+<use x='228.553597' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<use x='234.008162' y='230.85071' href='#asymptote-94-1-g2-48'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='61.7123' cy='103.201' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<use x='249.051059' y='230.85071' href='#asymptote-94-1-g2-48'/>
+<use x='254.505624' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<use x='259.960189' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='87.7617' cy='103.201' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='300.955113' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<use x='306.409678' y='230.85071' href='#asymptote-94-1-g2-48'/>
+<use x='311.864242' y='230.85071' href='#asymptote-94-1-g2-48'/>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='139.86' cy='103.201' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='326.907155' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<use x='332.36172' y='230.85071' href='#asymptote-94-1-g2-48'/>
+<use x='337.816284' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='165.91' cy='103.201' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='352.859182' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<use x='358.313746' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<use x='363.768311' y='230.85071' href='#asymptote-94-1-g2-48'/>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='191.959' cy='103.201' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='378.811208' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<use x='384.265773' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<use x='389.720338' y='230.85071' href='#asymptote-94-1-g2-49'/>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<circle cx='218.008' cy='103.201' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<path d='M74.737 64.1274L48.6877 38.078L22.6383 64.1274' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<path d='M204.984 64.1274L178.934 38.078L152.885 64.1274' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<path d='M48.6877 38.078L113.811 12.0287L178.934 38.078' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<path d='M9.61363 103.201L22.6383 64.1274L35.663 103.201' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<path d='M139.86 103.201L152.885 64.1274L165.91 103.201' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<path d='M61.7123 103.201L74.737 64.1274L87.7617 103.201' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<path d='M191.959 103.201L204.984 64.1274L218.008 103.201' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(169.795 117.746)scale(.996264)'>
+<path d='M113.811 12.0287L48.6877 38.078L74.737 64.1274L61.7123 103.201V129.251' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='1.40525'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='226.992239' y='257.226973' href='#asymptote-94-1-g1-71'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">We want to do something similar,
+but with <math id="S1.p5.m1" class="ltx_Math" alttext="\omega_{2}" display="inline"><msub><mi>ω</mi><mn>2</mn></msub></math> many real numbers instead of just one.
+In light of this, consider in <math id="S1.p5.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> the poset</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\mathbb{P}=\operatorname{Add}(\omega,\omega_{2})\coloneqq\left(\left\{p\colon%
+\omega_{2}\times\omega\to 2,\operatorname{dom}(p)\text{ is finite}\right\},%
+\supseteq\right)." display="block"><mrow><mrow><mi>ℙ</mi><mo>=</mo><mrow><mi>Add</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo>,</mo><msub><mi>ω</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mo>(</mo><mrow><mo>{</mo><mi>p</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msub><mi>ω</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ω</mi></mrow><mo stretchy="false">→</mo><mrow><mn>2</mn><mo>,</mo><mrow><mrow><mi>dom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><mtext> is finite</mtext></mrow></mrow></mrow><mo>}</mo></mrow><mo>,</mo><mo lspace="0em" rspace="0em">⊇</mo><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">These elements <math id="S1.p5.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> (conditions) are “partial functions”:
+we take some finite subset of <math id="S1.p5.m4" class="ltx_Math" alttext="\omega_{2}\times\omega" display="inline"><mrow><msub><mi>ω</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ω</mi></mrow></math> and map it into <math id="S1.p5.m5" class="ltx_Math" alttext="2=\{0,1\}" display="inline"><mrow><mn>2</mn><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math>.
+(Here <math id="S1.p5.m6" class="ltx_Math" alttext="\operatorname{dom}(p)" display="inline"><mrow><mi>dom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> denotes the domain of <math id="S1.p5.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+which is the finite subset of <math id="S1.p5.m8" class="ltx_Math" alttext="\omega_{2}\times\omega" display="inline"><mrow><msub><mi>ω</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ω</mi></mrow></math> mentioned.)
+Moreover, we say <math id="S1.p5.m9" class="ltx_Math" alttext="p\leq q" display="inline"><mrow><mi>p</mi><mo>≤</mo><mi>q</mi></mrow></math> if <math id="S1.p5.m10" class="ltx_Math" alttext="\operatorname{dom}(p)\supseteq\operatorname{dom}(q)" display="inline"><mrow><mrow><mi>dom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊇</mo><mrow><mi>dom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+and the two functions agree over <math id="S1.p5.m11" class="ltx_Math" alttext="\operatorname{dom}(q)" display="inline"><mrow><mi>dom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 94.1.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">What is the maximum element <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="1_{\mathbb{P}}" display="inline"><msub><mn>1</mn><mi>ℙ</mi></msub></math> here?</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 94.1.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that a generic <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> can be encoded as a function <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\omega_{2}\times\omega\to 2" display="inline"><mrow><mrow><msub><mi>ω</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ω</mi></mrow><mo stretchy="false">→</mo><mn>2</mn></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_lemma">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Lemma 94.1.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<math id="S1.Thmtheorem3.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> encodes distinct real numbers)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">For <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\alpha\in\omega_{2}" display="inline"><mrow><mi>α</mi><mo>∈</mo><msub><mi>ω</mi><mn>2</mn></msub></mrow></math> define</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="G_{\alpha}=\left\{n\mid G\left(\alpha,n\right)=0\right\}\in\mathcal{P}(\mathbb%
+{N})." display="block"><mrow><mrow><msub><mi>G</mi><mi>α</mi></msub><mo>=</mo><mrow><mo>{</mo><mi>n</mi><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>G</mi><mo>⁢</mo><mrow><mo>(</mo><mi>α</mi><mo>,</mo><mi>n</mi><mo>)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow><mo>}</mo></mrow><mo>∈</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒫</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ℕ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Then <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="G_{\alpha}\neq G_{\beta}" display="inline"><mrow><msub><mi>G</mi><mi>α</mi></msub><mo>≠</mo><msub><mi>G</mi><mi>β</mi></msub></mrow></math> for any <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\alpha\neq\beta" display="inline"><mrow><mi>α</mi><mo>≠</mo><mi>β</mi></mrow></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">We claim that the set</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="D=\left\{q\mid\exists n\in\omega:q\left(\alpha,n\right)\neq q\left(\beta,n%
+\right)\text{ are both defined}\right\}" display="block"><mrow><mi>D</mi><mo>=</mo><mrow><mo>{</mo><mi>q</mi><mo fence="true" lspace="0em" rspace="0.167em">∣</mo><mrow><mrow><mrow><mo rspace="0.167em">∃</mo><mi>n</mi></mrow><mo>∈</mo><mi>ω</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>q</mi><mo>⁢</mo><mrow><mo>(</mo><mi>α</mi><mo>,</mo><mi>n</mi><mo>)</mo></mrow></mrow><mo>≠</mo><mrow><mi>q</mi><mo>⁢</mo><mrow><mo>(</mo><mi>β</mi><mo>,</mo><mi>n</mi><mo>)</mo></mrow><mo>⁢</mo><mtext> are both defined</mtext></mrow></mrow></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is dense.</p>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 94.1.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check this.
+(Use the fact that the domains are all finite.)</span></p>
+</div>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">Since <math id="S1.p7.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is an <math id="S1.p7.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>-generic it hits this dense set <math id="S1.p7.m3" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>.
+Hence <math id="S1.p7.m4" class="ltx_Math" alttext="G_{\alpha}\neq G_{\beta}" display="inline"><mrow><msub><mi>G</mi><mi>α</mi></msub><mo>≠</mo><msub><mi>G</mi><mi>β</mi></msub></mrow></math>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">Since <math id="S1.p8.m1" class="ltx_Math" alttext="G\in M[G]" display="inline"><mrow><mi>G</mi><mo>∈</mo><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> and <math id="S1.p8.m2" class="ltx_Math" alttext="M[G]\vDash\mathsf{ZFC}" display="inline"><mrow><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow><mo>⊨</mo><mi>𝖹𝖥𝖢</mi></mrow></math>,
+it follows that each <math id="S1.p8.m3" class="ltx_Math" alttext="G_{\alpha}" display="inline"><msub><mi>G</mi><mi>α</mi></msub></math> is in <math id="S1.p8.m4" class="ltx_Math" alttext="M[G]" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math>.
+So there are at least <math id="S1.p8.m5" class="ltx_Math" alttext="\aleph_{2}^{M}" display="inline"><msubsup><mi mathvariant="normal">ℵ</mi><mn>2</mn><mi>M</mi></msubsup></math> real numbers in <math id="S1.p8.m6" class="ltx_Math" alttext="M[G]" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math>.
+We are done once we can show there is no cardinal collapse.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">94.2 </span>The countable chain condition</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">It remains to show that with <math id="S2.p1.m1" class="ltx_Math" alttext="\mathbb{P}=\operatorname{Add}(\omega,\omega_{2})" display="inline"><mrow><mi>ℙ</mi><mo>=</mo><mrow><mi>Add</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo>,</mo><msub><mi>ω</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, we have that</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\aleph_{2}^{M[G]}=\aleph_{2}^{M}." display="block"><mrow><mrow><msubsup><mi mathvariant="normal">ℵ</mi><mn>2</mn><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></msubsup><mo>=</mo><msubsup><mi mathvariant="normal">ℵ</mi><mn>2</mn><mi>M</mi></msubsup></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In that case, since <math id="S2.p1.m2" class="ltx_Math" alttext="M[G]" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math> will have <math id="S2.p1.m3" class="ltx_Math" alttext="\aleph_{2}^{M}=\aleph_{2}^{M[G]}" display="inline"><mrow><msubsup><mi mathvariant="normal">ℵ</mi><mn>2</mn><mi>M</mi></msubsup><mo>=</mo><msubsup><mi mathvariant="normal">ℵ</mi><mn>2</mn><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></msubsup></mrow></math> many reals, we will be done.</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">To do this, we’ll rely on a combinatorial property of <math id="S2.p2.m1" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math>:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 94.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We say that <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="A\subseteq\mathbb{P}" display="inline"><mrow><mi>A</mi><mo>⊆</mo><mi>ℙ</mi></mrow></math> is a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> strong antichain</span>
+if for any distinct <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> in <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>, we have <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="p\perp q" display="inline"><mrow><mi>p</mi><mo>⟂</mo><mi>q</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 94.2.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Example of an antichain)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">In the infinite binary tree,
+the set <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="A=\{00,01,10,11\}" display="inline"><mrow><mi>A</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>00</mn><mo>,</mo><mn>01</mn><mo>,</mo><mn>10</mn><mo>,</mo><mn>11</mn><mo stretchy="false">}</mo></mrow></mrow></math> is a strong antichain
+(in fact maximal by inclusion).</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">This is stronger than the notion of “antichain” than you might be used to!<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>In the context of forcing, some authors use “antichain” to refer to “strong antichain”.
+I think this is lame.</span></span></span>
+We don’t merely require that every two elements are incomparable,
+but that they are in fact <em class="ltx_emph ltx_font_italic">incompatible</em>.</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 94.2.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Draw a finite poset and an antichain of it which is not strong.</span></p>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 94.2.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself that all antichains in the infinite binary tree are strong, but some
+antichains in the poset <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> defined above are not strong.</span></p>
+</div>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 94.2.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">A poset <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> has the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>-chain condition</span>
+(where <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> is a cardinal) if all strong antichains
+in <math id="S2.Thmtheorem5.p1.m4" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> have size less than <math id="S2.Thmtheorem5.p1.m5" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>.
+The special case <math id="S2.Thmtheorem5.p1.m6" class="ltx_Math" alttext="\kappa=\aleph_{1}" display="inline"><mrow><mi>κ</mi><mo>=</mo><msub><mi mathvariant="normal">ℵ</mi><mn>1</mn></msub></mrow></math> is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> countable chain condition</span>,
+because it implies that every strong antichain is countable.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 94.2.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Notational digression: Why <math id="S2.Thmtheorem6.m1" class="ltx_Math" alttext="&lt;" display="inline"><mo>&lt;</mo></math> instead of <math id="S2.Thmtheorem6.m2" class="ltx_Math" alttext="\leq" display="inline"><mo>≤</mo></math>?)</span> — </span>
+</h5>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">We could have defined that a poset <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> has the <math id="S2.Thmtheorem6.p1.m2" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>-chain condition if all strong
+antichains in <math id="S2.Thmtheorem6.p1.m3" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> has size <math id="S2.Thmtheorem6.p1.m4" class="ltx_Math" alttext="\leq\kappa" display="inline"><mrow><mi></mi><mo>≤</mo><mi>κ</mi></mrow></math>. Nevertheless, this alternative definition is less
+versatile — for instance, there would be no way to express that all strong antichains
+in <math id="S2.Thmtheorem6.p1.m5" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> are finite!</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">We are going to show that if the poset has the <math id="S2.p4.m1" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>-chain condition
+then it preserves all cardinals <math id="S2.p4.m2" class="ltx_Math" alttext="\geq\kappa" display="inline"><mrow><mi></mi><mo>≥</mo><mi>κ</mi></mrow></math>.
+In particular, the countable chain condition will show that <math id="S2.p4.m3" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> preserves all the cardinals.
+Then, we’ll show that <math id="S2.p4.m4" class="ltx_Math" alttext="\operatorname{Add}(\omega,\omega_{2})" display="inline"><mrow><mi>Add</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo>,</mo><msub><mi>ω</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math> does indeed have this property.
+This will complete the proof.</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">We isolate a useful lemma:</p>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_lemma">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Lemma 94.2.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Possible values argument)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S2.Thmtheorem7.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a transitive model of <math id="S2.Thmtheorem7.p1.m2" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> and <math id="S2.Thmtheorem7.p1.m3" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> is a partial order
+such that <math id="S2.Thmtheorem7.p1.m4" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> has the <math id="S2.Thmtheorem7.p1.m5" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>-chain condition in <math id="S2.Thmtheorem7.p1.m6" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+Let <math id="S2.Thmtheorem7.p1.m7" class="ltx_Math" alttext="X,Y\in M" display="inline"><mrow><mrow><mi>X</mi><mo>,</mo><mi>Y</mi></mrow><mo>∈</mo><mi>M</mi></mrow></math> and let <math id="S2.Thmtheorem7.p1.m8" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math>
+be some function in <math id="S2.Thmtheorem7.p1.m9" class="ltx_Math" alttext="M[G]" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math>, but <math id="S2.Thmtheorem7.p1.m10" class="ltx_Math" alttext="f\notin M" display="inline"><mrow><mi>f</mi><mo>∉</mo><mi>M</mi></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem7.p2" class="ltx_para">
+<p class="ltx_p">Then there exists a function <math id="S2.Thmtheorem7.p2.m1" class="ltx_Math" alttext="F\in M" display="inline"><mrow><mi>F</mi><mo>∈</mo><mi>M</mi></mrow></math>, with <math id="S2.Thmtheorem7.p2.m2" class="ltx_Math" alttext="F\colon X\to\mathcal{P}(Y)" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒫</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> and such that
+for any <math id="S2.Thmtheorem7.p2.m3" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math>,</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="f(x)\in F(x)\quad\text{and}\quad\left\lvert F(x)\right\rvert^{M}&lt;\kappa." display="block"><mrow><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mspace width="1em"></mspace><mtext>and</mtext></mrow></mrow><mspace width="1em"></mspace><mrow><msup><mrow><mo>|</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mi>M</mi></msup><mo>&lt;</mo><mi>κ</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">What this is saying is that if <math id="S2.p6.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is some new function that’s generated,
+<math id="S2.p6.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is still able to pin down the values of <math id="S2.p6.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to less than <math id="S2.p6.m4" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> many values.</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">The idea behind the proof is easy: any possible value of <math id="S2.p7.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> gives us some condition in
+the poset <math id="S2.p7.m2" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> which forces it.
+Since distinct values must have incompatible conditions,
+the <math id="S2.p7.m3" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>-chain condition guarantees
+there are at most <math id="S2.p7.m4" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> such values.</p>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Here are the details.
+Let <math id="S2.p8.m1" class="ltx_Math" alttext="\dot{f}" display="inline"><mover accent="true"><mi>f</mi><mo>˙</mo></mover></math>, <math id="S2.p8.m2" class="ltx_Math" alttext="\check{X}" display="inline"><mover accent="true"><mi>X</mi><mo>ˇ</mo></mover></math>, <math id="S2.p8.m3" class="ltx_Math" alttext="\check{Y}" display="inline"><mover accent="true"><mi>Y</mi><mo>ˇ</mo></mover></math> be names for <math id="S2.p8.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, <math id="S2.p8.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, <math id="S2.p8.m6" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>.
+Start with a condition <math id="S2.p8.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> such that <math id="S2.p8.m8" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> forces the sentence</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\text{``$\dot{f}$ is a function from $\check{X}$ to $\check{Y}$''}." display="block"><mrow><mrow><mtext>“</mtext><mover accent="true"><mi>f</mi><mo>˙</mo></mover><mtext> is a function from </mtext><mover accent="true"><mi>X</mi><mo>ˇ</mo></mover><mtext> to </mtext><mover accent="true"><mi>Y</mi><mo>ˇ</mo></mover><mtext>”</mtext></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We’ll work just below here.</p>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">For each <math id="S2.p9.m1" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math>, we can consider (using the Axiom of Choice) a maximal strong antichain <math id="S2.p9.m2" class="ltx_Math" alttext="A(x)" display="inline"><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+of incompatible conditions <math id="S2.p9.m3" class="ltx_Math" alttext="q\leq p" display="inline"><mrow><mi>q</mi><mo>≤</mo><mi>p</mi></mrow></math> which forces <math id="S2.p9.m4" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> to equal some value <math id="S2.p9.m5" class="ltx_Math" alttext="y\in Y" display="inline"><mrow><mi>y</mi><mo>∈</mo><mi>Y</mi></mrow></math>.
+Then, we let <math id="S2.p9.m6" class="ltx_Math" alttext="F(x)" display="inline"><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> collect all the resulting <math id="S2.p9.m7" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>-values.
+These are all possible values, and there are less than <math id="S2.p9.m8" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> of them.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">94.3 </span>Preserving cardinals</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">As we saw earlier, cardinal collapse can still occur.
+For the Continuum Hypothesis we want to avoid this possibility,
+so we can add in <math id="S3.p1.m1" class="ltx_Math" alttext="\aleph_{2}^{M}" display="inline"><msubsup><mi mathvariant="normal">ℵ</mi><mn>2</mn><mi>M</mi></msubsup></math> many real numbers and have <math id="S3.p1.m2" class="ltx_Math" alttext="\aleph_{2}^{M[G]}=\aleph_{2}^{M}" display="inline"><mrow><msubsup><mi mathvariant="normal">ℵ</mi><mn>2</mn><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></msubsup><mo>=</mo><msubsup><mi mathvariant="normal">ℵ</mi><mn>2</mn><mi>M</mi></msubsup></mrow></math>.
+It turns out that to verify this, one can check a weaker result.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 94.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">For <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> a transitive model of <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math> and <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathbb{P}\in M" display="inline"><mrow><mi>ℙ</mi><mo>∈</mo><mi>M</mi></mrow></math> a poset,
+we say <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> preserves cardinals</span> if
+<math id="S3.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\forall G\subseteq\mathbb{P}" display="inline"><mrow><mrow><mo rspace="0.167em">∀</mo><mi>G</mi></mrow><mo>⊆</mo><mi>ℙ</mi></mrow></math> an <math id="S3.Thmtheorem1.p1.m6" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>-generic,
+the model <math id="S3.Thmtheorem1.p1.m7" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and <math id="S3.Thmtheorem1.p1.m8" class="ltx_Math" alttext="M[G]" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math> agree on the sentence “<math id="S3.Thmtheorem1.p1.m9" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> is a cardinal” for every <math id="S3.Thmtheorem1.p1.m10" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>.
+Similarly we say <math id="S3.Thmtheorem1.p1.m11" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> preserves regular cardinals</span> if <math id="S3.Thmtheorem1.p1.m12" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and <math id="S3.Thmtheorem1.p1.m13" class="ltx_Math" alttext="M[G]" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math>
+agree on the sentence “<math id="S3.Thmtheorem1.p1.m14" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> is a regular cardinal” for every <math id="S3.Thmtheorem1.p1.m15" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>.</p>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Intuition:
+In a model <math id="S3.p2.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, it’s possible that two cardinals which are in bijection in <math id="S3.p2.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> are no longer in bijection in <math id="S3.p2.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+Similarly, it might be the case that some cardinal <math id="S3.p2.m4" class="ltx_Math" alttext="\kappa\in M" display="inline"><mrow><mi>κ</mi><mo>∈</mo><mi>M</mi></mrow></math> is regular,
+but stops being regular in <math id="S3.p2.m5" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> because some function <math id="S3.p2.m6" class="ltx_Math" alttext="f\colon\overline{\kappa}\to\kappa" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mover accent="true"><mi>κ</mi><mo>¯</mo></mover><mo stretchy="false">→</mo><mi>κ</mi></mrow></mrow></math> is cofinal but happened to only exist in <math id="S3.p2.m7" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+In still other words, “<math id="S3.p2.m8" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> is a regular cardinal” turns out to be a <math id="S3.p2.m9" class="ltx_Math" alttext="\Pi_{1}" display="inline"><msub><mi mathvariant="normal">Π</mi><mn>1</mn></msub></math> statement too.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Fortunately, each implies the other.
+We quote the following without proof.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_proposition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Proposition 94.3.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Preserving cardinals <math id="S3.Thmtheorem2.m1" class="ltx_Math" alttext="\iff" display="inline"><mo stretchy="false">⇔</mo></math> preserving regular cardinals)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a transitive model of <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>.
+Let <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\mathbb{P}\in M" display="inline"><mrow><mi>ℙ</mi><mo>∈</mo><mi>M</mi></mrow></math> be a poset.
+Then for any <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math>,
+<math id="S3.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> preserves cardinalities less than or equal to <math id="S3.Thmtheorem2.p1.m6" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math>
+if and only if <math id="S3.Thmtheorem2.p1.m7" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> preserves regular cardinals less than or equal to <math id="S3.Thmtheorem2.p1.m8" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math>.
+Moreover the same holds if we replace “less than or equal to”
+by “greater than or equal to”.</p>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Thus, to show that <math id="S3.p4.m1" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> preserves cardinality and cofinalities
+it suffices to show that <math id="S3.p4.m2" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> preserves regularity.
+The following theorem lets us do this:</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 94.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Chain conditions preserve regular cardinals)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a transitive model of ZFC, and let <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\mathbb{P}\in M" display="inline"><mrow><mi>ℙ</mi><mo>∈</mo><mi>M</mi></mrow></math> be a poset.
+Suppose <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> satisfies the sentence “<math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> has the <math id="S3.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>-chain condition and <math id="S3.Thmtheorem3.p1.m6" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> is regular”.
+Then <math id="S3.Thmtheorem3.p1.m7" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> preserves regularity greater than or equal to <math id="S3.Thmtheorem3.p1.m8" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Use the Possible Values Argument.
+<a href="#prob:chain" title="Problem 94A. ‣ 94.5 A few harder problems to think about ‣ Chapter 94 Breaking the continuum hypothesis ‣ Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">94A</span></a>.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">In particular, if <math id="S3.p6.m1" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> has the countable chain condition then <math id="S3.p6.m2" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> preserves <em class="ltx_emph ltx_font_italic">all</em> the cardinals (and cofinalities).
+Therefore, it remains to show that <math id="S3.p6.m3" class="ltx_Math" alttext="\operatorname{Add}(\omega,\omega_{2})" display="inline"><mrow><mi>Add</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo>,</mo><msub><mi>ω</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math> satisfies the countable chain condition.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">94.4 </span>Infinite combinatorics</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">We now prove that <math id="S4.p1.m1" class="ltx_Math" alttext="\operatorname{Add}(\omega,\omega_{2})" display="inline"><mrow><mi>Add</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo>,</mo><msub><mi>ω</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math> satisfies the countable chain condition.
+This is purely combinatorial, and so we work briefly.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 94.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> is an uncountable collection of finite sets.
+<math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> is a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\Delta" display="inline"><mi mathvariant="normal">Δ</mi></math>-system</span> if there exists a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> root</span> <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>
+with the condition that for any distinct <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>
+in <math id="S4.Thmtheorem1.p1.m7" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>, we have <math id="S4.Thmtheorem1.p1.m8" class="ltx_Math" alttext="X\cap Y=R" display="inline"><mrow><mrow><mi>X</mi><mo>∩</mo><mi>Y</mi></mrow><mo>=</mo><mi>R</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_lemma">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Lemma 94.4.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(<math id="S4.Thmtheorem2.m1" class="ltx_Math" alttext="\Delta" display="inline"><mi mathvariant="normal">Δ</mi></math>-System lemma)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> is an uncountable collection of finite sets.
+Then <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\exists\overline{C}\subseteq C" display="inline"><mrow><mrow><mo rspace="0.167em">∃</mo><mover accent="true"><mi>C</mi><mo>¯</mo></mover></mrow><mo>⊆</mo><mi>C</mi></mrow></math> such that <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\overline{C}" display="inline"><mover accent="true"><mi>C</mi><mo>¯</mo></mover></math> is an uncountable <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\Delta" display="inline"><mi mathvariant="normal">Δ</mi></math>-system.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">There exists an integer <math id="S4.p2.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> such that <math id="S4.p2.m2" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> has uncountably many guys of length <math id="S4.p2.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+So we can throw away all the other sets, and just assume that all sets in <math id="S4.p2.m4" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> have size <math id="S4.p2.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">We now proceed by induction on <math id="S4.p3.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+The base case <math id="S4.p3.m2" class="ltx_Math" alttext="n=1" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow></math> is trivial, since we can just take <math id="S4.p3.m3" class="ltx_Math" alttext="R=\varnothing" display="inline"><mrow><mi>R</mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>.
+For the inductive step we consider two cases.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">First, assume there exists an <math id="S4.p4.m1" class="ltx_Math" alttext="a\in C" display="inline"><mrow><mi>a</mi><mo>∈</mo><mi>C</mi></mrow></math> contained in uncountably many <math id="S4.p4.m2" class="ltx_Math" alttext="F\in C" display="inline"><mrow><mi>F</mi><mo>∈</mo><mi>C</mi></mrow></math>.
+Throw away all the other guys.
+Then we can just delete <math id="S4.p4.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, and apply the inductive hypothesis.</p>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Now assume that for every <math id="S4.p5.m1" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, only countably many members of <math id="S4.p5.m2" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> have <math id="S4.p5.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> in them.
+We claim we can even get a <math id="S4.p5.m4" class="ltx_Math" alttext="\overline{C}" display="inline"><mover accent="true"><mi>C</mi><mo>¯</mo></mover></math> with <math id="S4.p5.m5" class="ltx_Math" alttext="R=\varnothing" display="inline"><mrow><mi>R</mi><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>.
+First, pick <math id="S4.p5.m6" class="ltx_Math" alttext="F_{0}\in C" display="inline"><mrow><msub><mi>F</mi><mn>0</mn></msub><mo>∈</mo><mi>C</mi></mrow></math>.
+It’s straightforward to construct an <math id="S4.p5.m7" class="ltx_Math" alttext="F_{1}" display="inline"><msub><mi>F</mi><mn>1</mn></msub></math> such that <math id="S4.p5.m8" class="ltx_Math" alttext="F_{1}\cap F_{0}=\varnothing" display="inline"><mrow><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>∩</mo><msub><mi>F</mi><mn>0</mn></msub></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>.
+And we can just construct <math id="S4.p5.m9" class="ltx_Math" alttext="F_{2},F_{3},\dots" display="inline"><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>,</mo><msub><mi>F</mi><mn>3</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math>
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_lemma">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Lemma 94.4.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">For all <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>, <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\operatorname{Add}(\omega,\kappa)" display="inline"><mrow><mi>Add</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo>,</mo><mi>κ</mi><mo stretchy="false">)</mo></mrow></mrow></math> satisfies the countable chain condition.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">Assume not. Let</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\left\{p_{\alpha}\mid\alpha&lt;\omega_{1}\right\}" display="block"><mrow><mo>{</mo><msub><mi>p</mi><mi>α</mi></msub><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>α</mi><mo>&lt;</mo><msub><mi>ω</mi><mn>1</mn></msub></mrow><mo>}</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">be a strong antichain. Let</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="C=\left\{\operatorname{dom}(p_{\alpha})\mid\alpha&lt;\omega_{1}\right\}." display="block"><mrow><mrow><mi>C</mi><mo>=</mo><mrow><mo>{</mo><mrow><mi>dom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>p</mi><mi>α</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>α</mi><mo>&lt;</mo><msub><mi>ω</mi><mn>1</mn></msub></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Let <math id="S4.p6.m1" class="ltx_Math" alttext="\overline{C}\subseteq C" display="inline"><mrow><mover accent="true"><mi>C</mi><mo>¯</mo></mover><mo>⊆</mo><mi>C</mi></mrow></math> be such that <math id="S4.p6.m2" class="ltx_Math" alttext="\overline{C}" display="inline"><mover accent="true"><mi>C</mi><mo>¯</mo></mover></math> is uncountable, and <math id="S4.p6.m3" class="ltx_Math" alttext="\overline{C}" display="inline"><mover accent="true"><mi>C</mi><mo>¯</mo></mover></math> is a <math id="S4.p6.m4" class="ltx_Math" alttext="\Delta" display="inline"><mi mathvariant="normal">Δ</mi></math>-system with root <math id="S4.p6.m5" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>.
+Then let</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="B=\left\{p_{\alpha}\mid\operatorname{dom}(p_{\alpha})\in R\right\}." display="block"><mrow><mrow><mi>B</mi><mo>=</mo><mrow><mo>{</mo><msub><mi>p</mi><mi>α</mi></msub><mo fence="true" lspace="0em" rspace="0.167em">∣</mo><mrow><mrow><mi>dom</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>p</mi><mi>α</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>R</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Each <math id="S4.p6.m6" class="ltx_Math" alttext="p_{\alpha}\in B" display="inline"><mrow><msub><mi>p</mi><mi>α</mi></msub><mo>∈</mo><mi>B</mi></mrow></math> is a function <math id="S4.p6.m7" class="ltx_Math" alttext="p_{\alpha}\colon R\to\{0,1\}" display="inline"><mrow><msub><mi>p</mi><mi>α</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>R</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math>,
+so there are two that are the same.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">Thus, we have proven that the Continuum Hypothesis cannot be proven in <math id="S4.p7.m1" class="ltx_Math" alttext="\mathsf{ZFC}" display="inline"><mi>𝖹𝖥𝖢</mi></math>.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">94.5 </span>A few harder problems to think about</h2>
+
+<div id="prob:chain" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 94A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a transitive model of ZFC, and let <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="\mathbb{P}\in M" display="inline"><mrow><mi>ℙ</mi><mo>∈</mo><mi>M</mi></mrow></math> be a poset.
+Suppose <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> satisfies the sentence “<math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> has the <math id="Thmproblem1.p1.m5" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>-chain condition and <math id="Thmproblem1.p1.m6" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math> is regular”.
+Show that <math id="Thmproblem1.p1.m7" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> preserves regularity greater than or equal to <math id="Thmproblem1.p1.m8" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>.
+
+Assume not, and take <math id="Thmproblem1.p1.m9" class="ltx_Math" alttext="\lambda&gt;\kappa" display="inline"><mrow><mi>λ</mi><mo>&gt;</mo><mi>κ</mi></mrow></math> regular in <math id="Thmproblem1.p1.m10" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>;
+if <math id="Thmproblem1.p1.m11" class="ltx_Math" alttext="f\colon\overline{\lambda}\to\lambda" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mover accent="true"><mi>λ</mi><mo>¯</mo></mover><mo stretchy="false">→</mo><mi>λ</mi></mrow></mrow></math>,
+use the Possible Values Argument on <math id="Thmproblem1.p1.m12" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to generate a function in <math id="Thmproblem1.p1.m13" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+that breaks cofinality of <math id="Thmproblem1.p1.m14" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math>.
+
+
+It suffices to show that <math id="Thmproblem1.p1.m15" class="ltx_Math" alttext="\mathbb{P}" display="inline"><mi>ℙ</mi></math> preserves regularity greater than or equal to <math id="Thmproblem1.p1.m16" class="ltx_Math" alttext="\kappa" display="inline"><mi>κ</mi></math>.
+Consider <math id="Thmproblem1.p1.m17" class="ltx_Math" alttext="\lambda&gt;\kappa" display="inline"><mrow><mi>λ</mi><mo>&gt;</mo><mi>κ</mi></mrow></math> which is regular in <math id="Thmproblem1.p1.m18" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>,
+and suppose for contradiction that <math id="Thmproblem1.p1.m19" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> is not regular in <math id="Thmproblem1.p1.m20" class="ltx_Math" alttext="M[G]" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></math>.
+That’s the same as saying that there is a function <math id="Thmproblem1.p1.m21" class="ltx_Math" alttext="f\in M[G]" display="inline"><mrow><mi>f</mi><mo>∈</mo><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>G</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>,
+<math id="Thmproblem1.p1.m22" class="ltx_Math" alttext="f\colon\overline{\lambda}\to\lambda" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mover accent="true"><mi>λ</mi><mo>¯</mo></mover><mo stretchy="false">→</mo><mi>λ</mi></mrow></mrow></math> cofinal, with <math id="Thmproblem1.p1.m23" class="ltx_Math" alttext="\overline{\lambda}&lt;\lambda" display="inline"><mrow><mover accent="true"><mi>λ</mi><mo>¯</mo></mover><mo>&lt;</mo><mi>λ</mi></mrow></math>.
+Then by the Possible Values Argument,
+there exists a function <math id="Thmproblem1.p1.m24" class="ltx_Math" alttext="F\in M" display="inline"><mrow><mi>F</mi><mo>∈</mo><mi>M</mi></mrow></math> from <math id="Thmproblem1.p1.m25" class="ltx_Math" alttext="\overline{\lambda}\to\mathcal{P}(\lambda)" display="inline"><mrow><mover accent="true"><mi>λ</mi><mo>¯</mo></mover><mo stretchy="false">→</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒫</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>λ</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+such that <math id="Thmproblem1.p1.m26" class="ltx_Math" alttext="f(\alpha)\in F(\alpha)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and <math id="Thmproblem1.p1.m27" class="ltx_Math" alttext="\left\lvert F(\alpha)\right\rvert^{M}&lt;\kappa" display="inline"><mrow><msup><mrow><mo>|</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mi>M</mi></msup><mo>&lt;</mo><mi>κ</mi></mrow></math>
+for every <math id="Thmproblem1.p1.m28" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.</p>
+</div>
+<div id="Thmproblem1.p2" class="ltx_para">
+<p class="ltx_p">Now we work in <math id="Thmproblem1.p2.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> again.
+Note for each <math id="Thmproblem1.p2.m2" class="ltx_Math" alttext="\alpha\in\overline{\lambda}" display="inline"><mrow><mi>α</mi><mo>∈</mo><mover accent="true"><mi>λ</mi><mo>¯</mo></mover></mrow></math>,
+<math id="Thmproblem1.p2.m3" class="ltx_Math" alttext="F(\alpha)" display="inline"><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></math> is bounded in <math id="Thmproblem1.p2.m4" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> since <math id="Thmproblem1.p2.m5" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> is regular in <math id="Thmproblem1.p2.m6" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and
+greater than <math id="Thmproblem1.p2.m7" class="ltx_Math" alttext="\left\lvert F(\alpha)\right\rvert" display="inline"><mrow><mo>|</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow></math>.
+Now look at the function <math id="Thmproblem1.p2.m8" class="ltx_Math" alttext="\overline{\lambda}\to\lambda" display="inline"><mrow><mover accent="true"><mi>λ</mi><mo>¯</mo></mover><mo stretchy="false">→</mo><mi>λ</mi></mrow></math> in <math id="Thmproblem1.p2.m9" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> by just</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\alpha\mapsto\cup F(\alpha)&lt;\lambda." display="block"><mrow><mrow><mi>α</mi><mo rspace="0.1389em" stretchy="false">↦</mo><mrow><mo lspace="0.1389em" rspace="0em">∪</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>&lt;</mo><mi>λ</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This is cofinal in <math id="Thmproblem1.p2.m10" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, contradiction.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../st2/forcing-set-theory.html">Previous chapter: Forcing</a><br />
+<a href="../appendix/refs.html">Next chapter: Pedagogical comments and references</a>
+</nav>
+
+		</main>
+	</body>
+</html>

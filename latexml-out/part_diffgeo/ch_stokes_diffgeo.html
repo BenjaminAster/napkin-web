@@ -1,0 +1,1624 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 45 Integrating differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="ch_forms_diffgeo.html" title="Chapter 44 Differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="next" href="ch_manifolds_diffgeo.html" title="Chapter 46 A bit of manifolds ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_multivar_calculus.html" title="Chapter 43 Multivariable calculus done correctly ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_forms_diffgeo.html" title="Chapter 44 Differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_manifolds_diffgeo.html" title="Chapter 46 A bit of manifolds ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_startout/" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_linalg/" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_calc/" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_measure/" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop1/" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st2/" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">XII </span>Differential Geometry</span></a><a href="ch_forms_diffgeo.html" title="In Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">44 </span>Differential forms</span></a><a href="ch_manifolds_diffgeo.html" title="In Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">46 </span>A bit of manifolds</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 45 </span>Integrating differential forms</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">We now show how to integrate differential forms over cells,
+and state Stokes’ theorem in this context.
+In this chapter, all vector spaces are finite-dimensional and real.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">45.1 </span>Motivation: line integrals</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Given a function <math id="S1.p1.m1" class="ltx_Math" alttext="g\colon[a,b]\to\mathbb{R}" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>,
+we know by the fundamental theorem of calculus that</p>
+<table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\int_{[a,b]}g(t)\;dt=f(b)-f(a)" display="block"><mrow><mrow><msub><mo>∫</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></msub><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>t</mi></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S1.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is a function such that <math id="S1.p1.m3" class="ltx_Math" alttext="g=df/dt" display="inline"><mrow><mi>g</mi><mo>=</mo><mrow><mrow><mrow><mi>d</mi><mo>⁢</mo><mi>f</mi></mrow><mo>/</mo><mi>d</mi></mrow><mo>⁢</mo><mi>t</mi></mrow></mrow></math>.
+Equivalently, for <math id="S1.p1.m4" class="ltx_Math" alttext="f\colon[a,b]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>,</p>
+<table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\int_{[a,b]}g\;dt=\int_{[a,b]}df=f(b)-f(a)" display="block"><mrow><mrow><msub><mo>∫</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></msub><mrow><mi>g</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>t</mi></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∫</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></msub><mrow><mo lspace="0em" rspace="0em">𝑑</mo><mi>f</mi></mrow></mrow><mo>=</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S1.p1.m5" class="ltx_Math" alttext="df" display="inline"><mrow><mi>d</mi><mo>⁢</mo><mi>f</mi></mrow></math> is the exterior derivative we defined earlier.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Cool, so we can integrate over <math id="S1.p2.m1" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math>.
+Now suppose more generally, we have <math id="S1.p2.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> an open subset of our real vector space <math id="S1.p2.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>
+and a <math id="S1.p2.m4" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-form <math id="S1.p2.m5" class="ltx_Math" alttext="\alpha\colon U\to V^{\vee}" display="inline"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></mrow></math>.
+We consider a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> parametrized curve</span>, which is a smooth function <math id="S1.p2.m6" class="ltx_Math" alttext="c\colon[a,b]\to U" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>U</mi></mrow></mrow></math>.
+Picture:</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(8.5cm);
+ΨΨpair A = (-13,0);
+ΨΨpair B = (-9,0);
+ΨΨdraw(A--B, grey);
+ΨΨdot(A, grey); dot(B, grey);
+ΨΨlabel("$[a,b]$", A--B, dir(90), grey);
+ΨΨdot("$t$", 0.3*A+0.7*B, dir(-90), grey);
+
+ΨΨdraw( (-8,0) -- (-6,0) , EndArrow);
+ΨΨlabel("$c$", (-7,0), dir(90));
+
+ΨΨbigblob("$U$");
+ΨΨpair a = (-2,-2);
+ΨΨpair b = (3,0);
+ΨΨpair p = (0,1);
+ΨΨpair q = (2,0);
+ΨΨlabel("$c$", q, dir(45), red);
+ΨΨdraw(a..p..q..b, red);
+ΨΨdot("$p = c(t)$", p, dir(90), blue);
+ΨΨdraw(p--(p+1.5*dir(-10)), blue, EndArrow);
+
+ΨΨdraw( (0,-4)--(0,-8), EndArrow );
+ΨΨlabel("$\alpha$", (0,-6), dir(0));
+ΨΨlabel("$\alpha_p(v) \in \mathbb R$", (0,-9), heavygreen);
+
+ΨΨdraw( (-10,-1)--(-1,-8), EndArrow);
+ΨΨlabel("$c^\ast \alpha$", (-5.5,-4.5), dir(225));
+Ψ
+</pre>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">We want to define an <math id="S1.p3.m1" class="ltx_Math" alttext="\int_{c}\alpha" display="inline"><mrow><msub><mo>∫</mo><mi>c</mi></msub><mi>α</mi></mrow></math> such that:</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 45.1.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">The integral <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\int_{c}\alpha" display="inline"><mrow><msub><mo>∫</mo><mi>c</mi></msub><mi>α</mi></mrow></math> should add up all the <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> along the curve <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>.</p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">Our differential form <math id="S1.p4.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> first takes in a point <math id="S1.p4.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to get <math id="S1.p4.m3" class="ltx_Math" alttext="\alpha_{p}\in V^{\vee}" display="inline"><mrow><msub><mi>α</mi><mi>p</mi></msub><mo>∈</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math>.
+Then, it eats a tangent vector <math id="S1.p4.m4" class="ltx_Math" alttext="v\in V" display="inline"><mrow><mi>v</mi><mo>∈</mo><mi>V</mi></mrow></math> to the curve <math id="S1.p4.m5" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math> to finally give a real number <math id="S1.p4.m6" class="ltx_Math" alttext="\alpha_{p}(v)\in\mathbb{R}" display="inline"><mrow><mrow><msub><mi>α</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>ℝ</mi></mrow></math>.
+We would like to “add all these numbers up”,
+using only the notion of an integral over <math id="S1.p4.m7" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math>.</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 45.1.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Try to guess what the definition of the integral should be.
+(By type-checking, there’s only one reasonable answer.)</span></p>
+</div>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">So, the definition we give is</p>
+<table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\int_{c}\alpha\coloneqq\int_{[a,b]}\alpha_{c(t)}\left(c^{\prime}(t)\right)\;dt." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mi>c</mi></msub><mi>α</mi></mrow><mo rspace="0.111em">≔</mo><mrow><msub><mo>∫</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></msub><mrow><msub><mi>α</mi><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>⁢</mo><mrow><mo>(</mo><mrow><msup><mi>c</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>t</mi></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Here, <math id="S1.p5.m1" class="ltx_Math" alttext="c^{\prime}(t)" display="inline"><mrow><msup><mi>c</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math> is shorthand for <math id="S1.p5.m2" class="ltx_Math" alttext="(Dc)_{t}(1)" display="inline"><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>c</mi></mrow><mo stretchy="false">)</mo></mrow><mi>t</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>.
+It represents the <em class="ltx_emph ltx_font_italic">tangent vector</em> to the curve <math id="S1.p5.m3" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math> at the point <math id="S1.p5.m4" class="ltx_Math" alttext="p=c(t)" display="inline"><mrow><mi>p</mi><mo>=</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+at time <math id="S1.p5.m5" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math>.
+(Here we are taking advantage of the fact that <math id="S1.p5.m6" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math> is one-dimensional.)</p>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">Now that definition was a pain to write, so we will define a differential
+<math id="S1.p6.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-form <math id="S1.p6.m2" class="ltx_Math" alttext="c^{\ast}\alpha" display="inline"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow></math> on <math id="S1.p6.m3" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math> to swallow that entire thing:
+specifically, in this case we define <math id="S1.p6.m4" class="ltx_Math" alttext="c^{\ast}\alpha" display="inline"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow></math> to be</p>
+<table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\left(c^{\ast}\alpha\right)_{t}(\varepsilon)=\alpha_{c(t)}\cdot(Dc)_{t}(\varepsilon)" display="block"><mrow><mrow><msub><mrow><mo>(</mo><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow><mo>)</mo></mrow><mi>t</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ε</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>α</mi><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>c</mi></mrow><mo stretchy="false">)</mo></mrow><mi>t</mi></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ε</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">(here <math id="S1.p6.m5" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> is some displacement in time).
+Thus, we can more succinctly write</p>
+<table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\int_{c}\alpha\coloneqq\int_{[a,b]}c^{\ast}\alpha." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mi>c</mi></msub><mi>α</mi></mrow><mo rspace="0.111em">≔</mo><mrow><msub><mo>∫</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></msub><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This is a special case of a <em class="ltx_emph ltx_font_italic">pullback</em>:
+roughly, if <math id="S1.p6.m6" class="ltx_Math" alttext="\phi\colon U\to U^{\prime}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><msup><mi>U</mi><mo>′</mo></msup></mrow></mrow></math> (where <math id="S1.p6.m7" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math>, <math id="S1.p6.m8" class="ltx_Math" alttext="U^{\prime}\subseteq V^{\prime}" display="inline"><mrow><msup><mi>U</mi><mo>′</mo></msup><mo>⊆</mo><msup><mi>V</mi><mo>′</mo></msup></mrow></math>),
+we can change any differential <math id="S1.p6.m9" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-form <math id="S1.p6.m10" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> on <math id="S1.p6.m11" class="ltx_Math" alttext="U^{\prime}" display="inline"><msup><mi>U</mi><mo>′</mo></msup></math>
+to a <math id="S1.p6.m12" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-form on <math id="S1.p6.m13" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.
+In particular, if <math id="S1.p6.m14" class="ltx_Math" alttext="U=[a,b]" display="inline"><mrow><mi>U</mi><mo>=</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></mrow></math>,<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>OK,
+so <math id="footnote1.m1" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math> isn’t actually open, sorry.
+I ought to write <math id="footnote1.m2" class="ltx_Math" alttext="(a-\varepsilon,b+\varepsilon)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>−</mo><mi>ε</mi></mrow><mo>,</mo><mrow><mi>b</mi><mo>+</mo><mi>ε</mi></mrow><mo stretchy="false">)</mo></mrow></math>, or something.</span></span></span>
+we can resort to our old definition of an integral.
+Let’s now do this in full generality.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">45.2 </span>Pullbacks</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="S2.p1.m2" class="ltx_Math" alttext="V^{\prime}" display="inline"><msup><mi>V</mi><mo>′</mo></msup></math> be finite dimensional real vector spaces (possibly different dimensions)
+and suppose <math id="S2.p1.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> and <math id="S2.p1.m4" class="ltx_Math" alttext="U^{\prime}" display="inline"><msup><mi>U</mi><mo>′</mo></msup></math> are open subsets of each;
+next, consider a <math id="S2.p1.m5" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-form <math id="S2.p1.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> on <math id="S2.p1.m7" class="ltx_Math" alttext="U^{\prime}" display="inline"><msup><mi>U</mi><mo>′</mo></msup></math>.</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Given a map <math id="S2.p2.m1" class="ltx_Math" alttext="\phi\colon U\to U^{\prime}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><msup><mi>U</mi><mo>′</mo></msup></mrow></mrow></math> we now want to define a pullback in
+much the same way as before.
+Picture:</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(13cm);
+ΨΨbigblob("$U$");
+ΨΨpair p = (-1,0);
+ΨΨdot("$p$", p, dir(90), red);
+ΨΨpair p1 = p + 1.4*dir(150);
+ΨΨpair p2 = p + 1.7*dir(-50);
+ΨΨdraw(p--p1, red, EndArrow);
+ΨΨdraw(p--p2, red, EndArrow);
+
+ΨΨadd(scale(0.8)*shift(14*dir(180))*CC());
+ΨΨbigblob("$U’$");
+ΨΨpair q = (-0.5,0.5);
+ΨΨdot("$q = \phi(p)$", q, dir(90), blue);
+ΨΨpair q1 = q + 1.8*dir(-100);
+ΨΨpair q2 = q + 2.3*dir(-10);
+ΨΨdraw(q--q1, blue, EndArrow);
+ΨΨdraw(q--q2, blue, EndArrow);
+
+ΨΨdraw((-9,0)--(-3,0), EndArrow);
+ΨΨlabel("$\phi$", (-6,0), dir(90));
+
+ΨΨdraw( (0,-4)--(0,-8), EndArrow );
+ΨΨlabel("$\alpha$", (0,-6), dir(0));
+ΨΨlabel("$\alpha_q(\dots) \in \mathbb R$", (0,-9), heavygreen);
+
+ΨΨdraw( (-11,-3)--(-1,-8), EndArrow);
+ΨΨlabel("$\phi^\ast \alpha$", (-6,-6), dir(225));
+Ψ
+</pre>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Well, there’s a total of about one thing we can do.
+Specifically: <math id="S2.p3.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> accepts a point in <math id="S2.p3.m2" class="ltx_Math" alttext="U^{\prime}" display="inline"><msup><mi>U</mi><mo>′</mo></msup></math> and <math id="S2.p3.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> tangent vectors in <math id="S2.p3.m4" class="ltx_Math" alttext="V^{\prime}" display="inline"><msup><mi>V</mi><mo>′</mo></msup></math>,
+and returns a real number.
+We want <math id="S2.p3.m5" class="ltx_Math" alttext="\phi^{\ast}\alpha" display="inline"><mrow><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow></math> to accept a point in <math id="S2.p3.m6" class="ltx_Math" alttext="p\in U" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>U</mi></mrow></math>
+and <math id="S2.p3.m7" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> tangent vectors <math id="S2.p3.m8" class="ltx_Math" alttext="v_{1},\dots,v_{k}" display="inline"><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub></mrow></math> in <math id="S2.p3.m9" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>,
+and feed the corresponding information to <math id="S2.p3.m10" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Clearly we give the point <math id="S2.p4.m1" class="ltx_Math" alttext="q=\phi(p)" display="inline"><mrow><mi>q</mi><mo>=</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+As for the tangent vectors, since we are interested in volume, we take the
+derivative of <math id="S2.p4.m2" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> at <math id="S2.p4.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, <math id="S2.p4.m4" class="ltx_Math" alttext="(D\phi)_{p}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>ϕ</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></math>, which will scale each of our vectors <math id="S2.p4.m5" class="ltx_Math" alttext="v_{i}" display="inline"><msub><mi>v</mi><mi>i</mi></msub></math>
+into some vector in the target <math id="S2.p4.m6" class="ltx_Math" alttext="V^{\prime}" display="inline"><msup><mi>V</mi><mo>′</mo></msup></math>.
+To cut a long story short:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 45.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Given <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\phi\colon U\to U^{\prime}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><msup><mi>U</mi><mo>′</mo></msup></mrow></mrow></math> and <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> a <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-form, we define the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> pullback</span></p>
+<table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="(\phi^{\ast}\alpha)_{p}(v_{1},\dots,v_{k})\coloneqq\alpha_{\phi(p)}\left((D%
+\phi)_{p}(v_{1}),\dots,(D\phi)_{p}(v_{k})\right)." display="block"><mrow><mrow><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><msub><mi>α</mi><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></msub><mo>⁢</mo><mrow><mo>(</mo><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>ϕ</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>ϕ</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">There is a more concrete way to define the pullback using bases.
+Suppose <math id="S2.p5.m1" class="ltx_Math" alttext="w_{1},\dots,w_{n}" display="inline"><mrow><msub><mi>w</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>w</mi><mi>n</mi></msub></mrow></math> is a basis of <math id="S2.p5.m2" class="ltx_Math" alttext="V^{\prime}" display="inline"><msup><mi>V</mi><mo>′</mo></msup></math>
+and <math id="S2.p5.m3" class="ltx_Math" alttext="e_{1},\dots,e_{m}" display="inline"><mrow><msub><mi>e</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>e</mi><mi>m</mi></msub></mrow></math> is a basis of <math id="S2.p5.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+Thus, by the projection principle (<a href="ch_multivar_calculus.html#thm:project_principle" title="Theorem 43.2.1 (Projection principle) ‣ 43.2 The projection principle ‣ Chapter 43 Multivariable calculus done correctly ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">43.2.1</span></a>)
+the map <math id="S2.p5.m5" class="ltx_Math" alttext="\phi\colon V\to V^{\prime}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><msup><mi>V</mi><mo>′</mo></msup></mrow></mrow></math> can be thought of as</p>
+<table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\phi(v)=\phi_{1}(v)w_{1}+\dots+\phi_{n}(v)w_{n}" display="block"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>w</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>ϕ</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>w</mi><mi>n</mi></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where each <math id="S2.p5.m6" class="ltx_Math" alttext="\phi_{i}" display="inline"><msub><mi>ϕ</mi><mi>i</mi></msub></math> takes in a <math id="S2.p5.m7" class="ltx_Math" alttext="v\in V" display="inline"><mrow><mi>v</mi><mo>∈</mo><mi>V</mi></mrow></math> and returns a real number.
+We know also that <math id="S2.p5.m8" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> can be written concretely as</p>
+<table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\alpha=\sum_{I\subseteq\{1,\dots,n\}}f_{J}\;dw_{J}." display="block"><mrow><mrow><mi>α</mi><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>I</mi><mo>⊆</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>n</mi><mo stretchy="false">}</mo></mrow></mrow></munder><mrow><msub><mi>f</mi><mi>J</mi></msub><mo>⁢</mo><mi>d</mi><mo>⁢</mo><msub><mi>w</mi><mi>J</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Then, we define</p>
+<table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\phi^{\ast}\alpha=\sum_{I\subseteq\{1,\dots,n\}}(f_{I}\circ\phi)(D\phi_{i_{1}}%
+\wedge\dots\wedge D\phi_{i_{k}})." display="block"><mrow><mrow><mrow><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>I</mi><mo>⊆</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>n</mi><mo stretchy="false">}</mo></mrow></mrow></munder><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>f</mi><mi>I</mi></msub><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>ϕ</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>D</mi><mo>⁢</mo><msub><mi>ϕ</mi><msub><mi>i</mi><mn>1</mn></msub></msub></mrow><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><mrow><mi>D</mi><mo>⁢</mo><msub><mi>ϕ</mi><msub><mi>i</mi><mi>k</mi></msub></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">A diligent reader can check these definitions are equivalent.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 45.2.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Computation of a pullback)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="V=\mathbb{R}^{2}" display="inline"><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math> with basis <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathbf{e}_{1}" display="inline"><msub><mi>𝐞</mi><mn>1</mn></msub></math> and <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\mathbf{e}_{2}" display="inline"><msub><mi>𝐞</mi><mn>2</mn></msub></math>,
+and suppose <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\phi\colon V\to V^{\prime}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><msup><mi>V</mi><mo>′</mo></msup></mrow></mrow></math> is given by sending</p>
+<table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\phi(a\mathbf{e}_{1}+b\mathbf{e}_{2})=(a^{2}+b^{2})w_{1}+\log(a^{2}+1)w_{2}+b^%
+{3}w_{3}" display="block"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>w</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mrow><mi>log</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msub><mi>w</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><msup><mi>b</mi><mn>3</mn></msup><mo>⁢</mo><msub><mi>w</mi><mn>3</mn></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where <math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="w_{1}" display="inline"><msub><mi>w</mi><mn>1</mn></msub></math>, <math id="S2.Thmtheorem2.p1.m6" class="ltx_Math" alttext="w_{2}" display="inline"><msub><mi>w</mi><mn>2</mn></msub></math>, <math id="S2.Thmtheorem2.p1.m7" class="ltx_Math" alttext="w_{3}" display="inline"><msub><mi>w</mi><mn>3</mn></msub></math> is a basis for <math id="S2.Thmtheorem2.p1.m8" class="ltx_Math" alttext="V^{\prime}" display="inline"><msup><mi>V</mi><mo>′</mo></msup></math>.
+Consider the form <math id="S2.Thmtheorem2.p1.m9" class="ltx_Math" alttext="\alpha_{q}=f(q)w_{1}^{\vee}\wedge w_{3}^{\vee}" display="inline"><mrow><msub><mi>α</mi><mi>q</mi></msub><mo>=</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msubsup><mi>w</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>∧</mo><msubsup><mi>w</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></mrow></math>, where <math id="S2.Thmtheorem2.p1.m10" class="ltx_Math" alttext="f\colon V^{\prime}\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>V</mi><mo>′</mo></msup><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>.
+Then</p>
+<table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="(\phi^{\ast}\alpha)_{p}=f(\phi(p))\cdot(2a\mathbf{e}_{1}^{\vee}+2b\mathbf{e}_{%
+2}^{\vee})\wedge(3b^{2}\mathbf{e}_{2}^{\vee})=f(\phi(p))\cdot 6ab^{2}\cdot%
+\mathbf{e}_{1}^{\vee}\wedge\mathbf{e}_{2}^{\vee}." display="block"><mrow><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>=</mo><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>b</mi><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><mn>3</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mn>6</mn></mrow><mo>⁢</mo><mi>a</mi><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">It turns out that the pullback basically behaves nicely as possible, e.g.</p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="\phi^{\ast}(c\alpha+\beta)=c\phi^{\ast}\alpha+\phi^{\ast}\beta" display="inline"><mrow><mrow><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>c</mi><mo>⁢</mo><mi>α</mi></mrow><mo>+</mo><mi>β</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>c</mi><mo>⁢</mo><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow><mo>+</mo><mrow><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mi>β</mi></mrow></mrow></mrow></math> (linearity)</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="\phi^{\ast}(\alpha\wedge\beta)=(\phi^{\ast}\alpha)\wedge(\phi^{\ast}\beta)" display="inline"><mrow><mrow><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>α</mi><mo>∧</mo><mi>β</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow><mo stretchy="false">)</mo></mrow><mo>∧</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mi>β</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></p>
+</div>
+</li>
+<li id="S2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i3.p1.m1" class="ltx_Math" alttext="\phi_{1}^{\ast}(\phi_{2}^{\ast}(\alpha))=(\phi_{2}\circ\phi_{1})^{\ast}(\alpha)" display="inline"><mrow><mrow><msubsup><mi>ϕ</mi><mn>1</mn><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msubsup><mi>ϕ</mi><mn>2</mn><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">∘</mo><msub><mi>ϕ</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>∗</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> (naturality)</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">but I won’t take the time to check these here
+(one can verify them all by expanding with a basis).</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">45.3 </span>Cells</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> A disk in <math id="S3.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> can be thought of as the cell
+<math id="S3.p1.m2" class="ltx_Math" alttext="[0,R]\times[0,2\pi]\to\mathbb{R}^{2}" display="inline"><mrow><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>R</mi><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math> by
+<math id="S3.p1.m3" class="ltx_Math" alttext="(r,\theta)\mapsto(r\cos\theta)\mathbf{e}_{1}+(r\sin\theta)\mathbf{e}_{2}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo lspace="0.167em">⁢</mo><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow></mrow></mrow></math>.</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Now that we have the notion of a pullback,
+we can define the notion of an integral for more general spaces.
+Specifically, to generalize the notion of integrals we had before:</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 45.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="k" display="inline"><mi mathcolor="#0000FF">k</mi></math>-cell</span> is a smooth function <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="c\colon[a_{1},b_{1}]\times[a_{2},b_{2}]\times\dots[a_{k},b_{k}]\to V" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mn>2</mn></msub><mo>,</mo><msub><mi>b</mi><mn>2</mn></msub><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mi mathvariant="normal">…</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mi>k</mi></msub><mo>,</mo><msub><mi>b</mi><mi>k</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 45.3.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of cells)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="V=\mathbb{R}^{2}" display="inline"><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math> for convenience.</p>
+<ol id="S3.I1" class="ltx_enumerate">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">A <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>-cell consists of a single point.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">As we saw, a <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-cell is an arbitrary curve.</p>
+</div>
+</li>
+<li id="S3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S3.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">A <math id="S3.I1.i3.p1.m1" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-cell corresponds to a <math id="S3.I1.i3.p1.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-dimensional surface.
+For example, the map <math id="S3.I1.i3.p1.m3" class="ltx_Math" alttext="c\colon[0,R]\times[0,2\pi]\to V" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>R</mi><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> by</p>
+<table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="c\colon(r,\theta)\mapsto(r\cos\theta,r\sin\theta)" display="block"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo lspace="0.167em">⁢</mo><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow></mrow><mo>,</mo><mrow><mi>r</mi><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">can be thought of as a disk of radius <math id="S3.I1.i3.p1.m4" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">So we can now give the definition.</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 45.3.3</span></span><span class="ltx_text ltx_font_bold"> </span>(How to integrate differential <math id="S3.Thmtheorem3.m1" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-forms)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Take a differential <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-form <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and a <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-cell <math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="c\colon[0,1]^{k}\to V" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mi>k</mi></msup><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math>.
+Define the integral <math id="S3.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\int_{c}\alpha" display="inline"><mrow><msub><mo>∫</mo><mi>c</mi></msub><mi>α</mi></mrow></math> using the pullback</p>
+<table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\int_{c}\alpha\coloneqq\int_{[0,1]^{k}}c^{\ast}\alpha." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mi>c</mi></msub><mi>α</mi></mrow><mo rspace="0.111em">≔</mo><mrow><msub><mo>∫</mo><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mi>k</mi></msup></msub><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Since <math id="S3.p4.m1" class="ltx_Math" alttext="c^{\ast}\alpha" display="inline"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow></math> is a <math id="S3.p4.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-form on the <math id="S3.p4.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-dimensional unit box,
+it can be written as <math id="S3.p4.m4" class="ltx_Math" alttext="f(x_{1},\dots,x_{n})\;dx_{1}\wedge\dots\wedge dx_{n}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo lspace="0.280em">⁢</mo><mi>d</mi><mo>⁢</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>x</mi><mi>n</mi></msub></mrow></mrow></math>,
+So the above integral could also be written as</p>
+<table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\int_{0}^{1}\dots\int_{0}^{1}f(x_{1},\dots,x_{n})\;dx_{1}\wedge\dots\wedge dx_%
+{n}." display="block"><mrow><mrow><mrow><msubsup><mo>∫</mo><mn>0</mn><mn>1</mn></msubsup><mrow><mi mathvariant="normal">…</mi><mo>⁢</mo><mrow><msubsup><mo>∫</mo><mn>0</mn><mn>1</mn></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mrow></mrow></mrow></mrow><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>x</mi><mi>n</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 45.3.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Area of a circle)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Consider <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="V=\mathbb{R}^{2}" display="inline"><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math> and let <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="c\colon(r,\theta)\mapsto(r\cos\theta)\mathbf{e}_{1}+(r\sin\theta)\mathbf{e}_{2}" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo lspace="0.167em">⁢</mo><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>r</mi><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow></mrow></mrow></mrow></math>
+on <math id="S3.Thmtheorem4.p1.m3" class="ltx_Math" alttext="[0,R]\times[0,2\pi]" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>R</mi><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></math> as before.
+Take the <math id="S3.Thmtheorem4.p1.m4" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-form <math id="S3.Thmtheorem4.p1.m5" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> which gives <math id="S3.Thmtheorem4.p1.m6" class="ltx_Math" alttext="\alpha_{p}=\mathbf{e}_{1}^{\vee}\wedge\mathbf{e}_{2}^{\vee}" display="inline"><mrow><msub><mi>α</mi><mi>p</mi></msub><mo>=</mo><mrow><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup><mo>∧</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></mrow></math> at every point <math id="S3.Thmtheorem4.p1.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+Then</p>
+<table id="A5.S3.EGx119" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex15"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex15.m1" class="ltx_Math" alttext="\displaystyle c^{\ast}\alpha" display="inline"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex15.m2" class="ltx_Math" alttext="\displaystyle=\left(\cos\theta dr-r\sin\theta d\theta\right)\wedge\left(\sin%
+\theta dr+r\cos\theta d\theta\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mrow><mi>θ</mi><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>−</mo><mrow><mi>r</mi><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mrow><mi>θ</mi><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>θ</mi></mrow></mrow></mrow></mrow><mo>)</mo></mrow><mo>∧</mo><mrow><mo>(</mo><mrow><mrow><mi>sin</mi><mo lspace="0.167em">⁡</mo><mrow><mi>θ</mi><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>r</mi></mrow></mrow><mo>+</mo><mrow><mi>r</mi><mo lspace="0.167em">⁢</mo><mrow><mi>cos</mi><mo lspace="0.167em">⁡</mo><mrow><mi>θ</mi><mo>⁢</mo><mi>d</mi><mo>⁢</mo><mi>θ</mi></mrow></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex16"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex16.m1" class="ltx_Math" alttext="\displaystyle=r(\cos^{2}\theta+\sin^{2}\theta)(dr\wedge d\theta)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>r</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msup><mi>cos</mi><mn>2</mn></msup><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow><mo>+</mo><mrow><msup><mi>sin</mi><mn>2</mn></msup><mo lspace="0.167em">⁡</mo><mi>θ</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>d</mi><mo>⁢</mo><mi>r</mi></mrow><mo>∧</mo><mrow><mi>d</mi><mo>⁢</mo><mi>θ</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex17"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex17.m1" class="ltx_Math" alttext="\displaystyle=r\;dr\wedge d\theta" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>r</mi><mo lspace="0.280em">⁢</mo><mi>d</mi><mo>⁢</mo><mi>r</mi></mrow><mo>∧</mo><mrow><mi>d</mi><mo>⁢</mo><mi>θ</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Thus,</p>
+<table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="\int_{c}\alpha=\int_{0}^{R}\int_{0}^{2\pi}r\;dr\wedge d\theta=\pi R^{2}" display="block"><mrow><mrow><msub><mo>∫</mo><mi>c</mi></msub><mi>α</mi></mrow><mo rspace="0.111em">=</mo><mrow><mrow><msubsup><mo rspace="0em">∫</mo><mn>0</mn><mi>R</mi></msubsup><mrow><msubsup><mo>∫</mo><mn>0</mn><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow></msubsup><mrow><mi>r</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>r</mi></mrow></mrow></mrow></mrow><mo>∧</mo><mrow><mi>d</mi><mo>⁢</mo><mi>θ</mi></mrow></mrow><mo>=</mo><mrow><mi>π</mi><mo>⁢</mo><msup><mi>R</mi><mn>2</mn></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">which is the area of a circle.</p>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Here’s some geometric intuition for what’s happening.
+Given a <math id="S3.p5.m1" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-cell in <math id="S3.p5.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>, a differential <math id="S3.p5.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-form <math id="S3.p5.m4" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> accepts a point <math id="S3.p5.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and some tangent vectors <math id="S3.p5.m6" class="ltx_Math" alttext="v_{1}" display="inline"><msub><mi>v</mi><mn>1</mn></msub></math>, …, <math id="S3.p5.m7" class="ltx_Math" alttext="v_{k}" display="inline"><msub><mi>v</mi><mi>k</mi></msub></math>
+and spits out a number <math id="S3.p5.m8" class="ltx_Math" alttext="\alpha_{p}(v_{1},\dots,v_{k})" display="inline"><mrow><msub><mi>α</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>v</mi><mi>k</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>,
+which as before we view as a signed hypervolume.
+Then the integral <em class="ltx_emph ltx_font_italic">adds up all these infinitesimals across the entire cell</em>.
+In particular, if <math id="S3.p5.m9" class="ltx_Math" alttext="V=\mathbb{R}^{k}" display="inline"><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mi>k</mi></msup></mrow></math> and we take the form <math id="S3.p5.m10" class="ltx_Math" alttext="\alpha\colon p\mapsto\mathbf{e}_{1}^{\vee}\wedge\dots\wedge\mathbf{e}_{k}^{\vee}" display="inline"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>p</mi><mo stretchy="false">↦</mo><mrow><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup><mo>∧</mo><mi mathvariant="normal">⋯</mi><mo>∧</mo><msubsup><mi>𝐞</mi><mi>k</mi><mo>∨</mo></msubsup></mrow></mrow></mrow></math>,
+then what these <math id="S3.p5.m11" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>’s give is the <math id="S3.p5.m12" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>th hypervolume of the cell.
+For this reason, this <math id="S3.p5.m13" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is called the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> volume form</span> on <math id="S3.p5.m14" class="ltx_Math" alttext="\mathbb{R}^{k}" display="inline"><msup><mi>ℝ</mi><mi>k</mi></msup></math>.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">You’ll notice I’m starting to play loose with the term “cell”:
+while the cell <math id="S3.p6.m1" class="ltx_Math" alttext="c\colon[0,R]\times[0,2\pi]\to\mathbb{R}^{2}" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mi>R</mi><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></mrow></math> is supposed to be a function
+I have been telling you to think of it as a unit disk (i.e. in terms of its image).
+In the same vein, a curve <math id="S3.p6.m2" class="ltx_Math" alttext="[0,1]\to V" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>V</mi></mrow></math> should be thought of as a curve in space,
+rather than a function on time.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">This error turns out to be benign.
+Let <math id="S3.p7.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> be a <math id="S3.p7.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-form on <math id="S3.p7.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> and <math id="S3.p7.m4" class="ltx_Math" alttext="c\colon[a_{1},b_{1}]\times\dots\times[a_{k},b_{k}]\to U" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mi mathvariant="normal">⋯</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mi>k</mi></msub><mo>,</mo><msub><mi>b</mi><mi>k</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mi>U</mi></mrow></mrow></math> a <math id="S3.p7.m5" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-cell.
+Suppose <math id="S3.p7.m6" class="ltx_Math" alttext="\phi\colon[a_{1}^{\prime},b_{1}^{\prime}]\times\dots[a_{k}^{\prime},b_{k}^{%
+\prime}]\to[a_{1},b_{1}]\times\dots\times[a_{k},b_{k}]" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mrow><mo stretchy="false">[</mo><msubsup><mi>a</mi><mn>1</mn><mo>′</mo></msubsup><mo>,</mo><msubsup><mi>b</mi><mn>1</mn><mo>′</mo></msubsup><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mi mathvariant="normal">…</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msubsup><mi>a</mi><mi>k</mi><mo>′</mo></msubsup><mo>,</mo><msubsup><mi>b</mi><mi>k</mi><mo>′</mo></msubsup><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mi mathvariant="normal">⋯</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mi>k</mi></msub><mo>,</mo><msub><mi>b</mi><mi>k</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></math>;
+it is a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> reparametrization</span> if <math id="S3.p7.m7" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> is bijective and <math id="S3.p7.m8" class="ltx_Math" alttext="(D\phi)_{p}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>ϕ</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></math> is always invertible
+(think “change of variables”);
+thus</p>
+<table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="c\circ\phi\colon[a_{1}^{\prime},b_{1}^{\prime}]\times\dots\times[a_{k}^{\prime%
+},b_{k}^{\prime}]\to U" display="block"><mrow><mrow><mi>c</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>ϕ</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mo stretchy="false">[</mo><msubsup><mi>a</mi><mn>1</mn><mo>′</mo></msubsup><mo>,</mo><msubsup><mi>b</mi><mn>1</mn><mo>′</mo></msubsup><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mi mathvariant="normal">⋯</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><msubsup><mi>a</mi><mi>k</mi><mo>′</mo></msubsup><mo>,</mo><msubsup><mi>b</mi><mi>k</mi><mo>′</mo></msubsup><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mi>U</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is a <math id="S3.p7.m9" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-cell as well.
+Then it is said to <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> preserve orientation</span> if <math id="S3.p7.m10" class="ltx_Math" alttext="\det(D\phi)_{p}&gt;0" display="inline"><mrow><mrow><mo rspace="0em">det</mo><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>ϕ</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></mrow><mo>&gt;</mo><mn>0</mn></mrow></math> for all <math id="S3.p7.m11" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>
+and <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> reverse orientation</span> if <math id="S3.p7.m12" class="ltx_Math" alttext="\det(D\phi)_{p}&lt;0" display="inline"><mrow><mrow><mo rspace="0em">det</mo><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>ϕ</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></mrow><mo>&lt;</mo><mn>0</mn></mrow></math> for all <math id="S3.p7.m13" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 45.3.5</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Why is it that exactly one of these cases must occur?</span></p>
+</div>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 45.3.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Changing variables doesn’t affect integrals)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math> be a <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-cell, <math id="S3.Thmtheorem6.p1.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> a <math id="S3.Thmtheorem6.p1.m4" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-form, and <math id="S3.Thmtheorem6.p1.m5" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> a reparametrization.
+Then</p>
+<table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\int_{c\circ\phi}\alpha=\begin{cases}\int_{c}\alpha&amp;\phi\text{ preserves %
+orientation}\\
+-\int_{c}\alpha&amp;\phi\text{ reverses orientation}.\end{cases}" display="block"><mrow><mrow><msub><mo>∫</mo><mrow><mi>c</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>ϕ</mi></mrow></msub><mi>α</mi></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mstyle displaystyle="false"><msub><mo>∫</mo><mi>c</mi></msub></mstyle><mi>α</mi></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>ϕ</mi><mo>⁢</mo><mtext> preserves orientation</mtext></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mo>−</mo><mrow><mstyle displaystyle="false"><msub><mo>∫</mo><mi>c</mi></msub></mstyle><mi>α</mi></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mtext> reverses orientation</mtext></mrow><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">Use naturality of the pullback to reduce it to the corresponding
+theorem in normal calculus.
+∎</p>
+</div>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">So for example, if we had parametrized the unit circle as <math id="S3.p9.m1" class="ltx_Math" alttext="[0,1]\times[0,1]\to\mathbb{R}^{2}" display="inline"><mrow><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math>
+by <math id="S3.p9.m2" class="ltx_Math" alttext="(r,t)\mapsto R\cos(2\pi t)\mathbf{e}_{1}+R\sin(2\pi t)\mathbf{e}_{2}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mrow><mi>R</mi><mo lspace="0.167em">⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>t</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>R</mi><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>t</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow></mrow></mrow></math>, we would have arrived at the same result.
+So we really can think of a <math id="S3.p9.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-cell just in terms of the points it specifies.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">45.4 </span>Boundaries</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> The boundary of <math id="S4.p1.m1" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math> is <math id="S4.p1.m2" class="ltx_Math" alttext="\{b\}-\{a\}" display="inline"><mrow><mrow><mo stretchy="false">{</mo><mi>b</mi><mo stretchy="false">}</mo></mrow><mo>−</mo><mrow><mo stretchy="false">{</mo><mi>a</mi><mo stretchy="false">}</mo></mrow></mrow></math>. The boundary of a square goes around its edge counterclockwise.</em></p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">First, I introduce a technical term that lets us consider multiple cells at once.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 45.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="k" display="inline"><mi mathcolor="#0000FF">k</mi></math>-chain</span> <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> is a formal
+linear combination of <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-cells over <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>,
+i.e. a sum of the form</p>
+<table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="c=a_{1}c_{1}+\dots+a_{m}c_{m}" display="block"><mrow><mi>c</mi><mo>=</mo><mrow><mrow><msub><mi>a</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>c</mi><mn>1</mn></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>a</mi><mi>m</mi></msub><mo>⁢</mo><msub><mi>c</mi><mi>m</mi></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where each <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="a_{i}\in\mathbb{R}" display="inline"><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>∈</mo><mi>ℝ</mi></mrow></math> and <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="c_{i}" display="inline"><msub><mi>c</mi><mi>i</mi></msub></math> is a <math id="S4.Thmtheorem1.p1.m7" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-cell.
+We define <math id="S4.Thmtheorem1.p1.m8" class="ltx_Math" alttext="\int_{c}\alpha=\sum_{i}a_{i}\int c_{i}" display="inline"><mrow><mrow><msub><mo>∫</mo><mi>c</mi></msub><mi>α</mi></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∑</mo><mi>i</mi></msub><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo>∫</mo><msub><mi>c</mi><mi>i</mi></msub></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">In particular, a <math id="S4.p3.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>-chain consists of several points, each with a given weight.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Now, how do we define the boundary?
+For a <math id="S4.p4.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-cell <math id="S4.p4.m2" class="ltx_Math" alttext="[a,b]\to U" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>U</mi></mrow></math>, as I hinted earlier we want the answer to be the <math id="S4.p4.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>-chain <math id="S4.p4.m4" class="ltx_Math" alttext="\{c(b)\}-\{c(a)\}" display="inline"><mrow><mrow><mo stretchy="false">{</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">}</mo></mrow><mo>−</mo><mrow><mo stretchy="false">{</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.
+Here’s how we do it in general.</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 45.4.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="c\colon[0,1]^{k}\to U" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mi>k</mi></msup><mo stretchy="false">→</mo><mi>U</mi></mrow></mrow></math> is a <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-cell.
+Then the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> boundary</span> of <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>, denoted <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\partial c\colon[0,1]^{k-1}\to U" display="inline"><mrow><mrow><mo rspace="0em">∂</mo><mi>c</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><mo stretchy="false">→</mo><mi>U</mi></mrow></mrow></math>,
+is the <math id="S4.Thmtheorem2.p1.m5" class="ltx_Math" alttext="(k-1)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math>-chain defined as follows.
+For each <math id="S4.Thmtheorem2.p1.m6" class="ltx_Math" alttext="i=1,\dots,k" display="inline"><mrow><mi>i</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>k</mi></mrow></mrow></math> define <math id="S4.Thmtheorem2.p1.m7" class="ltx_Math" alttext="(k-1)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math>-chains by</p>
+<table id="A5.S3.EGx120" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex22"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex22.m1" class="ltx_Math" alttext="\displaystyle c_{i}^{\text{start}}\colon(t_{1},\dots,t_{k-1})" display="inline"><mrow><msubsup><mi>c</mi><mi>i</mi><mtext>start</mtext></msubsup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex22.m2" class="ltx_Math" alttext="\displaystyle\mapsto c(t_{1},\dots,t_{i-1},0,t_{i},\dots,t_{k-1})" display="inline"><mrow><mi></mi><mo stretchy="false">↦</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><mn>0</mn><mo>,</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex23"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex23.m1" class="ltx_Math" alttext="\displaystyle c_{i}^{\text{stop}}\colon(t_{1},\dots,t_{k-1})" display="inline"><mrow><msubsup><mi>c</mi><mi>i</mi><mtext>stop</mtext></msubsup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex23.m2" class="ltx_Math" alttext="\displaystyle\mapsto c(t_{1},\dots,t_{i-1},1,t_{i},\dots,t_{k-1})." display="inline"><mrow><mrow><mi></mi><mo stretchy="false">↦</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><mn>1</mn><mo>,</mo><msub><mi>t</mi><mi>i</mi></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>t</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Then</p>
+<table id="Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex24.m1" class="ltx_Math" alttext="\partial c\coloneqq\sum_{i=1}^{k}(-1)^{i+1}\left(c_{i}^{\text{stop}}-c_{i}^{%
+\text{start}}\right)." display="block"><mrow><mrow><mrow><mo rspace="0em">∂</mo><mi>c</mi></mrow><mo rspace="0.111em">≔</mo><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>k</mi></munderover><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo>(</mo><mrow><msubsup><mi>c</mi><mi>i</mi><mtext>stop</mtext></msubsup><mo>−</mo><msubsup><mi>c</mi><mi>i</mi><mtext>start</mtext></msubsup></mrow><mo>)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Finally, the boundary of a chain is the sum of the boundaries of each cell (with the appropriate weights).
+That is, <math id="S4.Thmtheorem2.p1.m8" class="ltx_Math" alttext="\partial(\sum a_{i}c_{i})=\sum a_{i}\partial c_{i}" display="inline"><mrow><mrow><mo rspace="0em">∂</mo><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em">∑</mo><mrow><msub><mi>a</mi><mi>i</mi></msub><mo>⁢</mo><msub><mi>c</mi><mi>i</mi></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mo>∑</mo><mrow><msub><mi>a</mi><mi>i</mi></msub><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">∂</mo><msub><mi>c</mi><mi>i</mi></msub></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 45.4.3</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Satisfy yourself that one can extend this definition to
+a <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-cell <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math> defined on <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="c\colon[a_{1},b_{1}]\times\dots\times[a_{k},b_{k}]\to V" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mn>1</mn></msub><mo>,</mo><msub><mi>b</mi><mn>1</mn></msub><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mi mathvariant="normal">⋯</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><msub><mi>a</mi><mi>k</mi></msub><mo>,</mo><msub><mi>b</mi><mi>k</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math>
+(rather than from <math id="S4.Thmtheorem3.p1.m4" class="ltx_Math" alttext="[0,1]^{k}\to V" display="inline"><mrow><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mi>k</mi></msup><mo stretchy="false">→</mo><mi>V</mi></mrow></math>).</span></p>
+</div>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 45.4.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of boundaries)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Consider the <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-cell <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="c\colon[0,1]^{2}\to\mathbb{R}^{2}" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mn>2</mn></msup><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></mrow></math> shown below.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨΨsize(7cm);
+ΨΨΨpen e1 = heavyred;
+ΨΨΨpen e2 = orange;
+ΨΨΨpen e3 = olive;
+ΨΨΨpen e4 = heavymagenta;
+ΨΨΨdraw((0,0)--(2,0), e1, EndArrow);
+ΨΨΨdraw((2,0)--(2,2), e2, EndArrow);
+ΨΨΨdraw((2,2)--(0,2), e3, EndArrow);
+ΨΨΨdraw((0,2)--(0,0), e4, EndArrow);
+ΨΨΨlabel(scale(0.8)*"$[0,1]^2$", (1,1));
+ΨΨΨdraw( (3,1)--(6,1), EndArrow);
+ΨΨΨlabel("$c$", (4.5,1), dir(90));
+ΨΨΨpair p1 = (7,-1);
+ΨΨΨpair p2 = (12,-2);
+ΨΨΨpair p3 = (11,3);
+ΨΨΨpair p4 = (8,2);
+ΨΨΨfill(p1--p2--p3--p4--cycle, palecyan);
+ΨΨΨdraw(p1--p2, e1, EndArrow, Margins);
+ΨΨΨdraw(p2--p3, e2, EndArrow, Margins);
+ΨΨΨdraw(p3--p4, e3, EndArrow, Margins);
+ΨΨΨdraw(p4--p1, e4, EndArrow, Margins);
+ΨΨΨdot("$p_1$", p1, dir(225), blue+4);
+ΨΨΨdot("$p_2$", p2, dir(315), blue+4);
+ΨΨΨdot("$p_3$", p3, dir( 45), blue+4);
+ΨΨΨdot("$p_4$", p4, dir(135), blue+4);
+ΨΨΨlabel("$c$", (p1+p2+p3+p4)/4);
+ΨΨ
+</pre>
+<p class="ltx_p">Here <math id="S4.Thmtheorem4.p1.m3" class="ltx_Math" alttext="p_{1}" display="inline"><msub><mi>p</mi><mn>1</mn></msub></math>, <math id="S4.Thmtheorem4.p1.m4" class="ltx_Math" alttext="p_{2}" display="inline"><msub><mi>p</mi><mn>2</mn></msub></math>, <math id="S4.Thmtheorem4.p1.m5" class="ltx_Math" alttext="p_{3}" display="inline"><msub><mi>p</mi><mn>3</mn></msub></math>, <math id="S4.Thmtheorem4.p1.m6" class="ltx_Math" alttext="p_{4}" display="inline"><msub><mi>p</mi><mn>4</mn></msub></math> are the images of <math id="S4.Thmtheorem4.p1.m7" class="ltx_Math" alttext="(0,0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math>, <math id="S4.Thmtheorem4.p1.m8" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math>, <math id="S4.Thmtheorem4.p1.m9" class="ltx_Math" alttext="(1,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math>, <math id="S4.Thmtheorem4.p1.m10" class="ltx_Math" alttext="(1,0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math>, respectively.
+Formally, <math id="S4.Thmtheorem4.p1.m11" class="ltx_Math" alttext="\partial c" display="inline"><mrow><mo rspace="0em">∂</mo><mi>c</mi></mrow></math> is given by</p>
+<table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="\partial c=(t\mapsto c(1,t))-(t\mapsto c(0,t))-(t\mapsto c(t,1))+(t\mapsto c(t%
+,0))." display="block"><mrow><mrow><mrow><mo rspace="0em">∂</mo><mi>c</mi></mrow><mo>=</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo stretchy="false">↦</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo stretchy="false">↦</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo stretchy="false">↦</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><mi>t</mi><mo stretchy="false">↦</mo><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">I apologize for the eyesore notation caused by inline functions.
+Let’s make amends and just write</p>
+<table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="\partial c=[p_{2},p_{3}]-[p_{1},p_{4}]-[p_{4},p_{3}]+[p_{1},p_{2}]" display="block"><mrow><mrow><mo rspace="0em">∂</mo><mi>c</mi></mrow><mo>=</mo><mrow><mrow><mrow><mo stretchy="false">[</mo><msub><mi>p</mi><mn>2</mn></msub><mo>,</mo><msub><mi>p</mi><mn>3</mn></msub><mo stretchy="false">]</mo></mrow><mo>−</mo><mrow><mo stretchy="false">[</mo><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><msub><mi>p</mi><mn>4</mn></msub><mo stretchy="false">]</mo></mrow><mo>−</mo><mrow><mo stretchy="false">[</mo><msub><mi>p</mi><mn>4</mn></msub><mo>,</mo><msub><mi>p</mi><mn>3</mn></msub><mo stretchy="false">]</mo></mrow></mrow><mo>+</mo><mrow><mo stretchy="false">[</mo><msub><mi>p</mi><mn>1</mn></msub><mo>,</mo><msub><mi>p</mi><mn>2</mn></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where each “interval” represents the <math id="S4.Thmtheorem4.p1.m12" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-cell shown by the reddish arrows on the right,
+after accounting for the minus signs.
+We can take the boundary of this as well, and obtain an empty chain as</p>
+<table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="\partial(\partial c)=\sum_{i=1}^{4}\{p_{i+1}\}-\{p_{i}\}=0." display="block"><mrow><mrow><mrow><mo rspace="0em">∂</mo><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0em">∂</mo><mi>c</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mrow><munderover><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mn>4</mn></munderover><mrow><mo stretchy="false">{</mo><msub><mi>p</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="false">}</mo></mrow></mrow><mo>−</mo><mrow><mo stretchy="false">{</mo><msub><mi>p</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 45.4.5</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Boundary of a unit disk)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Consider the unit disk given by</p>
+<table id="Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex28.m1" class="ltx_Math" alttext="c\colon[0,1]\times[0,1]\to\mathbb{R}^{2}\quad\text{by}\quad(r,\theta)\mapsto r%
+\cos(2\pi\theta)\mathbf{e}_{1}+r\sin(2\pi\theta)\mathbf{e}_{2}." display="block"><mrow><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><msup><mi>ℝ</mi><mn>2</mn></msup><mspace width="1em"></mspace><mtext>by</mtext></mrow></mrow><mspace width="1em"></mspace><mrow><mrow><mo stretchy="false">(</mo><mi>r</mi><mo>,</mo><mi>θ</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mrow><mi>r</mi><mo lspace="0.167em">⁢</mo><mrow><mi>cos</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>θ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>r</mi><mo lspace="0.167em">⁢</mo><mrow><mi>sin</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>π</mi><mo>⁢</mo><mi>θ</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">The four parts of the boundary are shown in the picture below:</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨΨsize(7cm);
+ΨΨΨpen e1 = heavyred;
+ΨΨΨpen e2 = orange;
+ΨΨΨpen e3 = olive;
+ΨΨΨpen e4 = heavymagenta;
+ΨΨΨdraw((0,0)--(2,0), e1, EndArrow);
+ΨΨΨdraw((2,0)--(2,2), e2, EndArrow);
+ΨΨΨdraw((2,2)--(0,2), e3, EndArrow);
+ΨΨΨdraw((0,2)--(0,0), e4, EndArrow);
+ΨΨΨlabel("$r$", (2,0), dir(-45));
+ΨΨΨlabel("$\theta$", (0,2), dir(135));
+
+ΨΨΨlabel(scale(0.8)*"$[0,1]^2$", (1,1));
+ΨΨΨdraw( (3,1)--(6,1), EndArrow);
+ΨΨΨlabel("$c$", (4.5,1), dir(90));
+
+ΨΨΨpair O = (9,1);
+ΨΨΨpair P = O + 2*dir(0);
+ΨΨΨfill(CP(O,P), palecyan);
+ΨΨΨreal eps = 0.3;
+ΨΨΨdraw(shift(0,eps) * (O--P), e1, EndArrow, Margins);
+ΨΨΨdraw(shift(0,-eps) * (P--O), e3, EndArrow, Margins);
+ΨΨΨdraw(CP(O,P), e2, EndArrow, Margins);
+ΨΨΨdot(O, e4+4);
+ΨΨ
+</pre>
+<p class="ltx_p">Note that two of the arrows more or less cancel each other out when they are integrated.
+Moreover, we interestingly have a <em class="ltx_emph ltx_font_italic">degenerate</em> <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-cell at the center of the circle;
+it is a constant function <math id="S4.Thmtheorem5.p1.m2" class="ltx_Math" alttext="[0,1]\to\mathbb{R}^{2}" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math> which always gives the origin.</p>
+</div>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Obligatory theorem, analogous to <math id="S4.p5.m1" class="ltx_Math" alttext="d^{2}=0" display="inline"><mrow><msup><mi>d</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow></math> and left as a problem.</p>
+</div>
+<div id="S4.Thmtheorem6" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 45.4.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(The boundary of the boundary is empty)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\partial^{2}=0" display="inline"><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo lspace="0.278em">=</mo><mn>0</mn></mrow></math>, in the sense that for any <math id="S4.Thmtheorem6.p1.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-chain <math id="S4.Thmtheorem6.p1.m3" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math> we have <math id="S4.Thmtheorem6.p1.m4" class="ltx_Math" alttext="\partial^{2}(c)=0" display="inline"><mrow><mrow><msup><mo>∂</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">45.5 </span>Stokes’ theorem</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S5.p1.m1" class="ltx_Math" alttext="\int_{[a,b]}dg=g(b)-g(a)" display="inline"><mrow><mrow><msub><mo>∫</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></msub><mrow><mo lspace="0.167em" rspace="0em">𝑑</mo><mi>g</mi></mrow></mrow><mo>=</mo><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.</em></p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">We now have all the ingredients to state Stokes’ theorem for cells.</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 45.5.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Stokes’ theorem for cells)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Take <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> as usual, let <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="c\colon[0,1]^{k}\to U" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mi>k</mi></msup><mo stretchy="false">→</mo><mi>U</mi></mrow></mrow></math> be a <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-cell
+and let <math id="S5.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\alpha\colon U\to\bigwedge^{k-1}(V^{\vee})" display="inline"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo rspace="0.111em" stretchy="false">→</mo><mrow><msup><mo rspace="0em">⋀</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msup><mrow><mo stretchy="false">(</mo><msup><mi>V</mi><mo>∨</mo></msup><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> be a <math id="S5.Thmtheorem1.p1.m5" class="ltx_Math" alttext="(k-1)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math>-form.
+Then</p>
+<table id="Ex29" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex29.m1" class="ltx_Math" alttext="\int_{c}d\alpha=\int_{\partial c}\alpha." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mi>c</mi></msub><mrow><mo lspace="0.167em" rspace="0em">𝑑</mo><mi>α</mi></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∫</mo><mrow><mo rspace="0em">∂</mo><mi>c</mi></mrow></msub><mi>α</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">In particular, if <math id="S5.Thmtheorem1.p1.m6" class="ltx_Math" alttext="d\alpha=0" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mi>α</mi></mrow><mo>=</mo><mn>0</mn></mrow></math> then the left-hand side vanishes.</p>
+</div>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">For example, if <math id="S5.p3.m1" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math> is the interval <math id="S5.p3.m2" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math> then <math id="S5.p3.m3" class="ltx_Math" alttext="\partial c=\{b\}-\{a\}" display="inline"><mrow><mrow><mo rspace="0em">∂</mo><mi>c</mi></mrow><mo>=</mo><mrow><mrow><mo stretchy="false">{</mo><mi>b</mi><mo stretchy="false">}</mo></mrow><mo>−</mo><mrow><mo stretchy="false">{</mo><mi>a</mi><mo stretchy="false">}</mo></mrow></mrow></mrow></math>,
+and thus we obtain the fundamental theorem of calculus.</p>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">45.6 </span>Back to Earth: A comparison to what you learned in vector calculus</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p">Now that we’ve done everything abstractly,
+let’s compare what we’ve learned to what you might see in <math id="S6.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{3}" display="inline"><msup><mi>ℝ</mi><mn>3</mn></msup></math>
+if you’re doing a vector calculus course at a typical university.</p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">In <a href="#fig:1802gradcurldiv" title="In 45.6 Back to Earth: A comparison to what you learned in vector calculus ‣ Chapter 45 Integrating differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Figure</span> <span class="ltx_text ltx_ref_tag">45.1</span></a> I’ve copied a picture I drew in fall 2024
+for the 18.02 class at MIT,
+which is the multivariable calculus class that a lot of first-year students take.
+For each <math id="S6.p2.m1" class="ltx_Math" alttext="0\leq d\leq n\leq 3" display="inline"><mrow><mn>0</mn><mo>≤</mo><mi>d</mi><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>3</mn></mrow></math> (besides <math id="S6.p2.m2" class="ltx_Math" alttext="d=n=0" display="inline"><mrow><mi>d</mi><mo>=</mo><mi>n</mi><mo>=</mo><mn>0</mn></mrow></math>),
+it shows what kind of integral showed up in the class
+if you were doing a <math id="S6.p2.m3" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math>-dimensional integral of a function whose domain was <math id="S6.p2.m4" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>.
+Note that every integral in this picture is real-valued.</p>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">I’ve deliberately used the notation that was actually used at MIT,
+which I’ll refer to as 18.02 notation,
+because it’s similar to what you will see on Wikipedia and other places too.
+The goal of this section is to provide a translation system from 18.02 notation to Napkin notation.
+(Throughout the whole section, <math id="S6.p3.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> is thought of as a normed vector space,
+so the identification <math id="S6.p3.m2" class="ltx_Math" alttext="\mathbf{e}_{1}\mapsto\mathbf{e}_{1}^{\vee}" display="inline"><mrow><msub><mi>𝐞</mi><mn>1</mn></msub><mo stretchy="false">↦</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow></math> and so on is canonical.)</p>
+</div>
+<figure id="fig:1802gradcurldiv" class="ltx_figure">
+<div class="ltx_flex_figure">
+<div class="ltx_flex_cell ltx_flex_size_1">
+<p class="ltx_p ltx_figure_panel ltx_align_center"><span class="ltx_text ltx_font_bold" style="font-size:144%;">An 18.02 chart.</span></p>
+</div>
+<div class="ltx_flex_break"></div>
+<div class="ltx_flex_cell ltx_flex_size_1"><pre class="ltx_verbatim ltx_centering ltx_figure_panel ltx_font_typewriter">
+size(16cm);
+usepackage("amsmath");
+usepackage("amssymb");
+usepackage("derivative");
+label("$\boxed{f \colon \mathbb R^1 \to \mathbb R}$", (-0.5,8), dir(180), blue);
+label("$\boxed{f \colon \mathbb R^2 \to \mathbb R}$", (-0.5,3.5), dir(180), blue);
+label("$\boxed{f \colon \mathbb R^3 \to \mathbb R}$", (-0.5,0), dir(180), blue);
+label("$\boxed{\mathbf F \colon \mathbb R^2 \to \mathbb R^2}$", (-0.5,6.5), dir(180), purple);
+label("$\boxed{\mathbf F \colon \mathbb R^3 \to \mathbb R^3}$", (-0.5,-3), dir(180), purple);
+
+real w = 0.7; // axis length
+pair O = (0,0);
+defaultpen(fontsize(11pt));
+pen intfont = fontsize(9pt);
+
+picture vector_field;
+for (int i=0; i&lt;5; ++i) {
+  for (int j=0; j&lt;4; ++j) {
+    draw(vector_field,
+    shift(-0.9*w,-0.6*w)*((0.4*i*w,0.45*j*w)--(0.4*i*w+0.2,0.45*j*w-0.15)),
+    rgb(0.6,0.6,0.9), EndArrow(TeXHead));
+  }
+}
+
+picture axis1;
+picture axis2;
+picture axis3;
+draw(axis1, (-w,0)--(w,0), grey, Arrows(TeXHead));
+draw(axis2, (-w,0)--(w,0), grey, Arrows(TeXHead));
+draw(axis2, (0,-w)--(0,w), grey, Arrows(TeXHead));
+draw(axis3, (-w,0)--(w,0), grey, Arrows(TeXHead));
+draw(axis3, (0,-w)--(0,w), grey, Arrows(TeXHead));
+draw(axis3, (-w/1.6,-w/1.6)--(w/1.6,w/1.6), grey, Arrows(TeXHead));
+
+transform t;
+
+/* 0-D integrals */
+label("\fbox{0-D integral}", (1,9.5), deepblue);
+string s = "Eval $f$ at point";
+
+t = shift(1,8);
+add(t*axis1);
+dot("$f(x_0)$", t*O, dir(-90));
+label(s, t*(dir(90)/2), deepgreen);
+
+t = shift(1,3.5);
+add(t*axis2);
+dot("$f(x_0, y_0)$", t*(-w/2,-w/2), dir(-75));
+label(s, t*dir(90), deepgreen);
+
+t = shift(1,0);
+add(t*axis3);
+dot("$f(x_0, y_0, z_0)$", t*(-w/3,-2*w/3), dir(-75));
+label(s, t*dir(90), deepgreen);
+
+/* 1-D integrals */
+label("\fbox{1-D integral}", (4,9.5), deepblue);
+
+t = shift(4,8);
+add(t*axis1);
+draw(t*((-0.3,0)--(0.3,0)), black+1.4);
+dot(t*(-0.3,0), black);
+dot(t*( 0.3,0), black);
+label("$\int\limits_a^b f(x) \odif x$", t*O, dir(-90));
+label("1-var integral", t*(dir(90)/2), deepgreen);
+
+t = shift(4,3.5);
+add(t*axis2);
+draw("$\int\limits_{t_0}^{t_1} f(\mathbf r(t)) |\mathbf r’(t)| \odif t$", t*(0,-w), dir(-90), intfont);
+draw(t*((-0.7*w,-0.4*w)..(-0.2*w,0.5*w)..(0.6*w,0.55*w)), black+1.4);
+dot(t*(-0.7*w, -0.4*w));
+dot(t*(0.6*w, 0.55*w));
+label("Line integral", t*dir(90), deepgreen);
+
+t = shift(4,0);
+add(t*axis3);
+draw("$\int\limits_{t_0}^{t_1} f(\mathbf r(t)) |\mathbf r’(t)| \odif t$", t*(0,-w), dir(-90), intfont);
+draw(t*((-0.8*w,-0.3*w)..(0.2*w,-0.1*w)..(0.6*w,0.3*w)), black+1.4);
+dot(t*(-0.8*w, -0.3*w));
+dot(t*(0.6*w, 0.3*w));
+label("Line integral", t*dir(90), deepgreen);
+
+/* 2-D integrals */
+label("\fbox{2-D integral}", (8,9.5), deepblue);
+
+t = shift(8,3.5);
+path square = box((-0.6*w,-0.6*w), (0.6*w,0.6*w));
+filldraw(t*square, lightgrey, black+1.4);
+draw("$\int\limits_{a_1}^{b_1} \int\limits_{a_2}^{b_2} f(x,y) \odif x \odif y$", t*(0,-w), dir(-90), intfont);
+label("Area integral", t*dir(90), deepgreen);
+add(t*axis2);
+
+t = shift(8,0);
+path surface = (-0.8*w,-0.1*w)..(-0.2*w,-0.3*w)..(0.6*w,-0.6*w)..(0.7*w,-0.1*w)..(0.3*w,0.4*w)..(-0.5*w,0.3*w)..cycle;
+filldraw(t*surface, lightgrey, black+1.4);
+draw("$\int\limits_{u_0}^{u_1} \int\limits_{v_0}^{v_1} f(\mathbf r(u,v)) |\pdv{\mathbf{r}}{u} \times \pdv{\mathbf{r}}{v}| \odif u \odif v$", t*(0,-w), dir(-90), intfont);
+label("Surface integral", t*dir(90), deepgreen);
+add(t*axis3);
+
+/* 3-D integrals */
+label("\fbox{3-D integral}", (12.5,9.5), deepblue);
+
+t = shift(12.5,0);
+pair A = (-0.4, -0.25);
+pair C = (0.1, 0.25);
+pair B = (A.x, C.y);
+pair D = (C.x, A.y);
+transform s = shift(0.17,0.13);
+fill(t*(A--B--s*B--s*C--s*D--D--cycle), lightgrey);
+draw(t*s*(A--B--C--D--cycle), black+1.4);
+draw(t*(A--B--C--D--cycle), black+1.4);
+draw(t*(A--s*A), black+1.4);
+draw(t*(B--s*B), black+1.4);
+draw(t*(C--s*C), black+1.4);
+draw(t*(D--s*D), black+1.4);
+draw("$\int\limits_{a_1}^{b_1} \int\limits_{a_2}^{b_2} \int\limits_{a_3}^{b_3} f(x,y,z) \odif x \odif y \odif z$", t*(0,-w), dir(-90), intfont);
+label("Volume integral", t*dir(90), deepgreen);
+add(t*axis3);
+
+/* Work */
+t = shift(4,5.5);
+add(t*axis2);
+draw("$\int\limits_{t_0}^{t_1} \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}’(t) \odif{t}$", t*(-w,w), dir(180), intfont+purple);
+add(t*vector_field);
+draw(t*((-0.7*w,-0.4*w)..(-0.2*w,0.5*w)..(0.6*w,0.55*w)), purple+1.4);
+dot(t*(-0.7*w, -0.4*w), purple);
+dot(t*(0.6*w, 0.55*w), purple);
+label("Work", t*dir(90), purple);
+
+t = shift(4,-3);
+add(t*axis3);
+draw("$\int\limits_{t_0}^{t_1} \mathbf{F}(\mathbf{r}(t)) \cdot \mathbf{r}’(t) \odif{t}$", t*(-w,-w), dir(180), intfont+purple);
+add(t*vector_field);
+draw(t*((-0.8*w,-0.3*w)..(0.2*w,-0.1*w)..(0.6*w,0.3*w)), purple+1.4);
+dot(t*(-0.8*w, -0.3*w), purple);
+dot(t*(0.6*w, 0.3*w), purple);
+label("Work", t*dir(90), purple);
+
+/* Flux */
+t = shift(8,-3);
+draw("$\int\limits_{u_0}^{u_1} \int\limits_{v_0}^{v_1} \mathbf{F}(\mathbf{r}(u,v)) \cdot \left( \pdv{\mathbf{r}}{u} \times \pdv{\mathbf{r}}{v} \right) \odif{u} \odif{v}$", t*(w,-w), dir(0), intfont+purple);
+filldraw(t*surface, pink, purple+1.4);
+add(t*axis3);
+add(t*vector_field);
+label("Flux", t*dir(90), purple);
+
+/* Arrows */
+draw("$\frac{df}{dx}$", (2,8)--(3,8), red, EndArrow);
+
+draw((1,5)--(1,5.5)--(3,5.5), red, EndArrow);
+label("$\nabla f$ (grad)", (1,5.5), dir(180), red);
+draw((5,5.5)--(8,5.5)--(8,5), red, EndArrow);
+label("$\pdv{g}{x}-\pdv{f}{y}$ (2d scalar curl)", (8,5.5), dir(0), red);
+
+draw((1,-1.5)--(1,-3)--(3,-3), red, EndArrow);
+label("$\nabla f$ (grad)", (1,-2.25), dir(180), red);
+draw((5,-3)--(7,-3), red, EndArrow);
+label("$\nabla \times \mathbf{F}$ (curl)", (6,-3), dir(270), red);
+draw((9,-3)--(12.5,-3)--(12.5,-1.5), red, EndArrow);
+label("$\nabla \cdot \mathbf{F}$ (div)", (12.5,-2.25), dir(0), red);
+</pre></div>
+</div>
+<figcaption class="ltx_caption ltx_centering"><span class="ltx_tag ltx_tag_figure">Figure 45.1: </span>Throwback to first year of college?
+High-resolution version at <a href="https://web.evanchen.cc/upload/1802/integrals-stokes.pdf" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://web.evanchen.cc/upload/1802/integrals-stokes.pdf</a>.</figcaption>
+</figure>
+<div id="S6.p4" class="ltx_para">
+<p class="ltx_p">There is a lot going in <a href="#fig:1802gradcurldiv" title="In 45.6 Back to Earth: A comparison to what you learned in vector calculus ‣ Chapter 45 Integrating differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Figure</span> <span class="ltx_text ltx_ref_tag">45.1</span></a>, so let’s break it down piece by piece.</p>
+</div>
+<section id="S6.SS0.SSS0.Px1" class="ltx_paragraph">
+<h3 class="ltx_title ltx_title_paragraph">
+<math id="S6.SS0.SSS0.Px1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>-forms.</h3>
+
+<div id="S6.SS0.SSS0.Px1.p1" class="ltx_para">
+<p class="ltx_p">A <math id="S6.SS0.SSS0.Px1.p1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>-form is the same as just a function,
+so the column of 0-D integrals should be easy to understand:
+it’s just evaluation at point, or a sum of points.</p>
+</div>
+</section>
+<section id="S6.SS0.SSS0.Px2" class="ltx_paragraph">
+<h3 class="ltx_title ltx_title_paragraph">
+<math id="S6.SS0.SSS0.Px2.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-forms.</h3>
+
+<div id="S6.SS0.SSS0.Px2.p1" class="ltx_para">
+<p class="ltx_p">The case <math id="S6.SS0.SSS0.Px2.p1.m1" class="ltx_Math" alttext="n=d" display="inline"><mrow><mi>n</mi><mo>=</mo><mi>d</mi></mrow></math> is also easy:
+we know it’s possible to integrate an <math id="S6.SS0.SSS0.Px2.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-form in <math id="S6.SS0.SSS0.Px2.p1.m3" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> and get a number. That is:</p>
+<ul id="S6.I1" class="ltx_itemize">
+<li id="S6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">A normal integral <math id="S6.I1.i1.p1.m1" class="ltx_Math" alttext="\int_{a}^{b}\mathrm{d}x" display="inline"><mrow><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><mrow><mo lspace="0.167em" rspace="0em">d</mo><mi>x</mi></mrow></mrow></math> is the integral across a <math id="S6.I1.i1.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-cell <math id="S6.I1.i1.p1.m3" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math>
+across the <math id="S6.I1.i1.p1.m4" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-form <math id="S6.I1.i1.p1.m5" class="ltx_Math" alttext="f\cdot\mathbf{e}_{1}^{\vee}" display="inline"><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow></math>.</p>
+</div>
+</li>
+<li id="S6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">An area integral <math id="S6.I1.i2.p1.m1" class="ltx_Math" alttext="\int_{a_{1}}^{b_{1}}\int_{a_{2}}^{b_{2}}f(x,y)\mathrm{d}x\mathrm{d}y" display="inline"><mrow><msubsup><mo>∫</mo><msub><mi>a</mi><mn>1</mn></msub><msub><mi>b</mi><mn>1</mn></msub></msubsup><mrow><msubsup><mo lspace="0.167em">∫</mo><msub><mi>a</mi><mn>2</mn></msub><msub><mi>b</mi><mn>2</mn></msub></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">d</mo><mi>x</mi></mrow><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">d</mo><mi>y</mi></mrow></mrow></mrow></mrow></math>
+corresponds to integrating the <math id="S6.I1.i2.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-form <math id="S6.I1.i2.p1.m3" class="ltx_Math" alttext="f\cdot\mathbf{e}_{1}^{\vee}\wedge\mathbf{e}_{2}^{\vee}" display="inline"><mrow><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></math>.</p>
+</div>
+</li>
+<li id="S6.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">A volume integral <math id="S6.I1.i3.p1.m1" class="ltx_Math" alttext="\int_{a_{1}}^{b_{1}}\int_{a_{2}}^{b_{2}}\int_{a_{3}}^{b_{3}}f(x,y)\mathrm{d}x%
+\mathrm{d}y" display="inline"><mrow><msubsup><mo>∫</mo><msub><mi>a</mi><mn>1</mn></msub><msub><mi>b</mi><mn>1</mn></msub></msubsup><mrow><msubsup><mo lspace="0.167em" rspace="0em">∫</mo><msub><mi>a</mi><mn>2</mn></msub><msub><mi>b</mi><mn>2</mn></msub></msubsup><mrow><msubsup><mo>∫</mo><msub><mi>a</mi><mn>3</mn></msub><msub><mi>b</mi><mn>3</mn></msub></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">d</mo><mi>x</mi></mrow><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">d</mo><mi>y</mi></mrow></mrow></mrow></mrow></mrow></math>
+corresponds to integrating the <math id="S6.I1.i3.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-form <math id="S6.I1.i3.p1.m3" class="ltx_Math" alttext="f\cdot\mathbf{e}_{1}^{\vee}\wedge\mathbf{e}_{2}^{\vee}\wedge\mathbf{e}_{3}^{\vee}" display="inline"><mrow><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup><mo>∧</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">So this takes care of the green-labeled things on the diagonal.</p>
+</div>
+</section>
+<section id="S6.SS0.SSS0.Px3" class="ltx_paragraph">
+<h3 class="ltx_title ltx_title_paragraph">We can’t interpret the remaining three green pictures!</h3>
+
+<div id="S6.SS0.SSS0.Px3.p1" class="ltx_para">
+<p class="ltx_p">The tricky part is the situations where <math id="S6.SS0.SSS0.Px3.p1.m1" class="ltx_Math" alttext="0&lt;d&lt;n&lt;3" display="inline"><mrow><mn>0</mn><mo>&lt;</mo><mi>d</mi><mo>&lt;</mo><mi>n</mi><mo>&lt;</mo><mn>3</mn></mrow></math>.
+There are three such things, the two line integrals when <math id="S6.SS0.SSS0.Px3.p1.m2" class="ltx_Math" alttext="d=1" display="inline"><mrow><mi>d</mi><mo>=</mo><mn>1</mn></mrow></math> and <math id="S6.SS0.SSS0.Px3.p1.m3" class="ltx_Math" alttext="n\in\{2,3\}" display="inline"><mrow><mi>n</mi><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">}</mo></mrow></mrow></math>
+and the surface integral when <math id="S6.SS0.SSS0.Px3.p1.m4" class="ltx_Math" alttext="d=2" display="inline"><mrow><mi>d</mi><mo>=</mo><mn>2</mn></mrow></math> and <math id="S6.SS0.SSS0.Px3.p1.m5" class="ltx_Math" alttext="n=3" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow></math>.</p>
+</div>
+<div id="S6.SS0.SSS0.Px3.p2" class="ltx_para">
+<p class="ltx_p">In fact, these are <em class="ltx_emph ltx_font_italic">not</em> covered by our theory of differential forms!
+Indeed, even in the special case where <math id="S6.SS0.SSS0.Px3.p2.m1" class="ltx_Math" alttext="f=1" display="inline"><mrow><mi>f</mi><mo>=</mo><mn>1</mn></mrow></math> is a constant function,
+the line integrals are actually arc length,
+and as we mentioned in <a href="ch_forms_diffgeo.html#sec:arc_length_not_one_form" title="44.6 Tangential remark: Arc length 𝑑⁢𝑠 is not a 1-form ‣ Chapter 44 Differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Section</span> <span class="ltx_text ltx_ref_tag">44.6</span></a>,
+that integral cannot be viewed as the integral of any differential form.
+Similarly, surface area isn’t a differential form either.</p>
+</div>
+</section>
+<section id="S6.SS0.SSS0.Px4" class="ltx_paragraph">
+<h3 class="ltx_title ltx_title_paragraph">
+<math id="S6.SS0.SSS0.Px4.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-forms and <math id="S6.SS0.SSS0.Px4.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-forms.</h3>
+
+<div id="S6.SS0.SSS0.Px4.p1" class="ltx_para">
+<p class="ltx_p">However, the three purplish integrals (over vector fields) can be viewed in our framework.</p>
+<ul id="S6.I2" class="ltx_itemize">
+<li id="S6.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">Consider <math id="S6.I2.i1.p1.m1" class="ltx_Math" alttext="d=1" display="inline"><mrow><mi>d</mi><mo>=</mo><mn>1</mn></mrow></math> and <math id="S6.I2.i1.p1.m2" class="ltx_Math" alttext="n=3" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow></math>, i.e. the 3-D line integral.
+We have as input a vector-valued function <math id="S6.I2.i1.p1.m3" class="ltx_Math" alttext="\mathbf{F}\colon\mathbb{R}^{3}\to\mathbb{R}^{3}" display="inline"><mrow><mi>𝐅</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>ℝ</mi><mn>3</mn></msup><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow></mrow></math>.
+By projection principle (<a href="ch_multivar_calculus.html#thm:project_principle" title="Theorem 43.2.1 (Projection principle) ‣ 43.2 The projection principle ‣ Chapter 43 Multivariable calculus done correctly ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">43.2.1</span></a>), it’s the same as the data of</p>
+<table id="Ex30" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex30.m1" class="ltx_Math" alttext="\mathbf{F}(p)=F_{1}(p)\mathbf{e}_{1}+F_{2}(p)\mathbf{e}_{2}+F_{3}(p)\mathbf{e}%
+_{3}" display="block"><mrow><mrow><mi>𝐅</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">for three functions <math id="S6.I2.i1.p1.m4" class="ltx_Math" alttext="F_{i}\colon\mathbb{R}^{3}\to\mathbb{R}" display="inline"><mrow><msub><mi>F</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>ℝ</mi><mn>3</mn></msup><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> for <math id="S6.I2.i1.p1.m5" class="ltx_Math" alttext="i=1,2,3" display="inline"><mrow><mi>i</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn></mrow></mrow></math>.</p>
+</div>
+<div id="S6.I2.i1.p2" class="ltx_para">
+<p class="ltx_p">To convert the 18.02 notation <math id="S6.I2.i1.p2.m1" class="ltx_Math" alttext="\mathbf{F}(p)" display="inline"><mrow><mi>𝐅</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> into Napkin notation,
+we identify <math id="S6.I2.i1.p2.m2" class="ltx_Math" alttext="\mathbf{F}" display="inline"><mi>𝐅</mi></math> with the differential form</p>
+<table id="Ex31" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex31.m1" class="ltx_Math" alttext="\alpha_{p}=F_{1}(p)\mathbf{e}_{1}^{\vee}+F_{2}(p)\mathbf{e}_{2}^{\vee}+F_{3}(p%
+)\mathbf{e}_{3}^{\vee}." display="block"><mrow><mrow><msub><mi>α</mi><mi>p</mi></msub><mo>=</mo><mrow><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Meanwhile, the path <math id="S6.I2.i1.p2.m3" class="ltx_Math" alttext="\mathbf{r}(t)" display="inline"><mrow><mi>𝐫</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math> parametrized by time <math id="S6.I2.i1.p2.m4" class="ltx_Math" alttext="t\in[t_{0},t_{1}]" display="inline"><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mn>0</mn></msub><mo>,</mo><msub><mi>t</mi><mn>1</mn></msub><mo stretchy="false">]</mo></mrow></mrow></math>
+matches the concept of a <math id="S6.I2.i1.p2.m5" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-form <math id="S6.I2.i1.p2.m6" class="ltx_Math" alttext="c:[t_{0},t_{1}]\to\mathbb{R}^{3}" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mn>0</mn></msub><mo>,</mo><msub><mi>t</mi><mn>1</mn></msub><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow></mrow></math>.
+The “work” in the integral is written as</p>
+<table id="Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex32.m1" class="ltx_Math" alttext="\mathbf{F}(\mathbf{r}(t))\cdot\mathbf{r}^{\prime}(t)" display="block"><mrow><mrow><mrow><mi>𝐅</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>𝐫</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><msup><mi>𝐫</mi><mo>′</mo></msup></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">but that dot product is exactly the pullback <math id="S6.I2.i1.p2.m7" class="ltx_Math" alttext="c^{\ast}\alpha" display="inline"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S6.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The case <math id="S6.I2.i2.p1.m1" class="ltx_Math" alttext="d=1" display="inline"><mrow><mi>d</mi><mo>=</mo><mn>1</mn></mrow></math> and <math id="S6.I2.i2.p1.m2" class="ltx_Math" alttext="n=2" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow></math> is exactly the same, with <math id="S6.I2.i2.p1.m3" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math> replaced by <math id="S6.I2.i2.p1.m4" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>.</p>
+</div>
+</li>
+<li id="S6.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">The weirdest case is the flux integral, for <math id="S6.I2.i3.p1.m1" class="ltx_Math" alttext="d=2" display="inline"><mrow><mi>d</mi><mo>=</mo><mn>2</mn></mrow></math> and <math id="S6.I2.i3.p1.m2" class="ltx_Math" alttext="n=3" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow></math>.
+The parametrization <math id="S6.I2.i3.p1.m3" class="ltx_Math" alttext="\mathbf{r}(u,v)" display="inline"><mrow><mi>𝐫</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow></math> is fine, and it corresponds to a <math id="S6.I2.i3.p1.m4" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-cell <math id="S6.I2.i3.p1.m5" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>.
+But <math id="S6.I2.i3.p1.m6" class="ltx_Math" alttext="\mathbf{F}(p)" display="inline"><mrow><mi>𝐅</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> seems to have the wrong type.</p>
+</div>
+<div id="S6.I2.i3.p2" class="ltx_para">
+<p class="ltx_p">But let’s again write</p>
+<table id="Ex33" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex33.m1" class="ltx_Math" alttext="\mathbf{F}(p)=F_{1}(p)\mathbf{e}_{1}+F_{2}(p)\mathbf{e}_{2}+F_{3}(p)\mathbf{e}%
+_{3}." display="block"><mrow><mrow><mrow><mi>𝐅</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">There is a fairly weird hack used to convert this into Napkin notation: the form desired is</p>
+<table id="Ex34" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex34.m1" class="ltx_Math" alttext="\alpha_{p}=F_{1}(p)\mathbf{e}_{2}^{\vee}\wedge\mathbf{e}_{3}^{\vee}+F_{2}(p)%
+\mathbf{e}_{3}^{\vee}\wedge\mathbf{e}_{1}^{\vee}+F_{3}(p)\mathbf{e}_{1}^{\vee}%
+\wedge\mathbf{e}_{2}^{\vee}." display="block"><mrow><mrow><msub><mi>α</mi><mi>p</mi></msub><mo>=</mo><mrow><mrow><mrow><mrow><mrow><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Yes, that’s really the identification!
+For this definition to be possible, we had to exploit the fact that</p>
+<table id="Ex35" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex35.m1" class="ltx_Math" alttext="\binom{3}{1}=\binom{3}{2}." display="block"><mrow><mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mn>3</mn><mn>1</mn></mfrac><mo>)</mo></mrow><mo>=</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mn>3</mn><mn>2</mn></mfrac><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">That is the three-dimensional space <math id="S6.I2.i3.p2.m1" class="ltx_Math" alttext="\bigwedge^{2}(\mathbb{R}^{3})" display="inline"><mrow><msup><mo>⋀</mo><mn>2</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math>
+happens to have the same number of basis elements as <math id="S6.I2.i3.p2.m2" class="ltx_Math" alttext="\bigwedge^{1}(\mathbb{R}^{3})\cong\mathbb{R}^{3}" display="inline"><mrow><mrow><msup><mo>⋀</mo><mn>1</mn></msup><mrow><mo lspace="0em" stretchy="false">(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow></math>, so the</p>
+<table id="A5.S3.EGx121" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex36"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex36.m1" class="ltx_math_unparsed" alttext="\displaystyle\star\colon\bigwedge^{2}(\mathbb{R}^{3})" display="inline"><mrow><mo rspace="0em">⋆</mo><mo rspace="0.278em">:</mo><mstyle displaystyle="true"><mover><mo movablelimits="false">⋀</mo><mn>2</mn></mover></mstyle><mrow><mo stretchy="false">(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex36.m2" class="ltx_Math" alttext="\displaystyle\to\mathbb{R}^{3}" display="inline"><mrow><mi></mi><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex37"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex37.m1" class="ltx_Math" alttext="\displaystyle\mathbf{e}_{1}\wedge\mathbf{e}_{2}" display="inline"><mrow><msub><mi>𝐞</mi><mn>1</mn></msub><mo>∧</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex37.m2" class="ltx_Math" alttext="\displaystyle\mapsto\mathbf{e}_{3}" display="inline"><mrow><mi></mi><mo stretchy="false">↦</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex38"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex38.m1" class="ltx_Math" alttext="\displaystyle\mathbf{e}_{2}\wedge\mathbf{e}_{3}" display="inline"><mrow><msub><mi>𝐞</mi><mn>2</mn></msub><mo>∧</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex38.m2" class="ltx_Math" alttext="\displaystyle\mapsto\mathbf{e}_{1}" display="inline"><mrow><mi></mi><mo stretchy="false">↦</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex39"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex39.m1" class="ltx_Math" alttext="\displaystyle\mathbf{e}_{3}\wedge\mathbf{e}_{1}" display="inline"><mrow><msub><mi>𝐞</mi><mn>3</mn></msub><mo>∧</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex39.m2" class="ltx_Math" alttext="\displaystyle\mapsto\mathbf{e}_{2}" display="inline"><mrow><mi></mi><mo stretchy="false">↦</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is really an isomorphism, because it maps basis elements to basis elements.
+We denote this map by <math id="S6.I2.i3.p2.m3" class="ltx_Math" alttext="\star" display="inline"><mo>⋆</mo></math>,
+because it turns out this map generalizes to the so-called Hodge star operator in higher dimensions.</p>
+</div>
+<div id="S6.I2.i3.p3" class="ltx_para">
+<p class="ltx_p">This is where I talk about cross products, which I’ve deliberately avoided until now.
+The cross product is a weird operation that takes two vectors in <math id="S6.I2.i3.p3.m1" class="ltx_Math" alttext="\mathbb{R}^{3}" display="inline"><msup><mi>ℝ</mi><mn>3</mn></msup></math>
+and outputs a vector in <math id="S6.I2.i3.p3.m2" class="ltx_Math" alttext="\mathbb{R}^{3}" display="inline"><msup><mi>ℝ</mi><mn>3</mn></msup></math>.
+Specifically, if <math id="S6.I2.i3.p3.m3" class="ltx_Math" alttext="\mathbf{v}=x\mathbf{e}_{1}+y\mathbf{e}_{2}+z\mathbf{e}_{3}" display="inline"><mrow><mi>𝐯</mi><mo>=</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><mi>z</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></mrow></mrow></math>
+and <math id="S6.I2.i3.p3.m4" class="ltx_Math" alttext="\mathbf{w}=x^{\prime}\mathbf{e}_{1}+y^{\prime}\mathbf{e}_{2}+z^{\prime}\mathbf%
+{e}_{3}" display="inline"><mrow><mi>𝐰</mi><mo>=</mo><mrow><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><msup><mi>y</mi><mo>′</mo></msup><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><msup><mi>z</mi><mo>′</mo></msup><mo>⁢</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></mrow></mrow></math>,
+the definition of cross products taught in school is</p>
+<table id="Ex40" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex40.m1" class="ltx_Math" alttext="\mathbf{v}\times\mathbf{w}\coloneqq(yz^{\prime}-y^{\prime}z)\mathbf{e}_{1}+(zx%
+^{\prime}-xz^{\prime})\mathbf{e}_{2}+(xy^{\prime}-x^{\prime}y)\mathbf{e}_{3}." display="block"><mrow><mrow><mrow><mi>𝐯</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>𝐰</mi></mrow><mo>≔</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>y</mi><mo>⁢</mo><msup><mi>z</mi><mo>′</mo></msup></mrow><mo>−</mo><mrow><msup><mi>y</mi><mo>′</mo></msup><mo>⁢</mo><mi>z</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>z</mi><mo>⁢</mo><msup><mi>x</mi><mo>′</mo></msup></mrow><mo>−</mo><mrow><mi>x</mi><mo>⁢</mo><msup><mi>z</mi><mo>′</mo></msup></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><msup><mi>y</mi><mo>′</mo></msup></mrow><mo>−</mo><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>⁢</mo><mi>y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Where does this come from?
+The answer is that <math id="S6.I2.i3.p3.m5" class="ltx_Math" alttext="\star(\mathbf{v}\vee\mathbf{w})" display="inline"><mrow><mi></mi><mo lspace="0.222em" rspace="0.222em">⋆</mo><mrow><mo stretchy="false">(</mo><mrow><mi>𝐯</mi><mo>∨</mo><mi>𝐰</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>:</p>
+<table id="A5.S3.EGx122" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex41"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex41.m1" class="ltx_Math" alttext="\displaystyle\mathbf{v}\wedge\mathbf{w}" display="inline"><mrow><mi>𝐯</mi><mo>∧</mo><mi>𝐰</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex41.m2" class="ltx_Math" alttext="\displaystyle=(x\mathbf{e}_{1}+y\mathbf{e}_{2}+z\mathbf{e}_{3})\times(x^{%
+\prime}\mathbf{e}_{1}+y^{\prime}\mathbf{e}_{2}+z^{\prime}\mathbf{e}_{3})" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><mi>z</mi><mo>⁢</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">×</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><msup><mi>y</mi><mo>′</mo></msup><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><msup><mi>z</mi><mo>′</mo></msup><mo>⁢</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex42"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex42.m1" class="ltx_Math" alttext="\displaystyle=(xy^{\prime}-x^{\prime}y)\mathbf{e}_{1}\wedge\mathbf{e}_{2}+(yz^%
+{\prime}-y^{\prime}z)\mathbf{e}_{2}\wedge\mathbf{e}_{3}+(zx^{\prime}-xz^{%
+\prime})\mathbf{e}_{3}\wedge\mathbf{e}_{1}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mrow><mrow><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><msup><mi>y</mi><mo>′</mo></msup></mrow><mo>−</mo><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>⁢</mo><mi>y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>∧</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>y</mi><mo>⁢</mo><msup><mi>z</mi><mo>′</mo></msup></mrow><mo>−</mo><mrow><msup><mi>y</mi><mo>′</mo></msup><mo>⁢</mo><mi>z</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow></mrow><mo>∧</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>z</mi><mo>⁢</mo><msup><mi>x</mi><mo>′</mo></msup></mrow><mo>−</mo><mrow><mi>x</mi><mo>⁢</mo><msup><mi>z</mi><mo>′</mo></msup></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></mrow><mo>∧</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex43"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex43.m1" class="ltx_Math" alttext="\displaystyle\star(\mathbf{v}\wedge\mathbf{w})" display="inline"><mrow><mi></mi><mo lspace="0.222em" rspace="0.222em">⋆</mo><mrow><mo stretchy="false">(</mo><mrow><mi>𝐯</mi><mo>∧</mo><mi>𝐰</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex43.m2" class="ltx_Math" alttext="\displaystyle\mapsto(xy^{\prime}-x^{\prime}y)\mathbf{e}_{3}+(yz^{\prime}-y^{%
+\prime}z)\mathbf{e}_{1}+(zx^{\prime}-xz^{\prime})\mathbf{e}_{2}." display="inline"><mrow><mrow><mi></mi><mo stretchy="false">↦</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><msup><mi>y</mi><mo>′</mo></msup></mrow><mo>−</mo><mrow><msup><mi>x</mi><mo>′</mo></msup><mo>⁢</mo><mi>y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>y</mi><mo>⁢</mo><msup><mi>z</mi><mo>′</mo></msup></mrow><mo>−</mo><mrow><msup><mi>y</mi><mo>′</mo></msup><mo>⁢</mo><mi>z</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>z</mi><mo>⁢</mo><msup><mi>x</mi><mo>′</mo></msup></mrow><mo>−</mo><mrow><mi>x</mi><mo>⁢</mo><msup><mi>z</mi><mo>′</mo></msup></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">With that out of the way, the weird dot-cross product</p>
+<table id="Ex44" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex44.m1" class="ltx_Math" alttext="\mathbf{F}(\mathbf{r}(u,v))\cdot\left(\mathbf{r}_{u}\times\mathbf{r}_{v}\right%
+)\mathrm{d}u\mathrm{d}v" display="block"><mrow><mrow><mrow><mi>𝐅</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>𝐫</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>u</mi><mo>,</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mrow><mo>(</mo><mrow><msub><mi>𝐫</mi><mi>u</mi></msub><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>𝐫</mi><mi>v</mi></msub></mrow><mo>)</mo></mrow></mrow><mo>⁢</mo><mi mathvariant="normal">d</mi><mo>⁢</mo><mi>u</mi><mo>⁢</mo><mi mathvariant="normal">d</mi><mo>⁢</mo><mi>v</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is now rigged to correspond to the pullback <math id="S6.I2.i3.p3.m6" class="ltx_Math" alttext="c^{\ast}\alpha" display="inline"><mrow><msup><mi>c</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow></math>.
+So using this Hodge star, we find that flux is actually the integration of a <math id="S6.I2.i3.p3.m7" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-form.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section id="S6.SS0.SSS0.Px5" class="ltx_paragraph">
+<h3 class="ltx_title ltx_title_paragraph">Exterior derivatives</h3>
+
+<div id="S6.SS0.SSS0.Px5.p1" class="ltx_para">
+<p class="ltx_p">Every red arrow in <a href="#fig:1802gradcurldiv" title="In 45.6 Back to Earth: A comparison to what you learned in vector calculus ‣ Chapter 45 Integrating differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Figure</span> <span class="ltx_text ltx_ref_tag">45.1</span></a> corresponds to the exterior derivative
+of the corresponding form.
+That is:</p>
+<ul id="S6.I3" class="ltx_itemize">
+<li id="S6.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">The “grad” operation takes a <math id="S6.I3.i1.p1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>-form <math id="S6.I3.i1.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and outputs a vector field
+corresponding to the <math id="S6.I3.i1.p1.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-form <math id="S6.I3.i1.p1.m4" class="ltx_Math" alttext="df" display="inline"><mrow><mi>d</mi><mo>⁢</mo><mi>f</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S6.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">The “curl” operation takes a <math id="S6.I3.i2.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-form <math id="S6.I3.i2.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and outputs a vector field
+corresponding to the <math id="S6.I3.i2.p1.m3" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-form <math id="S6.I3.i2.p1.m4" class="ltx_Math" alttext="d\alpha" display="inline"><mrow><mi>d</mi><mo>⁢</mo><mi>α</mi></mrow></math>.
+When <math id="S6.I3.i2.p1.m5" class="ltx_Math" alttext="n=3" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow></math>, this checks out because the space of <math id="S6.I3.i2.p1.m6" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-forms is <math id="S6.I3.i2.p1.m7" class="ltx_Math" alttext="\binom{3}{1}" display="inline"><mrow><mo>(</mo><mfrac linethickness="0pt"><mn>3</mn><mn>1</mn></mfrac><mo>)</mo></mrow></math> dimensional,
+and the space of <math id="S6.I3.i2.p1.m8" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-forms is <math id="S6.I3.i2.p1.m9" class="ltx_Math" alttext="\binom{3}{2}" display="inline"><mrow><mo>(</mo><mfrac linethickness="0pt"><mn>3</mn><mn>2</mn></mfrac><mo>)</mo></mrow></math>, and thankfully <math id="S6.I3.i2.p1.m10" class="ltx_Math" alttext="\binom{3}{1}=3=\binom{3}{2}" display="inline"><mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mn>3</mn><mn>1</mn></mfrac><mo>)</mo></mrow><mo>=</mo><mn>3</mn><mo>=</mo><mrow><mo>(</mo><mfrac linethickness="0pt"><mn>3</mn><mn>2</mn></mfrac><mo>)</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S6.I3.i2.p2" class="ltx_para">
+<p class="ltx_p">The weird notation <math id="S6.I3.i2.p2.m1" class="ltx_Math" alttext="\nabla\times\mathbf{F}" display="inline"><mrow><mo>∇</mo><mo lspace="0em" rspace="0.222em">×</mo><mi>𝐅</mi></mrow></math>
+can be checked to correspond to the exterior derivative.
+On the 18.02 side, if we have</p>
+<table id="Ex45" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex45.m1" class="ltx_Math" alttext="\mathbf{F}=F_{1}\mathbf{e}_{1}+F_{2}\mathbf{e}_{2}+F_{3}\mathbf{e}_{3}" display="block"><mrow><mi>𝐅</mi><mo>=</mo><mrow><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>⁢</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">then the 18.02 definition of curl is that</p>
+<table id="Ex46" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex46.m1" class="ltx_Math" alttext="\operatorname{curl}(\mathbf{F})\coloneqq\nabla\times\mathbf{F}\coloneqq\left(%
+\frac{\partial F_{3}}{\partial y}-\frac{\partial F_{2}}{\partial z}\right)%
+\mathbf{e}_{1}+\left(\frac{\partial F_{1}}{\partial z}-\frac{\partial F_{3}}{%
+\partial x}\right)\mathbf{e}_{2}+\left(\frac{\partial F_{2}}{\partial x}-\frac%
+{\partial F_{1}}{\partial y}\right)\mathbf{e}_{3}" display="block"><mrow><mrow><mi>curl</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>𝐅</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mo>∇</mo><mo lspace="0em" rspace="0.222em">×</mo><mi>𝐅</mi></mrow><mo>≔</mo><mrow><mrow><mrow><mo>(</mo><mrow><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>3</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac><mo>−</mo><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>2</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>z</mi></mrow></mfrac></mrow><mo>)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mrow><mo>(</mo><mrow><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>z</mi></mrow></mfrac><mo>−</mo><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>3</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac></mrow><mo>)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><mrow><mo>(</mo><mrow><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>2</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac><mo>−</mo><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac></mrow><mo>)</mo></mrow><mo>⁢</mo><msub><mi>𝐞</mi><mn>3</mn></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">The reason for the nonsensical <math id="S6.I3.i2.p2.m2" class="ltx_math_unparsed" alttext="\nabla\times" display="inline"><mrow><mo>∇</mo><mo lspace="0em">×</mo></mrow></math> notation
+is that if you <em class="ltx_emph ltx_font_italic">really</em> abuse notation you can almost think of this as
+the cross product of a vector <math id="S6.I3.i2.p2.m3" class="ltx_Math" alttext="\nabla=\left&lt;\frac{\partial}{\partial x},\frac{\partial}{\partial y},\frac{%
+\partial}{\partial z}\right&gt;" display="inline"><mrow><mo>∇</mo><mo>=</mo><mrow><mo>⟨</mo><mfrac><mo>∂</mo><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac><mo>,</mo><mfrac><mo>∂</mo><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac><mo>,</mo><mfrac><mo>∂</mo><mrow><mo rspace="0em">∂</mo><mi>z</mi></mrow></mfrac><mo>⟩</mo></mrow></mrow></math>
+and the vector <math id="S6.I3.i2.p2.m4" class="ltx_Math" alttext="\mathbf{F}=\left&lt;F_{1},F_{2},F_{3}\right&gt;" display="inline"><mrow><mi>𝐅</mi><mo>=</mo><mrow><mo>⟨</mo><msub><mi>F</mi><mn>1</mn></msub><mo>,</mo><msub><mi>F</mi><mn>2</mn></msub><mo>,</mo><msub><mi>F</mi><mn>3</mn></msub><mo>⟩</mo></mrow></mrow></math>.</p>
+</div>
+<div id="S6.I3.i2.p3" class="ltx_para">
+<p class="ltx_p">Now to convert <math id="S6.I3.i2.p3.m1" class="ltx_Math" alttext="\mathbf{F}" display="inline"><mi>𝐅</mi></math> into Napkin notation,
+remember we identified <math id="S6.I3.i2.p3.m2" class="ltx_Math" alttext="\mathbf{F}" display="inline"><mi>𝐅</mi></math> with the differential form</p>
+<table id="Ex47" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex47.m1" class="ltx_Math" alttext="\alpha=F_{1}\mathbf{e}_{1}^{\vee}+F_{2}\mathbf{e}_{2}^{\vee}+F_{3}\mathbf{e}_{%
+3}^{\vee}." display="block"><mrow><mrow><mi>α</mi><mo>=</mo><mrow><mrow><msub><mi>F</mi><mn>1</mn></msub><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>2</mn></msub><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><msub><mi>F</mi><mn>3</mn></msub><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">If we follow our formula for exterior derivative in <a href="ch_forms_diffgeo.html#def:exterior_derivative" title="Definition 44.4.4. ‣ 44.4 Exterior derivatives ‣ Chapter 44 Differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Definition</span> <span class="ltx_text ltx_ref_tag">44.4.4</span></a>, we get</p>
+<table id="A5.S3.EGx123" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex48"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex48.m1" class="ltx_Math" alttext="\displaystyle d\alpha" display="inline"><mrow><mi>d</mi><mo>⁢</mo><mi>α</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex48.m2" class="ltx_Math" alttext="\displaystyle=dF_{1}\wedge\mathbf{e}_{1}^{\vee}+dF_{2}\wedge\mathbf{e}_{2}^{%
+\vee}+dF_{3}\wedge\mathbf{e}_{3}^{\vee}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mrow><mrow><mrow><mrow><mi>d</mi><mo>⁢</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>F</mi><mn>2</mn></msub></mrow></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mi>d</mi><mo>⁢</mo><msub><mi>F</mi><mn>3</mn></msub></mrow></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex49"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex49.m1" class="ltx_Math" alttext="\displaystyle=\left(\frac{\partial F_{1}}{\partial x}\mathbf{e}_{1}^{\vee}+%
+\frac{\partial F_{1}}{\partial y}\mathbf{e}_{2}^{\vee}+\frac{\partial F_{1}}{%
+\partial z}\mathbf{e}_{3}^{\vee}\right)\wedge\mathbf{e}_{1}^{\vee}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac></mstyle><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac></mstyle><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>z</mi></mrow></mfrac></mstyle><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></mrow><mo>)</mo></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex50"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex50.m1" class="ltx_Math" alttext="\displaystyle+\left(\frac{\partial F_{2}}{\partial x}\mathbf{e}_{1}^{\vee}+%
+\frac{\partial F_{2}}{\partial y}\mathbf{e}_{2}^{\vee}+\frac{\partial F_{2}}{%
+\partial z}\mathbf{e}_{3}^{\vee}\right)\wedge\mathbf{e}_{2}^{\vee}" display="inline"><mrow><mrow><mo>+</mo><mrow><mo>(</mo><mrow><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>2</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac></mstyle><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>2</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac></mstyle><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>2</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>z</mi></mrow></mfrac></mstyle><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></mrow><mo>)</mo></mrow></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex51"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex51.m1" class="ltx_Math" alttext="\displaystyle+\left(\frac{\partial F_{3}}{\partial x}\mathbf{e}_{1}^{\vee}+%
+\frac{\partial F_{3}}{\partial y}\mathbf{e}_{2}^{\vee}+\frac{\partial F_{3}}{%
+\partial z}\mathbf{e}_{3}^{\vee}\right)\wedge\mathbf{e}_{3}^{\vee}" display="inline"><mrow><mrow><mo>+</mo><mrow><mo>(</mo><mrow><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>3</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac></mstyle><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>3</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac></mstyle><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>3</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>z</mi></mrow></mfrac></mstyle><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></mrow><mo>)</mo></mrow></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex52"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex52.m1" class="ltx_Math" alttext="\displaystyle=\left(\frac{\partial F_{3}}{\partial y}-\frac{\partial F_{2}}{%
+\partial z}\right)\mathbf{e}_{2}^{\vee}\wedge\mathbf{e}_{3}^{\vee}+\left(\frac%
+{\partial F_{1}}{\partial z}-\frac{\partial F_{3}}{\partial x}\right)\mathbf{e%
+}_{3}^{\vee}\wedge\mathbf{e}_{1}^{\vee}+\left(\frac{\partial F_{2}}{\partial x%
+}-\frac{\partial F_{1}}{\partial y}\right)\mathbf{e}_{1}^{\vee}\wedge\mathbf{e%
+}_{2}^{\vee}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mrow><mrow><mrow><mrow><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>3</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac></mstyle><mo>−</mo><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>2</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>z</mi></mrow></mfrac></mstyle></mrow><mo>)</mo></mrow><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>z</mi></mrow></mfrac></mstyle><mo>−</mo><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>3</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac></mstyle></mrow><mo>)</mo></mrow><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mrow><mo>(</mo><mrow><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>2</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac></mstyle><mo>−</mo><mstyle displaystyle="true"><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac></mstyle></mrow><mo>)</mo></mrow><mo>⁢</mo><msubsup><mi>𝐞</mi><mn>1</mn><mo>∨</mo></msubsup></mrow></mrow><mo>∧</mo><msubsup><mi>𝐞</mi><mn>2</mn><mo>∨</mo></msubsup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Taking the Hodge star and then dropping all the <math id="S6.I3.i2.p3.m3" class="ltx_Math" alttext="\vee" display="inline"><mo>∨</mo></math>’s
+gives the same thing as <math id="S6.I3.i2.p3.m4" class="ltx_Math" alttext="\nabla\times\mathbf{F}" display="inline"><mrow><mo>∇</mo><mo lspace="0em" rspace="0.222em">×</mo><mi>𝐅</mi></mrow></math>,
+so this completes the correspondence between the 18.02 notation and the Napkin notation.</p>
+</div>
+</li>
+<li id="S6.I3.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I3.i3.p1" class="ltx_para">
+<p class="ltx_p">In 18.02 terminology, the divergence <math id="S6.I3.i3.p1.m1" class="ltx_Math" alttext="\operatorname{div}" display="inline"><mi>div</mi></math> is defined by</p>
+<table id="Ex53" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex53.m1" class="ltx_Math" alttext="\operatorname{div}(\mathbf{F})\coloneqq\nabla\cdot\mathbf{F}\coloneqq\frac{%
+\partial F_{1}}{\partial x}+\frac{\partial F_{2}}{\partial y}+\frac{\partial F%
+_{3}}{\partial z}" display="block"><mrow><mrow><mi>div</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>𝐅</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mo>∇</mo><mo lspace="0em" rspace="0.222em">⋅</mo><mi>𝐅</mi></mrow><mo>≔</mo><mrow><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>2</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>3</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>z</mi></mrow></mfrac></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">which is a scalar-valued function for input points <math id="S6.I3.i3.p1.m2" class="ltx_Math" alttext="p\in\mathbb{R}^{3}" display="inline"><mrow><mi>p</mi><mo>∈</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow></math>.
+We let you do this one in <a href="#prob:div1802" title="Problem 45C. ‣ 45.7 A few harder problems to think about ‣ Chapter 45 Integrating differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">45C</span></a>.</p>
+</div>
+<div id="S6.I3.i3.p2" class="ltx_para">
+<p class="ltx_p">The reason for the nonsensical <math id="S6.I3.i3.p2.m1" class="ltx_math_unparsed" alttext="\nabla\cdot" display="inline"><mrow><mo>∇</mo><mo lspace="0em">⋅</mo></mrow></math> notation
+is that if you <em class="ltx_emph ltx_font_italic">really</em> abuse notation you can almost think of this as
+the dot product of a vector <math id="S6.I3.i3.p2.m2" class="ltx_Math" alttext="\nabla=\left&lt;\frac{\partial}{\partial x},\frac{\partial}{\partial y},\frac{%
+\partial}{\partial z}\right&gt;" display="inline"><mrow><mo>∇</mo><mo>=</mo><mrow><mo>⟨</mo><mfrac><mo>∂</mo><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac><mo>,</mo><mfrac><mo>∂</mo><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac><mo>,</mo><mfrac><mo>∂</mo><mrow><mo rspace="0em">∂</mo><mi>z</mi></mrow></mfrac><mo>⟩</mo></mrow></mrow></math>
+and the vector <math id="S6.I3.i3.p2.m3" class="ltx_Math" alttext="\mathbf{F}=\left&lt;F_{1},F_{2},F_{3}\right&gt;" display="inline"><mrow><mi>𝐅</mi><mo>=</mo><mrow><mo>⟨</mo><msub><mi>F</mi><mn>1</mn></msub><mo>,</mo><msub><mi>F</mi><mn>2</mn></msub><mo>,</mo><msub><mi>F</mi><mn>3</mn></msub><mo>⟩</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section id="S6.SS0.SSS0.Px6" class="ltx_paragraph">
+<h3 class="ltx_title ltx_title_paragraph">Double derivative</h3>
+
+<div id="S6.SS0.SSS0.Px6.p1" class="ltx_para">
+<p class="ltx_p">We know that <math id="S6.SS0.SSS0.Px6.p1.m1" class="ltx_Math" alttext="d^{2}=0" display="inline"><mrow><msup><mi>d</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow></math>,
+which in <a href="#fig:1802gradcurldiv" title="In 45.6 Back to Earth: A comparison to what you learned in vector calculus ‣ Chapter 45 Integrating differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Figure</span> <span class="ltx_text ltx_ref_tag">45.1</span></a> means composing two arrows gives zero.
+You’ll see this in 18.02 as</p>
+<ul id="S6.I4" class="ltx_itemize">
+<li id="S6.I4.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I4.i1.p1" class="ltx_para">
+<p class="ltx_p">The curl of a gradient is zero.</p>
+</div>
+</li>
+<li id="S6.I4.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I4.i2.p1" class="ltx_para">
+<p class="ltx_p">The flux of a curl is zero.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">but really they’re the same theorem.</p>
+</div>
+</section>
+<section id="S6.SS0.SSS0.Px7" class="ltx_paragraph">
+<h3 class="ltx_title ltx_title_paragraph">Stokes’ theorem</h3>
+
+<div id="S6.SS0.SSS0.Px7.p1" class="ltx_para">
+<p class="ltx_p">Each red arrow also gives an instance of Stokes’ theorem for cells.
+So Stokes’ theorem even for cells is really great,
+because we get six 18.02 theorems as special cases!</p>
+<ul id="S6.I5" class="ltx_itemize">
+<li id="S6.I5.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I5.i1.p1" class="ltx_para">
+<p class="ltx_p">The three arrows from 0-D integrals to 1-D integrals are all called
+“Fundamental Theorem of Calculus”.
+Some authors will say “Fundamental Theorem of Calculus for line integrals”
+instead for <math id="S6.I5.i1.p1.m1" class="ltx_Math" alttext="n&gt;1" display="inline"><mrow><mi>n</mi><mo>&gt;</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S6.I5.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I5.i2.p1" class="ltx_para">
+<p class="ltx_p">For <math id="S6.I5.i2.p1.m1" class="ltx_Math" alttext="n=2" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow></math>, the other red arrow is called “Green’s theorem”;
+we let you work it out as <a href="#sec:green_theorem" title="Problem 45A (Green’s theorem). ‣ 45.7 A few harder problems to think about ‣ Chapter 45 Integrating differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">45A</span></a>.</p>
+</div>
+</li>
+<li id="S6.I5.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I5.i3.p1" class="ltx_para">
+<p class="ltx_p">For <math id="S6.I5.i3.p1.m1" class="ltx_Math" alttext="n=3" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow></math>, the arrow from work to flux is confusingly also called
+“Stokes’ theorem”; it says the flux of a 2-D surface equals the work on the 1-D boundary.</p>
+</div>
+</li>
+<li id="S6.I5.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I5.i4.p1" class="ltx_para">
+<p class="ltx_p">The rightmost red arrow for <math id="S6.I5.i4.p1.m1" class="ltx_Math" alttext="n=3" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>3</mn></mrow></math>
+is called the “divergence theorem”;
+it says the divergence of a 3-D volume equals the flux of the 2-D boundary surface.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">45.7 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 45A</span></span><span class="ltx_text ltx_font_bold"> </span>(Green’s theorem)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="f,g\colon\mathbb{R}^{2}\to\mathbb{R}" display="inline"><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> be smooth functions and <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math> a <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-cell.
+Prove that</p>
+<table id="sec:green_theorem" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex54.m1" class="ltx_Math" alttext="\int_{c}\left(\frac{\partial g}{\partial x}-\frac{\partial f}{\partial y}%
+\right)\;dx\wedge dy=\int_{\partial c}(f\;dx+g\;dy)." display="block"><mrow><mrow><mrow><mrow><msub><mo>∫</mo><mi>c</mi></msub><mrow><mrow><mo lspace="0em">(</mo><mrow><mfrac><mrow><mo rspace="0em">∂</mo><mi>g</mi></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac><mo>−</mo><mfrac><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo>∧</mo><mrow><mi>d</mi><mo>⁢</mo><mi>y</mi></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo rspace="0em">∫</mo><mrow><mo rspace="0em">∂</mo><mi>c</mi></mrow></msub><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>f</mi><mo lspace="0.280em">⁢</mo><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mrow><mi>g</mi><mo lspace="0.280em">⁢</mo><mi>d</mi><mo>⁢</mo><mi>y</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Direct application of Stokes’ theorem to <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="\alpha=f\;dx+g\;dy" display="inline"><mrow><mi>α</mi><mo>=</mo><mrow><mrow><mi>f</mi><mo lspace="0.280em">⁢</mo><mi>d</mi><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mrow><mi>g</mi><mo lspace="0.280em">⁢</mo><mi>d</mi><mo>⁢</mo><mi>y</mi></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="prob:partial_zero" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 45B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Show that <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="\partial^{2}=0" display="inline"><mrow><msup><mo>∂</mo><mn>2</mn></msup><mo lspace="0.278em">=</mo><mn>0</mn></mrow></math>.
+
+
+This is just an exercises in sigma notation.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 45C</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Finish the correspondence of the 18.02 notation with Napkin notation.
+That is, let <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="\mathbf{F}\colon\mathbb{R}^{3}\to\mathbb{R}^{3}" display="inline"><mrow><mi>𝐅</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>ℝ</mi><mn>3</mn></msup><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow></mrow></math> be a vector field,
+and let <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> be the <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-form corresponding to it in Napkin version.
+Show that the scalar-valued function defined by</p>
+<table id="prob:div1802" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex55.m1" class="ltx_Math" alttext="\operatorname{div}(\mathbf{F})\coloneqq\nabla\cdot\mathbf{F}\coloneqq\frac{%
+\partial F_{1}}{\partial x}+\frac{\partial F_{2}}{\partial y}+\frac{\partial F%
+_{3}}{\partial z}" display="block"><mrow><mrow><mi>div</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>𝐅</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mo>∇</mo><mo lspace="0em" rspace="0.222em">⋅</mo><mi>𝐅</mi></mrow><mo>≔</mo><mrow><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>1</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>x</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>2</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>y</mi></mrow></mfrac><mo>+</mo><mfrac><mrow><mo rspace="0em">∂</mo><msub><mi>F</mi><mn>3</mn></msub></mrow><mrow><mo rspace="0em">∂</mo><mi>z</mi></mrow></mfrac></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">coincides with evaluation at the <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>-form <math id="Thmproblem3.p1.m5" class="ltx_Math" alttext="d\alpha" display="inline"><mrow><mi>d</mi><mo>⁢</mo><mi>α</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 45D</span></span><span class="ltx_text ltx_font_bold"> </span>(Pullback and <math id="Thmproblem4.m1" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> commute)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> and <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="U^{\prime}" display="inline"><msup><mi>U</mi><mo>′</mo></msup></math> be open sets of vector spaces <math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="V^{\prime}" display="inline"><msup><mi>V</mi><mo>′</mo></msup></math>
+and let <math id="Thmproblem4.p1.m5" class="ltx_Math" alttext="\phi\colon U\to U^{\prime}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><msup><mi>U</mi><mo>′</mo></msup></mrow></mrow></math> be a smooth map between them.
+Prove that for any differential form <math id="Thmproblem4.p1.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> on <math id="Thmproblem4.p1.m7" class="ltx_Math" alttext="U^{\prime}" display="inline"><msup><mi>U</mi><mo>′</mo></msup></math> we have</p>
+<table id="Ex56" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex56.m1" class="ltx_Math" alttext="\phi^{\ast}(d\alpha)=d(\phi^{\ast}\alpha)." display="block"><mrow><mrow><mrow><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>d</mi><mo>⁢</mo><mi>α</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>ϕ</mi><mo>∗</mo></msup><mo>⁢</mo><mi>α</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This is a straightforward (but annoying) computation.</p>
+</div>
+</div>
+<div id="prob:ds_not_a_form" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 45E</span></span><span class="ltx_text ltx_font_bold"> </span>(Arc length isn’t a form)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem5.p1" class="ltx_para">
+<p class="ltx_p">Show that there does <em class="ltx_emph ltx_font_italic">not</em> exist a <math id="Thmproblem5.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-form <math id="Thmproblem5.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> on <math id="Thmproblem5.p1.m3" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> such that
+for a curve <math id="Thmproblem5.p1.m4" class="ltx_Math" alttext="c\colon[0,1]\to\mathbb{R}^{2}" display="inline"><mrow><mi>c</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></mrow></math>,
+the integral <math id="Thmproblem5.p1.m5" class="ltx_Math" alttext="\int_{c}\alpha" display="inline"><mrow><msub><mo>∫</mo><mi>c</mi></msub><mi>α</mi></mrow></math> gives the arc length of <math id="Thmproblem5.p1.m6" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>.
+
+We would want <math id="Thmproblem5.p1.m7" class="ltx_Math" alttext="\alpha_{p}(v)=\left\lVert v\right\rVert" display="inline"><mrow><mrow><msub><mi>α</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo fence="true" lspace="0.1389em" rspace="0em" stretchy="true">∥</mo><mi>v</mi><mo fence="true" lspace="0em" stretchy="true">∥</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem6" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 45F</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem6.p1" class="ltx_para">
+<p class="ltx_p">An <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> exact</span> <math id="Thmproblem6.p1.m1" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-form <math id="Thmproblem6.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is one satisfying <math id="Thmproblem6.p1.m3" class="ltx_Math" alttext="\alpha=d\beta" display="inline"><mrow><mi>α</mi><mo>=</mo><mrow><mi>d</mi><mo>⁢</mo><mi>β</mi></mrow></mrow></math> for some <math id="Thmproblem6.p1.m4" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>.
+Prove that</p>
+<table id="Ex57" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex57.m1" class="ltx_Math" alttext="\int_{C_{1}}\alpha=\int_{C_{2}}\alpha" display="block"><mrow><mrow><msub><mo>∫</mo><msub><mi>C</mi><mn>1</mn></msub></msub><mi>α</mi></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∫</mo><msub><mi>C</mi><mn>2</mn></msub></msub><mi>α</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where <math id="Thmproblem6.p1.m5" class="ltx_Math" alttext="C_{1}" display="inline"><msub><mi>C</mi><mn>1</mn></msub></math> and <math id="Thmproblem6.p1.m6" class="ltx_Math" alttext="C_{2}" display="inline"><msub><mi>C</mi><mn>2</mn></msub></math> are any concentric circles in the plane
+and <math id="Thmproblem6.p1.m7" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is some exact <math id="Thmproblem6.p1.m8" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-form.
+
+Show that <math id="Thmproblem6.p1.m9" class="ltx_Math" alttext="d^{2}=0" display="inline"><mrow><msup><mi>d</mi><mn>2</mn></msup><mo>=</mo><mn>0</mn></mrow></math> implies <math id="Thmproblem6.p1.m10" class="ltx_Math" alttext="\int_{\partial c}\alpha=0" display="inline"><mrow><mrow><msub><mo>∫</mo><mrow><mo rspace="0em">∂</mo><mi>c</mi></mrow></msub><mi>α</mi></mrow><mo>=</mo><mn>0</mn></mrow></math> for exact <math id="Thmproblem6.p1.m11" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.
+Draw an annulus.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="ch_forms_diffgeo.html" title="In Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">44 </span>Differential forms</span></a><a href="ch_manifolds_diffgeo.html" title="In Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">46 </span>A bit of manifolds</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

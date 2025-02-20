@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Quantum states and measurements</title>
+		<meta property="og:title" content="Quantum states and measurements" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../repth/applications.html">Previous chapter: Some applications</a><br />
+<a href="../quantum/quantum-circuits.html">Next chapter: Quantum circuits</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 23 </span>Quantum states and measurements</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">In this chapter we’ll explain how to set up quantum states using
+linear algebra. This will allow me to talk about quantum <em class="ltx_emph ltx_font_italic">circuits</em>
+in the next chapter, which will set the stage for Shor’s algorithm.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">I won’t do very much physics (read: none at all).
+That is, I’ll only state what the physical reality is in terms
+of linear algebras, and defer the philosophy of why this is true
+to your neighborhood “Philosophy of Quantum Mechanics” class
+(which is a “social science” class at MIT!).</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">23.1 </span>Bra-ket notation</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Physicists have their own notation for vectors:
+whereas I previously used something like <math id="S1.p1.m1" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math>, <math id="S1.p1.m2" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, and so on,
+in this chapter you’ll see the infamous <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> bra-ket</span> notation:
+a vector will be denoted by <math id="S1.p1.m3" class="ltx_Math" alttext="\ket{\bullet}" display="inline"><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">∙</mo><mo stretchy="false">⟩</mo></mrow></math>, where <math id="S1.p1.m4" class="ltx_Math" alttext="\bullet" display="inline"><mo>∙</mo></math> is some
+variable name: unlike in math or Python, this can include
+numbers, symbols, Unicode characters, whatever you like.
+This is called a “ket”.
+To pay a homage to physicists everywhere,
+we’ll use this notation for this chapter too.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 23.1.1</span></span><span class="ltx_text ltx_font_bold"> </span>(For this part, <math id="S1.Thmtheorem1.m1" class="ltx_Math" alttext="\dim H&lt;\infty" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mi>H</mi></mrow><mo>&lt;</mo><mi mathvariant="normal">∞</mi></mrow></math>)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">In this part on quantum computation,
+we’ll use the word “Hilbert space” as defined earlier,
+but in fact all our Hilbert spaces will be finite-dimensional.</p>
+</div>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">If <math id="S1.p2.m1" class="ltx_Math" alttext="\dim H=n" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mi>H</mi></mrow><mo>=</mo><mi>n</mi></mrow></math>, then its orthonormal basis elements are often denoted</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\ket{0},\ket{1},\dots,\ket{n-1}" display="block"><mrow><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mo>,</mo><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mo stretchy="false">|</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">⟩</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">(instead of <math id="S1.p2.m2" class="ltx_Math" alttext="e_{i}" display="inline"><msub><mi>e</mi><mi>i</mi></msub></math>)
+and a generic element of <math id="S1.p2.m3" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> denoted by</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\ket{\psi},\ket{\phi},\dots" display="block"><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>,</mo><mrow><mo stretchy="false">|</mo><mi>ϕ</mi><mo stretchy="false">⟩</mo></mrow><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and various other Greek letters.</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Now for any <math id="S1.p3.m1" class="ltx_Math" alttext="\ket{\psi}\in H" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>∈</mo><mi>H</mi></mrow></math>,
+we can consider the canonical dual element in <math id="S1.p3.m2" class="ltx_Math" alttext="H^{\vee}" display="inline"><msup><mi>H</mi><mo>∨</mo></msup></math>
+(since <math id="S1.p3.m3" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> has an inner form), which we denote by <math id="S1.p3.m4" class="ltx_Math" alttext="\bra{\psi}" display="inline"><mrow><mo stretchy="false">⟨</mo><mi>ψ</mi><mo stretchy="false">|</mo></mrow></math> (a “bra”).
+For example, if <math id="S1.p3.m5" class="ltx_Math" alttext="\dim H=2" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mi>H</mi></mrow><mo>=</mo><mn>2</mn></mrow></math> then we can write</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\ket{\psi}=\begin{bmatrix}\alpha\\
+\beta\end{bmatrix}" display="block"><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>α</mi></mtd></mtr><mtr><mtd><mi>β</mi></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">in an orthonormal basis, in which case</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\bra{\psi}=\begin{bmatrix}\overline{\alpha}&amp;\overline{\beta}\end{bmatrix}." display="block"><mrow><mrow><mrow><mo stretchy="false">⟨</mo><mi>ψ</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true"><mtr><mtd><mover accent="true"><mi>α</mi><mo>¯</mo></mover></mtd><mtd><mover accent="true"><mi>β</mi><mo>¯</mo></mover></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We even can write dot products succinctly in this notation:
+if <math id="S1.p3.m6" class="ltx_Math" alttext="\ket{\phi}=\begin{bmatrix}\gamma\\
+\delta\end{bmatrix}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>ϕ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo>[</mo><mtable rowspacing="0pt"><mtr><mtd><mi>γ</mi></mtd></mtr><mtr><mtd><mi>δ</mi></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math>,
+then the dot product of <math id="S1.p3.m7" class="ltx_Math" alttext="\bra{\psi}" display="inline"><mrow><mo stretchy="false">⟨</mo><mi>ψ</mi><mo stretchy="false">|</mo></mrow></math> and <math id="S1.p3.m8" class="ltx_Math" alttext="\ket{\phi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ϕ</mi><mo stretchy="false">⟩</mo></mrow></math> is given by</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\braket{\psi}{\phi}=\begin{bmatrix}\overline{\alpha}&amp;\overline{\beta}\end{%
+bmatrix}\begin{bmatrix}\gamma\\
+\delta\end{bmatrix}=\overline{\alpha}\gamma+\overline{\beta}\delta." display="block"><mrow><mrow><mrow><mo stretchy="false">⟨</mo><mi>ψ</mi><mo lspace="0.170em" rspace="0.170em">|</mo><mi>ϕ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true"><mtr><mtd><mover accent="true"><mi>α</mi><mo>¯</mo></mover></mtd><mtd><mover accent="true"><mi>β</mi><mo>¯</mo></mover></mtd></mtr></mtable><mo>]</mo></mrow><mo>⁢</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mi>γ</mi></mtd></mtr><mtr><mtd><mi>δ</mi></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo>=</mo><mrow><mrow><mover accent="true"><mi>α</mi><mo>¯</mo></mover><mo>⁢</mo><mi>γ</mi></mrow><mo>+</mo><mrow><mover accent="true"><mi>β</mi><mo>¯</mo></mover><mo>⁢</mo><mi>δ</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So we will use the notation <math id="S1.p3.m9" class="ltx_Math" alttext="\braket{\psi}{\phi}" display="inline"><mrow><mo stretchy="false">⟨</mo><mi>ψ</mi><mo lspace="0.170em" rspace="0.170em">|</mo><mi>ϕ</mi><mo stretchy="false">⟩</mo></mrow></math>
+instead of the more mathematical <math id="S1.p3.m10" class="ltx_Math" alttext="\left&lt;\ket{\psi},\ket{\phi}\right&gt;" display="inline"><mrow><mo>⟨</mo><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>,</mo><mrow><mo stretchy="false">|</mo><mi>ϕ</mi><mo stretchy="false">⟩</mo></mrow><mo>⟩</mo></mrow></math>.
+In particular, the squared norm of <math id="S1.p3.m11" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> is just <math id="S1.p3.m12" class="ltx_Math" alttext="\braket{\psi}{\psi}" display="inline"><mrow><mo stretchy="false">⟨</mo><mi>ψ</mi><mo lspace="0.170em" rspace="0.170em">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math>.
+Concretely, for <math id="S1.p3.m13" class="ltx_Math" alttext="\dim H=2" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mi>H</mi></mrow><mo>=</mo><mn>2</mn></mrow></math> we have
+<math id="S1.p3.m14" class="ltx_Math" alttext="\braket{\psi}{\psi}=|\alpha|^{2}+|\beta|^{2}" display="inline"><mrow><mrow><mo stretchy="false">⟨</mo><mi>ψ</mi><mo lspace="0.170em" rspace="0.170em">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><msup><mrow><mo stretchy="false">|</mo><mi>α</mi><mo stretchy="false">|</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="false">|</mo><mi>β</mi><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></mrow></mrow></math>.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">23.2 </span>The state space</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">If you think that’s weird, well, it gets worse.</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">In classical computation, a bit is either <math id="S2.p2.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> or <math id="S2.p2.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.
+More generally, we can think of a classical space of <math id="S2.p2.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>
+possible states <math id="S2.p2.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, …, <math id="S2.p2.m5" class="ltx_Math" alttext="n-1" display="inline"><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math>.
+Thus in the classical situation, the space of possible states
+is just a discrete set with <math id="S2.p2.m6" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> elements.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">In quantum computation, a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> qubit</span> is instead
+any <em class="ltx_emph ltx_font_italic">complex linear combination</em> of <math id="S2.p3.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> and <math id="S2.p3.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.
+To be precise, consider the normed complex vector space</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="H=\mathbb{C}^{\oplus 2}" display="block"><mrow><mi>H</mi><mo>=</mo><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and denote the orthonormal basis elements by <math id="S2.p3.m3" class="ltx_Math" alttext="\ket{0}" display="inline"><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></math> and <math id="S2.p3.m4" class="ltx_Math" alttext="\ket{1}" display="inline"><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></math>.
+Then a <em class="ltx_emph ltx_font_italic">qubit</em> is a nonzero element <math id="S2.p3.m5" class="ltx_Math" alttext="\ket{\psi}\in H" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>∈</mo><mi>H</mi></mrow></math>,
+so that it can be written in the form</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\ket{\psi}=\alpha\ket{0}+\beta\ket{1}" display="block"><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></mrow><mo>+</mo><mrow><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S2.p3.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and <math id="S2.p3.m7" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math> are not both zero.
+Typically, we normalize so that <math id="S2.p3.m8" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> has norm <math id="S2.p3.m9" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>:</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\braket{\psi}{\psi}=1\iff|\alpha|^{2}+|\beta|^{2}=1." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">⟨</mo><mi>ψ</mi><mo lspace="0.170em" rspace="0.170em">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mn>1</mn></mrow><mo stretchy="false">⇔</mo><mrow><mrow><msup><mrow><mo stretchy="false">|</mo><mi>α</mi><mo stretchy="false">|</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="false">|</mo><mi>β</mi><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In particular, we can recover the “classical” situation
+with <math id="S2.p3.m10" class="ltx_Math" alttext="\ket{0}\in H" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mo>∈</mo><mi>H</mi></mrow></math> and <math id="S2.p3.m11" class="ltx_Math" alttext="\ket{1}\in H" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mo>∈</mo><mi>H</mi></mrow></math>,
+but now we have some “intermediate” states,
+such as</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\frac{1}{\sqrt{2}}\left(\ket{0}+\ket{1}\right)." display="block"><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mo>+</mo><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></mrow><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Philosophically, what has happened is that:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 23.2.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Instead of allowing just the states <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\ket{0}" display="inline"><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></math> and <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\ket{1}" display="inline"><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></math>,
+we allow any complex linear combination of them.</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">More generally, if <math id="S2.p4.m1" class="ltx_Math" alttext="\dim H=n" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mi>H</mi></mrow><mo>=</mo><mi>n</mi></mrow></math>,
+then the possible states are nonzero elements</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="c_{0}\ket{0}+c_{1}\ket{1}+\dots+c_{n-1}\ket{n-1}" display="block"><mrow><mrow><msub><mi>c</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></mrow><mo>+</mo><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">⟩</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which we usually normalize so that
+<math id="S2.p4.m2" class="ltx_Math" alttext="|c_{0}|^{2}+|c_{1}|^{2}+\dots+|c_{n-1}|^{2}=1" display="inline"><mrow><mrow><msup><mrow><mo stretchy="false">|</mo><msub><mi>c</mi><mn>0</mn></msub><mo stretchy="false">|</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo stretchy="false">|</mo><msub><mi>c</mi><mn>1</mn></msub><mo stretchy="false">|</mo></mrow><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msup><mrow><mo stretchy="false">|</mo><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">23.3 </span>Observations</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S3.p1.m1" class="ltx_Math" alttext="\mathrm{id}" display="inline"><mi>id</mi></math> corresponds to not making a measurement
+since all its eigenvalues are equal,
+but any operator with distinct eigenvalues will cause collapse.</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">If you think that’s weird, well, it gets worse.
+First, some linear algebra review (<a href="../linalg/duals-adjoint-transposes.html#def:hermitian" title="Definition 15.4.1. ‣ 15.4 Eigenvalues of normal maps ‣ Chapter 15 Duals, adjoint, and transposes ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Definition</span> <span class="ltx_text ltx_ref_tag">15.4.1</span></a>):</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 23.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a finite-dimensional inner product space.
+For a map <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math>, the following conditions are equivalent:</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="\left&lt;Tx,y\right&gt;=\left&lt;x,Ty\right&gt;" display="inline"><mrow><mrow><mo>⟨</mo><mrow><mi>T</mi><mo>⁢</mo><mi>x</mi></mrow><mo>,</mo><mi>y</mi><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>⟨</mo><mi>x</mi><mo>,</mo><mrow><mi>T</mi><mo>⁢</mo><mi>y</mi></mrow><mo>⟩</mo></mrow></mrow></math>
+for any <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="x,y\in V" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi></mrow><mo>∈</mo><mi>V</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="T=T^{\dagger}" display="inline"><mrow><mi>T</mi><mo>=</mo><msup><mi>T</mi><mo>†</mo></msup></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">A map <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> satisfying these conditions is called <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Hermitian</span>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 23.3.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is normal.</span></p>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Thus, we know that <math id="S3.p3.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is diagonalizable
+with respect to the inner form, so for a suitable basis we
+can write it in an orthonormal basis as</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="T=\begin{bmatrix}\lambda_{0}&amp;0&amp;\dots&amp;0\\
+0&amp;\lambda_{1}&amp;\dots&amp;0\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;\dots&amp;\lambda_{n-1}\end{bmatrix}." display="block"><mrow><mrow><mi>T</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>λ</mi><mn>0</mn></msub></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msub><mi>λ</mi><mn>1</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>λ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">As we’ve said, this is fantastic:
+not only do we have a basis of eigenvectors,
+but the eigenvectors are pairwise orthogonal,
+and so they form an orthonormal basis of <math id="S3.p3.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 23.3.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that all eigenvalues of <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> are real.
+(<math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="T=T^{\dagger}" display="inline"><mrow><mi>T</mi><mo>=</mo><msup><mi>T</mi><mo>†</mo></msup></mrow></math>.)</span></p>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Back to quantum computation.
+Suppose we have a state <math id="S3.p4.m1" class="ltx_Math" alttext="\ket{\psi}\in H" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>∈</mo><mi>H</mi></mrow></math>, where <math id="S3.p4.m2" class="ltx_Math" alttext="\dim H=2" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mi>H</mi></mrow><mo>=</mo><mn>2</mn></mrow></math>;
+we haven’t distinguished a particular basis yet,
+so we just have a nonzero vector.
+Then the way observations work (and this is physics, so you’ll have to
+take my word for it) is as follows:</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 23.3.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Pick a Hermitian operator <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="T\colon H\to H" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>H</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></mrow></math>;
+then observations of <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> return eigenvalues of <math id="S3.Thmtheorem4.p1.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>.</p>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">To be precise:</p>
+<ul id="S3.I2" class="ltx_itemize">
+<li id="S3.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">Pick a Hermitian operator <math id="S3.I2.i1.p1.m1" class="ltx_Math" alttext="T\colon H\to H" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>H</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></mrow></math>,
+which is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> observable</span>.</p>
+</div>
+</li>
+<li id="S3.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">Consider its eigenvalues <math id="S3.I2.i2.p1.m1" class="ltx_Math" alttext="\lambda_{0}" display="inline"><msub><mi>λ</mi><mn>0</mn></msub></math>, …, <math id="S3.I2.i2.p1.m2" class="ltx_Math" alttext="\lambda_{n-1}" display="inline"><msub><mi>λ</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></math>
+and corresponding eigenvectors <math id="S3.I2.i2.p1.m3" class="ltx_Math" alttext="\ket{0}_{T}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></math>, …, <math id="S3.I2.i2.p1.m4" class="ltx_Math" alttext="\ket{n-1}_{T}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></math>.
+Tacitly we may assume that <math id="S3.I2.i2.p1.m5" class="ltx_Math" alttext="\ket{0}_{T}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></math>, …, <math id="S3.I2.i2.p1.m6" class="ltx_Math" alttext="\ket{n-1}_{T}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></math> form
+an orthonormal basis of <math id="S3.I2.i2.p1.m7" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>.
+(The subscript <math id="S3.I2.i2.p1.m8" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is here to distinguish the eigenvectors of <math id="S3.I2.i2.p1.m9" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>
+from the basis elements of <math id="S3.I2.i2.p1.m10" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>.)</p>
+</div>
+</li>
+<li id="S3.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">Write <math id="S3.I2.i3.p1.m1" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> in the orthonormal basis as</p>
+<div class="table-container"><table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="c_{0}\ket{0}_{T}+c_{1}\ket{1}_{T}+\dots+c_{n-1}\ket{n-1}_{T}." display="block"><mrow><mrow><mrow><msub><mi>c</mi><mn>0</mn></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></mrow><mo>+</mo><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+<li id="S3.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i4.p1" class="ltx_para">
+<p class="ltx_p">Then the probability of observing <math id="S3.I2.i4.p1.m1" class="ltx_Math" alttext="\lambda_{i}" display="inline"><msub><mi>λ</mi><mi>i</mi></msub></math> is</p>
+<div class="table-container"><table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\frac{|c_{i}|^{2}}{|c_{0}|^{2}+\dots+|c_{n-1}|^{2}}." display="block"><mrow><mfrac linethickness="0.6px"><msup><mrow><mo stretchy="false">|</mo><msub><mi>c</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mn>2</mn></msup><mrow><msup><mrow><mo stretchy="false">|</mo><msub><mi>c</mi><mn>0</mn></msub><mo stretchy="false">|</mo></mrow><mn>2</mn></msup><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msup><mrow><mo stretchy="false">|</mo><msub><mi>c</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></mrow></mfrac><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This is called making an <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> observation along <math id="S3.I2.i4.p1.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math></span>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Note that in particular, for any nonzero constant <math id="S3.p5.m1" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>,
+<math id="S3.p5.m2" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> and <math id="S3.p5.m3" class="ltx_Math" alttext="c\ket{\psi}" display="inline"><mrow><mi>c</mi><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></mrow></math> are indistinguishable,
+which is why we like to normalize <math id="S3.p5.m4" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math>.
+But the queerest thing of all is what happens to <math id="S3.p5.m5" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math>:
+by measuring it, we actually destroy information.
+This behavior is called <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> quantum collapse</span>.</p>
+<ul id="S3.I3" class="ltx_itemize">
+<li id="S3.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">Suppose for simplicity that we observe <math id="S3.I3.i1.p1.m1" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math>
+with <math id="S3.I3.i1.p1.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> and obtain an eigenvalue <math id="S3.I3.i1.p1.m3" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math>,
+and that <math id="S3.I3.i1.p1.m4" class="ltx_Math" alttext="\ket{i}_{T}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></math> is the only eigenvector with this eigenvalue.
+Then, the state <math id="S3.I3.i1.p1.m5" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> <em class="ltx_emph ltx_font_italic">collapses</em> to just the state
+<math id="S3.I3.i1.p1.m6" class="ltx_Math" alttext="c_{i}\ket{i}_{T}" display="inline"><mrow><msub><mi>c</mi><mi>i</mi></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></mrow></math>: all the other information is destroyed.
+(In fact, we may as well say it collapses to <math id="S3.I3.i1.p1.m7" class="ltx_Math" alttext="\ket{i}_{T}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></math>,
+since again constant factors are not relevant.)</p>
+</div>
+</li>
+<li id="S3.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">More generally, if we observe <math id="S3.I3.i2.p1.m1" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math>,
+consider the generalized eigenspace <math id="S3.I3.i2.p1.m2" class="ltx_Math" alttext="H_{\lambda}" display="inline"><msub><mi>H</mi><mi>λ</mi></msub></math>
+(i.e. the span of eigenvectors with the same eigenvalue).
+Then the physical state <math id="S3.I3.i2.p1.m3" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> has been changed as well:
+it has now been projected onto the eigenspace <math id="S3.I3.i2.p1.m4" class="ltx_Math" alttext="H_{\lambda}" display="inline"><msub><mi>H</mi><mi>λ</mi></msub></math>.
+In still other words, after observation, the state collapses to</p>
+<div class="table-container"><table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\sum_{\begin{subarray}{c}0\leq i\leq n\\
+\begin{subarray}{c}\lambda_{i}=\lambda\end{subarray}\end{subarray}}c_{i}\ket{i%
+}_{T}." display="block"><mrow><mrow><munder><mo movablelimits="false">∑</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mn>0</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></mtd></mtr><mtr><mtd><mtable><mtr><mtd><mrow><msub><mi>λ</mi><mi>i</mi></msub><mo>=</mo><mi>λ</mi></mrow></mtd></mtr></mtable></mtd></mtr></mtable></munder><mrow><msub><mi>c</mi><mi>i</mi></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+</ul>
+<p class="ltx_p">In other words,</p>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 23.3.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">When we make a measurement,
+the coefficients from different eigenspaces are destroyed.</p>
+</div>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">Why does this happen? Beats me… physics (and hence real life) is weird.
+But anyways, an example.</p>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 23.3.6</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Quantum measurement of a state <math id="S3.Thmtheorem6.m1" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="H=\mathbb{C}^{\oplus 2}" display="inline"><mrow><mi>H</mi><mo>=</mo><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup></mrow></math> with orthonormal basis <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="\ket{0}" display="inline"><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></math> and <math id="S3.Thmtheorem6.p1.m3" class="ltx_Math" alttext="\ket{1}" display="inline"><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></math>
+and consider the state</p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\ket{\psi}=\frac{i}{\sqrt{5}}\ket{0}+\frac{2}{\sqrt{5}}\ket{1}=\begin{bmatrix}%
+i/\sqrt{5}\\
+2/\sqrt{5}\end{bmatrix}\in H." display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mrow><mfrac linethickness="0.6px"><mi>i</mi><msqrt><mn>5</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></mrow><mo>+</mo><mrow><mfrac linethickness="0.6px"><mn>2</mn><msqrt><mn>5</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></mrow></mrow><mo>=</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><mi>i</mi><mo>/</mo><msqrt><mn>5</mn></msqrt></mrow></mtd></mtr><mtr><mtd><mrow><mn>2</mn><mo>/</mo><msqrt><mn>5</mn></msqrt></mrow></mtd></mtr></mtable><mo>]</mo></mrow><mo>∈</mo><mi>H</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<ol id="S3.I4" class="ltx_enumerate">
+<li id="S3.I4.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S3.I4.i1.p1" class="ltx_para">
+<p class="ltx_p">Let</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="T=\begin{bmatrix}1&amp;0\\
+0&amp;-1\end{bmatrix}." display="block"><mrow><mrow><mi>T</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This has eigenvectors <math id="S3.I4.i1.p1.m1" class="ltx_Math" alttext="\ket{0}=\ket{0}_{T}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mo>=</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></mrow></math> and <math id="S3.I4.i1.p1.m2" class="ltx_Math" alttext="\ket{1}=\ket{1}_{T}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mo>=</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></mrow></math>,
+with eigenvalues <math id="S3.I4.i1.p1.m3" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> and <math id="S3.I4.i1.p1.m4" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>. So if we measure <math id="S3.I4.i1.p1.m5" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> to <math id="S3.I4.i1.p1.m6" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>,
+we get <math id="S3.I4.i1.p1.m7" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> with probability <math id="S3.I4.i1.p1.m8" class="ltx_Math" alttext="1/5" display="inline"><mrow><mn>1</mn><mo>/</mo><mn>5</mn></mrow></math> and <math id="S3.I4.i1.p1.m9" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> with probability <math id="S3.I4.i1.p1.m10" class="ltx_Math" alttext="4/5" display="inline"><mrow><mn>4</mn><mo>/</mo><mn>5</mn></mrow></math>.
+After this measurement, the original state collapses to
+<math id="S3.I4.i1.p1.m11" class="ltx_Math" alttext="\ket{0}" display="inline"><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow></math> if we measured <math id="S3.I4.i1.p1.m12" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math>, and <math id="S3.I4.i1.p1.m13" class="ltx_Math" alttext="\ket{1}" display="inline"><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow></math> if we measured <math id="S3.I4.i1.p1.m14" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>.
+So we never learn the original probabilities.</p>
+</div>
+</li>
+<li id="S3.I4.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S3.I4.i2.p1" class="ltx_para">
+<p class="ltx_p">Now consider <math id="S3.I4.i2.p1.m1" class="ltx_Math" alttext="T=\mathrm{id}" display="inline"><mrow><mi>T</mi><mo>=</mo><mi>id</mi></mrow></math>, and arbitrarily
+pick two orthonormal eigenvectors <math id="S3.I4.i2.p1.m2" class="ltx_Math" alttext="\ket{0}_{T}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></math>, <math id="S3.I4.i2.p1.m3" class="ltx_Math" alttext="\ket{1}_{T}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></math>;
+thus <math id="S3.I4.i2.p1.m4" class="ltx_Math" alttext="\psi=c_{0}\ket{0}_{T}+c_{1}\ket{1}_{T}" display="inline"><mrow><mi>ψ</mi><mo>=</mo><mrow><mrow><msub><mi>c</mi><mn>0</mn></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></mrow><mo>+</mo><mrow><msub><mi>c</mi><mn>1</mn></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></mrow></mrow></mrow></math>.
+Since all eigenvalues of <math id="S3.I4.i2.p1.m5" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> are <math id="S3.I4.i2.p1.m6" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math>,
+our measurement will always be <math id="S3.I4.i2.p1.m7" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> no matter what we do.
+But there is also no collapsing,
+because none of the coefficients get destroyed.</p>
+</div>
+</li>
+<li id="S3.I4.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S3.I4.i3.p1" class="ltx_para">
+<p class="ltx_p">Now consider</p>
+<div class="table-container"><table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="T=\begin{bmatrix}0&amp;7\\
+7&amp;0\end{bmatrix}." display="block"><mrow><mrow><mi>T</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd><mtd><mn>7</mn></mtd></mtr><mtr><mtd><mn>7</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The two normalized eigenvectors are</p>
+<div class="table-container"><table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="\ket{0}_{T}=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\
+1\end{bmatrix}\qquad\ket{1}_{T}=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\
+-1\end{bmatrix}" display="block"><mrow><mrow><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow><mspace width="2em"></mspace><mrow><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">with eigenvalues <math id="S3.I4.i3.p1.m1" class="ltx_Math" alttext="+7" display="inline"><mrow><mo>+</mo><mn>7</mn></mrow></math> and <math id="S3.I4.i3.p1.m2" class="ltx_Math" alttext="-7" display="inline"><mrow><mo>−</mo><mn>7</mn></mrow></math> respectively. In this basis, we have</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="\ket{\psi}=\frac{2+i}{\sqrt{10}}\ket{0}_{T}+\frac{-2+i}{\sqrt{10}}\ket{1}_{T}." display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mrow><mfrac linethickness="0.6px"><mrow><mn>2</mn><mo>+</mo><mi>i</mi></mrow><msqrt><mn>10</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></mrow><mo>+</mo><mrow><mfrac linethickness="0.6px"><mrow><mrow><mo>−</mo><mn>2</mn></mrow><mo>+</mo><mi>i</mi></mrow><msqrt><mn>10</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So we get <math id="S3.I4.i3.p1.m3" class="ltx_Math" alttext="+7" display="inline"><mrow><mo>+</mo><mn>7</mn></mrow></math> with probability <math id="S3.I4.i3.p1.m4" class="ltx_Math" alttext="\frac{1}{2}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></math> and <math id="S3.I4.i3.p1.m5" class="ltx_Math" alttext="-7" display="inline"><mrow><mo>−</mo><mn>7</mn></mrow></math>
+with probability <math id="S3.I4.i3.p1.m6" class="ltx_Math" alttext="\frac{1}{2}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></math>, and after the measurement,
+<math id="S3.I4.i3.p1.m7" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> collapses to one of <math id="S3.I4.i3.p1.m8" class="ltx_Math" alttext="\ket{0}_{T}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></math> and <math id="S3.I4.i3.p1.m9" class="ltx_Math" alttext="\ket{1}_{T}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>T</mi></msub></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S3.Thmtheorem7" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 23.3.7</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Suppose we measure <math id="S3.Thmtheorem7.p1.m1" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> with <math id="S3.Thmtheorem7.p1.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> and get <math id="S3.Thmtheorem7.p1.m3" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math>.
+What happens if we measure with <math id="S3.Thmtheorem7.p1.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> again?</span></p>
+</div>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">For <math id="S3.p7.m1" class="ltx_Math" alttext="H=\mathbb{C}^{\oplus 2}" display="inline"><mrow><mi>H</mi><mo>=</mo><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup></mrow></math> we can come up with more classes of examples using
+the so-called <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Pauli matrices</span>.
+These are the three Hermitian matrices</p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\sigma_{z}=\begin{bmatrix}1&amp;0\\
+0&amp;-1\end{bmatrix}\qquad\sigma_{x}=\begin{bmatrix}0&amp;1\\
+1&amp;0\end{bmatrix}\qquad\sigma_{y}=\begin{bmatrix}0&amp;-i\\
+i&amp;0\end{bmatrix}." display="block"><mrow><mrow><mrow><msub><mi>σ</mi><mi>z</mi></msub><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mspace width="2em"></mspace><mrow><mrow><msub><mi>σ</mi><mi>x</mi></msub><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mspace width="2em"></mspace><mrow><msub><mi>σ</mi><mi>y</mi></msub><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd><mtd><mrow><mo>−</mo><mi>i</mi></mrow></mtd></mtr><mtr><mtd><mi>i</mi></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">These matrices are important because:</p>
+</div>
+<div id="S3.Thmtheorem8" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 23.3.8</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that these three matrices, plus the identity matrix,
+form a basis for the set of Hermitian <math id="S3.Thmtheorem8.p1.m1" class="ltx_Math" alttext="2\times 2" display="inline"><mrow><mn>2</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>2</mn></mrow></math> matrices.</span></p>
+</div>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">So the Pauli matrices are a natural choice of basis.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Well,
+natural due to physics reasons.
+</span></span></span></p>
+</div>
+<div id="S3.p10" class="ltx_para">
+<p class="ltx_p">Their normalized eigenvectors are</p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="\ket{\uparrow}=\ket{0}=\begin{bmatrix}1\\
+0\end{bmatrix}\qquad\ket{\downarrow}=\ket{1}=\begin{bmatrix}0\\
+1\end{bmatrix}" display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">↑</mo><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow><mspace width="2em"></mspace><mrow><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">↓</mo><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<div class="table-container"><table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="\ket{\rightarrow}=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\
+1\end{bmatrix}\qquad\ket{\leftarrow}=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\
+-1\end{bmatrix}" display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">→</mo><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow><mspace width="2em"></mspace><mrow><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<div class="table-container"><table id="Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex23.m1" class="ltx_Math" alttext="\ket{\otimes}=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\
+i\end{bmatrix}\qquad\ket{\odot}=\frac{1}{\sqrt{2}}\begin{bmatrix}1\\
+-i\end{bmatrix}" display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">⊗</mo><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mi>i</mi></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow><mspace width="2em"></mspace><mrow><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em">⊙</mo><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo>[</mo><mtable displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mrow><mo>−</mo><mi>i</mi></mrow></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which we call “<math id="S3.p10.m1" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>-up”, “<math id="S3.p10.m2" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>-down”,
+“<math id="S3.p10.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>-up”, “<math id="S3.p10.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>-down”, “<math id="S3.p10.m5" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>-up”, “<math id="S3.p10.m6" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>-down” respectively.
+(The eigenvalues are <math id="S3.p10.m7" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> for “up” and <math id="S3.p10.m8" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> for “down”.)
+So, given a state <math id="S3.p10.m9" class="ltx_Math" alttext="\ket{\psi}\in\mathbb{C}^{\oplus 2}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>∈</mo><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup></mrow></math>
+we can make a measurement with respect to any of these three bases
+by using the corresponding Pauli matrix.</p>
+</div>
+<div id="S3.p11" class="ltx_para">
+<p class="ltx_p">In light of this, the previous examples were
+(a) measuring along <math id="S3.p11.m1" class="ltx_Math" alttext="\sigma_{z}" display="inline"><msub><mi>σ</mi><mi>z</mi></msub></math>,
+(b) measuring along <math id="S3.p11.m2" class="ltx_Math" alttext="\mathrm{id}" display="inline"><mi>id</mi></math>,
+and (c) measuring along <math id="S3.p11.m3" class="ltx_Math" alttext="7\sigma_{x}" display="inline"><mrow><mn>7</mn><mo>⁢</mo><msub><mi>σ</mi><mi>x</mi></msub></mrow></math>.</p>
+</div>
+<div id="S3.p12" class="ltx_para">
+<p class="ltx_p">Notice that if we are given a state <math id="S3.p12.m1" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math>,
+and are told in advance that it is either <math id="S3.p12.m2" class="ltx_Math" alttext="\ket{\rightarrow}" display="inline"><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">→</mo><mo stretchy="false">⟩</mo></mrow></math> or <math id="S3.p12.m3" class="ltx_Math" alttext="\ket{\leftarrow}" display="inline"><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow></math>
+(or any other orthogonal states)
+then we are in what is more or less a classical situation.
+Specifically, if we make a measurement along <math id="S3.p12.m4" class="ltx_Math" alttext="\sigma_{x}" display="inline"><msub><mi>σ</mi><mi>x</mi></msub></math>,
+then we find out which state that <math id="S3.p12.m5" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> was in (with 100% certainty),
+and the state does not undergo any collapse.
+Thus, orthogonal states are reliably distinguishable.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">23.4 </span>Entanglement</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Singlet state: spooky action at a distance.</em></p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">If you think that’s weird, well, it gets worse.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Qubits don’t just act independently:
+they can talk to each other by means of a <em class="ltx_emph ltx_font_italic">tensor product</em>.
+Explicitly, consider</p>
+<div class="table-container"><table id="Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex24.m1" class="ltx_Math" alttext="H=\mathbb{C}^{\oplus 2}\otimes\mathbb{C}^{\oplus 2}" display="block"><mrow><mi>H</mi><mo>=</mo><mrow><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">endowed with the norm described in <a href="../linalg/inner-product-spaces.html#prob:inner_prod_tensor" title="Problem 13D (Inner product structure of tensors). ‣ 13.5 A few harder problems to think about ‣ Chapter 13 Inner product spaces ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">13D</span></a>.
+One should think of this as a qubit <math id="S4.p3.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> in a space <math id="S4.p3.m2" class="ltx_Math" alttext="H_{A}" display="inline"><msub><mi>H</mi><mi>A</mi></msub></math>
+along with a second qubit <math id="S4.p3.m3" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> in a different space <math id="S4.p3.m4" class="ltx_Math" alttext="H_{B}" display="inline"><msub><mi>H</mi><mi>B</mi></msub></math>,
+which have been allowed to interact in some way,
+and <math id="S4.p3.m5" class="ltx_Math" alttext="H=H_{A}\otimes H_{B}" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><msub><mi>H</mi><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>H</mi><mi>B</mi></msub></mrow></mrow></math> is the set of possible states of <em class="ltx_emph ltx_font_italic">both</em> qubits.
+Thus</p>
+<div class="table-container"><table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="\ket{0}_{A}\otimes\ket{0}_{B},\quad\ket{0}_{A}\otimes\ket{1}_{B},\quad\ket{1}_%
+{A}\otimes\ket{0}_{B},\quad\ket{1}_{A}\otimes\ket{1}_{B}" display="block"><mrow><mrow><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow><mo rspace="1.167em">,</mo><mrow><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow><mo rspace="1.167em">,</mo><mrow><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow><mo rspace="1.167em">,</mo><mrow><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is an orthonormal basis of <math id="S4.p3.m6" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>;
+here <math id="S4.p3.m7" class="ltx_Math" alttext="\ket{i}_{A}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub></math> is the basis of the first <math id="S4.p3.m8" class="ltx_Math" alttext="\mathbb{C}^{\oplus 2}" display="inline"><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup></math>
+while <math id="S4.p3.m9" class="ltx_Math" alttext="\ket{i}_{B}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mi>i</mi><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></math> is the basis of the second <math id="S4.p3.m10" class="ltx_Math" alttext="\mathbb{C}^{\oplus 2}" display="inline"><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup></math>,
+so these vectors should be thought of as “unrelated”
+just as with any tensor product.
+The pure tensors mean exactly what you want:
+for example <math id="S4.p3.m11" class="ltx_Math" alttext="\ket{0}_{A}\otimes\ket{1}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math> means
+“<math id="S4.p3.m12" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> for qubit <math id="S4.p3.m13" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> and <math id="S4.p3.m14" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> for qubit <math id="S4.p3.m15" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>”.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">As before, a measurement of a state in <math id="S4.p4.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> requires
+a Hermitian map <math id="S4.p4.m2" class="ltx_Math" alttext="H\to H" display="inline"><mrow><mi>H</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></math>.
+In particular, if we only want to measure the qubit <math id="S4.p4.m3" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> along <math id="S4.p4.m4" class="ltx_Math" alttext="M_{B}" display="inline"><msub><mi>M</mi><mi>B</mi></msub></math>,
+we can use the operator</p>
+<div class="table-container"><table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="\mathrm{id}_{A}\otimes M_{B}." display="block"><mrow><mrow><msub><mi>id</mi><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>M</mi><mi>B</mi></msub></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The eigenvalues of this operator coincide with the ones for <math id="S4.p4.m5" class="ltx_Math" alttext="M_{B}" display="inline"><msub><mi>M</mi><mi>B</mi></msub></math>,
+and the eigenspace for <math id="S4.p4.m6" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> will be the <math id="S4.p4.m7" class="ltx_Math" alttext="H_{A}\otimes(H_{B})_{\lambda}" display="inline"><mrow><msub><mi>H</mi><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">(</mo><msub><mi>H</mi><mi>B</mi></msub><mo stretchy="false">)</mo></mrow><mi>λ</mi></msub></mrow></math>,
+so when we take the projection the <math id="S4.p4.m8" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> qubit will be unaffected.</p>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">This does what you would hope for pure tensors in <math id="S4.p5.m1" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math>:</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 23.4.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Two non-entangled qubits)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Suppose we have qubit <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> in the state
+<math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\frac{i}{\sqrt{5}}\ket{0}_{A}+\frac{2}{\sqrt{5}}\ket{1}_{A}" display="inline"><mrow><mrow><mfrac linethickness="0.6px"><mi>i</mi><msqrt><mn>5</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub></mrow><mo>+</mo><mrow><mfrac linethickness="0.6px"><mn>2</mn><msqrt><mn>5</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub></mrow></mrow></math>
+and qubit <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> in the state
+<math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\frac{1}{\sqrt{2}}\ket{0}_{B}+\frac{1}{\sqrt{2}}\ket{1}_{B}" display="inline"><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow><mo>+</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></mrow></math>.
+So, the two qubits in tandem are represented by the pure tensor</p>
+<div class="table-container"><table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="\ket{\psi}=\left(\frac{i}{\sqrt{5}}\ket{0}_{A}+\frac{2}{\sqrt{5}}\ket{1}_{A}%
+\right)\otimes\left(\frac{1}{\sqrt{2}}\ket{0}_{B}+\frac{1}{\sqrt{2}}\ket{1}_{B%
+}\right)." display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mrow><mo>(</mo><mrow><mrow><mfrac linethickness="0.6px"><mi>i</mi><msqrt><mn>5</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub></mrow><mo>+</mo><mrow><mfrac linethickness="0.6px"><mn>2</mn><msqrt><mn>5</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub></mrow></mrow><mo rspace="0.055em">)</mo></mrow><mo rspace="0.222em">⊗</mo><mrow><mo>(</mo><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow><mo>+</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Suppose we measure <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> along</p>
+<div class="table-container"><table id="Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex28.m1" class="ltx_Math" alttext="M=\mathrm{id}_{A}\otimes\sigma_{z}^{B}." display="block"><mrow><mrow><mi>M</mi><mo>=</mo><mrow><msub><mi>id</mi><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>σ</mi><mi>z</mi><mi>B</mi></msubsup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The eigenspace decomposition is</p>
+<ul id="S4.I1" class="ltx_itemize">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> for the span of <math id="S4.I1.i1.p1.m2" class="ltx_Math" alttext="\ket{0}_{A}\otimes\ket{0}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math> and
+<math id="S4.I1.i1.p1.m3" class="ltx_Math" alttext="\ket{1}_{A}\otimes\ket{0}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math>, and</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> for the span of <math id="S4.I1.i2.p1.m2" class="ltx_Math" alttext="\ket{0}_{A}\otimes\ket{1}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math> and
+<math id="S4.I1.i2.p1.m3" class="ltx_Math" alttext="\ket{1}_{A}\otimes\ket{1}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">(We could have used other bases, like <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\ket{\rightarrow}_{A}\otimes\ket{0}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">→</mo><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math> and
+<math id="S4.Thmtheorem1.p1.m7" class="ltx_Math" alttext="\ket{\leftarrow}_{A}\otimes\ket{0}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math> for the first eigenspace, but it doesn’t matter.)
+Expanding <math id="S4.Thmtheorem1.p1.m8" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> in the four-element basis, we find that
+we’ll get the first eigenspace with probability</p>
+<div class="table-container"><table id="Ex29" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex29.m1" class="ltx_Math" alttext="\left|\frac{i}{\sqrt{10}}\right|^{2}+\left|\frac{2}{\sqrt{10}}\right|^{2}=%
+\frac{1}{2}." display="block"><mrow><mrow><mrow><msup><mrow><mo>|</mo><mfrac linethickness="0.6px"><mi>i</mi><msqrt><mn>10</mn></msqrt></mfrac><mo>|</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mrow><mo>|</mo><mfrac linethickness="0.6px"><mn>2</mn><msqrt><mn>10</mn></msqrt></mfrac><mo>|</mo></mrow><mn>2</mn></msup></mrow><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and the second eigenspace with probability <math id="S4.Thmtheorem1.p1.m9" class="ltx_Math" alttext="\frac{1}{2}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></math> as well.
+(Note how the coefficients for <math id="S4.Thmtheorem1.p1.m10" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> don’t do anything!)
+After the measurement, we destroy the coefficients of the other eigenspace;
+thus (after re-normalization) we obtain the collapsed state</p>
+<div class="table-container"><table id="Ex30" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex30.m1" class="ltx_Math" alttext="\left(\frac{i}{\sqrt{5}}\ket{0}_{A}+\frac{2}{\sqrt{5}}\ket{1}_{A}\right)%
+\otimes\ket{0}_{B}\qquad\text{or}\qquad\left(\frac{i}{\sqrt{5}}\ket{0}_{A}+%
+\frac{2}{\sqrt{5}}\ket{1}_{A}\right)\otimes\ket{1}_{B}" display="block"><mrow><mrow><mrow><mo>(</mo><mrow><mrow><mfrac linethickness="0.6px"><mi>i</mi><msqrt><mn>5</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub></mrow><mo>+</mo><mrow><mfrac linethickness="0.6px"><mn>2</mn><msqrt><mn>5</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub></mrow></mrow><mo rspace="0.055em">)</mo></mrow><mo rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow><mspace width="2em"></mspace><mtext>or</mtext><mspace width="2em"></mspace><mrow><mrow><mo>(</mo><mrow><mrow><mfrac linethickness="0.6px"><mi>i</mi><msqrt><mn>5</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub></mrow><mo>+</mo><mrow><mfrac linethickness="0.6px"><mn>2</mn><msqrt><mn>5</mn></msqrt></mfrac><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub></mrow></mrow><mo rspace="0.055em">)</mo></mrow><mo rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">again with 50% probability each.</p>
+</div>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">So this model lets us more or less work with the two qubits independently:
+when we make the measurement, we just make sure to not touch the other qubit
+(which corresponds to the identity operator).</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 23.4.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that if <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathrm{id}_{A}\otimes\sigma_{x}^{B}" display="inline"><mrow><msub><mi>id</mi><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>σ</mi><mi>x</mi><mi>B</mi></msubsup></mrow></math> is applied to the <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math>
+in this example, there is no collapse at all.
+What’s the result of this measurement?</span></p>
+</div>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">Since the <math id="S4.p7.m1" class="ltx_Math" alttext="\otimes" display="inline"><mo>⊗</mo></math> is getting cumbersome to write, we say:</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 23.4.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">From now on <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\ket{0}_{A}\otimes\ket{0}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math> will be abbreviated
+to just <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\ket{00}" display="inline"><mrow><mo stretchy="false">|</mo><mn>00</mn><mo stretchy="false">⟩</mo></mrow></math>, and similarly for <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\ket{01}" display="inline"><mrow><mo stretchy="false">|</mo><mn>01</mn><mo stretchy="false">⟩</mo></mrow></math>, <math id="S4.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\ket{10}" display="inline"><mrow><mo stretchy="false">|</mo><mn>10</mn><mo stretchy="false">⟩</mo></mrow></math>, <math id="S4.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\ket{11}" display="inline"><mrow><mo stretchy="false">|</mo><mn>11</mn><mo stretchy="false">⟩</mo></mrow></math>.</p>
+</div>
+</div>
+<div id="ex:simult_measurement" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 23.4.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Simultaneously measuring a general <math id="S4.Thmtheorem4.m1" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-Qubit state)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Consider a normalized state <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\ket{\psi}" display="inline"><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow></math> in
+<math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="H=\mathbb{C}^{\oplus 2}\otimes\mathbb{C}^{\oplus 2}" display="inline"><mrow><mi>H</mi><mo>=</mo><mrow><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup></mrow></mrow></math>, say</p>
+<div class="table-container"><table id="Ex31" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex31.m1" class="ltx_Math" alttext="\ket{\psi}=\alpha\ket{00}+\beta\ket{01}+\gamma\ket{10}+\delta\ket{11}." display="block"><mrow><mrow><mrow><mo stretchy="false">|</mo><mi>ψ</mi><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>00</mn><mo stretchy="false">⟩</mo></mrow></mrow><mo>+</mo><mrow><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>01</mn><mo stretchy="false">⟩</mo></mrow></mrow><mo>+</mo><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>10</mn><mo stretchy="false">⟩</mo></mrow></mrow><mo>+</mo><mrow><mi>δ</mi><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>11</mn><mo stretchy="false">⟩</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We can make a measurement along the diagonal matrix
+<math id="S4.Thmtheorem4.p1.m3" class="ltx_Math" alttext="T\colon H\to H" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>H</mi><mo stretchy="false">→</mo><mi>H</mi></mrow></mrow></math> with</p>
+<div class="table-container"><table id="Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex32.m1" class="ltx_Math" alttext="T(\ket{00})=0\ket{00},\quad T(\ket{01})=1\ket{01},\quad T(\ket{10})=2\ket{10},%
+\quad T(\ket{11})=3\ket{11}." display="block"><mrow><mrow><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><mn>00</mn><mo stretchy="false">⟩</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>0</mn><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>00</mn><mo stretchy="false">⟩</mo></mrow></mrow></mrow><mo rspace="1.167em">,</mo><mrow><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><mn>01</mn><mo stretchy="false">⟩</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>01</mn><mo stretchy="false">⟩</mo></mrow></mrow></mrow><mo rspace="1.167em">,</mo><mrow><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><mn>10</mn><mo stretchy="false">⟩</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>10</mn><mo stretchy="false">⟩</mo></mrow></mrow></mrow><mo rspace="1.167em">,</mo><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">|</mo><mn>11</mn><mo stretchy="false">⟩</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>3</mn><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>11</mn><mo stretchy="false">⟩</mo></mrow></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Thus we get each of the eigenvalues <math id="S4.Thmtheorem4.p1.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, <math id="S4.Thmtheorem4.p1.m5" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="S4.Thmtheorem4.p1.m6" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>, <math id="S4.Thmtheorem4.p1.m7" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>
+with probability <math id="S4.Thmtheorem4.p1.m8" class="ltx_Math" alttext="|\alpha|^{2}" display="inline"><msup><mrow><mo stretchy="false">|</mo><mi>α</mi><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></math>, <math id="S4.Thmtheorem4.p1.m9" class="ltx_Math" alttext="|\beta|^{2}" display="inline"><msup><mrow><mo stretchy="false">|</mo><mi>β</mi><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></math>, <math id="S4.Thmtheorem4.p1.m10" class="ltx_Math" alttext="|\gamma|^{2}" display="inline"><msup><mrow><mo stretchy="false">|</mo><mi>γ</mi><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></math>, <math id="S4.Thmtheorem4.p1.m11" class="ltx_Math" alttext="|\delta|^{2}" display="inline"><msup><mrow><mo stretchy="false">|</mo><mi>δ</mi><mo stretchy="false">|</mo></mrow><mn>2</mn></msup></math>.
+So if we like we can make “simultaneous” measurements on two qubits
+in the same way that we make measurements on one qubit.</p>
+</div>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">However, some states behave very weirdly.</p>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 23.4.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(The singlet state)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Consider the state</p>
+<div class="table-container"><table id="Ex33" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex33.m1" class="ltx_Math" alttext="\ket{\Psi_{-}}=\frac{1}{\sqrt{2}}\ket{01}-\frac{1}{\sqrt{2}}\ket{10}" display="block"><mrow><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Ψ</mi><mo>−</mo></msub><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>01</mn><mo stretchy="false">⟩</mo></mrow></mrow><mo>−</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo stretchy="false">|</mo><mn>10</mn><mo stretchy="false">⟩</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> singlet state</span>.
+One can see that <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\ket{\Psi_{-}}" display="inline"><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Ψ</mi><mo>−</mo></msub><mo stretchy="false">⟩</mo></mrow></math> is not a simple tensor,
+which means that it doesn’t just consist of two qubits side by side:
+the qubits in <math id="S4.Thmtheorem5.p1.m2" class="ltx_Math" alttext="H_{A}" display="inline"><msub><mi>H</mi><mi>A</mi></msub></math> and <math id="S4.Thmtheorem5.p1.m3" class="ltx_Math" alttext="H_{B}" display="inline"><msub><mi>H</mi><mi>B</mi></msub></math> have become <em class="ltx_emph ltx_font_italic">entangled</em>.</p>
+</div>
+<div id="S4.Thmtheorem5.p2" class="ltx_para">
+<p class="ltx_p">Now, what happens if we measure just the qubit <math id="S4.Thmtheorem5.p2.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>?
+This corresponds to making the measurement</p>
+<div class="table-container"><table id="Ex34" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex34.m1" class="ltx_Math" alttext="T=\sigma_{z}^{A}\otimes\mathrm{id}_{B}." display="block"><mrow><mrow><mi>T</mi><mo>=</mo><mrow><msubsup><mi>σ</mi><mi>z</mi><mi>A</mi></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>id</mi><mi>B</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The eigenspace decomposition of <math id="S4.Thmtheorem5.p2.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> can be described as:</p>
+<ul id="S4.I2" class="ltx_itemize">
+<li id="S4.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">The span of <math id="S4.I2.i1.p1.m1" class="ltx_Math" alttext="\ket{00}" display="inline"><mrow><mo stretchy="false">|</mo><mn>00</mn><mo stretchy="false">⟩</mo></mrow></math> and <math id="S4.I2.i1.p1.m2" class="ltx_Math" alttext="\ket{01}" display="inline"><mrow><mo stretchy="false">|</mo><mn>01</mn><mo stretchy="false">⟩</mo></mrow></math>, with eigenvalue <math id="S4.I2.i1.p1.m3" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S4.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The span of <math id="S4.I2.i2.p1.m1" class="ltx_Math" alttext="\ket{10}" display="inline"><mrow><mo stretchy="false">|</mo><mn>10</mn><mo stretchy="false">⟩</mo></mrow></math> and <math id="S4.I2.i2.p1.m2" class="ltx_Math" alttext="\ket{11}" display="inline"><mrow><mo stretchy="false">|</mo><mn>11</mn><mo stretchy="false">⟩</mo></mrow></math>, with eigenvalue <math id="S4.I2.i2.p1.m3" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">So one of two things will happen:</p>
+<ul id="S4.I3" class="ltx_itemize">
+<li id="S4.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">With probability <math id="S4.I3.i1.p1.m1" class="ltx_Math" alttext="\frac{1}{2}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></math>, we measure <math id="S4.I3.i1.p1.m2" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math>
+and the collapsed state is <math id="S4.I3.i1.p1.m3" class="ltx_Math" alttext="\ket{01}" display="inline"><mrow><mo stretchy="false">|</mo><mn>01</mn><mo stretchy="false">⟩</mo></mrow></math>.</p>
+</div>
+</li>
+<li id="S4.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">With probability <math id="S4.I3.i2.p1.m1" class="ltx_Math" alttext="\frac{1}{2}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></math>, we measure <math id="S4.I3.i2.p1.m2" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>
+and the collapsed state is <math id="S4.I3.i2.p1.m3" class="ltx_Math" alttext="\ket{10}" display="inline"><mrow><mo stretchy="false">|</mo><mn>10</mn><mo stretchy="false">⟩</mo></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">But now we see that measurement along <math id="S4.Thmtheorem5.p2.m3" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> has told us what the
+state of the bit <math id="S4.Thmtheorem5.p2.m4" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> is completely!</p>
+</div>
+</div>
+<div id="S4.p9" class="ltx_para">
+<p class="ltx_p">By solely looking at measurements on <math id="S4.p9.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>, we learn <math id="S4.p9.m2" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>;
+this paradox is called <em class="ltx_emph ltx_font_italic">spooky action at a distance</em>,
+or in Einstein’s tongue, <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> spukhafte Fernwirkung</span>.
+Thus,</p>
+</div>
+<div id="S4.Thmtheorem6" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 23.4.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S4.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">In tensor products of Hilbert spaces,
+states which are not pure tensors
+correspond to “entangled” states.</p>
+</div>
+</div>
+<div id="S4.p10" class="ltx_para">
+<p class="ltx_p">What this really means is that the qubits cannot be described independently;
+the state of the system must be given as a whole.
+That’s what entangled states mean: the qubits somehow depend on each other.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">23.5 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 23A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">We measure <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="\ket{\Psi_{-}}" display="inline"><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Ψ</mi><mo>−</mo></msub><mo stretchy="false">⟩</mo></mrow></math> by <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="\sigma_{x}^{A}\otimes\mathrm{id}_{B}" display="inline"><mrow><msubsup><mi>σ</mi><mi>x</mi><mi>A</mi></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>id</mi><mi>B</mi></msub></mrow></math>,
+and hence obtain either <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> or <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>.
+Determine the state of qubit <math id="Thmproblem1.p1.m5" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> from this measurement.
+
+Rewrite <math id="Thmproblem1.p1.m6" class="ltx_Math" alttext="\ket{\Psi_{-}}=-\frac{1}{\sqrt{2}}\left(\ket{\rightarrow}_{A}\otimes\ket{%
+\leftarrow}_{B}-\ket{\leftarrow}_{A}\ket{\rightarrow}_{B}\right)" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Ψ</mi><mo>−</mo></msub><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo>−</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">→</mo><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow><mo>−</mo><mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">→</mo><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow></math>.
+
+
+By a straightforward computation,
+we have <math id="Thmproblem1.p1.m7" class="ltx_Math" alttext="\ket{\Psi_{-}}=-\frac{1}{\sqrt{2}}\left(\ket{\rightarrow}_{A}\otimes\ket{%
+\leftarrow}_{B}-\ket{\leftarrow}_{A}\ket{\rightarrow}_{B}\right)" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi mathvariant="normal">Ψ</mi><mo>−</mo></msub><mo stretchy="false">⟩</mo></mrow><mo>=</mo><mrow><mo>−</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">→</mo><mo rspace="0.055em" stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow><mo>−</mo><mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">→</mo><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></mrow><mo>)</mo></mrow></mrow></mrow></mrow></math>.
+Now, <math id="Thmproblem1.p1.m8" class="ltx_Math" alttext="\ket{\rightarrow}_{A}\otimes\ket{\rightarrow}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">→</mo><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">→</mo><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math>, <math id="Thmproblem1.p1.m9" class="ltx_Math" alttext="\ket{\rightarrow}_{A}\otimes\ket{\leftarrow}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">→</mo><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math>
+span one eigenspace of <math id="Thmproblem1.p1.m10" class="ltx_Math" alttext="\sigma_{x}^{A}\otimes\mathrm{id}_{B}" display="inline"><mrow><msubsup><mi>σ</mi><mi>x</mi><mi>A</mi></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>id</mi><mi>B</mi></msub></mrow></math>,
+and <math id="Thmproblem1.p1.m11" class="ltx_Math" alttext="\ket{\leftarrow}_{A}\otimes\ket{\rightarrow}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">→</mo><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math>, <math id="Thmproblem1.p1.m12" class="ltx_Math" alttext="\ket{\leftarrow}_{A}\otimes\ket{\leftarrow}_{B}" display="inline"><mrow><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></mrow></math>
+span the other. So this is the same as before:
+<math id="Thmproblem1.p1.m13" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> gives <math id="Thmproblem1.p1.m14" class="ltx_Math" alttext="\ket{\leftarrow}_{B}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub></math> and <math id="Thmproblem1.p1.m15" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> gives <math id="Thmproblem1.p1.m16" class="ltx_Math" alttext="\ket{\leftarrow}_{A}" display="inline"><msub><mrow><mo stretchy="false">|</mo><mo lspace="0em" rspace="0em" stretchy="false">←</mo><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub></math>.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 23B</span></span><span class="ltx_text ltx_font_bold"> </span>(Greenberger-Horne-Zeilinger paradox)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Consider the state in <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="(\mathbb{C}^{\oplus 2})^{\otimes 3}" display="inline"><msup><mrow><mo stretchy="false">(</mo><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup><mo stretchy="false">)</mo></mrow><mrow><mi></mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mn>3</mn></mrow></msup></math></p>
+<div class="table-container"><table id="Ex35" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex35.m1" class="ltx_Math" alttext="\ket{\Psi}_{\text{GHZ}}=\frac{1}{\sqrt{2}}\left(\ket{0}_{A}\ket{0}_{B}\ket{0}_%
+{C}-\ket{1}_{A}\ket{1}_{B}\ket{1}_{C}\right)." display="block"><mrow><mrow><msub><mrow><mo stretchy="false">|</mo><mi mathvariant="normal">Ψ</mi><mo stretchy="false">⟩</mo></mrow><mtext>GHZ</mtext></msub><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msqrt><mn>2</mn></msqrt></mfrac><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>0</mn><mo stretchy="false">⟩</mo></mrow><mi>C</mi></msub></mrow><mo>−</mo><mrow><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>A</mi></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>B</mi></msub><mo>⁢</mo><msub><mrow><mo stretchy="false">|</mo><mn>1</mn><mo stretchy="false">⟩</mo></mrow><mi>C</mi></msub></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Find the value of the measurements along each of</p>
+<div class="table-container"><table id="Ex36" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex36.m1" class="ltx_Math" alttext="\sigma_{y}^{A}\otimes\sigma_{y}^{B}\otimes\sigma_{x}^{C},\quad\sigma_{y}^{A}%
+\otimes\sigma_{x}^{B}\otimes\sigma_{y}^{C},\quad\sigma_{x}^{A}\otimes\sigma_{y%
+}^{B}\otimes\sigma_{y}^{C},\quad\sigma_{x}^{A}\otimes\sigma_{x}^{B}\otimes%
+\sigma_{x}^{C}." display="block"><mrow><mrow><mrow><msubsup><mi>σ</mi><mi>y</mi><mi>A</mi></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>σ</mi><mi>y</mi><mi>B</mi></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>σ</mi><mi>x</mi><mi>C</mi></msubsup></mrow><mo rspace="1.167em">,</mo><mrow><msubsup><mi>σ</mi><mi>y</mi><mi>A</mi></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>σ</mi><mi>x</mi><mi>B</mi></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>σ</mi><mi>y</mi><mi>C</mi></msubsup></mrow><mo rspace="1.167em">,</mo><mrow><msubsup><mi>σ</mi><mi>x</mi><mi>A</mi></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>σ</mi><mi>y</mi><mi>B</mi></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>σ</mi><mi>y</mi><mi>C</mi></msubsup></mrow><mo rspace="1.167em">,</mo><mrow><msubsup><mi>σ</mi><mi>x</mi><mi>A</mi></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>σ</mi><mi>x</mi><mi>B</mi></msubsup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msubsup><mi>σ</mi><mi>x</mi><mi>C</mi></msubsup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">As for the paradox: what happens if you multiply all these measurements together?
+
+<math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> respectively.
+When we multiply them all together,
+we get that <math id="Thmproblem2.p1.m6" class="ltx_Math" alttext="\mathrm{id}^{A}\otimes\mathrm{id}^{B}\otimes\mathrm{id}^{C}" display="inline"><mrow><msup><mi>id</mi><mi>A</mi></msup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>id</mi><mi>B</mi></msup><mo lspace="0.222em" rspace="0.222em">⊗</mo><msup><mi>id</mi><mi>C</mi></msup></mrow></math>
+has measurement <math id="Thmproblem2.p1.m7" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>, which is the paradox.
+What this means is that the values of the measurements
+can’t be prepared in advance independently.
+In other words, this contradicts certain local hidden-variable theories.</p>
+</div>
+<div id="Thmproblem2.p2" class="ltx_para">
+<p class="ltx_p">This was one of several results for which Zeilinger won a (shared)
+Nobel Prize in 2022.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../repth/applications.html">Previous chapter: Some applications</a><br />
+<a href="../quantum/quantum-circuits.html">Next chapter: Quantum circuits</a>
+</nav>
+
+		</main>
+	</body>
+</html>

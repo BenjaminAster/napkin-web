@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Large number laws (TO DO)</title>
+		<meta property="og:title" content="Large number laws (TO DO)" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../prob/random-variables.html">Previous chapter: Random variables (TO DO)</a><br />
+<a href="../prob/martingales.html">Next chapter: Stopped martingales (TO DO)</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 41 </span>Large number laws (TO DO)</h1>
+<span id="todo6" class="ltx_note ltx_role_todo"><sup class="ltx_note_mark">6</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">6</sup><span class="ltx_note_type">todo: </span><span class="ltx_tag ltx_tag_note">6</span>write chapter</span></span></span>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">41.1 </span>Notions of convergence</h2>
+
+<section id="S1.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">41.1.i </span>Almost sure convergence</h3>
+
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 41.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> be random variables on a probability space <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>.
+We say <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> converges almost surely</span> to <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> if</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_math_unparsed" alttext="\mu\left(\omega\in\Omega:\lim_{n}X_{n}(\omega)=X(\omega)\right)=1." display="block"><mrow><mi>μ</mi><mrow><mo>(</mo><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi><mo lspace="0.278em">:</mo><munder><mo lspace="0.111em" movablelimits="false" rspace="0.167em">lim</mo><mi>n</mi></munder><msub><mi>X</mi><mi>n</mi></msub><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mi>X</mi><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow><mo>)</mo></mrow><mo>=</mo><mn>1</mn><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S1.SS1.p1" class="ltx_para">
+<p class="ltx_p">This is a very strong notion of convergence:
+it says in almost every <em class="ltx_emph ltx_font_italic">world</em>,
+the values of <math id="S1.SS1.p1.m1" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> converge to <math id="S1.SS1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+In fact, it is almost better for me to give a <em class="ltx_emph ltx_font_italic">non-example</em>.</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 41.1.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Non-example of almost sure convergence)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Imagine an immortal skeleton archer is practicing shots,
+and on the <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th shot, he scores a bulls-eye with probability
+<math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="1-\frac{1}{n}" display="inline"><mrow><mn>1</mn><mo>−</mo><mfrac linethickness="0.6px"><mn>1</mn><mi>n</mi></mfrac></mrow></math>
+(which tends to <math id="S1.Thmtheorem2.p1.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math> because the archer improves over time).
+Let <math id="S1.Thmtheorem2.p1.m4" class="ltx_Math" alttext="X_{n}\in\{0,1,\dots,10\}" display="inline"><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>∈</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mn>10</mn><mo stretchy="false">}</mo></mrow></mrow></math> be the score of the <math id="S1.Thmtheorem2.p1.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th shot.</p>
+</div>
+<div id="S1.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">Although the skeleton is gradually approaching perfection,
+there are <em class="ltx_emph ltx_font_italic">almost no worlds</em> in which the archer
+misses only finitely many shots: that is</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_math_unparsed" alttext="\mu\left(\omega\in\Omega:\lim_{n}X_{n}(\omega)=10\right)=0." display="block"><mrow><mi>μ</mi><mrow><mo>(</mo><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi><mo lspace="0.278em">:</mo><munder><mo lspace="0.111em" movablelimits="false" rspace="0.167em">lim</mo><mi>n</mi></munder><msub><mi>X</mi><mi>n</mi></msub><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mn>10</mn><mo>)</mo></mrow><mo>=</mo><mn>0</mn><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</section>
+<section id="S1.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">41.1.ii </span>Convergence in probability</h3>
+
+<div id="S1.SS2.p1" class="ltx_para">
+<p class="ltx_p">Therefore, for many purposes we need a weaker notion of convergence.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 41.1.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> be random variables on a probability space <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>.
+We say <math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> converges in probability</span> to <math id="S1.Thmtheorem3.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> if
+if for every <math id="S1.Thmtheorem3.p1.m6" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math> and <math id="S1.Thmtheorem3.p1.m7" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, we have</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_math_unparsed" alttext="\mu\left(\omega\in\Omega:\left\lvert X_{n}(\omega)-X(\omega)\right\rvert&lt;%
+\varepsilon\right)\geq 1-\delta" display="block"><mrow><mi>μ</mi><mrow><mo>(</mo><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mo>|</mo><msub><mi>X</mi><mi>n</mi></msub><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow><mo>−</mo><mi>X</mi><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow><mo>|</mo></mrow><mo>&lt;</mo><mi>ε</mi><mo>)</mo></mrow><mo>≥</mo><mn>1</mn><mo>−</mo><mi>δ</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for <math id="S1.Thmtheorem3.p1.m8" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> large enough (in terms of <math id="S1.Thmtheorem3.p1.m9" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> and <math id="S1.Thmtheorem3.p1.m10" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math>).</p>
+</div>
+</div>
+<div id="S1.SS2.p2" class="ltx_para">
+<p class="ltx_p">In this sense, our skeleton archer does succeed:
+for any <math id="S1.SS2.p2.m1" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, if <math id="S1.SS2.p2.m2" class="ltx_Math" alttext="n&gt;\delta^{-1}" display="inline"><mrow><mi>n</mi><mo>&gt;</mo><msup><mi>δ</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math>
+then the skeleton archer does hit a bulls-eye
+in a <math id="S1.SS2.p2.m3" class="ltx_Math" alttext="1-\delta" display="inline"><mrow><mn>1</mn><mo>−</mo><mi>δ</mi></mrow></math> fraction of the worlds.
+In general, you can think of this as saying that for any <math id="S1.SS2.p2.m4" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,
+the chance of an <math id="S1.SS2.p2.m5" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>-anomaly event at the <math id="S1.SS2.p2.m6" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th stage
+eventually drops below <math id="S1.SS2.p2.m7" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math>.</p>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 41.1.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">To mask <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> from the definition,
+this is sometimes written instead as:
+for all <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math></p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_math_unparsed" alttext="\lim_{n\to\infty}\mu\left(\omega\in\Omega:\left\lvert X_{n}(\omega)-X(\omega)%
+\right\rvert&lt;\varepsilon\right)=1." display="block"><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mi>μ</mi><mrow><mo>(</mo><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mo>|</mo><msub><mi>X</mi><mi>n</mi></msub><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow><mo>−</mo><mi>X</mi><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow><mo>|</mo></mrow><mo>&lt;</mo><mi>ε</mi><mo>)</mo></mrow><mo>=</mo><mn>1</mn><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">I suppose it doesn’t make much difference,
+though I personally don’t like the asymmetry.</p>
+</div>
+</div>
+</section>
+<section id="S1.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">41.1.iii </span>Convergence in law</h3>
+
+</section>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">41.2 </span>Weak law of large numbers</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">As the name implies, this is a direct corollary of the strong law of large numbers.
+Nevertheless, the proof of this law is simpler, and some applications only require the weak law.</p>
+</div>
+<span id="todo7" class="ltx_note ltx_role_todo"><sup class="ltx_note_mark">7</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">7</sup><span class="ltx_note_type">todo: </span><span class="ltx_tag ltx_tag_note">7</span>write</span></span></span>
+<section id="S2.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">41.2.i </span>Application: Weierstrass approximation</h3>
+
+</section>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">41.3 </span>Strong law of large numbers</h2>
+
+<section id="S3.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">41.3.i </span>Motivation: Biased random walk</h3>
+
+<div id="S3.SS1.p1" class="ltx_para">
+<p class="ltx_p">Consider a random walk defined as follows:</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="X_{0}=1" display="inline"><mrow><msub><mi>X</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">For each <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="i\geq 1" display="inline"><mrow><mi>i</mi><mo>≥</mo><mn>1</mn></mrow></math>, define <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> to be <math id="S3.I1.i2.p1.m3" class="ltx_Math" alttext="X_{i-1}-1" display="inline"><mrow><msub><mi>X</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>−</mo><mn>1</mn></mrow></math> with probability <math id="S3.I1.i2.p1.m4" class="ltx_Math" alttext="p=0.6" display="inline"><mrow><mi>p</mi><mo>=</mo><mn>0.6</mn></mrow></math>
+or <math id="S3.I1.i2.p1.m5" class="ltx_Math" alttext="X_{i-1}+1" display="inline"><mrow><msub><mi>X</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><mn>1</mn></mrow></math> with probability <math id="S3.I1.i2.p1.m6" class="ltx_Math" alttext="1-p=0.4" display="inline"><mrow><mrow><mn>1</mn><mo>−</mo><mi>p</mi></mrow><mo>=</mo><mn>0.4</mn></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S3.SS1.p2" class="ltx_para">
+<p class="ltx_p">Then we can ask: What’s the expected number of steps until some <math id="S3.SS1.p2.m1" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> equals <math id="S3.SS1.p2.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>?</p>
+</div>
+<div id="S3.SS1.p3" class="ltx_para">
+<p class="ltx_p">A naive attempt might be the following.</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">Let <math id="S3.SS1.p3.m1" class="ltx_Math" alttext="f(i)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></math> be the expected number of steps starting to reach <math id="S3.SS1.p3.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> starting from <math id="S3.SS1.p3.m3" class="ltx_Math" alttext="X_{0}=i" display="inline"><mrow><msub><mi>X</mi><mn>0</mn></msub><mo>=</mo><mi>i</mi></mrow></math>.</p>
+<p class="ltx_p">Then:</p>
+<ul id="S3.I2" class="ltx_itemize">
+<li id="S3.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I2.i1.p1.m1" class="ltx_Math" alttext="f(0)=0" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>,</p>
+</div>
+</li>
+<li id="S3.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I2.i2.p1.m1" class="ltx_Math" alttext="f(1)=1+0.6f(0)+0.4f(2)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mrow><mn>0.6</mn><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mn>0.4</mn><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>,</p>
+</div>
+</li>
+<li id="S3.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I2.i3.p1.m1" class="ltx_Math" alttext="f(2)=1+0.6f(1)+0.4f(3)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mrow><mn>0.6</mn><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mn>0.4</mn><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>,</p>
+</div>
+</li>
+<li id="S3.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I2.i4.p1.m1" class="ltx_Math" alttext="\vdots" display="inline"><mi mathvariant="normal">⋮</mi></math></p>
+</div>
+</li>
+</ul>
+</blockquote>
+<p class="ltx_p">This isn’t getting anywhere because there are infinitely many terms.
+A better attempt is the following:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">Let the answer be <math id="S3.SS1.p3.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>.
+If we start from <math id="S3.SS1.p3.m5" class="ltx_Math" alttext="X_{0}=2" display="inline"><mrow><msub><mi>X</mi><mn>0</mn></msub><mo>=</mo><mn>2</mn></mrow></math>, let <math id="S3.SS1.p3.m6" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math> be the first time such that <math id="S3.SS1.p3.m7" class="ltx_Math" alttext="X_{i}=1" display="inline"><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>=</mo><mn>1</mn></mrow></math>
+and <math id="S3.SS1.p3.m8" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math> be the first time after <math id="S3.SS1.p3.m9" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math> such that <math id="S3.SS1.p3.m10" class="ltx_Math" alttext="X_{j}=0" display="inline"><mrow><msub><mi>X</mi><mi>j</mi></msub><mo>=</mo><mn>0</mn></mrow></math>. Then</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\mathbb{E}[i]=\mathbb{E}[j-i]=x." display="block"><mrow><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mi>j</mi><mo>−</mo><mi>i</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mi>x</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Therefore,</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="x=1+0.6\cdot 0+0.4\cdot(2x)" display="block"><mrow><mi>x</mi><mo>=</mo><mrow><mn>1</mn><mo>+</mo><mrow><mn>0.6</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mn>0</mn></mrow><mo>+</mo><mrow><mn>0.4</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Solving the equation, we get <math id="S3.SS1.p3.m11" class="ltx_Math" alttext="x=5" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>5</mn></mrow></math>.</p>
+</blockquote>
+<p class="ltx_p">It gives the correct result — however, the same method gives <math id="S3.SS1.p3.m12" class="ltx_Math" alttext="x=-5" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><mo>−</mo><mn>5</mn></mrow></mrow></math> when
+the probability of going down is <math id="S3.SS1.p3.m13" class="ltx_Math" alttext="p=0.4" display="inline"><mrow><mi>p</mi><mo>=</mo><mn>0.4</mn></mrow></math>, which is clearly nonsense.</p>
+</div>
+<div id="S3.SS1.p4" class="ltx_para">
+<p class="ltx_p">What went wrong? The problem is when <math id="S3.SS1.p4.m1" class="ltx_Math" alttext="p=0.4" display="inline"><mrow><mi>p</mi><mo>=</mo><mn>0.4</mn></mrow></math>, there is a nonzero probability<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Preview: Using martingale theory next chapter, you will be able to prove the probability
+the sequence never reaches <math id="footnote1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> is exactly <math id="footnote1.m2" class="ltx_Math" alttext="1-\frac{0.4}{0.6}" display="inline"><mrow><mn>1</mn><mo>−</mo><mfrac linethickness="0.6px"><mn>0.4</mn><mn>0.6</mn></mfrac></mrow></math>.
+</span></span></span> that the
+sequence never reaches <math id="S3.SS1.p4.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, so the expected value is undefined
+and we’re subtracting <math id="S3.SS1.p4.m3" class="ltx_Math" alttext="\infty" display="inline"><mi mathvariant="normal">∞</mi></math> from <math id="S3.SS1.p4.m4" class="ltx_Math" alttext="\infty" display="inline"><mi mathvariant="normal">∞</mi></math> in the proof.</p>
+</div>
+<div id="S3.SS1.p5" class="ltx_para">
+<p class="ltx_p">In this case, the strong law of large numbers can help us patch this hole, by showing that in almost
+every world, the sequence <math id="S3.SS1.p5.m1" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> eventually reaches <math id="S3.SS1.p5.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>.</p>
+</div>
+</section>
+<section id="S3.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">41.3.ii </span>Statement</h3>
+
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 41.3.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Strong law of large numbers)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X_{2}" display="inline"><msub><mi>X</mi><mn>2</mn></msub></math>, … be i.i.d. random variables with mean <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>.
+Define the partial mean</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="M_{n}=\frac{X_{1}+\dots+X_{n}}{n}." display="block"><mrow><mrow><msub><mi>M</mi><mi>n</mi></msub><mo>=</mo><mfrac linethickness="0.6px"><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>X</mi><mi>n</mi></msub></mrow><mi>n</mi></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Then, in almost every world, <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="M_{n}\to 0" display="inline"><mrow><msub><mi>M</mi><mi>n</mi></msub><mo stretchy="false">→</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.SS2.p1" class="ltx_para">
+<p class="ltx_p">In other words, <math id="S3.SS2.p1.m1" class="ltx_Math" alttext="M_{n}" display="inline"><msub><mi>M</mi><mi>n</mi></msub></math> converges almost surely to <math id="S3.SS2.p1.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>.</p>
+</div>
+<div id="S3.SS2.p2" class="ltx_para">
+<p class="ltx_p">The requirement that the mean is <math id="S3.SS2.p2.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> is only to simplify the proof,
+as long as the mean exists, we can subtract the mean from the random variables and apply the
+theorem.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 41.3.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(The hypothesis <math id="S3.Thmtheorem2.m1" class="ltx_Math" alttext="\mathbb{E}[X_{i}]=0" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> is important)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Consider an example where <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M_{n}\to 0" display="inline"><mrow><msub><mi>M</mi><mi>n</mi></msub><mo stretchy="false">→</mo><mn>0</mn></mrow></math> does not hold —
+this is a minor variation of the St. Petersburg paradox.</p>
+</div>
+<div id="S3.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">Let the distribution of each <math id="S3.Thmtheorem2.p2.m1" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> be as follows:</p>
+<div class="table-container"><table id="A5.S3.EGx102" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex8"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex8.m1" class="ltx_Math" alttext="\displaystyle X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex8.m2" class="ltx_Math" alttext="\displaystyle=\begin{cases}1&amp;\text{with probability }\frac{1}{4}\\
+-1&amp;\text{with probability }\frac{1}{4}\\
+2&amp;\text{with probability }\frac{1}{8}\\
+-2&amp;\text{with probability }\frac{1}{8}\\
+4&amp;\text{with probability }\frac{1}{16}\\
+-4&amp;\text{with probability }\frac{1}{16}\\
+&amp;\vdots\end{cases}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mn>1</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>with probability </mtext><mo>⁢</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>with probability </mtext><mo>⁢</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>2</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>with probability </mtext><mo>⁢</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>8</mn></mfrac></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mo>−</mo><mn>2</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>with probability </mtext><mo>⁢</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>8</mn></mfrac></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>4</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>with probability </mtext><mo>⁢</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>16</mn></mfrac></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><mo>−</mo><mn>4</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mtext>with probability </mtext><mo>⁢</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>16</mn></mfrac></mrow></mtd></mtr><mtr><mtd></mtd><mtd class="ltx_align_left" columnalign="left"><mi mathvariant="normal">⋮</mi></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Formally, <math id="S3.Thmtheorem2.p2.m2" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> takes each of the value in <math id="S3.Thmtheorem2.p2.m3" class="ltx_Math" alttext="\{2^{k},-2^{k}\}" display="inline"><mrow><mo stretchy="false">{</mo><msup><mn>2</mn><mi>k</mi></msup><mo>,</mo><mrow><mo>−</mo><msup><mn>2</mn><mi>k</mi></msup></mrow><mo stretchy="false">}</mo></mrow></math> with probability <math id="S3.Thmtheorem2.p2.m4" class="ltx_Math" alttext="2^{-k-2}" display="inline"><msup><mn>2</mn><mrow><mrow><mo>−</mo><mi>k</mi></mrow><mo>−</mo><mn>2</mn></mrow></msup></math>.</p>
+</div>
+<div id="S3.Thmtheorem2.p3" class="ltx_para">
+<p class="ltx_p">In this case, the mean <math id="S3.Thmtheorem2.p3.m1" class="ltx_Math" alttext="\mathbb{E}[X_{i}]=\int_{\Omega}X_{i}(\omega)" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><msub><mi>X</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> is actually undefined.
+Furthermore, as symmetric as the distribution may look, in almost no world will <math id="S3.Thmtheorem2.p3.m2" class="ltx_Math" alttext="M_{n}" display="inline"><msub><mi>M</mi><mi>n</mi></msub></math> converge
+to <math id="S3.Thmtheorem2.p3.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>.</p>
+</div>
+<div id="S3.Thmtheorem2.p4" class="ltx_para">
+<p class="ltx_p">Intuitively, you can see why:</p>
+<ul id="S3.I3" class="ltx_itemize">
+<li id="S3.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">Within the first <math id="S3.I3.i1.p1.m1" class="ltx_Math" alttext="16" display="inline"><mn>16</mn></math> values, on average there’s one <math id="S3.I3.i1.p1.m2" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> with <math id="S3.I3.i1.p1.m3" class="ltx_Math" alttext="|X_{i}|=4" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>X</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>4</mn></mrow></math>,
+this will skew <math id="S3.I3.i1.p1.m4" class="ltx_Math" alttext="M_{16}" display="inline"><msub><mi>M</mi><mn>16</mn></msub></math> by <math id="S3.I3.i1.p1.m5" class="ltx_Math" alttext="\frac{1}{4}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></math>.</p>
+</div>
+</li>
+<li id="S3.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">Within the first <math id="S3.I3.i2.p1.m1" class="ltx_Math" alttext="32" display="inline"><mn>32</mn></math> values, on average there’s one <math id="S3.I3.i2.p1.m2" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> with <math id="S3.I3.i2.p1.m3" class="ltx_Math" alttext="|X_{i}|=8" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>X</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>8</mn></mrow></math>,
+this will skew <math id="S3.I3.i2.p1.m4" class="ltx_Math" alttext="M_{32}" display="inline"><msub><mi>M</mi><mn>32</mn></msub></math> by <math id="S3.I3.i2.p1.m5" class="ltx_Math" alttext="\frac{1}{4}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></math>.</p>
+</div>
+</li>
+<li id="S3.I3.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I3.i3.p1" class="ltx_para">
+<p class="ltx_p">Et cetera.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">In other words, just like our skeleton archer, there are almost no worlds in which the <math id="S3.Thmtheorem2.p4.m1" class="ltx_Math" alttext="M_{n}" display="inline"><msub><mi>M</mi><mi>n</mi></msub></math>
+got skewed by more than <math id="S3.Thmtheorem2.p4.m2" class="ltx_Math" alttext="\frac{1}{4}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></math> only finitely many times.</p>
+</div>
+</div>
+</section>
+<section id="S3.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">41.3.iii </span>Proof for finite-variance case</h3>
+
+<div id="S3.SS3.p1" class="ltx_para">
+<p class="ltx_p">In practice, most distribution we ever come across has finite variance,
+it may be better to give a counterexample.</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 41.3.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(A distribution with finite mean but infinite variance)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Taking <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="Y_{i}=\operatorname{sgn}(X_{i})\sqrt{|X_{i}|}" display="inline"><mrow><msub><mi>Y</mi><mi>i</mi></msub><mo>=</mo><mrow><mrow><mi>sgn</mi><mo>⁡</mo><mrow><mo stretchy="false">(</mo><msub><mi>X</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⁢</mo><msqrt><mrow><mo stretchy="false">|</mo><msub><mi>X</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow></msqrt></mrow></mrow></math> where <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> is the St. Petersburg paradox example
+above suffices. If you do the math, you will see <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\mathbb{E}[Y_{i}]=0" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>Y</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>, but <math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\mathbb{E}[Y_{i}^{2}]=\infty" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msubsup><mi>Y</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mi mathvariant="normal">∞</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.SS3.p2" class="ltx_para">
+<p class="ltx_p">We will give a proof when <math id="S3.SS3.p2.m1" class="ltx_Math" alttext="\mathbb{E}[X_{i}^{2}]" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msubsup><mi>X</mi><mi>i</mi><mn>2</mn></msubsup><mo stretchy="false">]</mo></mrow></mrow></math> is finite first.</p>
+</div>
+<div id="S3.SS3.p3" class="ltx_para">
+<p class="ltx_p">First, we define a seemingly unrelated series as follows:</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="T_{n}=X_{1}+\frac{X_{2}}{2}+\frac{X_{3}}{3}+\dots+\frac{X_{n}}{n}." display="block"><mrow><mrow><msub><mi>T</mi><mi>n</mi></msub><mo>=</mo><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>X</mi><mn>2</mn></msub><mn>2</mn></mfrac><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>X</mi><mn>3</mn></msub><mn>3</mn></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>X</mi><mi>n</mi></msub><mi>n</mi></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S3.SS3.p4" class="ltx_para">
+<p class="ltx_p">This step is a bit difficult to motivate.
+On the positive side, it is easy to show the following:</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_claim">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Claim 41.3.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">In almost every world, the sequence <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="T_{n}" display="inline"><msub><mi>T</mi><mi>n</mi></msub></math> converges.</p>
+</div>
+</div>
+<div id="S3.SS3.p5" class="ltx_para">
+<p class="ltx_p">That is the same as saying the series</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="X_{1}+\frac{X_{2}}{2}+\frac{X_{3}}{3}+\cdots" display="block"><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>X</mi><mn>2</mn></msub><mn>2</mn></mfrac><mo>+</mo><mfrac linethickness="0.6px"><msub><mi>X</mi><mn>3</mn></msub><mn>3</mn></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">converges.</p>
+</div>
+<div id="S3.SS3.p6" class="ltx_para">
+<p class="ltx_p">The key idea is to show that the total variance of the summands are finite.
+Indeed:</p>
+<div class="table-container"><table id="A5.S3.EGx103" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex11"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex11.m1" class="ltx_Math" alttext="\displaystyle\operatorname{Var}\left[X_{1}\right]+\operatorname{Var}\left[%
+\frac{X_{2}}{2}\right]+\operatorname{Var}\left[\frac{X_{3}}{3}\right]+\cdots" display="inline"><mrow><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo>[</mo><msub><mi>X</mi><mn>1</mn></msub><mo>]</mo></mrow></mrow><mo>+</mo><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo>[</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><msub><mi>X</mi><mn>2</mn></msub><mn>2</mn></mfrac></mstyle><mo>]</mo></mrow></mrow><mo>+</mo><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo>[</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><msub><mi>X</mi><mn>3</mn></msub><mn>3</mn></mfrac></mstyle><mo>]</mo></mrow></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex11.m2" class="ltx_Math" alttext="\displaystyle=\operatorname{Var}[X_{1}]+\frac{1}{4}\operatorname{Var}[X_{2}]+%
+\frac{1}{9}\operatorname{Var}[X_{3}]+\cdots" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>1</mn></msub><mo stretchy="false">]</mo></mrow></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></mstyle><mo lspace="0.167em">⁢</mo><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>2</mn></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo>+</mo><mrow><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mn>9</mn></mfrac></mstyle><mo lspace="0.167em">⁢</mo><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>3</mn></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex12"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex12.m1" class="ltx_Math" alttext="\displaystyle=\operatorname{Var}[X_{1}]\cdot\left(1+\frac{1}{4}+\frac{1}{9}+%
+\cdots\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mn>1</mn></msub><mo rspace="0.055em" stretchy="false">]</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mrow><mo>(</mo><mrow><mn>1</mn><mo>+</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mn>4</mn></mfrac></mstyle><mo>+</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mn>1</mn><mn>9</mn></mfrac></mstyle><mo>+</mo><mi mathvariant="normal">⋯</mi></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which is finite.</p>
+</div>
+<div id="S3.SS3.p7" class="ltx_para">
+<p class="ltx_p">Why should finite total variance imply almost surely convergence?
+Intuitively, we recall:</p>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 41.3.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Chebyshev’s inequality)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a random variable with mean <math id="S3.Thmtheorem5.p1.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> and variance <math id="S3.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\sigma^{2}" display="inline"><msup><mi>σ</mi><mn>2</mn></msup></math>.
+Then</p>
+<div class="table-container"><table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\Pr[|X|\geq k\sigma]\leq\frac{1}{k^{2}}." display="block"><mrow><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mo stretchy="false">|</mo><mi>X</mi><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mi>k</mi><mo>⁢</mo><mi>σ</mi></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>≤</mo><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>k</mi><mn>2</mn></msup></mfrac></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.SS3.p8" class="ltx_para">
+<p class="ltx_p">Or equivalently we can write it in the following form, which avoid the <math id="S3.SS3.p8.m1" class="ltx_Math" alttext="\sqrt{-}" display="inline"><msqrt><mo>−</mo></msqrt></math> implicit in
+the definition of <math id="S3.SS3.p8.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>:</p>
+<div class="table-container"><table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\Pr[|X|\geq a]\leq\frac{1}{a^{2}}\operatorname{Var}[X]." display="block"><mrow><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mo stretchy="false">|</mo><mi>X</mi><mo stretchy="false">|</mo></mrow><mo>≥</mo><mi>a</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>≤</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo lspace="0.167em">⁢</mo><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mi>X</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S3.SS3.p9" class="ltx_para">
+<p class="ltx_p">So if we look at, say, <math id="S3.SS3.p9.m1" class="ltx_Math" alttext="T_{1000}" display="inline"><msub><mi>T</mi><mn>1000</mn></msub></math> and <math id="S3.SS3.p9.m2" class="ltx_Math" alttext="T_{2000}" display="inline"><msub><mi>T</mi><mn>2000</mn></msub></math>:</p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\operatorname{Var}[T_{2000}-T_{1000}]=\sum_{i=1001}^{2000}\frac{\operatorname{%
+Var}[X_{i}]}{i^{2}}" display="block"><mrow><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><msub><mi>T</mi><mn>2000</mn></msub><mo>−</mo><msub><mi>T</mi><mn>1000</mn></msub></mrow><mo stretchy="false">]</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munderover><mo movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1001</mn></mrow><mn>2000</mn></munderover><mfrac linethickness="0.6px"><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow><msup><mi>i</mi><mn>2</mn></msup></mfrac></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Because <math id="S3.SS3.p9.m3" class="ltx_Math" alttext="\sum_{i=1}^{\infty}\frac{\operatorname{Var}[X_{i}]}{i^{2}}" display="inline"><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi mathvariant="normal">∞</mi></msubsup><mfrac linethickness="0.6px"><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow><msup><mi>i</mi><mn>2</mn></msup></mfrac></mrow></math> is finite, we expect
+<math id="S3.SS3.p9.m4" class="ltx_Math" alttext="\sum_{i=1001}^{2000}\frac{\operatorname{Var}[X_{i}]}{i^{2}}" display="inline"><mrow><msubsup><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1001</mn></mrow><mn>2000</mn></msubsup><mfrac linethickness="0.6px"><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow><msup><mi>i</mi><mn>2</mn></msup></mfrac></mrow></math> to be very small, which means <math id="S3.SS3.p9.m5" class="ltx_Math" alttext="T_{2000}" display="inline"><msub><mi>T</mi><mn>2000</mn></msub></math> should deviate
+very little from <math id="S3.SS3.p9.m6" class="ltx_Math" alttext="T_{1000}" display="inline"><msub><mi>T</mi><mn>1000</mn></msub></math>.</p>
+</div>
+<div id="S3.SS3.p10" class="ltx_para">
+<p class="ltx_p">To show convergence, we need something stronger, however.</p>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 41.3.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Kolmogorov’s inequality)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, …, <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="X_{n}" display="inline"><msub><mi>X</mi><mi>n</mi></msub></math> be independent random variables with mean <math id="S3.Thmtheorem6.p1.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>.
+Define <math id="S3.Thmtheorem6.p1.m4" class="ltx_Math" alttext="S_{i}=X_{1}+\dots+X_{i}" display="inline"><mrow><msub><mi>S</mi><mi>i</mi></msub><mo>=</mo><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>X</mi><mi>i</mi></msub></mrow></mrow></math> for each <math id="S3.Thmtheorem6.p1.m5" class="ltx_Math" alttext="1\leq i\leq n" display="inline"><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></math>.
+Then</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="\Pr[|S_{i}|\geq a\text{ for any }1\leq i\leq n]\leq\frac{1}{a^{2}}%
+\operatorname{Var}[S_{n}]." display="block"><mrow><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mi>a</mi><mo>⁢</mo><mtext> for any </mtext><mo>⁢</mo><mn>1</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>≤</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo lspace="0.167em">⁢</mo><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.SS3.p11" class="ltx_para">
+<p class="ltx_p">You can see why this theorem is stronger — with Chebyshev’s inequality, we can only show</p>
+<div class="table-container"><table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="\Pr[|S_{n}|\geq a]\leq\frac{1}{a^{2}}\operatorname{Var}[S_{n}]." display="block"><mrow><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mi>a</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>≤</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo lspace="0.167em">⁢</mo><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So, with the same right hand side, we can also bound the probability of
+<math id="S3.SS3.p11.m1" class="ltx_Math" alttext="|S_{1}|\geq a\vee|S_{2}|\geq a\vee\cdots" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mn>1</mn></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mi>a</mi><mo>∨</mo><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mn>2</mn></msub><mo stretchy="false">|</mo></mrow></mrow><mo>≥</mo><mrow><mi>a</mi><mo>∨</mo><mi mathvariant="normal">⋯</mi></mrow></mrow></math> for free!</p>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.SS3.p12" class="ltx_para">
+<p class="ltx_p">Define <math id="S3.SS3.p12.m1" class="ltx_Math" alttext="A_{i}" display="inline"><msub><mi>A</mi><mi>i</mi></msub></math> be the event that <math id="S3.SS3.p12.m2" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math> is the smallest value such that <math id="S3.SS3.p12.m3" class="ltx_Math" alttext="|S_{i}|\geq a" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mi>a</mi></mrow></math>. Then the left
+hand side above equals</p>
+<div class="table-container"><table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="\Pr[|S_{i}|\geq a\text{ for any }1\leq i\leq n]=\Pr[A_{1}]+\Pr[A_{2}]+\dots+%
+\Pr[A_{n}]." display="block"><mrow><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mi>a</mi><mo>⁢</mo><mtext> for any </mtext><mo>⁢</mo><mn>1</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>A</mi><mn>1</mn></msub><mo stretchy="false">]</mo></mrow></mrow><mo>+</mo><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>A</mi><mn>2</mn></msub><mo stretchy="false">]</mo></mrow></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S3.SS3.p13" class="ltx_para">
+<p class="ltx_p">Intuitively, if the events <math id="S3.SS3.p13.m1" class="ltx_Math" alttext="|S_{i}|\geq a" display="inline"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mi>a</mi></mrow></math> were independent,
+the best we can do is to use Chebyshev’s inequality to bound individual probability values:</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="\Pr[|S_{i}|\geq a]\leq\frac{1}{a^{2}}\operatorname{Var}[S_{i}]" display="block"><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mi>a</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>≤</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo lspace="0.167em">⁢</mo><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">However, they’re very much not independent — in fact, they are positively correlated!
+For example, we have:</p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\mathbb{E}[S_{n}\mid S_{1}=a]=a" display="block"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>∣</mo><msub><mi>S</mi><mn>1</mn></msub></mrow><mo>=</mo><mi>a</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mi>a</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">because <math id="S3.SS3.p13.m2" class="ltx_Math" alttext="\mathbb{E}[X_{2}+\dots+X_{n}]=0" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msub><mi>X</mi><mn>2</mn></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>X</mi><mi>n</mi></msub></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.
+So if each <math id="S3.SS3.p13.m3" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> is symmetrically distributed, <math id="S3.SS3.p13.m4" class="ltx_Math" alttext="\Pr[S_{n}\geq a\mid S_{1}=a]\geq\frac{1}{2}" display="inline"><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>≥</mo><mrow><mi>a</mi><mo>∣</mo><msub><mi>S</mi><mn>1</mn></msub></mrow><mo>=</mo><mi>a</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>≥</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mrow></math>,
+which is much larger than <math id="S3.SS3.p13.m5" class="ltx_Math" alttext="\frac{1}{a^{2}}\operatorname{Var}[S_{n}]" display="inline"><mrow><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo lspace="0.167em">⁢</mo><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>S</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math> for large <math id="S3.SS3.p13.m6" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>.</p>
+</div>
+<div id="S3.SS3.p14" class="ltx_para">
+<p class="ltx_p">Here is the formal proof.
+For each <math id="S3.SS3.p14.m1" class="ltx_Math" alttext="1\leq i\leq n" display="inline"><mrow><mn>1</mn><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></math>, we have</p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="\mathbb{E}[S_{i}^{2}\mid A_{i}]\geq a^{2}" display="block"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msubsup><mi>S</mi><mi>i</mi><mn>2</mn></msubsup><mo>∣</mo><msub><mi>A</mi><mi>i</mi></msub></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>≥</mo><msup><mi>a</mi><mn>2</mn></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which is equivalent to</p>
+<div class="table-container"><table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="\Pr[A_{i}]\leq\frac{1}{a^{2}}\mathbb{E}[S_{i}^{2}\cdot\mathbf{1}_{A_{i}}]" display="block"><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>A</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>≤</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo>⁢</mo><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msubsup><mi>S</mi><mi>i</mi><mn>2</mn></msubsup><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><msub><mi>A</mi><mi>i</mi></msub></msub></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and</p>
+<div class="table-container"><table id="A5.S3.EGx104" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex23"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex23.m1" class="ltx_Math" alttext="\displaystyle\mathbb{E}[S_{n}^{2}\cdot\mathbf{1}_{A_{i}}]" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msubsup><mi>S</mi><mi>n</mi><mn>2</mn></msubsup><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><msub><mi>A</mi><mi>i</mi></msub></msub></mrow><mo stretchy="false">]</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex23.m2" class="ltx_Math" alttext="\displaystyle=\mathbb{E}[(S_{i}+(S_{n}-S_{i}))^{2}\cdot\mathbf{1}_{A_{i}}]" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>S</mi><mi>i</mi></msub><mo>+</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>−</mo><msub><mi>S</mi><mi>i</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mn>2</mn></msup><mo rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><msub><mi>A</mi><mi>i</mi></msub></msub></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex24"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex24.m1" class="ltx_Math" alttext="\displaystyle=\mathbb{E}[S_{i}^{2}\cdot\mathbf{1}_{A_{i}}]+\mathbb{E}[S_{i}%
+\cdot\mathbf{1}_{A_{i}}(S_{n}-S_{i})]+\mathbb{E}[(S_{n}-S_{i})^{2}\cdot\mathbf%
+{1}_{A_{i}}]" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msubsup><mi>S</mi><mi>i</mi><mn>2</mn></msubsup><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><msub><mi>A</mi><mi>i</mi></msub></msub></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>+</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><msub><mi>S</mi><mi>i</mi></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><msub><mi>A</mi><mi>i</mi></msub></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>−</mo><msub><mi>S</mi><mi>i</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>+</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>−</mo><msub><mi>S</mi><mi>i</mi></msub></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mn>2</mn></msup><mo rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><msub><mi>A</mi><mi>i</mi></msub></msub></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">The middle term <math id="S3.SS3.p14.m2" class="ltx_Math" alttext="\mathbb{E}[S_{i}\cdot\mathbf{1}_{A_{i}}(S_{n}-S_{i})]" display="inline"><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><msub><mi>S</mi><mi>i</mi></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><msub><mi>A</mi><mi>i</mi></msub></msub></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>−</mo><msub><mi>S</mi><mi>i</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow></math> is <math id="S3.SS3.p14.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>
+because <math id="S3.SS3.p14.m4" class="ltx_Math" alttext="S_{i}\cdot\mathbf{1}_{A_{i}}" display="inline"><mrow><msub><mi>S</mi><mi>i</mi></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><msub><mi>A</mi><mi>i</mi></msub></msub></mrow></math> and <math id="S3.SS3.p14.m5" class="ltx_Math" alttext="S_{n}-S_{i}=X_{i+1}+\dots+X_{n}" display="inline"><mrow><mrow><msub><mi>S</mi><mi>n</mi></msub><mo>−</mo><msub><mi>S</mi><mi>i</mi></msub></mrow><mo>=</mo><mrow><msub><mi>X</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>X</mi><mi>n</mi></msub></mrow></mrow></math> are independent
+and <math id="S3.SS3.p14.m6" class="ltx_Math" alttext="\mathbb{E}[X_{i+1}+\dots+X_{n}]=0" display="inline"><mrow><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msub><mi>X</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>X</mi><mi>n</mi></msub></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>,
+and the last term is <math id="S3.SS3.p14.m7" class="ltx_Math" alttext="\geq 0" display="inline"><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S3.SS3.p15" class="ltx_para">
+<p class="ltx_p">Combining the inequalities, we get</p>
+<div class="table-container"><table id="Ex26" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex26.m1" class="ltx_Math" alttext="a^{2}\Pr[A_{i}]\leq\mathbb{E}[S_{n}^{2}\cdot\mathbf{1}_{A_{i}}]." display="block"><mrow><mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo lspace="0.167em">⁢</mo><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>A</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow><mo>≤</mo><mrow><mi>𝔼</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><msubsup><mi>S</mi><mi>n</mi><mn>2</mn></msubsup><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mn>𝟏</mn><msub><mi>A</mi><mi>i</mi></msub></msub></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Summing over all <math id="S3.SS3.p15.m1" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math> gives the final result.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.SS3.p16" class="ltx_para">
+<p class="ltx_p">Generalizing:</p>
+</div>
+<div id="S3.Thmtheorem7" class="ltx_theorem ltx_theorem_corollary">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Corollary 41.3.7</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem7.p1.m1" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, … be independent random variables with mean <math id="S3.Thmtheorem7.p1.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>. Define <math id="S3.Thmtheorem7.p1.m3" class="ltx_Math" alttext="S_{i}" display="inline"><msub><mi>S</mi><mi>i</mi></msub></math> as above. Then</p>
+<div class="table-container"><table id="Ex27" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex27.m1" class="ltx_Math" alttext="\Pr[|S_{i}|\geq a\text{ for any }1\leq i]\leq\frac{1}{a^{2}}\sum_{1\leq i}%
+\operatorname{Var}[X_{i}]." display="block"><mrow><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mi>a</mi><mo>⁢</mo><mtext> for any </mtext><mo>⁢</mo><mn>1</mn></mrow><mo>≤</mo><mi>i</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo>≤</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><msup><mi>a</mi><mn>2</mn></msup></mfrac><mo>⁢</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mn>1</mn><mo>≤</mo><mi>i</mi></mrow></munder><mrow><mi>Var</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><msub><mi>X</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.SS3.p17" class="ltx_para">
+<p class="ltx_p">The event</p>
+<div class="table-container"><table id="Ex28" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex28.m1" class="ltx_Math" alttext="|S_{i}|\geq a\text{ for any }1\leq i\leq n" display="block"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mi>a</mi><mo>⁢</mo><mtext> for any </mtext><mo>⁢</mo><mn>1</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is a subset of the event</p>
+<div class="table-container"><table id="Ex29" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex29.m1" class="ltx_Math" alttext="|S_{i}|\geq a\text{ for any }1\leq i\leq n+1" display="block"><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mi>a</mi><mo>⁢</mo><mtext> for any </mtext><mo>⁢</mo><mn>1</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">therefore we have</p>
+<div class="table-container"><table id="Ex30" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex30.m1" class="ltx_Math" alttext="\Pr[|S_{i}|\geq a\text{ for any }1\leq i]=\lim_{n\to\infty}\Pr[|S_{i}|\geq a%
+\text{ for any }1\leq i\leq n]." display="block"><mrow><mrow><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mi>a</mi><mo>⁢</mo><mtext> for any </mtext><mo>⁢</mo><mn>1</mn></mrow><mo>≤</mo><mi>i</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0.167em">lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mi>a</mi><mo>⁢</mo><mtext> for any </mtext><mo>⁢</mo><mn>1</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Applying Kolmogorov’s inequality on each <math id="S3.SS3.p17.m1" class="ltx_Math" alttext="\Pr[|S_{i}|\geq a\text{ for any }1\leq i\leq n]" display="inline"><mrow><mi>Pr</mi><mo>⁡</mo><mrow><mo stretchy="false">[</mo><mrow><mrow><mo stretchy="false">|</mo><msub><mi>S</mi><mi>i</mi></msub><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mi>a</mi><mo>⁢</mo><mtext> for any </mtext><mo>⁢</mo><mn>1</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></math>,
+we get the result.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.SS3.p18" class="ltx_para">
+<p class="ltx_p">Now, the idea is to apply this on the <em class="ltx_emph ltx_font_italic">tails</em> of the sequence</p>
+<div class="table-container"><table id="Ex31" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex31.m1" class="ltx_Math" alttext="X_{1},\frac{X_{2}}{2},\frac{X_{3}}{3},\dots" display="block"><mrow><msub><mi>X</mi><mn>1</mn></msub><mo>,</mo><mfrac linethickness="0.6px"><msub><mi>X</mi><mn>2</mn></msub><mn>2</mn></mfrac><mo>,</mo><mfrac linethickness="0.6px"><msub><mi>X</mi><mn>3</mn></msub><mn>3</mn></mfrac><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">By the corollary, we know that for every <math id="S3.SS3.p18.m1" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, in almost every world,
+there exists <math id="S3.SS3.p18.m2" class="ltx_Math" alttext="n_{\varepsilon}" display="inline"><msub><mi>n</mi><mi>ε</mi></msub></math> such that for arbitrary <math id="S3.SS3.p18.m3" class="ltx_Math" alttext="i\geq n_{\varepsilon}" display="inline"><mrow><mi>i</mi><mo>≥</mo><msub><mi>n</mi><mi>ε</mi></msub></mrow></math>,
+<math id="S3.SS3.p18.m4" class="ltx_Math" alttext="|T_{i}-T_{n_{\varepsilon}}|&lt;\frac{\varepsilon}{2}" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi>T</mi><mi>i</mi></msub><mo>−</mo><msub><mi>T</mi><msub><mi>n</mi><mi>ε</mi></msub></msub></mrow><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mfrac linethickness="0.6px"><mi>ε</mi><mn>2</mn></mfrac></mrow></math>. By triangle inequality, for arbitrary <math id="S3.SS3.p18.m5" class="ltx_Math" alttext="i,j\geq n_{\varepsilon}" display="inline"><mrow><mrow><mi>i</mi><mo>,</mo><mi>j</mi></mrow><mo>≥</mo><msub><mi>n</mi><mi>ε</mi></msub></mrow></math>,
+then <math id="S3.SS3.p18.m6" class="ltx_Math" alttext="|T_{i}-T_{j}|&lt;\varepsilon" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msub><mi>T</mi><mi>i</mi></msub><mo>−</mo><msub><mi>T</mi><mi>j</mi></msub></mrow><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mi>ε</mi></mrow></math>.</p>
+</div>
+<div id="S3.SS3.p19" class="ltx_para">
+<p class="ltx_p">By Cauchy’s criterion for convergence,
+this implies the sequence <math id="S3.SS3.p19.m1" class="ltx_Math" alttext="T_{n}" display="inline"><msub><mi>T</mi><mi>n</mi></msub></math> is convergent in almost every world.</p>
+</div>
+<div id="S3.SS3.p20" class="ltx_para">
+<p class="ltx_p">Finally, here is the relation with the original goal:</p>
+</div>
+<div id="S3.Thmtheorem8" class="ltx_theorem ltx_theorem_claim">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Claim 41.3.8</span></span><span class="ltx_text ltx_font_bold"> </span>(Relation with the original series)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">In every world where <math id="S3.Thmtheorem8.p1.m1" class="ltx_Math" alttext="T_{n}" display="inline"><msub><mi>T</mi><mi>n</mi></msub></math> converges, then <math id="S3.Thmtheorem8.p1.m2" class="ltx_Math" alttext="M_{n}" display="inline"><msub><mi>M</mi><mi>n</mi></msub></math> converges to <math id="S3.Thmtheorem8.p1.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.SS3.p21" class="ltx_para">
+<p class="ltx_p">Just a bit of algebraic manipulation.
+We try to write <math id="S3.SS3.p21.m1" class="ltx_Math" alttext="M_{n}" display="inline"><msub><mi>M</mi><mi>n</mi></msub></math> in terms of <math id="S3.SS3.p21.m2" class="ltx_Math" alttext="T_{n}" display="inline"><msub><mi>T</mi><mi>n</mi></msub></math>.</p>
+</div>
+<div id="S3.SS3.p22" class="ltx_para">
+<p class="ltx_p">We have</p>
+<div class="table-container"><table id="Ex32" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex32.m1" class="ltx_Math" alttext="X_{n}=n\cdot(T_{n}-T_{n-1})" display="block"><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>=</mo><mrow><mi>n</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>T</mi><mi>n</mi></msub><mo>−</mo><msub><mi>T</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">so</p>
+<div class="table-container"><table id="A5.S3.EGx105" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex33"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex33.m1" class="ltx_Math" alttext="\displaystyle M_{n}" display="inline"><msub><mi>M</mi><mi>n</mi></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex33.m2" class="ltx_Math" alttext="\displaystyle=\frac{(T_{1}-T_{0})+2(T_{2}-T_{1})+\dots+n(T_{n}-T_{n-1})}{n}" display="inline"><mrow><mi></mi><mo>=</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>T</mi><mn>1</mn></msub><mo>−</mo><msub><mi>T</mi><mn>0</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>T</mi><mn>2</mn></msub><mo>−</mo><msub><mi>T</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mrow><mi>n</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>T</mi><mi>n</mi></msub><mo>−</mo><msub><mi>T</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mi>n</mi></mfrac></mstyle></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex34"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex34.m1" class="ltx_Math" alttext="\displaystyle=\frac{nT_{n}-(T_{0}+T_{1}+\cdots+T_{n-1})}{n}" display="inline"><mrow><mi></mi><mo>=</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><mrow><mi>n</mi><mo>⁢</mo><msub><mi>T</mi><mi>n</mi></msub></mrow><mo>−</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>T</mi><mn>0</mn></msub><mo>+</mo><msub><mi>T</mi><mn>1</mn></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>T</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mi>n</mi></mfrac></mstyle></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex35"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex35.m1" class="ltx_Math" alttext="\displaystyle=T_{n}-\frac{T_{0}+T_{1}+\cdots+T_{n-1}}{n}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><msub><mi>T</mi><mi>n</mi></msub><mo>−</mo><mstyle displaystyle="true"><mfrac linethickness="0.6px"><mrow><msub><mi>T</mi><mn>0</mn></msub><mo>+</mo><msub><mi>T</mi><mn>1</mn></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>T</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mi>n</mi></mfrac></mstyle></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Now this is easy: given <math id="S3.SS3.p22.m1" class="ltx_Math" alttext="T_{n}" display="inline"><msub><mi>T</mi><mi>n</mi></msub></math> converges,
+<math id="S3.SS3.p22.m2" class="ltx_Math" alttext="\frac{T_{0}+T_{1}+\cdots+T_{n-1}}{n}" display="inline"><mfrac linethickness="0.6px"><mrow><msub><mi>T</mi><mn>0</mn></msub><mo>+</mo><msub><mi>T</mi><mn>1</mn></msub><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><msub><mi>T</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mi>n</mi></mfrac></math> must also converge to the same value (Cesàro mean),
+so <math id="S3.SS3.p22.m3" class="ltx_Math" alttext="M_{n}\to 0" display="inline"><mrow><msub><mi>M</mi><mi>n</mi></msub><mo stretchy="false">→</mo><mn>0</mn></mrow></math> as required.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.Thmtheorem9" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 41.3.9</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">The converse is not true: if <math id="S3.Thmtheorem9.p1.m1" class="ltx_Math" alttext="M_{n}\to 0" display="inline"><mrow><msub><mi>M</mi><mi>n</mi></msub><mo stretchy="false">→</mo><mn>0</mn></mrow></math>, <math id="S3.Thmtheorem9.p1.m2" class="ltx_Math" alttext="T_{n}" display="inline"><msub><mi>T</mi><mi>n</mi></msub></math> does not necessarily converge.
+Find a counterexample. (Write <math id="S3.Thmtheorem9.p1.m3" class="ltx_Math" alttext="T_{n}" display="inline"><msub><mi>T</mi><mi>n</mi></msub></math> in terms of <math id="S3.Thmtheorem9.p1.m4" class="ltx_Math" alttext="M_{n}" display="inline"><msub><mi>M</mi><mi>n</mi></msub></math>, and see what happens.)</span></p>
+</div>
+</div>
+</section>
+<section id="S3.SS4" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">41.3.iv </span>The general proof</h3>
+
+<div id="S3.SS4.p1" class="ltx_para">
+<p class="ltx_p">The basic idea is to truncate the value of each <math id="S3.SS4.p1.m1" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> so that each of them has finite variance.</p>
+</div>
+<span id="todo8" class="ltx_note ltx_role_todo"><sup class="ltx_note_mark">8</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">8</sup><span class="ltx_note_type">todo: </span><span class="ltx_tag ltx_tag_note">8</span>write</span></span></span>
+</section>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">41.4 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 41A</span></span><span class="ltx_text ltx_font_bold"> </span>(Quantifier hell)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem1.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem1.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem1.p2" class="ltx_para">
+<p class="ltx_p">In the definition of convergence in probability
+suppose we allowed <math id="Thmproblem1.p2.m1" class="ltx_Math" alttext="\delta=0" display="inline"><mrow><mi>δ</mi><mo>=</mo><mn>0</mn></mrow></math>
+(rather than <math id="Thmproblem1.p2.m2" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>).
+Show that the modified definition is
+equivalent to almost sure convergence.
+
+This is actually trickier than it appears,
+you cannot just push quantifiers (contrary to the name),
+but have to focus on <math id="Thmproblem1.p2.m3" class="ltx_Math" alttext="\varepsilon=1/m" display="inline"><mrow><mi>ε</mi><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mi>m</mi></mrow></mrow></math> for <math id="Thmproblem1.p2.m4" class="ltx_Math" alttext="m=1,2,\dots" display="inline"><mrow><mi>m</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>.</p>
+</div>
+<div id="Thmproblem1.p3" class="ltx_para">
+<p class="ltx_p">The problem is saying for each <math id="Thmproblem1.p3.m1" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,
+if <math id="Thmproblem1.p3.m2" class="ltx_Math" alttext="n&gt;N_{\varepsilon}" display="inline"><mrow><mi>n</mi><mo>&gt;</mo><msub><mi>N</mi><mi>ε</mi></msub></mrow></math>, we have
+<math id="Thmproblem1.p3.m3" class="ltx_math_unparsed" alttext="\mu(\omega:|X(\omega)-X_{n}(\omega)|\leq\varepsilon)=1" display="inline"><mrow><mi>μ</mi><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo lspace="0.278em" rspace="0em">:</mo><mo fence="false" rspace="0.167em" stretchy="false">|</mo><mi>X</mi><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow><mo>−</mo><msub><mi>X</mi><mi>n</mi></msub><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow><mo fence="false" stretchy="false">|</mo><mo lspace="0.167em">≤</mo><mi>ε</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mn>1</mn></mrow></math>.
+For each <math id="Thmproblem1.p3.m4" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> there are some measure zero “bad worlds”;
+take the union.
+
+
+For each positive integer <math id="Thmproblem1.p3.m5" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>,
+consider what happens when <math id="Thmproblem1.p3.m6" class="ltx_Math" alttext="\varepsilon=1/m" display="inline"><mrow><mi>ε</mi><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mi>m</mi></mrow></mrow></math>.
+Then, by hypothesis, there is a threshold <math id="Thmproblem1.p3.m7" class="ltx_Math" alttext="N_{m}" display="inline"><msub><mi>N</mi><mi>m</mi></msub></math>
+such that the <em class="ltx_emph ltx_font_italic">anomaly set</em></p>
+<div class="table-container"><table id="Ex36" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex36.m1" class="ltx_Math" alttext="A_{m}\coloneqq\left\{\omega:|X(\omega)-X_{n}(\omega)|\geq\frac{1}{m}\text{ for%
+ some }n&gt;N_{m}\right\}" display="block"><mrow><msub><mi>A</mi><mi>m</mi></msub><mo>≔</mo><mrow><mo>{</mo><mi>ω</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">|</mo><mrow><mrow><mi>X</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>≥</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mi>m</mi></mfrac><mo>⁢</mo><mtext> for some </mtext><mo>⁢</mo><mi>n</mi></mrow><mo>&gt;</mo><msub><mi>N</mi><mi>m</mi></msub></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">has measure <math id="Thmproblem1.p3.m8" class="ltx_Math" alttext="\mu(A_{m})=0" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>A</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.
+Hence, the countable union <math id="Thmproblem1.p3.m9" class="ltx_Math" alttext="A=\bigcup_{m\geq 1}A_{m}" display="inline"><mrow><mi>A</mi><mo rspace="0.111em">=</mo><mrow><msub><mo>⋃</mo><mrow><mi>m</mi><mo>≥</mo><mn>1</mn></mrow></msub><msub><mi>A</mi><mi>m</mi></msub></mrow></mrow></math> has measure zero too.</p>
+</div>
+<div id="Thmproblem1.p4" class="ltx_para">
+<p class="ltx_p">So the complement of <math id="Thmproblem1.p4.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> has measure <math id="Thmproblem1.p4.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.
+For any world <math id="Thmproblem1.p4.m3" class="ltx_Math" alttext="\omega\notin A" display="inline"><mrow><mi>ω</mi><mo>∉</mo><mi>A</mi></mrow></math>,
+we then have</p>
+<div class="table-container"><table id="Ex37" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex37.m1" class="ltx_Math" alttext="\lim_{n}\left\lvert X(\omega)-X_{n}(\omega)\right\rvert=1" display="block"><mrow><mrow><munder><mo movablelimits="false">lim</mo><mi>n</mi></munder><mrow><mo lspace="0em">|</mo><mrow><mrow><mi>X</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><msub><mi>X</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>|</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">because when <math id="Thmproblem1.p4.m4" class="ltx_Math" alttext="n&gt;N_{m}" display="inline"><mrow><mi>n</mi><mo>&gt;</mo><msub><mi>N</mi><mi>m</mi></msub></mrow></math> that absolute value
+is always at most <math id="Thmproblem1.p4.m5" class="ltx_Math" alttext="1/m" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>m</mi></mrow></math> (as <math id="Thmproblem1.p4.m6" class="ltx_Math" alttext="\omega\notin A_{m}" display="inline"><mrow><mi>ω</mi><mo>∉</mo><msub><mi>A</mi><mi>m</mi></msub></mrow></math>).</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 41B</span></span><span class="ltx_text ltx_font_bold"> </span>(Almost sure convorgence is not topologizable)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Consider the space of all random variables on <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="\Omega=[0,1]" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math>.
+Prove that it’s impossible to impose a metric on this space
+which makes the following statement true:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">A sequence <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="X_{1}" display="inline"><msub><mi>X</mi><mn>1</mn></msub></math>, <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="X_{2}" display="inline"><msub><mi>X</mi><mn>2</mn></msub></math>, …, of random variables converges almost surely to <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+if and only if <math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="X_{i}" display="inline"><msub><mi>X</mi><mi>i</mi></msub></math> converge to <math id="Thmproblem2.p1.m6" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> in the metric.</p>
+</blockquote>
+<p class="ltx_p"><a href="https://math.stackexchange.com/a/2201906/229197" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://math.stackexchange.com/a/2201906/229197</a></p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../prob/random-variables.html">Previous chapter: Random variables (TO DO)</a><br />
+<a href="../prob/martingales.html">Next chapter: Stopped martingales (TO DO)</a>
+</nav>
+
+		</main>
+	</body>
+</html>

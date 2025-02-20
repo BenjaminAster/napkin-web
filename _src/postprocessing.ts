@@ -2,6 +2,8 @@
 import * as FS from "node:fs/promises";
 import * as Path from "node:path";
 
+import asymptoteSVGs from "./asy-temp/all-svgs.json" with { type: "json" };
+
 const escapeHTML = (input: string) => input
 	.replaceAll('&', '&amp;')
 	.replaceAll('"', '&quot;')
@@ -69,136 +71,181 @@ const chapterRewrites = new Map([
 
 const mainIndexHTML = await FS.readFile(Path.resolve(import.meta.dirname, `../latexml-out/index.html`), { encoding: "utf-8" });
 const mainIndexTOC = mainIndexHTML.match(/<ol class="ltx_toclist ltx_toclist_document">\n(.+)\n<\/ol>/s)[1];
-const index = [
+interface Chapter {
+	id: string;
+	originalFileName: string;
+	name: string;
+	part: Part;
+	number: string | null;
+}
+interface Part {
+	id: string;
+	name: string;
+	originalPath: string;
+	chapters: Chapter[];
+	romanNumeral: string | null;
+}
+const book: Part[] = [
 	{
 		id: "fontmatter",
 		name: "Fontmatter",
 		originalPath: "",
 		chapters: [],
+		romanNumeral: null,
 	},
 ];
+
 for (const line of mainIndexTOC.split("\n")) {
-	console.log(line);
-	let { path, name } = line.match(/<a href="(?<path>[^"]+)".+<span class="ltx_text ltx_ref_title">(?<name>.+)<\/span><\/a>/).groups as { path: string; name: string; };
-	console.log({ path, name });
+	// console.log(line);
+	let { path, name } = line.match(
+		/<a href="(?<path>[^"]+)".+<span class="ltx_text ltx_ref_title">(?<name>.+)<\/span><\/a>/
+	).groups as { path: string; name: string; };
+	// console.log({ path, name });
 	if (path.endsWith(".html")) {
-		index[0].chapters.push({
+		book[0].chapters.push({
 			id: chapterRewrites.get(path),
-			originalPath: path,
+			originalFileName: path,
 			name: name,
+			part: book[0],
+			number: null,
 		});
 	} else {
 		let id = path.slice(0, -1);
 		if (id.startsWith("part_")) id = id.slice(5);
 		else id = "appendix";
-		name = name.split("</span>").at(-1);
-		index.push({
+		let romanNumeral: string;
+		[romanNumeral, name] = name.slice('<span class="ltx_tag ltx_tag_ref">'.length).split(" </span>");
+		book.push({
 			id,
 			name,
 			originalPath: path,
 			chapters: [],
+			romanNumeral,
 		});
 	}
 };
 
-console.dir(index, {
-	depth: Infinity,
-});
+// console.dir(index, {
+// 	depth: Infinity,
+// });
 
-for (const part of index.slice(1)) {
-	
+for (const part of book.slice(1)) {
+	const partIndexHTML = await FS.readFile(Path.resolve(import.meta.dirname, `../latexml-out/${part.originalPath}index.html`), { encoding: "utf-8" });
+	const partTOCHTML = partIndexHTML.match(/<ol class="ltx_toclist ltx_toclist_part">\n(.+)\n<\/ol>/s)[1];
+	part.chapters.push(...partTOCHTML.split("\n").map((line) => {
+		const { originalFileName, name, chapterNumber } = line.match(
+			/<a href="(?<originalFileName>[^"]+)".+<span class="ltx_tag ltx_tag_ref">(?<chapterNumber>\w+) <\/span>(?<name>.+)<\/span>/
+		).groups as { originalFileName: string; name: string; chapterNumber: string; };
+		let id: string = originalFileName.replaceAll("_", "-").slice(0, -5);
+		if (id.startsWith("ch-")) id = id.slice(3).toLowerCase();
+		else if (id.startsWith("app-")) id = id.slice(4);
+		else if (id.startsWith("Ch")) id = "p-adic-numbers";
+		else if (id.startsWith("A")) id = "glossary";
+		return {
+			originalFileName,
+			name,
+			id,
+			part,
+			number: chapterNumber,
+		};
+	}));
 }
 
-// const mainTOC = await Promise.all(index.map(async ({ id: partId, name: partName }) => {
-// 	const partTOCFile = await FS.readFile(Path.resolve(import.meta.dirname, `../latexml-out/part_${partId}/index.html`), { encoding: "utf-8" });
-// 	// console.log(partId);
-// 	const partTOCHTML = partTOCFile.match(/<ol class="ltx_toclist ltx_toclist_part">\n(.+)\n<\/ol>/s)[1];
-// 	const partTOC = partTOCHTML.split("\n").map((line) => ({
-// 		...(line.match(/<a href="ch_(?<id>.+)\..+ <\/span>(?<name>.+)<\/span>/)?.groups ?? {}) as { id: string; name: string; },
-// 		partId,
-// 	})).filter(({ id }) => id);
-// 	return {
-// 		id: partId,
-// 		name: partName,
-// 		toc: partTOC,
-// 	};
-// }));
+console.dir(book, { depth: Infinity });
 
-// for (let partIndex = 0; partIndex < mainTOC.length; ++partIndex) {
-// 	const { id: partId, name: partName, toc } = mainTOC[partIndex];
-// 	for (let chapterIndex = 0; chapterIndex < toc.length; ++chapterIndex) {
-// 		const { id: chapterId, name: chapterName } = toc[chapterIndex];
-// 		const newChapterId = chapterId.replaceAll("_", "-");
-// 		const file = await FS.readFile(Path.resolve(import.meta.dirname, `../latexml-out/part_${partId}/ch_${chapterId}.html`), { encoding: "utf-8" });
-// 		const fileContent = file.match(/(<div class="ltx_page_content">.+<\/div>)\n<footer class="ltx_page_footer">/s)[1]
-// 			.replaceAll(/color:#([0-9A-F]{6});/g, "color:var(--latex-color-$1);")
-// 			.replaceAll(/ mathcolor="#.{6}"/g, '')
-// 			.replaceAll(/ mathsize="\d{2}%"/g, '')
-// 			.replaceAll('<mo lspace="0em" rspace="0.167em">\u2223</mo>', '<mo>\u2223</mo>')
-// 			.replaceAll('<mfrac>', '<mfrac linethickness="0.6px">')
-// 			.replaceAll(/<mo fence="true" ([lr])space="0em" stretchy="true">\u2225<\/mo>/g, '<mo fence="true" $1space="0em" stretchy="true">\u2016</mo>')
-// 			.replaceAll('<table ', '<div class="table-container"><table ')
-// 			.replaceAll('</table>', '</table></div>')
-// 			.replaceAll('\u220E', '<sub title="End of proof">\u25FB\uFE0E</sub>')
-// 			.replaceAll('<img ', '<img loading="lazy" ')
-// 			.replaceAll(' src="media/', ' src="../media/')
-// 			.replaceAll(/ href="\.\.\/part_(?<part>.+)\/ch_(?<chapter>.+)\.html/g,
-// 				(...args) => ` href="../${args.at(-1).part.replaceAll("_", "-")}/${args.at(-1).chapter.replaceAll("_", "-")}.html`
-// 			)
-// 			.replaceAll('<h6 ', '<h5 ')
-// 			.replaceAll('</h6>', '</h5>');
-// 		const outPath = Path.resolve(import.meta.dirname, `../${partId}/${newChapterId}.html`);
-// 		const previousChapter = toc[chapterIndex - 1] ?? mainTOC[partIndex - 1]?.toc.at(-1) ?? null;
-// 		const nextChapter = toc[chapterIndex + 1] ?? mainTOC[partIndex + 1]?.toc[0] ?? null;
-// 		const navbar = [
-// 			``,
-// 			`<nav>`,
-// 			`<a href="../">Table of Contents</a><br />`,
-// 			previousChapter
-// 				? `<a href="${escapeHTML(
-// 					`../${previousChapter.partId}/${previousChapter.id.replaceAll("_", "-")}.html`
-// 				)}">Previous chapter: ${escapeHTML(previousChapter.name)}</a><br />`
-// 				: "",
-// 			nextChapter
-// 				? `<a href="${escapeHTML(
-// 					`../${nextChapter.partId}/${nextChapter.id.replaceAll("_", "-")}.html`
-// 				)}">Next chapter: ${escapeHTML(nextChapter.name)}</a>`
-// 				: "",
-// 			`</nav>`,
-// 			``,
-// 		].join("\n");
-// 		await FS.mkdir(Path.dirname(outPath), { recursive: true });
-// 		await FS.writeFile(outPath, wrapHTML({
-// 			title: `${chapterName}`,
-// 			html: navbar + fileContent + navbar,
-// 			base: "../",
-// 		}));
-// 	}
-// }
+for (let partIndex = 0; partIndex < book.length; ++partIndex) {
+	const part = book[partIndex];
+	for (let chapterIndex = 0; chapterIndex < part.chapters.length; ++chapterIndex) {
+		const chapter = part.chapters[chapterIndex];
+		const file = await FS.readFile(
+			Path.resolve(import.meta.dirname, `../latexml-out/${part.originalPath}${chapter.originalFileName}`),
+			"utf-8",
+		);
+		let asymptoteCount = 0;
+		const fileContent = file.match(/(<div class="ltx_page_content">.+<\/div>)\n<footer class="ltx_page_footer">/s)[1]
+			.replaceAll(/<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">.*?<\/pre>/sg, () => {
+				++asymptoteCount;
+				return [
+					'<div class="asymptote-drawing">',
+					asymptoteSVGs[`${chapter.number}${String.fromCodePoint(0x40 + asymptoteCount)}`]
+						.replaceAll(" id='", ` id='asymptote-${chapter.number}-${asymptoteCount}-`)
+						.replaceAll("='url(#", `='url(#asymptote-${chapter.number}-${asymptoteCount}-`)
+						.replaceAll(" xlink:href='#", ` href='#asymptote-${chapter.number}-${asymptoteCount}-`),
+					'</div>',
+				].join("\n");
+			})
+			.replaceAll(/color:#([0-9A-Fa-f]{6});/g, "color:var(--latex-color-$1);")
+			.replaceAll(/ (stroke|fill)=['"]#([0-9A-Fa-f]{3,6})['"]/g, ' $1="var(--asymptote-color-$2)"')
+			.replaceAll(/ mathcolor="#.{6}"/g, '')
+			.replaceAll(/ mathsize="\d{2}%"/g, '')
+			.replaceAll('<mo lspace="0em" rspace="0.167em">\u2223</mo>', '<mo>\u2223</mo>')
+			.replaceAll('<mfrac>', '<mfrac linethickness="0.6px">')
+			.replaceAll(/<mo fence="true" ([lr])space="0em" stretchy="true">\u2225<\/mo>/g, '<mo fence="true" $1space="0em" stretchy="true">\u2016</mo>')
+			.replaceAll('<table ', '<div class="table-container"><table ')
+			.replaceAll('</table>', '</table></div>')
+			.replaceAll('\u220E', '<sub title="End of proof">\u25FB\uFE0E</sub>')
+			.replaceAll('<img ', '<img loading="lazy" ')
+			.replaceAll(' src="external/venhance-napkin/', ' src="../external/venhance-napkin/')
+			.replaceAll(' src="x', ` src="../latexml-out/${part.originalPath}/x`)
+			.replaceAll(/ href="\.\.\/part_(?<part>.+)\/ch_(?<chapter>.+)\.html/g,
+				(...args) => ` href="../${args.at(-1).part.replaceAll("_", "-")}/${args.at(-1).chapter.replaceAll("_", "-")}.html`
+			)
+			.replaceAll('<h6 ', '<h5 ')
+			.replaceAll('</h6>', '</h5>');
+		const outPath = Path.resolve(import.meta.dirname, `../${part.id}/${chapter.id}.html`);
+		const previousChapter = part.chapters[chapterIndex - 1] ?? book[partIndex - 1]?.chapters.at(-1) ?? null;
+		const nextChapter = part.chapters[chapterIndex + 1] ?? book[partIndex + 1]?.chapters[0] ?? null;
+		const navbar = [
+			``,
+			`<nav>`,
+			`<a href="../">Table of Contents</a><br />`,
+			previousChapter
+				? `<a href="${escapeHTML(
+					`../${previousChapter.part.id}/${previousChapter.id.replaceAll("_", "-")}.html`
+				)}">Previous chapter: ${escapeHTML(previousChapter.name)}</a><br />`
+				: "",
+			nextChapter
+				? `<a href="${escapeHTML(
+					`../${nextChapter.part.id}/${nextChapter.id.replaceAll("_", "-")}.html`
+				)}">Next chapter: ${escapeHTML(nextChapter.name)}</a>`
+				: "",
+			`</nav>`,
+			``,
+		].join("\n");
+		await FS.mkdir(Path.dirname(outPath), { recursive: true });
+		await FS.writeFile(outPath, wrapHTML({
+			title: `${chapter.name}`,
+			html: navbar + fileContent + navbar,
+			base: "../",
+		}));
+	}
+}
 
-// {
-// 	await FS.writeFile(Path.resolve(import.meta.dirname, `../index.html`), wrapHTML({
-// 		title: "An infinitely large napkin",
-// 		html: [
-// 			`<h1>An infinitely large napkin</h1>`,
-// 			`<h2>Table of Contents</h2>`,
-// 			`<ul id="toc">`,
-// 			...mainTOC.map(part => [
-// 				`<li>`,
-// 				part.name,
-// 				`<ul>`,
-// 				...part.toc.map(chapter => [
-// 					`<li>`,
-// 					`<a href="${escapeHTML(`./${chapter.partId}/${chapter.id.replaceAll("_", "-")}.html`)}">`,
-// 					chapter.name,
-// 					`</a>`,
-// 					`</li>`,
-// 				].join("\n")),
-// 				`</ul>`,
-// 				`</li>`,
-// 			].join("\n")),
-// 			`</ul>`,
-// 		].join("\n"),
-// 		base: "./",
-// 	}));
-// }
+{
+	await FS.writeFile(Path.resolve(import.meta.dirname, `../index.html`), wrapHTML({
+		title: "An infinitely large napkin",
+		html: [
+			`<h1>An infinitely large napkin</h1>`,
+			`<h2>Table of Contents</h2>`,
+			`<ul id="toc">`,
+			...book.map((part, partNumber) => [
+				`<li>`,
+				part.romanNumeral ? `${part.romanNumeral}: ` : "",
+				part.name,
+				`<ul>`,
+				...part.chapters.map(chapter => [
+					`<li>`,
+					`<a href="${escapeHTML(`./${part.id}/${chapter.id}.html`)}">`,
+					(chapter.number ? `${chapter.number}: ` : ""),
+					chapter.name,
+					`</a>`,
+					`</li>`,
+				].join("\n")),
+				`</ul>`,
+				`</li>`,
+			].join("\n")),
+			`</ul>`,
+		].join("\n"),
+		base: "./",
+	}));
+}

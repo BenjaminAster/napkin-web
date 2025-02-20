@@ -13,6 +13,33 @@
 	--latex-color-008000: #008000;
 	--latex-color-8C0000: #8C0000;
 	--latex-color-0000FF: #0000FF;
+	--latex-color-000000: #000000;
+
+	--asymptote-color-00c000: #00C000;
+	--asymptote-color-ff8080: #FF8080;
+	--asymptote-color-000000: #000000;
+	--asymptote-color-8080ff: #8080FF;
+	--asymptote-color-800000: #800000;
+	--asymptote-color-00c0c0: #00C0C0;
+	--asymptote-color-00bf00: #00BF00;
+	--asymptote-color-00bfbf: #00BFBF;
+	--asymptote-color-ffff00: #FFFF00;
+	--asymptote-color-c00000: #C00000;
+	--asymptote-color-bf0000: #BF0000;
+	--asymptote-color-8000ff: #8000FF;
+	--asymptote-color-ff0000: #FF0000;
+	--asymptote-color-0000ff: #0000FF;
+	--asymptote-color-00ff00: #00FF00;
+	--asymptote-color-808080: #808080;
+	--asymptote-color-c0c0c0: #C0C0C0;
+	--asymptote-color-80ffff: #80FFFF;
+	--asymptote-color-ff8000: #FF8000;
+	--asymptote-color-00ffff: #00FFFF;
+	--asymptote-color-ff00ff: #FF00FF;
+
+	--asymptote-color-f00: var(--asymptote-color-ff0000);
+	--asymptote-color-0f0: var(--asymptote-color-00ff00);
+	--asymptote-color-00f: var(--asymptote-color-0000ff);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -22,11 +49,35 @@
 		--scrollbar: #333;
 		--gray: #AAA;
 		--link: #8AF;
+
 		--latex-color-FF0000: #F55;
 		--latex-color-007091: #4CF;
 		--latex-color-008000: #4C4;
 		--latex-color-8C0000: #F77;
 		--latex-color-0000FF: #9AF;
+		--latex-color-000000: #FFF;
+
+		--asymptote-color-00c000: #5F5;
+		--asymptote-color-ff8080: #F33;
+		--asymptote-color-000000: #FFF;
+		--asymptote-color-8080ff: #33F;
+		--asymptote-color-800000: #F99;
+		--asymptote-color-00c0c0: #0CC;
+		--asymptote-color-00bf00: #5F5;
+		--asymptote-color-00bfbf: #0BB;
+		--asymptote-color-ffff00: #BB0;
+		--asymptote-color-c00000: #F77;
+		--asymptote-color-bf0000: #E66;
+		--asymptote-color-8000ff: #C8F;
+		--asymptote-color-ff0000: #F33;
+		--asymptote-color-0000ff: #99F;
+		--asymptote-color-00ff00: #4F5;
+		--asymptote-color-808080: #888;
+		--asymptote-color-c0c0c0: #666;
+		--asymptote-color-80ffff: #4DF;
+		--asymptote-color-ff8000: #F80;
+		--asymptote-color-00ffff: #0BB;
+		--asymptote-color-ff00ff: #B0B;
 	}
 }
 
@@ -136,6 +187,16 @@ math {
 	/* Source: https://ctan.org/tex-archive/fonts/newcomputermodern/otf/NewCMMath-Regular.otf */
 }
 
+.asymptote-drawing {
+	text-align: center;
+	padding-block: 1em;
+}
+
+img {
+	max-inline-size: 100%;
+	block-size: auto;
+}
+
 .table-container {
 	overflow-x: auto;
 	overflow-y: hidden;
@@ -182,16 +243,16 @@ mfrac > :first-child {
 		--color: var(--latex-color-8C0000);
 	}
 
-	&.ltx_theorem_exercise {
+	&.ltx_theorem_exercise, &.ltx_theorem_remark {
 		border-width: 0;
 		border-inline-start-width: 5px;
 	}
 
-	&.ltx_theorem_moral {
-		&>.ltx_title_theorem {
-			display: none;
-		}
+	&.ltx_theorem_moral > .ltx_title_theorem {
+		display: none;
+	}
 
+	&.ltx_theorem_moral, &.ltx_theorem_remark {
 		--color: var(--latex-color-008000);
 	}
 
@@ -238,7 +299,7 @@ br.ltx_break {
 .ltx_td,
 .ltx_th {
 	border-color: currentColor;
-	padding: 1px;
+	padding: 2px 3px;
 }
 
 .ltx_th {
@@ -320,10 +381,28 @@ mtd {
 	padding-inline: .3em;
 }
 
+mtd:empty {
+	padding: 0;
+}
+
 munder>munder[accentunder="true"]+mrow {
 	padding-inline: .2em;
 }
 
 .ltx_ERROR {
 	color: var(--latex-color-FF0000);
+}
+
+.ltx_border_t, .ltx_border_r, .ltx_border_b, .ltx_border_l,
+.ltx_border_tt, .ltx_border_rr, .ltx_border_bb, .ltx_border_ll {
+	border-color: currentColor;
+}
+
+foreignObject > .ltx_text {
+	position: absolute;
+	left: -.4em;
+}
+
+g:not([fill]) > use {
+	fill: currentColor;
 }

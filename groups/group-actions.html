@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Group actions overkill AIME problems</title>
+		<meta property="og:title" content="Group actions overkill AIME problems" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../linalg/duals-adjoint-transposes.html">Previous chapter: Duals, adjoint, and transposes</a><br />
+<a href="../groups/sylow.html">Next chapter: Find all groups</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 16 </span>Group actions overkill AIME problems</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">Consider this problem from the 1996 AIME:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">(AIME 1996) Two of the squares of a <math id="p1.m1" class="ltx_Math" alttext="7\times 7" display="inline"><mrow><mn>7</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>7</mn></mrow></math> checkerboard are painted yellow, and the rest are painted green. Two color schemes are equivalent if one can be obtained from the other by applying a rotation in the plane of the board. How many inequivalent color schemes are possible?</p>
+</blockquote>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">What’s happening here? Let <math id="p2.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be the set of the <math id="p2.m2" class="ltx_Math" alttext="\binom{49}{2}" display="inline"><mrow><mo>(</mo><mfrac linethickness="0pt"><mn>49</mn><mn>2</mn></mfrac><mo>)</mo></mrow></math> possible colorings of the board.
+What’s the natural interpretation of “rotation”?
+Answer: the group <math id="p2.m3" class="ltx_Math" alttext="\mathbb{Z}/4\mathbb{Z}=\left&lt;r\mid r^{4}=1\right&gt;" display="inline"><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>4</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>=</mo><mrow><mo>⟨</mo><mi>r</mi><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msup><mi>r</mi><mn>4</mn></msup><mo>=</mo><mn>1</mn></mrow><mo>⟩</mo></mrow></mrow></math> somehow “acts” on this set <math id="p2.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> by sending one state <math id="p2.m5" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math> to another state <math id="p2.m6" class="ltx_Math" alttext="r\cdot x" display="inline"><mrow><mi>r</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow></math>, which is just <math id="p2.m7" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> rotated by <math id="p2.m8" class="ltx_Math" alttext="90^{\circ}" display="inline"><msup><mn>90</mn><mo>∘</mo></msup></math>.
+Intuitively we’re just saying that two configurations are the same if they can be reached from one another by this “action”.</p>
+</div>
+<div id="p3" class="ltx_para">
+<p class="ltx_p">We can make all of this precise using the idea of a group action.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">16.1 </span>Definition of a group action</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> The AIME problem.</em></p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 16.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a set and <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> a group.
+A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> group action</span> is a binary operation <math id="S1.Thmtheorem1.p1.m3" class="ltx_math_unparsed" alttext="\cdot\colon G\times X\to X" display="inline"><mrow><mo rspace="0em">⋅</mo><mo rspace="0.278em">:</mo><mi>G</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>X</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></math>
+which lets a <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math> send an <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math> to <math id="S1.Thmtheorem1.p1.m6" class="ltx_Math" alttext="g\cdot x" display="inline"><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow></math>.
+It satisfies the axioms</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="(g_{1}g_{2})\cdot x=g_{1}\cdot(g_{2}\cdot x)" display="inline"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>⁢</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">⋅</mo><mi>x</mi></mrow><mo>=</mo><mrow><msub><mi>g</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>g</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for any <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="g_{1},g_{2}\in G" display="inline"><mrow><mrow><msub><mi>g</mi><mn>1</mn></msub><mo>,</mo><msub><mi>g</mi><mn>2</mn></msub></mrow><mo>∈</mo><mi>G</mi></mrow></math>
+for all <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="1_{G}\cdot x=x" display="inline"><mrow><mrow><msub><mn>1</mn><mi>G</mi></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow><mo>=</mo><mi>x</mi></mrow></math> for any <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 16.1.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of group actions)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="G=(G,\star)" display="inline"><mrow><mi>G</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">⋆</mo><mo stretchy="false">)</mo></mrow></mrow></math> be a group.</p>
+<ol id="S1.I2" class="ltx_enumerate">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">The group <math id="S1.I2.i1.p1.m1" class="ltx_Math" alttext="\mathbb{Z}/4\mathbb{Z}" display="inline"><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>4</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></math> can act on the set of ways to color a <math id="S1.I2.i1.p1.m2" class="ltx_Math" alttext="7\times 7" display="inline"><mrow><mn>7</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>7</mn></mrow></math>
+board either yellow or green.</p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The group <math id="S1.I2.i2.p1.m1" class="ltx_Math" alttext="\mathbb{Z}/4\mathbb{Z}=\left&lt;r\mid r^{4}=1\right&gt;" display="inline"><mrow><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>4</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow><mo>=</mo><mrow><mo>⟨</mo><mi>r</mi><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msup><mi>r</mi><mn>4</mn></msup><mo>=</mo><mn>1</mn></mrow><mo>⟩</mo></mrow></mrow></math> acts on the <math id="S1.I2.i2.p1.m2" class="ltx_Math" alttext="xy" display="inline"><mrow><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></math>-plane <math id="S1.I2.i2.p1.m3" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> as follows: <math id="S1.I2.i2.p1.m4" class="ltx_Math" alttext="r\cdot(x,y)=(y,-x)" display="inline"><mrow><mrow><mi>r</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mrow><mo>−</mo><mi>x</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
+In other words, it’s a rotation by <math id="S1.I2.i2.p1.m5" class="ltx_Math" alttext="90^{\circ}" display="inline"><msup><mn>90</mn><mo>∘</mo></msup></math>.</p>
+</div>
+</li>
+<li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">The dihedral group <math id="S1.I2.i3.p1.m1" class="ltx_Math" alttext="D_{2n}" display="inline"><msub><mi>D</mi><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></msub></math> acts on the set of ways to color the vertices of an <math id="S1.I2.i3.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-gon.</p>
+</div>
+</li>
+<li id="S1.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S1.I2.i4.p1" class="ltx_para">
+<p class="ltx_p">The group <math id="S1.I2.i4.p1.m1" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math> acts on <math id="S1.I2.i4.p1.m2" class="ltx_Math" alttext="X=\left\{1,2,\dots,n\right\}" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mo>{</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mi>n</mi><mo>}</mo></mrow></mrow></math>
+by applying the permutation <math id="S1.I2.i4.p1.m3" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>: <math id="S1.I2.i4.p1.m4" class="ltx_Math" alttext="\sigma\cdot x\coloneqq\sigma(x)" display="inline"><mrow><mrow><mi>σ</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow><mo>≔</mo><mrow><mi>σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I2.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(e)</span> 
+<div id="S1.I2.i5.p1" class="ltx_para">
+<p class="ltx_p">The group <math id="S1.I2.i5.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> can act on itself (i.e. <math id="S1.I2.i5.p1.m2" class="ltx_Math" alttext="X=G" display="inline"><mrow><mi>X</mi><mo>=</mo><mi>G</mi></mrow></math>) by left multiplication: put <math id="S1.I2.i5.p1.m3" class="ltx_Math" alttext="g\cdot g^{\prime}\coloneqq g\star g^{\prime}" display="inline"><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mi>g</mi><mo>′</mo></msup></mrow><mo>≔</mo><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋆</mo><msup><mi>g</mi><mo>′</mo></msup></mrow></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 16.1.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that a group action can equivalently be described
+as a group homomorphism from <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> to <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="S_{X}" display="inline"><msub><mi>S</mi><mi>X</mi></msub></math>, where <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="S_{X}" display="inline"><msub><mi>S</mi><mi>X</mi></msub></math>
+is the symmetric group of permutations on <math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.</span></p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">16.2 </span>Stabilizers and orbits</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Again the AIME problem.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Given a group action <math id="S2.p2.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> on <math id="S2.p2.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>,
+we can define an equivalence relation <math id="S2.p2.m3" class="ltx_Math" alttext="\sim" display="inline"><mo>∼</mo></math> on <math id="S2.p2.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> as follows:
+<math id="S2.p2.m5" class="ltx_Math" alttext="x\sim y" display="inline"><mrow><mi>x</mi><mo>∼</mo><mi>y</mi></mrow></math> if <math id="S2.p2.m6" class="ltx_Math" alttext="x=g\cdot y" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>y</mi></mrow></mrow></math> for some <math id="S2.p2.m7" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>.
+For example, in the AIME problem, <math id="S2.p2.m8" class="ltx_Math" alttext="\sim" display="inline"><mo>∼</mo></math> means “one can be obtained from the other by a rotation”.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 16.2.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Why is this an equivalence relation?</span></p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">In that case, the AIME problem wants the number of equivalence classes under <math id="S2.p3.m1" class="ltx_Math" alttext="\sim" display="inline"><mo>∼</mo></math>.
+So let’s give these equivalence classes a name: <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> orbits</span>.
+We usually denote orbits by <math id="S2.p3.m2" class="ltx_Math" alttext="\mathcal{O}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒪</mi></math>.</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">As usual, orbits carve out <math id="S2.p4.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> into equivalence classes.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='170.07874pt' height='117.644295pt' viewBox='134.755645 112.680415 170.07874 117.644295'>
+<defs>
+<path id='asymptote-16-1-g2-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-16-1-g2-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-16-1-g2-51' d='M2.016438-2.662017C2.646077-2.662017 3.044583-2.199751 3.044583-1.362889C3.044583-.366625 2.478705-.071731 2.056289-.071731C1.617933-.071731 1.020174-.231133 .74122-.653549C1.028144-.653549 1.227397-.836862 1.227397-1.099875C1.227397-1.354919 1.044085-1.538232 .789041-1.538232C.573848-1.538232 .350685-1.40274 .350685-1.083935C.350685-.326775 1.163636 .167372 2.072229 .167372C3.132254 .167372 3.873474-.565878 3.873474-1.362889C3.873474-2.024408 3.347447-2.630137 2.534496-2.805479C3.164134-3.028643 3.634371-3.57061 3.634371-4.208219S2.917061-5.300125 2.088169-5.300125C1.235367-5.300125 .589788-4.837858 .589788-4.23213C.589788-3.937235 .789041-3.809714 .996264-3.809714C1.243337-3.809714 1.40274-3.985056 1.40274-4.216189C1.40274-4.511083 1.147696-4.622665 .972354-4.630635C1.307098-5.068991 1.920797-5.092902 2.064259-5.092902C2.271482-5.092902 2.87721-5.029141 2.87721-4.208219C2.87721-3.650311 2.646077-3.315567 2.534496-3.188045C2.295392-2.940971 2.11208-2.925031 1.625903-2.893151C1.474471-2.885181 1.41071-2.87721 1.41071-2.773599C1.41071-2.662017 1.482441-2.662017 1.617933-2.662017H2.016438Z'/>
+<path id='asymptote-16-1-g0-79' d='M8.476361-5.25818C8.476361-6.643635 7.865452-7.690907 6.534544-7.690907C5.399998-7.690907 4.439999-6.774544 4.363635-6.709089C3.490908-5.847271 3.163635-4.865453 3.163635-4.843635C3.163635-4.77818 3.218181-4.767271 3.272726-4.767271C3.479999-4.767271 3.654544-4.876362 3.818181-4.996362C4.014544-5.13818 4.025453-5.170908 4.145453-5.421817C4.243635-5.639998 4.494544-6.174544 4.89818-6.632725C5.159999-6.927271 5.37818-7.090907 5.814544-7.090907C6.872725-7.090907 7.549089-6.21818 7.549089-4.78909C7.549089-2.563636 5.967271-.36 3.94909-.36C2.399999-.36 1.54909-1.592727 1.54909-3.152726C1.54909-4.636362 2.312727-6.272726 3.905453-7.210907C4.014544-7.276362 4.341817-7.472725 4.341817-7.614543C4.341817-7.690907 4.254544-7.690907 4.232726-7.690907C3.850908-7.690907 .621818-5.956362 .621818-2.683636C.621818-1.156363 1.418181 .24 3.22909 .24C5.356362 .24 8.476361-1.898181 8.476361-5.25818Z'/>
+<path id='asymptote-16-1-g1-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+</defs>
+<g id='asymptote-16-1-page1'>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<path d='M.250937 .250937H157.029V117.835H.250937V.250937Z' fill="var(--asymptote-color-8080ff)" opacity='0.2'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<path d='M.250937 .250937H157.029V117.835H.250937V.250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='293.548379' y='122.671467' href='#asymptote-16-1-g1-88'/>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<path d='M94.3178 59.0427C94.3178 31.9846 87.2986 10.0496 78.64 10.0496S62.9622 31.9846 62.9622 59.0427C62.9622 86.1009 69.9814 108.036 78.64 108.036S94.3178 86.1009 94.3178 59.0427Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<path d='M55.1233 59.0427C55.1233 42.8078 48.1041 29.6468 39.4455 29.6468C30.7868 29.6468 23.7677 42.8078 23.7677 59.0427S30.7868 88.4386 39.4455 88.4386C48.1041 88.4386 55.1233 75.2776 55.1233 59.0427Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<path d='M133.512 59.0427C133.512 34.6904 126.493 14.9489 117.835 14.9489C109.176 14.9489 102.157 34.6904 102.157 59.0427C102.157 83.3951 109.176 103.137 117.835 103.137C126.493 103.137 133.512 83.3951 133.512 59.0427Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='78.64' cy='100.197' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='78.64' cy='86.4789' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='78.64' cy='72.7608' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='78.64' cy='59.0427' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='78.64' cy='45.3246' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='78.64' cy='31.6066' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='78.64' cy='17.8885' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='39.4455' cy='59.0427' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='39.4455' cy='78.64' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='39.4455' cy='39.4455' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='117.835' cy='59.0427' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='117.835' cy='78.64' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='117.835' cy='39.4455' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='117.835' cy='98.2373' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(134.756 112.68)scale(.996264)'>
+<circle cx='117.835' cy='19.8482' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='158.293849' y='210.529727' href='#asymptote-16-1-g0-79'/>
+<use x='166.978726' y='212.166078' href='#asymptote-16-1-g2-49'/>
+<use x='196.369982' y='223.161816' href='#asymptote-16-1-g0-79'/>
+<use x='205.054859' y='224.798166' href='#asymptote-16-1-g2-50'/>
+<use x='236.390042' y='225.172768' href='#asymptote-16-1-g0-79'/>
+<use x='245.074919' y='226.809119' href='#asymptote-16-1-g2-51'/>
+</g>
+</svg>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">It turns out that a very closely related concept is:</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 16.2.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> stabilizer</span> of a point <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math>,
+denoted <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\operatorname{Stab}_{G}(x)" display="inline"><mrow><msub><mi>Stab</mi><mi>G</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math>, is the set of <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math> which fix <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>; in other words</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\operatorname{Stab}_{G}(x)\coloneqq\left\{g\in G\mid g\cdot x=x\right\}." display="block"><mrow><mrow><mrow><msub><mi>Stab</mi><mi>G</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mo>{</mo><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow><mo>=</mo><mi>x</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 16.2.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Consider the AIME problem again, with <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> the possible set of states
+(again <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="G=\mathbb{Z}/4\mathbb{Z}" display="inline"><mrow><mi>G</mi><mo>=</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>4</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>).
+Let <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> be the configuration where two opposite corners are colored yellow.
+Evidently <math id="S2.Thmtheorem3.p1.m4" class="ltx_Math" alttext="1_{G}" display="inline"><msub><mn>1</mn><mi>G</mi></msub></math> fixes <math id="S2.Thmtheorem3.p1.m5" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>, but so does the <math id="S2.Thmtheorem3.p1.m6" class="ltx_Math" alttext="180^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math> rotation <math id="S2.Thmtheorem3.p1.m7" class="ltx_Math" alttext="r^{2}" display="inline"><msup><mi>r</mi><mn>2</mn></msup></math>.
+But <math id="S2.Thmtheorem3.p1.m8" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> and <math id="S2.Thmtheorem3.p1.m9" class="ltx_Math" alttext="r^{3}" display="inline"><msup><mi>r</mi><mn>3</mn></msup></math> do not preserve <math id="S2.Thmtheorem3.p1.m10" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>, so
+<math id="S2.Thmtheorem3.p1.m11" class="ltx_Math" alttext="\operatorname{Stab}_{G}(x)=\{1,r^{2}\}\cong\mathbb{Z}/2\mathbb{Z}" display="inline"><mrow><mrow><msub><mi>Stab</mi><mi>G</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo>,</mo><msup><mi>r</mi><mn>2</mn></msup><mo stretchy="false">}</mo></mrow><mo>≅</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>2</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 16.2.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Why is <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\operatorname{Stab}_{G}(x)" display="inline"><mrow><msub><mi>Stab</mi><mi>G</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> a subgroup of <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>?</span></p>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Once we realize the stabilizer is a group, this leads us to what I privately call the “fundamental theorem of how big an orbit is”.</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 16.2.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Orbit-stabilizer theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathcal{O}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒪</mi></math> be an orbit, and pick any <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="x\in\mathcal{O}" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic">𝒪</mi></mrow></math>.
+Let <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="S=\operatorname{Stab}_{G}(x)" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><msub><mi>Stab</mi><mi>G</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> be a subgroup of <math id="S2.Thmtheorem5.p1.m4" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+There is a natural bijection between <math id="S2.Thmtheorem5.p1.m5" class="ltx_Math" alttext="\mathcal{O}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒪</mi></math> and left cosets.
+In particular,</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\left\lvert\mathcal{O}\right\rvert\left\lvert S\right\rvert=\left\lvert G%
+\right\rvert." display="block"><mrow><mrow><mrow><mrow><mo>|</mo><mi class="ltx_font_mathcaligraphic">𝒪</mi><mo>|</mo></mrow><mo>⁢</mo><mrow><mo>|</mo><mi>S</mi><mo>|</mo></mrow></mrow><mo>=</mo><mrow><mo>|</mo><mi>G</mi><mo>|</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In particular, the stabilizers of each <math id="S2.Thmtheorem5.p1.m6" class="ltx_Math" alttext="x\in\mathcal{O}" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi class="ltx_font_mathcaligraphic">𝒪</mi></mrow></math> have the same size.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">The point is that every coset <math id="S2.p7.m1" class="ltx_Math" alttext="gS" display="inline"><mrow><mi>g</mi><mo>⁢</mo><mi>S</mi></mrow></math> just specifies an element of <math id="S2.p7.m2" class="ltx_Math" alttext="\mathcal{O}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒪</mi></math>,
+namely <math id="S2.p7.m3" class="ltx_Math" alttext="g\cdot x" display="inline"><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow></math>. The fact that <math id="S2.p7.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is a stabilizer implies
+that it is irrelevant which representative we pick.</p>
+</div>
+<div id="S2.p8" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='170.07874pt' height='113.593823pt' viewBox='91.641412 117.356293 170.07874 113.593823'>
+<defs>
+<path id='asymptote-16-2-g1-71' d='M8.290907-7.581816C8.290907-7.614543 8.269089-7.690907 8.170907-7.690907C8.13818-7.690907 8.12727-7.679998 8.00727-7.559998L7.243634-6.719998C7.145453-6.872725 6.643635-7.690907 5.432726-7.690907C2.999999-7.690907 .545454-5.279999 .545454-2.74909C.545454-1.014545 1.756363 .24 3.523635 .24C4.003635 .24 4.494544 .141818 4.887271-.021818C5.432726-.24 5.639998-.469091 5.836362-.687273C5.934544-.414545 6.21818-.010909 6.327271-.010909C6.381816-.010909 6.403635-.043636 6.403635-.054545C6.425453-.076364 6.534544-.490909 6.589089-.72L6.796362-1.56C6.839998-1.745454 6.894544-1.930909 6.93818-2.116363C7.05818-2.607272 7.069089-2.62909 7.690907-2.639999C7.745452-2.639999 7.865452-2.650908 7.865452-2.858181C7.865452-2.934545 7.810907-2.978181 7.723634-2.978181C7.472725-2.978181 6.829089-2.945454 6.57818-2.945454C6.239998-2.945454 5.389089-2.978181 5.050908-2.978181C4.952726-2.978181 4.821817-2.978181 4.821817-2.759999C4.821817-2.639999 4.90909-2.639999 5.149089-2.639999C5.159999-2.639999 5.476362-2.639999 5.727271-2.618181C6.010907-2.585454 6.065453-2.552727 6.065453-2.410908C6.065453-2.312727 5.945453-1.821818 5.836362-1.418181C5.530908-.218182 4.112726-.098182 3.730908-.098182C2.683636-.098182 1.538181-.72 1.538181-2.38909C1.538181-2.727272 1.647272-4.527271 2.792726-5.945453C3.381817-6.687271 4.439999-7.352725 5.519998-7.352725C6.632725-7.352725 7.276362-6.512725 7.276362-5.247271C7.276362-4.810908 7.243634-4.799999 7.243634-4.690908S7.363634-4.581817 7.407271-4.581817C7.549089-4.581817 7.549089-4.603635 7.603634-4.799999L8.290907-7.581816Z'/>
+<path id='asymptote-16-2-g1-83' d='M7.036362-7.581816C7.036362-7.614543 7.014543-7.690907 6.916362-7.690907C6.861816-7.690907 6.850907-7.679998 6.719998-7.527271L6.196362-6.905453C5.912726-7.41818 5.345453-7.690907 4.636362-7.690907C3.250908-7.690907 1.941818-6.436362 1.941818-5.116362C1.941818-4.232726 2.519999-3.730908 3.076363-3.567272L4.243635-3.261817C4.647271-3.163635 5.247271-2.999999 5.247271-2.105454C5.247271-1.123636 4.352726-.098182 3.283635-.098182C2.585454-.098182 1.374545-.338182 1.374545-1.690909C1.374545-1.952727 1.429091-2.214545 1.44-2.279999C1.450909-2.323636 1.461818-2.334545 1.461818-2.356363C1.461818-2.465454 1.385454-2.476363 1.330909-2.476363S1.254545-2.465454 1.221818-2.432727C1.178181-2.38909 .567273 .098182 .567273 .130909C.567273 .196364 .621818 .24 .687273 .24C.741818 .24 .752727 .229091 .883636 .076364L1.418181-.545454C1.887272 .087273 2.62909 .24 3.261817 .24C4.745453 .24 6.032726-1.210909 6.032726-2.563636C6.032726-3.316363 5.661817-3.687272 5.49818-3.839999C5.247271-4.090908 5.083635-4.134544 4.112726-4.385453C3.872726-4.450908 3.479999-4.559999 3.381817-4.581817C3.087272-4.679999 2.716363-4.996362 2.716363-5.574544C2.716363-6.45818 3.58909-7.385452 4.625453-7.385452C5.530908-7.385452 6.196362-6.916362 6.196362-5.694544C6.196362-5.345453 6.152726-5.149089 6.152726-5.083635C6.152726-5.072726 6.152726-4.974544 6.283635-4.974544C6.392725-4.974544 6.403635-5.007271 6.447271-5.192726L7.036362-7.581816Z'/>
+<path id='asymptote-16-2-g1-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+<path id='asymptote-16-2-g1-103' d='M5.13818-4.112726C5.149089-4.178181 5.170908-4.232726 5.170908-4.30909C5.170908-4.494544 5.039999-4.603635 4.854544-4.603635C4.745453-4.603635 4.450908-4.527271 4.407271-4.134544C4.210908-4.538181 3.82909-4.821817 3.392726-4.821817C2.14909-4.821817 .796363-3.294545 .796363-1.723636C.796363-.643636 1.461818 0 2.247272 0C2.890908 0 3.403635-.512727 3.512726-.632727L3.523635-.621818C3.294545 .349091 3.163635 .796363 3.163635 .818182C3.119999 .916363 2.74909 1.996363 1.592727 1.996363C1.385454 1.996363 1.025454 1.985454 .72 1.887272C1.047272 1.78909 1.167272 1.505454 1.167272 1.32C1.167272 1.145454 1.047272 .938182 .752727 .938182C.512727 .938182 .163636 1.134545 .163636 1.570909C.163636 2.018181 .567273 2.236363 1.614545 2.236363C2.978181 2.236363 3.763635 1.385454 3.927272 .730909L5.13818-4.112726ZM3.719999-1.396363C3.654544-1.112727 3.403635-.84 3.163635-.632727C2.934545-.436364 2.596363-.24 2.279999-.24C1.734545-.24 1.570909-.807273 1.570909-1.243636C1.570909-1.767272 1.887272-3.054545 2.181818-3.610908C2.476363-4.145453 2.945454-4.581817 3.403635-4.581817C4.123635-4.581817 4.276362-3.698181 4.276362-3.643635S4.254544-3.523635 4.243635-3.479999L3.719999-1.396363Z'/>
+<path id='asymptote-16-2-g0-14' d='M4.843635-2.727272C4.843635-3.894544 3.872726-4.843635 2.727272-4.843635C1.54909-4.843635 .6-3.872726 .6-2.727272C.6-1.570909 1.54909-.610909 2.727272-.610909C3.872726-.610909 4.843635-1.56 4.843635-2.727272ZM2.727272-1.047272C1.778181-1.047272 1.036363-1.810909 1.036363-2.727272S1.78909-4.407271 2.727272-4.407271C3.632726-4.407271 4.407271-3.665454 4.407271-2.727272S3.632726-1.047272 2.727272-1.047272Z'/>
+<path id='asymptote-16-2-g0-18' d='M7.189089-6.501816C7.374543-6.501816 7.570907-6.501816 7.570907-6.719998S7.374543-6.93818 7.189089-6.93818H4.254544C2.378181-6.93818 .905454-5.509089 .905454-3.785453C.905454-2.02909 2.410908-.621818 4.254544-.621818H7.189089C7.374543-.621818 7.570907-.621818 7.570907-.84S7.374543-1.058182 7.189089-1.058182H4.276362C2.552727-1.058182 1.341818-2.334545 1.341818-3.774544C1.341818-5.25818 2.585454-6.501816 4.276362-6.501816H7.189089ZM1.505454 1.058182C1.32 1.058182 1.123636 1.058182 1.123636 1.276363S1.32 1.494545 1.505454 1.494545H7.189089C7.374543 1.494545 7.570907 1.494545 7.570907 1.276363S7.374543 1.058182 7.189089 1.058182H1.505454Z'/>
+<path id='asymptote-16-2-g0-79' d='M8.476361-5.25818C8.476361-6.643635 7.865452-7.690907 6.534544-7.690907C5.399998-7.690907 4.439999-6.774544 4.363635-6.709089C3.490908-5.847271 3.163635-4.865453 3.163635-4.843635C3.163635-4.77818 3.218181-4.767271 3.272726-4.767271C3.479999-4.767271 3.654544-4.876362 3.818181-4.996362C4.014544-5.13818 4.025453-5.170908 4.145453-5.421817C4.243635-5.639998 4.494544-6.174544 4.89818-6.632725C5.159999-6.927271 5.37818-7.090907 5.814544-7.090907C6.872725-7.090907 7.549089-6.21818 7.549089-4.78909C7.549089-2.563636 5.967271-.36 3.94909-.36C2.399999-.36 1.54909-1.592727 1.54909-3.152726C1.54909-4.636362 2.312727-6.272726 3.905453-7.210907C4.014544-7.276362 4.341817-7.472725 4.341817-7.614543C4.341817-7.690907 4.254544-7.690907 4.232726-7.690907C3.850908-7.690907 .621818-5.956362 .621818-2.683636C.621818-1.156363 1.418181 .24 3.22909 .24C5.356362 .24 8.476361-1.898181 8.476361-5.25818Z'/>
+</defs>
+<g id='asymptote-16-2-page1'>
+<g transform='translate(91.6414 117.356)scale(.996264)'>
+<path d='M47.8723 63.7361C47.8723 36.1038 42.2722 13.7034 35.3641 13.7034S22.8559 36.1038 22.8559 63.7361C22.8559 91.3685 28.456 113.769 35.3641 113.769S47.8723 91.3685 47.8723 63.7361Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='110.163592' y='126.146746' href='#asymptote-16-2-g0-79'/>
+<use x='122.181749' y='126.146746' href='#asymptote-16-2-g0-18'/>
+<use x='133.696873' y='126.146746' href='#asymptote-16-2-g1-88'/>
+<g transform='translate(91.6414 117.356)scale(.996264)'>
+<circle cx='35.3641' cy='101.261' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(91.6414 117.356)scale(.996264)'>
+<circle cx='35.3641' cy='76.2443' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(91.6414 117.356)scale(.996264)'>
+<circle cx='35.3641' cy='51.228' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(91.6414 117.356)scale(.996264)'>
+<circle cx='35.3641' cy='26.2116' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(91.6414 117.356)scale(.996264)'>
+<path d='M42.869 18.7067V33.7165H135.43V18.7067H42.869Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='229.887282' y='146.395597' href='#asymptote-16-2-g1-83'/>
+<use x='240.235708' y='146.395597' href='#asymptote-16-2-g0-18'/>
+<use x='251.750831' y='146.395597' href='#asymptote-16-2-g1-71'/>
+<use x='141.595953' y='145.83421' href='#asymptote-16-2-g0-14'/>
+<use x='159.041975' y='145.83421' href='#asymptote-16-2-g0-14'/>
+<use x='176.488011' y='145.83421' href='#asymptote-16-2-g0-14'/>
+<use x='193.934033' y='145.83421' href='#asymptote-16-2-g0-14'/>
+<use x='211.380069' y='145.83421' href='#asymptote-16-2-g0-14'/>
+<g transform='translate(91.6414 117.356)scale(.996264)'>
+<path d='M23.3612 73.5477C15.4826 69.0899 10.3477 60.6537 10.3477 51.228C10.3477 39.2351 18.6605 28.8442 30.3608 26.2116' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(91.6414 117.356)scale(.996264)'>
+<path d='M30.3608 76.2443C28.0891 75.0793 26.054 73.6122 24.2865 71.9125L22.4032 75.2408C24.9346 75.9767 27.6124 76.3302 30.3608 76.2443Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(91.6414 117.356)scale(.996264)'>
+<path d='M30.3608 76.2443C28.0891 75.0793 26.054 73.6122 24.2865 71.9125L22.4032 75.2408C24.9346 75.9767 27.6124 76.3302 30.3608 76.2443Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='93.041126' y='169.620728' href='#asymptote-16-2-g1-103'/>
+</g>
+</svg>
+</div>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">Since the <math id="S2.p9.m1" class="ltx_Math" alttext="\left\lvert\mathcal{O}\right\rvert" display="inline"><mrow><mo>|</mo><mi class="ltx_font_mathcaligraphic">𝒪</mi><mo>|</mo></mrow></math> cosets partition <math id="S2.p9.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>,
+each of size <math id="S2.p9.m3" class="ltx_Math" alttext="\left\lvert S\right\rvert" display="inline"><mrow><mo>|</mo><mi>S</mi><mo>|</mo></mrow></math>, we obtain the second result.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">16.3 </span>Burnside’s lemma</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Now for the crux of this chapter: a way to count the number of orbits.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 16.3.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Burnside’s lemma)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> act on a set <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+The number of orbits of the action is equal to</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\frac{1}{\left\lvert G\right\rvert}\sum_{g\in G}\left\lvert\operatorname{FixPt%
+}g\right\rvert" display="block"><mrow><mfrac linethickness="0.6px"><mn>1</mn><mrow><mo>|</mo><mi>G</mi><mo>|</mo></mrow></mfrac><mo>⁢</mo><mrow><munder><mo movablelimits="false" rspace="0em">∑</mo><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></munder><mrow><mo>|</mo><mrow><mi>FixPt</mi><mo lspace="0.167em">⁡</mo><mi>g</mi></mrow><mo>|</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\operatorname{FixPt}g" display="inline"><mrow><mi>FixPt</mi><mo lspace="0.167em">⁡</mo><mi>g</mi></mrow></math> is the set of points <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math>
+such that <math id="S3.Thmtheorem1.p1.m5" class="ltx_Math" alttext="g\cdot x=x" display="inline"><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow><mo>=</mo><mi>x</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">The proof is deferred as a bonus problem,
+since it has a very olympiad-flavored solution.
+As usual, this lemma was not actually proven by Burnside;
+Cauchy got there first, and thus it is sometimes called
+<em class="ltx_emph ltx_font_italic">the lemma that is not Burnside’s</em>.
+Example application:</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 16.3.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(AIME 1996)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:80%;">Two of the squares of a <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="7\times 7" display="inline"><mrow><mn>7</mn><mo lspace="0.222em" rspace="0.222em">×</mo><mn>7</mn></mrow></math> checkerboard are painted yellow, and the rest are painted green. Two color schemes are equivalent if one can be obtained from the other by applying a rotation in the plane of the board. How many inequivalent color schemes are possible? </span></p>
+</div>
+<div id="S3.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">We know that <math id="S3.Thmtheorem2.p2.m1" class="ltx_Math" alttext="G=\mathbb{Z}/4\mathbb{Z}" display="inline"><mrow><mi>G</mi><mo>=</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>4</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math> acts on the set <math id="S3.Thmtheorem2.p2.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> of <math id="S3.Thmtheorem2.p2.m3" class="ltx_Math" alttext="\binom{49}{2}" display="inline"><mrow><mo>(</mo><mfrac linethickness="0pt"><mn>49</mn><mn>2</mn></mfrac><mo>)</mo></mrow></math> possible coloring schemes.
+Now we can compute <math id="S3.Thmtheorem2.p2.m4" class="ltx_Math" alttext="\operatorname{FixPt}g" display="inline"><mrow><mi>FixPt</mi><mo lspace="0.167em">⁡</mo><mi>g</mi></mrow></math> explicitly for each <math id="S3.Thmtheorem2.p2.m5" class="ltx_Math" alttext="g\in\mathbb{Z}/4\mathbb{Z}" display="inline"><mrow><mi>g</mi><mo>∈</mo><mrow><mrow><mi>ℤ</mi><mo>/</mo><mn>4</mn></mrow><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>.</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="g=1_{G}" display="inline"><mrow><mi>g</mi><mo>=</mo><msub><mn>1</mn><mi>G</mi></msub></mrow></math>, then every coloring is fixed, for a count of <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="\binom{49}{2}=1176" display="inline"><mrow><mrow><mo>(</mo><mfrac linethickness="0pt"><mn>49</mn><mn>2</mn></mfrac><mo>)</mo></mrow><mo>=</mo><mn>1176</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="g=r^{2}" display="inline"><mrow><mi>g</mi><mo>=</mo><msup><mi>r</mi><mn>2</mn></msup></mrow></math> there are exactly <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="24" display="inline"><mn>24</mn></math> coloring schemes fixed by <math id="S3.I1.i2.p1.m3" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>:
+this occurs when the two squares are reflections across the center,
+which means they are preserved under a <math id="S3.I1.i2.p1.m4" class="ltx_Math" alttext="180^{\circ}" display="inline"><msup><mn>180</mn><mo>∘</mo></msup></math> rotation.</p>
+</div>
+</li>
+<li id="S3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.I1.i3.p1.m1" class="ltx_Math" alttext="g=r" display="inline"><mrow><mi>g</mi><mo>=</mo><mi>r</mi></mrow></math> or <math id="S3.I1.i3.p1.m2" class="ltx_Math" alttext="g=r^{3}" display="inline"><mrow><mi>g</mi><mo>=</mo><msup><mi>r</mi><mn>3</mn></msup></mrow></math>, then there are no fixed coloring schemes.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">As <math id="S3.Thmtheorem2.p2.m6" class="ltx_Math" alttext="\left\lvert G\right\rvert=4" display="inline"><mrow><mrow><mo>|</mo><mi>G</mi><mo>|</mo></mrow><mo>=</mo><mn>4</mn></mrow></math>, the average is</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\frac{1176+24+0+0}{4}=300." display="block"><mrow><mrow><mfrac linethickness="0.6px"><mrow><mn>1176</mn><mo>+</mo><mn>24</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn></mrow><mn>4</mn></mfrac><mo>=</mo><mn>300</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 16.3.3</span></span><span class="ltx_text ltx_font_bold"> </span>(MathCounts Chapter Target Round)
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">A circular spinner has seven sections of equal size,
+each of which is colored either red or blue.
+Two colorings are considered the same if one can be rotated to yield the other.
+In how many ways can the spinner be colored? (Answer: 20)</span></p>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Consult <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:aops_burnside</span>]</cite>
+for some more examples of “hands-on” applications.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">16.4 </span>Conjugation of elements</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> In <math id="S4.p1.m1" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math>, conjugacy classes are “cycle types”.</em></p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">A particularly common type of action is the so-called <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> conjugation</span>.
+We let <math id="S4.p2.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> act on itself as follows:</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="g\colon h\mapsto ghg^{-1}." display="block"><mrow><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>h</mi><mo stretchy="false">↦</mo><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">You might think this definition is a little artificial.
+Who cares about the element <math id="S4.p2.m2" class="ltx_Math" alttext="ghg^{-1}" display="inline"><mrow><mi>g</mi><mo>⁢</mo><mi>h</mi><mo>⁢</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math>?
+Let me try to convince you this definition is not so unnatural.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 16.4.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Conjugacy in <math id="S4.Thmtheorem1.m1" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="G=S_{5}" display="inline"><mrow><mi>G</mi><mo>=</mo><msub><mi>S</mi><mn>5</mn></msub></mrow></math>, and fix a <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\pi\in S_{5}" display="inline"><mrow><mi>π</mi><mo>∈</mo><msub><mi>S</mi><mn>5</mn></msub></mrow></math>.
+Here’s the question: is <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\pi\sigma\pi^{-1}" display="inline"><mrow><mi>π</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><msup><mi>π</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math> related to <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>?
+To illustrate this,
+I’ll write out a completely random example of a permutation <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\sigma\in S_{5}" display="inline"><mrow><mi>σ</mi><mo>∈</mo><msub><mi>S</mi><mn>5</mn></msub></mrow></math>.</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\text{If }\sigma=\;\begin{array}[]{ccc}1&amp;\mapsto&amp;3\\
+2&amp;\mapsto&amp;1\\
+3&amp;\mapsto&amp;5\\
+4&amp;\mapsto&amp;2\\
+5&amp;\mapsto&amp;4\end{array}\qquad\text{then}\qquad\pi\sigma\pi^{-1}=\begin{array}[]%
+{ccc}\pi(1)&amp;\mapsto&amp;\pi(3)\\
+\pi(2)&amp;\mapsto&amp;\pi(1)\\
+\pi(3)&amp;\mapsto&amp;\pi(5)\\
+\pi(4)&amp;\mapsto&amp;\pi(2)\\
+\pi(5)&amp;\mapsto&amp;\pi(4)\end{array}" display="block"><mrow><mrow><mrow><mtext>If </mtext><mo>⁢</mo><mi>σ</mi></mrow><mo rspace="0.558em">=</mo><mrow><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd><mtd><mo stretchy="false">↦</mo></mtd><mtd><mn>3</mn></mtd></mtr><mtr><mtd><mn>2</mn></mtd><mtd><mo stretchy="false">↦</mo></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>3</mn></mtd><mtd><mo stretchy="false">↦</mo></mtd><mtd><mn>5</mn></mtd></mtr><mtr><mtd><mn>4</mn></mtd><mtd><mo stretchy="false">↦</mo></mtd><mtd><mn>2</mn></mtd></mtr><mtr><mtd><mn>5</mn></mtd><mtd><mo stretchy="false">↦</mo></mtd><mtd><mn>4</mn></mtd></mtr></mtable><mspace width="2.167em"></mspace><mtext>then</mtext></mrow></mrow><mspace width="2em"></mspace><mrow><mrow><mi>π</mi><mo>⁢</mo><mi>σ</mi><mo>⁢</mo><msup><mi>π</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow><mo>=</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mo stretchy="false">↦</mo></mtd><mtd><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mo stretchy="false">↦</mo></mtd><mtd><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mo stretchy="false">↦</mo></mtd><mtd><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mo stretchy="false">↦</mo></mtd><mtd><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mo stretchy="false">↦</mo></mtd><mtd><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Thus our fixed <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\pi" display="inline"><mi>π</mi></math> doesn’t really change the structure of <math id="S4.Thmtheorem1.p1.m7" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math> at all:
+it just “renames” each of the elements <math id="S4.Thmtheorem1.p1.m8" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, <math id="S4.Thmtheorem1.p1.m9" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>, <math id="S4.Thmtheorem1.p1.m10" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>, <math id="S4.Thmtheorem1.p1.m11" class="ltx_Math" alttext="4" display="inline"><mn>4</mn></math>, <math id="S4.Thmtheorem1.p1.m12" class="ltx_Math" alttext="5" display="inline"><mn>5</mn></math>
+to <math id="S4.Thmtheorem1.p1.m13" class="ltx_Math" alttext="\pi(1)" display="inline"><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S4.Thmtheorem1.p1.m14" class="ltx_Math" alttext="\pi(2)" display="inline"><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2</mn><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S4.Thmtheorem1.p1.m15" class="ltx_Math" alttext="\pi(3)" display="inline"><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S4.Thmtheorem1.p1.m16" class="ltx_Math" alttext="\pi(4)" display="inline"><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S4.Thmtheorem1.p1.m17" class="ltx_Math" alttext="\pi(5)" display="inline"><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">But wait, you say.
+That’s just a very particular type of group behaving nicely under conjugation.
+Why does this mean anything more generally?
+All I have to say is: remember Cayley’s theorem!
+(This was <a href="../startout/group-intro.html#thm:cayley_theorem" title="Problem 1F. ‣ 1.8 A few harder problems to think about ‣ Chapter 1 Groups ‣ Part I Starting Out ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">1F</span></a>.)</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">In any case, we may now define:</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 16.4.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> conjugacy classes</span> of a group <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> are the orbits of <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> under
+the conjugacy action.</p>
+</div>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Let’s see what the conjugacy classes of <math id="S4.p5.m1" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math> are, for example.</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 16.4.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Conjugacy classes of <math id="S4.Thmtheorem3.m1" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math> correspond to cycle types)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Intuitively, the discussion above says that two elements of <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math> should
+be conjugate if they have the same “shape”, regardless of what the elements are named.
+The right way to make the notion of “shape” rigorous is cycle notation.
+For example, consider the permutation</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\sigma_{1}=(1\;3\;5)(2\;4)" display="block"><mrow><msub><mi>σ</mi><mn>1</mn></msub><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mn>1 3 5</mn><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>2 4</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">in cycle notation, meaning <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="1\mapsto 3\mapsto 5\mapsto 1" display="inline"><mrow><mn>1</mn><mo stretchy="false">↦</mo><mn>3</mn><mo stretchy="false">↦</mo><mn>5</mn><mo stretchy="false">↦</mo><mn>1</mn></mrow></math> and <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="2\mapsto 4\mapsto 2" display="inline"><mrow><mn>2</mn><mo stretchy="false">↦</mo><mn>4</mn><mo stretchy="false">↦</mo><mn>2</mn></mrow></math>.
+It is conjugate to the permutation</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\sigma_{2}=(1\;2\;3)(4\;5)" display="block"><mrow><msub><mi>σ</mi><mn>2</mn></msub><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mn>1 2 3</mn><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>4 5</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">or any other way of relabeling the elements.
+So, we could think of <math id="S4.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math> as having conjugacy class</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_math_unparsed" alttext="(-\;-\;-)(-\;-)." display="block"><mrow><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.058em">−</mo><mo rspace="0.058em">−</mo><mo rspace="0em">−</mo><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><mo lspace="0em" rspace="0.058em">−</mo><mo rspace="0em">−</mo><mo stretchy="false">)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">More generally, you can show that two elements of <math id="S4.Thmtheorem3.p1.m5" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math> are conjugate
+if and only if they have the same “shape” under cycle decomposition.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 16.4.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that the number of conjugacy classes of <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math>
+equals the number of <em class="ltx_emph ltx_font_italic">partitions</em> of <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</span></p>
+</div>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">As long as I’ve put the above picture, I may as well also define:</p>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 16.4.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> be a group.
+The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> center</span> of <math id="S4.Thmtheorem5.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>, denoted <math id="S4.Thmtheorem5.p1.m3" class="ltx_Math" alttext="Z(G)" display="inline"><mrow><mi>Z</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></math>, is the set of elements <math id="S4.Thmtheorem5.p1.m4" class="ltx_Math" alttext="x\in G" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>G</mi></mrow></math>
+such that <math id="S4.Thmtheorem5.p1.m5" class="ltx_Math" alttext="xg=gx" display="inline"><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>g</mi></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mi>x</mi></mrow></mrow></math> for every <math id="S4.Thmtheorem5.p1.m6" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>.
+More succinctly,</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="Z(G)\coloneqq\left\{x\in G\mid gx=xg\;\forall g\in G\right\}." display="block"><mrow><mrow><mrow><mi>Z</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≔</mo><mrow><mo>{</mo><mrow><mi>x</mi><mo>∈</mo><mi>G</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>g</mi><mo>⁢</mo><mi>x</mi></mrow><mo>=</mo><mrow><mi>x</mi><mo>⁢</mo><mi>g</mi><mo lspace="0.447em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mi>g</mi></mrow></mrow><mo>∈</mo><mi>G</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">You can check this is indeed a subgroup of <math id="S4.p7.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.</p>
+</div>
+<div id="S4.Thmtheorem6" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 16.4.6</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Why is <math id="S4.Thmtheorem6.p1.m1" class="ltx_Math" alttext="Z(G)" display="inline"><mrow><mi>Z</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow></math> normal in <math id="S4.Thmtheorem6.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>?</span></p>
+</div>
+</div>
+<div id="S4.Thmtheorem7" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 16.4.7</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">What are the conjugacy classes of elements in the center?</span></p>
+</div>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">A trivial result that gets used enough that I should explicitly call it out:</p>
+</div>
+<div id="S4.Thmtheorem8" class="ltx_theorem ltx_theorem_corollary">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Corollary 16.4.8</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Conjugacy in abelian groups is trivial)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S4.Thmtheorem8.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is abelian, then the conjugacy classes all have size one.</p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">16.5 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 16A</span></span><span class="ltx_text ltx_font_bold"> </span>(PUMaC 2009 C8)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Taotao wants to buy a bracelet consisting of seven beads,
+each of which is orange, white or black.
+(The bracelet can be rotated and reflected in space.)
+Find the number of possible bracelets.
+
+Just apply Burnside’s lemma directly to get the answer of <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="198" display="inline"><mn>198</mn></math>
+(the relevant group is <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="D_{14}" display="inline"><msub><mi>D</mi><mn>14</mn></msub></math>).</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 16B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Show that two elements in the same conjugacy class
+have the same order.
+
+There are multiple ways to see this.
+One is to just do the algebraic manipulation.
+Another is to use Cayley’s theorem to embed <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> into a symmetric group.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 16C</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem3.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem3.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem3.p2" class="ltx_para">
+<p class="ltx_p">Prove Burnside’s lemma.
+
+Double-count pairs <math id="Thmproblem3.p2.m1" class="ltx_Math" alttext="(g,x)" display="inline"><mrow><mo stretchy="false">(</mo><mi>g</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></math> with <math id="Thmproblem3.p2.m2" class="ltx_Math" alttext="g\cdot x=x" display="inline"><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow><mo>=</mo><mi>x</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="prob:class_eq" class="ltx_theorem ltx_theorem_sproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 16D</span></span><span class="ltx_text ltx_font_bold"> </span>(The “class equation”)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> be a finite group.
+We define the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> centralizer</span> <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="C_{G}(g)=\{x\in G\mid xg=gx\}" display="inline"><mrow><mrow><msub><mi>C</mi><mi>G</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mi>x</mi><mo>∈</mo><mi>G</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>x</mi><mo>⁢</mo><mi>g</mi></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mi>x</mi></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow></math>
+for each <math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>.
+Show that</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\left\lvert G\right\rvert=\left\lvert Z(G)\right\rvert+\sum_{s\in S}\frac{%
+\left\lvert G\right\rvert}{\left\lvert C_{G}(s)\right\rvert}" display="block"><mrow><mrow><mo>|</mo><mi>G</mi><mo>|</mo></mrow><mo>=</mo><mrow><mrow><mo>|</mo><mrow><mi>Z</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>G</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow><mo rspace="0.055em">+</mo><mrow><munder><mo movablelimits="false">∑</mo><mrow><mi>s</mi><mo>∈</mo><mi>S</mi></mrow></munder><mfrac linethickness="0.6px"><mrow><mo>|</mo><mi>G</mi><mo>|</mo></mrow><mrow><mo>|</mo><mrow><msub><mi>C</mi><mi>G</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo></mrow></mrow><mo>|</mo></mrow></mfrac></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="S\subseteq G" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>G</mi></mrow></math> is defined as follows:
+for each conjugacy class <math id="Thmproblem4.p1.m5" class="ltx_Math" alttext="C\subseteq G" display="inline"><mrow><mi>C</mi><mo>⊆</mo><mi>G</mi></mrow></math> with <math id="Thmproblem4.p1.m6" class="ltx_Math" alttext="|C|&gt;1" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>C</mi><mo stretchy="false">|</mo></mrow><mo>&gt;</mo><mn>1</mn></mrow></math>,
+we pick a representative of <math id="Thmproblem4.p1.m7" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> and add it to <math id="Thmproblem4.p1.m8" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.</p>
+</div>
+</div>
+<div id="Thmproblem5" class="ltx_theorem ltx_theorem_dproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 16E</span></span><span class="ltx_text ltx_font_bold"> </span>(Classical)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem5.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem5.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem5.p2" class="ltx_para">
+<p class="ltx_p">Assume <math id="Thmproblem5.p2.m1" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is a finite group of order <math id="Thmproblem5.p2.m2" class="ltx_Math" alttext="n\geq 2" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow></math> and <math id="Thmproblem5.p2.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is the
+smallest prime dividing <math id="Thmproblem5.p2.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>. Let <math id="Thmproblem5.p2.m5" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> be a subgroup of <math id="Thmproblem5.p2.m6" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> with
+<math id="Thmproblem5.p2.m7" class="ltx_Math" alttext="\left\lvert G\right\rvert/\left\lvert H\right\rvert=p" display="inline"><mrow><mrow><mrow><mo>|</mo><mi>G</mi><mo>|</mo></mrow><mo>/</mo><mrow><mo>|</mo><mi>H</mi><mo>|</mo></mrow></mrow><mo>=</mo><mi>p</mi></mrow></math>.
+Show that <math id="Thmproblem5.p2.m8" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> is normal in <math id="Thmproblem5.p2.m9" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.
+
+Let <math id="Thmproblem5.p2.m10" class="ltx_Math" alttext="H" display="inline"><mi>H</mi></math> act on the left cosets <math id="Thmproblem5.p2.m11" class="ltx_Math" alttext="\{gH\mid g\in G\}" display="inline"><mrow><mo stretchy="false">{</mo><mrow><mi>g</mi><mo>⁢</mo><mi>H</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow><mo stretchy="false">}</mo></mrow></math>
+by left multiplication: <math id="Thmproblem5.p2.m12" class="ltx_Math" alttext="h\cdot gH=hgH" display="inline"><mrow><mrow><mrow><mi>h</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>g</mi></mrow><mo>⁢</mo><mi>H</mi></mrow><mo>=</mo><mrow><mi>h</mi><mo>⁢</mo><mi>g</mi><mo>⁢</mo><mi>H</mi></mrow></mrow></math>.
+Consider any orbit <math id="Thmproblem5.p2.m13" class="ltx_Math" alttext="\mathcal{O}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒪</mi></math>
+By the orbit-stabilizer theorem, <math id="Thmproblem5.p2.m14" class="ltx_Math" alttext="\left\lvert\mathcal{O}\right\rvert" display="inline"><mrow><mo>|</mo><mi class="ltx_font_mathcaligraphic">𝒪</mi><mo>|</mo></mrow></math>
+divides <math id="Thmproblem5.p2.m15" class="ltx_Math" alttext="\left\lvert H\right\rvert" display="inline"><mrow><mo>|</mo><mi>H</mi><mo>|</mo></mrow></math> which divides <math id="Thmproblem5.p2.m16" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, so <math id="Thmproblem5.p2.m17" class="ltx_Math" alttext="\mathcal{O}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒪</mi></math>
+divides <math id="Thmproblem5.p2.m18" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>. But <math id="Thmproblem5.p2.m19" class="ltx_Math" alttext="\left\lvert\mathcal{O}\right\rvert\leq p" display="inline"><mrow><mrow><mo>|</mo><mi class="ltx_font_mathcaligraphic">𝒪</mi><mo>|</mo></mrow><mo>≤</mo><mi>p</mi></mrow></math> since
+there are <math id="Thmproblem5.p2.m20" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> cosets. So either <math id="Thmproblem5.p2.m21" class="ltx_Math" alttext="\mathcal{O}=\{H\}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒪</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>H</mi><mo stretchy="false">}</mo></mrow></mrow></math> or <math id="Thmproblem5.p2.m22" class="ltx_Math" alttext="\mathcal{O}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒪</mi></math> contains
+all cosets. Show that the latter is impossible and conclude.
+
+
+<a href="https://math.stackexchange.com/a/3012179/229197" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://math.stackexchange.com/a/3012179/229197</a></p>
+</div>
+</div>
+<div id="Thmproblem6" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 16F</span></span><span class="ltx_text ltx_font_bold"> </span>(Athemath Community-Building Event #1, Fall 2022)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem6.p1" class="ltx_para">
+<p class="ltx_p">A group action <math id="Thmproblem6.p1.m1" class="ltx_Math" alttext="\cdot" display="inline"><mo>⋅</mo></math> of a group <math id="Thmproblem6.p1.m2" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> on set <math id="Thmproblem6.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is said to be</p>
+<ul id="S5.I1" class="ltx_itemize">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);">transitive</span> if for all <math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="x_{1},x_{2}\in X" display="inline"><mrow><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub></mrow><mo>∈</mo><mi>X</mi></mrow></math>,
+there exists a <math id="S5.I1.i1.p1.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> such that <math id="S5.I1.i1.p1.m3" class="ltx_Math" alttext="g\cdot x_{1}=x_{2}" display="inline"><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mi>x</mi><mn>1</mn></msub></mrow><mo>=</mo><msub><mi>x</mi><mn>2</mn></msub></mrow></math>;</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);">faithful</span> if the only element <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="g\in G" display="inline"><mrow><mi>g</mi><mo>∈</mo><mi>G</mi></mrow></math>
+such that <math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="g\cdot x=x" display="inline"><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>x</mi></mrow><mo>=</mo><mi>x</mi></mrow></math> for every <math id="S5.I1.i2.p1.m3" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math> is <math id="S5.I1.i2.p1.m4" class="ltx_Math" alttext="g=1_{G}" display="inline"><mrow><mi>g</mi><mo>=</mo><msub><mn>1</mn><mi>G</mi></msub></mrow></math>.
+In other words, the only element which acts trivially on the entire set <math id="S5.I1.i2.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+is the identity element of <math id="S5.I1.i2.p1.m6" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Does there exist a faithful transitive action of <math id="Thmproblem6.p1.m4" class="ltx_Math" alttext="S_{5}" display="inline"><msub><mi>S</mi><mn>5</mn></msub></math> on a six-element set?</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../linalg/duals-adjoint-transposes.html">Previous chapter: Duals, adjoint, and transposes</a><br />
+<a href="../groups/sylow.html">Next chapter: Find all groups</a>
+</nav>
+
+		</main>
+	</body>
+</html>

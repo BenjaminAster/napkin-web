@@ -1,0 +1,1064 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 46 A bit of manifolds ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="ch_stokes_diffgeo.html" title="Chapter 45 Integrating differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="next" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_multivar_calculus.html" title="Chapter 43 Multivariable calculus done correctly ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_forms_diffgeo.html" title="Chapter 44 Differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_stokes_diffgeo.html" title="Chapter 45 Integrating differential forms ‣ Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_startout/" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_linalg/" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_calc/" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_measure/" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop1/" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st2/" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">XII </span>Differential Geometry</span></a><a href="ch_stokes_diffgeo.html" title="In Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">45 </span>Integrating differential forms</span></a><a href="../part_riemann/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">XIII </span>Riemann Surfaces</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 46 </span>A bit of manifolds</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">Last chapter, we stated Stokes’ theorem for cells.
+It turns out there is a much larger class of spaces,
+the so-called <em class="ltx_emph ltx_font_italic">smooth manifolds</em>, for which this makes sense.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">Unfortunately, the definition of a smooth manifold is <em class="ltx_emph ltx_font_italic">complete garbage</em>,
+and so by the time I am done defining differential forms and orientations,
+I will be too lazy to actually define what the integral on it is,
+and just wave my hands and state Stokes’ theorem.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">46.1 </span>Topological manifolds</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="S^{2}" display="inline"><msup><mi>S</mi><mn>2</mn></msup></math>: “the Earth looks flat”.</em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Long ago, people thought the Earth was flat,
+i.e. homeomorphic to a plane, and in particular they thought that
+<math id="S1.p2.m1" class="ltx_Math" alttext="\pi_{2}(\text{Earth})=0" display="inline"><mrow><mrow><msub><mi>π</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mtext>Earth</mtext><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.
+But in fact, as most of us know, the Earth is actually a sphere,
+which is not contractible and in particular <math id="S1.p2.m2" class="ltx_Math" alttext="\pi_{2}(\text{Earth})\cong\mathbb{Z}" display="inline"><mrow><mrow><msub><mi>π</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mtext>Earth</mtext><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mi>ℤ</mi></mrow></math>.
+This observation underlies the definition of a manifold:</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 46.1.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">An <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold is a space which locally looks like <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>.</p>
+</div>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Actually there are two ways to think about a topological manifold <math id="S1.p3.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>:</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">“Locally”: at every point <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>,
+some open neighborhood of <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> looks like an open set of <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>.
+For example, to someone standing on the surface of the Earth,
+the Earth looks much like <math id="S1.I1.i1.p1.m4" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">“Globally”: there exists an open cover of <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+by open sets <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="\{U_{i}\}_{i}" display="inline"><msub><mrow><mo stretchy="false">{</mo><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow><mi>i</mi></msub></math> (possibly infinite) such that each <math id="S1.I1.i2.p1.m3" class="ltx_Math" alttext="U_{i}" display="inline"><msub><mi>U</mi><mi>i</mi></msub></math>
+is homeomorphic to some open subset of <math id="S1.I1.i2.p1.m4" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>.
+For example, from outer space, the Earth can be covered
+by two hemispherical pancakes.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 46.1.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check that these are equivalent.</span></p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">While the first one is the best motivation for examples,
+the second one is easier to use formally.</p>
+</div>
+<div id="def:topological_manif" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 46.1.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> topological <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi mathcolor="#0000FF">n</mi></math>-manifold</span> <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a Hausdorff space
+with an open cover <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\{U_{i}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow></math> of sets
+homeomorphic to subsets of <math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>,
+say by homeomorphisms</p>
+<table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\phi_{i}\colon U_{i}\xrightarrow{\cong}E_{i}\subseteq\mathbb{R}^{n}" display="block"><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mover accent="true"><mo stretchy="false">→</mo><mo>≅</mo></mover><msub><mi>E</mi><mi>i</mi></msub><mo>⊆</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where each <math id="S1.Thmtheorem3.p1.m5" class="ltx_Math" alttext="E_{i}" display="inline"><msub><mi>E</mi><mi>i</mi></msub></math> is an open subset of <math id="S1.Thmtheorem3.p1.m6" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>.
+Each <math id="S1.Thmtheorem3.p1.m7" class="ltx_Math" alttext="\phi_{i}\colon U_{i}\to E_{i}" display="inline"><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">→</mo><msub><mi>E</mi><mi>i</mi></msub></mrow></mrow></math> is called a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> chart</span>,
+and together they form a so-called <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> atlas</span>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 46.1.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Here “<math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math>” stands for “Euclidean”.
+I think this notation is not standard; usually
+people just write <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\phi_{i}(U_{i})" display="inline"><mrow><msub><mi>ϕ</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> instead.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 46.1.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">This definition is nice because it doesn’t depend on embeddings:
+a manifold is an <em class="ltx_emph ltx_font_italic">intrinsic</em> space <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>,
+rather than a subset of <math id="S1.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{N}" display="inline"><msup><mi>ℝ</mi><mi>N</mi></msup></math> for some <math id="S1.Thmtheorem5.p1.m3" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>.
+Analogy: an abstract group <math id="S1.Thmtheorem5.p1.m4" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> is an intrinsic object
+rather than a subgroup of <math id="S1.Thmtheorem5.p1.m5" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 46.1.6</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(An atlas on <math id="S1.Thmtheorem6.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi mathcolor="#8C0000">S</mi><mn mathcolor="#8C0000">1</mn></msup></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Here is a picture of an atlas for <math id="S1.Thmtheorem6.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math>, with two open sets.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(8cm);
+ΨΨdraw(unitcircle, black+2);
+ΨΨlabel("$S^1$", dir(45), dir(45));
+ΨΨreal R = 0.1;
+ΨΨdraw(arc(origin,1-R,-100,100), red);
+ΨΨlabel("$U_2$", (1-R)*dir(0), dir(180), red);
+ΨΨdraw(arc(origin,1+R,80,280), blue);
+ΨΨlabel("$U_1$", (1+R)*dir(180), dir(180), blue);
+ΨΨdotfactor *= 2;
+ΨΨpair A = opendot( (-3, -2), blue );
+ΨΨpair B = opendot( (-1, -2), blue );
+ΨΨlabel("$E_1$", midpoint(A--B), dir(-90), blue);
+ΨΨdraw(A--B, blue, Margins);
+ΨΨdraw( (-1.25, -0.2)--(-2,-2), blue, EndArrow, Margins );
+ΨΨlabel("$\phi_1$", (-1.675, -1.1), dir(180), blue);
+
+ΨΨpair C = opendot( (1, -2), red );
+ΨΨpair D = opendot( (3, -2), red );
+ΨΨlabel("$E_2$", midpoint(C--D), dir(-90), red);
+ΨΨdraw(C--D, red, Margins);
+ΨΨdraw( (1.25, -0.2)--(2,-2), red, EndArrow, Margins );
+ΨΨlabel("$\phi_2$", (1.672, -1.1), dir(0), red);
+Ψ
+</pre>
+</div>
+</div>
+<div id="S1.Thmtheorem7" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 46.1.7</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S1.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Where do you think the words “chart” and “atlas” come from?</span></p>
+</div>
+</div>
+<div id="S1.Thmtheorem8" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 46.1.8</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Some examples of topological manifolds)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S1.I2" class="ltx_enumerate">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">As discussed at length,
+the sphere <math id="S1.I2.i1.p1.m1" class="ltx_Math" alttext="S^{2}" display="inline"><msup><mi>S</mi><mn>2</mn></msup></math> is a <math id="S1.I2.i1.p1.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-manifold: every point in the sphere has a
+small open neighborhood that looks like <math id="S1.I2.i1.p1.m3" class="ltx_Math" alttext="D^{2}" display="inline"><msup><mi>D</mi><mn>2</mn></msup></math>.
+One can cover the Earth with just two hemispheres,
+and each hemisphere is homeomorphic to a disk.</p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The circle <math id="S1.I2.i2.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> is a <math id="S1.I2.i2.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-manifold; every point has an
+open neighborhood that looks like an open interval.</p>
+</div>
+</li>
+<li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">The torus, Klein bottle, <math id="S1.I2.i3.p1.m1" class="ltx_Math" alttext="\mathbb{RP}^{2}" display="inline"><mrow><mi>ℝ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>2</mn></msup></mrow></math> are all <math id="S1.I2.i3.p1.m2" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-manifolds.</p>
+</div>
+</li>
+<li id="S1.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S1.I2.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I2.i4.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> is trivially a manifold, as are its open sets.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">All these spaces are compact except <math id="S1.Thmtheorem8.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>.</p>
+</div>
+<div id="S1.Thmtheorem8.p2" class="ltx_para">
+<p class="ltx_p">A non-example of a manifold is <math id="S1.Thmtheorem8.p2.m1" class="ltx_Math" alttext="D^{n}" display="inline"><msup><mi>D</mi><mi>n</mi></msup></math>, because it has a <em class="ltx_emph ltx_font_italic">boundary</em>;
+points on the boundary do not have open neighborhoods
+that look Euclidean.</p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">46.2 </span>Smooth manifolds</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> All the topological manifolds.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p2.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a topological <math id="S2.p2.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold with atlas
+<math id="S2.p2.m3" class="ltx_Math" alttext="\{U_{i}\xrightarrow{\phi_{i}}E_{i}\}" display="inline"><mrow><mo stretchy="false">{</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mover accent="true"><mo stretchy="false">→</mo><msub><mi>ϕ</mi><mi>i</mi></msub></mover><msub><mi>E</mi><mi>i</mi></msub></mrow><mo stretchy="false">}</mo></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 46.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">For any <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>, <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math> such that <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="U_{i}\cap U_{j}\neq\varnothing" display="inline"><mrow><mrow><msub><mi>U</mi><mi>i</mi></msub><mo>∩</mo><msub><mi>U</mi><mi>j</mi></msub></mrow><mo>≠</mo><mi mathvariant="normal">∅</mi></mrow></math>,
+the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> transition map</span> <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\phi_{ij}" display="inline"><msub><mi>ϕ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub></math> is the composed map</p>
+<table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\phi_{ij}\colon E_{i}\cap\phi_{i}^{\text{img}}(U_{i}\cap U_{j})\xrightarrow{%
+\phi_{i}^{-1}}U_{i}\cap U_{j}\xrightarrow{\phi_{j}}E_{j}\cap\phi_{j}^{\text{%
+img}}(U_{i}\cap U_{j})." display="block"><mrow><mrow><msub><mi>ϕ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msub><mi>E</mi><mi>i</mi></msub><mo>∩</mo><mrow><msubsup><mi>ϕ</mi><mi>i</mi><mtext>img</mtext></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mo>∩</mo><msub><mi>U</mi><mi>j</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mover accent="true"><mo stretchy="false">→</mo><msubsup><mi>ϕ</mi><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mover><mrow><msub><mi>U</mi><mi>i</mi></msub><mo>∩</mo><msub><mi>U</mi><mi>j</mi></msub></mrow><mover accent="true"><mo stretchy="false">→</mo><msub><mi>ϕ</mi><mi>j</mi></msub></mover><mrow><msub><mi>E</mi><mi>j</mi></msub><mo>∩</mo><mrow><msubsup><mi>ϕ</mi><mi>j</mi><mtext>img</mtext></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mo>∩</mo><msub><mi>U</mi><mi>j</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">Sorry for the dense notation, let me explain.
+The intersection with the image <math id="S2.p3.m1" class="ltx_Math" alttext="\phi_{i}^{\text{img}}(U_{i}\cap U_{j})" display="inline"><mrow><msubsup><mi>ϕ</mi><mi>i</mi><mtext>img</mtext></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mo>∩</mo><msub><mi>U</mi><mi>j</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math>
+and the image <math id="S2.p3.m2" class="ltx_Math" alttext="\phi_{j}^{\text{img}}(U_{i}\cap U_{j})" display="inline"><mrow><msubsup><mi>ϕ</mi><mi>j</mi><mtext>img</mtext></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mo>∩</mo><msub><mi>U</mi><mi>j</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is a notational annoyance
+to make the map well-defined and a homeomorphism.
+The transition map is just the natural way to go from <math id="S2.p3.m3" class="ltx_Math" alttext="E_{i}\to E_{j}" display="inline"><mrow><msub><mi>E</mi><mi>i</mi></msub><mo stretchy="false">→</mo><msub><mi>E</mi><mi>j</mi></msub></mrow></math>,
+restricted to overlaps.
+Picture below, where the intersections are just the green portions
+of each <math id="S2.p3.m4" class="ltx_Math" alttext="E_{1}" display="inline"><msub><mi>E</mi><mn>1</mn></msub></math> and <math id="S2.p3.m5" class="ltx_Math" alttext="E_{2}" display="inline"><msub><mi>E</mi><mn>2</mn></msub></math>:</p>
+</div>
+<div class="ltx_logical-block">
+<div id="S2.p4" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(8cm);
+ΨΨdraw(unitcircle, black);
+ΨΨdraw(arc(origin, 1, 80, 100), heavygreen+2);
+ΨΨdraw(arc(origin, 1, -100, -80), heavygreen+2);
+ΨΨlabel("$S^1$", dir(45), dir(45));
+ΨΨreal R = 0.1;
+ΨΨdraw(arc(origin,1-R,-100,100), red);
+ΨΨlabel("$U_2$", (1-R)*dir(0), dir(180), red);
+ΨΨdraw(arc(origin,1+R,80,280), blue);
+ΨΨlabel("$U_1$", (1+R)*dir(180), dir(180), blue);
+ΨΨdotfactor *= 2;
+ΨΨpair A = opendot( (-3, -2), blue );
+ΨΨpair B = opendot( (-1, -2), blue );
+ΨΨlabel("$E_1$", midpoint(A--B), dir(-90), blue);
+ΨΨdraw(A--B, blue, Margins);
+ΨΨdraw( (-1.25, -0.2)--(-2,-2), blue, EndArrow, Margins );
+ΨΨlabel("$\phi_1$", (-1.675, -1.1), dir(180), blue);
+
+ΨΨpair C = opendot( (1, -2), red );
+ΨΨpair D = opendot( (3, -2), red );
+ΨΨlabel("$E_2$", midpoint(C--D), dir(-90), red);
+ΨΨdraw(C--D, red, Margins);
+ΨΨdraw( (1.25, -0.2)--(2,-2), red, EndArrow, Margins );
+ΨΨlabel("$\phi_2$", (1.672, -1.1), dir(0), red);
+
+ΨΨdraw(A--(0.7*A+0.3*B), heavygreen+2, Margins);
+ΨΨdraw(B--(0.7*B+0.3*A), heavygreen+2, Margins);
+ΨΨdraw(C--(0.7*C+0.3*D), heavygreen+2, Margins);
+ΨΨdraw(D--(0.7*D+0.3*C), heavygreen+2, Margins);
+ΨΨdraw(B--C, heavygreen, EndArrow, Margin(4,4));
+ΨΨlabel("$\phi_{12}$", B--C, dir(90), heavygreen);
+Ψ
+</pre>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">We want to add enough structure so that we can use differential forms.</p>
+</div>
+<div id="def:smooth_manif" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 46.2.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We say <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> smooth manifold</span>
+if all its transition maps are smooth.</p>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">This definition makes sense, because we know what it means
+for a map between two open sets of <math id="S2.p6.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> to be differentiable.</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">With smooth manifolds we can try to port over definitions that
+we built for <math id="S2.p7.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> onto our manifolds.
+So in general, all definitions involving smooth manifolds will reduce to
+something on each of the coordinate charts, with a compatibility condition.</p>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">As an example, here is the definition of a “smooth map”:</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 46.2.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<ol id="S2.I1" class="ltx_enumerate">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a smooth manifold.
+A continuous function <math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="f\colon M\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> is called <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> smooth</span>
+if the composition</p>
+<table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="E_{i}\xrightarrow{\phi_{i}^{-1}}U_{i}\hookrightarrow M\xrightarrow{f}\mathbb{R}" display="block"><mrow><msub><mi>E</mi><mi>i</mi></msub><mover accent="true"><mo stretchy="false">→</mo><msubsup><mi>ϕ</mi><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mover><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">↪</mo><mi>M</mi><mover accent="true"><mo stretchy="false">→</mo><mo>𝑓</mo></mover><mi>ℝ</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is smooth as a function <math id="S2.I1.i1.p1.m3" class="ltx_Math" alttext="E_{i}\to\mathbb{R}" display="inline"><mrow><msub><mi>E</mi><mi>i</mi></msub><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> be smooth
+with atlases <math id="S2.I1.i2.p1.m3" class="ltx_Math" alttext="\{U_{i}^{M}\xrightarrow{\phi_{i}}E_{i}^{M}\}_{i}" display="inline"><msub><mrow><mo stretchy="false">{</mo><mrow><msubsup><mi>U</mi><mi>i</mi><mi>M</mi></msubsup><mover accent="true"><mo stretchy="false">→</mo><msub><mi>ϕ</mi><mi>i</mi></msub></mover><msubsup><mi>E</mi><mi>i</mi><mi>M</mi></msubsup></mrow><mo stretchy="false">}</mo></mrow><mi>i</mi></msub></math>
+and <math id="S2.I1.i2.p1.m4" class="ltx_Math" alttext="\{U_{j}^{N}\xrightarrow{\phi_{j}}E_{j}^{N}\}_{j}" display="inline"><msub><mrow><mo stretchy="false">{</mo><mrow><msubsup><mi>U</mi><mi>j</mi><mi>N</mi></msubsup><mover accent="true"><mo stretchy="false">→</mo><msub><mi>ϕ</mi><mi>j</mi></msub></mover><msubsup><mi>E</mi><mi>j</mi><mi>N</mi></msubsup></mrow><mo stretchy="false">}</mo></mrow><mi>j</mi></msub></math>.
+A map <math id="S2.I1.i2.p1.m5" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> smooth</span> if for every <math id="S2.I1.i2.p1.m6" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math> and <math id="S2.I1.i2.p1.m7" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math>,
+the composed map</p>
+<table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="E_{i}\xrightarrow{\phi_{i}^{-1}}U_{i}\hookrightarrow M\xrightarrow{f}N%
+\twoheadrightarrow U_{j}\xrightarrow{\phi_{j}}E_{j}" display="block"><mrow><msub><mi>E</mi><mi>i</mi></msub><mover accent="true"><mo stretchy="false">→</mo><msubsup><mi>ϕ</mi><mi>i</mi><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mover><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">↪</mo><mi>M</mi><mover accent="true"><mo stretchy="false">→</mo><mo>𝑓</mo></mover><mi>N</mi><mo stretchy="false">↠</mo><msub><mi>U</mi><mi>j</mi></msub><mover accent="true"><mo stretchy="false">→</mo><msub><mi>ϕ</mi><mi>j</mi></msub></mover><msub><mi>E</mi><mi>j</mi></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is smooth, as a function <math id="S2.I1.i2.p1.m8" class="ltx_Math" alttext="E_{i}\to E_{j}" display="inline"><mrow><msub><mi>E</mi><mi>i</mi></msub><mo stretchy="false">→</mo><msub><mi>E</mi><mi>j</mi></msub></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">46.3 </span>Regular value theorem</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S3.p1.m1" class="ltx_Math" alttext="x^{2}+y^{2}=1" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>=</mo><mn>1</mn></mrow></math> is a circle!</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Despite all that I’ve written about general manifolds,
+it would be sort of mean if I left you here
+because I have not really told you how to actually construct
+manifolds in practice, even though we know the circle
+<math id="S3.p2.m1" class="ltx_Math" alttext="x^{2}+y^{2}=1" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>=</mo><mn>1</mn></mrow></math> is a great example of a one-dimensional
+manifold embedded in <math id="S3.p2.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 46.3.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Regular value theorem)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be an <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional real normed vector
+space, let <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> be open
+and let <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="f_{1},\dots,f_{m}\colon U\to\mathbb{R}" display="inline"><mrow><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+be smooth functions.
+Let <math id="S3.Thmtheorem1.p1.m5" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be the set of points <math id="S3.Thmtheorem1.p1.m6" class="ltx_Math" alttext="p\in U" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>U</mi></mrow></math>
+such that <math id="S3.Thmtheorem1.p1.m7" class="ltx_Math" alttext="f_{1}(p)=\dots=f_{m}(p)=0" display="inline"><mrow><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi mathvariant="normal">⋯</mi><mo>=</mo><mrow><msub><mi>f</mi><mi>m</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+<div id="S3.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">Assume <math id="S3.Thmtheorem1.p2.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is nonempty and that the map</p>
+<table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="V\to\mathbb{R}^{m}\quad\text{by}\quad v\mapsto\left((Df_{1})_{p}(v),\dots,(Df_%
+{m})_{p}(v)\right)" display="block"><mrow><mrow><mi>V</mi><mo stretchy="false">→</mo><mrow><msup><mi>ℝ</mi><mi>m</mi></msup><mspace width="1em"></mspace><mtext>by</mtext></mrow></mrow><mspace width="1em"></mspace><mrow><mi>v</mi><mo stretchy="false">↦</mo><mrow><mo>(</mo><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><msub><mi>f</mi><mn>1</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><msub><mi>f</mi><mi>m</mi></msub></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">has rank <math id="S3.Thmtheorem1.p2.m2" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>, for every point <math id="S3.Thmtheorem1.p2.m3" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>.
+Then <math id="S3.Thmtheorem1.p2.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a manifold of dimension <math id="S3.Thmtheorem1.p2.m5" class="ltx_Math" alttext="n-m" display="inline"><mrow><mi>n</mi><mo>−</mo><mi>m</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">For a proof, see <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:manifolds</span>, Theorem 6.3]</cite>.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">One very common special case is to take <math id="S3.p4.m1" class="ltx_Math" alttext="m=1" display="inline"><mrow><mi>m</mi><mo>=</mo><mn>1</mn></mrow></math> above.</p>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_corollary">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Corollary 46.3.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Level hypersurfaces)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a finite-dimensional real normed vector
+space, let <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> be open
+and let <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="f\colon U\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> be smooth.
+Let <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be the set of points <math id="S3.Thmtheorem2.p1.m5" class="ltx_Math" alttext="p\in U" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>U</mi></mrow></math>
+such that <math id="S3.Thmtheorem2.p1.m6" class="ltx_Math" alttext="f(p)=0" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.
+If <math id="S3.Thmtheorem2.p1.m7" class="ltx_Math" alttext="M\neq\varnothing" display="inline"><mrow><mi>M</mi><mo>≠</mo><mi mathvariant="normal">∅</mi></mrow></math> and <math id="S3.Thmtheorem2.p1.m8" class="ltx_Math" alttext="(Df)_{p}" display="inline"><msub><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mi>p</mi></msub></math> is not the zero map for any <math id="S3.Thmtheorem2.p1.m9" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>,
+then <math id="S3.Thmtheorem2.p1.m10" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a manifold of dimension <math id="S3.Thmtheorem2.p1.m11" class="ltx_Math" alttext="\dim V-1" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mi>V</mi></mrow><mo>−</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 46.3.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(The circle <math id="S3.Thmtheorem3.m1" class="ltx_Math" alttext="x^{2}+y^{2}-c=0" display="inline"><mrow><mrow><mrow><msup><mi mathcolor="#8C0000">x</mi><mn mathcolor="#8C0000">2</mn></msup><mo mathcolor="#8C0000">+</mo><msup><mi mathcolor="#8C0000">y</mi><mn mathcolor="#8C0000">2</mn></msup></mrow><mo mathcolor="#8C0000">−</mo><mi mathcolor="#8C0000">c</mi></mrow><mo mathcolor="#8C0000">=</mo><mn mathcolor="#8C0000">0</mn></mrow></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f(x,y)=x^{2}+y^{2}-c" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>−</mo><mi>c</mi></mrow></mrow></math>, <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="f\colon\mathbb{R}^{2}\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>,
+where <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math> is a positive real number.
+Note that</p>
+<table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="Df=2x\cdot dx+2y\cdot dy" display="block"><mrow><mrow><mi>D</mi><mo>⁢</mo><mi>f</mi></mrow><mo>=</mo><mrow><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>x</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>d</mi></mrow><mo>⁢</mo><mi>x</mi></mrow><mo>+</mo><mrow><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>y</mi></mrow><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>d</mi></mrow><mo>⁢</mo><mi>y</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">which in particular is nonzero
+as long as <math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="(x,y)\neq(0,0)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo>≠</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math>, i.e. as long as <math id="S3.Thmtheorem3.p1.m5" class="ltx_Math" alttext="c\neq 0" display="inline"><mrow><mi>c</mi><mo>≠</mo><mn>0</mn></mrow></math>.
+Thus:</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">When <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="c&gt;0" display="inline"><mrow><mi>c</mi><mo>&gt;</mo><mn>0</mn></mrow></math>, the resulting curve —
+a circle with radius <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="\sqrt{c}" display="inline"><msqrt><mi>c</mi></msqrt></math> —
+is a one-dimensional manifold, as we knew.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">When <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="c=0" display="inline"><mrow><mi>c</mi><mo>=</mo><mn>0</mn></mrow></math>, the result fails.
+Indeed, <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is a single point,
+which is actually a zero-dimensional manifold!</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">We won’t give further examples
+since I’m only mentioning this in passing
+in order to increase your capacity to write real concrete examples.
+(But <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:manifolds</span>, Chapter 6.2]</cite> has some more examples,
+beautifully illustrated.)</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">46.4 </span>Differential forms on manifolds</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">We already know what a differential form is on an open set <math id="S4.p1.m1" class="ltx_Math" alttext="U\subseteq\mathbb{R}^{n}" display="inline"><mrow><mi>U</mi><mo>⊆</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow></math>.
+So, we naturally try to port over the definition of
+differentiable form on each subset, plus a compatibility condition.</p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.p2.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a smooth manifold with atlas <math id="S4.p2.m2" class="ltx_Math" alttext="\{U_{i}\xrightarrow{\phi_{i}}E_{i}\}_{i}" display="inline"><msub><mrow><mo stretchy="false">{</mo><mrow><msub><mi>U</mi><mi>i</mi></msub><mover accent="true"><mo stretchy="false">→</mo><msub><mi>ϕ</mi><mi>i</mi></msub></mover><msub><mi>E</mi><mi>i</mi></msub></mrow><mo stretchy="false">}</mo></mrow><mi>i</mi></msub></math>.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 46.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> differential <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="k" display="inline"><mi mathcolor="#0000FF">k</mi></math>-form</span> <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> on a smooth manifold <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+is a collection <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\{\alpha_{i}\}_{i}" display="inline"><msub><mrow><mo stretchy="false">{</mo><msub><mi>α</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow><mi>i</mi></msub></math> of differential <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-forms on each <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="E_{i}" display="inline"><msub><mi>E</mi><mi>i</mi></msub></math>,
+such that for any <math id="S4.Thmtheorem1.p1.m7" class="ltx_Math" alttext="j" display="inline"><mi>j</mi></math> and <math id="S4.Thmtheorem1.p1.m8" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math> we have that</p>
+<table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\alpha_{j}=\phi_{ij}^{\ast}(\alpha_{i})." display="block"><mrow><mrow><msub><mi>α</mi><mi>j</mi></msub><mo>=</mo><mrow><msubsup><mi>ϕ</mi><mrow><mi>i</mi><mo>⁢</mo><mi>j</mi></mrow><mo>∗</mo></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>α</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">In English: we specify a differential form on each chart,
+which is compatible under pullbacks of the transition maps.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">46.5 </span>Orientations</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> Left versus right, clockwise vs. counterclockwise.</em></p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">This still isn’t enough to integrate on manifolds.
+We need one more definition: that of an orientation.</p>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">The main issue is the observation from standard calculus that</p>
+<table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\int_{a}^{b}f(x)\;dx=-\int_{b}^{a}f(x)\;dx." display="block"><mrow><mrow><mrow><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mrow><msubsup><mo>∫</mo><mi>b</mi><mi>a</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Consider then a space <math id="S5.p3.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> which is homeomorphic to an interval.
+If we have a <math id="S5.p3.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-form <math id="S5.p3.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>, how do we integrate it over <math id="S5.p3.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>?
+Since <math id="S5.p3.m5" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is just a topological space (rather than a subset of <math id="S5.p3.m6" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>),
+there is no default “left” or “right” that we can pick.
+As another example, if <math id="S5.p3.m7" class="ltx_Math" alttext="M=S^{1}" display="inline"><mrow><mi>M</mi><mo>=</mo><msup><mi>S</mi><mn>1</mn></msup></mrow></math> is a circle, there is
+no default “clockwise” or “counterclockwise” unless we decide
+to embed <math id="S5.p3.m8" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> into <math id="S5.p3.m9" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>.</p>
+</div>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">To work around this we have to actually have to
+make additional assumptions about our manifold.</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 46.5.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A smooth <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> orientable</span> if
+there exists a differential <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-form <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math> on <math id="S5.Thmtheorem1.p1.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+such that for every <math id="S5.Thmtheorem1.p1.m5" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>,</p>
+<table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\omega_{p}\neq 0." display="block"><mrow><mrow><msub><mi>ω</mi><mi>p</mi></msub><mo>≠</mo><mn>0</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S5.p5" class="ltx_para">
+<p class="ltx_p">Recall here that <math id="S5.p5.m1" class="ltx_Math" alttext="\omega_{p}" display="inline"><msub><mi>ω</mi><mi>p</mi></msub></math> is an element of <math id="S5.p5.m2" class="ltx_Math" alttext="\bigwedge^{n}(V^{\vee})" display="inline"><mrow><msup><mo>⋀</mo><mi>n</mi></msup><mrow><mo lspace="0em" stretchy="false">(</mo><msup><mi>V</mi><mo>∨</mo></msup><mo stretchy="false">)</mo></mrow></mrow></math>.
+In that case we say <math id="S5.p5.m3" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math> is a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> volume form</span> of <math id="S5.p5.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+<div id="S5.p6" class="ltx_para">
+<p class="ltx_p">How do we picture this definition?
+If we recall that an differential form is supposed to take
+tangent vectors of <math id="S5.p6.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> and return real numbers.
+To this end, we can think of each point <math id="S5.p6.m2" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math> as
+having a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> tangent plane</span> <math id="S5.p6.m3" class="ltx_Math" alttext="T_{p}(M)" display="inline"><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow></math> which is <math id="S5.p6.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional.
+Now since the volume form <math id="S5.p6.m5" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math> is <math id="S5.p6.m6" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional,
+it takes an entire basis of the <math id="S5.p6.m7" class="ltx_Math" alttext="T_{p}(M)" display="inline"><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow></math> and gives a real number.
+So a manifold is orientable if there exists a consistent choice of
+sign for the basis of tangent vectors at every point of the manifold.</p>
+</div>
+<div id="S5.p7" class="ltx_para">
+<p class="ltx_p">For “embedded manifolds”, this just amounts to being able
+to pick a nonzero field of normal vectors to each point <math id="S5.p7.m1" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math>.
+For example, <math id="S5.p7.m2" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> is orientable in this way.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(5cm);
+ΨΨdraw(unitcircle, blue+1);
+ΨΨlabel("$S^1$", dir(100), dir(100), blue);
+ΨΨvoid arrow(real theta) {
+ΨΨΨpair P = dir(theta);
+ΨΨΨdot(P);
+ΨΨΨpair delta = 0.5*P;
+ΨΨΨdraw( P--(P+delta), EndArrow );
+ΨΨ}
+ΨΨarrow(0);
+ΨΨarrow(50);
+ΨΨarrow(140);
+ΨΨarrow(210);
+ΨΨarrow(300);
+Ψ
+</pre>
+<p class="ltx_p">Similarly, one can orient a sphere <math id="S5.p7.m3" class="ltx_Math" alttext="S^{2}" display="inline"><msup><mi>S</mi><mn>2</mn></msup></math> by having
+a field of vectors pointing away (or towards) the center.
+This is all non-rigorous,
+because I haven’t defined the tangent plane <math id="S5.p7.m4" class="ltx_Math" alttext="T_{p}(M)" display="inline"><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow></math>;
+since <math id="S5.p7.m5" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is in general an intrinsic object one has to be
+quite roundabout to define <math id="S5.p7.m6" class="ltx_Math" alttext="T_{p}(M)" display="inline"><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow></math> (although I do so in an optional section later).
+In any event, the point is that guesses about the orientability
+of spaces are likely to be correct.</p>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 46.5.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Orientable surfaces)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S5.I1" class="ltx_enumerate">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Spheres <math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="S^{n}" display="inline"><msup><mi>S</mi><mi>n</mi></msup></math>, planes, and the torus <math id="S5.I1.i1.p1.m2" class="ltx_Math" alttext="S^{1}\times S^{1}" display="inline"><mrow><msup><mi>S</mi><mn>1</mn></msup><mo lspace="0.222em" rspace="0.222em">×</mo><msup><mi>S</mi><mn>1</mn></msup></mrow></math> are orientable.</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The Möbius strip and Klein bottle are <em class="ltx_emph ltx_font_italic">not</em> orientable:
+they are “one-sided”.</p>
+</div>
+</li>
+<li id="S5.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S5.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i3.p1.m1" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math> is orientable for any <math id="S5.I1.i3.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</p>
+</div>
+</li>
+<li id="S5.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S5.I1.i4.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i4.p1.m1" class="ltx_Math" alttext="\mathbb{RP}^{n}" display="inline"><mrow><mi>ℝ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math> is orientable only for odd <math id="S5.I1.i4.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">46.6 </span>Stokes’ theorem for manifolds</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p">Stokes’ theorem in the general case is based on the idea
+of a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> manifold with boundary</span> <math id="S6.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, which I won’t define,
+other than to say its boundary <math id="S6.p1.m2" class="ltx_Math" alttext="\partial M" display="inline"><mrow><mo rspace="0em">∂</mo><mi>M</mi></mrow></math> is an <math id="S6.p1.m3" class="ltx_Math" alttext="n-1" display="inline"><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></math> dimensional manifold,
+and that it is oriented if <math id="S6.p1.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is oriented.
+An example is <math id="S6.p1.m5" class="ltx_Math" alttext="M=D^{2}" display="inline"><mrow><mi>M</mi><mo>=</mo><msup><mi>D</mi><mn>2</mn></msup></mrow></math>, which has boundary <math id="S6.p1.m6" class="ltx_Math" alttext="\partial M=S^{1}" display="inline"><mrow><mrow><mo rspace="0em">∂</mo><mi>M</mi></mrow><mo>=</mo><msup><mi>S</mi><mn>1</mn></msup></mrow></math>.</p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">Next,</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 46.6.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> support</span> of a differential form <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> on <math id="S6.Thmtheorem1.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+is the closure of the set</p>
+<table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\left\{p\in M\mid\alpha_{p}\neq 0\right\}." display="block"><mrow><mrow><mo>{</mo><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msub><mi>α</mi><mi>p</mi></msub><mo>≠</mo><mn>0</mn></mrow><mo>}</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">If this support is compact as a topological space,
+we say <math id="S6.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> compactly supported</span>.</p>
+</div>
+</div>
+<div id="S6.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 46.6.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">For example, volume forms are supported on all of <math id="S6.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">Now, one can define integration on oriented manifolds,
+but I won’t define this because the definition is truly awful.
+Then Stokes’ theorem says</p>
+</div>
+<div id="S6.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 46.6.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Stokes’ theorem for manifolds)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S6.Thmtheorem3.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a smooth oriented <math id="S6.Thmtheorem3.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-manifold with boundary
+and let <math id="S6.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> be a compactly supported <math id="S6.Thmtheorem3.p1.m4" class="ltx_Math" alttext="(n-1)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math>-form.
+Then</p>
+<table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\int_{M}d\alpha=\int_{\partial M}\alpha." display="block"><mrow><mrow><mrow><msub><mo>∫</mo><mi>M</mi></msub><mrow><mo lspace="0.167em" rspace="0em">𝑑</mo><mi>α</mi></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∫</mo><mrow><mo rspace="0em">∂</mo><mi>M</mi></mrow></msub><mi>α</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S6.p4" class="ltx_para">
+<p class="ltx_p">All the omitted details are developed in full in <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:manifolds</span>]</cite>.</p>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">46.7 </span>(Optional) The tangent and cotangent space</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> Draw a line tangent to a circle, or a plane tangent to a sphere.</em></p>
+</div>
+<div id="S7.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.p2.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a smooth manifold and <math id="S7.p2.m2" class="ltx_Math" alttext="p\in M" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>M</mi></mrow></math> a point.
+I omitted the definition of <math id="S7.p2.m3" class="ltx_Math" alttext="T_{p}(M)" display="inline"><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow></math> earlier,
+but want to actually define it now.</p>
+</div>
+<div id="S7.p3" class="ltx_para">
+<p class="ltx_p">As I said, geometrically we know what this <em class="ltx_emph ltx_font_italic">should</em>
+look like for our usual examples.
+For example, if <math id="S7.p3.m1" class="ltx_Math" alttext="M=S^{1}" display="inline"><mrow><mi>M</mi><mo>=</mo><msup><mi>S</mi><mn>1</mn></msup></mrow></math> is a circle embedded in <math id="S7.p3.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>,
+then the tangent vector at a point <math id="S7.p3.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>
+should just look like a vector running off tangent to the circle.
+Similarly, given a sphere <math id="S7.p3.m4" class="ltx_Math" alttext="M=S^{2}" display="inline"><mrow><mi>M</mi><mo>=</mo><msup><mi>S</mi><mn>2</mn></msup></mrow></math>,
+the tangent space at a point <math id="S7.p3.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> along the sphere
+would look like plane tangent to <math id="S7.p3.m6" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> at <math id="S7.p3.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+<div id="S7.p4" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(5cm);
+ΨΨdraw(unitcircle);
+ΨΨlabel("$S^1$", dir(140), dir(140));
+ΨΨpair p = dir(0);
+ΨΨdraw( (1,-1.4)--(1,1.4), mediumblue, Arrows);
+ΨΨlabel("$T_p(M)$", (1, 1.4), dir(-45), mediumblue);
+ΨΨdraw(p--(1,0.7), red, EndArrow);
+ΨΨlabel("$\vec v \in T_p(M)$", (1,0.7), dir(-15), red);
+ΨΨdot("$p$", p, p, blue);
+Ψ
+</pre>
+</div>
+<div id="S7.p5" class="ltx_para">
+<p class="ltx_p">However, one of the points of all this manifold stuff
+is that we really want to see the manifold
+as an <em class="ltx_emph ltx_font_italic">intrinsic object</em>, in its own right,
+rather than as embedded in <math id="S7.p5.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>This
+can be thought of as analogous to the way
+that we think of a group as an abstract object in its own right,
+even though Cayley’s Theorem tells us that any group is a subgroup
+of the permutation group.
+Note this wasn’t always the case!
+During the 19th century, a group was literally defined
+as a subset of <math id="footnote1.m1" class="ltx_Math" alttext="\text{GL}(n)" display="inline"><mrow><mtext>GL</mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow></mrow></math> or of <math id="footnote1.m2" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math>.
+In fact Sylow developed his theorems without the word “group”.
+Only much later did the abstract definition of a group was given,
+an abstract set <math id="footnote1.m3" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> which was independent of any <em class="ltx_emph ltx_font_italic">embedding</em> into <math id="footnote1.m4" class="ltx_Math" alttext="S_{n}" display="inline"><msub><mi>S</mi><mi>n</mi></msub></math>,
+and an object in its own right.</span></span></span>
+So, we would like our notion of a tangent vector to not refer to an ambient space,
+but only to intrinsic properties of the manifold <math id="S7.p5.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> in question.</p>
+</div>
+<section id="S7.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">46.7.i </span>Tangent space</h3>
+
+<div id="S7.SS1.p1" class="ltx_para">
+<p class="ltx_p">To motivate this construction, let us start
+with an embedded case for which we know the answer already:
+a sphere.</p>
+</div>
+<div id="S7.SS1.p2" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S7.SS1.p2.m1" class="ltx_Math" alttext="f\colon S^{2}\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>S</mi><mn>2</mn></msup><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> is a
+function on a sphere, and take a point <math id="S7.SS1.p2.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+Near the point <math id="S7.SS1.p2.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, <math id="S7.SS1.p2.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> looks like a function
+on some open neighborhood of the origin.
+Thus we can think of taking a <em class="ltx_emph ltx_font_italic">directional derivative</em>
+along a vector <math id="S7.SS1.p2.m5" class="ltx_Math" alttext="\vec{v}" display="inline"><mover accent="true"><mi>v</mi><mo stretchy="false">→</mo></mover></math> in the imagined tangent plane
+(i.e. some partial derivative).
+For a fixed <math id="S7.SS1.p2.m6" class="ltx_Math" alttext="\vec{v}" display="inline"><mover accent="true"><mi>v</mi><mo stretchy="false">→</mo></mover></math> this partial derivative is a linear map</p>
+<table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="D_{\vec{v}}\colon C^{\infty}(M)\to\mathbb{R}." display="block"><mrow><mrow><msub><mi>D</mi><mover accent="true"><mi>v</mi><mo stretchy="false">→</mo></mover></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msup><mi>C</mi><mi mathvariant="normal">∞</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="S7.SS1.p3" class="ltx_para">
+<p class="ltx_p">It turns out this goes the other way:
+if you know what <math id="S7.SS1.p3.m1" class="ltx_Math" alttext="D_{\vec{v}}" display="inline"><msub><mi>D</mi><mover accent="true"><mi>v</mi><mo stretchy="false">→</mo></mover></msub></math> does to every smooth function,
+then you can recover <math id="S7.SS1.p3.m2" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math>.
+This is the trick we use in order to create the tangent space.
+Rather than trying to specify a vector <math id="S7.SS1.p3.m3" class="ltx_Math" alttext="\vec{v}" display="inline"><mover accent="true"><mi>v</mi><mo stretchy="false">→</mo></mover></math> directly
+(which we can’t do because we don’t have an ambient space),</p>
+</div>
+<div id="S7.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 46.7.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S7.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">The vectors <em class="ltx_emph ltx_font_italic">are</em> partial-derivative-like maps.</p>
+</div>
+</div>
+<div id="S7.SS1.p4" class="ltx_para">
+<p class="ltx_p">More formally, we have the following.</p>
+</div>
+<div id="S7.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 46.7.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S7.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> derivation</span> <math id="S7.Thmtheorem2.p1.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> at <math id="S7.Thmtheorem2.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is a linear map
+<math id="S7.Thmtheorem2.p1.m3" class="ltx_Math" alttext="D\colon C^{\infty}(M)\to\mathbb{R}" display="inline"><mrow><mi>D</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msup><mi>C</mi><mi mathvariant="normal">∞</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+(i.e. assigning a real number to every smooth <math id="S7.Thmtheorem2.p1.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>)
+satisfying the following Leibniz rule:
+for any <math id="S7.Thmtheorem2.p1.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, <math id="S7.Thmtheorem2.p1.m6" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> we have the equality</p>
+<table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="D(fg)=f(p)\cdot D(g)+g(p)\cdot D(f)\in\mathbb{R}." display="block"><mrow><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mi>g</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mi>D</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mi>D</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>∈</mo><mi>ℝ</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S7.SS1.p5" class="ltx_para">
+<p class="ltx_p">This is just a “product rule”.
+Then the tangent space is easy to define:</p>
+</div>
+<div id="S7.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 46.7.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S7.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> tangent vector</span> is just a derivation at <math id="S7.Thmtheorem3.p1.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, and
+the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> tangent space</span> <math id="S7.Thmtheorem3.p1.m2" class="ltx_Math" alttext="T_{p}(M)" display="inline"><mrow><msub><mi>T</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>M</mi><mo stretchy="false">)</mo></mrow></mrow></math> is simply
+the set of all these tangent vectors.</p>
+</div>
+</div>
+<div id="S7.SS1.p6" class="ltx_para">
+<p class="ltx_p">In this way we have constructed the tangent space.</p>
+</div>
+</section>
+<section id="S7.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">46.7.ii </span>The cotangent space</h3>
+
+<div id="S7.SS2.p1" class="ltx_para">
+<p class="ltx_p">In fact, one can show that the product rule
+for <math id="S7.SS2.p1.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> is equivalent to the following three conditions:</p>
+<ol id="S7.I1" class="ltx_enumerate">
+<li id="S7.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span> 
+<div id="S7.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S7.I1.i1.p1.m1" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> is linear, meaning <math id="S7.I1.i1.p1.m2" class="ltx_Math" alttext="D(af+bg)=aD(f)+bD(g)" display="inline"><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>f</mi></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>g</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S7.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span> 
+<div id="S7.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S7.I1.i2.p1.m1" class="ltx_Math" alttext="D(1_{M})=0" display="inline"><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mn>1</mn><mi>M</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>, where <math id="S7.I1.i2.p1.m2" class="ltx_Math" alttext="1_{M}" display="inline"><msub><mn>1</mn><mi>M</mi></msub></math> is the constant function on <math id="S7.I1.i2.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</li>
+<li id="S7.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span> 
+<div id="S7.I1.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S7.I1.i3.p1.m1" class="ltx_Math" alttext="D(fg)=0" display="inline"><mrow><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mi>g</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> whenever <math id="S7.I1.i3.p1.m2" class="ltx_Math" alttext="f(p)=g(p)=0" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>.
+Intuitively, this means that if a function <math id="S7.I1.i3.p1.m3" class="ltx_Math" alttext="h=fg" display="inline"><mrow><mi>h</mi><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mi>g</mi></mrow></mrow></math>
+vanishes to second order at <math id="S7.I1.i3.p1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>,
+then its derivative along <math id="S7.I1.i3.p1.m5" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math> should be zero.</p>
+</div>
+</li>
+</ol>
+</div>
+<div id="S7.SS2.p2" class="ltx_para">
+<p class="ltx_p">This suggests a third equivalent definition:
+suppose we define</p>
+<table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\mathfrak{m}_{p}\coloneqq\left\{f\in C^{\infty}M\mid f(p)=0\right\}" display="block"><mrow><msub><mi>𝔪</mi><mi>p</mi></msub><mo>≔</mo><mrow><mo>{</mo><mrow><mi>f</mi><mo>∈</mo><mrow><msup><mi>C</mi><mi mathvariant="normal">∞</mi></msup><mo>⁢</mo><mi>M</mi></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">to be the set of functions which vanish at <math id="S7.SS2.p2.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>
+(this is called the <em class="ltx_emph ltx_font_italic">maximal ideal</em> at <math id="S7.SS2.p2.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>).
+In that case,</p>
+<table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\mathfrak{m}_{p}^{2}=\left\{\sum_{i}f_{i}\cdot g_{i}\mid f_{i}(p)=g_{i}(p)=0\right\}" display="block"><mrow><msubsup><mi>𝔪</mi><mi>p</mi><mn>2</mn></msubsup><mo>=</mo><mrow><mo>{</mo><mrow><munder><mo lspace="0em" movablelimits="false">∑</mo><mi>i</mi></munder><mrow><msub><mi>f</mi><mi>i</mi></msub><mo lspace="0.222em" rspace="0.222em">⋅</mo><msub><mi>g</mi><mi>i</mi></msub></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msub><mi>f</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>g</mi><mi>i</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow><mo>}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is the set of functions vanishing to second order at <math id="S7.SS2.p2.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+Thus, a tangent vector is really just a linear map</p>
+<table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2}\to\mathbb{R}." display="block"><mrow><mrow><mrow><msub><mi>𝔪</mi><mi>p</mi></msub><mo>/</mo><msubsup><mi>𝔪</mi><mi>p</mi><mn>2</mn></msubsup></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">In other words, the tangent space is actually the
+dual space of <math id="S7.SS2.p2.m4" class="ltx_Math" alttext="\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2}" display="inline"><mrow><msub><mi>𝔪</mi><mi>p</mi></msub><mo>/</mo><msubsup><mi>𝔪</mi><mi>p</mi><mn>2</mn></msubsup></mrow></math>;
+for this reason, the space <math id="S7.SS2.p2.m5" class="ltx_Math" alttext="\mathfrak{m}_{p}/\mathfrak{m}_{p}^{2}" display="inline"><mrow><msub><mi>𝔪</mi><mi>p</mi></msub><mo>/</mo><msubsup><mi>𝔪</mi><mi>p</mi><mn>2</mn></msubsup></mrow></math> is defined as the
+<span class="ltx_text ltx_font_bold" style="color:#0000FF;"> cotangent space</span> (the dual of the tangent space).
+This definition is even more abstract than the one with derivations above,
+but has some nice properties:</p>
+<ul id="S7.I2" class="ltx_itemize">
+<li id="S7.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">it is coordinate-free, and</p>
+</div>
+</li>
+<li id="S7.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">it’s defined only in terms of the smooth functions <math id="S7.I2.i2.p1.m1" class="ltx_Math" alttext="M\to\mathbb{R}" display="inline"><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>,
+which will be really helpful later on in algebraic geometry
+when we have varieties or schemes and can repeat this definition.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section id="S7.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">46.7.iii </span>Sanity check</h3>
+
+<div id="S7.SS3.p1" class="ltx_para">
+<p class="ltx_p">With all these equivalent definitions, the last thing I should do is check that
+this definition of tangent space actually gives a vector space of dimension <math id="S7.SS3.p1.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+To do this it suffices to show verify this for open subsets of <math id="S7.SS3.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>,
+which will imply the result for general manifolds <math id="S7.SS3.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+(which are locally open subsets of <math id="S7.SS3.p1.m4" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>).
+Using some real analysis, one can prove the following result:</p>
+</div>
+<div id="S7.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 46.7.4</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S7.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S7.Thmtheorem4.p1.m1" class="ltx_Math" alttext="M\subset\mathbb{R}^{n}" display="inline"><mrow><mi>M</mi><mo>⊂</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow></math> is open and <math id="S7.Thmtheorem4.p1.m2" class="ltx_Math" alttext="0\in M" display="inline"><mrow><mn>0</mn><mo>∈</mo><mi>M</mi></mrow></math>.
+Then</p>
+<table id="Ex17" class="ltx_equationgroup ltx_eqn_table">
+
+<tbody id="Ex17X"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex17X.m2" class="ltx_Math" alttext="\displaystyle\mathfrak{m}_{0}" display="inline"><msub><mi>𝔪</mi><mn>0</mn></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex17X.m3" class="ltx_Math" alttext="\displaystyle=\{\text{smooth functions }f\mid f(0)=0\}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mtext>smooth functions </mtext><mo>⁢</mo><mi>f</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow><mo stretchy="false">}</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex17Xa"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex17Xa.m2" class="ltx_Math" alttext="\displaystyle\mathfrak{m}_{0}^{2}" display="inline"><msubsup><mi>𝔪</mi><mn>0</mn><mn>2</mn></msubsup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex17Xa.m3" class="ltx_Math" alttext="\displaystyle=\{\text{smooth functions }f\mid f(0)=0,(\nabla f)_{0}=0\}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mtext>smooth functions </mtext><mo>⁢</mo><mi>f</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow><mo>,</mo><mrow><msub><mrow><mo stretchy="false">(</mo><mrow><mo rspace="0.167em">∇</mo><mi>f</mi></mrow><mo stretchy="false">)</mo></mrow><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow></mrow><mo stretchy="false">}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">In other words <math id="S7.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\mathfrak{m}_{0}^{2}" display="inline"><msubsup><mi>𝔪</mi><mn>0</mn><mn>2</mn></msubsup></math> is the set of functions which vanish at <math id="S7.Thmtheorem4.p1.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>
+and such that all first derivatives of <math id="S7.Thmtheorem4.p1.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> vanish at zero.</p>
+</div>
+</div>
+<div id="S7.SS3.p2" class="ltx_para">
+<p class="ltx_p">Thus, it follows that there is an isomorphism</p>
+<table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="\mathfrak{m}_{0}/\mathfrak{m}_{0}^{2}\cong\mathbb{R}^{n}\quad\text{by}\quad f%
+\mapsto\left[\frac{\partial f}{\partial x_{1}}(0),\dots,\frac{\partial f}{%
+\partial x_{n}}(0)\right]" display="block"><mrow><mrow><mrow><msub><mi>𝔪</mi><mn>0</mn></msub><mo>/</mo><msubsup><mi>𝔪</mi><mn>0</mn><mn>2</mn></msubsup></mrow><mo>≅</mo><mrow><msup><mi>ℝ</mi><mi>n</mi></msup><mspace width="1em"></mspace><mtext>by</mtext></mrow></mrow><mspace width="1em"></mspace><mrow><mi>f</mi><mo stretchy="false">↦</mo><mrow><mo>[</mo><mrow><mfrac><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>x</mi><mn>1</mn></msub></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mfrac><mrow><mo rspace="0em">∂</mo><mi>f</mi></mrow><mrow><mo rspace="0em">∂</mo><msub><mi>x</mi><mi>n</mi></msub></mrow></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>]</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and so the cotangent space, hence tangent space,
+indeed has dimension <math id="S7.SS3.p2.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</p>
+</div>
+</section>
+</section>
+<section id="S8" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">46.8 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 46A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Show that a differential <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>-form on a smooth manifold <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>
+is the same thing as a smooth function <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="M\to\mathbb{R}" display="inline"><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>.</p>
+</div>
+</div>
+<span id="todo12" class="ltx_note ltx_role_todo"><sup class="ltx_note_mark">12</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">12</sup><span class="ltx_note_type">todo: </span><span class="ltx_tag ltx_tag_note">12</span>some applications of regular value theorem here</span></span></span>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="ch_stokes_diffgeo.html" title="In Part XII Differential Geometry ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">45 </span>Integrating differential forms</span></a><a href="../part_riemann/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">XIII </span>Riemann Surfaces</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

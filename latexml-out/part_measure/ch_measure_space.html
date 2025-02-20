@@ -1,0 +1,889 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 35 Measure spaces ‣ Part X Measure Theory ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="./" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="next" href="ch_caratheodory_measure.html" title="Chapter 36 Constructing the Borel and Lebesgue measure ‣ Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_caratheodory_measure.html" title="Chapter 36 Constructing the Borel and Lebesgue measure ‣ Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_lebesgue_integration.html" title="Chapter 37 Lebesgue integration ‣ Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_swapsum_measure.html" title="Chapter 38 Swapping order with Lebesgue integrals ‣ Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_pontryagin.html" title="Chapter 39 Bonus: A hint of Pontryagin duality ‣ Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_startout/" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_linalg/" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_calc/" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_diffgeo/" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop1/" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st2/" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">X </span>Measure Theory</span></a><a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">X </span>Measure Theory</span></a><a href="ch_caratheodory_measure.html" title="In Part X Measure Theory ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">36 </span>Constructing the Borel and Lebesgue measure</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 35 </span>Measure spaces</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">Here is an outline of where we are going next.
+Our <em class="ltx_emph ltx_font_italic">goal</em> over the next few chapters
+is to develop the machinery to state (and in some cases prove)
+the law of large numbers and the central limit theorem.
+For these purposes, the scant amount of work we did in Calculus 101
+is going to be awfully insufficient:
+integration over <math id="p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> (or even <math id="p1.m2" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>) is just not going to cut it.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">This chapter will develop the theory of “measure spaces”,
+which you can think of as “spaces equipped with a notion of size”.
+We will then be able to integrate over these
+with the so-called Lebesgue integral
+(which in some senses is almost strictly better than the Riemann one).</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">35.1 </span>Letter connotations</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">There are a lot of “types” of objects moving forward,
+so here are the letter connotations we’ll use
+throughout the next several chapters.
+This makes it easier to tell what the “type” of each object
+is just by which letter is used.</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Measure spaces denoted by <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>,
+their elements denoted by <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Algebras and <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebras denoted by script <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math>, <math id="S1.I1.i2.p1.m3" class="ltx_Math" alttext="\mathscr{B}" display="inline"><mi class="ltx_font_mathscript">ℬ</mi></math>, ….
+Sets in them denoted by early capital Roman <math id="S1.I1.i2.p1.m4" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>, <math id="S1.I1.i2.p1.m5" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>, <math id="S1.I1.i2.p1.m6" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>, <math id="S1.I1.i2.p1.m7" class="ltx_Math" alttext="D" display="inline"><mi>D</mi></math>, <math id="S1.I1.i2.p1.m8" class="ltx_Math" alttext="E" display="inline"><mi>E</mi></math>, ….</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Measures (i.e. functions assigning sets to reals)
+denoted usually by <math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="\mu" display="inline"><mi>μ</mi></math> or <math id="S1.I1.i3.p1.m2" class="ltx_Math" alttext="\rho" display="inline"><mi>ρ</mi></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">Random variables (functions sending worlds to reals)
+denoted usually by late capital Roman <math id="S1.I1.i4.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, <math id="S1.I1.i4.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>, <math id="S1.I1.i4.p1.m3" class="ltx_Math" alttext="Z" display="inline"><mi>Z</mi></math>, ….</p>
+</div>
+</li>
+<li id="S1.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i5.p1" class="ltx_para">
+<p class="ltx_p">Functions from <math id="S1.I1.i5.p1.m1" class="ltx_Math" alttext="\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>
+by Roman letters like <math id="S1.I1.i5.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S1.I1.i5.p1.m3" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> for pdf’s
+and <math id="S1.I1.i5.p1.m4" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> and <math id="S1.I1.i5.p1.m5" class="ltx_Math" alttext="G" display="inline"><mi>G</mi></math> for cdf’s.</p>
+</div>
+</li>
+<li id="S1.I1.i6" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i6.p1" class="ltx_para">
+<p class="ltx_p">Real numbers denoted by lower Roman letters like <math id="S1.I1.i6.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>, <math id="S1.I1.i6.p1.m2" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>, <math id="S1.I1.i6.p1.m3" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">35.2 </span>Motivating measure spaces via random variables</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">To motivate <em class="ltx_emph ltx_font_italic">why</em> we want to construct measure spaces,
+I want to talk about a (real) <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> random variable</span>,
+which you might think of as</p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">the result of a coin flip,</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">the high temperature in Boston on Saturday,</p>
+</div>
+</li>
+<li id="S2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">the possibility of rain on your 18.725 date next weekend.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Why does this need a long theory to develop well?
+For a simple coin flip one intuitively just thinks
+“50% heads, 50% tails” and is done with it.
+The situation is a little trickier with temperature
+since it is continuous rather than discrete,
+but if all you care about is that one temperature,
+calculus seems like it might be enough to deal with this.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">But it gets more slippery once the variables start to “talk to” each other:
+the high temperature tells you a little bit about whether it will rain,
+because e.g. if the temperature is very high it’s quite likely to be sunny.
+Suddenly we find ourselves wishing we could talk about conditional probability,
+but this is a whole can of worms — the relations
+between these sorts of things can get very complicated very quickly.</p>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">The big idea to getting a formalism for this is that:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 35.2.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Our measure spaces <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> will be thought of as a space of entire worlds,
+with each <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\omega\in\Omega" display="inline"><mrow><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi></mrow></math> representing a world.
+Random variables are functions from worlds to <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">This way, the space of “worlds” takes care of all the messy interdependence.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Then, we can assign “measures” to sets of worlds:
+for example, to be a fair coin means that if you are only interested in
+that one coin flip, the “fraction” of worlds in
+which that coin showed heads should be <math id="S2.p6.m1" class="ltx_Math" alttext="\frac{1}{2}" display="inline"><mfrac><mn>1</mn><mn>2</mn></mfrac></math>.
+This is in some ways backwards from what you were told in high-school:
+officially, we start with the space of worlds,
+rather than starting with the probabilities.</p>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">It will soon be clear that there is no way we can assign
+a well-defined measure to every single one of the <math id="S2.p7.m1" class="ltx_Math" alttext="2^{\Omega}" display="inline"><msup><mn>2</mn><mi mathvariant="normal">Ω</mi></msup></math> subsets.
+Fortunately, in practice, we won’t need to,
+and the notion of a <math id="S2.p7.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra will capture the idea
+of “enough measur-<em class="ltx_emph ltx_font_italic">able</em> sets for us to get by”.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 35.2.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Random seeds)</span> — </span>
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Another analogy if you do some programming:
+each <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\omega\in\Omega" display="inline"><mrow><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi></mrow></math> is a <em class="ltx_emph ltx_font_italic">random seed</em>,
+and everything is determined from there.</p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">35.3 </span>Motivating measure spaces geometrically</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">So, we have a set <math id="S3.p1.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> of possible points
+(which in the context of the previous discussion
+can be thought of as the set of worlds),
+and we want to assign a <em class="ltx_emph ltx_font_italic">measure</em> (think volume)
+to subsets of points in <math id="S3.p1.m2" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>.
+We will now describe some of the obstacles that we will face,
+in order to motivate <em class="ltx_emph ltx_font_italic">how</em> measure spaces are defined
+(as the previous section only motivated <em class="ltx_emph ltx_font_italic">why</em> we want such things).</p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">If you try to do this naïvely,
+you basically immediately run into set-theoretic issues.
+A good example to think about why this might happen
+is if <math id="S3.p2.m1" class="ltx_Math" alttext="\Omega=\mathbb{R}^{2}" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math> with the measure corresponding to area.
+You can define the area of a triangle as in high school,
+and you can then try and define the area of a circle,
+maybe by approximating it with polygons.
+But what area would you assign to the subset <math id="S3.p2.m2" class="ltx_Math" alttext="\mathbb{Q}^{2}" display="inline"><msup><mi>ℚ</mi><mn>2</mn></msup></math>, for example?
+(It turns out “zero” is actually a working answer.)
+Or, a unit disk is composed of infinitely many points;
+each of the points better have measure zero,
+but why does their union have measure <math id="S3.p2.m3" class="ltx_Math" alttext="\pi" display="inline"><mi>π</mi></math> then?
+Blah blah blah.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">We’ll say more about this later, but
+you might have already heard of the <span class="ltx_text ltx_font_bold">Banach-Tarski paradox</span>
+which essentially shows there is no good way that you can assign a
+measure to every single subset of <math id="S3.p3.m1" class="ltx_Math" alttext="\mathbb{R}^{3}" display="inline"><msup><mi>ℝ</mi><mn>3</mn></msup></math>
+and still satisfy basic sanity checks.
+There are just too many possible subsets of Euclidean space.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">However, the good news is that most of these sets are not ones
+that we will ever care about,
+and it’s enough to define measures for certain
+“sufficiently nice sets”.
+The adjective we will use is <em class="ltx_emph ltx_font_italic">measurable</em>,
+and it will turn out that this will be way, way more than good enough
+for any practical purposes.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">We will generally use <math id="S3.p5.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math>, <math id="S3.p5.m2" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math>, … for measurable sets
+and denote the entire family of measurable sets by curly <math id="S3.p5.m3" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math>.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">35.4 </span><math id="S4.m1" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebras and measurable spaces</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">Here’s the machine code.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 35.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> measurable space</span> consists of a space <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> of points,
+and a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi mathcolor="#0000FF">σ</mi></math>-algebra</span> <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> of subsets of <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>
+(the “measurable sets” of <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>).
+The set <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> is required to satisfy the following axioms:</p>
+<ul id="S4.I1" class="ltx_itemize">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> contains <math id="S4.I1.i1.p1.m2" class="ltx_Math" alttext="\varnothing" display="inline"><mi mathvariant="normal">∅</mi></math> and <math id="S4.I1.i1.p1.m3" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>.</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> should be closed under complements and
+<em class="ltx_emph ltx_font_italic">countable</em> unions/intersections.
+(Hint on nomenclature: <math id="S4.I1.i2.p1.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math> usually indicates
+some sort of “countably finite” condition.)</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">(Complaint: this terminology is phonetically confusing,
+because it can be confused with “measure space” later.
+The way to think about is that
+“measur<em class="ltx_emph ltx_font_italic">able</em> spaces have a <math id="S4.p2.m1" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra, so we <em class="ltx_emph ltx_font_italic">could</em>
+try to put a measure on it, but we <em class="ltx_emph ltx_font_italic">haven’t</em>, yet.”)</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">Though this definition is how we actually think about it in a few select cases,
+for the most part, and we will usually instantiate <math id="S4.p3.m1" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> in practice
+in a different way:</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 35.4.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> be a set, and consider some family of subsets <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math> of <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>.
+Then the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\sigma" display="inline"><mi mathcolor="#0000FF">σ</mi></math>-algebra generated by <math id="S4.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript" mathcolor="#0000FF">ℱ</mi></math></span>
+is the smallest <math id="S4.Thmtheorem2.p1.m6" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra <math id="S4.Thmtheorem2.p1.m7" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> which contains <math id="S4.Thmtheorem2.p1.m8" class="ltx_Math" alttext="\mathscr{F}" display="inline"><mi class="ltx_font_mathscript">ℱ</mi></math>.</p>
+</div>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">As is commonplace in math, when we see “generated”,
+this means we sort of let the definition “take care of itself”.
+So, if <math id="S4.p4.m1" class="ltx_Math" alttext="\Omega=\mathbb{R}" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><mi>ℝ</mi></mrow></math>, maybe I want <math id="S4.p4.m2" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> to contain all open sets.
+Well, then the definition means it should contain all complements too,
+so it contains all the closed sets.
+Then it has to contain all the half-open intervals too, and then….
+Rather than try to reason out what exactly the final shape <math id="S4.p4.m3" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> looks like
+(which basically turns out to be impossible),
+we just give up and say “<math id="S4.p4.m4" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> is all the sets you can get if you start
+with the open sets and apply repeatedly union/complement operations”.
+Or even more bluntly: “start with open sets, shake vigorously”.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>As
+will be mentioned later in <a href="ch_caratheodory_measure.html#sec:define_lebesgue_measure" title="36.4 Defining the Lebesgue measure ‣ Chapter 36 Constructing the Borel and Lebesgue measure ‣ Part X Measure Theory ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Section</span> <span class="ltx_text ltx_ref_tag">36.4</span></a>,
+an explicit construction using transfinite induction is possible.
+That construction is also useful for, for example, proving <math id="footnote1.m1" class="ltx_Math" alttext="|\mathscr{B}(\mathbb{R})|=|\mathbb{R}|" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi class="ltx_font_mathscript">ℬ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ℝ</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mi>ℝ</mi><mo stretchy="false">|</mo></mrow></mrow></math>.</span></span></span></p>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">I’ve gone on too long with no examples.</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 35.4.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of measurable spaces)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">The first two examples actually say what <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> is;
+the third example (most important) will use generation.</p>
+<ol id="S4.I2" class="ltx_enumerate">
+<li id="S4.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S4.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S4.I2.i1.p1.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> is any set,
+then the power set <math id="S4.I2.i1.p1.m2" class="ltx_Math" alttext="\mathscr{A}=2^{\Omega}" display="inline"><mrow><mi class="ltx_font_mathscript">𝒜</mi><mo>=</mo><msup><mn>2</mn><mi mathvariant="normal">Ω</mi></msup></mrow></math> is obviously a <math id="S4.I2.i1.p1.m3" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra.
+This will be used if <math id="S4.I2.i1.p1.m4" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> is countably finite,
+but it won’t be very helpful if <math id="S4.I2.i1.p1.m5" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> is huge.</p>
+</div>
+</li>
+<li id="S4.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S4.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S4.I2.i2.p1.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> is an uncountable set,
+then we can declare <math id="S4.I2.i2.p1.m2" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> to be all subsets of <math id="S4.I2.i2.p1.m3" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>
+which are either countable,
+or which have countable complement.
+(You should check this satisfies the definitions.)
+This is a very “coarse” algebra.</p>
+</div>
+</li>
+<li id="S4.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S4.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S4.I2.i3.p1.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> is a topological space,
+the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Borel <math id="S4.I2.i3.p1.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi mathcolor="#0000FF">σ</mi></math>-algebra</span>
+is defined as the <math id="S4.I2.i3.p1.m3" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra generated by all the open sets of <math id="S4.I2.i3.p1.m4" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>.
+We denote it by <math id="S4.I2.i3.p1.m5" class="ltx_Math" alttext="\mathscr{B}(\Omega)" display="inline"><mrow><mi class="ltx_font_mathscript">ℬ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+and call the space a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Borel space</span>.
+As warned earlier, it is basically impossible to describe
+what it looks like,
+and instead you should think of it as saying
+“we can measure the open sets”.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 35.4.4</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that the closed sets are in <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathscr{B}(\Omega)" display="inline"><mrow><mi class="ltx_font_mathscript">ℬ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">)</mo></mrow></mrow></math> for
+any topological space <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>.
+Show that <math id="S4.Thmtheorem4.p1.m3" class="ltx_Math" alttext="[0,1)" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math> is also in <math id="S4.Thmtheorem4.p1.m4" class="ltx_Math" alttext="\mathscr{B}(\mathbb{R})" display="inline"><mrow><mi class="ltx_font_mathscript">ℬ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ℝ</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</span></p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">35.5 </span>Measure spaces</h2>
+
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 35.5.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Measurable spaces <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="(\Omega,\mathscr{A})" display="inline"><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mi class="ltx_font_mathscript">𝒜</mi><mo stretchy="false">)</mo></mrow></math> are then equipped
+with a function <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mu\colon\mathscr{A}\to[0,+\infty]" display="inline"><mrow><mi>μ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi class="ltx_font_mathscript">𝒜</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>
+called the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> measure</span>, which is required to satisfy
+the following axioms:</p>
+<ul id="S5.I1" class="ltx_itemize">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="\mu(\varnothing)=0" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">∅</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math></p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text ltx_font_bold">Countable additivity</span>:
+If <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="A_{1}" display="inline"><msub><mi>A</mi><mn>1</mn></msub></math>, <math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="A_{2}" display="inline"><msub><mi>A</mi><mn>2</mn></msub></math>, … are disjoint sets in <math id="S5.I1.i2.p1.m3" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math>,
+then</p>
+<table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\mu\left(\bigsqcup_{n}A_{n}\right)=\sum_{n}\mu(A_{n})." display="block"><mrow><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><munder><mo lspace="0em" movablelimits="false">⨆</mo><mi>n</mi></munder><msub><mi>A</mi><mi>n</mi></msub></mrow><mo>)</mo></mrow></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">∑</mo><mi>n</mi></munder><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>A</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</li>
+</ul>
+<p class="ltx_p">The triple <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="(\Omega,\mathscr{A},\mu)" display="inline"><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mi class="ltx_font_mathscript">𝒜</mi><mo>,</mo><mi>μ</mi><mo stretchy="false">)</mo></mrow></math> is called a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> measure space</span>.
+It’s called a <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> probability space</span> if <math id="S5.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\mu(\Omega)=1" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 35.5.2</span></span><span class="ltx_text ltx_font_bold"> </span>(Weaker equivalent definitions)
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">I chose to give axioms for <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> and <math id="S5.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mu" display="inline"><mi>μ</mi></math>
+that capture how people think of them in practice,
+which means there is some redundancy:
+for example, being closed under complements and unions
+is enough to get intersections, by de Morgan’s law.
+Here are more minimal definitions,
+which are useful if you are trying to prove something satisfies them
+to reduce the amount of work you have to do:</span></p>
+<ol id="S5.I2" class="ltx_enumerate">
+<li id="S5.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S5.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">The axioms on </span><math id="S5.I2.i1.p1.m1" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript" mathsize="90%">𝒜</mi></math><span class="ltx_text" style="font-size:90%;"> can be weakened
+to (i) </span><math id="S5.I2.i1.p1.m2" class="ltx_Math" alttext="\varnothing\in\mathscr{A}" display="inline"><mrow><mi mathsize="90%" mathvariant="normal">∅</mi><mo mathsize="90%">∈</mo><mi class="ltx_font_mathscript" mathsize="90%">𝒜</mi></mrow></math><span class="ltx_text" style="font-size:90%;"> and (ii) </span><math id="S5.I2.i1.p1.m3" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript" mathsize="90%">𝒜</mi></math><span class="ltx_text" style="font-size:90%;"> is closed under
+complements and countable unions.</span></p>
+</div>
+</li>
+<li id="S5.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S5.I2.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">The axioms on </span><math id="S5.I2.i2.p1.m1" class="ltx_Math" alttext="\mu" display="inline"><mi mathsize="90%">μ</mi></math><span class="ltx_text" style="font-size:90%;"> can be weakened to
+(i) </span><math id="S5.I2.i2.p1.m2" class="ltx_Math" alttext="\mu(\varnothing)=0" display="inline"><mrow><mrow><mi mathsize="90%">μ</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%" mathvariant="normal">∅</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%">=</mo><mn mathsize="90%">0</mn></mrow></math><span class="ltx_text" style="font-size:90%;">,
+(ii) </span><math id="S5.I2.i2.p1.m3" class="ltx_Math" alttext="\mu(A\sqcup B)=\mu(A)+\mu(B)" display="inline"><mrow><mrow><mi mathsize="90%">μ</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mrow><mi mathsize="90%">A</mi><mo mathsize="90%">⊔</mo><mi mathsize="90%">B</mi></mrow><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%">=</mo><mrow><mrow><mi mathsize="90%">μ</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">A</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo mathsize="90%">+</mo><mrow><mi mathsize="90%">μ</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi mathsize="90%">B</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">, and
+(iii) for </span><math id="S5.I2.i2.p1.m4" class="ltx_Math" alttext="A_{1}\supseteq A_{2}\supseteq\cdots" display="inline"><mrow><msub><mi mathsize="90%">A</mi><mn mathsize="90%">1</mn></msub><mo mathsize="90%">⊇</mo><msub><mi mathsize="90%">A</mi><mn mathsize="90%">2</mn></msub><mo mathsize="90%">⊇</mo><mi mathsize="90%" mathvariant="normal">⋯</mi></mrow></math><span class="ltx_text" style="font-size:90%;">,
+we have </span><math id="S5.I2.i2.p1.m5" class="ltx_Math" alttext="\mu\left(\bigcap_{n}A_{n}\right)=\lim_{n}\mu(A_{n})" display="inline"><mrow><mrow><mi mathsize="90%">μ</mi><mo>⁢</mo><mrow><mo>(</mo><mrow><msub><mo lspace="0em" maxsize="90%" minsize="90%" stretchy="true">⋂</mo><mi mathsize="90%">n</mi></msub><msub><mi mathsize="90%">A</mi><mi mathsize="90%">n</mi></msub></mrow><mo>)</mo></mrow></mrow><mo mathsize="90%" rspace="0.1389em">=</mo><mrow><msub><mo lspace="0.1389em" mathsize="90%" rspace="0.167em">lim</mo><mi mathsize="90%">n</mi></msub><mrow><mi mathsize="90%">μ</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><msub><mi mathsize="90%">A</mi><mi mathsize="90%">n</mi></msub><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 35.5.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Here are some immediate remarks on these definitions.</p>
+<ul id="S5.I3" class="ltx_itemize">
+<li id="S5.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S5.I3.i1.p1.m1" class="ltx_Math" alttext="A\subseteq B" display="inline"><mrow><mi>A</mi><mo>⊆</mo><mi>B</mi></mrow></math> are measurable,
+then <math id="S5.I3.i1.p1.m2" class="ltx_Math" alttext="\mu(A)\leq\mu(B)" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> since <math id="S5.I3.i1.p1.m3" class="ltx_Math" alttext="\mu(B)=\mu(A)+\mu(B-A)" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>B</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>B</mi><mo>−</mo><mi>A</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S5.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">In particular, in a probability space all measures are in <math id="S5.I3.i2.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math>.
+On the other hand, for general measure spaces we’ll allow <math id="S5.I3.i2.p1.m2" class="ltx_Math" alttext="+\infty" display="inline"><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow></math>
+as a possible measure
+(hence the choice of <math id="S5.I3.i2.p1.m3" class="ltx_Math" alttext="[0,+\infty]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mrow><mo>+</mo><mi mathvariant="normal">∞</mi></mrow><mo stretchy="false">]</mo></mrow></math> as codomain for <math id="S5.I3.i2.p1.m4" class="ltx_Math" alttext="\mu" display="inline"><mi>μ</mi></math>).</p>
+</div>
+</li>
+<li id="S5.I3.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I3.i3.p1" class="ltx_para">
+<p class="ltx_p">We want to allow at least countable unions / additivity
+because with finite unions it’s too hard to make progress:
+it’s too hard to estimate the area of a circle
+without being able to talk about limits of countably infinitely many triangles.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">We <em class="ltx_emph ltx_font_italic">don’t</em> want to allow uncountable unions and additivity,
+because uncountable sums basically never work out.
+In particular, there is a nice elementary exercise as follows:</p>
+</div>
+<div id="S5.Thmtheorem4" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 35.5.4</span></span><span class="ltx_text ltx_font_bold"> </span>(Tricky)
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let <math id="S5.Thmtheorem4.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> be an uncountable set of positive real numbers.
+Show that some finite subset <math id="S5.Thmtheorem4.p1.m2" class="ltx_Math" alttext="T\subseteq S" display="inline"><mrow><mi>T</mi><mo>⊆</mo><mi>S</mi></mrow></math> has sum greater than <math id="S5.Thmtheorem4.p1.m3" class="ltx_Math" alttext="10^{2019}" display="inline"><msup><mn>10</mn><mn>2019</mn></msup></math>.
+Colloquially, “uncountably many positive reals cannot have finite sum”.</span></p>
+</div>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">So countable sums are as far as we’ll let the infinite sums go.
+This is the reason why we considered <math id="S5.p2.m1" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebras in the first place.</p>
+</div>
+<div id="S5.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 35.5.5</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Measures)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">We now discuss measures on each of the spaces
+in our previous examples.</p>
+<ol id="S5.I4" class="ltx_enumerate">
+<li id="S5.I4.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S5.I4.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S5.I4.i1.p1.m1" class="ltx_Math" alttext="\mathscr{A}=2^{\Omega}" display="inline"><mrow><mi class="ltx_font_mathscript">𝒜</mi><mo>=</mo><msup><mn>2</mn><mi mathvariant="normal">Ω</mi></msup></mrow></math> (or for that matter any <math id="S5.I4.i1.p1.m2" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math>)
+we may declare <math id="S5.I4.i1.p1.m3" class="ltx_Math" alttext="\mu(A)=|A|" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mi>A</mi><mo stretchy="false">|</mo></mrow></mrow></math> for each <math id="S5.I4.i1.p1.m4" class="ltx_Math" alttext="A\in\mathscr{A}" display="inline"><mrow><mi>A</mi><mo>∈</mo><mi class="ltx_font_mathscript">𝒜</mi></mrow></math>
+(even if <math id="S5.I4.i1.p1.m5" class="ltx_Math" alttext="|A|=\infty" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>A</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><mi mathvariant="normal">∞</mi></mrow></math>).
+This is called the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> counting measure</span>,
+simply counting the number of elements.</p>
+</div>
+<div id="S5.I4.i1.p2" class="ltx_para">
+<p class="ltx_p">This is useful if <math id="S5.I4.i1.p2.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> is countably infinite,
+and optimal if <math id="S5.I4.i1.p2.m2" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> is finite (and nonempty).
+In the latter case, we will often normalize by
+<math id="S5.I4.i1.p2.m3" class="ltx_Math" alttext="\mu(A)=\frac{|A|}{|\Omega|}" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac><mrow><mo stretchy="false">|</mo><mi>A</mi><mo stretchy="false">|</mo></mrow><mrow><mo stretchy="false">|</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">|</mo></mrow></mfrac></mrow></math>
+so that <math id="S5.I4.i1.p2.m4" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> becomes a probability space.</p>
+</div>
+</li>
+<li id="S5.I4.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S5.I4.i2.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S5.I4.i2.p1.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> was uncountable
+and we took <math id="S5.I4.i2.p1.m2" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> to be the countable sets and their complements.
+Then</p>
+<table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\mu(A)=\begin{cases}0&amp;\text{$A$ is countable}\\
+1&amp;\text{$\Omega\setminus A$ is countable}\end{cases}" display="block"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>A</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mn>0</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mi>A</mi><mtext> is countable</mtext></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mn>1</mn></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mi mathvariant="normal">Ω</mi><mo>∖</mo><mi>A</mi></mrow><mtext> is countable</mtext></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is a measure. (Check this.)</p>
+</div>
+</li>
+<li id="S5.I4.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S5.I4.i3.p1" class="ltx_para">
+<p class="ltx_p">Elephant in the room:
+defining a measure on <math id="S5.I4.i3.p1.m1" class="ltx_Math" alttext="\mathscr{B}(\Omega)" display="inline"><mrow><mi class="ltx_font_mathscript">ℬ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">)</mo></mrow></mrow></math> is hard even for <math id="S5.I4.i3.p1.m2" class="ltx_Math" alttext="\Omega=\mathbb{R}" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><mi>ℝ</mi></mrow></math>,
+and is done in the next chapter.
+So you will have to hold your breath.
+Right now, all you know is that by declaring my <em class="ltx_emph ltx_font_italic">intent</em>
+to define a measure <math id="S5.I4.i3.p1.m3" class="ltx_Math" alttext="\mathscr{B}(\Omega)" display="inline"><mrow><mi class="ltx_font_mathscript">ℬ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+I am hoping that at least every open set will have a volume.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">35.6 </span>A hint of Banach-Tarski</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p">I will now try to convince you that <math id="S6.p1.m1" class="ltx_Math" alttext="\mathscr{B}(\Omega)" display="inline"><mrow><mi class="ltx_font_mathscript">ℬ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+is a necessary concession,
+and for general topological spaces like <math id="S6.p1.m2" class="ltx_Math" alttext="\Omega=\mathbb{R}^{n}" display="inline"><mrow><mi mathvariant="normal">Ω</mi><mo>=</mo><msup><mi>ℝ</mi><mi>n</mi></msup></mrow></math>,
+there is no hope of assigning a measure to <math id="S6.p1.m3" class="ltx_Math" alttext="2^{\Omega}" display="inline"><msup><mn>2</mn><mi mathvariant="normal">Ω</mi></msup></math>.
+(In the literature, this example is called a Vitali set.)</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 35.6.1</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(A geometric example why <math id="S6.Thmtheorem1.m1" class="ltx_Math" alttext="\mathscr{A}=2^{\Omega}" display="inline"><mrow><mi class="ltx_font_mathscript" mathcolor="#8C0000">𝒜</mi><mo mathcolor="#8C0000">=</mo><msup><mn mathcolor="#8C0000">2</mn><mi mathcolor="#8C0000" mathvariant="normal">Ω</mi></msup></mrow></math> is unsuitable)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math> denote the unit circle in <math id="S6.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>
+and <math id="S6.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathscr{A}=2^{\Omega}" display="inline"><mrow><mi class="ltx_font_mathscript">𝒜</mi><mo>=</mo><msup><mn>2</mn><mi mathvariant="normal">Ω</mi></msup></mrow></math>.
+We will show that any measure <math id="S6.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\mu" display="inline"><mi>μ</mi></math> on <math id="S6.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>
+with <math id="S6.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\mu(\Omega)=1" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math> will have undesirable properties.</p>
+</div>
+<div id="S6.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S6.Thmtheorem1.p2.m1" class="ltx_Math" alttext="\sim" display="inline"><mo>∼</mo></math> denote an equivalence relation on <math id="S6.Thmtheorem1.p2.m2" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>
+defined as follows: two points are equivalent
+if they differ by a rotation around the origin by a rational multiple of <math id="S6.Thmtheorem1.p2.m3" class="ltx_Math" alttext="\pi" display="inline"><mi>π</mi></math>.
+We may pick a representative from each equivalence class,
+letting <math id="S6.Thmtheorem1.p2.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> denote the set of representatives.
+Then</p>
+<table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\Omega=\bigsqcup_{\begin{subarray}{c}q\in\mathbb{Q}\\
+0\leq q&lt;2\end{subarray}}\left(X\text{ rotated by $q\pi$ radians}\right)." display="block"><mrow><mrow><mi mathvariant="normal">Ω</mi><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false" rspace="0em">⨆</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>q</mi><mo>∈</mo><mi>ℚ</mi></mrow></mtd></mtr><mtr><mtd><mrow><mn>0</mn><mo>≤</mo><mi>q</mi><mo>&lt;</mo><mn>2</mn></mrow></mtd></mtr></mtable></munder><mrow><mo>(</mo><mrow><mi>X</mi><mo>⁢</mo><mrow><mtext> rotated by </mtext><mrow><mi>q</mi><mo>⁢</mo><mi>π</mi></mrow><mtext> radians</mtext></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Since we’ve only rotated <math id="S6.Thmtheorem1.p2.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>,
+each of the rotations should have the same measure <math id="S6.Thmtheorem1.p2.m6" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>.
+But <math id="S6.Thmtheorem1.p2.m7" class="ltx_Math" alttext="\mu(\Omega)=1" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>,
+and there is no value we can assign that measure:
+if <math id="S6.Thmtheorem1.p2.m8" class="ltx_Math" alttext="m=0" display="inline"><mrow><mi>m</mi><mo>=</mo><mn>0</mn></mrow></math> we get <math id="S6.Thmtheorem1.p2.m9" class="ltx_Math" alttext="\mu(\Omega)=0" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>
+and <math id="S6.Thmtheorem1.p2.m10" class="ltx_Math" alttext="m&gt;0" display="inline"><mrow><mi>m</mi><mo>&gt;</mo><mn>0</mn></mrow></math> we get <math id="S6.Thmtheorem1.p2.m11" class="ltx_Math" alttext="\mu(\Omega)=\infty" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi mathvariant="normal">∞</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S6.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 35.6.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> <span class="ltx_text ltx_font_medium" style="color:#186118;">(Choice)</span> — </span>
+</h6>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Experts may recognize that picking a representative
+(i.e. creating set <math id="S6.Thmtheorem2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>)
+technically requires the Axiom of Choice.
+That is why, when people talk about Banach-Tarski issues,
+the Axiom of Choice almost always gets honorable mention as well.</p>
+</div>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">Stay tuned to actually see a construction for <math id="S6.p2.m1" class="ltx_Math" alttext="\mathscr{B}(\mathbb{R}^{n})" display="inline"><mrow><mi class="ltx_font_mathscript">ℬ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo stretchy="false">)</mo></mrow></mrow></math>
+in the next chapter.</p>
+</div>
+</section>
+<section id="sec:measurable_functions" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">35.7 </span>Measurable functions</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> For <math id="S7.p1.m1" class="ltx_Math" alttext="S\subseteq\Omega" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi mathvariant="normal">Ω</mi></mrow></math>, <math id="S7.p1.m2" class="ltx_Math" alttext="\mathbf{1}_{S}\colon\Omega\to\mathbb{R}" display="inline"><mrow><msub><mn>𝟏</mn><mi>S</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> is a measurable function if and
+only if <math id="S7.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is a measurable set.</em></p>
+</div>
+<div id="S7.p2" class="ltx_para">
+<p class="ltx_p">In the past, when we had topological spaces,
+we considered continuous functions.
+The analog here is:</p>
+</div>
+<div id="S7.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 35.7.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S7.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.Thmtheorem1.p1.m1" class="ltx_Math" alttext="(X,\mathscr{A})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi class="ltx_font_mathscript">𝒜</mi><mo stretchy="false">)</mo></mrow></math> and <math id="S7.Thmtheorem1.p1.m2" class="ltx_Math" alttext="(Y,\mathscr{B})" display="inline"><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><mi class="ltx_font_mathscript">ℬ</mi><mo stretchy="false">)</mo></mrow></math> be measurable spaces
+(or measure spaces).
+A function <math id="S7.Thmtheorem1.p1.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> measurable</span>
+if for any open set <math id="S7.Thmtheorem1.p1.m4" class="ltx_Math" alttext="S\subseteq Y" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>Y</mi></mrow></math> (i.e. <math id="S7.Thmtheorem1.p1.m5" class="ltx_Math" alttext="S\in\mathscr{B}" display="inline"><mrow><mi>S</mi><mo>∈</mo><mi class="ltx_font_mathscript">ℬ</mi></mrow></math>)
+we have <math id="S7.Thmtheorem1.p1.m6" class="ltx_Math" alttext="f^{\text{pre}}(S)" display="inline"><mrow><msup><mi>f</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow></mrow></math> is measurable (i.e. <math id="S7.Thmtheorem1.p1.m7" class="ltx_Math" alttext="f^{\text{pre}}(S)\in\mathscr{A}" display="inline"><mrow><mrow><msup><mi>f</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi class="ltx_font_mathscript">𝒜</mi></mrow></math>).</p>
+</div>
+</div>
+<div id="S7.p3" class="ltx_para">
+<p class="ltx_p">Apart from the obvious symmetry with the definition of continuous function,
+as we will see in <a href="ch_lebesgue_integration.html#sec:lebesgue_int_equivalent_def" title="37.2 An equivalent definition ‣ Chapter 37 Lebesgue integration ‣ Part X Measure Theory ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Section</span> <span class="ltx_text ltx_ref_tag">37.2</span></a>, this definition is such that
+for a nonnegative function <math id="S7.p3.m1" class="ltx_Math" alttext="f\colon\Omega\to\mathbb{R}_{\geq 0}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi mathvariant="normal">Ω</mi><mo stretchy="false">→</mo><msub><mi>ℝ</mi><mrow><mi></mi><mo>≥</mo><mn>0</mn></mrow></msub></mrow></mrow></math>,
+<math id="S7.p3.m2" class="ltx_Math" alttext="\int_{\Omega}f\;d\mu" display="inline"><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>μ</mi></mrow></mrow></mrow></math> exists if and only if <math id="S7.p3.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is measurable.</p>
+</div>
+<div id="S7.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 35.7.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S7.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">By symmetry, you might have guessed that a function <math id="S7.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f:X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> is measurable if for any measurable
+<math id="S7.Thmtheorem2.p1.m2" class="ltx_Math" alttext="S\subseteq Y" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>Y</mi></mrow></math>, we have <math id="S7.Thmtheorem2.p1.m3" class="ltx_Math" alttext="f^{\text{pre}}(S)\subseteq X" display="inline"><mrow><mrow><msup><mi>f</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>S</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mi>X</mi></mrow></math> is measurable.</p>
+</div>
+<div id="S7.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">Nevertheless, this definition doesn’t work the way we expect — even continuous function can fail
+this definition.</p>
+</div>
+</div>
+<div id="S7.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 35.7.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Continuous function with non-measurable preimage of measurable set)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f\colon[0,1]\to[0,1]" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></mrow></math> be the Devil’s Staircase (or Cantor function).
+This function is continuous, and has the property that, let <math id="S7.Thmtheorem3.p1.m2" class="ltx_Math" alttext="C\subseteq[0,1]" display="inline"><mrow><mi>C</mi><mo>⊆</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math> be the Cantor set,
+then <math id="S7.Thmtheorem3.p1.m3" class="ltx_Math" alttext="|C|=0" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mi>C</mi><mo stretchy="false">|</mo></mrow><mo>=</mo><mn>0</mn></mrow></math>, yet <math id="S7.Thmtheorem3.p1.m4" class="ltx_Math" alttext="f^{\text{img}}(C)=[0,1]" display="inline"><mrow><mrow><msup><mi>f</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math> with measure <math id="S7.Thmtheorem3.p1.m5" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.</p>
+</div>
+<div id="S7.Thmtheorem3.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.Thmtheorem3.p2.m1" class="ltx_Math" alttext="g\colon[0,1]\to[0,2]" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow></mrow></mrow></math> be defined by <math id="S7.Thmtheorem3.p2.m2" class="ltx_Math" alttext="g(x)=f(x)+x" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>+</mo><mi>x</mi></mrow></mrow></math>. Then,</p>
+<ul id="S7.I1" class="ltx_itemize">
+<li id="S7.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">For each open interval <math id="S7.I1.i1.p1.m1" class="ltx_Math" alttext="(a,b)" display="inline"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></math> that is removed from the Cantor set <math id="S7.I1.i1.p1.m2" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math>, then <math id="S7.I1.i1.p1.m3" class="ltx_Math" alttext="|g^{\text{img}}((a,b))|=|(a,b)|" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msup><mi>g</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>=</mo><mrow><mo stretchy="false">|</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">|</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S7.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S7.I1.i2.p1.m1" class="ltx_Math" alttext="g^{\text{img}}(C)" display="inline"><mrow><msup><mi>g</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></mrow></math> has measure <math id="S7.I1.i2.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S7.Thmtheorem3.p3" class="ltx_para">
+<p class="ltx_p">Note that <math id="S7.Thmtheorem3.p3.m1" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> is bijective, let <math id="S7.Thmtheorem3.p3.m2" class="ltx_Math" alttext="h\colon[0,2]\to[0,1]" display="inline"><mrow><mi>h</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></mrow></math>, <math id="S7.Thmtheorem3.p3.m3" class="ltx_Math" alttext="h=g^{-1}" display="inline"><mrow><mi>h</mi><mo>=</mo><msup><mi>g</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math>. Then <math id="S7.Thmtheorem3.p3.m4" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> is continuous,
+however:</p>
+<ul id="S7.I2" class="ltx_itemize">
+<li id="S7.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S7.I2.i1.p1.m1" class="ltx_Math" alttext="h^{\text{pre}}(C)=g^{\text{img}}(C)" display="inline"><mrow><mrow><msup><mi>h</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>g</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>C</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> has measure <math id="S7.I2.i1.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, so it has some non-measurable subset,</p>
+</div>
+</li>
+<li id="S7.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I2.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S7.I2.i2.p1.m1" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> has measure <math id="S7.I2.i2.p1.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math>, so every subset of <math id="S7.I2.i2.p1.m3" class="ltx_Math" alttext="C" display="inline"><mi>C</mi></math> is (Lebesgue) measurable,</p>
+</div>
+</li>
+<li id="S7.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S7.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">thus, <math id="S7.I2.i3.p1.m1" class="ltx_Math" alttext="h^{\text{pre}}(D)" display="inline"><mrow><msup><mi>h</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>D</mi><mo stretchy="false">)</mo></mrow></mrow></math> is non-measurable for some measurable subset <math id="S7.I2.i3.p1.m2" class="ltx_Math" alttext="D\subseteq C" display="inline"><mrow><mi>D</mi><mo>⊆</mo><mi>C</mi></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S7.p4" class="ltx_para">
+<p class="ltx_p">In practice, most functions you encounter will be continuous anyways,
+and in that case we are fine.</p>
+</div>
+<div id="S7.Thmtheorem4" class="ltx_theorem ltx_theorem_proposition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Proposition 35.7.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Continuous implies Borel measurable)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S7.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S7.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S7.Thmtheorem4.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> are topological spaces
+and we pick the Borel measures on both.
+A function <math id="S7.Thmtheorem4.p1.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math>
+which is continuous as a map of topological spaces
+is also measurable.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S7.p5" class="ltx_para">
+<p class="ltx_p">Follows from the fact that pre-images of open sets are open, thus Borel measurable.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S8" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">35.8 </span>On the word “almost”</h2>
+
+<div id="S8.p1" class="ltx_para">
+<p class="ltx_p">In later chapters we will begin seeing the phrase “almost everywhere”
+and “almost surely” start to come up,
+and it seems prudent to take the time to talk about it now.</p>
+</div>
+<div id="S8.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 35.8.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S8.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We say that property <math id="S8.Thmtheorem1.p1.m1" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> occurs
+<span class="ltx_text ltx_font_bold" style="color:#0000FF;"> almost everywhere</span> or <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> almost surely</span> if the set</p>
+<table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\left\{\omega\in\Omega\mid\text{$P$ does not hold for $\omega$}\right\}" display="block"><mrow><mo>{</mo><mrow><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>P</mi><mtext> does not hold for </mtext><mi>ω</mi></mrow><mo>}</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">has measure zero.</p>
+</div>
+</div>
+<div id="S8.p2" class="ltx_para">
+<p class="ltx_p">For example, if we say “<math id="S8.p2.m1" class="ltx_Math" alttext="f=g" display="inline"><mrow><mi>f</mi><mo>=</mo><mi>g</mi></mrow></math> almost everywhere”
+for some functions <math id="S8.p2.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S8.p2.m3" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> defined on a measure space <math id="S8.p2.m4" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>,
+then we mean that <math id="S8.p2.m5" class="ltx_Math" alttext="f(\omega)=g(\omega)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>ω</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for all <math id="S8.p2.m6" class="ltx_Math" alttext="\omega\in\Omega" display="inline"><mrow><mi>ω</mi><mo>∈</mo><mi mathvariant="normal">Ω</mi></mrow></math>
+other than a measure-zero set.</p>
+</div>
+<div id="S8.p3" class="ltx_para">
+<p class="ltx_p">There, that’s the definition.
+The main thing to now update your instincts on is that</p>
+</div>
+<div id="S8.Thmtheorem2" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 35.8.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S8.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">In measure theory,
+we basically only care about things up to almost-everywhere.</p>
+</div>
+</div>
+<div id="S8.p4" class="ltx_para">
+<p class="ltx_p">Here are some examples:</p>
+<ul id="S8.I1" class="ltx_itemize">
+<li id="S8.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S8.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S8.I1.i1.p1.m1" class="ltx_Math" alttext="f=g" display="inline"><mrow><mi>f</mi><mo>=</mo><mi>g</mi></mrow></math> almost everywhere,
+then measure theory will basically not tell these functions apart.
+For example, <math id="S8.I1.i1.p1.m2" class="ltx_Math" alttext="\int_{\Omega}f\;d\omega=\int_{\Omega}g\;d\omega" display="inline"><mrow><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>f</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>ω</mi></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><msub><mo>∫</mo><mi mathvariant="normal">Ω</mi></msub><mrow><mi>g</mi><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>ω</mi></mrow></mrow></mrow></mrow></math>
+will hold for two functions agreeing almost everywhere.</p>
+</div>
+</li>
+<li id="S8.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S8.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">As another example,
+if we prove “there exists a unique function <math id="S8.I1.i2.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> such that so-and-so”,
+the uniqueness is usually going to be up to measure-zero sets.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">You can think of this sort of like group isomorphism,
+where two groups are considered “basically the same” when they are isomorphic,
+except this one might take a little while to get used to.<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>In fact,
+some people will even define functions on measure spaces
+as <em class="ltx_emph ltx_font_italic">equivalence classes</em> of maps,
+modded out by agreement outside a measure zero set.</span></span></span></p>
+</div>
+</section>
+<section id="S9" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">35.9 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 35A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="(\Omega,\mathscr{A},\mu)" display="inline"><mrow><mo stretchy="false">(</mo><mi mathvariant="normal">Ω</mi><mo>,</mo><mi class="ltx_font_mathscript">𝒜</mi><mo>,</mo><mi>μ</mi><mo stretchy="false">)</mo></mrow></math> be a probability space.
+Show that the intersection of countably many sets of measure <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>
+also has measure <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 35B</span></span><span class="ltx_text ltx_font_bold"> </span>(On countable <math id="Thmproblem2.m1" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebras)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem2.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem2.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem2.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p2.m1" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> be a <math id="Thmproblem2.p2.m2" class="ltx_Math" alttext="\sigma" display="inline"><mi>σ</mi></math>-algebra on a set <math id="Thmproblem2.p2.m3" class="ltx_Math" alttext="\Omega" display="inline"><mi mathvariant="normal">Ω</mi></math>.
+Suppose that <math id="Thmproblem2.p2.m4" class="ltx_Math" alttext="\mathscr{A}" display="inline"><mi class="ltx_font_mathscript">𝒜</mi></math> has countable cardinality.
+Prove that <math id="Thmproblem2.p2.m5" class="ltx_Math" alttext="|\mathscr{A}|" display="inline"><mrow><mo stretchy="false">|</mo><mi class="ltx_font_mathscript">𝒜</mi><mo stretchy="false">|</mo></mrow></math> is finite and equals a power of <math id="Thmproblem2.p2.m6" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">X </span>Measure Theory</span></a><a href="ch_caratheodory_measure.html" title="In Part X Measure Theory ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">36 </span>Constructing the Borel and Lebesgue measure</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Line bundles</title>
+		<meta property="og:title" content="Line bundles" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../riemann/riemann-roch.html">Previous chapter: The Riemann-Roch theorem</a><br />
+<a href="../algnt1/algebraic-integers.html">Next chapter: Algebraic integers</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 52 </span>Line bundles</h1>
+
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">52.1 </span>Overview</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">You might have heard about line bundles, which is somehow “a set <math id="S1.p1.m1" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> with a map <math id="S1.p1.m2" class="ltx_Math" alttext="\pi\colon L\to X" display="inline"><mrow><mi>π</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>L</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> where the preimage of each point is a line”.
+And then, in the algebraic geometry section, you come across the concept of “section” which
+appears to be just a function.</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">That sounds reasonable, but you may ask, “so what? Isn’t it then just another complex manifold
+which has one more dimension than <math id="S1.p2.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>? Why not just study complex manifold?”</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">It’s true, but there are more structures on a line bundle:</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">You can take the product of two line bundles, which somehow “add up the twists” of
+both line bundles.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">A section is not just a function — you can think of a section as the graph of a function
+in the special case that the “graph paper” itself is flat, but if it is curved like a Möbius
+strip, you will see that there is no way to assign a “function value” to each point of the
+“graph paper” — a situation which we will call “the line bundle is not trivial”.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">In other words, a line bundle vastly generalizes the “space of the graph of a function”.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">Later on, you will see a deep hidden connection between line bundles and linearly equivalent classes
+of divisors, and how they are all linked by the so-called Picard group.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">52.2 </span>Definition</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a Riemann surface.</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">In this section, we will view <math id="S2.p2.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> as just a curve — that is, a <math id="S2.p2.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-dimensional object instead of a
+<math id="S2.p2.m3" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>-dimensional object — because:</p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">It is easier to visualize things when they can be embedded in <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="3" display="inline"><mn>3</mn></math>-dimensional space.
+(Try to draw the graph of … with both real and complex part, and you will see what I mean!)</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Since all of our functions of interest are analytic, the behavior of a function elsewhere is
+determined by its value on the real axis.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Looking only at the real part can makes some intuition slipped however — for example, it is
+possible to overlook that the circle <math id="S2.p2.m4" class="ltx_Math" alttext="x^{2}+y^{2}=1" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>=</mo><mn>1</mn></mrow></math> and the hyperbola <math id="S2.p2.m5" class="ltx_Math" alttext="x^{2}=1+y^{2}" display="inline"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>=</mo><mrow><mn>1</mn><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow></math> cuts out
+Riemann surfaces in <math id="S2.p2.m6" class="ltx_Math" alttext="\mathbb{C}^{2}" display="inline"><msup><mi>ℂ</mi><mn>2</mn></msup></math> of the same shape, or that the function <math id="S2.p2.m7" class="ltx_Math" alttext="\frac{1}{x^{2}+1}" display="inline"><mfrac linethickness="0.6px"><mn>1</mn><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>1</mn></mrow></mfrac></math> has a pole
+at <math id="S2.p2.m8" class="ltx_Math" alttext="x=\pm i" display="inline"><mrow><mi>x</mi><mo>=</mo><mrow><mo>±</mo><mi>i</mi></mrow></mrow></math>. So, be careful.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 52.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> line bundle</span> <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> is a set, together with:</p>
+<ul id="S2.I2" class="ltx_itemize">
+<li id="S2.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">A projection map <math id="S2.I2.i1.p1.m1" class="ltx_Math" alttext="\pi\colon L\to X" display="inline"><mrow><mi>π</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>L</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math>,</p>
+</div>
+</li>
+<li id="S2.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">An open cover <math id="S2.I2.i2.p1.m1" class="ltx_Math" alttext="\{U_{i}\}" display="inline"><mrow><mo stretchy="false">{</mo><msub><mi>U</mi><mi>i</mi></msub><mo stretchy="false">}</mo></mrow></math> of <math id="S2.I2.i2.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>,</p>
+</div>
+</li>
+<li id="S2.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">For each <math id="S2.I2.i3.p1.m1" class="ltx_Math" alttext="U_{i}" display="inline"><msub><mi>U</mi><mi>i</mi></msub></math>, a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> line bundle chart</span> <math id="S2.I2.i3.p1.m2" class="ltx_Math" alttext="\phi\colon\pi^{-1}(U)\to\mathbb{C}\times U" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msup><mi>π</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>U</mi></mrow></mrow></mrow></math>
+that bijectively maps each point in <math id="S2.I2.i3.p1.m3" class="ltx_Math" alttext="\pi^{-1}(p)" display="inline"><mrow><msup><mi>π</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> to a point in <math id="S2.I2.i3.p1.m4" class="ltx_Math" alttext="\mathbb{C}\times p" display="inline"><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>p</mi></mrow></math>,</p>
+</div>
+</li>
+<li id="S2.I2.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I2.i4.p1" class="ltx_para">
+<p class="ltx_p">For two open sets <math id="S2.I2.i4.p1.m1" class="ltx_Math" alttext="U_{1}" display="inline"><msub><mi>U</mi><mn>1</mn></msub></math> and <math id="S2.I2.i4.p1.m2" class="ltx_Math" alttext="U_{2}" display="inline"><msub><mi>U</mi><mn>2</mn></msub></math>, the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> transition function</span> <math id="S2.I2.i4.p1.m3" class="ltx_Math" alttext="\phi_{2}\circ\phi_{1}^{-1}\colon\mathbb{C}\times U_{1}\to\mathbb{C}\times U_{2}" display="inline"><mrow><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">∘</mo><msubsup><mi>ϕ</mi><mn>1</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>U</mi><mn>1</mn></msub></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>U</mi><mn>2</mn></msub></mrow></mrow></mrow></math> must be a <em class="ltx_emph ltx_font_italic"><math id="S2.I2.i4.p1.m4" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>-vector space
+isomorphism</em> restricted to <math id="S2.I2.i4.p1.m5" class="ltx_Math" alttext="\mathbb{C}\times p\to\mathbb{C}\times p" display="inline"><mrow><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>p</mi></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>p</mi></mrow></mrow></math> for each point <math id="S2.I2.i4.p1.m6" class="ltx_Math" alttext="p\in U_{1}\times U_{2}" display="inline"><mrow><mi>p</mi><mo>∈</mo><mrow><msub><mi>U</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>U</mi><mn>2</mn></msub></mrow></mrow></math>, and the scaling factor must be an analytic function on <math id="S2.I2.i4.p1.m7" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 52.2.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Warning)</span> — </span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Typically, we draw a graph of the function <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f(x)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> by the set of points <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="(x,y)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></math> where <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="y=f(x)" display="inline"><mrow><mi>y</mi><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+<div id="S2.Thmtheorem2.p2" class="ltx_para">
+<p class="ltx_p">This time, we use the notation in <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:miranda</span>]</cite> — the target of a line bundle chart is
+<math id="S2.Thmtheorem2.p2.m1" class="ltx_Math" alttext="\mathbb{C}\times U" display="inline"><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>U</mi></mrow></math> instead of <math id="S2.Thmtheorem2.p2.m2" class="ltx_Math" alttext="U\times\mathbb{C}" display="inline"><mrow><mi>U</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>ℂ</mi></mrow></math> —
+so if we consider a section the generalization of a function, the
+coordinate would look like <math id="S2.Thmtheorem2.p2.m3" class="ltx_Math" alttext="(y,x)" display="inline"><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></math> instead.</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">The definition is dense, but essentially:</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 52.2.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">A line bundle is a set with a line bundle structure, consisting of an analytic structure and a
+<math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>-dimensional vector space structure.</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">The transition maps is simply to weld the pieces of the line bundle together, just like how they
+welded pieces of a Riemann surface in <a href="ch_complex_structure_def.html" title="Chapter 47 Basic definitions of Riemann surfaces ‣ Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Chapter</span> <span class="ltx_text ltx_ref_tag">47</span></a>.</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Another definition, we will explain this one later.</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 52.2.4</span></span><span class="ltx_text ltx_font_bold"> </span>(Sections of a line bundle)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> be a line bundle. A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> section</span> on an open set <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>
+is a map <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="f\colon U\to L" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>L</mi></mrow></mrow></math> such that <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="\pi\circ f" display="inline"><mrow><mi>π</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>f</mi></mrow></math> is
+the identity map on <math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.</p>
+</div>
+<div id="S2.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">We call a section <math id="S2.Thmtheorem4.p2.m1" class="ltx_Math" alttext="f\colon X\to L" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>L</mi></mrow></mrow></math> a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> global section</span>.</p>
+</div>
+<div id="S2.Thmtheorem4.p3" class="ltx_para">
+<p class="ltx_p">The section <math id="S2.Thmtheorem4.p3.m1" class="ltx_Math" alttext="f\colon U\to L" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>L</mi></mrow></mrow></math> is an <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> analytic section</span> if for every <math id="S2.Thmtheorem4.p3.m2" class="ltx_Math" alttext="U_{1}\subseteq U" display="inline"><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>⊆</mo><mi>U</mi></mrow></math>
+such that there is a line bundle chart <math id="S2.Thmtheorem4.p3.m3" class="ltx_Math" alttext="\phi\colon\pi^{-1}(U_{1})\to\mathbb{C}\times U_{1}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msup><mi>π</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>U</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>U</mi><mn>1</mn></msub></mrow></mrow></mrow></math>, then
+<math id="S2.Thmtheorem4.p3.m4" class="ltx_math_unparsed" alttext="\phi\circ f{\restriction_{U_{1}}}\colon U_{1}\to\mathbb{C}\times U_{1}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>f</mi><msub><mo rspace="0em" stretchy="false">↾</mo><msub><mi>U</mi><mn>1</mn></msub></msub><mo rspace="0.278em">:</mo><msub><mi>U</mi><mn>1</mn></msub><mo stretchy="false">→</mo><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>U</mi><mn>1</mn></msub></mrow></math> is analytic.</p>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">We will see this definition later on in algebraic geometry, <a href="../ag2/sheaves-and-ringed-spaces.html#def:pre_sheaf" title="Definition 82.2.2. ‣ 82.2.i Usual definition ‣ 82.2 Pre-sheaves ‣ Chapter 82 Sheaves and ringed spaces ‣ Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Definition</span> <span class="ltx_text ltx_ref_tag">82.2.2</span></a>.</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 52.2.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">In most books, they will first define what a sheaf is, then instead of “analytic section”,
+they say “a section of the sheaf of analytic functions” (or regular functions, etc.)</p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">52.3 </span>Visualizing a line bundle</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Just as how you can keep all the information of the Riemann sphere <math id="S3.p1.m1" class="ltx_Math" alttext="\mathbb{C}_{\infty}" display="inline"><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub></math> in your head at
+once just by visualizing a sphere (with the analytic structure viewed as some “compatible grids”
+on the surface), you should also be able to keep all the information of a line bundle in your head
+at once — at least in the simplest cases.</p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">First, we visualize <math id="S3.p2.m1" class="ltx_Math" alttext="\mathbb{C}\times X" display="inline"><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>X</mi></mrow></math> where <math id="S3.p2.m2" class="ltx_Math" alttext="X=\mathbb{C}" display="inline"><mrow><mi>X</mi><mo>=</mo><mi>ℂ</mi></mrow></math>.
+Looking at only the real parts, it looks like a plane.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='113.385826pt' height='112.586147pt' viewBox='112.702523 110.151342 113.385826 112.586147'>
+<defs>
+<path id='asymptote-52-1-g0-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+</defs>
+<g id='asymptote-52-1-page1'>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M.250937 56.5042H112.757' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='214.802401' y='161.406673' href='#asymptote-52-1-g0-88'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 7.77906V112.757' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 .250937L54.487 7.77906H58.5213L56.5042 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 .250937L54.487 7.77906H58.5213L56.5042 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+<p class="ltx_p">As a line bundle, the preimage of each point is a line.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='113.385826pt' height='112.586147pt' viewBox='112.702523 110.151342 113.385826 112.586147'>
+<defs>
+<path id='asymptote-52-2-g0-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+</defs>
+<g id='asymptote-52-2-page1'>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M105.229 56.5042H.250937' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M112.757 56.5042L105.229 54.487V58.5213L112.757 56.5042Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M112.757 56.5042L105.229 54.487V58.5213L112.757 56.5042Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='214.802401' y='161.406673' href='#asymptote-52-2-g0-88'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 7.77906V112.757' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 .250937L54.487 7.77906H58.5213L56.5042 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 .250937L54.487 7.77906H58.5213L56.5042 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M11.5016 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M22.7522 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M34.0029 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M45.2535 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M67.7548 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M79.0055 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M90.2561 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M101.507 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 52.3.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">In symbols, what subset of <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathbb{C}\times X" display="inline"><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>X</mi></mrow></math> does a vertical line correspond to?</span></p>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">They are not just disparate lines however — there are two more structures.
+First one is a vector space structure — of course the dimension of <math id="S3.p3.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> as a <math id="S3.p3.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>-vector space
+is <math id="S3.p3.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.
+We can visualize it by marking the points <math id="S3.p3.m4" class="ltx_Math" alttext="1,2,3,\dots" display="inline"><mrow><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo>,</mo><mi mathvariant="normal">…</mi></mrow></math> on the line.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='113.385826pt' height='112.586147pt' viewBox='112.702523 110.151342 113.385826 112.586147'>
+<defs>
+<path id='asymptote-52-3-g0-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+</defs>
+<g id='asymptote-52-3-page1'>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M105.229 56.5042H.250937' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M112.757 56.5042L105.229 54.487V58.5213L112.757 56.5042Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M112.757 56.5042L105.229 54.487V58.5213L112.757 56.5042Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='214.802401' y='161.406673' href='#asymptote-52-3-g0-88'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 7.77906V112.757' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 .250937L54.487 7.77906H58.5213L56.5042 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 .250937L54.487 7.77906H58.5213L56.5042 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M11.5016 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='11.5016' cy='101.507' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='11.5016' cy='90.2561' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='11.5016' cy='79.0055' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='11.5016' cy='67.7548' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='11.5016' cy='56.5042' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='11.5016' cy='45.2535' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='11.5016' cy='34.0029' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='11.5016' cy='22.7522' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='11.5016' cy='11.5016' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M22.7522 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='22.7522' cy='101.507' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='22.7522' cy='90.2561' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='22.7522' cy='79.0055' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='22.7522' cy='67.7548' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='22.7522' cy='56.5042' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='22.7522' cy='45.2535' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='22.7522' cy='34.0029' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='22.7522' cy='22.7522' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='22.7522' cy='11.5016' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M34.0029 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='34.0029' cy='101.507' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='34.0029' cy='90.2561' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='34.0029' cy='79.0055' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='34.0029' cy='67.7548' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='34.0029' cy='56.5042' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='34.0029' cy='45.2535' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='34.0029' cy='34.0029' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='34.0029' cy='22.7522' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='34.0029' cy='11.5016' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M45.2535 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='45.2535' cy='101.507' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='45.2535' cy='90.2561' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='45.2535' cy='79.0055' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='45.2535' cy='67.7548' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='45.2535' cy='56.5042' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='45.2535' cy='45.2535' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='45.2535' cy='34.0029' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='45.2535' cy='22.7522' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='45.2535' cy='11.5016' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='56.5042' cy='101.507' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='56.5042' cy='90.2561' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='56.5042' cy='79.0055' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='56.5042' cy='67.7548' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='56.5042' cy='56.5042' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='56.5042' cy='45.2535' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='56.5042' cy='34.0029' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='56.5042' cy='22.7522' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='56.5042' cy='11.5016' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M67.7548 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='67.7548' cy='101.507' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='67.7548' cy='90.2561' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='67.7548' cy='79.0055' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='67.7548' cy='67.7548' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='67.7548' cy='56.5042' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='67.7548' cy='45.2535' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='67.7548' cy='34.0029' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='67.7548' cy='22.7522' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='67.7548' cy='11.5016' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M79.0055 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='79.0055' cy='101.507' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='79.0055' cy='90.2561' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='79.0055' cy='79.0055' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='79.0055' cy='67.7548' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='79.0055' cy='56.5042' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='79.0055' cy='45.2535' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='79.0055' cy='34.0029' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='79.0055' cy='22.7522' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='79.0055' cy='11.5016' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M90.2561 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='90.2561' cy='101.507' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='90.2561' cy='90.2561' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='90.2561' cy='79.0055' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='90.2561' cy='67.7548' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='90.2561' cy='56.5042' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='90.2561' cy='45.2535' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='90.2561' cy='34.0029' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='90.2561' cy='22.7522' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='90.2561' cy='11.5016' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M101.507 112.757V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='101.507' cy='101.507' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='101.507' cy='90.2561' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='101.507' cy='79.0055' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='101.507' cy='67.7548' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='101.507' cy='56.5042' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='101.507' cy='45.2535' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='101.507' cy='34.0029' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='101.507' cy='22.7522' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<circle cx='101.507' cy='11.5016' fill="var(--asymptote-color-8000ff)" r='0.752812'/>
+</g>
+</g>
+</svg>
+</div>
+<p class="ltx_p">The other structure is that the lines must “smoothly varies” as <math id="S3.p3.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> varies over <math id="S3.p3.m6" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+We visualize this by drawing, well, a grid.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='113.385826pt' height='112.586147pt' viewBox='112.702523 110.151342 113.385826 112.586147'>
+<defs>
+<path id='asymptote-52-4-g0-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+</defs>
+<g id='asymptote-52-4-page1'>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M105.229 56.5042H.250937' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M112.757 56.5042L105.229 54.487V58.5213L112.757 56.5042Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M112.757 56.5042L105.229 54.487V58.5213L112.757 56.5042Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='214.802401' y='161.406673' href='#asymptote-52-4-g0-88'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 7.77906V112.757' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 .250937L54.487 7.77906H58.5213L56.5042 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 .250937L54.487 7.77906H58.5213L56.5042 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M11.5016 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 101.507H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M22.7522 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 90.2561H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M34.0029 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 79.0055H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M45.2535 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 67.7548H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M67.7548 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 45.2535H103.757' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M79.0055 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 34.0029H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M90.2561 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 22.7522H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M101.507 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 11.5016H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 52.3.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">How does the picture of the grid correspond to the formal definition of a line bundle chart?
+(Hint: take the preimage of the vertical lines <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="x=c" display="inline"><mrow><mi>x</mi><mo>=</mo><mi>c</mi></mrow></math> and the horizontal lines <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="y=c" display="inline"><mrow><mi>y</mi><mo>=</mo><mi>c</mi></mrow></math> with
+respect to the line bundle chart <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\phi\colon L\to\mathbb{C}\times U" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>L</mi><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>U</mi></mrow></mrow></mrow></math>, where <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="U\subseteq X" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>X</mi></mrow></math>, then
+use the analytic structure on <math id="S3.Thmtheorem2.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> to identify open subsets of <math id="S3.Thmtheorem2.p1.m6" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> with open subsets of <math id="S3.Thmtheorem2.p1.m7" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.)</span></p>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">So far, nothing surprising — this is just the usual grid graph, where we can draw functions on it
+like <math id="S3.p4.m1" class="ltx_Math" alttext="y=x^{2}-1" display="inline"><mrow><mi>y</mi><mo>=</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mn>1</mn></mrow></mrow></math>, and a function is analytic if it is analytic with respect to the grid.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='113.385826pt' height='112.586147pt' viewBox='112.702523 110.151342 113.385826 112.586147'>
+<defs>
+<path id='asymptote-52-5-g0-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+</defs>
+<g id='asymptote-52-5-page1'>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M105.229 56.5042H.250937' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M112.757 56.5042L105.229 54.487V58.5213L112.757 56.5042Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M112.757 56.5042L105.229 54.487V58.5213L112.757 56.5042Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='214.802401' y='161.406673' href='#asymptote-52-5-g0-88'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 7.77906V112.757' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 .250937L54.487 7.77906H58.5213L56.5042 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M56.5042 .250937L54.487 7.77906H58.5213L56.5042 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M11.5016 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 101.507H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M22.7522 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 90.2561H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M34.0029 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 79.0055H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M45.2535 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 67.7548H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M67.7548 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 45.2535H103.757' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M79.0055 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 34.0029H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M90.2561 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 22.7522H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M101.507 110.507V2.50107' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M2.50107 11.5016H110.507' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(112.703 110.151)scale(.996264)'>
+<path d='M29.409 2.50107C29.5879 3.36279 29.7685 4.22414 29.9509 5.08512C30.1298 5.92944 30.3104 6.7734 30.4928 7.61696C30.6717 8.4439 30.8523 9.27046 31.0347 10.0966C31.2135 10.9062 31.3941 11.7153 31.5766 12.524C31.7554 13.3162 31.936 14.108 32.1185 14.8993C32.2973 15.6741 32.4779 16.4484 32.6604 17.2223C32.8391 17.9797 33.0197 18.7367 33.2023 19.4931C33.381 20.2332 33.5616 20.9727 33.7443 21.7118C33.9229 22.4344 34.1034 23.1566 34.2862 23.8782C34.4647 24.5835 34.6453 25.2882 34.8281 25.9924C35.0066 26.6803 35.1872 27.3677 35.37 28.0544C35.5484 28.725 35.729 29.3949 35.9119 30.0643C36.0903 30.7174 36.2709 31.37 36.4538 32.0219C36.6321 32.6576 36.8127 33.2928 36.9957 33.9273C37.174 34.5457 37.3546 35.1634 37.5376 35.7805C37.7158 36.3815 37.8964 36.9819 38.0795 37.5815C38.2577 38.1652 38.4382 38.7481 38.6214 39.3303C38.7995 39.8966 38.9801 40.4622 39.1633 41.0269C39.3414 41.5759 39.5219 42.124 39.7052 42.6713C39.8832 43.2029 40.0638 43.7337 40.2471 44.2635C40.425 44.7777 40.6056 45.2911 40.789 45.8035C40.9669 46.3004 41.1474 46.7964 41.3309 47.2912C41.5087 47.7708 41.6892 48.2494 41.8728 48.7268C42.0505 49.1891 42.2311 49.6503 42.4147 50.1102C42.5923 50.5551 42.7729 50.9989 42.9566 51.4414C43.1342 51.869 43.3147 52.2954 43.4985 52.7204C43.676 53.1307 43.8565 53.5397 44.0404 53.9471C44.2178 54.3401 44.3983 54.7317 44.5823 55.1217C44.7596 55.4974 44.9401 55.8716 45.1242 56.2441C45.3014 56.6025 45.4819 56.9593 45.6661 57.3142C45.8432 57.6554 46.0237 57.9948 46.208 58.3322C46.385 58.6561 46.5655 58.9782 46.7499 59.2979C46.9268 59.6047 47.1073 59.9093 47.2918 60.2115C47.4686 60.501 47.6491 60.7883 47.8337 61.0728C48.0104 61.3452 48.1909 61.615 48.3756 61.882C48.5522 62.1372 48.7327 62.3896 48.9175 62.6389C49.094 62.877 49.2745 63.1121 49.4594 63.3437C49.6359 63.5646 49.8163 63.7824 50.0013 63.9962C50.1777 64.2001 50.3582 64.4005 50.5432 64.5965C50.7196 64.7834 50.9001 64.9664 51.0851 65.1447C51.2615 65.3146 51.442 65.4802 51.627 65.6406C51.8035 65.7936 51.984 65.9418 52.1689 66.0843C52.3455 66.2204 52.526 66.3512 52.7109 66.4758C52.8876 66.595 53.0682 66.7085 53.2528 66.8152C53.4298 66.9175 53.6104 67.0135 53.7947 67.1023C53.9721 67.1878 54.1528 67.2664 54.3366 67.3372C54.5145 67.4058 54.6952 67.467 54.8785 67.5199C55.0571 67.5715 55.2378 67.6152 55.4204 67.6504C55.5997 67.685 55.7805 67.7112 55.9623 67.7287C56.1424 67.7461 56.3232 67.7548 56.5042 67.7548C56.6851 67.7548 56.866 67.7461 57.0461 67.7287C57.2278 67.7112 57.4087 67.685 57.588 67.6504C57.7705 67.6152 57.9513 67.5715 58.1299 67.5199C58.3131 67.467 58.4938 67.4058 58.6718 67.3372C58.8556 67.2664 59.0362 67.1878 59.2137 67.1023C59.3979 67.0135 59.5785 66.9175 59.7556 66.8152C59.9402 66.7085 60.1207 66.595 60.2975 66.4758C60.4823 66.3512 60.6628 66.2204 60.8394 66.0843C61.0244 65.9418 61.2049 65.7936 61.3813 65.6406C61.5663 65.4802 61.7468 65.3146 61.9232 65.1447C62.1083 64.9664 62.2887 64.7834 62.4651 64.5965C62.6501 64.4005 62.8306 64.2001 63.007 63.9962C63.192 63.7824 63.3725 63.5646 63.5489 63.3437C63.7338 63.1121 63.9143 62.877 64.0908 62.6389C64.2756 62.3896 64.4561 62.1372 64.6327 61.882C64.8175 61.615 64.9979 61.3452 65.1746 61.0728C65.3593 60.7883 65.5397 60.501 65.7165 60.2115C65.901 59.9093 66.0815 59.6047 66.2584 59.2979C66.4428 58.9782 66.6233 58.6561 66.8003 58.3322C66.9846 57.9948 67.1651 57.6554 67.3422 57.3142C67.5264 56.9593 67.7069 56.6025 67.8841 56.2441C68.0682 55.8716 68.2488 55.4974 68.426 55.1217C68.61 54.7317 68.7906 54.3401 68.9679 53.9471C69.1518 53.5397 69.3324 53.1307 69.5098 52.7204C69.6937 52.2954 69.8742 51.869 70.0517 51.4414C70.2355 50.9989 70.416 50.5551 70.5936 50.1102C70.7773 49.6503 70.9578 49.1891 71.1356 48.7268C71.3191 48.2494 71.4997 47.7708 71.6775 47.2912C71.8609 46.7964 72.0415 46.3004 72.2194 45.8035C72.4028 45.2911 72.5833 44.7777 72.7613 44.2635C72.9446 43.7337 73.1251 43.2029 73.3032 42.6713C73.4864 42.124 73.667 41.5759 73.8451 41.0269C74.0283 40.4622 74.2088 39.8966 74.387 39.3303C74.5701 38.7481 74.7507 38.1652 74.9289 37.5815C75.1119 36.9819 75.2925 36.3815 75.4708 35.7805C75.6538 35.1634 75.8344 34.5457 76.0127 33.9273C76.1956 33.2928 76.3762 32.6576 76.5546 32.0219C76.7375 31.37 76.9181 30.7174 77.0965 30.0643C77.2793 29.3949 77.4599 28.725 77.6384 28.0544C77.8212 27.3677 78.0018 26.6803 78.1803 25.9924C78.363 25.2882 78.5436 24.5835 78.7222 23.8782C78.9049 23.1566 79.0855 22.4344 79.2641 21.7118C79.4468 20.9727 79.6273 20.2332 79.806 19.4931C79.9886 18.7367 80.1692 17.9797 80.3479 17.2223C80.5305 16.4484 80.7111 15.6741 80.8898 14.8993C81.0723 14.108 81.2529 13.3162 81.4317 12.524C81.6142 11.7153 81.7948 10.9062 81.9736 10.0966C82.1561 9.27046 82.3367 8.4439 82.5155 7.61696C82.6979 6.7734 82.8785 5.92944 83.0574 5.08512C83.2398 4.22414 83.4205 3.36279 83.5993 2.50107' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Of course, instead of a function, we call this a <em class="ltx_emph ltx_font_italic">section</em>. This particular section is in fact
+analytic, as you would expect.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">Let us take a look at which “grids” represent the same line bundle structure. For this part, we
+will look at <math id="S3.p6.m1" class="ltx_Math" alttext="\{z\in\mathbb{C}\mid|z-3|&lt;2\}" display="inline"><mrow><mo stretchy="false">{</mo><mrow><mi>z</mi><mo>∈</mo><mi>ℂ</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>z</mi><mo>−</mo><mn>3</mn></mrow><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mn>2</mn></mrow><mo stretchy="false">}</mo></mrow></math>, its real part being <math id="S3.p6.m2" class="ltx_Math" alttext="(1,5)" display="inline"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></math>.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='65.889878pt' height='113.385827pt' viewBox='52.167625 110.551181 65.889878 113.385827'>
+<defs>
+<clipPath id='asymptote-52-6-Clip1'>
+<path clip-rule='evenodd' d='M-.501875 114.313H66.6388V-.501875H-.501875V114.313ZM64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' transform='matrix(0.996264 0 0 0.996264 52.1676 110.551)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-52-6-Clip1)' id='asymptote-52-6-Clip2'>
+<path clip-rule='evenodd' d='M-.501875 114.313H66.6388V-.501875H-.501875V114.313ZM10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' transform='matrix(0.996264 0 0 0.996264 52.1676 110.551)'/>
+</clipPath>
+<path id='asymptote-52-6-g0-49' d='M3.207272-6.981816C3.207272-7.243634 3.207272-7.265453 2.956363-7.265453C2.279999-6.567271 1.32-6.567271 .970909-6.567271V-6.229089C1.189091-6.229089 1.832727-6.229089 2.399999-6.512725V-.861818C2.399999-.469091 2.367272-.338182 1.385454-.338182H1.036363V0C1.418181-.032727 2.367272-.032727 2.803636-.032727S4.18909-.032727 4.570908 0V-.338182H4.221817C3.239999-.338182 3.207272-.458182 3.207272-.861818V-6.981816Z'/>
+<path id='asymptote-52-6-g0-53' d='M4.89818-2.192727C4.89818-3.490908 4.003635-4.581817 2.825454-4.581817C2.301818-4.581817 1.832727-4.407271 1.44-4.025453V-6.152726C1.658181-6.087271 2.018181-6.010907 2.367272-6.010907C3.70909-6.010907 4.472726-7.003634 4.472726-7.145453C4.472726-7.210907 4.439999-7.265453 4.363635-7.265453C4.352726-7.265453 4.330908-7.265453 4.276362-7.232725C4.058181-7.134543 3.523635-6.916362 2.792726-6.916362C2.356363-6.916362 1.854545-6.992725 1.341818-7.221816C1.254545-7.254543 1.232727-7.254543 1.210909-7.254543C1.101818-7.254543 1.101818-7.167271 1.101818-6.992725V-3.763635C1.101818-3.567272 1.101818-3.479999 1.254545-3.479999C1.330909-3.479999 1.352727-3.512726 1.396363-3.578181C1.516363-3.752726 1.919999-4.341817 2.803636-4.341817C3.370908-4.341817 3.643635-3.839999 3.730908-3.643635C3.905453-3.239999 3.927272-2.814545 3.927272-2.26909C3.927272-1.887272 3.927272-1.232727 3.665454-.774545C3.403635-.349091 2.999999-.065455 2.498181-.065455C1.701818-.065455 1.08-.643636 .894545-1.287272C.927272-1.276363 .96-1.265454 1.08-1.265454C1.44-1.265454 1.625454-1.538181 1.625454-1.799999S1.44-2.334545 1.08-2.334545C.927272-2.334545 .545454-2.258181 .545454-1.756363C.545454-.818182 1.298181 .24 2.519999 .24C3.785453 .24 4.89818-.807273 4.89818-2.192727Z'/>
+</defs>
+<g id='asymptote-52-6-page1'>
+<g clip-path='url(#asymptote-52-6-Clip2)'>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M9.23145 56.9055H63.1882' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='53.567326' y='176.560904' href='#asymptote-52-6-g0-49'/>
+<use x='107.322486' y='176.560904' href='#asymptote-52-6-g0-53'/>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M9.23145 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M22.7206 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M36.2098 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M49.699 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M63.1882 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 110.862H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 97.3731H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 83.8839H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 70.3947H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 43.4163H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 29.9271H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 16.438H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 2.94877H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-52-6-Clip1)'>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+<p class="ltx_p">If we apply an analytic reparametrization on the segment <math id="S3.p6.m3" class="ltx_Math" alttext="(1,5)" display="inline"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>5</mn><mo stretchy="false">)</mo></mrow></math> — for example let <math id="S3.p6.m4" class="ltx_Math" alttext="t=25/x" display="inline"><mrow><mi>t</mi><mo>=</mo><mrow><mn>25</mn><mo>/</mo><mi>x</mi></mrow></mrow></math>,
+then the grid becomes like the following. It still represents the same line bundle structure — in
+other words, the two charts are compatible.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='65.889878pt' height='113.385827pt' viewBox='52.167625 110.551181 65.889878 113.385827'>
+<defs>
+<clipPath id='asymptote-52-7-Clip1'>
+<path clip-rule='evenodd' d='M-.501875 114.313H66.6388V-.501875H-.501875V114.313ZM64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' transform='matrix(0.996264 0 0 0.996264 52.1676 110.551)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-52-7-Clip1)' id='asymptote-52-7-Clip2'>
+<path clip-rule='evenodd' d='M-.501875 114.313H66.6388V-.501875H-.501875V114.313ZM10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' transform='matrix(0.996264 0 0 0.996264 52.1676 110.551)'/>
+</clipPath>
+<path id='asymptote-52-7-g0-49' d='M3.207272-6.981816C3.207272-7.243634 3.207272-7.265453 2.956363-7.265453C2.279999-6.567271 1.32-6.567271 .970909-6.567271V-6.229089C1.189091-6.229089 1.832727-6.229089 2.399999-6.512725V-.861818C2.399999-.469091 2.367272-.338182 1.385454-.338182H1.036363V0C1.418181-.032727 2.367272-.032727 2.803636-.032727S4.18909-.032727 4.570908 0V-.338182H4.221817C3.239999-.338182 3.207272-.458182 3.207272-.861818V-6.981816Z'/>
+<path id='asymptote-52-7-g0-53' d='M4.89818-2.192727C4.89818-3.490908 4.003635-4.581817 2.825454-4.581817C2.301818-4.581817 1.832727-4.407271 1.44-4.025453V-6.152726C1.658181-6.087271 2.018181-6.010907 2.367272-6.010907C3.70909-6.010907 4.472726-7.003634 4.472726-7.145453C4.472726-7.210907 4.439999-7.265453 4.363635-7.265453C4.352726-7.265453 4.330908-7.265453 4.276362-7.232725C4.058181-7.134543 3.523635-6.916362 2.792726-6.916362C2.356363-6.916362 1.854545-6.992725 1.341818-7.221816C1.254545-7.254543 1.232727-7.254543 1.210909-7.254543C1.101818-7.254543 1.101818-7.167271 1.101818-6.992725V-3.763635C1.101818-3.567272 1.101818-3.479999 1.254545-3.479999C1.330909-3.479999 1.352727-3.512726 1.396363-3.578181C1.516363-3.752726 1.919999-4.341817 2.803636-4.341817C3.370908-4.341817 3.643635-3.839999 3.730908-3.643635C3.905453-3.239999 3.927272-2.814545 3.927272-2.26909C3.927272-1.887272 3.927272-1.232727 3.665454-.774545C3.403635-.349091 2.999999-.065455 2.498181-.065455C1.701818-.065455 1.08-.643636 .894545-1.287272C.927272-1.276363 .96-1.265454 1.08-1.265454C1.44-1.265454 1.625454-1.538181 1.625454-1.799999S1.44-2.334545 1.08-2.334545C.927272-2.334545 .545454-2.258181 .545454-1.756363C.545454-.818182 1.298181 .24 2.519999 .24C3.785453 .24 4.89818-.807273 4.89818-2.192727Z'/>
+</defs>
+<g id='asymptote-52-7-page1'>
+<g clip-path='url(#asymptote-52-7-Clip2)'>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M9.23145 56.9055H63.1882' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='53.567326' y='176.560904' href='#asymptote-52-7-g0-49'/>
+<use x='107.322486' y='176.560904' href='#asymptote-52-7-g0-53'/>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M63.1882 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M51.9472 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M43.9179 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M37.896 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M33.2122 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M29.4652 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M26.3995 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M23.8447 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M21.683 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M19.8301 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M18.2242 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M16.8191 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M15.5793 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M14.4772 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M13.4912 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M12.6037 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M11.8008 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M11.0709 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4044 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M9.7935 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M9.23145 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 110.862H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 97.3731H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 83.8839H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 70.3947H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 43.4163H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 29.9271H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 16.438H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 2.94877H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-52-7-Clip1)'>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+<p class="ltx_p">If we rescale the vertical direction by an analytically-varying function, it still represents the
+same line bundle structure.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='64.45212pt' height='113.385827pt' viewBox='52.167625 110.551181 64.45212 113.385827'>
+<defs>
+<clipPath id='asymptote-52-8-Clip1'>
+<path clip-rule='evenodd' d='M-.501875 114.313H64.9448V-.501875H-.501875V114.313ZM64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' transform='matrix(0.996264 0 0 0.996264 52.1676 110.551)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-52-8-Clip1)' id='asymptote-52-8-Clip2'>
+<path clip-rule='evenodd' d='M-.501875 114.313H63.941V-.501875H-.501875V114.313ZM10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' transform='matrix(0.996264 0 0 0.996264 52.1676 110.551)'/>
+</clipPath>
+<path id='asymptote-52-8-g0-49' d='M3.207272-6.981816C3.207272-7.243634 3.207272-7.265453 2.956363-7.265453C2.279999-6.567271 1.32-6.567271 .970909-6.567271V-6.229089C1.189091-6.229089 1.832727-6.229089 2.399999-6.512725V-.861818C2.399999-.469091 2.367272-.338182 1.385454-.338182H1.036363V0C1.418181-.032727 2.367272-.032727 2.803636-.032727S4.18909-.032727 4.570908 0V-.338182H4.221817C3.239999-.338182 3.207272-.458182 3.207272-.861818V-6.981816Z'/>
+<path id='asymptote-52-8-g0-53' d='M4.89818-2.192727C4.89818-3.490908 4.003635-4.581817 2.825454-4.581817C2.301818-4.581817 1.832727-4.407271 1.44-4.025453V-6.152726C1.658181-6.087271 2.018181-6.010907 2.367272-6.010907C3.70909-6.010907 4.472726-7.003634 4.472726-7.145453C4.472726-7.210907 4.439999-7.265453 4.363635-7.265453C4.352726-7.265453 4.330908-7.265453 4.276362-7.232725C4.058181-7.134543 3.523635-6.916362 2.792726-6.916362C2.356363-6.916362 1.854545-6.992725 1.341818-7.221816C1.254545-7.254543 1.232727-7.254543 1.210909-7.254543C1.101818-7.254543 1.101818-7.167271 1.101818-6.992725V-3.763635C1.101818-3.567272 1.101818-3.479999 1.254545-3.479999C1.330909-3.479999 1.352727-3.512726 1.396363-3.578181C1.516363-3.752726 1.919999-4.341817 2.803636-4.341817C3.370908-4.341817 3.643635-3.839999 3.730908-3.643635C3.905453-3.239999 3.927272-2.814545 3.927272-2.26909C3.927272-1.887272 3.927272-1.232727 3.665454-.774545C3.403635-.349091 2.999999-.065455 2.498181-.065455C1.701818-.065455 1.08-.643636 .894545-1.287272C.927272-1.276363 .96-1.265454 1.08-1.265454C1.44-1.265454 1.625454-1.538181 1.625454-1.799999S1.44-2.334545 1.08-2.334545C.927272-2.334545 .545454-2.258181 .545454-1.756363C.545454-.818182 1.298181 .24 2.519999 .24C3.785453 .24 4.89818-.807273 4.89818-2.192727Z'/>
+</defs>
+<g id='asymptote-52-8-page1'>
+<g clip-path='url(#asymptote-52-8-Clip2)'>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M9.23145 56.9055H63.1882' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='53.567326' y='176.560904' href='#asymptote-52-8-g0-49'/>
+<use x='107.322486' y='176.560904' href='#asymptote-52-8-g0-53'/>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M63.1882 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M51.9472 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M43.9179 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M37.896 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M33.2122 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M29.4652 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M26.3995 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M23.8447 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M21.683 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M19.8301 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M18.2242 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M16.8191 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M15.5793 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M14.4772 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M13.4912 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M12.6037 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M11.8008 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M11.0709 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4044 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M9.7935 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M9.23145 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 46.1142L52.3968 .250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 67.6969L52.3968 113.56' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 35.3228L24.0696 .250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 78.4882L24.0696 113.56' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 24.5315L14.6271 .250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 89.2796L14.6271 113.56' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 13.7401L9.90591 .250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 100.071L9.90591 113.56' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-52-8-Clip1)'>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+<p class="ltx_p">However, if we rescale the vertical direction by something that is not linear, the vector space
+structure will be changed. The following grid <em class="ltx_emph ltx_font_italic">does not</em> represent the same line bundle
+structure:</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='65.889878pt' height='113.385827pt' viewBox='52.167625 110.551181 65.889878 113.385827'>
+<defs>
+<clipPath id='asymptote-52-9-Clip1'>
+<path clip-rule='evenodd' d='M-.501875 114.313H66.6388V-.501875H-.501875V114.313ZM64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' transform='matrix(0.996264 0 0 0.996264 52.1676 110.551)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-52-9-Clip1)' id='asymptote-52-9-Clip2'>
+<path clip-rule='evenodd' d='M-.501875 114.313H66.6388V-.501875H-.501875V114.313ZM10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' transform='matrix(0.996264 0 0 0.996264 52.1676 110.551)'/>
+</clipPath>
+<path id='asymptote-52-9-g0-49' d='M3.207272-6.981816C3.207272-7.243634 3.207272-7.265453 2.956363-7.265453C2.279999-6.567271 1.32-6.567271 .970909-6.567271V-6.229089C1.189091-6.229089 1.832727-6.229089 2.399999-6.512725V-.861818C2.399999-.469091 2.367272-.338182 1.385454-.338182H1.036363V0C1.418181-.032727 2.367272-.032727 2.803636-.032727S4.18909-.032727 4.570908 0V-.338182H4.221817C3.239999-.338182 3.207272-.458182 3.207272-.861818V-6.981816Z'/>
+<path id='asymptote-52-9-g0-53' d='M4.89818-2.192727C4.89818-3.490908 4.003635-4.581817 2.825454-4.581817C2.301818-4.581817 1.832727-4.407271 1.44-4.025453V-6.152726C1.658181-6.087271 2.018181-6.010907 2.367272-6.010907C3.70909-6.010907 4.472726-7.003634 4.472726-7.145453C4.472726-7.210907 4.439999-7.265453 4.363635-7.265453C4.352726-7.265453 4.330908-7.265453 4.276362-7.232725C4.058181-7.134543 3.523635-6.916362 2.792726-6.916362C2.356363-6.916362 1.854545-6.992725 1.341818-7.221816C1.254545-7.254543 1.232727-7.254543 1.210909-7.254543C1.101818-7.254543 1.101818-7.167271 1.101818-6.992725V-3.763635C1.101818-3.567272 1.101818-3.479999 1.254545-3.479999C1.330909-3.479999 1.352727-3.512726 1.396363-3.578181C1.516363-3.752726 1.919999-4.341817 2.803636-4.341817C3.370908-4.341817 3.643635-3.839999 3.730908-3.643635C3.905453-3.239999 3.927272-2.814545 3.927272-2.26909C3.927272-1.887272 3.927272-1.232727 3.665454-.774545C3.403635-.349091 2.999999-.065455 2.498181-.065455C1.701818-.065455 1.08-.643636 .894545-1.287272C.927272-1.276363 .96-1.265454 1.08-1.265454C1.44-1.265454 1.625454-1.538181 1.625454-1.799999S1.44-2.334545 1.08-2.334545C.927272-2.334545 .545454-2.258181 .545454-1.756363C.545454-.818182 1.298181 .24 2.519999 .24C3.785453 .24 4.89818-.807273 4.89818-2.192727Z'/>
+</defs>
+<g id='asymptote-52-9-page1'>
+<g clip-path='url(#asymptote-52-9-Clip2)'>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M9.23145 56.9055H63.1882' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='53.567326' y='176.560904' href='#asymptote-52-9-g0-49'/>
+<use x='107.322486' y='176.560904' href='#asymptote-52-9-g0-53'/>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M9.23145 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M22.7206 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M36.2098 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M49.699 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M63.1882 113.56V.250937' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 109.574H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 104.187H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 98.5219H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 92.5037H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 86.0107H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 78.8188H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 70.3947H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 43.4163H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 34.9923H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 27.8003H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 21.3073H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 15.2891H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 9.62398H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M6.53362 4.2366H65.886' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-52-9-Clip1)'>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M10.4861 56.9055C10.4861 56.2126 9.9244 55.6508 9.23145 55.6508C8.53851 55.6508 7.97677 56.2126 7.97677 56.9055C7.97677 57.5985 8.53851 58.1602 9.23145 58.1602C9.9244 58.1602 10.4861 57.5985 10.4861 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(52.1676 110.551)scale(.996264)'>
+<path d='M64.4429 56.9055C64.4429 56.2126 63.8811 55.6508 63.1882 55.6508C62.4952 55.6508 61.9335 56.2126 61.9335 56.9055C61.9335 57.5985 62.4952 58.1602 63.1882 58.1602C63.8811 58.1602 64.4429 57.5985 64.4429 56.9055Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">Intuitively, this makes sense — in a <em class="ltx_emph ltx_font_italic">vector space</em>, you can add two elements together and
+get another element — in our case, if <math id="S3.p7.m1" class="ltx_Math" alttext="a,b\in L" display="inline"><mrow><mrow><mi>a</mi><mo>,</mo><mi>b</mi></mrow><mo>∈</mo><mi>L</mi></mrow></math> such that <math id="S3.p7.m2" class="ltx_Math" alttext="\pi(a)=\pi(b)" display="inline"><mrow><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, we can compute
+<math id="S3.p7.m3" class="ltx_Math" alttext="c=a+b" display="inline"><mrow><mi>c</mi><mo>=</mo><mrow><mi>a</mi><mo>+</mo><mi>b</mi></mrow></mrow></math> and get another element <math id="S3.p7.m4" class="ltx_Math" alttext="c\in L" display="inline"><mrow><mi>c</mi><mo>∈</mo><mi>L</mi></mrow></math> with <math id="S3.p7.m5" class="ltx_Math" alttext="\pi(c)=\pi(a)=\pi(b)" display="inline"><mrow><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>c</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>π</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>. If we rescale the
+vertical direction non-linearly, the element <math id="S3.p7.m6" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math> will be changed.</p>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">Finally, don’t forget that <math id="S3.p8.m1" class="ltx_Math" alttext="L" display="inline"><mi>L</mi></math> still has an analytic structure — even though a section isn’t
+necessarily a function, we are still able to say when a section is analytic.</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 52.3.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify that everything explained above matches the formal definition.
+(This is important! Fuzzy pictures won’t help you to understand the concepts;
+and if your intuition is incomplete or inaccurate, you will have a lot of
+trouble understanding the subsequent parts.)</span></p>
+</div>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">So far, everything just looks like a graph paper, on which a section looks just like a
+function.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>As warned above, “graph coordinate” is written <math id="footnote1.m1" class="ltx_Math" alttext="(y,x)" display="inline"><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></math>.</span></span></span>
+Let us consider a more complicated space <math id="S3.p9.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> — the Riemann sphere.</p>
+</div>
+<div id="S3.p10" class="ltx_para">
+<p class="ltx_p">Because we are looking at the real part only, so once again, <math id="S3.p10.m1" class="ltx_Math" alttext="\mathbb{C}_{\infty}" display="inline"><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub></math> looks like just a circle.</p>
+<img loading="lazy" src="../latexml-out/part_riemann//x5.png" id="S3.p10.g1" class="ltx_graphics ltx_centering ltx_img_landscape" width="236" height="117" alt="[Uncaptioned image]">
+<p class="ltx_p">As before, we let <math id="S3.p10.m2" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> and <math id="S3.p10.m3" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math> parametrize the points on the surface, with <math id="S3.p10.m4" class="ltx_Math" alttext="t=\frac{1}{z}" display="inline"><mrow><mi>t</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></mrow></math> wherever
+both are defined.</p>
+</div>
+<div id="S3.p11" class="ltx_para">
+<p class="ltx_p">Still, we need two dimensions to embed a circle. So, the real part of <math id="S3.p11.m1" class="ltx_Math" alttext="\mathbb{C}\times\mathbb{C}_{\infty}" display="inline"><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub></mrow></math> may
+looks something like the following:</p>
+<img loading="lazy" src="../latexml-out/part_riemann//x6.png" id="S3.p11.g1" class="ltx_graphics ltx_centering ltx_img_portrait" width="64" height="243" alt="[Uncaptioned image]">
+</div>
+<div id="S3.p12" class="ltx_para">
+<p class="ltx_p">The grid lines are drawn, and the origin <math id="S3.p12.m1" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>, is marked with a dot.
+The vertical lines mark the position <math id="S3.p12.m2" class="ltx_Math" alttext="z=0" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>0</mn></mrow></math>, <math id="S3.p12.m3" class="ltx_Math" alttext="z=\frac{1}{2}" display="inline"><mrow><mi>z</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mrow></math>, <math id="S3.p12.m4" class="ltx_Math" alttext="z=1" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>1</mn></mrow></math>, <math id="S3.p12.m5" class="ltx_Math" alttext="z=\frac{3}{2}" display="inline"><mrow><mi>z</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>3</mn><mn>2</mn></mfrac></mrow></math>, ….</p>
+</div>
+<div id="S3.p13" class="ltx_para">
+<p class="ltx_p">On the opposite side, we may have something like the following.
+The vertical lines mark the position <math id="S3.p13.m1" class="ltx_Math" alttext="t=0" display="inline"><mrow><mi>t</mi><mo>=</mo><mn>0</mn></mrow></math>, <math id="S3.p13.m2" class="ltx_Math" alttext="t=\frac{1}{2}" display="inline"><mrow><mi>t</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mrow></math>, <math id="S3.p13.m3" class="ltx_Math" alttext="t=1" display="inline"><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow></math>, <math id="S3.p13.m4" class="ltx_Math" alttext="t=\frac{3}{2}" display="inline"><mrow><mi>t</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>3</mn><mn>2</mn></mfrac></mrow></math>, ….</p>
+<img loading="lazy" src="../latexml-out/part_riemann//x7.png" id="S3.p13.g1" class="ltx_graphics ltx_centering ltx_img_portrait" width="64" height="243" alt="[Uncaptioned image]">
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 52.3.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check that, on <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathbb{C}\times U" display="inline"><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>U</mi></mrow></math> for any open set <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="U\subseteq\mathbb{C}_{\infty}" display="inline"><mrow><mi>U</mi><mo>⊆</mo><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub></mrow></math> that contains neither
+<math id="S3.Thmtheorem4.p1.m3" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> nor <math id="S3.Thmtheorem4.p1.m4" class="ltx_Math" alttext="\infty" display="inline"><mi mathvariant="normal">∞</mi></math>, the two line bundle charts above define the same line bundle structure.
+(What are the transition functions?)</span></p>
+</div>
+</div>
+<div id="S3.p14" class="ltx_para">
+<p class="ltx_p">So, we have the so-called trivial line bundle <math id="S3.p14.m1" class="ltx_Math" alttext="\mathbb{C}\times\mathbb{C}_{\infty}" display="inline"><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub></mrow></math>.</p>
+</div>
+<div id="S3.p15" class="ltx_para">
+<p class="ltx_p">As promised, there are also nontrivial line bundles here.</p>
+</div>
+<div id="S3.p16" class="ltx_para">
+<p class="ltx_p">First, recall from the section above: over any open set <math id="S3.p16.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> that contains neither <math id="S3.p16.m2" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> nor <math id="S3.p16.m3" class="ltx_Math" alttext="\infty" display="inline"><mi mathvariant="normal">∞</mi></math>,
+we can consider another line bundle chart that scales the vertical direction by a factor of <math id="S3.p16.m4" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math>,
+this induces the same line bundle structure on <math id="S3.p16.m5" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='113.385827pt' height='113.385827pt' viewBox='113.102362 110.551181 113.385827 113.385827'>
+<defs>
+<path id='asymptote-52-10-g0-122' d='M1.450909-.905454C2.039999-1.538181 2.356363-1.810909 2.74909-2.14909C2.74909-2.159999 3.425454-2.738181 3.818181-3.130908C4.854544-4.145453 5.094544-4.66909 5.094544-4.712726C5.094544-4.821817 4.996362-4.821817 4.974544-4.821817C4.89818-4.821817 4.865453-4.799999 4.810908-4.701817C4.483635-4.178181 4.254544-4.003635 3.992726-4.003635S3.599999-4.167272 3.436363-4.352726C3.22909-4.603635 3.043636-4.821817 2.683636-4.821817C1.865454-4.821817 1.363636-3.807272 1.363636-3.578181C1.363636-3.523635 1.396363-3.458181 1.494545-3.458181S1.614545-3.512726 1.636363-3.578181C1.843636-4.079999 2.476363-4.090908 2.563636-4.090908C2.792726-4.090908 2.999999-4.014544 3.250908-3.927272C3.687272-3.763635 3.807272-3.763635 4.090908-3.763635C3.698181-3.294545 2.781817-2.50909 2.574545-2.334545L1.592727-1.418181C.850909-.687273 .469091-.065455 .469091 .010909C.469091 .12 .578182 .12 .6 .12C.687273 .12 .709091 .098182 .774545-.021818C1.025454-.403636 1.352727-.698182 1.701818-.698182C1.952727-.698182 2.061818-.6 2.334545-.283636C2.519999-.054545 2.716363 .12 3.032726 .12C4.112726 .12 4.745453-1.265454 4.745453-1.56C4.745453-1.614545 4.701817-1.66909 4.614544-1.66909C4.516362-1.66909 4.494544-1.603636 4.461817-1.527272C4.210908-.818182 3.512726-.610909 3.152726-.610909C2.934545-.610909 2.738181-.676363 2.50909-.752727C2.138181-.894545 1.974545-.938182 1.745454-.938182C1.723636-.938182 1.54909-.938182 1.450909-.905454Z'/>
+</defs>
+<g id='asymptote-52-10-page1'>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M106.032 56.9055H.250937' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M113.56 56.9055L106.032 54.8884V58.9227L113.56 56.9055Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M113.56 56.9055L106.032 54.8884V58.9227L113.56 56.9055Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='219.329902' y='162.206347' href='#asymptote-52-10-g0-122'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M56.9055 7.77906V113.56' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M56.9055 .250937L54.8884 7.77906H58.9227L56.9055 .250937Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M56.9055 .250937L54.8884 7.77906H58.9227L56.9055 .250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M11.5819 111.294V2.51712' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M22.9128 111.294V2.51712' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M34.2437 111.294V2.51712' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M45.5746 111.294V2.51712' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M68.2364 111.294V2.51712' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M79.5673 111.294V2.51712' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M90.8983 111.294V2.51712' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M102.229 111.294V2.51712' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M2.51712 45.5746H104.495' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M2.51712 68.2364H111.294' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M2.51712 34.2437H111.294' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M2.51712 79.5673H111.294' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M2.51712 22.9128H111.294' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M2.51712 90.8983H111.294' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M2.51712 11.5819H111.294' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M2.51712 102.229H111.294' fill='none' stroke="var(--asymptote-color-8000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M2.51712 111.294L111.294 2.51712' fill='none' stroke="var(--asymptote-color-00ff00)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M2.51712 2.51712L111.294 111.294' fill='none' stroke="var(--asymptote-color-00ff00)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M29.7113 111.294L84.0997 2.51712' fill='none' stroke="var(--asymptote-color-00ff00)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M29.7113 2.51712L84.0997 111.294' fill='none' stroke="var(--asymptote-color-00ff00)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M38.776 111.294L75.035 2.51712' fill='none' stroke="var(--asymptote-color-00ff00)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M38.776 2.51712L75.035 111.294' fill='none' stroke="var(--asymptote-color-00ff00)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M43.3084 111.294L70.5026 2.51712' fill='none' stroke="var(--asymptote-color-00ff00)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(113.102 110.551)scale(.996264)'>
+<path d='M43.3084 2.51712L70.5026 111.294' fill='none' stroke="var(--asymptote-color-00ff00)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S3.Thmtheorem5" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 52.3.5</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let <math id="S3.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\phi_{p}" display="inline"><msub><mi>ϕ</mi><mi>p</mi></msub></math> and <math id="S3.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\phi_{g}" display="inline"><msub><mi>ϕ</mi><mi>g</mi></msub></math> be the line bundle charts corresponding to the purple and green grid,
+respectively.
+Verify that if a point <math id="S3.Thmtheorem5.p1.m3" class="ltx_Math" alttext="q\in L" display="inline"><mrow><mi>q</mi><mo>∈</mo><mi>L</mi></mrow></math> satisfies <math id="S3.Thmtheorem5.p1.m4" class="ltx_Math" alttext="\phi_{p}(q)=(y,z)" display="inline"><mrow><mrow><msub><mi>ϕ</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></math> for <math id="S3.Thmtheorem5.p1.m5" class="ltx_Math" alttext="z\notin\{0,\infty\}" display="inline"><mrow><mi>z</mi><mo>∉</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">}</mo></mrow></mrow></math>,
+then <math id="S3.Thmtheorem5.p1.m6" class="ltx_Math" alttext="\phi_{g}(q)=(\frac{y}{z},z)" display="inline"><mrow><mrow><msub><mi>ϕ</mi><mi>g</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mfrac linethickness="0.6px"><mi>y</mi><mi>z</mi></mfrac><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S3.p17" class="ltx_para">
+<p class="ltx_p">Now — note that the trivial line bundle <math id="S3.p17.m1" class="ltx_Math" alttext="\mathbb{C}\times\mathbb{C}_{\infty}" display="inline"><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>ℂ</mi><mi mathvariant="normal">∞</mi></msub></mrow></math> above can be seen as welding the
+two pieces together, such that the purple line <math id="S3.p17.m2" class="ltx_Math" alttext="(y,z)" display="inline"><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></math> gets welded to the red line <math id="S3.p17.m3" class="ltx_Math" alttext="(y,t)" display="inline"><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></math> for each
+<math id="S3.p17.m4" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>.
+There is nothing that restricts us to that specific welding method, however — this time around, we
+will try to weld the green line <math id="S3.p17.m5" class="ltx_Math" alttext="(\frac{y}{z},z)" display="inline"><mrow><mo stretchy="false">(</mo><mfrac linethickness="0.6px"><mi>y</mi><mi>z</mi></mfrac><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></math> to the red line <math id="S3.p17.m6" class="ltx_Math" alttext="(y,t)" display="inline"><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></math> for each <math id="S3.p17.m7" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>.</p>
+</div>
+<div id="S3.p18" class="ltx_para">
+<p class="ltx_p">The thing will look like this. It looks quite complicated, so this time 4 views are shown.</p>
+<img loading="lazy" src="../latexml-out/part_riemann//x8.png" id="S3.p18.g1" class="ltx_graphics ltx_centering ltx_img_square" width="418" height="483" alt="[Uncaptioned image]">
+</div>
+<div id="S3.p19" class="ltx_para">
+<p class="ltx_p">The cylinder this time is only for illustrative purpose. Let us see what is going on.</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">First, near the purple and the red point, the graph lines looks like our usual situation.</p>
+</div>
+<div id="S3.I1.i1.p2" class="ltx_para">
+<p class="ltx_p">Note that because <math id="S3.I1.i1.p2.m1" class="ltx_Math" alttext="t=\frac{1}{z}" display="inline"><mrow><mi>t</mi><mo>=</mo><mfrac linethickness="0.6px"><mn>1</mn><mi>z</mi></mfrac></mrow></math>, looking from outside, the red coordinate lines will looks
+flipped.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">On the positive side (<math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="z&gt;0" display="inline"><mrow><mi>z</mi><mo>&gt;</mo><mn>0</mn></mrow></math> and <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="t&gt;0" display="inline"><mrow><mi>t</mi><mo>&gt;</mo><mn>0</mn></mrow></math>), no problem — we just need to squeeze the
+purple lines closer together — as depicted in the figure.</p>
+</div>
+</li>
+<li id="S3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">On the negative side, however — note that the green line <math id="S3.I1.i3.p1.m1" class="ltx_Math" alttext="(\frac{y}{z},z)" display="inline"><mrow><mo stretchy="false">(</mo><mfrac linethickness="0.6px"><mi>y</mi><mi>z</mi></mfrac><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></math> moves
+<em class="ltx_emph ltx_font_italic">downwards</em> when <math id="S3.I1.i3.p1.m2" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> increases, so we will need to “twist the graph paper” for it to go
+up.</p>
+</div>
+<div id="S3.I1.i3.p2" class="ltx_para">
+<p class="ltx_p">In the figure, this is depicted as a singularity where all the horizontal lines intersect, but
+in reality, you should think of it as we twisting the “graph paper” by 180 degrees
+and weld it to the other part.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S3.p20" class="ltx_para">
+<p class="ltx_p">This is a Möbius strip!</p>
+</div>
+<div id="S3.p21" class="ltx_para">
+<p class="ltx_p">Thus, it appears to be obvious that this line bundle is not isomorphic to the trivial one,
+whatever “isomorphic” might mean.</p>
+</div>
+<div id="S3.Thmtheorem6" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 52.3.6</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check that what we did above makes sense when <math id="S3.Thmtheorem6.p1.m1" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math>, <math id="S3.Thmtheorem6.p1.m2" class="ltx_Math" alttext="z" display="inline"><mi>z</mi></math> and <math id="S3.Thmtheorem6.p1.m3" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math> are not real — in particular,
+<math id="S3.Thmtheorem6.p1.m4" class="ltx_Math" alttext="\mathbb{C}\setminus\{0\}" display="inline"><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math> is a connected set, unlike <math id="S3.Thmtheorem6.p1.m5" class="ltx_Math" alttext="\mathbb{R}\setminus\{0\}" display="inline"><mrow><mi>ℝ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math>.
+You probably won’t be able to visualize the “graph paper” this time (it is
+<math id="S3.Thmtheorem6.p1.m6" class="ltx_Math" alttext="4" display="inline"><mn>4</mn></math>-dimensional!), so you will have to keep your intuition confined in the real part and use
+algebra for the rest.</span></p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">52.4 </span>Morphisms between line bundles</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">In order to formally define what it means for two line bundles to be isomorphic, we need to be able
+to define morphisms.
+It is exactly what you expect — it must respect the line bundle structure (that is, the vector
+space structure and the analytic structure) on <math id="S4.p1.m1" class="ltx_Math" alttext="L_{1}" display="inline"><msub><mi>L</mi><mn>1</mn></msub></math> and <math id="S4.p1.m2" class="ltx_Math" alttext="L_{2}" display="inline"><msub><mi>L</mi><mn>2</mn></msub></math>.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 52.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\pi_{1}\colon L_{1}\to X" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>L</mi><mn>1</mn></msub><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> and <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\pi_{2}\colon L_{2}\to X" display="inline"><mrow><msub><mi>π</mi><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>L</mi><mn>2</mn></msub><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> be line bundles.
+A line bundle morphism <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\alpha\colon L_{1}\to L_{2}" display="inline"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>L</mi><mn>1</mn></msub><mo stretchy="false">→</mo><msub><mi>L</mi><mn>2</mn></msub></mrow></mrow></math> is a set morphism such that:</p>
+<ul id="S4.I1" class="ltx_itemize">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="\pi_{2}\circ\alpha=\pi_{1}" display="inline"><mrow><mrow><msub><mi>π</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>α</mi></mrow><mo>=</mo><msub><mi>π</mi><mn>1</mn></msub></mrow></math>, and</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">if <math id="S4.I1.i2.p1.m1" class="ltx_Math" alttext="\phi_{1}\colon\pi_{1}^{-1}(U_{1})\to\mathbb{C}\times U_{1}" display="inline"><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msubsup><mi>π</mi><mn>1</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>U</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>U</mi><mn>1</mn></msub></mrow></mrow></mrow></math>
+and <math id="S4.I1.i2.p1.m2" class="ltx_Math" alttext="\phi_{2}\colon\pi_{2}^{-1}(U_{2})\to\mathbb{C}\times U_{2}" display="inline"><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msubsup><mi>π</mi><mn>2</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>U</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><msub><mi>U</mi><mn>2</mn></msub></mrow></mrow></mrow></math>
+are line bundle charts, then the composition</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\phi_{2}\circ\alpha\circ\phi_{1}^{-1}\colon\mathbb{C}\times(U_{1}\cap U_{2})%
+\to\mathbb{C}\times(U_{1}\cap U_{2})" display="block"><mrow><mrow><msub><mi>ϕ</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>α</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><msubsup><mi>ϕ</mi><mn>1</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>∩</mo><msub><mi>U</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>∩</mo><msub><mi>U</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">has the form <math id="S4.I1.i2.p1.m3" class="ltx_Math" alttext="(s,p)\mapsto(f(p)\cdot s,p)" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>s</mi><mo>,</mo><mi>p</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">↦</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mi>s</mi></mrow><mo>,</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> where <math id="S4.I1.i2.p1.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is analytic on <math id="S4.I1.i2.p1.m5" class="ltx_Math" alttext="U_{1}\cap U_{2}" display="inline"><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>∩</mo><msub><mi>U</mi><mn>2</mn></msub></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 52.4.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">The function <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f(p)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> above must be nonzero for all <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="p\in U_{1}\cap U_{2}" display="inline"><mrow><mi>p</mi><mo>∈</mo><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>∩</mo><msub><mi>U</mi><mn>2</mn></msub></mrow></mrow></math>. Why? (Hint: invert the
+function by swapping the role of <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\phi_{1}" display="inline"><msub><mi>ϕ</mi><mn>1</mn></msub></math> and <math id="S4.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\phi_{2}" display="inline"><msub><mi>ϕ</mi><mn>2</mn></msub></math>.)</span></p>
+</div>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 52.4.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check that the above definition is the equivalent to the following:
+<math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> is a line bundle morphism if and only if</span></p>
+<ul id="S4.I2" class="ltx_itemize">
+<li id="S4.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">it maps a point </span><math id="S4.I2.i1.p1.m1" class="ltx_Math" alttext="q\in\pi_{1}^{-1}(x)" display="inline"><mrow><mi>q</mi><mo>∈</mo><mrow><msubsup><mi>π</mi><mn>1</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi>x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> to some point </span><math id="S4.I2.i1.p1.m2" class="ltx_Math" alttext="\alpha(q)\in\pi_{2}^{-1}(x)" display="inline"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi>q</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow><mo>∈</mo><mrow><msubsup><mi>π</mi><mn>2</mn><mrow><mo>−</mo><mn>1</mn></mrow></msubsup><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi>x</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> (that
+is, each fiber gets mapped to the corresponding fiber), and</span></p>
+</div>
+</li>
+<li id="S4.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S4.I2.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">for every analytic section </span><math id="S4.I2.i2.p1.m1" class="ltx_Math" alttext="s\colon U\to L_{1}" display="inline"><mrow><mi>s</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><msub><mi>L</mi><mn>1</mn></msub></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> on open set </span><math id="S4.I2.i2.p1.m2" class="ltx_Math" alttext="U\subseteq X" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>X</mi></mrow></math><span class="ltx_text" style="font-size:90%;">, then
+</span><math id="S4.I2.i2.p1.m3" class="ltx_Math" alttext="\alpha(s)" display="inline"><mrow><mi>α</mi><mo>⁢</mo><mrow><mo maxsize="90%" minsize="90%">(</mo><mi>s</mi><mo maxsize="90%" minsize="90%">)</mo></mrow></mrow></math><span class="ltx_text" style="font-size:90%;"> is an analytic section </span><math id="S4.I2.i2.p1.m4" class="ltx_Math" alttext="s\colon U\to L_{2}" display="inline"><mrow><mi>s</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><msub><mi>L</mi><mn>2</mn></msub></mrow></mrow></math><span class="ltx_text" style="font-size:90%;">.</span></p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 52.4.4</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X=\mathbb{C}" display="inline"><mrow><mi>X</mi><mo>=</mo><mi>ℂ</mi></mrow></math>. Then <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\alpha\colon\mathbb{C}\times X\to\mathbb{C}\times X" display="inline"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>X</mi></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>X</mi></mrow></mrow></mrow></math> by <math id="S4.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\alpha(y,x)=(y\cdot x^{2},x)" display="inline"><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mrow><mi>y</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo>,</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> is a line bundle homomorphism.</p>
+</div>
+<div id="S4.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">This line bundle homomorphism is not an isomorphism, because every point <math id="S4.Thmtheorem4.p2.m1" class="ltx_Math" alttext="(y,0)" display="inline"><mrow><mo stretchy="false">(</mo><mi>y</mi><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math> gets mapped to
+<math id="S4.Thmtheorem4.p2.m2" class="ltx_Math" alttext="(0,0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">The definition of line bundle isomorphism is what you would expect.</p>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 52.4.5</span></span><span class="ltx_text ltx_font_bold"> </span>(Isomorphism of line bundles)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Two line bundles <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="L_{1}" display="inline"><msub><mi>L</mi><mn>1</mn></msub></math> and <math id="S4.Thmtheorem5.p1.m2" class="ltx_Math" alttext="L_{2}" display="inline"><msub><mi>L</mi><mn>2</mn></msub></math> are <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> isomorphic</span> if there are line bundle isomorphisms
+<math id="S4.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\alpha\colon L_{1}\to L_{2}" display="inline"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>L</mi><mn>1</mn></msub><mo stretchy="false">→</mo><msub><mi>L</mi><mn>2</mn></msub></mrow></mrow></math> and <math id="S4.Thmtheorem5.p1.m4" class="ltx_Math" alttext="\beta\colon L_{2}\to L_{1}" display="inline"><mrow><mi>β</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>L</mi><mn>2</mn></msub><mo stretchy="false">→</mo><msub><mi>L</mi><mn>1</mn></msub></mrow></mrow></math> that are inverse of each other.</p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">52.5 </span>Relation to invertible sheaves</h2>
+<span id="todo19" class="ltx_note ltx_role_todo"><sup class="ltx_note_mark">19</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">19</sup><span class="ltx_note_type">todo: </span><span class="ltx_tag ltx_tag_note">19</span>write (actually we haven’t defined sheaf yet either)</span></span></span>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../riemann/riemann-roch.html">Previous chapter: The Riemann-Roch theorem</a><br />
+<a href="../algnt1/algebraic-integers.html">Next chapter: Algebraic integers</a>
+</nav>
+
+		</main>
+	</body>
+</html>

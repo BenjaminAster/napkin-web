@@ -1,0 +1,1224 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 65 Fundamental groups ‣ Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="ch_top_constructions.html" title="Chapter 64 Some topological constructions ‣ Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="next" href="ch_covering_projections.html" title="Chapter 66 Covering projections ‣ Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_top_constructions.html" title="Chapter 64 Some topological constructions ‣ Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_covering_projections.html" title="Chapter 66 Covering projections ‣ Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_startout/" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_linalg/" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_calc/" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_measure/" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_diffgeo/" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st2/" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">XVI </span>Algebraic Topology I: Homotopy</span></a><a href="ch_top_constructions.html" title="In Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">64 </span>Some topological constructions</span></a><a href="ch_covering_projections.html" title="In Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">66 </span>Covering projections</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 65 </span>Fundamental groups</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">Topologists can’t tell the difference between a coffee cup and a doughnut.
+So how do you tell <em class="ltx_emph ltx_font_italic">anything</em> apart?</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">This is a very hard question to answer, but one way we can
+try to answer it is to find some <em class="ltx_emph ltx_font_italic">invariants</em> of the space.
+To draw on the group analogy, two groups are clearly not isomorphic if,
+say, they have different orders, or if one is simple and the other isn’t, etc.
+We’d like to find some similar properties for topological spaces
+so that we can actually tell them apart.</p>
+</div>
+<div id="p3" class="ltx_para">
+<p class="ltx_p">Two such invariants for a space <math id="p3.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> are</p>
+<ul id="S0.I1" class="ltx_itemize">
+<li id="S0.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S0.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Defining homology groups <math id="S0.I1.i1.p1.m1" class="ltx_Math" alttext="H_{1}(X)" display="inline"><mrow><msub><mi>H</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S0.I1.i1.p1.m2" class="ltx_Math" alttext="H_{2}(X)" display="inline"><mrow><msub><mi>H</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>, …</p>
+</div>
+</li>
+<li id="S0.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S0.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Defining homotopy groups <math id="S0.I1.i2.p1.m1" class="ltx_Math" alttext="\pi_{1}(X)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S0.I1.i2.p1.m2" class="ltx_Math" alttext="\pi_{2}(X)" display="inline"><mrow><msub><mi>π</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>, …</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Homology groups are hard to define, but in general easier to compute.
+Homotopy groups are easier to define but harder to compute.</p>
+</div>
+<div id="p4" class="ltx_para">
+<p class="ltx_p">This chapter is about the fundamental group <math id="p4.m1" class="ltx_Math" alttext="\pi_{1}" display="inline"><msub><mi>π</mi><mn>1</mn></msub></math>.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">65.1 </span>Fusing paths together</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Recall that a <em class="ltx_emph ltx_font_italic">path</em> in a space <math id="S1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is a function <math id="S1.p1.m2" class="ltx_Math" alttext="[0,1]\to X" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></math>.
+Suppose we have paths <math id="S1.p1.m3" class="ltx_Math" alttext="\gamma_{1}" display="inline"><msub><mi>γ</mi><mn>1</mn></msub></math> and <math id="S1.p1.m4" class="ltx_Math" alttext="\gamma_{2}" display="inline"><msub><mi>γ</mi><mn>2</mn></msub></math>
+such that <math id="S1.p1.m5" class="ltx_Math" alttext="\gamma_{1}(1)=\gamma_{2}(0)" display="inline"><mrow><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>γ</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+We’d like to fuse<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Almost everyone else in the world uses “gluing” to describe this
+and other types of constructs.
+But I was traumatized by Elmer’s glue when I was in high school
+because I hated the stupid “make a poster” projects and hated
+having to use glue on them.
+So I refuse to talk about “gluing” paths together, referring
+instead to “fusing” them together, which sounds cooler anyways.
+</span></span></span> them together to get a path <math id="S1.p1.m6" class="ltx_Math" alttext="\gamma_{1}\ast\gamma_{2}" display="inline"><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>2</mn></msub></mrow></math>. Easy, right?</p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(8cm);
+ΨΨbigblob("$X$");
+ΨΨpair A = Drawing("\gamma_1(0)", (-3,-1));
+ΨΨpair B = Drawing("\gamma_1(1) = \gamma_2(0)", (1,1), dir(90));
+ΨΨpair C = Drawing("\gamma_2(1)", (2,-2), dir(-90));
+ΨΨpath p = A..(-2,0)..(0,0.5)..B;
+ΨΨpath q = B..(1.8,-0.5)..C;
+ΨΨdraw(p, red, EndArrow);
+ΨΨdraw(q, blue, EndArrow);
+ΨΨMP("\gamma_1", midpoint(p), dir(90));
+ΨΨMP("\gamma_2", midpoint(q), dir(0));
+Ψ
+</pre>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">We unfortunately do have to hack the definition a tiny bit. In an ideal world, we’d have a path <math id="S1.p3.m1" class="ltx_Math" alttext="\gamma_{1}\colon[0,1]\to X" display="inline"><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> and <math id="S1.p3.m2" class="ltx_Math" alttext="\gamma_{2}\colon[1,2]\to X" display="inline"><mrow><msub><mi>γ</mi><mn>2</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> and we could just merge them together to get <math id="S1.p3.m3" class="ltx_Math" alttext="\gamma_{1}\ast\gamma_{2}\colon[0,2]\to X" display="inline"><mrow><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>2</mn></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>2</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math>.
+But the “<math id="S1.p3.m4" class="ltx_Math" alttext="2" display="inline"><mn>2</mn></math>” is wrong here.
+The solution is that we allocate <math id="S1.p3.m5" class="ltx_Math" alttext="[0,\frac{1}{2}]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">]</mo></mrow></math> for the first path
+and <math id="S1.p3.m6" class="ltx_Math" alttext="[\frac{1}{2},1]" display="inline"><mrow><mo stretchy="false">[</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> for the second path; we run “twice as fast”.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 65.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Given two paths <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\gamma_{1},\gamma_{2}\colon[0,1]\to X" display="inline"><mrow><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo>,</mo><msub><mi>γ</mi><mn>2</mn></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math>
+such that <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\gamma_{1}(1)=\gamma_{2}(0)" display="inline"><mrow><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>γ</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, we define
+a path <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\gamma_{1}\ast\gamma_{2}\colon[0,1]\to X" display="inline"><mrow><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>2</mn></msub></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> by</p>
+<table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="(\gamma_{1}\ast\gamma_{2})(t)=\begin{cases}\gamma_{1}(2t)&amp;0\leq t\leq\frac{1}{%
+2}\\
+\gamma_{2}(2t-1)&amp;\frac{1}{2}\leq t\leq 1.\end{cases}" display="block"><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>2</mn></msub></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>⁢</mo><mi>t</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mn>0</mn><mo>≤</mo><mi>t</mi><mo>≤</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle></mrow></mtd></mtr><mtr><mtd class="ltx_align_left" columnalign="left"><mrow><msub><mi>γ</mi><mn>2</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>t</mi></mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mrow><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>≤</mo><mi>t</mi><mo>≤</mo><mn>1</mn></mrow><mo lspace="0em">.</mo></mrow></mtd></mtr></mtable></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">This hack unfortunately reveals a second shortcoming: this “product” is not associative.
+If we take <math id="S1.p4.m1" class="ltx_Math" alttext="(\gamma_{1}\ast\gamma_{2})\ast\gamma_{3}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>2</mn></msub></mrow><mo rspace="0.055em" stretchy="false">)</mo></mrow><mo rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>3</mn></msub></mrow></math> for some suitable paths,
+then <math id="S1.p4.m2" class="ltx_Math" alttext="[0,\frac{1}{4}]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo stretchy="false">]</mo></mrow></math>, <math id="S1.p4.m3" class="ltx_Math" alttext="[\frac{1}{4},\frac{1}{2}]" display="inline"><mrow><mo stretchy="false">[</mo><mfrac><mn>1</mn><mn>4</mn></mfrac><mo>,</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">]</mo></mrow></math> and <math id="S1.p4.m4" class="ltx_Math" alttext="[\frac{1}{2},1]" display="inline"><mrow><mo stretchy="false">[</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math>
+are the times allocated for <math id="S1.p4.m5" class="ltx_Math" alttext="\gamma_{1}" display="inline"><msub><mi>γ</mi><mn>1</mn></msub></math>, <math id="S1.p4.m6" class="ltx_Math" alttext="\gamma_{2}" display="inline"><msub><mi>γ</mi><mn>2</mn></msub></math>, <math id="S1.p4.m7" class="ltx_Math" alttext="\gamma_{3}" display="inline"><msub><mi>γ</mi><mn>3</mn></msub></math>.</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 65.1.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">What are the times allocated
+for <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\gamma_{1}\ast(\gamma_{2}\ast\gamma_{3})" display="inline"><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>γ</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>3</mn></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math>?</span></p>
+</div>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">But I hope you’ll agree that even though this operation isn’t associative,
+the reason it fails to be associative is kind of stupid.
+It’s just a matter of how fast we run in certain parts.</p>
+</div>
+<div id="S1.p6" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨunitsize(6cm);
+ΨΨDrawing( unitsquare);
+ΨΨMP("0", (0,0), S);
+ΨΨMP("1", (1,0), S);
+ΨΨMP("\frac{1}{4}", (1/4, 0), S);
+ΨΨMP("\frac{1}{2}", (1/2, 0), S);
+ΨΨMP("0", (0,1), N);
+ΨΨMP("1", (1,1), N);
+ΨΨMP("\frac{3}{4}", (3/4, 1), N);
+ΨΨMP("\frac{1}{2}", (1/2, 1), N);
+ΨΨMP("\gamma_1", (1/8, 0), N);
+ΨΨMP("\gamma_2", (3/8, 0), N);
+ΨΨMP("\gamma_3", (3/4, 0), N);
+ΨΨMP("\gamma_1", (1/4, 1), S);
+ΨΨMP("\gamma_2", (5/8, 1), S);
+ΨΨMP("\gamma_3", (7/8, 1), S);
+
+ΨΨMP("\boxed{\gamma_1 \ast \left( \gamma_2 \ast \gamma_3 \right)}", (0.5,1.2), origin);
+ΨΨMP("\boxed{\left( \gamma_1 \ast \gamma_2 \right) \ast \gamma_3}", (0.5,-0.2), origin);
+
+ΨΨDrawing((1/4,0)--(1/2,1), blue);
+ΨΨDrawing((1/2,0)--(3/4,1), blue);
+ΨΨDrawing( (1/2,0)--(1/2,1), dotted);
+Ψ
+</pre>
+</div>
+<div id="S1.p7" class="ltx_para">
+<p class="ltx_p">So as long as we’re fusing paths together,
+we probably don’t want to think of <math id="S1.p7.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> itself too seriously.
+And so we only consider everything up to (path) homotopy equivalence.
+(Recall that two paths <math id="S1.p7.m2" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and <math id="S1.p7.m3" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math> are homotopic if
+there’s a path homotopy <math id="S1.p7.m4" class="ltx_Math" alttext="F\colon[0,1]^{2}\to X" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mn>2</mn></msup><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> between them,
+which is a continuous deformation from <math id="S1.p7.m5" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> to <math id="S1.p7.m6" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>.)
+It is definitely true that</p>
+<table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\left(\gamma_{1}\ast\gamma_{2}\right)\ast\gamma_{3}\simeq\gamma_{1}\ast\left(%
+\gamma_{2}\ast\gamma_{3}\right)." display="block"><mrow><mrow><mrow><mrow><mo>(</mo><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>2</mn></msub></mrow><mo rspace="0.055em">)</mo></mrow><mo rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>3</mn></msub></mrow><mo>≃</mo><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><mrow><mo>(</mo><mrow><msub><mi>γ</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>3</mn></msub></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">It is also true that if <math id="S1.p7.m7" class="ltx_Math" alttext="\alpha_{1}\simeq\alpha_{2}" display="inline"><mrow><msub><mi>α</mi><mn>1</mn></msub><mo>≃</mo><msub><mi>α</mi><mn>2</mn></msub></mrow></math> and <math id="S1.p7.m8" class="ltx_Math" alttext="\beta_{1}\simeq\beta_{2}" display="inline"><mrow><msub><mi>β</mi><mn>1</mn></msub><mo>≃</mo><msub><mi>β</mi><mn>2</mn></msub></mrow></math>
+then <math id="S1.p7.m9" class="ltx_Math" alttext="\alpha_{1}\ast\beta_{1}\simeq\alpha_{2}\ast\beta_{2}" display="inline"><mrow><mrow><msub><mi>α</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>β</mi><mn>1</mn></msub></mrow><mo>≃</mo><mrow><msub><mi>α</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>β</mi><mn>2</mn></msub></mrow></mrow></math>.</p>
+</div>
+<div id="S1.p8" class="ltx_para">
+<p class="ltx_p">Naturally, homotopy is an equivalence relation,
+so paths <math id="S1.p8.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> lives in some “homotopy type”,
+the equivalence classes under <math id="S1.p8.m2" class="ltx_Math" alttext="\simeq" display="inline"><mo>≃</mo></math>. We’ll denote this <math id="S1.p8.m3" class="ltx_Math" alttext="[\gamma]" display="inline"><mrow><mo stretchy="false">[</mo><mi>γ</mi><mo stretchy="false">]</mo></mrow></math>.
+Then it makes sense to talk about <math id="S1.p8.m4" class="ltx_Math" alttext="[\alpha]\ast[\beta]" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>α</mi><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">∗</mo><mrow><mo stretchy="false">[</mo><mi>β</mi><mo stretchy="false">]</mo></mrow></mrow></math>.
+Thus, <span class="ltx_text ltx_font_bold">we can think of <math id="S1.p8.m5" class="ltx_Math" alttext="\ast" display="inline"><mo>∗</mo></math> as an operation on homotopy classes</span>.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">65.2 </span>Fundamental groups</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S2.p1.m1" class="ltx_Math" alttext="\pi_{1}(\mathbb{R}^{2})" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>ℝ</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math> is trivial and <math id="S2.p1.m2" class="ltx_Math" alttext="\pi_{1}(S^{1})\cong\mathbb{Z}" display="inline"><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>S</mi><mn>1</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mi>ℤ</mi></mrow></math>.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">At this point I’m a little annoyed at keeping track of endpoints,
+so now I’m going to specialize to a certain type of path.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 65.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> loop</span> is a path with <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\gamma(0)=\gamma(1)" display="inline"><mrow><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨbigblob("$X$");
+ΨΨpair A = Drawing("x_0", (-1,0), dir(100));
+ΨΨpath p = A..(1,1)..(2,0)..(0.5,-1)..(-1.5,-0.5)..cycle;
+ΨΨdraw(p, blue, EndArrow);
+ΨΨMP("\gamma", midpoint(p), dir(-20));
+Ψ
+</pre>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">Hence if we restrict our attention to paths starting at a single point <math id="S2.p4.m1" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math>,
+then we can stop caring about endpoints and start-points, since
+everything starts and stops at <math id="S2.p4.m2" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math>.
+We even have a very canonical loop: the “do-nothing” loop<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note">2</span>Fatty.</span></span></span> given by standing at <math id="S2.p4.m3" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math> the whole time.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 65.2.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Denote the trivial “do-nothing loop” by <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.
+A loop <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> nulhomotopic</span> if it is homotopic to <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>; i.e. <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\gamma\simeq 1" display="inline"><mrow><mi>γ</mi><mo>≃</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">For homotopy of loops, you might visualize “reeling in” the loop, contracting it to a single point.</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 65.2.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Loops in <math id="S2.Thmtheorem3.m1" class="ltx_Math" alttext="S^{2}" display="inline"><msup><mi mathcolor="#8C0000">S</mi><mn mathcolor="#8C0000">2</mn></msup></math> are nulhomotopic)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">As the following picture should convince you, every loop in
+the simply connected space <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="S^{2}" display="inline"><msup><mi>S</mi><mn>2</mn></msup></math> is nulhomotopic.</p>
+<img src="external/venhance-napkin/media/S2-simply.png" id="S2.Thmtheorem3.p1.g1" class="ltx_graphics ltx_centering ltx_img_square" width="236" height="236" alt="[Uncaptioned image]">
+<p class="ltx_p">(Starting with the purple loop, we contract to the red-brown point.)</p>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Hence to show that spaces are simply connected it suffices to understand
+the loops of that space.
+We are now ready to provide:</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 65.2.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> fundamental group</span> of <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> with basepoint <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math>,
+denoted <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\pi_{1}(X,x_{0})" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>, is the set of homotopy classes</p>
+<table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\left\{[\gamma]\mid\gamma\text{ a loop at $x_{0}$}\right\}" display="block"><mrow><mo>{</mo><mrow><mo stretchy="false">[</mo><mi>γ</mi><mo stretchy="false">]</mo></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>γ</mi><mo>⁢</mo><mrow><mtext> a loop at </mtext><msub><mi>x</mi><mn>0</mn></msub></mrow></mrow><mo>}</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">equipped with <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="\ast" display="inline"><mo>∗</mo></math> as a group operation.</p>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">It might come as a surprise that this has a group structure.
+For example, what is the inverse?
+Let’s define it now.</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 65.2.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Given a path <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\alpha\colon[0,1]\to X" display="inline"><mrow><mi>α</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> we can define a path <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\overline{\alpha}" display="inline"><mover accent="true"><mi>α</mi><mo>¯</mo></mover></math></p>
+<table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\overline{\alpha}(t)=\alpha(1-t)." display="block"><mrow><mrow><mrow><mover accent="true"><mi>α</mi><mo>¯</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">In effect, this “runs <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> backwards”.
+Note that <math id="S2.Thmtheorem5.p1.m4" class="ltx_Math" alttext="\overline{\alpha}" display="inline"><mover accent="true"><mi>α</mi><mo>¯</mo></mover></math> starts at the endpoint of <math id="S2.Thmtheorem5.p1.m5" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>
+and ends at the starting point of <math id="S2.Thmtheorem5.p1.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 65.2.6</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that for any path <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math>,
+<math id="S2.Thmtheorem6.p1.m2" class="ltx_Math" alttext="\alpha\ast\overline{\alpha}" display="inline"><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">∗</mo><mover accent="true"><mi>α</mi><mo>¯</mo></mover></mrow></math> is homotopic
+to the “do-nothing” loop at <math id="S2.Thmtheorem6.p1.m3" class="ltx_Math" alttext="\alpha(0)" display="inline"><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math>.
+(Draw a picture.)</span></p>
+</div>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Let’s check it.</p>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof that this is a group structure.</h6>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">Clearly <math id="S2.p9.m1" class="ltx_Math" alttext="\ast" display="inline"><mo>∗</mo></math> takes two loops at <math id="S2.p9.m2" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math> and spits out a loop at <math id="S2.p9.m3" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math>.
+We also already took the time to show that <math id="S2.p9.m4" class="ltx_Math" alttext="\ast" display="inline"><mo>∗</mo></math> is associative.
+So we only have to check that (i) there’s an identity, and (ii)
+there’s an inverse.</p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">We claim that the identity is the “do-nothing” loop <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>
+we described above. The reader can check that for any <math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>,</p>
+<table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\gamma\simeq\gamma\ast 1=1\ast\gamma." display="block"><mrow><mrow><mi>γ</mi><mo>≃</mo><mrow><mi>γ</mi><mo lspace="0.222em" rspace="0.222em">∗</mo><mn>1</mn></mrow><mo>=</mo><mrow><mn>1</mn><mo lspace="0.222em" rspace="0.222em">∗</mo><mi>γ</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">For a loop <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>, recall again we define its “backwards” loop <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="\overline{\gamma}" display="inline"><mover accent="true"><mi>γ</mi><mo>¯</mo></mover></math> by</p>
+<table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\overline{\gamma}(t)=\gamma(1-t)." display="block"><mrow><mrow><mrow><mover accent="true"><mi>γ</mi><mo>¯</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><mi>t</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Then we have <math id="S2.I1.i2.p1.m3" class="ltx_Math" alttext="\gamma\ast\overline{\gamma}=\overline{\gamma}\ast\gamma=1" display="inline"><mrow><mrow><mi>γ</mi><mo lspace="0.222em" rspace="0.222em">∗</mo><mover accent="true"><mi>γ</mi><mo>¯</mo></mover></mrow><mo>=</mo><mrow><mover accent="true"><mi>γ</mi><mo>¯</mo></mover><mo lspace="0.222em" rspace="0.222em">∗</mo><mi>γ</mi></mrow><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">Hence <math id="S2.p9.m5" class="ltx_Math" alttext="\pi_{1}(X,x_{0})" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math> is actually a group.
+∎</p>
+</div>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">Before going any further I had better give some examples.</p>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 65.2.7</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Examples of fundamental groups)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Note that proving the following results is not at all trivial.
+For now, just try to see intuitively why the claimed answer “should” be correct.</p>
+<ol id="S2.I2" class="ltx_enumerate">
+<li id="S2.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">The fundamental group of <math id="S2.I2.i1.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> is the
+trivial group: in the plane, every loop is nulhomotopic.
+(Proof: imagine it’s a piece of rope and reel it in.)</p>
+</div>
+</li>
+<li id="S2.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">On the other hand, the fundamental group of <math id="S2.I2.i2.p1.m1" class="ltx_Math" alttext="\mathbb{C}-\{0\}" display="inline"><mrow><mi>ℂ</mi><mo>−</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math>
+(meteor example from earlier) with any base point is actually <math id="S2.I2.i2.p1.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>!
+We won’t be able to prove this for a while,
+but essentially a loop is determined by the number of times
+that it winds around the origin – these are so-called
+<em class="ltx_emph ltx_font_italic">winding numbers</em>. Think about it!</p>
+</div>
+</li>
+<li id="S2.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S2.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">Similarly, we will soon show that the fundamental group of <math id="S2.I2.i3.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math>
+(the boundary of the unit circle) is <math id="S2.I2.i3.p1.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">Officially, I also have to tell you what the base point is, but
+by symmetry in these examples, it doesn’t matter.</p>
+</div>
+</div>
+<div id="S2.p11" class="ltx_para">
+<p class="ltx_p">Here is the picture for <math id="S2.p11.m1" class="ltx_Math" alttext="\mathbb{C}\setminus\{0\}" display="inline"><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math>, with the hole exaggerated
+as the meteor from <a href="../part_basictop/ch_top_more.html#sec:meteor" title="7.7 Homotopy and simply connected spaces ‣ Chapter 7 Topological spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Section</span> <span class="ltx_text ltx_ref_tag">7.7</span></a>.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(6cm);
+ΨΨbigbox("$\mathbb C \setminus \{0\}$");
+ΨΨfilldraw(scale(0.5)*unitcircle, grey, black);
+ΨΨdot("$x_0$", (1.4,0), dir(0));
+ΨΨdraw( (1.4,0)..(0,1.4)..(-1.4,0)..(1.4*dir(-30))..cycle, blue, EndArrow );
+Ψ
+</pre>
+</div>
+<div id="S2.Thmtheorem8" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 65.2.8</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself that the fundamental group of <math id="S2.Thmtheorem8.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> is <math id="S2.Thmtheorem8.p1.m2" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>,
+and understand why we call these “winding numbers”.
+(This will be the most important example of a fundamental group
+in later chapters, so it’s crucial you figure it out now.)</span></p>
+</div>
+</div>
+<div id="ex:figure8" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 65.2.9</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(The figure eight)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">Consider a figure eight <math id="S2.Thmtheorem9.p1.m1" class="ltx_Math" alttext="S^{1}\vee S^{1}" display="inline"><mrow><msup><mi>S</mi><mn>1</mn></msup><mo>∨</mo><msup><mi>S</mi><mn>1</mn></msup></mrow></math>, and let <math id="S2.Thmtheorem9.p1.m2" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math>
+be the center.
+Then</p>
+<table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\pi_{1}(S^{1}\vee S^{1},x_{0})\cong\left&lt;a,b\right&gt;" display="block"><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>S</mi><mn>1</mn></msup><mo>∨</mo><msup><mi>S</mi><mn>1</mn></msup></mrow><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mo>⟨</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>⟩</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is the <em class="ltx_emph ltx_font_italic">free group</em> generated on two letters.
+The idea is that one loop of the eight is <math id="S2.Thmtheorem9.p1.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>,
+and the other loop is <math id="S2.Thmtheorem9.p1.m4" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>, so we expect <math id="S2.Thmtheorem9.p1.m5" class="ltx_Math" alttext="\pi_{1}" display="inline"><msub><mi>π</mi><mn>1</mn></msub></math>
+to be generated by this loop <math id="S2.Thmtheorem9.p1.m6" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="S2.Thmtheorem9.p1.m7" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math> (and its inverses
+<math id="S2.Thmtheorem9.p1.m8" class="ltx_Math" alttext="\overline{a}" display="inline"><mover accent="true"><mi>a</mi><mo>¯</mo></mover></math> and <math id="S2.Thmtheorem9.p1.m9" class="ltx_Math" alttext="\overline{b}" display="inline"><mover accent="true"><mi>b</mi><mo>¯</mo></mover></math>).
+These loops don’t talk to each other.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨΨdraw( shift( (1,0) ) * unitcircle, grey + 5 );
+ΨΨΨdraw( shift( (-1,0) ) * unitcircle, grey + 5 );
+ΨΨΨdot(origin);
+ΨΨΨpath g = dir(20)..dir(100)..dir(180)..dir(260)..dir(340);
+ΨΨΨdraw( shift( (1,0) ) * scale(0.8) * reflect(dir(90),dir(-90)) * g, blue, EndArrow );
+ΨΨΨdraw( shift( (-1,0) ) * scale(0.8) * g, red, EndArrow );
+ΨΨΨlabel("$a$", (-1.6,0), dir(0));
+ΨΨΨlabel("$b$", (1.6,0), dir(180));
+ΨΨ
+</pre>
+</div>
+</div>
+<div id="S2.p12" class="ltx_para">
+<p class="ltx_p">Recall that in graph theory, we usually assume our graphs are connected,
+since otherwise we can just consider every connected component separately.
+Likewise, we generally want to restrict our attention to path-connected spaces, since if a space isn’t path-connected then it can be broken into a bunch of “path-connected components”.
+(Can you guess how to define this?)
+Indeed, you could imagine a space <math id="S2.p12.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> that consists of the objects on my desk (but not the desk itself): <math id="S2.p12.m2" class="ltx_Math" alttext="\pi_{1}" display="inline"><msub><mi>π</mi><mn>1</mn></msub></math> of my phone has nothing to do with <math id="S2.p12.m3" class="ltx_Math" alttext="\pi_{1}" display="inline"><msub><mi>π</mi><mn>1</mn></msub></math> of my mug. They are just totally disconnected, both figuratively and literally.</p>
+</div>
+<div id="S2.p13" class="ltx_para">
+<p class="ltx_p">But on the other hand we claim that in a path-connected space,
+the groups are very related!</p>
+</div>
+<div id="S2.Thmtheorem10" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 65.2.10</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Fundamental groups don’t depend on basepoint)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem10.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a path-connected space.
+Then for any <math id="S2.Thmtheorem10.p1.m2" class="ltx_Math" alttext="x_{1}\in X" display="inline"><mrow><msub><mi>x</mi><mn>1</mn></msub><mo>∈</mo><mi>X</mi></mrow></math> and <math id="S2.Thmtheorem10.p1.m3" class="ltx_Math" alttext="x_{2}\in X" display="inline"><mrow><msub><mi>x</mi><mn>2</mn></msub><mo>∈</mo><mi>X</mi></mrow></math>, we have</p>
+<table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\pi_{1}(X,x_{1})\cong\pi_{1}(X,x_{2})." display="block"><mrow><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S2.p14" class="ltx_para">
+<p class="ltx_p">Before you read the proof, see if you can guess the isomorphism based just on the picture below.</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨsize(7cm);
+ΨΨbigblob("$X$");
+ΨΨpair A = Drawing("x_1", (-1.5,0), dir(180));
+ΨΨpair B = Drawing("x_2", (1.5,0), dir(0));
+ΨΨdraw(A..(-2.5,-0.8)..(-2.5,0.9)..cycle, blue);
+ΨΨdraw(B..(2.2,-1.1)..(2.4,0.8)..cycle, blue);
+ΨΨdraw(A--B, red+dashed, Arrows);
+ΨΨlabel("$\alpha$/$\overline{\alpha}$", origin, dir(90));
+Ψ
+</pre>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p15" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.p15.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> be any path from <math id="S2.p15.m2" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math> to <math id="S2.p15.m3" class="ltx_Math" alttext="x_{2}" display="inline"><msub><mi>x</mi><mn>2</mn></msub></math> (possible by path-connectedness), and let <math id="S2.p15.m4" class="ltx_Math" alttext="\overline{\alpha}" display="inline"><mover accent="true"><mi>α</mi><mo>¯</mo></mover></math> be its reverse.
+Then we can construct a map</p>
+<table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\pi_{1}(X,x_{1})\to\pi_{1}(X,x_{2})\text{ by }[\gamma]\mapsto[\overline{\alpha%
+}\ast\gamma\ast\alpha]." display="block"><mrow><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> by </mtext><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>γ</mi><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">↦</mo><mrow><mo stretchy="false">[</mo><mrow><mover accent="true"><mi>α</mi><mo>¯</mo></mover><mo lspace="0.222em" rspace="0.222em">∗</mo><mi>γ</mi><mo lspace="0.222em" rspace="0.222em">∗</mo><mi>α</mi></mrow><mo stretchy="false">]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">In other words, given a loop <math id="S2.p15.m5" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> at <math id="S2.p15.m6" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math>,
+we can start at <math id="S2.p15.m7" class="ltx_Math" alttext="x_{2}" display="inline"><msub><mi>x</mi><mn>2</mn></msub></math>, follow <math id="S2.p15.m8" class="ltx_Math" alttext="\overline{\alpha}" display="inline"><mover accent="true"><mi>α</mi><mo>¯</mo></mover></math> to <math id="S2.p15.m9" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math>,
+run <math id="S2.p15.m10" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math>, then run along <math id="S2.p15.m11" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> home to <math id="S2.p15.m12" class="ltx_Math" alttext="x_{2}" display="inline"><msub><mi>x</mi><mn>2</mn></msub></math>.
+Hence this is a map which builds a loop of <math id="S2.p15.m13" class="ltx_Math" alttext="\pi_{1}(X,x_{2})" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+from every loop at <math id="S2.p15.m14" class="ltx_Math" alttext="\pi_{1}(X,x_{1})" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>.
+It is a <em class="ltx_emph ltx_font_italic">homomorphism</em> of the groups just because</p>
+<table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\left(\overline{\alpha}\ast\gamma_{1}\ast\alpha\right)\ast\left(\overline{%
+\alpha}\ast\gamma_{2}\ast\alpha\right)=\overline{\alpha}\ast\gamma_{1}\ast%
+\gamma_{2}\ast\alpha" display="block"><mrow><mrow><mrow><mo>(</mo><mrow><mover accent="true"><mi>α</mi><mo>¯</mo></mover><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><mi>α</mi></mrow><mo rspace="0.055em">)</mo></mrow><mo rspace="0.222em">∗</mo><mrow><mo>(</mo><mrow><mover accent="true"><mi>α</mi><mo>¯</mo></mover><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><mi>α</mi></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mover accent="true"><mi>α</mi><mo>¯</mo></mover><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><msub><mi>γ</mi><mn>2</mn></msub><mo lspace="0.222em" rspace="0.222em">∗</mo><mi>α</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">as <math id="S2.p15.m15" class="ltx_Math" alttext="\alpha\ast\overline{\alpha}" display="inline"><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">∗</mo><mover accent="true"><mi>α</mi><mo>¯</mo></mover></mrow></math> is nulhomotopic.</p>
+</div>
+<div id="S2.p16" class="ltx_para">
+<p class="ltx_p">Similarly, there is a homomorphism</p>
+<table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\pi_{1}(X,x_{2})\to\pi_{1}(X,x_{1})\text{ by }[\gamma]\mapsto[\alpha\ast\gamma%
+\ast\overline{\alpha}]." display="block"><mrow><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> by </mtext><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>γ</mi><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">↦</mo><mrow><mo stretchy="false">[</mo><mrow><mi>α</mi><mo lspace="0.222em" rspace="0.222em">∗</mo><mi>γ</mi><mo lspace="0.222em" rspace="0.222em">∗</mo><mover accent="true"><mi>α</mi><mo>¯</mo></mover></mrow><mo stretchy="false">]</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">As these maps are mutual inverses, it follows
+they must be isomorphisms. End of story.
+∎</p>
+</div>
+</div>
+<div id="S2.p17" class="ltx_para">
+<p class="ltx_p">This is a bigger reason why we usually only care about path-connected spaces.</p>
+</div>
+<div id="S2.Thmtheorem11" class="ltx_theorem ltx_theorem_abuse">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 65.2.11</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem11.p1" class="ltx_para">
+<p class="ltx_p">For a path-connected space <math id="S2.Thmtheorem11.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> we will often abbreviate <math id="S2.Thmtheorem11.p1.m2" class="ltx_Math" alttext="\pi_{1}(X,x_{0})" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+to just <math id="S2.Thmtheorem11.p1.m3" class="ltx_Math" alttext="\pi_{1}(X)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>, since it doesn’t matter which <math id="S2.Thmtheorem11.p1.m4" class="ltx_Math" alttext="x_{0}\in X" display="inline"><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>∈</mo><mi>X</mi></mrow></math>
+we pick.</p>
+</div>
+</div>
+<div id="S2.p18" class="ltx_para">
+<p class="ltx_p">Finally, recall that we originally defined “simply connected” as saying
+that any two paths with matching endpoints were homotopic.
+It’s possible to weaken this condition and then rephrase it using
+fundamental groups.</p>
+</div>
+<div id="S2.Thmtheorem12" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 65.2.12</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem12.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let <math id="S2.Thmtheorem12.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a path-connected space.
+Prove that <math id="S2.Thmtheorem12.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> simply connected</span> if and only if
+<math id="S2.Thmtheorem12.p1.m3" class="ltx_Math" alttext="\pi_{1}(X)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the trivial group.
+(One direction is easy; the other is a little trickier.)</span></p>
+</div>
+</div>
+<div id="S2.p19" class="ltx_para">
+<p class="ltx_p">This is the “usual” definition of simply connected.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">65.3 </span>Fundamental groups are invariant under homeomorphism</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">One quick shorthand I will introduce to clean up the discussion:</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 65.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">By <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f\colon(X,x_{0})\to(Y,y_{0})" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, we will mean that
+<math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> is a continuous function of spaces
+which also sends the point <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math> to <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="y_{0}" display="inline"><msub><mi>y</mi><mn>0</mn></msub></math>.</p>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.p2.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S3.p2.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> be topological spaces and <math id="S3.p2.m3" class="ltx_Math" alttext="f\colon(X,x_{0})\to(Y,y_{0})" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+We now want to relate the fundamental groups of <math id="S3.p2.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S3.p2.m5" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">Recall that a loop <math id="S3.p3.m1" class="ltx_Math" alttext="\gamma" display="inline"><mi>γ</mi></math> in <math id="S3.p3.m2" class="ltx_Math" alttext="(X,x_{0})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></math> is a map <math id="S3.p3.m3" class="ltx_Math" alttext="\gamma\colon[0,1]\to X" display="inline"><mrow><mi>γ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math>
+with <math id="S3.p3.m4" class="ltx_Math" alttext="\gamma(0)=\gamma(1)=x_{0}" display="inline"><mrow><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub></mrow></math>.
+Then if we consider the composition</p>
+<table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="[0,1]\xrightarrow{\gamma}(X,x_{0})\xrightarrow{f}(Y,y_{0})" display="block"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mover accent="true"><mo stretchy="false">→</mo><mo>𝛾</mo></mover><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><mover accent="true"><mo stretchy="false">→</mo><mo>𝑓</mo></mover><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">then we get straight-away a loop in <math id="S3.p3.m5" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> at <math id="S3.p3.m6" class="ltx_Math" alttext="y_{0}" display="inline"><msub><mi>y</mi><mn>0</mn></msub></math>!
+Let’s call this loop <math id="S3.p3.m7" class="ltx_Math" alttext="f_{\sharp}\gamma" display="inline"><mrow><msub><mi>f</mi><mi mathvariant="normal">♯</mi></msub><mo>⁢</mo><mi>γ</mi></mrow></math>.</p>
+</div>
+<div id="lem:fsharp_homotopy_invariant" class="ltx_theorem ltx_theorem_lemma">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Lemma 65.3.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(<math id="S3.Thmtheorem2.m1" class="ltx_Math" alttext="f_{\sharp}" display="inline"><msub><mi mathcolor="#191970">f</mi><mi mathcolor="#191970" mathvariant="normal">♯</mi></msub></math> is homotopy invariant)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\gamma_{1}\simeq\gamma_{2}" display="inline"><mrow><msub><mi>γ</mi><mn>1</mn></msub><mo>≃</mo><msub><mi>γ</mi><mn>2</mn></msub></mrow></math> are path-homotopic,
+then in fact</p>
+<table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="f_{\sharp}\gamma_{1}\simeq f_{\sharp}\gamma_{2}." display="block"><mrow><mrow><mrow><msub><mi>f</mi><mi mathvariant="normal">♯</mi></msub><mo>⁢</mo><msub><mi>γ</mi><mn>1</mn></msub></mrow><mo>≃</mo><mrow><msub><mi>f</mi><mi mathvariant="normal">♯</mi></msub><mo>⁢</mo><msub><mi>γ</mi><mn>2</mn></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Just take the homotopy <math id="S3.p4.m1" class="ltx_Math" alttext="h" display="inline"><mi>h</mi></math> taking <math id="S3.p4.m2" class="ltx_Math" alttext="\gamma_{1}" display="inline"><msub><mi>γ</mi><mn>1</mn></msub></math> to <math id="S3.p4.m3" class="ltx_Math" alttext="\gamma_{2}" display="inline"><msub><mi>γ</mi><mn>2</mn></msub></math>
+and consider <math id="S3.p4.m4" class="ltx_Math" alttext="f\circ h" display="inline"><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>h</mi></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">It’s worth noting at this point that if <math id="S3.p5.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S3.p5.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> are homeomorphic,
+then their fundamental groups are all isomorphic.
+Indeed, let <math id="S3.p5.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> and <math id="S3.p5.m4" class="ltx_Math" alttext="g\colon Y\to X" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>Y</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> be mutually inverse continuous maps.
+Then one can check that <math id="S3.p5.m5" class="ltx_Math" alttext="f_{\sharp}\colon\pi_{1}(X,x_{0})\to\pi_{1}(Y,y_{0})" display="inline"><mrow><msub><mi>f</mi><mi mathvariant="normal">♯</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>
+and <math id="S3.p5.m6" class="ltx_Math" alttext="g_{\sharp}\colon\pi_{1}(Y,y_{0})\to\pi_{1}(X,x_{0})" display="inline"><mrow><msub><mi>g</mi><mi mathvariant="normal">♯</mi></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math> are inverse maps
+between the groups (assuming <math id="S3.p5.m7" class="ltx_Math" alttext="f(x_{0})=y_{0}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>y</mi><mn>0</mn></msub></mrow></math> and <math id="S3.p5.m8" class="ltx_Math" alttext="g(y_{0})=x_{0}" display="inline"><mrow><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>x</mi><mn>0</mn></msub></mrow></math>).</p>
+</div>
+</section>
+<section id="sec:higher_homotopy_grps" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">65.4 </span>Higher homotopy groups</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">Why the notation <math id="S4.p1.m1" class="ltx_Math" alttext="\pi_{1}" display="inline"><msub><mi>π</mi><mn>1</mn></msub></math> for the fundamental group?
+And what are <math id="S4.p1.m2" class="ltx_Math" alttext="\pi_{2}" display="inline"><msub><mi>π</mi><mn>2</mn></msub></math>, …?
+The answer lies in the following rephrasing:</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 65.4.1</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself that a loop is the same thing
+as a continuous function <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="S^{1}\to X" display="inline"><mrow><msup><mi>S</mi><mn>1</mn></msup><mo stretchy="false">→</mo><mi>X</mi></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">It turns out we can define homotopy for things other than paths.
+Two functions <math id="S4.p2.m1" class="ltx_Math" alttext="f,g\colon Y\to X" display="inline"><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>Y</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> are <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> homotopic</span> if there exists a continuous
+function <math id="S4.p2.m2" class="ltx_Math" alttext="Y\times[0,1]\to X" display="inline"><mrow><mrow><mi>Y</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></math> which continuously deforms <math id="S4.p2.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to <math id="S4.p2.m4" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>.
+So everything we did above was just the special case <math id="S4.p2.m5" class="ltx_Math" alttext="Y=S^{1}" display="inline"><mrow><mi>Y</mi><mo>=</mo><msup><mi>S</mi><mn>1</mn></msup></mrow></math>.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">For general <math id="S4.p3.m1" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>, the group <math id="S4.p3.m2" class="ltx_Math" alttext="\pi_{n}(X)" display="inline"><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math> is defined as the homotopy classes
+of the maps <math id="S4.p3.m3" class="ltx_Math" alttext="S^{n}\to X" display="inline"><mrow><msup><mi>S</mi><mi>n</mi></msup><mo stretchy="false">→</mo><mi>X</mi></mrow></math>.
+The group operation is a little harder to specify.
+You have to show that <math id="S4.p3.m4" class="ltx_Math" alttext="S^{n}" display="inline"><msup><mi>S</mi><mi>n</mi></msup></math> is homeomorphic to <math id="S4.p3.m5" class="ltx_Math" alttext="[0,1]^{n}" display="inline"><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mi>n</mi></msup></math> with
+some endpoints fused together; for example <math id="S4.p3.m6" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> is <math id="S4.p3.m7" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> with <math id="S4.p3.m8" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> fused to <math id="S4.p3.m9" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.
+Once you have these cubes, you can merge them together on a face.
+(Again, I’m being terribly imprecise, deliberately.)</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">For <math id="S4.p4.m1" class="ltx_Math" alttext="n\neq 1" display="inline"><mrow><mi>n</mi><mo>≠</mo><mn>1</mn></mrow></math>, <math id="S4.p4.m2" class="ltx_Math" alttext="\pi_{n}" display="inline"><msub><mi>π</mi><mi>n</mi></msub></math> behaves somewhat differently than <math id="S4.p4.m3" class="ltx_Math" alttext="\pi_{1}" display="inline"><msub><mi>π</mi><mn>1</mn></msub></math>.
+(You might not be surprised, as <math id="S4.p4.m4" class="ltx_Math" alttext="S^{n}" display="inline"><msup><mi>S</mi><mi>n</mi></msup></math> is simply connected for all <math id="S4.p4.m5" class="ltx_Math" alttext="n\geq 2" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow></math> but not when <math id="S4.p4.m6" class="ltx_Math" alttext="n=1" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow></math>.)
+In particular, it turns out that <math id="S4.p4.m7" class="ltx_Math" alttext="\pi_{n}(X)" display="inline"><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math> is an abelian group for all <math id="S4.p4.m8" class="ltx_Math" alttext="n\geq 2" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow></math>.</p>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Let’s see some examples.</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 65.4.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(<math id="S4.Thmtheorem2.m1" class="ltx_Math" alttext="\pi_{n}(S^{n})\cong\mathbb{Z}" display="inline"><mrow><mrow><msub><mi mathcolor="#8C0000">π</mi><mi mathcolor="#8C0000">n</mi></msub><mo>⁢</mo><mrow><mo mathcolor="#8C0000" stretchy="false">(</mo><msup><mi mathcolor="#8C0000">S</mi><mi mathcolor="#8C0000">n</mi></msup><mo mathcolor="#8C0000" stretchy="false">)</mo></mrow></mrow><mo mathcolor="#8C0000">≅</mo><mi mathcolor="#8C0000">ℤ</mi></mrow></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">As we saw, <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\pi_{1}(S^{1})\cong\mathbb{Z}" display="inline"><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>S</mi><mn>1</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mi>ℤ</mi></mrow></math>; given the base circle <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math>,
+we can wrap a second circle around it as many times as we want.
+In general, it’s true that <math id="S4.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\pi_{n}(S^{n})\cong\mathbb{Z}" display="inline"><mrow><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>S</mi><mi>n</mi></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mi>ℤ</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 65.4.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(<math id="S4.Thmtheorem3.m1" class="ltx_Math" alttext="\pi_{n}(S^{m})\cong\{1\}" display="inline"><mrow><mrow><msub><mi mathcolor="#8C0000">π</mi><mi mathcolor="#8C0000">n</mi></msub><mo>⁢</mo><mrow><mo mathcolor="#8C0000" stretchy="false">(</mo><msup><mi mathcolor="#8C0000">S</mi><mi mathcolor="#8C0000">m</mi></msup><mo mathcolor="#8C0000" stretchy="false">)</mo></mrow></mrow><mo mathcolor="#8C0000">≅</mo><mrow><mo mathcolor="#8C0000" stretchy="false">{</mo><mn mathcolor="#8C0000">1</mn><mo mathcolor="#8C0000" stretchy="false">}</mo></mrow></mrow></math> when <math id="S4.Thmtheorem3.m2" class="ltx_Math" alttext="n&lt;m" display="inline"><mrow><mi mathcolor="#8C0000">n</mi><mo mathcolor="#8C0000">&lt;</mo><mi mathcolor="#8C0000">m</mi></mrow></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">We saw that <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\pi_{1}(S^{2})\cong\{1\}" display="inline"><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>S</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math>, because
+a circle in <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="S^{2}" display="inline"><msup><mi>S</mi><mn>2</mn></msup></math> can just be reeled in to a point.
+It turns out that similarly, any smaller <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-dimensional sphere
+can be reeled in on the surface of a bigger <math id="S4.Thmtheorem3.p1.m4" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math>-dimensional sphere.
+So in general, <math id="S4.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\pi_{n}(S^{m})" display="inline"><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>S</mi><mi>m</mi></msup><mo stretchy="false">)</mo></mrow></mrow></math> is trivial for <math id="S4.Thmtheorem3.p1.m6" class="ltx_Math" alttext="n&lt;m" display="inline"><mrow><mi>n</mi><mo>&lt;</mo><mi>m</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">However, beyond these observations, the groups behave quite weirdly.
+Here is a table of <math id="S4.p6.m1" class="ltx_Math" alttext="\pi_{n}(S^{m})" display="inline"><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>S</mi><mi>m</mi></msup><mo stretchy="false">)</mo></mrow></mrow></math> for <math id="S4.p6.m2" class="ltx_Math" alttext="1\leq m\leq 8" display="inline"><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>≤</mo><mn>8</mn></mrow></math> and <math id="S4.p6.m3" class="ltx_Math" alttext="2\leq n\leq 10" display="inline"><mrow><mn>2</mn><mo>≤</mo><mi>n</mi><mo>≤</mo><mn>10</mn></mrow></math>,
+so you can see what I’m talking about.
+(Taken from Wikipedia.)</p>
+</div>
+<div id="S4.p7" class="ltx_para">
+<table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\begin{array}[]{r|ccccccccc}\pi_{n}(S^{m})&amp;2&amp;3&amp;4&amp;5&amp;6&amp;7&amp;8&amp;9&amp;10\\
+\hline\cr m=1&amp;\{1\}&amp;\{1\}&amp;\{1\}&amp;\{1\}&amp;\{1\}&amp;\{1\}&amp;\{1\}&amp;\{1\}&amp;\{1\}\\
+2&amp;\mathbb{Z}&amp;\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{%
+Z}/12\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/3%
+\mathbb{Z}&amp;\mathbb{Z}/15\mathbb{Z}\\
+3&amp;&amp;\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/12%
+\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/3\mathbb{Z%
+}&amp;\mathbb{Z}/15\mathbb{Z}\\
+4&amp;&amp;&amp;\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}\times%
+\mathbb{Z}/12\mathbb{Z}&amp;(\mathbb{Z}/2\mathbb{Z})^{2}&amp;\mathbb{Z}/2\mathbb{Z}%
+\times\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/24\mathbb{Z}\times\mathbb{Z}/3\mathbb{%
+Z}\\
+5&amp;&amp;&amp;&amp;\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/24%
+\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}\\
+6&amp;&amp;&amp;&amp;&amp;\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/24%
+\mathbb{Z}&amp;\{1\}\\
+7&amp;&amp;&amp;&amp;&amp;&amp;\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/24%
+\mathbb{Z}\\
+8&amp;&amp;&amp;&amp;&amp;&amp;&amp;\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}&amp;\mathbb{Z}/2\mathbb{Z}\end{array}" display="block"><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_border_r" columnalign="right"><mrow><msub><mi mathsize="80%">π</mi><mi mathsize="80%">n</mi></msub><mo>⁢</mo><mrow><mo maxsize="80%" minsize="80%">(</mo><msup><mi mathsize="80%">S</mi><mi mathsize="80%">m</mi></msup><mo maxsize="80%" minsize="80%">)</mo></mrow></mrow></mtd><mtd><mn mathsize="80%">2</mn></mtd><mtd><mn mathsize="80%">3</mn></mtd><mtd><mn mathsize="80%">4</mn></mtd><mtd><mn mathsize="80%">5</mn></mtd><mtd><mn mathsize="80%">6</mn></mtd><mtd><mn mathsize="80%">7</mn></mtd><mtd><mn mathsize="80%">8</mn></mtd><mtd><mn mathsize="80%">9</mn></mtd><mtd><mn mathsize="80%">10</mn></mtd></mtr><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_border_r" columnalign="right"><mrow><mi mathsize="80%">m</mi><mo mathsize="80%">=</mo><mn mathsize="80%">1</mn></mrow></mtd><mtd><mrow><mo maxsize="80%" minsize="80%">{</mo><mn mathsize="80%">1</mn><mo maxsize="80%" minsize="80%">}</mo></mrow></mtd><mtd><mrow><mo maxsize="80%" minsize="80%">{</mo><mn mathsize="80%">1</mn><mo maxsize="80%" minsize="80%">}</mo></mrow></mtd><mtd><mrow><mo maxsize="80%" minsize="80%">{</mo><mn mathsize="80%">1</mn><mo maxsize="80%" minsize="80%">}</mo></mrow></mtd><mtd><mrow><mo maxsize="80%" minsize="80%">{</mo><mn mathsize="80%">1</mn><mo maxsize="80%" minsize="80%">}</mo></mrow></mtd><mtd><mrow><mo maxsize="80%" minsize="80%">{</mo><mn mathsize="80%">1</mn><mo maxsize="80%" minsize="80%">}</mo></mrow></mtd><mtd><mrow><mo maxsize="80%" minsize="80%">{</mo><mn mathsize="80%">1</mn><mo maxsize="80%" minsize="80%">}</mo></mrow></mtd><mtd><mrow><mo maxsize="80%" minsize="80%">{</mo><mn mathsize="80%">1</mn><mo maxsize="80%" minsize="80%">}</mo></mrow></mtd><mtd><mrow><mo maxsize="80%" minsize="80%">{</mo><mn mathsize="80%">1</mn><mo maxsize="80%" minsize="80%">}</mo></mrow></mtd><mtd><mrow><mo maxsize="80%" minsize="80%">{</mo><mn mathsize="80%">1</mn><mo maxsize="80%" minsize="80%">}</mo></mrow></mtd></mtr><mtr><mtd class="ltx_border_r" columnalign="right"><mn mathsize="80%">2</mn></mtd><mtd><mi mathsize="80%">ℤ</mi></mtd><mtd><mi mathsize="80%">ℤ</mi></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">12</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">3</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">15</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd></mtr><mtr><mtd class="ltx_border_r" columnalign="right"><mn mathsize="80%">3</mn></mtd><mtd></mtd><mtd><mi mathsize="80%">ℤ</mi></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">12</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">3</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">15</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd></mtr><mtr><mtd class="ltx_border_r" columnalign="right"><mn mathsize="80%">4</mn></mtd><mtd></mtd><mtd></mtd><mtd><mi mathsize="80%">ℤ</mi></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mrow><mi mathsize="80%">ℤ</mi><mo lspace="0.222em" mathsize="80%" rspace="0.222em">×</mo><mi mathsize="80%">ℤ</mi></mrow><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">12</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><msup><mrow><mo maxsize="80%" minsize="80%">(</mo><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow><mo maxsize="80%" minsize="80%">)</mo></mrow><mn mathsize="80%">2</mn></msup></mtd><mtd><mrow><mrow><mrow><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow><mo lspace="0.222em" mathsize="80%" rspace="0.222em">×</mo><mi mathsize="80%">ℤ</mi></mrow><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mrow><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">24</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow><mo lspace="0.222em" mathsize="80%" rspace="0.222em">×</mo><mi mathsize="80%">ℤ</mi></mrow><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">3</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd></mtr><mtr><mtd class="ltx_border_r" columnalign="right"><mn mathsize="80%">5</mn></mtd><mtd></mtd><mtd></mtd><mtd></mtd><mtd><mi mathsize="80%">ℤ</mi></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">24</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd></mtr><mtr><mtd class="ltx_border_r" columnalign="right"><mn mathsize="80%">6</mn></mtd><mtd></mtd><mtd></mtd><mtd></mtd><mtd></mtd><mtd><mi mathsize="80%">ℤ</mi></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">24</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mo maxsize="80%" minsize="80%">{</mo><mn mathsize="80%">1</mn><mo maxsize="80%" minsize="80%">}</mo></mrow></mtd></mtr><mtr><mtd class="ltx_border_r" columnalign="right"><mn mathsize="80%">7</mn></mtd><mtd></mtd><mtd></mtd><mtd></mtd><mtd></mtd><mtd></mtd><mtd><mi mathsize="80%">ℤ</mi></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">24</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd></mtr><mtr><mtd class="ltx_border_r" columnalign="right"><mn mathsize="80%">8</mn></mtd><mtd></mtd><mtd></mtd><mtd></mtd><mtd></mtd><mtd></mtd><mtd></mtd><mtd><mi mathsize="80%">ℤ</mi></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd><mtd><mrow><mrow><mi mathsize="80%">ℤ</mi><mo maxsize="80%" minsize="80%" stretchy="true" symmetric="true">/</mo><mn mathsize="80%">2</mn></mrow><mo>⁢</mo><mi mathsize="80%">ℤ</mi></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">Actually, it turns out that if you can compute <math id="S4.p8.m1" class="ltx_Math" alttext="\pi_{n}(S^{m})" display="inline"><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>S</mi><mi>m</mi></msup><mo stretchy="false">)</mo></mrow></mrow></math>
+for every <math id="S4.p8.m2" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> and <math id="S4.p8.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>,
+then you can essentially compute <em class="ltx_emph ltx_font_italic">any</em> homotopy classes.
+Thus, computing <math id="S4.p8.m4" class="ltx_Math" alttext="\pi_{n}(S^{m})" display="inline"><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>S</mi><mi>m</mi></msup><mo stretchy="false">)</mo></mrow></mrow></math> is sort of a lost cause in general,
+and the mixture of chaos and pattern in the above table is a testament to this.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">65.5 </span>Homotopy equivalent spaces</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> A disk is homotopy equivalent to a point, an annulus is homotopy equivalent to <math id="S5.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math>.</em></p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">Up to now I’ve abused notation and referred to “path homotopy” as just “homotopy” for two paths.
+I will unfortunately continue to do so (and so any time I say two paths are homotopic, you should assume I mean “path-homotopic”).
+But let me tell you what the general definition of homotopy is first.</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 65.5.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f,g\colon X\to Y" display="inline"><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> be continuous functions.
+A <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> homotopy</span> is a continuous function <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="F\colon X\times[0,1]\to Y" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>X</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math>,
+which we’ll write <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="F_{s}(x)" display="inline"><mrow><msub><mi>F</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> for <math id="S5.Thmtheorem1.p1.m4" class="ltx_Math" alttext="s\in[0,1]" display="inline"><mrow><mi>s</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math>, <math id="S5.Thmtheorem1.p1.m5" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math>, such that</p>
+<table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="F_{0}(x)=f(x)\text{ and }F_{1}(x)=g(x)\text{ for all $x\in X$.}" display="block"><mrow><mrow><msub><mi>F</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><msub><mi>F</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mtext> for all </mtext><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow><mtext>.</mtext></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">If such a function exists, then <math id="S5.Thmtheorem1.p1.m6" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S5.Thmtheorem1.p1.m7" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> are <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> homotopic</span>.</p>
+</div>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">Intuitively this is once again “deforming <math id="S5.p3.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to <math id="S5.p3.m2" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>”.
+You might notice this is almost exactly the same definition as path-homotopy,
+except that <math id="S5.p3.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S5.p3.m4" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> are any functions instead of paths, and hence
+there’s no restriction on keeping some “endpoints” fixed through the deformation.</p>
+</div>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">This homotopy can be quite dramatic:</p>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 65.5.2</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The zero function <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="z\mapsto 0" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mn>0</mn></mrow></math> and the identity function <math id="S5.Thmtheorem2.p1.m2" class="ltx_Math" alttext="z\mapsto z" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mi>z</mi></mrow></math>
+are homotopic as functions <math id="S5.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\mathbb{C}\to\mathbb{C}" display="inline"><mrow><mi>ℂ</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></math>.
+The necessary deformation is</p>
+<table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="[0,1]\times\mathbb{C}\to\mathbb{C}\text{ by }(t,z)\mapsto tz." display="block"><mrow><mrow><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo rspace="0.055em" stretchy="false">]</mo></mrow><mo rspace="0.222em">×</mo><mi>ℂ</mi></mrow><mo stretchy="false">→</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mtext> by </mtext><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo>,</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">↦</mo><mrow><mi>t</mi><mo>⁢</mo><mi>z</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S5.p5" class="ltx_para">
+<p class="ltx_p">I bring this up because I want to define:</p>
+</div>
+<div id="def:homotopy_equiv" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 65.5.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S5.Thmtheorem3.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> be spaces.
+They are <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> homotopy equivalent</span> if there exist
+continuous functions <math id="S5.Thmtheorem3.p1.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> and <math id="S5.Thmtheorem3.p1.m4" class="ltx_Math" alttext="g\colon Y\to X" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>Y</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> such that</p>
+<ol id="S5.I1" class="ltx_enumerate">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(i)</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="f\circ g\colon X\to X" display="inline"><mrow><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>g</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> is homotopic to the identity map on <math id="S5.I1.i1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, and</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(ii)</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="g\circ f\colon Y\to Y" display="inline"><mrow><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>f</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>Y</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> is homotopic to the identity map on <math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math>.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">If a topological space is homotopy equivalent to a point,
+then it is said to be <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> contractible</span>.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem4" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 65.5.4</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Why are two homeomorphic spaces also homotopy equivalent?</span></p>
+</div>
+</div>
+<div id="S5.p6" class="ltx_para">
+<p class="ltx_p">Intuitively, you can think of this as a more generous form of stretching
+and bending than homeomorphism: we are allowed to compress huge spaces into single points.</p>
+</div>
+<div id="S5.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 65.5.5</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(<math id="S5.Thmtheorem5.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi mathcolor="#8C0000">ℂ</mi></math> is contractible)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Consider the topological spaces <math id="S5.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>
+and the space consisting of the single point <math id="S5.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\{0\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></math>.
+We claim these spaces are homotopy equivalent (can you guess what <math id="S5.Thmtheorem5.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S5.Thmtheorem5.p1.m4" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> are?)
+Indeed, the two things to check are</p>
+<ol id="S5.I2" class="ltx_enumerate">
+<li id="S5.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(i)</span> 
+<div id="S5.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I2.i1.p1.m1" class="ltx_Math" alttext="\mathbb{C}\to\{0\}\hookrightarrow\mathbb{C}" display="inline"><mrow><mi>ℂ</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow><mo stretchy="false">↪</mo><mi>ℂ</mi></mrow></math> by <math id="S5.I2.i1.p1.m2" class="ltx_Math" alttext="z\mapsto 0\mapsto 0" display="inline"><mrow><mi>z</mi><mo stretchy="false">↦</mo><mn>0</mn><mo stretchy="false">↦</mo><mn>0</mn></mrow></math>
+is homotopy equivalent to the identity on <math id="S5.I2.i1.p1.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>, which we just saw, and</p>
+</div>
+</li>
+<li id="S5.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(ii)</span> 
+<div id="S5.I2.i2.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I2.i2.p1.m1" class="ltx_Math" alttext="\{0\}\hookrightarrow\mathbb{C}\to\{0\}" display="inline"><mrow><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow><mo stretchy="false">↪</mo><mi>ℂ</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math> by <math id="S5.I2.i2.p1.m2" class="ltx_Math" alttext="0\mapsto 0\mapsto 0" display="inline"><mrow><mn>0</mn><mo stretchy="false">↦</mo><mn>0</mn><mo stretchy="false">↦</mo><mn>0</mn></mrow></math>, which <em class="ltx_emph ltx_font_italic">is</em> the identity on <math id="S5.I2.i2.p1.m3" class="ltx_Math" alttext="\{0\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></math>.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">Here by <math id="S5.Thmtheorem5.p1.m5" class="ltx_Math" alttext="\hookrightarrow" display="inline"><mo stretchy="false">↪</mo></math> I just mean <math id="S5.Thmtheorem5.p1.m6" class="ltx_Math" alttext="\to" display="inline"><mo stretchy="false">→</mo></math> in the special case
+that the function is just an “inclusion”.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem6" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 65.5.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S5.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> cannot be <em class="ltx_emph ltx_font_italic">homeomorphic</em> to a point
+because there is no bijection of sets between them.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem7" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 65.5.7</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(<math id="S5.Thmtheorem7.m1" class="ltx_Math" alttext="\mathbb{C}\setminus\{0\}" display="inline"><mrow><mi mathcolor="#8C0000">ℂ</mi><mo mathcolor="#8C0000">∖</mo><mrow><mo mathcolor="#8C0000" stretchy="false">{</mo><mn mathcolor="#8C0000">0</mn><mo mathcolor="#8C0000" stretchy="false">}</mo></mrow></mrow></math> is homotopy equivalent to <math id="S5.Thmtheorem7.m2" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi mathcolor="#8C0000">S</mi><mn mathcolor="#8C0000">1</mn></msup></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Consider the topological spaces <math id="S5.Thmtheorem7.p1.m1" class="ltx_Math" alttext="\mathbb{C}\setminus\{0\}" display="inline"><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math>,
+the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> punctured plane</span>, and the circle <math id="S5.Thmtheorem7.p1.m2" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> viewed as a subset of <math id="S5.Thmtheorem7.p1.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.
+We claim these spaces are actually homotopy equivalent!
+The necessary functions are the inclusion</p>
+<table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="S^{1}\hookrightarrow\mathbb{C}\setminus\{0\}" display="block"><mrow><msup><mi>S</mi><mn>1</mn></msup><mo stretchy="false">↪</mo><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and the function</p>
+<table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="\mathbb{C}\setminus\{0\}\to S^{1}\quad\text{by}\quad z\mapsto\frac{z}{\left%
+\lvert z\right\rvert}." display="block"><mrow><mrow><mrow><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><msup><mi>S</mi><mn>1</mn></msup><mspace width="1em"></mspace><mtext>by</mtext></mrow></mrow><mspace width="1em"></mspace><mrow><mi>z</mi><mo stretchy="false">↦</mo><mfrac><mi>z</mi><mrow><mo>|</mo><mi>z</mi><mo>|</mo></mrow></mfrac></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">You can check that these satisfy the required condition.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem8" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 65.5.8</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S5.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">On the other hand, <math id="S5.Thmtheorem8.p1.m1" class="ltx_Math" alttext="\mathbb{C}\setminus\{0\}" display="inline"><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math> cannot be <em class="ltx_emph ltx_font_italic">homeomorphic</em> to <math id="S5.Thmtheorem8.p1.m2" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math>.
+One can make <math id="S5.Thmtheorem8.p1.m3" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> disconnected by deleting two points;
+the same is not true for <math id="S5.Thmtheorem8.p1.m4" class="ltx_Math" alttext="\mathbb{C}\setminus\{0\}" display="inline"><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem9" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 65.5.9</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(<math id="S5.Thmtheorem9.m1" class="ltx_Math" alttext="\text{Disk}=\text{Point}" display="inline"><mrow><mtext mathcolor="#8C0000">Disk</mtext><mo mathcolor="#8C0000">=</mo><mtext mathcolor="#8C0000">Point</mtext></mrow></math>, <math id="S5.Thmtheorem9.m2" class="ltx_Math" alttext="\text{Annulus}=\text{Circle}" display="inline"><mrow><mtext mathcolor="#8C0000">Annulus</mtext><mo mathcolor="#8C0000">=</mo><mtext mathcolor="#8C0000">Circle</mtext></mrow></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">By the same token, a disk is homotopic to a point;
+an annulus is homotopic to a circle.
+(This might be a little easier to visualize, since it’s finite.)</p>
+</div>
+</div>
+<div id="S5.p7" class="ltx_para">
+<p class="ltx_p">I bring these up because it turns out that</p>
+</div>
+<div id="S5.Thmtheorem10" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 65.5.10</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S5.Thmtheorem10.p1" class="ltx_para">
+<p class="ltx_p">Algebraic topology can’t distinguish between homotopy equivalent spaces.</p>
+</div>
+</div>
+<div id="S5.p8" class="ltx_para">
+<p class="ltx_p">More precisely,</p>
+</div>
+<div id="thm:fundgrp_homotopy_invariant" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 65.5.11</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Homotopy equivalent spaces have isomorphic fundamental groups)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S5.Thmtheorem11.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem11.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S5.Thmtheorem11.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> be path-connected, homotopy-equivalent spaces.
+Then <math id="S5.Thmtheorem11.p1.m3" class="ltx_Math" alttext="\pi_{n}(X)\cong\pi_{n}(Y)" display="inline"><mrow><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><msub><mi>π</mi><mi>n</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> for every positive integer <math id="S5.Thmtheorem11.p1.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S5.p9" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.p9.m1" class="ltx_Math" alttext="\gamma\colon[0,1]\to X" display="inline"><mrow><mi>γ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> be a loop.
+Let <math id="S5.p9.m2" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> and <math id="S5.p9.m3" class="ltx_Math" alttext="g\colon Y\to X" display="inline"><mrow><mi>g</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>Y</mi><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math> be maps witnessing that <math id="S5.p9.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="S5.p9.m5" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> are homotopy equivalent
+(meaning <math id="S5.p9.m6" class="ltx_Math" alttext="f\circ g" display="inline"><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>g</mi></mrow></math> and <math id="S5.p9.m7" class="ltx_Math" alttext="g\circ f" display="inline"><mrow><mi>g</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>f</mi></mrow></math> are each homotopic to the identity).
+Then the composition</p>
+<table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="[0,1]\xrightarrow{\gamma}X\xrightarrow{f}Y" display="block"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mover accent="true"><mo stretchy="false">→</mo><mo>𝛾</mo></mover><mi>X</mi><mover accent="true"><mo stretchy="false">→</mo><mo>𝑓</mo></mover><mi>Y</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is a loop in <math id="S5.p9.m8" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> and hence <math id="S5.p9.m9" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> induces a natural homomorphism <math id="S5.p9.m10" class="ltx_Math" alttext="\pi_{1}(X)\to\pi_{1}(Y)" display="inline"><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+Similarly <math id="S5.p9.m11" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> induces a natural homomorphism <math id="S5.p9.m12" class="ltx_Math" alttext="\pi_{1}(Y)\to\pi_{1}(X)" display="inline"><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+The conditions on <math id="S5.p9.m13" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S5.p9.m14" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> now say exactly that these two homomorphisms
+are inverse to each other, meaning the maps are isomorphisms.
+∎</p>
+</div>
+</div>
+<div id="S5.p10" class="ltx_para">
+<p class="ltx_p">In particular,</p>
+</div>
+<div id="S5.Thmtheorem12" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 65.5.12</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S5.Thmtheorem12.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">What are the fundamental groups of contractible spaces?</span></p>
+</div>
+</div>
+<div id="S5.p11" class="ltx_para">
+<p class="ltx_p">That means, for example, that algebraic topology can’t tell
+the following homotopic subspaces of <math id="S5.p11.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> apart.</p>
+<p class="ltx_p ltx_align_center"><span class="ltx_text" style="font-size:298%;color:#FF0000;">♀</span>
+  <span class="ltx_text" style="color:#0000FF;"> <span class="ltx_text" style="font-size:298%;">♂</span></span></p>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">65.6 </span>The pointed homotopy category</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p">This section is meant to be read by those who know some basic category theory.
+Those of you that don’t should come back after reading <a href="../part_cats/ch_cats.html" title="Chapter 67 Objects and morphisms ‣ Part XVII Category Theory ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Chapters</span> <span class="ltx_text ltx_ref_tag">67</span></a> and <a href="../part_cats/ch_functors.html" title="Chapter 68 Functors and natural transformations ‣ Part XVII Category Theory ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">68</span></a>.
+Those of you that do will enjoy how succinctly we can summarize
+the content of this chapter using categorical notions.</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 65.6.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> pointed homotopy category</span> <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathsf{hTop}_{\ast}" display="inline"><msub><mi>𝗁𝖳𝗈𝗉</mi><mo>∗</mo></msub></math> is defined as follows.</p>
+<ul id="S6.I1" class="ltx_itemize">
+<li id="S6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Objects: <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> pointed spaces</span>; that is, a pair <math id="S6.I1.i1.p1.m1" class="ltx_Math" alttext="(X,x_{0})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></math> of spaces <math id="S6.I1.i1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> with a
+distinguished basepoint <math id="S6.I1.i1.p1.m3" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math>, and</p>
+</div>
+</li>
+<li id="S6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Morphisms: <em class="ltx_emph ltx_font_italic">homotopy classes</em> of continuous functions <math id="S6.I1.i2.p1.m1" class="ltx_Math" alttext="(X,x_{0})\to(Y,y_{0})" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">In particular, two path-connected spaces are isomorphic in this category exactly
+when they are homotopy equivalent.
+Then we can summarize many of the preceding results as follows:</p>
+</div>
+<div id="thm:fundgrp_functor" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 65.6.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Functorial interpretation of fundamental groups)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">There is a functor</p>
+<table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\pi_{1}\colon\mathsf{hTop}_{\ast}\to\mathsf{Grp}" display="block"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>𝗁𝖳𝗈𝗉</mi><mo>∗</mo></msub><mo stretchy="false">→</mo><mi>𝖦𝗋𝗉</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">sending</p>
+<svg id="S6.Thmtheorem2.p1.pic1" class="ltx_picture ltx_centering" height="72.84" overflow="visible" version="1.1" width="149.75"><g transform="translate(0,72.84) matrix(1 0 0 -1 0 0) translate(74.88,0) translate(0,36.42)" fill="#000000" stroke="#000000"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -74.88 -36.42)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 60.86)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 15.44)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(26.2,0) matrix(1.0 0.0 0.0 1.0 -20.24 0)" fill="#000000" stroke="#000000"><foreignObject width="40.48" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S6.Thmtheorem2.p1.pic1.m1" class="ltx_Math" alttext="{(X,x_{0})}" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 52.39 0) translate(65.28,0) matrix(1.0 0.0 0.0 1.0 -26.12 0)" fill="#000000" stroke="#000000"><foreignObject width="52.24" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S6.Thmtheorem2.p1.pic1.m2" class="ltx_Math" alttext="{\pi_{1}(X,x_{0})}" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 64.31)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 1.8 0) translate(24.39,0) matrix(1.0 0.0 0.0 1.0 -18.43 0)" fill="#000000" stroke="#000000"><foreignObject width="36.87" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S6.Thmtheorem2.p1.pic1.m3" class="ltx_Math" alttext="{(Y,y_{0})}" display="inline"><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 54.19 0) translate(63.48,0) matrix(1.0 0.0 0.0 1.0 -24.32 0)" fill="#000000" stroke="#000000"><foreignObject width="48.63" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S6.Thmtheorem2.p1.pic1.m4" class="ltx_Math" alttext="{\pi_{1}(Y,y_{0})}" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M -48.68 3.65 L -48.68 -14.33" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 -48.68 -14.33)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -57.72 -10.94)" fill="#000000" stroke="#000000"><foreignObject width="5.78" height="8.61" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S6.Thmtheorem2.p1.pic1.m5" class="ltx_Math" alttext="\scriptstyle{f}" display="inline"><mi mathsize="70%">f</mi></math></foreignObject></g></g><g stroke-width="0.39998pt"><g stroke-dasharray="2.79985pt,1.59991pt" stroke-dashoffset="0.0pt"><path d="M -22.21 15.91 L 4.08 15.91" style="fill:none"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 4.08 15.91)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M 42.8 3.65 L 42.8 -14.33" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 42.8 -14.33)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 46.06 -10.39)" fill="#000000" stroke="#000000"><foreignObject width="7.94" height="9.72" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S6.Thmtheorem2.p1.pic1.m6" class="ltx_Math" alttext="\scriptstyle{f_{\sharp}}" display="inline"><msub><mi mathsize="70%">f</mi><mi mathsize="71%" mathvariant="normal">♯</mi></msub></math></foreignObject></g></g><g stroke-width="0.39998pt"><g stroke-dasharray="2.79985pt,1.59991pt" stroke-dashoffset="0.0pt"><path d="M -24.01 -32.96 L 5.89 -32.96" style="fill:none"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 5.89 -32.96)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g></g></svg>
+</div>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">The fact that <math id="S6.p3.m1" class="ltx_Math" alttext="\pi_{1}" display="inline"><msub><mi>π</mi><mn>1</mn></msub></math> is a functor instead of merely assigns some group <math id="S6.p3.m2" class="ltx_Math" alttext="\pi_{1}(X,x_{0})" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+to each pointed topological space <math id="S6.p3.m3" class="ltx_Math" alttext="(X,x_{0})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></math> automatically implies several nice things, like:</p>
+<ul id="S6.I2" class="ltx_itemize">
+<li id="S6.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">The functor bundles the information of <math id="S6.I2.i1.p1.m1" class="ltx_Math" alttext="f_{\sharp}" display="inline"><msub><mi>f</mi><mi mathvariant="normal">♯</mi></msub></math>,
+including the fact that it respects composition.
+In the categorical language, <math id="S6.I2.i1.p1.m2" class="ltx_Math" alttext="f_{\sharp}" display="inline"><msub><mi>f</mi><mi mathvariant="normal">♯</mi></msub></math> is <math id="S6.I2.i1.p1.m3" class="ltx_Math" alttext="\pi_{1}(f)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S6.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">Homotopic spaces have isomorphic fundamental groups
+(since the spaces are isomorphic in <math id="S6.I2.i2.p1.m1" class="ltx_Math" alttext="\mathsf{hTop}" display="inline"><mi>𝗁𝖳𝗈𝗉</mi></math>,
+and functors preserve isomorphism by <a href="../part_cats/ch_functors.html#thm:functor_isom" title="Theorem 68.2.9 (Functors preserve isomorphism) ‣ 68.2 Covariant functors ‣ Chapter 68 Functors and natural transformations ‣ Part XVII Category Theory ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">68.2.9</span></a>).
+In fact, you’ll notice that the proofs
+of <a href="../part_cats/ch_functors.html#thm:functor_isom" title="Theorem 68.2.9 (Functors preserve isomorphism) ‣ 68.2 Covariant functors ‣ Chapter 68 Functors and natural transformations ‣ Part XVII Category Theory ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">68.2.9</span></a> and <a href="#thm:fundgrp_homotopy_invariant" title="Theorem 65.5.11 (Homotopy equivalent spaces have isomorphic fundamental groups) ‣ 65.5 Homotopy equivalent spaces ‣ Chapter 65 Fundamental groups ‣ Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">65.5.11</span></a>
+are secretly identical to each other.</p>
+</div>
+</li>
+<li id="S6.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">If maps <math id="S6.I2.i3.p1.m1" class="ltx_Math" alttext="f,g\colon(X,x_{0})\to(Y,y_{0})" display="inline"><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi>y</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> are homotopic,
+then <math id="S6.I2.i3.p1.m2" class="ltx_Math" alttext="f_{\sharp}=g_{\sharp}" display="inline"><mrow><msub><mi>f</mi><mi mathvariant="normal">♯</mi></msub><mo>=</mo><msub><mi>g</mi><mi mathvariant="normal">♯</mi></msub></mrow></math>. This is basically <a href="#lem:fsharp_homotopy_invariant" title="Lemma 65.3.2 (𝑓_♯ is homotopy invariant) ‣ 65.3 Fundamental groups are invariant under homeomorphism ‣ Chapter 65 Fundamental groups ‣ Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Lemma</span> <span class="ltx_text ltx_ref_tag">65.3.2</span></a>.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S6.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 65.6.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S6.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">In fact, <math id="S6.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\pi_{1}(X,x_{0})" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math> is the set of arrows <math id="S6.Thmtheorem3.p1.m2" class="ltx_Math" alttext="(S^{1},1)\to(X,x_{0})" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msup><mi>S</mi><mn>1</mn></msup><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>x</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math> in <math id="S6.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\mathsf{hTop}_{\ast}" display="inline"><msub><mi>𝗁𝖳𝗈𝗉</mi><mo>∗</mo></msub></math>,
+so this is actually a covariant Yoneda functor (<a href="../part_cats/ch_functors.html#ex:covariant_yoneda" title="Example 68.2.7 (Covariant Yoneda functor) ‣ 68.2 Covariant functors ‣ Chapter 68 Functors and natural transformations ‣ Part XVII Category Theory ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Example</span> <span class="ltx_text ltx_ref_tag">68.2.7</span></a>),
+except with target <math id="S6.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\mathsf{Grp}" display="inline"><mi>𝖦𝗋𝗉</mi></math> instead of <math id="S6.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\mathsf{Set}" display="inline"><mi>𝖲𝖾𝗍</mi></math>.</p>
+</div>
+</div>
+</section>
+<section id="S7" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">65.7 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 65A</span></span><span class="ltx_text ltx_font_bold"> </span>(Harmonic fan)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Exhibit a subspace <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> of the metric space <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> which is
+path-connected but for which a point <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> can be found such that
+any <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhood of <math id="Thmproblem1.p1.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> with <math id="Thmproblem1.p1.m6" class="ltx_Math" alttext="r&lt;1" display="inline"><mrow><mi>r</mi><mo>&lt;</mo><mn>1</mn></mrow></math> is not path-connected.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 65B</span></span><span class="ltx_text ltx_font_bold"> </span>(Special case of Seifert-van Kampen)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem2.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem2.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem2.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p2.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a topological space.
+Suppose <math id="Thmproblem2.p2.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> and <math id="Thmproblem2.p2.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> are connected open subsets of <math id="Thmproblem2.p2.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, with <math id="Thmproblem2.p2.m5" class="ltx_Math" alttext="X=U\cup V" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mi>U</mi><mo>∪</mo><mi>V</mi></mrow></mrow></math>,
+so that <math id="Thmproblem2.p2.m6" class="ltx_Math" alttext="U\cap V" display="inline"><mrow><mi>U</mi><mo>∩</mo><mi>V</mi></mrow></math> is nonempty and path-connected.</p>
+</div>
+<div id="Thmproblem2.p3" class="ltx_para">
+<p class="ltx_p">Prove that if <math id="Thmproblem2.p3.m1" class="ltx_Math" alttext="\pi_{1}(U)=\pi_{1}(V)=\{1\}" display="inline"><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math> then <math id="Thmproblem2.p3.m2" class="ltx_Math" alttext="\pi_{1}(X)=1" display="inline"><mrow><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S7.Thmtheorem1" class="ltx_theorem ltx_theorem_remark">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Remark 65.7.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S7.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Seifert–van Kampen theorem</span> generalizes this
+for <math id="S7.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\pi_{1}(U)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S7.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\pi_{1}(V)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math> any groups; it gives a formula for calculating <math id="S7.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\pi_{1}(X)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+in terms of <math id="S7.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\pi_{1}(U)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S7.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\pi_{1}(V)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S7.Thmtheorem1.p1.m6" class="ltx_Math" alttext="\pi_{1}(U\cap V)" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>U</mi><mo>∩</mo><mi>V</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
+The proof is much the same.</p>
+</div>
+<div id="S7.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">Unfortunately, this does not give us a way to calculate <math id="S7.Thmtheorem1.p2.m1" class="ltx_Math" alttext="\pi_{1}(S^{1})" display="inline"><mrow><msub><mi>π</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>S</mi><mn>1</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math>,
+because it is not possible to write <math id="S7.Thmtheorem1.p2.m2" class="ltx_Math" alttext="S^{1}=U\cup V" display="inline"><mrow><msup><mi>S</mi><mn>1</mn></msup><mo>=</mo><mrow><mi>U</mi><mo>∪</mo><mi>V</mi></mrow></mrow></math> for <math id="S7.Thmtheorem1.p2.m3" class="ltx_Math" alttext="U\cap V" display="inline"><mrow><mi>U</mi><mo>∩</mo><mi>V</mi></mrow></math> <em class="ltx_emph ltx_font_italic">connected</em>.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 65C</span></span><span class="ltx_text ltx_font_bold"> </span>(RMM 2013)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem3.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem3.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem3.p1.g2" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem3.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem3.p2.m1" class="ltx_Math" alttext="n\geq 2" display="inline"><mrow><mi>n</mi><mo>≥</mo><mn>2</mn></mrow></math> be a positive integer.
+A stone is placed at each vertex of a regular <math id="Thmproblem3.p2.m2" class="ltx_Math" alttext="2n" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></math>-gon.
+A move consists of selecting an edge of the <math id="Thmproblem3.p2.m3" class="ltx_Math" alttext="2n" display="inline"><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></math>-gon and swapping the two stones at the endpoints of the edge.
+Prove that if a sequence of moves swaps every pair of stones exactly once, then there is some edge never used in any move.</p>
+</div>
+</div>
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p">(This last problem doesn’t technically have anything to do with the chapter,
+but the “gut feeling” which motivates the solution is very similar.)</p>
+</div>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="ch_top_constructions.html" title="In Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">64 </span>Some topological constructions</span></a><a href="ch_covering_projections.html" title="In Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">66 </span>Covering projections</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

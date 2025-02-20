@@ -1,0 +1,868 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 30 Riemann integrals ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="ch_power_series_taylor_series.html" title="Chapter 29 Power series and Taylor series ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="next" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_calc_limits.html" title="Chapter 26 Limits and series ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="Ch27.html" title="Chapter 27 Bonus: A hint of 𝑝-adic numbers ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_differentiation.html" title="Chapter 28 Differentiation ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_power_series_taylor_series.html" title="Chapter 29 Power series and Taylor series ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_startout/" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_linalg/" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_measure/" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_diffgeo/" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop1/" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st2/" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">VIII </span>Calculus 101</span></a><a href="ch_power_series_taylor_series.html" title="In Part VIII Calculus 101 ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">29 </span>Power series and Taylor series</span></a><a href="../part_cmplxana/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">IX </span>Complex Analysis</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 30 </span>Riemann integrals</h1>
+
+<div id="p1" class="ltx_para">
+<blockquote class="ltx_quote">
+<p class="ltx_p"><span class="ltx_text" style="font-size:80%;">“Trying to Riemann integrate discontinuous
+functions is kind of outdated.” 
+<br class="ltx_break">— Dennis Gaitsgory, <cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:55b</span>]</cite></span></p>
+</blockquote>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">We will go ahead and define the Riemann integral,
+but we won’t do very much with it.
+The reason is that the Lebesgue integral is basically better,
+so we will define it, check the fundamental theorem of calculus
+(or rather, leave it as a problem at the end of the chapter),
+and then always use Lebesgue integrals forever after.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">30.1 </span>Uniform continuity</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="f(x)=x^{2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math> is not uniformly continuous on <math id="S1.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>,
+but functions on compact sets are always uniformly continuous.</em></p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 30.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> be a continuous
+map between two metric spaces.
+We say that <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> uniformly continuous</span> if
+for all <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math> there exists a <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math> such that</p>
+<table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="d_{M}(p,q)&lt;\delta\implies d_{N}(f(p),f(q))&lt;\varepsilon." display="block"><mrow><mrow><mrow><msub><mi>d</mi><mi>M</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mi>δ</mi><mo stretchy="false">⟹</mo><mrow><msub><mi>d</mi><mi>N</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mi>ε</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">This difference is that given an <math id="S1.p2.m1" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math> we must specify a <math id="S1.p2.m2" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math>
+which works for <em class="ltx_emph ltx_font_italic">every</em> choice <math id="S1.p2.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S1.p2.m4" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> of inputs;
+whereas usually <math id="S1.p2.m5" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> is allowed to depend on <math id="S1.p2.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S1.p2.m7" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>.
+(Also, this definition can’t be ported
+to a general topological space.)</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 30.1.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Uniform continuity failure)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S1.I1" class="ltx_enumerate">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="f\colon\mathbb{R}\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> by <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="x\mapsto x^{2}" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math>
+is not uniformly continuous.
+Suppose we take <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="\varepsilon=0.1" display="inline"><mrow><mi>ε</mi><mo>=</mo><mn>0.1</mn></mrow></math> for example.
+There is no <math id="S1.I1.i1.p1.m4" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math> such that if <math id="S1.I1.i1.p1.m5" class="ltx_Math" alttext="|x-y|&lt;\delta" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mi>δ</mi></mrow></math>
+then <math id="S1.I1.i1.p1.m6" class="ltx_Math" alttext="|x^{2}-y^{2}|&lt;0.1" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mn>0.1</mn></mrow></math>,
+since as <math id="S1.I1.i1.p1.m7" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> and <math id="S1.I1.i1.p1.m8" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> get large,
+the function <math id="S1.I1.i1.p1.m9" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> becomes increasingly sensitive
+to small changes.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="(0,1)\to\mathbb{R}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math> by <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="x\mapsto x^{-1}" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><msup><mi>x</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup></mrow></math>
+is not uniformly continuous.</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The function <math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="\mathbb{R}_{&gt;0}\to\mathbb{R}" display="inline"><mrow><msub><mi>ℝ</mi><mrow><mi></mi><mo>&gt;</mo><mn>0</mn></mrow></msub><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math> by <math id="S1.I1.i3.p1.m2" class="ltx_Math" alttext="x\mapsto\sqrt{x}" display="inline"><mrow><mi>x</mi><mo stretchy="false">↦</mo><msqrt><mi>x</mi></msqrt></mrow></math>
+does turn out to be uniformly continuous
+(despite having unbounded derivatives!).
+Indeed, you can check that the assertion</p>
+<table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\left\lvert x-y\right\rvert&lt;\varepsilon^{2}\implies\left\lvert\sqrt{x}-\sqrt{y%
+}\right\rvert&lt;\varepsilon" display="block"><mrow><mrow><mo>|</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo>|</mo></mrow><mo>&lt;</mo><msup><mi>ε</mi><mn>2</mn></msup><mo stretchy="false">⟹</mo><mrow><mo>|</mo><mrow><msqrt><mi>x</mi></msqrt><mo>−</mo><msqrt><mi>y</mi></msqrt></mrow><mo>|</mo></mrow><mo>&lt;</mo><mi>ε</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">holds for any <math id="S1.I1.i3.p1.m3" class="ltx_Math" alttext="x,y,\varepsilon&gt;0" display="inline"><mrow><mrow><mi>x</mi><mo>,</mo><mi>y</mi><mo>,</mo><mi>ε</mi></mrow><mo>&gt;</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">The good news is that in the compact case all is well.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 30.1.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Uniform continuity free for compact spaces)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a compact metric space.
+Then any continuous map <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> is also uniformly continuous.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">Assume for contradiction there is some bad <math id="S1.p4.m1" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.
+Then taking <math id="S1.p4.m2" class="ltx_Math" alttext="\delta=1/n" display="inline"><mrow><mi>δ</mi><mo>=</mo><mrow><mn>1</mn><mo>/</mo><mi>n</mi></mrow></mrow></math>, we find that for each integer <math id="S1.p4.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>
+there exists points <math id="S1.p4.m4" class="ltx_Math" alttext="p_{n}" display="inline"><msub><mi>p</mi><mi>n</mi></msub></math> and <math id="S1.p4.m5" class="ltx_Math" alttext="q_{n}" display="inline"><msub><mi>q</mi><mi>n</mi></msub></math> which are within <math id="S1.p4.m6" class="ltx_Math" alttext="1/n" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>n</mi></mrow></math> of each other,
+but are mapped more than <math id="S1.p4.m7" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> away from each other by <math id="S1.p4.m8" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>.
+In symbols, <math id="S1.p4.m9" class="ltx_Math" alttext="d_{M}(p_{n},q_{n})\leq 1/n" display="inline"><mrow><mrow><msub><mi>d</mi><mi>M</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>p</mi><mi>n</mi></msub><mo>,</mo><msub><mi>q</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≤</mo><mrow><mn>1</mn><mo>/</mo><mi>n</mi></mrow></mrow></math> but <math id="S1.p4.m10" class="ltx_Math" alttext="d_{N}(f(p_{n}),f(q_{n}))&gt;\varepsilon" display="inline"><mrow><mrow><msub><mi>d</mi><mi>N</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>p</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mi>ε</mi></mrow></math>.</p>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">By compactness of <math id="S1.p5.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>,
+we can find a convergent subsequence
+<math id="S1.p5.m2" class="ltx_Math" alttext="p_{i_{1}}" display="inline"><msub><mi>p</mi><msub><mi>i</mi><mn>1</mn></msub></msub></math>, <math id="S1.p5.m3" class="ltx_Math" alttext="p_{i_{2}}" display="inline"><msub><mi>p</mi><msub><mi>i</mi><mn>2</mn></msub></msub></math>, … converging to some <math id="S1.p5.m4" class="ltx_Math" alttext="x\in M" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>M</mi></mrow></math>.
+Since the <math id="S1.p5.m5" class="ltx_Math" alttext="q_{i_{n}}" display="inline"><msub><mi>q</mi><msub><mi>i</mi><mi>n</mi></msub></msub></math> is within <math id="S1.p5.m6" class="ltx_Math" alttext="1/i_{n}" display="inline"><mrow><mn>1</mn><mo>/</mo><msub><mi>i</mi><mi>n</mi></msub></mrow></math> of <math id="S1.p5.m7" class="ltx_Math" alttext="p_{i_{n}}" display="inline"><msub><mi>p</mi><msub><mi>i</mi><mi>n</mi></msub></msub></math>,
+it ought to converge as well, to the same point <math id="S1.p5.m8" class="ltx_Math" alttext="x\in M" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>M</mi></mrow></math>.
+Then the sequences <math id="S1.p5.m9" class="ltx_Math" alttext="f(p_{i_{n}})" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>p</mi><msub><mi>i</mi><mi>n</mi></msub></msub><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S1.p5.m10" class="ltx_Math" alttext="f(q_{i_{n}})" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>q</mi><msub><mi>i</mi><mi>n</mi></msub></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+should both converge to <math id="S1.p5.m11" class="ltx_Math" alttext="f(x)\in N" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>N</mi></mrow></math>,
+but this is impossible as they are always more than <math id="S1.p5.m12" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>
+away from each other.
+∎</p>
+</div>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">This means for example that <math id="S1.p6.m1" class="ltx_Math" alttext="x^{2}" display="inline"><msup><mi>x</mi><mn>2</mn></msup></math> viewed
+as a continuous function <math id="S1.p6.m2" class="ltx_Math" alttext="[0,1]\to\mathbb{R}" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math> is automatically
+uniformly continuous.
+Man, isn’t compactness great?</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">30.2 </span>Dense sets and extension</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> Functions from <math id="S2.p1.m1" class="ltx_Math" alttext="\mathbb{Q}\to N" display="inline"><mrow><mi>ℚ</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></math> extend to <math id="S2.p1.m2" class="ltx_Math" alttext="\mathbb{R}\to N" display="inline"><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></math>
+if they’re uniformly continuous and <math id="S2.p1.m3" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> is complete.
+See also counterexamples below.</em></p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 30.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> be a subset (or subspace) of a topological space <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+Then we say that <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> dense</span>
+if every open subset of <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> contains a point of <math id="S2.Thmtheorem1.p1.m5" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 30.2.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Dense sets)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S2.I1" class="ltx_enumerate">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> is dense in <math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">In general, any metric space <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is dense
+in its completion <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="\overline{M}" display="inline"><mover accent="true"><mi>M</mi><mo>¯</mo></mover></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Dense sets lend themselves to having functions completed.
+The idea is that if I have a continuous function
+<math id="S2.p2.m1" class="ltx_Math" alttext="f\colon\mathbb{Q}\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℚ</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math>, for some metric space <math id="S2.p2.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>,
+then there should be <em class="ltx_emph ltx_font_italic">at most</em> one way to extend it to a function
+<math id="S2.p2.m3" class="ltx_Math" alttext="\widetilde{f}\colon\mathbb{R}\to N" display="inline"><mrow><mover accent="true"><mi>f</mi><mo>~</mo></mover><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math>.
+For we can approximate each rational number by real numbers:
+if I know <math id="S2.p2.m4" class="ltx_Math" alttext="f(1)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S2.p2.m5" class="ltx_Math" alttext="f(1.4)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1.4</mn><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S2.p2.m6" class="ltx_Math" alttext="f(1.41)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1.41</mn><mo stretchy="false">)</mo></mrow></mrow></math>, … <math id="S2.p2.m7" class="ltx_Math" alttext="\widetilde{f}(\sqrt{2})" display="inline"><mrow><mover accent="true"><mi>f</mi><mo>~</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>2</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></math> had better be the limit of this sequence.
+So it is certainly unique.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">However, there are two ways this could go wrong:</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 30.2.3</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Non-existence of extension)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S2.I2" class="ltx_enumerate">
+<li id="S2.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">It could be that <math id="S2.I2.i1.p1.m1" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> is not complete,
+so the limit may not even exist in <math id="S2.I2.i1.p1.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>.
+For example if <math id="S2.I2.i1.p1.m3" class="ltx_Math" alttext="N=\mathbb{Q}" display="inline"><mrow><mi>N</mi><mo>=</mo><mi>ℚ</mi></mrow></math>,
+then certainly there is no way to
+extend even the identity function <math id="S2.I2.i1.p1.m4" class="ltx_Math" alttext="f\colon\mathbb{Q}\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℚ</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math>
+to a function <math id="S2.I2.i1.p1.m5" class="ltx_Math" alttext="\widetilde{f}\colon\mathbb{R}\to N" display="inline"><mrow><mover accent="true"><mi>f</mi><mo>~</mo></mover><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℝ</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">Even if <math id="S2.I2.i2.p1.m1" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> was complete, we might run into issues
+where <math id="S2.I2.i2.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> explodes.
+For example, let <math id="S2.I2.i2.p1.m3" class="ltx_Math" alttext="N=\mathbb{R}" display="inline"><mrow><mi>N</mi><mo>=</mo><mi>ℝ</mi></mrow></math> and define</p>
+<table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="f(x)=\frac{1}{x-\sqrt{2}}\qquad f\colon\mathbb{Q}\to\mathbb{R}." display="block"><mrow><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac><mn>1</mn><mrow><mi>x</mi><mo>−</mo><msqrt><mn>2</mn></msqrt></mrow></mfrac><mspace width="2em"></mspace><mi>f</mi></mrow></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>ℚ</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">There is also no way to extend this
+due to the explosion of <math id="S2.I2.i2.p1.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> near <math id="S2.I2.i2.p1.m5" class="ltx_Math" alttext="\sqrt{2}\notin\mathbb{Q}" display="inline"><mrow><msqrt><mn>2</mn></msqrt><mo>∉</mo><mi>ℚ</mi></mrow></math>,
+which would cause <math id="S2.I2.i2.p1.m6" class="ltx_Math" alttext="\widetilde{f}(\sqrt{2})" display="inline"><mrow><mover accent="true"><mi>f</mi><mo>~</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>2</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></math> to be undefined.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">However, the way to fix this is to require <math id="S2.p4.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> to be uniformly continuous,
+and in that case we do get a unique extension.</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 30.2.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Extending uniformly continuous functions)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a metric space, <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> a <em class="ltx_emph ltx_font_italic">complete</em> metric space,
+and <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> a dense subspace of <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.
+Suppose <math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="\psi\colon S\to N" display="inline"><mrow><mi>ψ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>S</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> is a <em class="ltx_emph ltx_font_italic">uniformly</em> continuous function.
+Then there exists a unique continuous function <math id="S2.Thmtheorem4.p1.m6" class="ltx_Math" alttext="\widetilde{\psi}\colon M\to N" display="inline"><mrow><mover accent="true"><mi>ψ</mi><mo>~</mo></mover><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math>
+such that the diagram</p>
+<svg id="S2.Thmtheorem4.p1.pic1" class="ltx_picture ltx_centering" height="64.18" overflow="visible" version="1.1" width="84.6"><g transform="translate(0,64.18) matrix(1 0 0 -1 0 0) translate(42.3,0) translate(0,32.04)" fill="#000000" stroke="#000000"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -42.3 -32.04)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 54.28)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 14.52)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(13.42,0) matrix(1.0 0.0 0.0 1.0 -7.47 0)" fill="#000000" stroke="#000000"><foreignObject width="14.93" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S2.Thmtheorem4.p1.pic1.m1" class="ltx_Math" alttext="{M}" display="inline"><mi>M</mi></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 26.85 0) translate(45.48,0) matrix(1.0 0.0 0.0 1.0 -6.31 0)" fill="#000000" stroke="#000000"><foreignObject width="12.63" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S2.Thmtheorem4.p1.pic1.m2" class="ltx_Math" alttext="{N}" display="inline"><mi>N</mi></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 59.01)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 2.83 0) translate(10.6,0) matrix(1.0 0.0 0.0 1.0 -4.64 0)" fill="#000000" stroke="#000000"><foreignObject width="9.28" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S2.Thmtheorem4.p1.pic1.m3" class="ltx_Math" alttext="{S}" display="inline"><mi>S</mi></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M -15.17 15.91 L 11.12 15.91" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 11.12 15.91)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -2.69 19.17)" fill="#000000" stroke="#000000"><foreignObject width="7.69" height="9.99" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S2.Thmtheorem4.p1.pic1.m4" class="ltx_Math" alttext="\scriptstyle{\widetilde{\psi}}" display="inline"><mover accent="true"><mi mathsize="70%">ψ</mi><mo mathsize="70%">~</mo></mover></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -28.88 -8.6 L -28.88 0.75" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 -28.88 -8.6)"><clipPath id="pgfcp4"><path d="M 0 -8.94 h 9.23 v 17.87 h -9.23 Z"></path></clipPath><g clip-path="url(#pgfcp4)"><g transform="matrix(1.0 0.0 0.0 1.0 -1.53 -7.89)"><foreignObject width="10.76" height="8" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S2.Thmtheorem4.p1.pic1.m5" class="ltx_Math" alttext="\supset" display="inline"><mo>⊃</mo></math></foreignObject></g><g></g></g></g><g transform="matrix(0.0 1.0 -1.0 0.0 -28.88 0.75)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M -18 -20.36 L 13.3 3.28" style="fill:none"></path><g transform="matrix(0.79797 0.6027 -0.6027 0.79797 13.3 3.28)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 3.45 -16.61)" fill="#000000" stroke="#000000"><foreignObject width="6.31" height="8.61" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S2.Thmtheorem4.p1.pic1.m6" class="ltx_Math" alttext="\scriptstyle{\psi}" display="inline"><mi mathsize="70%">ψ</mi></math></foreignObject></g></g></g></svg>
+<p class="ltx_p">commutes.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Outline of proof.</h6>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">As mentioned in the discussion,
+each <math id="S2.p5.m1" class="ltx_Math" alttext="x\in M" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>M</mi></mrow></math> can be approximated by a
+sequence <math id="S2.p5.m2" class="ltx_Math" alttext="x_{1}" display="inline"><msub><mi>x</mi><mn>1</mn></msub></math>, <math id="S2.p5.m3" class="ltx_Math" alttext="x_{2}" display="inline"><msub><mi>x</mi><mn>2</mn></msub></math>, … in <math id="S2.p5.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> with <math id="S2.p5.m5" class="ltx_Math" alttext="x_{i}\to x" display="inline"><mrow><msub><mi>x</mi><mi>i</mi></msub><mo stretchy="false">→</mo><mi>x</mi></mrow></math>.
+The two main hypotheses, completeness and uniform continuity,
+are now used:</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 30.2.5</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Prove that <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\psi(x_{1})" display="inline"><mrow><mi>ψ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>, <math id="S2.Thmtheorem5.p1.m2" class="ltx_Math" alttext="\psi(x_{2})" display="inline"><mrow><mi>ψ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>, … converges in <math id="S2.Thmtheorem5.p1.m3" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>
+by using uniform continuity to show that it is Cauchy,
+and then appealing to completeness of <math id="S2.Thmtheorem5.p1.m4" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math>.</span></p>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Hence we define <math id="S2.p6.m1" class="ltx_Math" alttext="\widetilde{\psi}(x)" display="inline"><mrow><mover accent="true"><mi>ψ</mi><mo>~</mo></mover><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></math> to be the limit of that sequence;
+this doesn’t depend on the choice of sequence,
+and one can use sequential continuity to show <math id="S2.p6.m2" class="ltx_Math" alttext="\widetilde{\psi}" display="inline"><mover accent="true"><mi>ψ</mi><mo>~</mo></mover></math> is continuous.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">30.3 </span>Defining the Riemann integral</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Extensions will allow us to define the Riemann integral.
+I need to introduce a bit of notation so bear with me.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 30.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math> be a closed interval.</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">We let <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="C^{0}([a,b])" display="inline"><mrow><msup><mi>C</mi><mn>0</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math> denote the set of
+continuous functions on <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="[a,b]\to\mathbb{R}" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">We let <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="R([a,b])" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math> denote the set of
+<span class="ltx_text ltx_font_bold">rectangle functions</span> on <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="[a,b]\to\mathbb{R}" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>.
+These functions which are constant on the intervals
+<math id="S3.I1.i2.p1.m3" class="ltx_Math" alttext="[t_{0},t_{1})" display="inline"><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mn>0</mn></msub><mo>,</mo><msub><mi>t</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></math>, <math id="S3.I1.i2.p1.m4" class="ltx_Math" alttext="[t_{1},t_{2})" display="inline"><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mn>1</mn></msub><mo>,</mo><msub><mi>t</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></math>, <math id="S3.I1.i2.p1.m5" class="ltx_Math" alttext="[t_{2},t_{3})" display="inline"><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mn>2</mn></msub><mo>,</mo><msub><mi>t</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow></math>, …, <math id="S3.I1.i2.p1.m6" class="ltx_Math" alttext="[t_{n-2},t_{n-1})" display="inline"><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>2</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo stretchy="false">)</mo></mrow></math>, and also <math id="S3.I1.i2.p1.m7" class="ltx_Math" alttext="[t_{n-1},t_{n}]" display="inline"><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></math>,
+for some <math id="S3.I1.i2.p1.m8" class="ltx_Math" alttext="a=t_{0}&lt;t_{1}&lt;t_{2}&lt;\dots&lt;t_{n}=b" display="inline"><mrow><mi>a</mi><mo>=</mo><msub><mi>t</mi><mn>0</mn></msub><mo>&lt;</mo><msub><mi>t</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>t</mi><mn>2</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi><mo>&lt;</mo><msub><mi>t</mi><mi>n</mi></msub><mo>=</mo><mi>b</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">We let <math id="S3.I1.i3.p1.m1" class="ltx_Math" alttext="M([a,b])=C^{0}([a,b])\cup R([a,b])" display="inline"><mrow><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><msup><mi>C</mi><mn>0</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>∪</mo><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Warning: only <math id="S3.p2.m1" class="ltx_Math" alttext="C^{0}([a,b])" display="inline"><mrow><msup><mi>C</mi><mn>0</mn></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is common notation,
+and the other two are made up.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">See picture below for a typical a rectangle function.
+(It is irritating that we have to officially assign a single
+value to each <math id="S3.p3.m1" class="ltx_Math" alttext="t_{i}" display="inline"><msub><mi>t</mi><mi>i</mi></msub></math>,
+even though there are naturally two values we want to use,
+and so we use the convention of letting
+the left endpoint be closed).</p>
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+Ψimport graph;
+Ψgraph.xaxis();
+Ψgraph.yaxis();
+Ψlabel("$a=t_0$", (-3,0), dir(-90), red);
+Ψlabel("$b=t_4$", ( 3,0), dir(-90), red);
+Ψpen b = blue + 1.2;
+Ψdraw( (-3,3)--(-1.2,3), b );
+Ψdraw( (-1.2,1)--(0.8,1), b );
+Ψdraw( (0.8,4)--(2,4), b );
+Ψdraw( (2,2.5)--(3,2.5), b );
+
+Ψdraw( (-3,3)--(-3,0), red );
+Ψdraw( (-1.2,3)--(-1.2,0), dotted+heavycyan );
+Ψdraw( (0.8,4)--(0.8,0), dotted+heavycyan );
+Ψdraw( (2,4)--(2,0), dotted+heavycyan );
+Ψdraw( (3,2.5)--(3,0), red );
+Ψlabel("$t_1$", (-1.2,0), dir(-90), heavycyan);
+Ψlabel("$t_2$", (0.8,0), dir(-90), heavycyan);
+Ψlabel("$t_3$", (2,0), dir(-90), heavycyan);
+
+Ψdotfactor *= 2;
+Ψdot( (-3,3), blue ); // x = a
+Ψopendot( (-1.2, 3), blue );
+Ψopendot( (0.8, 1), blue );
+Ψopendot( (2, 4), blue );
+Ψdot( (-1.2,1), blue );
+Ψdot( (0.8,4), blue );
+Ψdot( (2,2.5), blue );
+Ψdot( (3, 2.5), blue ); // x = b
+</pre>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 30.3.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We can impose a metric on <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="M([a,b])" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math>
+by defining</p>
+<table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="d(f,g)=\sup_{x\in[a,b]}\left\lvert f(x)-g(x)\right\rvert." display="block"><mrow><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">sup</mo><mrow><mi>x</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></mrow></munder><mrow><mo>|</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>g</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>|</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">Now, there is a natural notion of integral
+for rectangle functions: just sum up the obvious rectangles!
+Officially, this is the expression</p>
+<table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_math_unparsed" alttext="f(a)(t_{1}-a)+f(t_{1})(t_{2}-t_{1})++f(t_{2})\left(t_{3}-t_{2}\right)+\dots+f(%
+t_{n})\left(b-t_{n}\right)." display="block"><mrow><mi>f</mi><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mn>1</mn></msub><mo>−</mo><mi>a</mi><mo stretchy="false">)</mo></mrow><mo>+</mo><mi>f</mi><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mn>2</mn></msub><mo>−</mo><msub><mi>t</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow><mo rspace="0em">+</mo><mo lspace="0em">+</mo><mi>f</mi><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><mrow><mo>(</mo><msub><mi>t</mi><mn>3</mn></msub><mo>−</mo><msub><mi>t</mi><mn>2</mn></msub><mo>)</mo></mrow><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mi>f</mi><mrow><mo stretchy="false">(</mo><msub><mi>t</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mo>(</mo><mi>b</mi><mo>−</mo><msub><mi>t</mi><mi>n</mi></msub><mo>)</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">We denote this function by</p>
+<table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\Sigma\colon R([a,b])\to\mathbb{R}." display="block"><mrow><mrow><mi mathvariant="normal">Σ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+<div id="thm:gaitsgory_riemann" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 30.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(The Riemann integral)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">There exists a unique continuous map</p>
+<table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="\textstyle{\int_{a}^{b}}\colon M([a,b])\to\mathbb{R}" display="block"><mrow><mstyle displaystyle="false"><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup></mstyle><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">such that the diagram</p>
+<svg id="S3.Thmtheorem3.p1.pic1" class="ltx_picture ltx_centering" height="72.84" overflow="visible" version="1.1" width="120.01"><g transform="translate(0,72.84) matrix(1 0 0 -1 0 0) translate(60,0) translate(0,36.42)" fill="#000000" stroke="#000000"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -60 -36.42)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 60.86)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 15.44)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(32.35,0) matrix(1.0 0.0 0.0 1.0 -26.39 0)" fill="#000000" stroke="#000000"><foreignObject width="52.78" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.Thmtheorem3.p1.pic1.m1" class="ltx_Math" alttext="{M([a,b])}" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 64.7 0) translate(44.26,0) matrix(1.0 0.0 0.0 1.0 -5.09 0)" fill="#000000" stroke="#000000"><foreignObject width="10.19" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.Thmtheorem3.p1.pic1.m2" class="ltx_Math" alttext="{\mathbb{R}}" display="inline"><mi>ℝ</mi></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 64.31)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 2.16 0) translate(30.19,0) matrix(1.0 0.0 0.0 1.0 -24.23 0)" fill="#000000" stroke="#000000"><foreignObject width="48.46" height="13.84" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.Thmtheorem3.p1.pic1.m3" class="ltx_Math" alttext="{R([a,b])}" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M 4.97 15.91 L 31.26 15.91" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 31.26 15.91)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 17.82 21.05)" fill="#000000" stroke="#000000"><foreignObject width="6.96" height="10.53" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.Thmtheorem3.p1.pic1.m4" class="ltx_Math" alttext="\scriptstyle{\int_{a}^{b}}" display="inline"><msubsup><mo maxsize="70%" minsize="70%" stretchy="true">∫</mo><mi mathsize="71%">a</mi><mi mathsize="71%">b</mi></msubsup></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -27.65 -12.06 L -27.65 -2.71" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 -27.65 -12.06)"><clipPath id="pgfcp5"><path d="M 0 -8.94 h 9.23 v 17.87 h -9.23 Z"></path></clipPath><g clip-path="url(#pgfcp5)"><g transform="matrix(1.0 0.0 0.0 1.0 -1.53 -7.89)"><foreignObject width="10.76" height="8" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.Thmtheorem3.p1.pic1.m5" class="ltx_Math" alttext="\supset" display="inline"><mo>⊃</mo></math></foreignObject></g><g></g></g></g><g transform="matrix(0.0 1.0 -1.0 0.0 -27.65 -2.71)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g></g><g stroke-width="0.39998pt"><path d="M -8.44 -20.7 L 32.26 5.27" style="fill:none"></path><g transform="matrix(0.84305 0.53784 -0.53784 0.84305 32.26 5.27)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 17.85 -15.88)" fill="#000000" stroke="#000000"><foreignObject width="7" height="6.62" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="S3.Thmtheorem3.p1.pic1.m6" class="ltx_Math" alttext="\scriptstyle{\Sigma}" display="inline"><mi mathsize="70%" mathvariant="normal">Σ</mi></math></foreignObject></g></g></g></svg>
+<p class="ltx_p">commutes.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">We want to apply the extension theorem,
+so we just have to check a few things:</p>
+<ul id="S3.I2" class="ltx_itemize">
+<li id="S3.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">We claim <math id="S3.I2.i1.p1.m1" class="ltx_Math" alttext="R([a,b])" display="inline"><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math> is a dense subset of <math id="S3.I2.i1.p1.m2" class="ltx_Math" alttext="M([a,b])" display="inline"><mrow><mi>M</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.
+In other words, for any continuous <math id="S3.I2.i1.p1.m3" class="ltx_Math" alttext="f\colon[a,b]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+and <math id="S3.I2.i1.p1.m4" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,
+we want there to exist a rectangle function
+that approximates <math id="S3.I2.i1.p1.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> within <math id="S3.I2.i1.p1.m6" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math>.</p>
+</div>
+<div id="S3.I2.i1.p2" class="ltx_para">
+<p class="ltx_p">This follows by uniform continuity.
+We know there exists a <math id="S3.I2.i1.p2.m1" class="ltx_Math" alttext="\delta&gt;0" display="inline"><mrow><mi>δ</mi><mo>&gt;</mo><mn>0</mn></mrow></math> such
+that whenever <math id="S3.I2.i1.p2.m2" class="ltx_Math" alttext="|x-y|&lt;\delta" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mi>δ</mi></mrow></math> we have <math id="S3.I2.i1.p2.m3" class="ltx_Math" alttext="|f(x)-f(y)|&lt;\varepsilon" display="inline"><mrow><mrow><mo stretchy="false">|</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo stretchy="false">|</mo></mrow><mo>&lt;</mo><mi>ε</mi></mrow></math>.
+So as long as we select a rectangle function
+whose rectangles have width less than <math id="S3.I2.i1.p2.m4" class="ltx_Math" alttext="\delta" display="inline"><mi>δ</mi></math>,
+and such that the upper-left corner of each rectangle
+lies on the graph of <math id="S3.I2.i1.p2.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>, then we are all set.</p>
+</div>
+<div id="S3.I2.i1.p3" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+ΨΨΨimport graph;
+ΨΨΨreal f(real x) { return 3 + (x-2)*(x-2)*(x+5) / 35; }
+ΨΨΨdraw( (5, f(5))--(5, 0), red+dotted );
+ΨΨΨfor (int i=0; i&lt;10; ++i) {
+ΨΨΨΨfilldraw(box( (i-5, 0), (i-4, f(i-5)) ),
+ΨΨΨΨΨopacity(0.1)+lightgreen, deepgreen);
+ΨΨΨΨdot( (i-5, f(i-5)), deepgreen);
+ΨΨΨ}
+ΨΨΨdraw(graph(f,-5.2,5.2,operator ..), blue, Arrows(TeXHead));
+ΨΨΨgraph.xaxis();
+ΨΨΨgraph.yaxis();
+ΨΨΨlabel("$a$", (-5,0), dir(-90), blue);
+ΨΨΨlabel("$b$", (5,0), dir(-90), blue);
+ΨΨ
+</pre>
+</div>
+</li>
+<li id="S3.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">The “add-the-rectangles” map <math id="S3.I2.i2.p1.m1" class="ltx_Math" alttext="\Sigma\colon R([a,b])\to\mathbb{R}" display="inline"><mrow><mi mathvariant="normal">Σ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mi>R</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+is <em class="ltx_emph ltx_font_italic">uniformly</em> continuous.
+Actually this is pretty obvious:
+if two rectangle functions <math id="S3.I2.i2.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S3.I2.i2.p1.m3" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math>
+have <math id="S3.I2.i2.p1.m4" class="ltx_Math" alttext="d(f,g)&lt;\varepsilon" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mi>ε</mi></mrow></math>,
+then <math id="S3.I2.i2.p1.m5" class="ltx_Math" alttext="d(\Sigma f,\Sigma g)&lt;\varepsilon(b-a)" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi mathvariant="normal">Σ</mi><mo>⁢</mo><mi>f</mi></mrow><mo>,</mo><mrow><mi mathvariant="normal">Σ</mi><mo>⁢</mo><mi>g</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>&lt;</mo><mrow><mi>ε</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i3.p1" class="ltx_para">
+<p class="ltx_p"><math id="S3.I2.i3.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> is complete.∎</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">30.4 </span>Meshes</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">The above definition might seem fantastical, overcomplicated,
+hilarious, or terrible, depending on your taste.
+But if you unravel it, it’s really the picture you are used to.
+What we have done is taking every continuous function <math id="S4.p1.m1" class="ltx_Math" alttext="f\colon[a,b]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+and showed that it can be approximated by a rectangle function
+(which we phrased as a dense inclusion).
+Then we added the area of the rectangles.
+Nonetheless, we will give a definition that’s
+more like what you’re used to seeing in other places.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 30.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <em class="ltx_emph ltx_font_italic">tagged partition</em> <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> of <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math>
+consists of a partition of <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math> into <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> intervals,
+with a point <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\xi_{i}" display="inline"><msub><mi>ξ</mi><mi>i</mi></msub></math> in the <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>th interval, denoted</p>
+<table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="a=t_{0}&lt;t_{1}&lt;t_{2}&lt;\dots&lt;t_{n}=b\qquad\text{and}\qquad\xi_{i}\in[t_{i-1},t_{i%
+}]\quad\forall\;1\leq i\leq n." display="block"><mrow><mrow><mrow><mi>a</mi><mo>=</mo><msub><mi>t</mi><mn>0</mn></msub><mo>&lt;</mo><msub><mi>t</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>t</mi><mn>2</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi><mo>&lt;</mo><msub><mi>t</mi><mi>n</mi></msub><mo>=</mo><mi>b</mi></mrow><mspace width="2em"></mspace><mrow><mrow><mtext>and</mtext><mspace width="2em"></mspace><msub><mi>ξ</mi><mi>i</mi></msub></mrow><mo>∈</mo><mrow><mo stretchy="false">[</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>,</mo><msub><mi>t</mi><mi>i</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mspace width="1.167em"></mspace><mrow><mrow><mo rspace="0.167em">∀</mo><mn> 1</mn></mrow><mo>≤</mo><mi>i</mi><mo>≤</mo><mi>n</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">The <em class="ltx_emph ltx_font_italic">mesh</em> of <math id="S4.Thmtheorem1.p1.m7" class="ltx_Math" alttext="P" display="inline"><mi>P</mi></math> is the width
+of the longest interval, i.e. <math id="S4.Thmtheorem1.p1.m8" class="ltx_Math" alttext="\max_{i}(t_{i}-t_{i-1})" display="inline"><mrow><msub><mi>max</mi><mi>i</mi></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>t</mi><mi>i</mi></msub><mo>−</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Of course the point of this definition
+is that we add the rectangles,
+but the <math id="S4.p2.m1" class="ltx_Math" alttext="\xi_{i}" display="inline"><msub><mi>ξ</mi><mi>i</mi></msub></math> are the sample points.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+Ψimport graph;
+Ψreal f(real x) { return 3 + (x-2)*(x-2)*(x+5) / 35; }
+Ψreal[] t = {-4.4, -3.3, -0.2, 1.3, 3.5, 4.5};
+Ψfilldraw(box((-5,0), (-4.1,f(t[0]))), opacity(0.1)+lightcyan, heavycyan );
+Ψfilldraw(box((-4.1,0), (-2,f(t[1]))), opacity(0.1)+lightcyan, heavycyan );
+Ψfilldraw(box((-2,0), (0.6,f(t[2]))), opacity(0.1)+lightcyan, heavycyan );
+Ψfilldraw(box((0.6,0), (1.9,f(t[3]))), opacity(0.1)+lightcyan, heavycyan );
+Ψfilldraw(box((1.9,0), (3.7,f(t[4]))), opacity(0.1)+lightcyan, heavycyan );
+Ψfilldraw(box((3.7,0), (5,f(t[5]))), opacity(0.1)+lightcyan, heavycyan );
+Ψfor (int i=0; i&lt;=5; ++i) { dot( (t[i], f(t[i])), blue ); }
+Ψdraw(graph(f,-5.2,5.2,operator ..), blue, Arrows(TeXHead));
+Ψlabel("$\xi$", (t[1], f(t[1])), dir(90), blue);
+Ψgraph.xaxis();
+Ψgraph.yaxis();
+Ψlabel("$a$", (-5,0), dir(-90), blue);
+Ψlabel("$b$", (5,0), dir(-90), blue);
+</pre>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 30.4.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Riemann integral)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f\colon[a,b]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> be continuous.
+Then</p>
+<table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\int_{a}^{b}f(x)\;dx=\lim_{\begin{subarray}{c}\text{$P$ tagged partition}\\
+\operatorname{mesh}P\to 0\end{subarray}}\left(\sum_{i=1}^{n}f(\xi_{i})(t_{i}-t%
+_{i-1})\right)." display="block"><mrow><mrow><mrow><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><munder><mo lspace="0.1389em" movablelimits="false" rspace="0em">lim</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>P</mi><mtext> tagged partition</mtext></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mi>mesh</mi><mo lspace="0.167em">⁡</mo><mi>P</mi></mrow><mo stretchy="false">→</mo><mn>0</mn></mrow></mtd></mtr></mtable></munder><mrow><mo>(</mo><mrow><munderover><mo lspace="0em" movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>ξ</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>t</mi><mi>i</mi></msub><mo>−</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Here the limit means that we can take any sequence
+of partitions whose mesh approaches zero.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">The right-hand side corresponds to the areas
+of some rectangle functions <math id="S4.p4.m1" class="ltx_Math" alttext="g_{1}" display="inline"><msub><mi>g</mi><mn>1</mn></msub></math>, <math id="S4.p4.m2" class="ltx_Math" alttext="g_{2}" display="inline"><msub><mi>g</mi><mn>2</mn></msub></math>, …with increasingly narrow rectangles.
+As in the proof <a href="#thm:gaitsgory_riemann" title="Theorem 30.3.3 (The Riemann integral) ‣ 30.3 Defining the Riemann integral ‣ Chapter 30 Riemann integrals ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">30.3.3</span></a>,
+as the meshes of those rectangles approaches zero,
+by uniform continuity, we have <math id="S4.p4.m3" class="ltx_Math" alttext="d(f,g_{n})\to 0" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo>,</mo><msub><mi>g</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">→</mo><mn>0</mn></mrow></math> as well.
+Thus by continuity in the diagram of <a href="#thm:gaitsgory_riemann" title="Theorem 30.3.3 (The Riemann integral) ‣ 30.3 Defining the Riemann integral ‣ Chapter 30 Riemann integrals ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">30.3.3</span></a>,
+we get <math id="S4.p4.m4" class="ltx_Math" alttext="\lim_{n}\Sigma(g_{n})=\int(f)" display="inline"><mrow><mrow><msub><mo>lim</mo><mi>n</mi></msub><mrow><mi mathvariant="normal">Σ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>g</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo rspace="0.111em">=</mo><mrow><mo rspace="0em">∫</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> as needed.
+∎</p>
+</div>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Combined with the mean value theorem,
+this can be used to give a short proof of
+the fundamental theorem of calculus
+for functions <math id="S4.p5.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> with a continuous derivative.
+The idea is that for any choice of partition
+<math id="S4.p5.m2" class="ltx_Math" alttext="a\leq t_{0}&lt;t_{1}&lt;t_{2}&lt;\dots&lt;t_{n}\leq b" display="inline"><mrow><mi>a</mi><mo>≤</mo><msub><mi>t</mi><mn>0</mn></msub><mo>&lt;</mo><msub><mi>t</mi><mn>1</mn></msub><mo>&lt;</mo><msub><mi>t</mi><mn>2</mn></msub><mo>&lt;</mo><mi mathvariant="normal">⋯</mi><mo>&lt;</mo><msub><mi>t</mi><mi>n</mi></msub><mo>≤</mo><mi>b</mi></mrow></math>,
+using the Mean Value Theorem it should be possible
+to pick <math id="S4.p5.m3" class="ltx_Math" alttext="\xi_{i}" display="inline"><msub><mi>ξ</mi><mi>i</mi></msub></math> in each interval to match
+with the slope of the secant:
+at which point the areas sum to the total change in <math id="S4.p5.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>.
+We illustrate this situation with three points,
+and invite the reader to fill
+in the details as <a href="#thm:FTC" title="Problem 30B (Fundamental theorem of calculus). ‣ 30.5 A few harder problems to think about ‣ Chapter 30 Riemann integrals ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">30B</span></a>.</p>
+</div>
+<div id="S4.p6" class="ltx_para">
+<pre class="ltx_verbatim ltx_centering ltx_font_typewriter">
+Ψsize(9cm);
+Ψimport graph;
+Ψgraph.xaxis("$x$");
+Ψgraph.yaxis("$y$");
+Ψreal f(real x) { return x*x/2+0.4; }
+Ψpair P(real x) { return (x, f(x)); }
+Ψdraw(graph(f,-2,2,operator ..), blue, Arrows(TeXHead));
+Ψlabel("$f$", (2, f(2)), dir(-45), blue);
+Ψfor (real i=-1.3; i&lt;=2; ++i) {
+ΨΨif (i &lt; 1) { draw(P(i)--P(i+1), deepgreen, EndArrow(TeXHead), Margins); }
+ΨΨdot(P(i), deepgreen);
+Ψ}
+Ψreal m1 = f(-0.3) - f(-1.3);
+Ψreal m2 = f(0.7) - f(-0.3);
+Ψreal m3 = f(1.7) - f(0.7);
+Ψreal r = 0.4;
+Ψvoid draw_tangent(real m) {
+ΨΨdot(P(m), red);
+ΨΨdraw((m-r, f(m)-r*m)--(m+r, f(m)+r*m), red);
+Ψ}
+Ψdraw_tangent(m1);
+Ψdraw_tangent(m2);
+Ψdraw_tangent(m3);
+Ψdraw(P(-1.3)--(-1.3,0), deepgreen+dashed);
+Ψdraw(P(-0.3)--(-0.3,0), deepgreen+dashed);
+Ψdraw(P( 0.7)--( 0.7,0), deepgreen+dashed);
+Ψdraw(P( 1.7)--( 1.7,0), deepgreen+dashed);
+Ψlabel("$t_0$", (-1.3,0), dir(-90), deepgreen);
+Ψlabel("$t_1$", (-0.3,0), dir(-90), deepgreen);
+Ψlabel("$t_2$", ( 0.7,0), dir(-90), deepgreen);
+Ψlabel("$t_3$", ( 1.7,0), dir(-90), deepgreen);
+Ψdraw(P(m1)--(m1,0), red+dashed);
+Ψdraw(P(m2)--(m2,0), red+dashed);
+Ψdraw(P(m3)--(m3,0), red+dashed);
+Ψlabel("$\xi_1$", (m1,0), dir(-90), red+fontsize(8pt));
+Ψlabel("$\xi_2$", (m2,0), dir(-90), red+fontsize(8pt));
+Ψlabel("$\xi_3$", (m3,0), dir(-90), red+fontsize(8pt));
+Ψdraw(P(-1.3)--P(1.7), blue+dashed, EndArrow, Margins);
+Ψlabel("Net change", 0.3*P(-1.3)+0.7*P(1.7), dir(90), blue);
+</pre>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">One quick note is that although I’ve only defined
+the Riemann integral for continuous functions,
+there ought to be other functions for which it exists
+(including “piecewise continuous functions” for example,
+or functions “continuous almost everywhere”).
+The relevant definition is:</p>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 30.4.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f\colon[a,b]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> is a function
+which is not necessarily continuous,
+but for which the limit</p>
+<table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\lim_{\begin{subarray}{c}\text{$P$ tagged partition}\\
+\operatorname{mesh}P\to 0\end{subarray}}\left(\sum_{i=1}^{n}f(\xi_{i})(t_{i}-t%
+_{i-1})\right)." display="block"><mrow><mrow><munder><mo movablelimits="false">lim</mo><mtable rowspacing="0pt"><mtr><mtd><mrow><mi>P</mi><mtext> tagged partition</mtext></mrow></mtd></mtr><mtr><mtd><mrow><mrow><mi>mesh</mi><mo lspace="0.167em">⁡</mo><mi>P</mi></mrow><mo stretchy="false">→</mo><mn>0</mn></mrow></mtd></mtr></mtable></munder><mrow><mo lspace="0em">(</mo><mrow><munderover><mo lspace="0em" movablelimits="false">∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>ξ</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msub><mi>t</mi><mi>i</mi></msub><mo>−</mo><msub><mi>t</mi><mrow><mi>i</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">exists anyways,
+then we say <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Riemann integrable</span> on <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="[a,b]" display="inline"><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow></math>
+and define its value to be that limit <math id="S4.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\int_{a}^{b}f(x)\;dx" display="inline"><mrow><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">We won’t really use this definition much,
+because we will see that every Riemann integrable function
+is Lebesgue integrable, and the Lebesgue integral is better.</p>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 30.4.4</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Your AP calculus returns)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">We had better mention that <a href="#thm:FTC" title="Problem 30B (Fundamental theorem of calculus). ‣ 30.5 A few harder problems to think about ‣ Chapter 30 Riemann integrals ‣ Part VIII Calculus 101 ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">30B</span></a>
+implies that we can compute Riemann integrals in practice,
+although most of you may already know this
+from high-school calculus.
+For example, on the interval <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="(1,4)" display="inline"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></math>,
+the derivative of the function <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="F(x)=\frac{1}{3}x^{3}" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>⁢</mo><msup><mi>x</mi><mn>3</mn></msup></mrow></mrow></math> is <math id="S4.Thmtheorem4.p1.m3" class="ltx_Math" alttext="F^{\prime}(x)=x^{2}" display="inline"><mrow><mrow><msup><mi>F</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math>.
+As <math id="S4.Thmtheorem4.p1.m4" class="ltx_Math" alttext="f(x)=x^{2}" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mi>x</mi><mn>2</mn></msup></mrow></math> is a continuous function <math id="S4.Thmtheorem4.p1.m5" class="ltx_Math" alttext="f\colon[1,4]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>1</mn><mo>,</mo><mn>4</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>, we get</p>
+<table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\int_{1}^{4}x^{2}\;dx=F(4)-F(1)=\frac{64}{3}-\frac{1}{3}=21." display="block"><mrow><mrow><mrow><msubsup><mo>∫</mo><mn>1</mn><mn>4</mn></msubsup><mrow><msup><mi>x</mi><mn>2</mn></msup><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mrow><mfrac><mn>64</mn><mn>3</mn></mfrac><mo>−</mo><mfrac><mn>1</mn><mn>3</mn></mfrac></mrow><mo>=</mo><mn>21</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Note that we could also have picked <math id="S4.Thmtheorem4.p1.m6" class="ltx_Math" alttext="F(x)=\frac{1}{3}x^{3}+2019" display="inline"><mrow><mrow><mi>F</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>⁢</mo><msup><mi>x</mi><mn>3</mn></msup></mrow><mo>+</mo><mn>2019</mn></mrow></mrow></math>;
+the function <math id="S4.Thmtheorem4.p1.m7" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is unique up to shifting,
+and this constant cancels out when we subtract.
+This is why it’s common in high school to (really) abuse notation
+and write <math id="S4.Thmtheorem4.p1.m8" class="ltx_Math" alttext="\int x^{2}\;dx=\frac{1}{3}x^{3}+C" display="inline"><mrow><mrow><mo>∫</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mfrac><mn>1</mn><mn>3</mn></mfrac><mo>⁢</mo><msup><mi>x</mi><mn>3</mn></msup></mrow><mo>+</mo><mi>C</mi></mrow></mrow></math>.</p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">30.5 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 30A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="f\colon(a,b)\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> be differentiable
+and assume <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="f^{\prime}" display="inline"><msup><mi>f</mi><mo>′</mo></msup></math> is bounded.
+Show that <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is uniformly continuous.
+
+Contradiction and mean value theorem (again!).</p>
+</div>
+</div>
+<div id="thm:FTC" class="ltx_theorem ltx_theorem_sproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 30B</span></span><span class="ltx_text ltx_font_bold"> </span>(Fundamental theorem of calculus)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="f\colon[a,b]\to\mathbb{R}" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math> be continuous,
+differentiable on <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="(a,b)" display="inline"><mrow><mo stretchy="false">(</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></math>,
+and assume the derivative <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="f^{\prime}" display="inline"><msup><mi>f</mi><mo>′</mo></msup></math> extends to a
+continuous function <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="f^{\prime}\colon[a,b]\to\mathbb{R}" display="inline"><mrow><msup><mi>f</mi><mo>′</mo></msup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>.
+Prove that</p>
+<table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="\int_{a}^{b}f^{\prime}(x)\;dx=f(b)-f(a)." display="block"><mrow><mrow><mrow><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><mrow><msup><mi>f</mi><mo>′</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow><mo>=</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">For every positive integer <math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>,
+take a partition where every rectangle has width <math id="Thmproblem2.p1.m6" class="ltx_Math" alttext="w=\frac{b-a}{n}" display="inline"><mrow><mi>w</mi><mo>=</mo><mfrac><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow><mi>n</mi></mfrac></mrow></math>.
+Use the mean value theorem to construct a tagged partition
+such that the first rectangle has area <math id="Thmproblem2.p1.m7" class="ltx_Math" alttext="f(a+w)-f(a)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+the second rectangle has area <math id="Thmproblem2.p1.m8" class="ltx_Math" alttext="f(a+2w)-f(a+w)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><mi>w</mi></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mi>w</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, and so on;
+thus the total area is <math id="Thmproblem2.p1.m9" class="ltx_Math" alttext="f(b)-f(a)" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>b</mi><mo stretchy="false">)</mo></mrow></mrow><mo>−</mo><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="prob:improper" class="ltx_theorem ltx_theorem_sproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 30C</span></span><span class="ltx_text ltx_font_bold"> </span>(Improper integrals)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">For each real number <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="r&gt;0" display="inline"><mrow><mi>r</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,
+evaluate the limit<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>If you are not
+familiar with the notation <math id="footnote1.m1" class="ltx_Math" alttext="\varepsilon\to 0^{+}" display="inline"><mrow><mi>ε</mi><mo stretchy="false">→</mo><msup><mn>0</mn><mo>+</mo></msup></mrow></math>,
+you can replace <math id="footnote1.m2" class="ltx_Math" alttext="\varepsilon" display="inline"><mi>ε</mi></math> with <math id="footnote1.m3" class="ltx_Math" alttext="1/M" display="inline"><mrow><mn>1</mn><mo>/</mo><mi>M</mi></mrow></math> for <math id="footnote1.m4" class="ltx_Math" alttext="M&gt;0" display="inline"><mrow><mi>M</mi><mo>&gt;</mo><mn>0</mn></mrow></math>,
+and let <math id="footnote1.m5" class="ltx_Math" alttext="M\to\infty" display="inline"><mrow><mi>M</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></math> instead.</span></span></span></p>
+<table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\lim_{\varepsilon\to 0^{+}}\int_{\varepsilon}^{1}\frac{1}{x^{r}}\;dx" display="block"><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>ε</mi><mo stretchy="false">→</mo><msup><mn>0</mn><mo>+</mo></msup></mrow></munder><mrow><msubsup><mo lspace="0.167em">∫</mo><mi>ε</mi><mn>1</mn></msubsup><mrow><mfrac><mn>1</mn><msup><mi>x</mi><mi>r</mi></msup></mfrac><mo>⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">or show it does not exist.</p>
+</div>
+<div id="Thmproblem3.p2" class="ltx_para">
+<p class="ltx_p">This can intuitively be thought of as
+the “improper” integral <math id="Thmproblem3.p2.m1" class="ltx_Math" alttext="\int_{0}^{1}x^{-r}\;dx" display="inline"><mrow><msubsup><mo>∫</mo><mn>0</mn><mn>1</mn></msubsup><mrow><msup><mi>x</mi><mrow><mo>−</mo><mi>r</mi></mrow></msup><mo lspace="0em">⁢</mo><mrow><mo rspace="0em">𝑑</mo><mi>x</mi></mrow></mrow></mrow></math>;
+it doesn’t make sense in our original definition since
+we did not (and cannot) define the integral
+over the non-compact <math id="Thmproblem3.p2.m2" class="ltx_Math" alttext="(0,1]" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> but we can still consider the integral over <math id="Thmproblem3.p2.m3" class="ltx_Math" alttext="[\varepsilon,1]" display="inline"><mrow><mo stretchy="false">[</mo><mi>ε</mi><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math>
+for any <math id="Thmproblem3.p2.m4" class="ltx_Math" alttext="\varepsilon&gt;0" display="inline"><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 30D</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Show that</p>
+<table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="\lim_{n\to\infty}\left(\frac{1}{n+1}+\frac{1}{n+2}+\dots+\frac{1}{2n}\right)=%
+\log 2." display="block"><mrow><mrow><mrow><munder><mo movablelimits="false">lim</mo><mrow><mi>n</mi><mo stretchy="false">→</mo><mi mathvariant="normal">∞</mi></mrow></munder><mrow><mo lspace="0em">(</mo><mrow><mfrac><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></mfrac><mo>+</mo><mfrac><mn>1</mn><mrow><mi>n</mi><mo>+</mo><mn>2</mn></mrow></mfrac><mo>+</mo><mi mathvariant="normal">⋯</mi><mo>+</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mo>⁢</mo><mi>n</mi></mrow></mfrac></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mrow><mi>log</mi><mo lspace="0.167em">⁡</mo><mn>2</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Write this as <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="\frac{1}{n}\sum_{k=1}^{n}\frac{1}{1+\frac{k}{n}}" display="inline"><mrow><mfrac><mn>1</mn><mi>n</mi></mfrac><mo>⁢</mo><mrow><msubsup><mo>∑</mo><mrow><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mfrac><mn>1</mn><mrow><mn>1</mn><mo>+</mo><mfrac><mi>k</mi><mi>n</mi></mfrac></mrow></mfrac></mrow></mrow></math>.
+Then you can interpret it as a rectangle sum
+of a certain Riemann integral.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="ch_power_series_taylor_series.html" title="In Part VIII Calculus 101 ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">29 </span>Power series and Taylor series</span></a><a href="../part_cmplxana/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">IX </span>Complex Analysis</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

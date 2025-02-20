@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Bonus: Let’s solve Pell’s equation!</title>
+		<meta property="og:title" content="Bonus: Let’s solve Pell’s equation!" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../algnt1/discriminant-properties.html">Previous chapter: More properties of the discriminant</a><br />
+<a href="../algnt2/galois-theory.html">Next chapter: Things Galois</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 58 </span>Bonus: Let’s solve Pell’s equation!</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">This is an optional aside, and can be safely ignored.
+(On the other hand, it’s pretty short.)</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">58.1 </span>Units</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="\pm 1" display="inline"><mrow><mo>±</mo><mn>1</mn></mrow></math>, roots of unity, <math id="S1.p1.m2" class="ltx_Math" alttext="3-2\sqrt{2}" display="inline"><mrow><mn>3</mn><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow></math> and its powers.</em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">Recall according to <a href="ch_ring_of_integers.html#prob:OK_unit_norm" title="Problem 54A. ‣ 54.4 A few harder problems to think about ‣ Chapter 54 The ring of integers ‣ Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">54A</span></a> that <math id="S1.p2.m1" class="ltx_Math" alttext="\alpha\in\mathcal{O}_{K}" display="inline"><mrow><mi>α</mi><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></mrow></math> is invertible
+if and only if</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="\operatorname{N}_{K/\mathbb{Q}}(\alpha)=\pm 1." display="block"><mrow><mrow><mrow><msub><mi mathvariant="normal">N</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>±</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">We let <math id="S1.p2.m2" class="ltx_Math" alttext="\mathcal{O}_{K}^{\times}" display="inline"><msubsup><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi><mo>×</mo></msubsup></math> denote the set of units of <math id="S1.p2.m3" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math>.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 58.1.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{K}^{\times}" display="inline"><msubsup><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi><mo>×</mo></msubsup></math> is a group under multiplication.
+Hence we name it the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> unit group</span> of <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math>.</span></p>
+</div>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">What are some examples of units?</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 58.1.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of units in a number field)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S1.I1" class="ltx_enumerate">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">1.</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\pm 1" display="inline"><mrow><mo>±</mo><mn>1</mn></mrow></math> are certainly units, present in any number field.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">2.</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> contains a root of unity <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math> (i.e. <math id="S1.I1.i2.p1.m3" class="ltx_Math" alttext="\omega^{n}=1" display="inline"><mrow><msup><mi>ω</mi><mi>n</mi></msup><mo>=</mo><mn>1</mn></mrow></math>),
+then <math id="S1.I1.i2.p1.m4" class="ltx_Math" alttext="\omega" display="inline"><mi>ω</mi></math> is a unit.
+(In fact, <math id="S1.I1.i2.p1.m5" class="ltx_Math" alttext="\pm 1" display="inline"><mrow><mo>±</mo><mn>1</mn></mrow></math> are special cases of this.)</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">3.</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Of course, not all units of <math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> are roots of unity.
+For example, if <math id="S1.I1.i3.p1.m2" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[\sqrt{3}]" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow></mrow></math> (from <math id="S1.I1.i3.p1.m3" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{3})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>) then
+the number <math id="S1.I1.i3.p1.m4" class="ltx_Math" alttext="2+\sqrt{3}" display="inline"><mrow><mn>2</mn><mo>+</mo><msqrt><mn>3</mn></msqrt></mrow></math> is a unit, as its norm is</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\operatorname{N}_{K/\mathbb{Q}}(2+\sqrt{3})=2^{2}-3\cdot 1^{2}=1." display="block"><mrow><mrow><mrow><msub><mi mathvariant="normal">N</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>+</mo><msqrt><mn>3</mn></msqrt></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mn>2</mn><mn>2</mn></msup><mo>−</mo><mrow><mn>3</mn><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mn>1</mn><mn>2</mn></msup></mrow></mrow><mo>=</mo><mn>1</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Alternatively, just note that the inverse <math id="S1.I1.i3.p1.m5" class="ltx_Math" alttext="2-\sqrt{3}\in\mathcal{O}_{K}" display="inline"><mrow><mrow><mn>2</mn><mo>−</mo><msqrt><mn>3</mn></msqrt></mrow><mo>∈</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></mrow></math> as well:</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\left(2-\sqrt{3}\right)\left(2+\sqrt{3}\right)=1." display="block"><mrow><mrow><mrow><mrow><mo>(</mo><mrow><mn>2</mn><mo>−</mo><msqrt><mn>3</mn></msqrt></mrow><mo>)</mo></mrow><mo>⁢</mo><mrow><mo>(</mo><mrow><mn>2</mn><mo>+</mo><msqrt><mn>3</mn></msqrt></mrow><mo>)</mo></mrow></mrow><mo>=</mo><mn>1</mn></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Either way, <math id="S1.I1.i3.p1.m6" class="ltx_Math" alttext="2-\sqrt{3}" display="inline"><mrow><mn>2</mn><mo>−</mo><msqrt><mn>3</mn></msqrt></mrow></math> is a unit.</p>
+</div>
+</li>
+<li id="S1.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">4.</span> 
+<div id="S1.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">Given any unit <math id="S1.I1.i4.p1.m1" class="ltx_Math" alttext="u\in\mathcal{O}_{K}^{\times}" display="inline"><mrow><mi>u</mi><mo>∈</mo><msubsup><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi><mo>×</mo></msubsup></mrow></math>, all its powers are also units.
+So for example, <math id="S1.I1.i4.p1.m2" class="ltx_Math" alttext="(3-2\sqrt{2})^{n}" display="inline"><msup><mrow><mo stretchy="false">(</mo><mrow><mn>3</mn><mo>−</mo><mrow><mn>2</mn><mo>⁢</mo><msqrt><mn>2</mn></msqrt></mrow></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msup></math> is always a unit of <math id="S1.I1.i4.p1.m3" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{2}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>2</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow></math>, for any <math id="S1.I1.i4.p1.m4" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+If <math id="S1.I1.i4.p1.m5" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> is not a root of unity, then this generates infinitely many new units in <math id="S1.I1.i4.p1.m6" class="ltx_Math" alttext="\mathcal{O}_{K}^{\times}" display="inline"><msubsup><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi><mo>×</mo></msubsup></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 58.1.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Verify the claims above that</span></p>
+<ol id="S1.I2" class="ltx_enumerate">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Roots of unity are units, and</span></p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Powers of units are units.</span></p>
+</div>
+</li>
+</ol>
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">One can either proceed from the definition
+or use the characterization <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\operatorname{N}_{K/\mathbb{Q}}(\alpha)=\pm 1" display="inline"><mrow><mrow><msub><mi mathvariant="normal">N</mi><mrow><mi>K</mi><mo>/</mo><mi>ℚ</mi></mrow></msub><mo>⁡</mo><mrow><mo stretchy="false">(</mo><mi>α</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>±</mo><mn>1</mn></mrow></mrow></math>.
+If one definition seems more natural to you, use the other.</span></p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">58.2 </span>Dirichlet’s unit theorem</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> The units of <math id="S2.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{3}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow></math> are <math id="S2.p1.m2" class="ltx_Math" alttext="\pm(2+\sqrt{3})^{n}" display="inline"><mrow><mo>±</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>+</mo><msqrt><mn>3</mn></msqrt></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msup></mrow></math>.</em></p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 58.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mu(\mathcal{O}_{K})" display="inline"><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> denote the set of roots of unity
+contained in a number field <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> (equivalently, in <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math>).</p>
+</div>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 58.2.2</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of <math id="S2.Thmtheorem2.m1" class="ltx_Math" alttext="\mu(\mathcal{O}_{K})" display="inline"><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S2.I1" class="ltx_enumerate">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="K=\mathbb{Q}(i)" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, then <math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[i]" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>. So</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\mu(\mathcal{O}_{K})=\{\pm 1,\pm i\}\quad\text{where }K=\mathbb{Q}(i)." display="block"><mrow><mrow><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mo>±</mo><mn>1</mn></mrow><mo>,</mo><mrow><mo>±</mo><mi>i</mi></mrow><mo stretchy="false">}</mo></mrow></mrow><mspace width="1em"></mspace><mrow><mrow><mtext>where </mtext><mo>⁢</mo><mi>K</mi></mrow><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{3})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, then <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[\sqrt{3}]" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow></mrow></math>. So</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="\mu(\mathcal{O}_{K})=\{\pm 1\}\quad\text{where }K=\mathbb{Q}(\sqrt{3})." display="block"><mrow><mrow><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mo>±</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow><mspace width="1em"></mspace><mrow><mrow><mtext>where </mtext><mo>⁢</mo><mi>K</mi></mrow><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+<li id="S2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S2.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.I1.i3.p1.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{-3})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mrow><mo>−</mo><mn>3</mn></mrow></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, then <math id="S2.I1.i3.p1.m2" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[\frac{1}{2}(1+\sqrt{-3})]" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><msqrt><mrow><mo>−</mo><mn>3</mn></mrow></msqrt></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+So</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\mu(\mathcal{O}_{K})=\left\{\pm 1,\frac{\pm 1\pm\sqrt{-3}}{2}\right\}\quad%
+\text{where }K=\mathbb{Q}(\sqrt{-3})" display="block"><mrow><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mrow><mo>±</mo><mn>1</mn></mrow><mo>,</mo><mfrac linethickness="0.6px"><mrow><mrow><mo>±</mo><mn>1</mn></mrow><mo>±</mo><msqrt><mrow><mo>−</mo><mn>3</mn></mrow></msqrt></mrow><mn>2</mn></mfrac><mo>}</mo></mrow></mrow><mspace width="1em"></mspace><mrow><mrow><mtext>where </mtext><mo>⁢</mo><mi>K</mi></mrow><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mrow><mo>−</mo><mn>3</mn></mrow></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where the <math id="S2.I1.i3.p1.m3" class="ltx_Math" alttext="\pm" display="inline"><mo>±</mo></math>’s in the second term need not depend on each other;
+in other words <math id="S2.I1.i3.p1.m4" class="ltx_Math" alttext="\mu(\mathcal{O}_{K})=\left\{z\mid z^{6}=1\right\}" display="inline"><mrow><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mi>z</mi><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msup><mi>z</mi><mn>6</mn></msup><mo>=</mo><mn>1</mn></mrow><mo>}</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 58.2.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that we always have that <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mu(\mathcal{O}_{K})" display="inline"><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+comprises the roots to <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="x^{n}-1" display="inline"><mrow><msup><mi>x</mi><mi>n</mi></msup><mo>−</mo><mn>1</mn></mrow></math> for some integer <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.
+(First, show it is a finite group under multiplication.)</span></p>
+</div>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">We now quote, without proof, the so-called Dirichlet’s unit theorem,
+which gives us a much more complete picture of what the units in <math id="S2.p2.m1" class="ltx_Math" alttext="\mathcal{O}_{K}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub></math> are.
+Legend says that Dirichlet found the proof of this theorem
+during an Easter concert in the Sistine Chapel.</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 58.2.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Dirichlet’s unit theorem)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="K" display="inline"><mi>K</mi></math> be a number field with signature <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="(r_{1},r_{2})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>r</mi><mn>1</mn></msub><mo>,</mo><msub><mi>r</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></math> and set</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="s=r_{1}+r_{2}-1." display="block"><mrow><mrow><mi>s</mi><mo>=</mo><mrow><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>+</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><mo>−</mo><mn>1</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Then there exist units <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="u_{1}" display="inline"><msub><mi>u</mi><mn>1</mn></msub></math>, …, <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="u_{s}" display="inline"><msub><mi>u</mi><mi>s</mi></msub></math> such that every unit
+<math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="\alpha\in\mathcal{O}_{K}^{\times}" display="inline"><mrow><mi>α</mi><mo>∈</mo><msubsup><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi><mo>×</mo></msubsup></mrow></math> can be written <em class="ltx_emph ltx_font_italic">uniquely</em> in the form</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\alpha=\omega\cdot u_{1}^{n_{1}}\dots u_{s}^{n_{s}}" display="block"><mrow><mi>α</mi><mo>=</mo><mrow><mrow><mi>ω</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msubsup><mi>u</mi><mn>1</mn><msub><mi>n</mi><mn>1</mn></msub></msubsup></mrow><mo>⁢</mo><mi mathvariant="normal">…</mi><mo>⁢</mo><msubsup><mi>u</mi><mi>s</mi><msub><mi>n</mi><mi>s</mi></msub></msubsup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">for <math id="S2.Thmtheorem4.p1.m6" class="ltx_Math" alttext="\omega\in\mu(\mathcal{O}_{K})" display="inline"><mrow><mi>ω</mi><mo>∈</mo><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math> is a root of unity,
+and <math id="S2.Thmtheorem4.p1.m7" class="ltx_Math" alttext="n_{1},\dots,n_{s}\in\mathbb{Z}" display="inline"><mrow><mrow><msub><mi>n</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>n</mi><mi>s</mi></msub></mrow><mo>∈</mo><mi>ℤ</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">More succinctly:</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_moral">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Moral 58.2.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">We have <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{K}^{\times}\cong\mathbb{Z}^{r_{1}+r_{2}-1}\times\mu(\mathcal{O}_{%
+K})" display="inline"><mrow><msubsup><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi><mo>×</mo></msubsup><mo>≅</mo><mrow><mrow><msup><mi>ℤ</mi><mrow><mrow><msub><mi>r</mi><mn>1</mn></msub><mo>+</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><mo>−</mo><mn>1</mn></mrow></msup><mo lspace="0.222em" rspace="0.222em">×</mo><mi>μ</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">A choice of <math id="S2.p4.m1" class="ltx_Math" alttext="u_{1}" display="inline"><msub><mi>u</mi><mn>1</mn></msub></math>, …, <math id="S2.p4.m2" class="ltx_Math" alttext="u_{s}" display="inline"><msub><mi>u</mi><mi>s</mi></msub></math> is called a choice of <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> fundamental units</span>.</p>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">Here are some example applications.</p>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 58.2.6</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Some unit groups)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S2.I2" class="ltx_enumerate">
+<li id="S2.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S2.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.I2.i1.p1.m1" class="ltx_Math" alttext="K=\mathbb{Q}(i)" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> with signature <math id="S2.I2.i1.p1.m2" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math>.
+Then we obtain <math id="S2.I2.i1.p1.m3" class="ltx_Math" alttext="s=0" display="inline"><mrow><mi>s</mi><mo>=</mo><mn>0</mn></mrow></math>, so Dirichlet’s Unit theorem says that there are no
+units other than the roots of unity.
+Thus</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="\mathcal{O}_{K}^{\times}=\{\pm 1,\pm i\}\quad\text{where }K=\mathbb{Q}(i)." display="block"><mrow><mrow><mrow><msubsup><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi><mo>×</mo></msubsup><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mo>±</mo><mn>1</mn></mrow><mo>,</mo><mrow><mo>±</mo><mi>i</mi></mrow><mo stretchy="false">}</mo></mrow></mrow><mspace width="1em"></mspace><mrow><mrow><mtext>where </mtext><mo>⁢</mo><mi>K</mi></mrow><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This is not surprising,
+since <math id="S2.I2.i1.p1.m4" class="ltx_Math" alttext="a+bi\in\mathbb{Z}[i]" display="inline"><mrow><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><mi>i</mi></mrow></mrow><mo>∈</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>i</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> is a unit if and only if <math id="S2.I2.i1.p1.m5" class="ltx_Math" alttext="a^{2}+b^{2}=1" display="inline"><mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>+</mo><msup><mi>b</mi><mn>2</mn></msup></mrow><mo>=</mo><mn>1</mn></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S2.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.I2.i2.p1.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{3})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>3</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, which has signature <math id="S2.I2.i2.p1.m2" class="ltx_Math" alttext="(2,0)" display="inline"><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></math>.
+Then <math id="S2.I2.i2.p1.m3" class="ltx_Math" alttext="s=1" display="inline"><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow></math>, so we expect exactly one fundamental unit.
+A fundamental unit is <math id="S2.I2.i2.p1.m4" class="ltx_Math" alttext="2+\sqrt{3}" display="inline"><mrow><mn>2</mn><mo>+</mo><msqrt><mn>3</mn></msqrt></mrow></math> (or <math id="S2.I2.i2.p1.m5" class="ltx_Math" alttext="2-\sqrt{3}" display="inline"><mrow><mn>2</mn><mo>−</mo><msqrt><mn>3</mn></msqrt></mrow></math>, its inverse) with norm <math id="S2.I2.i2.p1.m6" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, and so we find</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="\mathcal{O}_{K}^{\times}=\left\{\pm(2+\sqrt{3})^{n}\mid n\in\mathbb{Z}\right\}." display="block"><mrow><mrow><msubsup><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi><mo>×</mo></msubsup><mo>=</mo><mrow><mo>{</mo><mrow><mo>±</mo><msup><mrow><mo stretchy="false">(</mo><mrow><mn>2</mn><mo>+</mo><msqrt><mn>3</mn></msqrt></mrow><mo stretchy="false">)</mo></mrow><mi>n</mi></msup></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>n</mi><mo>∈</mo><mi>ℤ</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+<li id="S2.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S2.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.I2.i3.p1.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt[3]{2})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mroot><mn>2</mn><mn>3</mn></mroot><mo stretchy="false">)</mo></mrow></mrow></mrow></math> with signature <math id="S2.I2.i3.p1.m2" class="ltx_Math" alttext="(1,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>1</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math>.
+Then <math id="S2.I2.i3.p1.m3" class="ltx_Math" alttext="s=1" display="inline"><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow></math>, so we expect exactly one fundamental unit.
+The choice <math id="S2.I2.i3.p1.m4" class="ltx_Math" alttext="1+\sqrt[3]{2}+\sqrt[3]{4}" display="inline"><mrow><mn>1</mn><mo>+</mo><mroot><mn>2</mn><mn>3</mn></mroot><mo>+</mo><mroot><mn>4</mn><mn>3</mn></mroot></mrow></math>. So</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\mathcal{O}_{K}^{\times}=\left\{\pm\left(1+\sqrt[3]{2}+\sqrt[3]{4}\right)^{n}%
+\mid n\in\mathbb{Z}\right\}." display="block"><mrow><mrow><msubsup><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi><mo>×</mo></msubsup><mo>=</mo><mrow><mo>{</mo><mrow><mo>±</mo><msup><mrow><mo>(</mo><mrow><mn>1</mn><mo>+</mo><mroot><mn>2</mn><mn>3</mn></mroot><mo>+</mo><mroot><mn>4</mn><mn>3</mn></mroot></mrow><mo>)</mo></mrow><mi>n</mi></msup></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>n</mi><mo>∈</mo><mi>ℤ</mi></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">I haven’t actually shown you that these are fundamental units,
+and indeed computing fundamental units is in general hard.</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">58.3 </span>Finding fundamental units</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Here is a table with some fundamental units.</p>
+<div class="table-container"><table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="\begin{array}[]{rl}d&amp;\text{Unit}\\
+\hline\cr d=2&amp;1+\sqrt{2}\\
+d=3&amp;2+\sqrt{3}\\
+d=5&amp;\frac{1}{2}(1+\sqrt{5})\\
+d=6&amp;5+2\sqrt{6}\\
+d=7&amp;8+3\sqrt{7}\\
+d=10&amp;3+\sqrt{10}\\
+d=11&amp;10+3\sqrt{1}1\end{array}" display="block"><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_right" columnalign="right"><mi>d</mi></mtd><mtd class="ltx_align_left" columnalign="left"><mtext>Unit</mtext></mtd></mtr><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mrow><mi>d</mi><mo>=</mo><mn>2</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mn>1</mn><mo>+</mo><msqrt><mn>2</mn></msqrt></mrow></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mrow><mi>d</mi><mo>=</mo><mn>3</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mn>2</mn><mo>+</mo><msqrt><mn>3</mn></msqrt></mrow></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mrow><mi>d</mi><mo>=</mo><mn>5</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mstyle displaystyle="false"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mrow><mi>d</mi><mo>=</mo><mn>6</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mn>5</mn><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><msqrt><mn>6</mn></msqrt></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mrow><mi>d</mi><mo>=</mo><mn>7</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mn>8</mn><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msqrt><mn>7</mn></msqrt></mrow></mrow></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mrow><mi>d</mi><mo>=</mo><mn>10</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mn>3</mn><mo>+</mo><msqrt><mn>10</mn></msqrt></mrow></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mrow><mi>d</mi><mo>=</mo><mn>11</mn></mrow></mtd><mtd class="ltx_align_left" columnalign="left"><mrow><mn>10</mn><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msqrt><mn>1</mn></msqrt><mo>⁢</mo><mn>1</mn></mrow></mrow></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">In general, determining fundamental units is computationally hard.</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">However, once I tell you what the fundamental unit is, it’s not too bad
+(at least in the case <math id="S3.p3.m1" class="ltx_Math" alttext="s=1" display="inline"><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow></math>) to verify it.
+For example,
+suppose we want to show that <math id="S3.p3.m2" class="ltx_Math" alttext="10+3\sqrt{11}" display="inline"><mrow><mn>10</mn><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msqrt><mn>11</mn></msqrt></mrow></mrow></math> is a fundamental unit of <math id="S3.p3.m3" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{1}1)" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><msqrt><mn>1</mn></msqrt><mo>⁢</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+which has ring of integers <math id="S3.p3.m4" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{11}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mn>11</mn></msqrt><mo stretchy="false">]</mo></mrow></mrow></math>.
+If not, then for some <math id="S3.p3.m5" class="ltx_Math" alttext="n&gt;1" display="inline"><mrow><mi>n</mi><mo>&gt;</mo><mn>1</mn></mrow></math>, we would have to have</p>
+<div class="table-container"><table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="10+3\sqrt{11}=\pm\left(x+y\sqrt{11}\right)^{n}." display="block"><mrow><mrow><mrow><mn>10</mn><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msqrt><mn>11</mn></msqrt></mrow></mrow><mo>=</mo><mrow><mo>±</mo><msup><mrow><mo>(</mo><mrow><mi>x</mi><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><msqrt><mn>11</mn></msqrt></mrow></mrow><mo>)</mo></mrow><mi>n</mi></msup></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">For this to happen, at the very least we would need <math id="S3.p3.m6" class="ltx_Math" alttext="\left\lvert y\right\rvert&lt;3" display="inline"><mrow><mrow><mo>|</mo><mi>y</mi><mo>|</mo></mrow><mo>&lt;</mo><mn>3</mn></mrow></math>.
+We would also have <math id="S3.p3.m7" class="ltx_Math" alttext="x^{2}-11y^{2}=\pm 1" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>11</mn><mo>⁢</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mo>±</mo><mn>1</mn></mrow></mrow></math>.
+So one can just verify (using <math id="S3.p3.m8" class="ltx_Math" alttext="y=1,2" display="inline"><mrow><mi>y</mi><mo>=</mo><mrow><mn>1</mn><mo>,</mo><mn>2</mn></mrow></mrow></math>) that this fails.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">The point is that: Since <math id="S3.p4.m1" class="ltx_Math" alttext="(10,3)" display="inline"><mrow><mo stretchy="false">(</mo><mn>10</mn><mo>,</mo><mn>3</mn><mo stretchy="false">)</mo></mrow></math> is the <em class="ltx_emph ltx_font_italic">smallest</em>
+(in the sense of <math id="S3.p4.m2" class="ltx_Math" alttext="\left\lvert y\right\rvert" display="inline"><mrow><mo>|</mo><mi>y</mi><mo>|</mo></mrow></math>)
+integer solution to <math id="S3.p4.m3" class="ltx_Math" alttext="x^{2}-11y^{2}=\pm 1" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>11</mn><mo>⁢</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mo>±</mo><mn>1</mn></mrow></mrow></math>, it must be the fundamental unit.
+This holds more generally, although in the case that <math id="S3.p4.m4" class="ltx_Math" alttext="d\equiv 1\pmod{4}" display="inline"><mrow><mi>d</mi><mo>≡</mo><mrow><mn>1</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+a modification must be made as <math id="S3.p4.m5" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>, <math id="S3.p4.m6" class="ltx_Math" alttext="y" display="inline"><mi>y</mi></math> might be half-integers (like <math id="S3.p4.m7" class="ltx_Math" alttext="\frac{1}{2}(1+\sqrt{5})" display="inline"><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mo stretchy="false">)</mo></mrow></mrow></math>).</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 58.3.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Fundamental units of Pell’s equations)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Assume <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> is a squarefree integer.</p>
+<ol id="S3.I1" class="ltx_enumerate">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="d\equiv 2,3\pmod{4}" display="inline"><mrow><mi>d</mi><mo>≡</mo><mrow><mn>2</mn><mo>,</mo><mrow><mn>3</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>,
+and <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="(x,y)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></math> is a minimal integer solution to <math id="S3.I1.i1.p1.m3" class="ltx_Math" alttext="x^{2}-dy^{2}=\pm 1" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mi>d</mi><mo>⁢</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mo>±</mo><mn>1</mn></mrow></mrow></math>,
+then <math id="S3.I1.i1.p1.m4" class="ltx_Math" alttext="x+y\sqrt{d}" display="inline"><mrow><mi>x</mi><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><msqrt><mi>d</mi></msqrt></mrow></mrow></math> is a fundamental unit.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="d\equiv 1\pmod{4}" display="inline"><mrow><mi>d</mi><mo>≡</mo><mrow><mn>1</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math>,
+and <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="(x,y)" display="inline"><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></math> is a minimal <em class="ltx_emph ltx_font_italic">half-integer</em> solution to <math id="S3.I1.i2.p1.m3" class="ltx_Math" alttext="x^{2}-dy^{2}=\pm 1" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mi>d</mi><mo>⁢</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mo>±</mo><mn>1</mn></mrow></mrow></math>,
+then <math id="S3.I1.i2.p1.m4" class="ltx_Math" alttext="x+y\sqrt{d}" display="inline"><mrow><mi>x</mi><mo>+</mo><mrow><mi>y</mi><mo>⁢</mo><msqrt><mi>d</mi></msqrt></mrow></mrow></math> is a fundamental unit.
+(Equivalently, the minimal integer solution to <math id="S3.I1.i2.p1.m5" class="ltx_Math" alttext="a^{2}-db^{2}=\pm 4" display="inline"><mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mi>d</mi><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mo>±</mo><mn>4</mn></mrow></mrow></math>
+gives <math id="S3.I1.i2.p1.m6" class="ltx_Math" alttext="\frac{1}{2}(a+b\sqrt{d})" display="inline"><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msqrt><mi>d</mi></msqrt></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.)</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">(Any reasonable definition of “minimal” will work, such as sorting by <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\left\lvert y\right\rvert" display="inline"><mrow><mo>|</mo><mi>y</mi><mo>|</mo></mrow></math>.)</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">58.4 </span>Pell’s equation</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">This class of results completely eradicates Pell’s Equation.
+After all, solving</p>
+<div class="table-container"><table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="a^{2}-d\cdot b^{2}=\pm 1" display="block"><mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mi>d</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mo>±</mo><mn>1</mn></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">amounts to finding elements of <math id="S4.p1.m1" class="ltx_Math" alttext="\mathbb{Z}[\sqrt{d}]" display="inline"><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mi>d</mi></msqrt><mo stretchy="false">]</mo></mrow></mrow></math> with norm <math id="S4.p1.m2" class="ltx_Math" alttext="\pm 1" display="inline"><mrow><mo>±</mo><mn>1</mn></mrow></math>.
+It’s a bit weirder in the <math id="S4.p1.m3" class="ltx_Math" alttext="d\equiv 1\pmod{4}" display="inline"><mrow><mi>d</mi><mo>≡</mo><mrow><mn>1</mn><mspace width="0.949em"></mspace><mrow><mo stretchy="false">(</mo><mrow><mo lspace="0em" rspace="0.167em">mod</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> case, since in that case <math id="S4.p1.m4" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{d})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mi>d</mi></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+gives <math id="S4.p1.m5" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[\frac{1}{2}(1+\sqrt{d})]" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><msqrt><mi>d</mi></msqrt></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>, and so the fundamental unit may not actually be a solution.
+(For example, when <math id="S4.p1.m6" class="ltx_Math" alttext="d=5" display="inline"><mrow><mi>d</mi><mo>=</mo><mn>5</mn></mrow></math>, we get the solution <math id="S4.p1.m7" class="ltx_Math" alttext="(\frac{1}{2},\frac{1}{2})" display="inline"><mrow><mo stretchy="false">(</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>,</mo><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo stretchy="false">)</mo></mrow></math>.)
+Nonetheless, all <em class="ltx_emph ltx_font_italic">integer</em> solutions are eventually generated.</p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">To make this all concrete, here’s a simple example.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 58.4.1</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(<math id="S4.Thmtheorem1.m1" class="ltx_Math" alttext="x^{2}-5y^{2}=\pm 1" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>5</mn><mo>⁢</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mo>±</mo><mn>1</mn></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Set <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="K=\mathbb{Q}(\sqrt{5})" display="inline"><mrow><mi>K</mi><mo>=</mo><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mn>5</mn></msqrt><mo stretchy="false">)</mo></mrow></mrow></mrow></math>, so <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathcal{O}_{K}=\mathbb{Z}[\frac{1}{2}(1+\sqrt{5})]" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi></msub><mo>=</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">]</mo></mrow></mrow></mrow></math>.
+By Dirichlet’s unit theorem, <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathcal{O}_{K}^{\times}" display="inline"><msubsup><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>K</mi><mo>×</mo></msubsup></math> is generated by a single element <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math>.
+The choice</p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="u=\frac{1}{2}+\frac{1}{2}\sqrt{5}" display="block"><mrow><mi>u</mi><mo>=</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>+</mo><mrow><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac><mo>⁢</mo><msqrt><mn>5</mn></msqrt></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">serves as a fundamental unit,
+as there are no smaller integer solutions to <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="a^{2}-5b^{2}=\pm 4" display="inline"><mrow><mrow><msup><mi>a</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>5</mn><mo>⁢</mo><msup><mi>b</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mo>±</mo><mn>4</mn></mrow></mrow></math>.</p>
+</div>
+<div id="S4.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">The first several powers of <math id="S4.Thmtheorem1.p2.m1" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> are</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="\begin{array}[]{rrr}n&amp;\lx@intercol\hfil u^{n}\hfil\lx@intercol&amp;\text{Norm}\\
+\hline\cr-2&amp;\frac{1}{2}(3-\sqrt{5})&amp;1\\
+-1&amp;\frac{1}{2}(1-\sqrt{5})&amp;-1\\
+0&amp;1&amp;1\\
+1&amp;\frac{1}{2}(1+\sqrt{5})&amp;-1\\
+2&amp;\frac{1}{2}(3+\sqrt{5})&amp;1\\
+3&amp;2+\sqrt{5}&amp;-1\\
+4&amp;\frac{1}{2}(7+3\sqrt{5})&amp;1\\
+5&amp;\frac{1}{2}(11+5\sqrt{5})&amp;-1\\
+6&amp;9+4\sqrt{5}&amp;1\end{array}" display="block"><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd class="ltx_align_right" columnalign="right"><mi>n</mi></mtd><mtd><msup><mi>u</mi><mi>n</mi></msup></mtd><mtd class="ltx_align_right" columnalign="right"><mtext>Norm</mtext></mtd></mtr><mtr><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd><mtd class="ltx_border_t"></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>2</mn></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mstyle displaystyle="false"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>3</mn><mo>−</mo><msqrt><mn>5</mn></msqrt></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mstyle displaystyle="false"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>−</mo><msqrt><mn>5</mn></msqrt></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mn>0</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mstyle displaystyle="false"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mn>2</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mstyle displaystyle="false"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>3</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mn>3</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mn>2</mn><mo>+</mo><msqrt><mn>5</mn></msqrt></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mn>4</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mstyle displaystyle="false"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>7</mn><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msqrt><mn>5</mn></msqrt></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mn>5</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mstyle displaystyle="false"><mfrac linethickness="0.6px"><mn>1</mn><mn>2</mn></mfrac></mstyle><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mn>11</mn><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><msqrt><mn>5</mn></msqrt></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mo>−</mo><mn>1</mn></mrow></mtd></mtr><mtr><mtd class="ltx_align_right" columnalign="right"><mn>6</mn></mtd><mtd class="ltx_align_right" columnalign="right"><mrow><mn>9</mn><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><msqrt><mn>5</mn></msqrt></mrow></mrow></mtd><mtd class="ltx_align_right" columnalign="right"><mn>1</mn></mtd></mtr></mtable></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">One can see that the first integer solution is <math id="S4.Thmtheorem1.p2.m2" class="ltx_Math" alttext="(2,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>2</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math>, which gives <math id="S4.Thmtheorem1.p2.m3" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math>.
+The first solution with <math id="S4.Thmtheorem1.p2.m4" class="ltx_Math" alttext="+1" display="inline"><mrow><mo>+</mo><mn>1</mn></mrow></math> is <math id="S4.Thmtheorem1.p2.m5" class="ltx_Math" alttext="(9,4)" display="inline"><mrow><mo stretchy="false">(</mo><mn>9</mn><mo>,</mo><mn>4</mn><mo stretchy="false">)</mo></mrow></math>.
+Continuing the pattern, we find that every third power of <math id="S4.Thmtheorem1.p2.m6" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> gives an integer solution
+(see also <a href="#prob:unit_cubed" title="Problem 58B. ‣ 58.5 A few harder problems to think about ‣ Chapter 58 Bonus: Let’s solve Pell’s equation! ‣ Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">58B</span></a>),
+with the odd ones giving a solution to <math id="S4.Thmtheorem1.p2.m7" class="ltx_Math" alttext="x^{2}-5y^{2}=-1" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>5</mn><mo>⁢</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math> and
+the even ones a solution to <math id="S4.Thmtheorem1.p2.m8" class="ltx_Math" alttext="x^{2}-5y^{2}=+1" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>5</mn><mo>⁢</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mo>+</mo><mn>1</mn></mrow></mrow></math>.
+All solutions are generated this way, up to <math id="S4.Thmtheorem1.p2.m9" class="ltx_Math" alttext="\pm" display="inline"><mo>±</mo></math> signs
+(by considering <math id="S4.Thmtheorem1.p2.m10" class="ltx_Math" alttext="\pm u^{\pm n}" display="inline"><mrow><mo>±</mo><msup><mi>u</mi><mrow><mo>±</mo><mi>n</mi></mrow></msup></mrow></math>).</p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">58.5 </span>A few harder problems to think about</h2>
+
+<div id="Thmproblem1" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 58A</span></span><span class="ltx_text ltx_font_bold"> </span>(Fictitious account of the battle of Hastings)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Determine the number of soldiers in the following battle:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">The men of Harold stood well together,
+as their wont was, and formed thirteen squares,
+with a like number of men in every square thereof, and woe
+to the hardy Norman who ventured to enter their redoubts;
+for a single blow of Saxon war-hatched would break his lance
+and cut through his coat of mail . . .
+when Harold threw himself into the fray the Saxons
+were one might square of men, shouting the battle-cries,
+“Ut!”, “Olicrosse!”, “Godemite!”</p>
+</blockquote>
+</div>
+</div>
+<div id="prob:unit_cubed" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 58B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="d&gt;0" display="inline"><mrow><mi>d</mi><mo>&gt;</mo><mn>0</mn></mrow></math> be a squarefree integer,
+and let <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="u" display="inline"><mi>u</mi></math> denote the fundamental unit of <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="\mathbb{Q}(\sqrt{d})" display="inline"><mrow><mi>ℚ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msqrt><mi>d</mi></msqrt><mo stretchy="false">)</mo></mrow></mrow></math>.
+Show that either <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="u\in\mathbb{Z}[\sqrt{d}]" display="inline"><mrow><mi>u</mi><mo>∈</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mi>d</mi></msqrt><mo stretchy="false">]</mo></mrow></mrow></mrow></math>,
+or <math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="u^{n}\in\mathbb{Z}[\sqrt{d}]\iff 3\mid n" display="inline"><mrow><mrow><msup><mi>u</mi><mi>n</mi></msup><mo>∈</mo><mrow><mi>ℤ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msqrt><mi>d</mi></msqrt><mo stretchy="false">]</mo></mrow></mrow></mrow><mo stretchy="false">⇔</mo><mrow><mn>3</mn><mo>∣</mo><mi>n</mi></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 58C</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Show that there are no integer solutions to</p>
+<div class="table-container"><table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="x^{2}-34y^{2}=-1" display="block"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>−</mo><mrow><mn>34</mn><mo>⁢</mo><msup><mi>y</mi><mn>2</mn></msup></mrow></mrow><mo>=</mo><mrow><mo>−</mo><mn>1</mn></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">despite the fact that <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="-1" display="inline"><mrow><mo>−</mo><mn>1</mn></mrow></math> is a quadratic residue mod <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="34" display="inline"><mn>34</mn></math>.</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../algnt1/discriminant-properties.html">Previous chapter: More properties of the discriminant</a><br />
+<a href="../algnt2/galois-theory.html">Next chapter: Things Galois</a>
+</nav>
+
+		</main>
+	</body>
+</html>

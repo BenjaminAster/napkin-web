@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Projective varieties</title>
+		<meta property="og:title" content="Projective varieties" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../ag1/affine-varieties-ringed-spaces.html">Previous chapter: Affine varieties as ringed spaces</a><br />
+<a href="../ag1/bezouts-theorem.html">Next chapter: Bonus: Bézout’s theorem</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 79 </span>Projective varieties</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">Having studied affine varieties in <math id="p1.m1" class="ltx_Math" alttext="\mathbb{A}^{n}" display="inline"><msup><mi>𝔸</mi><mi>n</mi></msup></math>, we now consider <math id="p1.m2" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math>.
+We will also make it into a baby ringed space
+in the same way as with <math id="p1.m3" class="ltx_Math" alttext="\mathbb{A}^{n}" display="inline"><msup><mi>𝔸</mi><mi>n</mi></msup></math>.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">79.1 </span>Graded rings</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S1.p1.m1" class="ltx_Math" alttext="\mathbb{C}[x_{0},\dots,x_{n}]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math> is a graded ring.</em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">We first take the time to state what a graded ring is,
+just so that we have this language to use (now and later).</p>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">This definition is the same as <a href="../algtop2/application-of-cohomology.html#def:graded_ring" title="Definition 76.3.2. ‣ 76.3 Graded rings ‣ Chapter 76 Application of cohomology ‣ Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Definition</span> <span class="ltx_text ltx_ref_tag">76.3.2</span></a>.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 79.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> graded ring</span> <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math> is a ring with the following additional structure:
+as an abelian group, it decomposes as</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="R=\bigoplus_{d\geq 0}R^{d}" display="block"><mrow><mi>R</mi><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">⨁</mo><mrow><mi>d</mi><mo>≥</mo><mn>0</mn></mrow></munder><msup><mi>R</mi><mi>d</mi></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">where <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="R^{0}" display="inline"><msup><mi>R</mi><mn>0</mn></msup></math>, <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="R^{1}" display="inline"><msup><mi>R</mi><mn>1</mn></msup></math>, …, are abelian groups.
+The ring multiplication has the property that
+if <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="r\in R^{d}" display="inline"><mrow><mi>r</mi><mo>∈</mo><msup><mi>R</mi><mi>d</mi></msup></mrow></math> and <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="s\in R^{e}" display="inline"><mrow><mi>s</mi><mo>∈</mo><msup><mi>R</mi><mi>e</mi></msup></mrow></math>, we have <math id="S1.Thmtheorem1.p1.m6" class="ltx_Math" alttext="rs\in R^{d+e}" display="inline"><mrow><mrow><mi>r</mi><mo>⁢</mo><mi>s</mi></mrow><mo>∈</mo><msup><mi>R</mi><mrow><mi>d</mi><mo>+</mo><mi>e</mi></mrow></msup></mrow></math>.
+Elements of an <math id="S1.Thmtheorem1.p1.m7" class="ltx_Math" alttext="R^{d}" display="inline"><msup><mi>R</mi><mi>d</mi></msup></math> are called <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> homogeneous elements</span>;
+we write “<math id="S1.Thmtheorem1.p1.m8" class="ltx_Math" alttext="d=\deg r" display="inline"><mrow><mi>d</mi><mo>=</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>r</mi></mrow></mrow></math>” to mean “<math id="S1.Thmtheorem1.p1.m9" class="ltx_Math" alttext="r\in R^{d}" display="inline"><mrow><mi>r</mi><mo>∈</mo><msup><mi>R</mi><mi>d</mi></msup></mrow></math>”.</p>
+</div>
+<div id="S1.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">We denote by <math id="S1.Thmtheorem1.p2.m1" class="ltx_Math" alttext="R^{+}" display="inline"><msup><mi>R</mi><mo>+</mo></msup></math> the ideal <math id="S1.Thmtheorem1.p2.m2" class="ltx_Math" alttext="R\setminus R^{0}" display="inline"><mrow><mi>R</mi><mo>∖</mo><msup><mi>R</mi><mn>0</mn></msup></mrow></math> generated by
+the homogeneous elements of nonzero degree,
+and call it the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> irrelevant ideal</span>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 79.1.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">For experts: all our graded rings are commutative with <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 79.1.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of graded rings)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S1.I1" class="ltx_enumerate">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The ring <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{C}[x]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></math> is graded by degree: as abelian groups,
+<math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="\mathbb{C}[x]\cong\mathbb{C}\oplus x\mathbb{C}\oplus x^{2}\mathbb{C}\oplus\dots" display="inline"><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow><mo>≅</mo><mrow><mi>ℂ</mi><mo>⊕</mo><mrow><mi>x</mi><mo>⁢</mo><mi>ℂ</mi></mrow><mo>⊕</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>⁢</mo><mi>ℂ</mi></mrow><mo>⊕</mo><mi mathvariant="normal">…</mi></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">More generally, the polynomial ring <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\mathbb{C}[x_{0},\dots,x_{n}]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math>
+is graded by degree.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 79.1.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The notation <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\deg r" display="inline"><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>r</mi></mrow></math> is abusive in the case <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="r=0" display="inline"><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow></math>;
+note that <math id="S1.Thmtheorem4.p1.m3" class="ltx_Math" alttext="0\in R^{d}" display="inline"><mrow><mn>0</mn><mo>∈</mo><msup><mi>R</mi><mi>d</mi></msup></mrow></math> for every <math id="S1.Thmtheorem4.p1.m4" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math>.
+So it makes sense to talk about “the” degree of <math id="S1.Thmtheorem4.p1.m5" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>
+except when <math id="S1.Thmtheorem4.p1.m6" class="ltx_Math" alttext="r=0" display="inline"><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow></math>.</p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">We will frequently refer to homogeneous ideals:</p>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 79.1.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">An ideal <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="I\subseteq\mathbb{C}[x_{0},\dots,x_{n}]" display="inline"><mrow><mi>I</mi><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> homogeneous</span>
+if it can be written as <math id="S1.Thmtheorem5.p1.m2" class="ltx_Math" alttext="I=(f_{1},\dots,f_{m})" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>f</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>
+where each <math id="S1.Thmtheorem5.p1.m3" class="ltx_Math" alttext="f_{i}" display="inline"><msub><mi>f</mi><mi>i</mi></msub></math> is a homogeneous polynomial.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem6" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 79.1.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S1.Thmtheorem6.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> and <math id="S1.Thmtheorem6.p1.m2" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> are homogeneous,
+then so are <math id="S1.Thmtheorem6.p1.m3" class="ltx_Math" alttext="I+J" display="inline"><mrow><mi>I</mi><mo>+</mo><mi>J</mi></mrow></math>, <math id="S1.Thmtheorem6.p1.m4" class="ltx_Math" alttext="IJ" display="inline"><mrow><mi>I</mi><mo>⁢</mo><mi>J</mi></mrow></math>, <math id="S1.Thmtheorem6.p1.m5" class="ltx_Math" alttext="I\cap J" display="inline"><mrow><mi>I</mi><mo>∩</mo><mi>J</mi></mrow></math>, <math id="S1.Thmtheorem6.p1.m6" class="ltx_Math" alttext="\sqrt{I}" display="inline"><msqrt><mi>I</mi></msqrt></math>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem7" class="ltx_theorem ltx_theorem_lemma">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Lemma 79.1.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Graded quotients are graded too)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem7.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> be a homogeneous ideal of a graded ring <math id="S1.Thmtheorem7.p1.m2" class="ltx_Math" alttext="R" display="inline"><mi>R</mi></math>.
+Then</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="R/I=\bigoplus_{d\geq 0}R^{d}/(R^{d}\cap I)" display="block"><mrow><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow><mo rspace="0.111em">=</mo><mrow><munder><mo movablelimits="false">⨁</mo><mrow><mi>d</mi><mo>≥</mo><mn>0</mn></mrow></munder><mrow><msup><mi>R</mi><mi>d</mi></msup><mo>/</mo><mrow><mo stretchy="false">(</mo><mrow><msup><mi>R</mi><mi>d</mi></msup><mo>∩</mo><mi>I</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">realizes <math id="S1.Thmtheorem7.p1.m3" class="ltx_Math" alttext="R/I" display="inline"><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow></math> as a graded ring.</p>
+</div>
+</div>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">Since these assertions are just algebra,
+we omit their proofs here.</p>
+</div>
+<div id="S1.Thmtheorem8" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 79.1.8</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S1.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">In some other books, a homogeneous ideal (or <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> graded ideal</span>) is sometimes equivalently defined as an ideal <math id="S1.Thmtheorem8.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>
+such that <math id="S1.Thmtheorem8.p1.m2" class="ltx_Math" alttext="I=\bigoplus_{d\geq 0}(R^{d}\cap I)" display="inline"><mrow><mi>I</mi><mo rspace="0.111em">=</mo><mrow><msub><mo rspace="0em">⨁</mo><mrow><mi>d</mi><mo>≥</mo><mn>0</mn></mrow></msub><mrow><mo stretchy="false">(</mo><mrow><msup><mi>R</mi><mi>d</mi></msup><mo>∩</mo><mi>I</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> as abelian group.
+In fact, we can verify that graded ideals are precisely the ones such that the quotient is naturally graded.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem9" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 79.1.9</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Example of a graded quotient ring)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem9.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem9.p1.m1" class="ltx_Math" alttext="R=\mathbb{C}[x,y]" display="inline"><mrow><mi>R</mi><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> and set <math id="S1.Thmtheorem9.p1.m2" class="ltx_Math" alttext="I=(x^{3},y^{2})" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><msup><mi>x</mi><mn>3</mn></msup><mo>,</mo><msup><mi>y</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow></mrow></math>.
+Let <math id="S1.Thmtheorem9.p1.m3" class="ltx_Math" alttext="S=R/I" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow></mrow></math>. Then</p>
+<div class="table-container"><table id="A5.S3.EGx155" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex3"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex3.m1" class="ltx_Math" alttext="\displaystyle S^{0}" display="inline"><msup><mi>S</mi><mn>0</mn></msup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex3.m2" class="ltx_Math" alttext="\displaystyle=\mathbb{C}" display="inline"><mrow><mi></mi><mo>=</mo><mi>ℂ</mi></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex4.m1" class="ltx_Math" alttext="\displaystyle S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex4.m2" class="ltx_Math" alttext="\displaystyle=\mathbb{C}x\oplus\mathbb{C}y" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mi>x</mi></mrow><mo>⊕</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mi>y</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex5.m1" class="ltx_Math" alttext="\displaystyle S^{2}" display="inline"><msup><mi>S</mi><mn>2</mn></msup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex5.m2" class="ltx_Math" alttext="\displaystyle=\mathbb{C}x^{2}\oplus\mathbb{C}xy" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo>⊕</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mi>x</mi><mo>⁢</mo><mi>y</mi></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex6"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex6.m1" class="ltx_Math" alttext="\displaystyle S^{3}" display="inline"><msup><mi>S</mi><mn>3</mn></msup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex6.m2" class="ltx_Math" alttext="\displaystyle=\mathbb{C}x^{2}y" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>x</mi><mn>2</mn></msup><mo>⁢</mo><mi>y</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex7.m1" class="ltx_Math" alttext="\displaystyle S^{d}" display="inline"><msup><mi>S</mi><mi>d</mi></msup></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex7.m2" class="ltx_Math" alttext="\displaystyle=0\qquad\forall d\geq 4." display="inline"><mrow><mrow><mrow><mi></mi><mo>=</mo><mn>0</mn></mrow><mspace width="2.167em"></mspace><mrow><mrow><mo rspace="0.167em">∀</mo><mi>d</mi></mrow><mo>≥</mo><mn>4</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">So in fact <math id="S1.Thmtheorem9.p1.m4" class="ltx_Math" alttext="S=R/I" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mi>R</mi><mo>/</mo><mi>I</mi></mrow></mrow></math> is graded,
+and is a six-dimensional <math id="S1.Thmtheorem9.p1.m5" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>-vector space.</p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">79.2 </span>The ambient space</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Perhaps <math id="S2.p1.m1" class="ltx_Math" alttext="\mathcal{V}_{\text{pr}}(x^{2}+y^{2}-z^{2})" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext class="ltx_mathvariant_italic"><em class="ltx_emph" style="font-size:70%;">pr</em></mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</em></p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">The set of points we choose to work with is <math id="S2.p2.m1" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math> this time,
+which for us can be thought of as the set of <math id="S2.p2.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>-tuples</p>
+<div class="table-container"><table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="\left(x_{0}:x_{1}:\dots:x_{n}\right)" display="block"><mrow><mo>(</mo><mrow><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mi mathvariant="normal">…</mi><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><mo>)</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">not all zero, up to scaling.
+Equivalently, it is the set of lines through the origin in <math id="S2.p2.m3" class="ltx_Math" alttext="\mathbb{C}^{n+1}" display="inline"><msup><mi>ℂ</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></math>.
+Projective space is defined in full in <a href="../algtop1/top-constructions.html#sec:top_spaces" title="64.6 The torus, Klein bottle, ℝ⁢ℙ^𝑛, ℂ⁢ℙ^𝑛 ‣ Chapter 64 Some topological constructions ‣ Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Section</span> <span class="ltx_text ltx_ref_tag">64.6</span></a>,
+and you should refer there if you aren’t familiar with projective space.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">The right way to think about it is “<math id="S2.p3.m1" class="ltx_Math" alttext="\mathbb{A}^{n}" display="inline"><msup><mi>𝔸</mi><mi>n</mi></msup></math> plus points at infinity”:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 79.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We define the set</p>
+<div class="table-container"><table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_math_unparsed" alttext="U_{i}=\left\{(x_{0}:\dots:x_{n})\mid x_{i}\neq 0\right\}\subseteq\mathbb{CP}^{%
+n}." display="block"><mrow><msub><mi>U</mi><mi>i</mi></msub><mo>=</mo><mrow><mo>{</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mi mathvariant="normal">…</mi><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo>∣</mo><msub><mi>x</mi><mi>i</mi></msub><mo>≠</mo><mn>0</mn><mo>}</mo></mrow><mo>⊆</mo><mi>ℂ</mi><msup><mi>ℙ</mi><mi>n</mi></msup><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">These are called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> standard affine charts</span>.</p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">The name comes from:</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 79.2.2</span></span><span class="ltx_text ltx_font_bold"> </span>(Mandatory)
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Give a natural bijection from <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="U_{i}" display="inline"><msub><mi>U</mi><mi>i</mi></msub></math> to <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathbb{A}^{n}" display="inline"><msup><mi>𝔸</mi><mi>n</mi></msup></math>.
+Thus we can think of <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math> as the affine set <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="U_{i}" display="inline"><msub><mi>U</mi><mi>i</mi></msub></math>
+plus “points at infinity”.</span></p>
+</div>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 79.2.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">In fact, these charts <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="U_{i}" display="inline"><msub><mi>U</mi><mi>i</mi></msub></math> make <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math> with its usual topology
+into a complex manifold with holomorphic transition functions.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 79.2.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Colloquially, <math id="S2.Thmtheorem4.m1" class="ltx_Math" alttext="\mathbb{CP}^{1}=\mathbb{A}^{1}\cup\{\infty\}" display="inline"><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow><mo>=</mo><mrow><msup><mi>𝔸</mi><mn>1</mn></msup><mo>∪</mo><mrow><mo stretchy="false">{</mo><mi mathvariant="normal">∞</mi><mo stretchy="false">}</mo></mrow></mrow></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The space <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="\mathbb{CP}^{1}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></math> consists of pairs <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="(s:t)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>t</mi></mrow><mo stretchy="false">)</mo></mrow></math>,
+which you can think of as representing the complex number <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="z/1" display="inline"><mrow><mi>z</mi><mo>/</mo><mn>1</mn></mrow></math>.
+In particular <math id="S2.Thmtheorem4.p1.m4" class="ltx_math_unparsed" alttext="U_{1}=\{(z:1)\}" display="inline"><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>=</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></math>
+is basically another copy of <math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math>.
+There is only one new point, <math id="S2.Thmtheorem4.p1.m6" class="ltx_Math" alttext="(1:0)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo lspace="0.278em" rspace="0.278em">:</mo><mn>0</mn></mrow><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+</div>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">However, like before we want to impose a Zariski topology on it.
+For concreteness, let’s consider <math id="S2.p5.m1" class="ltx_math_unparsed" alttext="\mathbb{CP}^{2}=\left\{(x_{0}:x_{1}:x_{2})\right\}" display="inline"><mrow><mi>ℂ</mi><msup><mi>ℙ</mi><mn>2</mn></msup><mo>=</mo><mrow><mo>{</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><mo>}</mo></mrow></mrow></math>.
+We wish to consider zero loci in <math id="S2.p5.m2" class="ltx_Math" alttext="\mathbb{CP}^{2}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>2</mn></msup></mrow></math>, just like we did in affine space,
+and hence obtain a notion of a projective variety.</p>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">But this isn’t so easy: for example,
+the function “<math id="S2.p6.m1" class="ltx_Math" alttext="x_{0}" display="inline"><msub><mi>x</mi><mn>0</mn></msub></math>” is not a well-defined function on points in <math id="S2.p6.m2" class="ltx_Math" alttext="\mathbb{CP}^{2}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>2</mn></msup></mrow></math>
+because <math id="S2.p6.m3" class="ltx_math_unparsed" alttext="(x_{0}:x_{1}:x_{2})=(5x_{0}:5x_{1}:5x_{2})" display="inline"><mrow><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>5</mn><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mn>5</mn><msub><mi>x</mi><mn>1</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mn>5</mn><msub><mi>x</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>!
+So we’d love to consider these “pseudo-functions”
+that still have zero loci. These are just the homogeneous polynomials <math id="S2.p6.m4" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math>,
+because <math id="S2.p6.m5" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is homogeneous of degree <math id="S2.p6.m6" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> if and only if</p>
+<div class="table-container"><table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="f(\lambda x_{0},\dots,\lambda x_{n})=\lambda^{d}f(x_{0},\dots,x_{n})." display="block"><mrow><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>λ</mi><mo>⁢</mo><msub><mi>x</mi><mn>0</mn></msub></mrow><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><mrow><mi>λ</mi><mo>⁢</mo><msub><mi>x</mi><mi>n</mi></msub></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msup><mi>λ</mi><mi>d</mi></msup><mo>⁢</mo><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In particular, the relation “<math id="S2.p6.m7" class="ltx_Math" alttext="f(x_{0},\dots,x_{n})=0" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math>” is
+well-defined if <math id="S2.p6.m8" class="ltx_Math" alttext="F" display="inline"><mi>F</mi></math> is homogeneous. Thus, we can say:</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 79.2.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S2.Thmtheorem5.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> is homogeneous, we can then define its <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> vanishing locus</span> as</p>
+<div class="table-container"><table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_math_unparsed" alttext="\mathcal{V}_{\text{pr}}(f)=\left\{(x_{0}:\dots:x_{n})\mid f(x_{0},\dots,x_{n})%
+=0\right\}." display="block"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mrow><mo>{</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo lspace="0.278em" rspace="0.278em">:</mo><mi mathvariant="normal">…</mi><mo lspace="0.278em" rspace="0.278em">:</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo>∣</mo><mi>f</mi><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow><mo>=</mo><mn>0</mn><mo>}</mo></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">The homogeneous condition is really necessary.
+For example, to require “<math id="S2.p7.m1" class="ltx_Math" alttext="x_{0}-1=0" display="inline"><mrow><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>−</mo><mn>1</mn></mrow><mo>=</mo><mn>0</mn></mrow></math>” makes no sense,
+since the points <math id="S2.p7.m2" class="ltx_Math" alttext="(1:1:1)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo lspace="0.278em" rspace="0.278em">:</mo><mn>1</mn><mo lspace="0.278em" rspace="0.278em">:</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></math> and <math id="S2.p7.m3" class="ltx_Math" alttext="(2015:2015:2015)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mn>2015</mn><mo lspace="0.278em" rspace="0.278em">:</mo><mn>2015</mn><mo lspace="0.278em" rspace="0.278em">:</mo><mn>2015</mn></mrow><mo stretchy="false">)</mo></mrow></math> are the same.</p>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">It’s trivial to verify that homogeneous polynomials do exactly what we want;
+hence we can now define:</p>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 79.2.6</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> projective variety</span> in <math id="S2.Thmtheorem6.p1.m1" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math>
+is the common zero locus of an arbitrary
+collection of homogeneous polynomials in <math id="S2.Thmtheorem6.p1.m2" class="ltx_Math" alttext="n+1" display="inline"><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></math> variables.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 79.2.7</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(A conic in <math id="S2.Thmtheorem7.m1" class="ltx_Math" alttext="\mathbb{CP}^{2}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>2</mn></msup></mrow></math>, or a cone in <math id="S2.Thmtheorem7.m2" class="ltx_Math" alttext="\mathbb{C}^{3}" display="inline"><msup><mi>ℂ</mi><mn>3</mn></msup></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Let’s try to picture the variety</p>
+<div class="table-container"><table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="\mathcal{V}_{\text{pr}}(x^{2}+y^{2}-z^{2})\subseteq\mathbb{CP}^{2}" display="block"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>2</mn></msup></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">which consists of the points <math id="S2.Thmtheorem7.p1.m1" class="ltx_Math" alttext="[x:y:z]" display="inline"><mrow><mo stretchy="false">[</mo><mrow><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>y</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>z</mi></mrow><mo stretchy="false">]</mo></mrow></math> such that <math id="S2.Thmtheorem7.p1.m2" class="ltx_Math" alttext="x^{2}+y^{2}=z^{2}" display="inline"><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>=</mo><msup><mi>z</mi><mn>2</mn></msup></mrow></math>.
+If we view this as subspace of <math id="S2.Thmtheorem7.p1.m3" class="ltx_Math" alttext="\mathbb{C}^{3}" display="inline"><msup><mi>ℂ</mi><mn>3</mn></msup></math>
+(i.e. by thinking of <math id="S2.Thmtheorem7.p1.m4" class="ltx_Math" alttext="\mathbb{CP}^{2}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>2</mn></msup></mrow></math> as the set of lines through the origin),
+then we get a “cone”:</p>
+<img loading="lazy" src="../latexml-out/part_ag1//x1.png" id="S2.Thmtheorem7.p1.g1" class="ltx_graphics ltx_centering ltx_img_portrait" width="158" height="197" alt="[Uncaptioned image]">
+</div>
+<div id="S2.Thmtheorem7.p2" class="ltx_para">
+<p class="ltx_p">If we take the standard affine charts now, we obtain:</p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">At <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="x=1" display="inline"><mrow><mi>x</mi><mo>=</mo><mn>1</mn></mrow></math>, we get a hyperbola <math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="\mathcal{V}(1+y^{2}-z^{2})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>1</mn><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">At <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="y=1" display="inline"><mrow><mi>y</mi><mo>=</mo><mn>1</mn></mrow></math>, we get a hyperbola <math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="\mathcal{V}(1+x^{2}-z^{2})" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>1</mn><mo>+</mo><msup><mi>x</mi><mn>2</mn></msup></mrow><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S2.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">At <math id="S2.I1.i3.p1.m1" class="ltx_Math" alttext="z=1" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>1</mn></mrow></math>, we get a circle <math id="S2.I1.i3.p1.m2" class="ltx_Math" alttext="\mathcal{V}(x^{2}+y^{2}-1)" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>−</mo><mn>1</mn></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+</ul>
+<p class="ltx_p">That said, over <math id="S2.Thmtheorem7.p2.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> a hyperbola and circle
+are the same thing; I’m cheating a little by drawing <math id="S2.Thmtheorem7.p2.m2" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>
+as one-dimensional, just like last chapter.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem8" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 79.2.8</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Draw the intersection of the cone above
+with the <math id="S2.Thmtheorem8.p1.m1" class="ltx_Math" alttext="z=1" display="inline"><mrow><mi>z</mi><mo>=</mo><mn>1</mn></mrow></math> plane, and check that you do in fact get a circle.
+(This geometric picture will be crucial later.)</span></p>
+</div>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">79.3 </span>Homogeneous ideals</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">Now, the next thing we want to do is define <math id="S3.p1.m1" class="ltx_Math" alttext="\mathcal{V}_{\text{pr}}(I)" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math> for an ideal <math id="S3.p1.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>.
+Of course, we again run into an issue with things like <math id="S3.p1.m3" class="ltx_Math" alttext="x_{0}-1" display="inline"><mrow><msub><mi>x</mi><mn>0</mn></msub><mo>−</mo><mn>1</mn></mrow></math> not
+making sense.</p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">The way out of this is to use only <em class="ltx_emph ltx_font_italic">homogeneous</em> ideals.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 79.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is a homogeneous ideal, we define</p>
+<div class="table-container"><table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="\mathcal{V}_{\text{pr}}(I)=\{x\mid f(x)=0\;\forall f\in I\}." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>x</mi><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>0</mn><mo lspace="0.447em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mi>f</mi></mrow></mrow><mo>∈</mo><mi>I</mi></mrow><mo stretchy="false">}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 79.3.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that the notion “<math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="f(x)=0\;\forall f\in I" display="inline"><mrow><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mn>0</mn><mo lspace="0.447em">⁢</mo><mrow><mo rspace="0.167em">∀</mo><mi>f</mi></mrow></mrow><mo>∈</mo><mi>I</mi></mrow></math>”
+is well-defined for a homogeneous ideal <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math>.</span></p>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">So, we would hope for a Nullstellensatz-like theorem
+which bijects the homogeneous radical ideals to projective varieties.
+Unfortunately:</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 79.3.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Irrelevant ideal)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">To crush some dreams and hopes, consider the ideal</p>
+<div class="table-container"><table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="I=(x_{0},x_{1},\dots,x_{n})." display="block"><mrow><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> irrelevant ideal</span>;
+it is a homogeneous radical yet <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathcal{V}_{\text{pr}}(I)=\varnothing" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">However, other than the irrelevant ideal:</p>
+</div>
+<div id="S3.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 79.3.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Homogeneous Nullstellensatz)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S3.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem4.p1.m1" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> and <math id="S3.Thmtheorem4.p1.m2" class="ltx_Math" alttext="J" display="inline"><mi>J</mi></math> be homogeneous ideals.</p>
+<ol id="S3.I1" class="ltx_enumerate">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="\mathcal{V}_{\text{pr}}(I)=\mathcal{V}_{\text{pr}}(J)\neq\varnothing" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mi mathvariant="normal">∅</mi></mrow></math> then <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="\sqrt{I}=\sqrt{J}" display="inline"><mrow><msqrt><mi>I</mi></msqrt><mo>=</mo><msqrt><mi>J</mi></msqrt></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="\mathcal{V}_{\text{pr}}(I)=\varnothing" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>, then either <math id="S3.I1.i2.p1.m2" class="ltx_Math" alttext="I=(1)" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>
+or <math id="S3.I1.i2.p1.m3" class="ltx_Math" alttext="\sqrt{I}=(x_{0},x_{1},\dots,x_{n})" display="inline"><mrow><msqrt><mi>I</mi></msqrt><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><msub><mi>x</mi><mn>1</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">Thus there is a natural bijection between:</p>
+<ul id="S3.I2" class="ltx_itemize">
+<li id="S3.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">projective varieties in <math id="S3.I2.i1.p1.m1" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math>, and</p>
+</div>
+</li>
+<li id="S3.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">homogeneous radical ideals of <math id="S3.I2.i2.p1.m1" class="ltx_Math" alttext="\mathbb{C}[x_{0},\dots,x_{n}]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></math>
+except for the irrelevant ideal.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">For the first part, let <math id="S3.p5.m1" class="ltx_Math" alttext="V=\mathcal{V}_{\text{pr}}(I)" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and <math id="S3.p5.m2" class="ltx_Math" alttext="W=\mathcal{V}_{\text{pr}}(J)" display="inline"><mrow><mi>W</mi><mo>=</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>
+be projective varieties in <math id="S3.p5.m3" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math>.
+We can consider them as <em class="ltx_emph ltx_font_italic">affine varieties</em> in <math id="S3.p5.m4" class="ltx_Math" alttext="\mathbb{A}^{n+1}" display="inline"><msup><mi>𝔸</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></math>
+by using the interpretation of <math id="S3.p5.m5" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math>
+as lines through the origin in <math id="S3.p5.m6" class="ltx_Math" alttext="\mathbb{C}^{n}" display="inline"><msup><mi>ℂ</mi><mi>n</mi></msup></math>.</p>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">Algebraically, this is done by taking the homogeneous ideals
+<math id="S3.p6.m1" class="ltx_Math" alttext="I,J\subseteq\mathbb{C}[x_{0},\dots,x_{n}]" display="inline"><mrow><mrow><mi>I</mi><mo>,</mo><mi>J</mi></mrow><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow></mrow></math>
+and using the same ideals to cut out <em class="ltx_emph ltx_font_italic">affine</em> varieties
+<math id="S3.p6.m2" class="ltx_Math" alttext="V_{\text{aff}}=\mathcal{V}(I)" display="inline"><mrow><msub><mi>V</mi><mtext>aff</mtext></msub><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> and <math id="S3.p6.m3" class="ltx_Math" alttext="W_{\text{aff}}=\mathcal{V}(J)" display="inline"><mrow><msub><mi>W</mi><mtext>aff</mtext></msub><mo>=</mo><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>J</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math> in <math id="S3.p6.m4" class="ltx_Math" alttext="\mathbb{A}^{n+1}" display="inline"><msup><mi>𝔸</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></math>.
+For example, the cone <math id="S3.p6.m5" class="ltx_Math" alttext="x^{2}+y^{2}-z^{2}=0" display="inline"><mrow><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>−</mo><msup><mi>z</mi><mn>2</mn></msup></mrow><mo>=</mo><mn>0</mn></mrow></math> is a conic (a one-dimensional curve)
+in <math id="S3.p6.m6" class="ltx_Math" alttext="\mathbb{CP}^{2}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>2</mn></msup></mrow></math>, but can also be thought of as a cone
+(which is a two-dimensional surface) in <math id="S3.p6.m7" class="ltx_Math" alttext="\mathbb{A}^{3}" display="inline"><msup><mi>𝔸</mi><mn>3</mn></msup></math>.</p>
+</div>
+<div id="S3.p7" class="ltx_para">
+<p class="ltx_p">Then for (a), we have <math id="S3.p7.m1" class="ltx_Math" alttext="V_{\text{aff}}=W_{\text{aff}}" display="inline"><mrow><msub><mi>V</mi><mtext>aff</mtext></msub><mo>=</mo><msub><mi>W</mi><mtext>aff</mtext></msub></mrow></math>,
+so <math id="S3.p7.m2" class="ltx_Math" alttext="\sqrt{I}=\sqrt{J}" display="inline"><mrow><msqrt><mi>I</mi></msqrt><mo>=</mo><msqrt><mi>J</mi></msqrt></mrow></math>.</p>
+</div>
+<div id="S3.p8" class="ltx_para">
+<p class="ltx_p">For (b), either <math id="S3.p8.m1" class="ltx_Math" alttext="V_{\text{aff}}" display="inline"><msub><mi>V</mi><mtext>aff</mtext></msub></math> is empty
+or it is just the origin of <math id="S3.p8.m2" class="ltx_Math" alttext="\mathbb{A}^{n+1}" display="inline"><msup><mi>𝔸</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></math>,
+so the Nullstellensatz implies either <math id="S3.p8.m3" class="ltx_Math" alttext="I=(1)" display="inline"><mrow><mi>I</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>
+or <math id="S3.p8.m4" class="ltx_Math" alttext="\sqrt{I}=(x_{0},\dots,x_{n})" display="inline"><mrow><msqrt><mi>I</mi></msqrt><mo>=</mo><mrow><mo stretchy="false">(</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math> as desired.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S3.p9" class="ltx_para">
+<p class="ltx_p">Projective analogues of <a href="ch_affine_varieties.html#thm:many_aff_variety" title="Theorem 77.4.2 (Intersections and unions of varieties) ‣ 77.4 Pictures of varieties in 𝔸¹ ‣ Chapter 77 Affine varieties ‣ Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">77.4.2</span></a>
+(on intersections and unions of varieties) hold verbatim
+for projective varieties as well.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">79.4 </span>As ringed spaces</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> The regular functions on <math id="S4.p1.m1" class="ltx_Math" alttext="\mathbb{CP}^{1}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></math> minus a point
+are exactly those of the form <math id="S4.p1.m2" class="ltx_Math" alttext="P(s/t)" display="inline"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo>/</mo><mi>t</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></math>.</em></p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">Now, let us make every projective variety <math id="S4.p2.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> into a baby ringed space.
+We already have the set of points, a subset of <math id="S4.p2.m2" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math>.</p>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">The topology is defined as follows.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 79.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We endow <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math> with the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Zariski topology</span>
+by declaring the sets of the form <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\mathcal{V}_{\text{pr}}(I)" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow></math>,
+where <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is a homogeneous ideal, to be the closed sets.</p>
+</div>
+<div id="S4.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">Every projective variety <math id="S4.Thmtheorem1.p2.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> then inherits the Zariski
+topology from its parent <math id="S4.Thmtheorem1.p2.m2" class="ltx_Math" alttext="\mathbb{CP}^{n}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></math>.
+The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> distinguished open sets</span> <math id="S4.Thmtheorem1.p2.m3" class="ltx_Math" alttext="D(f)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></math> are <math id="S4.Thmtheorem1.p2.m4" class="ltx_Math" alttext="V\setminus\mathcal{V}_{\text{pr}}(f)" display="inline"><mrow><mi>V</mi><mo>∖</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>f</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Thus every projective variety <math id="S4.p4.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is now a topological space.
+It remains to endow it with a sheaf of regular functions <math id="S4.p4.m2" class="ltx_Math" alttext="\mathcal{O}_{V}" display="inline"><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub></math>.
+To do this we have to be a little careful.
+In the affine case we had a nice little ring of functions,
+the coordinate ring <math id="S4.p4.m3" class="ltx_Math" alttext="\mathbb{C}[x_{0},\dots,x_{n}]/I" display="inline"><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mi>I</mi></mrow></math>,
+that we could use to provide the numerator and denominators.
+So, it seems natural to then define:</p>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 79.4.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">The <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> homogeneous coordinate ring</span> of a projective variety
+<math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="V=\mathcal{V}_{\text{pr}}(I)\subseteq\mathbb{CP}^{n}" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mi>n</mi></msup></mrow></mrow></math>, where <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="I" display="inline"><mi>I</mi></math> is homogeneous radical,
+is defined as the ring</p>
+<div class="table-container"><table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\mathbb{C}[V]=\mathbb{C}[x_{0},\dots,x_{n}]/I." display="block"><mrow><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>V</mi><mo stretchy="false">]</mo></mrow></mrow><mo>=</mo><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><msub><mi>x</mi><mn>0</mn></msub><mo>,</mo><mi mathvariant="normal">…</mi><mo>,</mo><msub><mi>x</mi><mi>n</mi></msub><mo stretchy="false">]</mo></mrow></mrow><mo>/</mo><mi>I</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 79.4.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Unlike the case of <a href="ch_affine_varieties_ringed_spaces.html#remark:meaning_name_coordinate_ring" title="Remark 78.4.2 (Meaning of the name “coordinate ring”) — ‣ 78.4 Coordinate rings ‣ Chapter 78 Affine varieties as ringed spaces ‣ Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Remark</span> <span class="ltx_text ltx_ref_tag">78.4.2</span></a>, an element
+of <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathbb{C}[V]" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>V</mi><mo stretchy="false">]</mo></mrow></mrow></math> no longer correspond to a function from <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> to <math id="S4.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>;
+nevertheless, it is a function from <math id="S4.Thmtheorem3.p1.m4" class="ltx_Math" alttext="\mathcal{V}(I)\subseteq\mathbb{A}^{n+1}" display="inline"><mrow><mrow><mi class="ltx_font_mathcaligraphic">𝒱</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>I</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊆</mo><msup><mi>𝔸</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow></math> to <math id="S4.Thmtheorem3.p1.m5" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.</p>
+</div>
+</div>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">However, when we define a rational function we must impose
+a new requirement that the numerator and denominator are the same degree.</p>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 79.4.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> be an open set of a projective variety <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> rational function</span> <math id="S4.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\phi" display="inline"><mi>ϕ</mi></math> on a projective variety <math id="S4.Thmtheorem4.p1.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>
+is a quotient <math id="S4.Thmtheorem4.p1.m5" class="ltx_Math" alttext="f/g" display="inline"><mrow><mi>f</mi><mo>/</mo><mi>g</mi></mrow></math>, where <math id="S4.Thmtheorem4.p1.m6" class="ltx_Math" alttext="f,g\in\mathbb{C}[V]" display="inline"><mrow><mrow><mi>f</mi><mo>,</mo><mi>g</mi></mrow><mo>∈</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>V</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math>,
+and <math id="S4.Thmtheorem4.p1.m7" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and <math id="S4.Thmtheorem4.p1.m8" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> are homogeneous of the same degree,
+and <math id="S4.Thmtheorem4.p1.m9" class="ltx_Math" alttext="\mathcal{V}_{\text{pr}}(g)\cap U=\varnothing" display="inline"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∩</mo><mi>U</mi></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>.
+In this way we obtain a function <math id="S4.Thmtheorem4.p1.m10" class="ltx_Math" alttext="\phi\colon U\to\mathbb{C}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 79.4.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of rational functions)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="V=\mathbb{CP}^{1}" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></mrow></math> have coordinates <math id="S4.Thmtheorem5.p1.m2" class="ltx_Math" alttext="(s:t)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>t</mi></mrow><mo stretchy="false">)</mo></mrow></math>.</p>
+<ol id="S4.I1" class="ltx_enumerate">
+<li id="S4.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S4.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S4.I1.i1.p1.m1" class="ltx_Math" alttext="U=V" display="inline"><mrow><mi>U</mi><mo>=</mo><mi>V</mi></mrow></math>, then constant functions <math id="S4.I1.i1.p1.m2" class="ltx_Math" alttext="c/1" display="inline"><mrow><mi>c</mi><mo>/</mo><mn>1</mn></mrow></math>
+are the only rational functions on <math id="S4.I1.i1.p1.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.</p>
+</div>
+</li>
+<li id="S4.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S4.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Now let <math id="S4.I1.i2.p1.m1" class="ltx_math_unparsed" alttext="U_{1}=V\setminus\{(1:0)\}" display="inline"><mrow><msub><mi>U</mi><mn>1</mn></msub><mo>=</mo><mi>V</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo lspace="0.278em" rspace="0.278em">:</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo stretchy="false">}</mo></mrow></mrow></math>.
+Then, an example of a regular function is</p>
+<div class="table-container"><table id="Ex16" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex16.m1" class="ltx_Math" alttext="\frac{s^{2}+9t^{2}}{t^{2}}=\left(\frac{s}{t}\right)^{2}+9." display="block"><mrow><mrow><mfrac linethickness="0.6px"><mrow><msup><mi>s</mi><mn>2</mn></msup><mo>+</mo><mrow><mn>9</mn><mo>⁢</mo><msup><mi>t</mi><mn>2</mn></msup></mrow></mrow><msup><mi>t</mi><mn>2</mn></msup></mfrac><mo>=</mo><mrow><msup><mrow><mo>(</mo><mfrac linethickness="0.6px"><mi>s</mi><mi>t</mi></mfrac><mo>)</mo></mrow><mn>2</mn></msup><mo>+</mo><mn>9</mn></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">If we think of <math id="S4.I1.i2.p1.m2" class="ltx_Math" alttext="U_{1}" display="inline"><msub><mi>U</mi><mn>1</mn></msub></math> as <math id="S4.I1.i2.p1.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>
+(i.e. <math id="S4.I1.i2.p1.m4" class="ltx_Math" alttext="\mathbb{CP}^{1}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></math> minus an infinity point, hence like <math id="S4.I1.i2.p1.m5" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math>)
+then really this is just the function <math id="S4.I1.i2.p1.m6" class="ltx_Math" alttext="x^{2}+9" display="inline"><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><mn>9</mn></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">Then we can repeat the same definition as before:</p>
+</div>
+<div id="S4.Thmtheorem6" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 79.4.6</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem6.p1.m1" class="ltx_Math" alttext="U\subseteq V" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>V</mi></mrow></math> be an open set of a projective variety <math id="S4.Thmtheorem6.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+We say a function <math id="S4.Thmtheorem6.p1.m3" class="ltx_Math" alttext="\phi\colon U\to\mathbb{C}" display="inline"><mrow><mi>ϕ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>U</mi><mo stretchy="false">→</mo><mi>ℂ</mi></mrow></mrow></math> is a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> regular function</span> if
+for every point <math id="S4.Thmtheorem6.p1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>, we can find an open set <math id="S4.Thmtheorem6.p1.m5" class="ltx_Math" alttext="U_{p}" display="inline"><msub><mi>U</mi><mi>p</mi></msub></math> containing <math id="S4.Thmtheorem6.p1.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>
+and a rational function <math id="S4.Thmtheorem6.p1.m7" class="ltx_Math" alttext="f_{p}/g_{p}" display="inline"><mrow><msub><mi>f</mi><mi>p</mi></msub><mo>/</mo><msub><mi>g</mi><mi>p</mi></msub></mrow></math> on <math id="S4.Thmtheorem6.p1.m8" class="ltx_Math" alttext="U_{p}" display="inline"><msub><mi>U</mi><mi>p</mi></msub></math> such that</p>
+<div class="table-container"><table id="Ex17" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex17.m1" class="ltx_Math" alttext="\phi(x)=\frac{f_{p}(x)}{g_{p}(x)}\qquad\forall x\in U_{p}." display="block"><mrow><mrow><mrow><mrow><mi>ϕ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mfrac linethickness="0.6px"><mrow><msub><mi>f</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow><mrow><msub><mi>g</mi><mi>p</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow></mrow></mfrac></mrow><mspace width="2.167em"></mspace><mrow><mrow><mo rspace="0.167em">∀</mo><mi>x</mi></mrow><mo>∈</mo><msub><mi>U</mi><mi>p</mi></msub></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">In particular, we require <math id="S4.Thmtheorem6.p1.m9" class="ltx_Math" alttext="U_{p}\cap\mathcal{V}_{\text{pr}}(g_{p})=\varnothing" display="inline"><mrow><mrow><msub><mi>U</mi><mi>p</mi></msub><mo>∩</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒱</mi><mtext>pr</mtext></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>g</mi><mi>p</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow></math>.
+We denote the set of all regular functions on <math id="S4.Thmtheorem6.p1.m10" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> by <math id="S4.Thmtheorem6.p1.m11" class="ltx_Math" alttext="\mathcal{O}_{V}(U)" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">Of course, the rational functions from the previous example
+are examples of regular functions as well.
+This completes the definition of a projective variety <math id="S4.p7.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>
+as a baby ringed space.</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">79.5 </span>Examples of regular functions</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p">Naturally, I ought to tell you what the regular functions
+on distinguished open sets are; this is an analog to
+<a href="ch_affine_varieties_ringed_spaces.html#thm:reg_func_distinguish_open" title="Theorem 78.6.1 (Regular functions on distinguished open sets) ‣ 78.6 Regular functions on distinguished open sets ‣ Chapter 78 Affine varieties as ringed spaces ‣ Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">78.6.1</span></a> from last time.</p>
+</div>
+<div id="thm:proj_reg_func_dist_open" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 79.5.1</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Regular functions on distinguished open sets for projective varieties)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a projective variety, and let <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="g\in\mathbb{C}[V]" display="inline"><mrow><mi>g</mi><mo>∈</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>V</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> be homogeneous
+of <em class="ltx_emph ltx_font_italic">positive degree</em> (thus <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="g" display="inline"><mi>g</mi></math> is nonconstant).
+Then</p>
+<div class="table-container"><table id="Ex18" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex18.m1" class="ltx_Math" alttext="\mathcal{O}_{V}(D(g))=\left\{\frac{f}{g^{r}}\mid f\in\mathbb{C}[V]\text{ %
+homogeneous of degree $r\deg g$}\right\}." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mfrac linethickness="0.6px"><mi>f</mi><msup><mi>g</mi><mi>r</mi></msup></mfrac><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>f</mi><mo>∈</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>V</mi><mo stretchy="false">]</mo></mrow><mo>⁢</mo><mrow><mtext> homogeneous of degree </mtext><mrow><mi>r</mi><mo lspace="0.167em">⁢</mo><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>g</mi></mrow></mrow></mrow></mrow></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">What about the case <math id="S5.p2.m1" class="ltx_Math" alttext="g=1" display="inline"><mrow><mi>g</mi><mo>=</mo><mn>1</mn></mrow></math>?
+A similar result holds, but we need the assumption that <math id="S5.p2.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is irreducible.</p>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 79.5.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">A projective variety <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is irreducible
+if it can’t be written as the union of two proper (projective) sub-varieties.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 79.5.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Only constant regular functions on projective space)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem3.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be an <em class="ltx_emph ltx_font_italic">irreducible</em> projective variety.
+Then the only regular functions on <math id="S5.Thmtheorem3.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> are constant,
+thus we have</p>
+<div class="table-container"><table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="\mathcal{O}_{V}(V)\cong\mathbb{C}." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mi>ℂ</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This relies on the fact that <math id="S5.Thmtheorem3.p1.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> is algebraically closed.</p>
+</div>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">Proofs of these are omitted for now.</p>
+</div>
+<div id="S5.Thmtheorem4" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 79.5.4</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Irreducibility is needed above)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The reason we need <math id="S5.Thmtheorem4.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> irreducible is otherwise
+we could, for example, take <math id="S5.Thmtheorem4.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> to be the union of two points;
+in this case <math id="S5.Thmtheorem4.p1.m3" class="ltx_Math" alttext="\mathcal{O}_{V}(V)\cong\mathbb{C}^{\oplus 2}" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><msup><mi>ℂ</mi><mrow><mo rspace="0em">⊕</mo><mn>2</mn></mrow></msup></mrow></math>.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem5" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 79.5.5</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> — </span>
+</h5>
+<div id="S5.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">It might seem strange that <math id="S5.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathcal{O}_{V}(D(g))" display="inline"><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow></math> behaves so differently
+when <math id="S5.Thmtheorem5.p1.m2" class="ltx_Math" alttext="g=1" display="inline"><mrow><mi>g</mi><mo>=</mo><mn>1</mn></mrow></math>. One vague explanation is that in a projective variety,
+a distinguished open <math id="S5.Thmtheorem5.p1.m3" class="ltx_Math" alttext="D(g)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math> looks much like an affine variety if <math id="S5.Thmtheorem5.p1.m4" class="ltx_Math" alttext="\deg g&gt;0" display="inline"><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>g</mi></mrow><mo>&gt;</mo><mn>0</mn></mrow></math>.
+For example, in <math id="S5.Thmtheorem5.p1.m5" class="ltx_Math" alttext="\mathbb{CP}^{1}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></math> we have <math id="S5.Thmtheorem5.p1.m6" class="ltx_Math" alttext="\mathbb{CP}^{1}\setminus\{0\}\cong\mathbb{A}^{1}" display="inline"><mrow><mrow><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow><mo>≅</mo><msup><mi>𝔸</mi><mn>1</mn></msup></mrow></math>
+(where <math id="S5.Thmtheorem5.p1.m7" class="ltx_Math" alttext="\cong" display="inline"><mo>≅</mo></math> is used in a sense that I haven’t made precise).
+Thus the claim becomes related to the corresponding affine result.
+But if <math id="S5.Thmtheorem5.p1.m8" class="ltx_Math" alttext="\deg g=0" display="inline"><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>g</mi></mrow><mo>=</mo><mn>0</mn></mrow></math> and <math id="S5.Thmtheorem5.p1.m9" class="ltx_Math" alttext="g\neq 0" display="inline"><mrow><mi>g</mi><mo>≠</mo><mn>0</mn></mrow></math>, then <math id="S5.Thmtheorem5.p1.m10" class="ltx_Math" alttext="D(g)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>g</mi><mo stretchy="false">)</mo></mrow></mrow></math> is the entire projective variety,
+which does not look affine, and thus the analogy breaks down.</p>
+</div>
+</div>
+<div id="S5.Thmtheorem6" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 79.5.6</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Regular functions on <math id="S5.Thmtheorem6.m1" class="ltx_Math" alttext="\mathbb{CP}^{1}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem6.p1.m1" class="ltx_Math" alttext="V=\mathbb{CP}^{1}" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></mrow></math>, with coordinates <math id="S5.Thmtheorem6.p1.m2" class="ltx_Math" alttext="(s:t)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>t</mi></mrow><mo stretchy="false">)</mo></mrow></math>.</p>
+<ol id="S5.I1" class="ltx_enumerate">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">By <a href="#thm:proj_reg_func_dist_open" title="Theorem 79.5.1 (Regular functions on distinguished open sets for projective varieties) ‣ 79.5 Examples of regular functions ‣ Chapter 79 Projective varieties ‣ Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">79.5.1</span></a>,
+if <math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="U_{1}" display="inline"><msub><mi>U</mi><mn>1</mn></msub></math> is the standard affine chart
+omitting the point <math id="S5.I1.i1.p1.m2" class="ltx_Math" alttext="(1:0)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mn>1</mn><mo lspace="0.278em" rspace="0.278em">:</mo><mn>0</mn></mrow><mo stretchy="false">)</mo></mrow></math>, we have
+<math id="S5.I1.i1.p1.m3" class="ltx_Math" alttext="\mathcal{O}_{V}(U_{1})=\left\{\frac{f}{t^{n}}\mid\deg f=n\right\}" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>U</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mfrac linethickness="0.6px"><mi>f</mi><msup><mi>t</mi><mi>n</mi></msup></mfrac><mo fence="true" lspace="0em" rspace="0.167em">∣</mo><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>f</mi></mrow><mo>=</mo><mi>n</mi></mrow><mo>}</mo></mrow></mrow></math>.
+One can write this as</p>
+<div class="table-container"><table id="Ex20" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex20.m1" class="ltx_Math" alttext="\mathcal{O}_{V}(U_{1})\cong\left\{P(s/t)\mid P\in\mathbb{C}[x]\right\}\cong%
+\mathcal{O}_{\mathbb{A}^{1}}(\mathbb{A}^{1})." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>U</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>≅</mo><mrow><mo>{</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>s</mi><mo>/</mo><mi>t</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>P</mi><mo>∈</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo stretchy="false">]</mo></mrow></mrow></mrow><mo>}</mo></mrow><mo>≅</mo><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><msup><mi>𝔸</mi><mn>1</mn></msup></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msup><mi>𝔸</mi><mn>1</mn></msup><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">This conforms with our knowledge that <math id="S5.I1.i1.p1.m4" class="ltx_Math" alttext="U_{1}" display="inline"><msub><mi>U</mi><mn>1</mn></msub></math>
+“looks very much like <math id="S5.I1.i1.p1.m5" class="ltx_Math" alttext="\mathbb{A}^{1}" display="inline"><msup><mi>𝔸</mi><mn>1</mn></msup></math>”.</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">As <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is irreducible, <math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="\mathcal{O}_{V}(V)=\mathbb{C}" display="inline"><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mi>V</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mi>ℂ</mi></mrow></math>:
+there are no nonconstant functions on <math id="S5.I1.i2.p1.m3" class="ltx_Math" alttext="\mathbb{CP}^{1}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>1</mn></msup></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S5.Thmtheorem7" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 79.5.7</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Regular functions on <math id="S5.Thmtheorem7.m1" class="ltx_Math" alttext="\mathbb{CP}^{2}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>2</mn></msup></mrow></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S5.Thmtheorem7.p1.m1" class="ltx_Math" alttext="\mathbb{CP}^{2}" display="inline"><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>2</mn></msup></mrow></math> have coordinates <math id="S5.Thmtheorem7.p1.m2" class="ltx_Math" alttext="(x:y:z)" display="inline"><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>y</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>z</mi></mrow><mo stretchy="false">)</mo></mrow></math> and
+let <math id="S5.Thmtheorem7.p1.m3" class="ltx_math_unparsed" alttext="U_{0}=\left\{(x:y:1)\in\mathbb{CP}^{2}\right\}" display="inline"><mrow><msub><mi>U</mi><mn>0</mn></msub><mo>=</mo><mrow><mo>{</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mi>y</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>∈</mo><mi>ℂ</mi><msup><mi>ℙ</mi><mn>2</mn></msup><mo>}</mo></mrow></mrow></math>
+be the distinguished open set <math id="S5.Thmtheorem7.p1.m4" class="ltx_Math" alttext="D(z)" display="inline"><mrow><mi>D</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>z</mi><mo stretchy="false">)</mo></mrow></mrow></math>.
+Then in the same vein,</p>
+<div class="table-container"><table id="Ex21" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex21.m1" class="ltx_Math" alttext="\mathcal{O}_{\mathbb{CP}^{2}}(U_{0})=\left\{\frac{P(x,y)}{z^{n}}\mid\deg P=n%
+\right\}\cong\left\{P(x/z,y/z)\mid P\in\mathbb{C}[x,y]\right\}." display="block"><mrow><mrow><mrow><msub><mi class="ltx_font_mathcaligraphic">𝒪</mi><mrow><mi>ℂ</mi><mo>⁢</mo><msup><mi>ℙ</mi><mn>2</mn></msup></mrow></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>U</mi><mn>0</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>{</mo><mfrac linethickness="0.6px"><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><msup><mi>z</mi><mi>n</mi></msup></mfrac><mo fence="true" lspace="0em" rspace="0.167em">∣</mo><mrow><mrow><mi>deg</mi><mo lspace="0.167em">⁡</mo><mi>P</mi></mrow><mo>=</mo><mi>n</mi></mrow><mo>}</mo></mrow><mo>≅</mo><mrow><mo>{</mo><mrow><mi>P</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>/</mo><mi>z</mi></mrow><mo>,</mo><mrow><mi>y</mi><mo>/</mo><mi>z</mi></mrow><mo stretchy="false">)</mo></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>P</mi><mo>∈</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">]</mo></mrow></mrow></mrow><mo>}</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">79.6 </span>A few harder problems to think about</h2>
+<span id="todo26" class="ltx_note ltx_role_todo"><sup class="ltx_note_mark">26</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">26</sup><span class="ltx_note_type">todo: </span><span class="ltx_tag ltx_tag_note">26</span>Problems:</span></span></span>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../ag1/affine-varieties-ringed-spaces.html">Previous chapter: Affine varieties as ringed spaces</a><br />
+<a href="../ag1/bezouts-theorem.html">Next chapter: Bonus: Bézout’s theorem</a>
+</nav>
+
+		</main>
+	</body>
+</html>

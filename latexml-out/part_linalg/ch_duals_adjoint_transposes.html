@@ -1,0 +1,1047 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Chapter 15 Duals, adjoint, and transposes ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin</title>
+<!--Generated on Thu Feb 20 17:33:51 2025 by LaTeXML (version 0.8.8) http://dlmf.nist.gov/LaTeXML/.-->
+<!--Document created on Version: v1.6.20250220.-->
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="up" href="./" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="up up" href="../" title="An Infinitely Large Napkin">
+<link rel="start" href="../" title="An Infinitely Large Napkin">
+<link rel="prev" href="ch_fourier.html" title="Chapter 14 Bonus: Fourier analysis ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="next" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_vector_spaces.html" title="Chapter 9 Vector spaces ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_eigen_things.html" title="Chapter 10 Eigen-things ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_dual_space_trace.html" title="Chapter 11 Dual space and trace ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_determinant.html" title="Chapter 12 Determinant ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_inner_product_spaces.html" title="Chapter 13 Inner product spaces ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="ch_fourier.html" title="Chapter 14 Bonus: Fourier analysis ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx1.html" title="Preface ‣ An Infinitely Large Napkin">
+<link rel="chapter" href="../Chx2.html" title="Advice for the reader ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_startout/" title="Part I Starting Out ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_absalg/" title="Part II Basic Abstract Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_basictop/" title="Part III Basic Topology ‣ An Infinitely Large Napkin">
+<link rel="part" href="./" title="Part IV Linear Algebra ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_groups/" title="Part V More on Groups ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_repth/" title="Part VI Representation Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_quantum/" title="Part VII Quantum Algorithms ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_calc/" title="Part VIII Calculus 101 ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cmplxana/" title="Part IX Complex Analysis ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_measure/" title="Part X Measure Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_prob/" title="Part XI Probability (TO DO) ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_diffgeo/" title="Part XII Differential Geometry ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_riemann/" title="Part XIII Riemann Surfaces ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt1/" title="Part XIV Algebraic NT I: Rings of Integers ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algnt2/" title="Part XV Algebraic NT II: Galois and Ramification Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop1/" title="Part XVI Algebraic Topology I: Homotopy ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_cats/" title="Part XVII Category Theory ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_algtop2/" title="Part XVIII Algebraic Topology II: Homology ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag1/" title="Part XIX Algebraic Geometry I: Classical Varieties ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_ag2/" title="Part XX Algebraic Geometry II: Affine Schemes ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st1/" title="Part XXI Set Theory I: ZFC, Ordinals, and Cardinals ‣ An Infinitely Large Napkin">
+<link rel="part" href="../part_st2/" title="Part XXII Set Theory II: Model Theory and Forcing ‣ An Infinitely Large Napkin">
+<link rel="part" href="../Pt23/" title="Part XXIII Appendix ‣ An Infinitely Large Napkin">
+</head>
+<body>
+<div class="ltx_page_main">
+<header class="ltx_page_header">
+<div class="ltx_align_center">
+<a href="./" title="In An Infinitely Large Napkin" class="ltx_ref" rel="up"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">IV </span>Linear Algebra</span></a><a href="ch_fourier.html" title="In Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">14 </span>Bonus: Fourier analysis</span></a><a href="../part_groups/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">V </span>More on Groups</span></a>
+</div></header>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 15 </span>Duals, adjoint, and transposes</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">This chapter is dedicated to the basis-free interpretation
+of the transpose and conjugate transpose of a matrix.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">Poster corollary: we will see that
+symmetric matrices with real coefficients
+are diagonalizable and have real eigenvalues.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">15.1 </span>Dual of a map</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:#FF0000;">Prototypical example for this section:</span> The example below.</em></p>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">We go ahead and now define a notion
+that will grow up to be the transpose of a matrix.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 15.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> be vector spaces.
+Suppose <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="T\colon V\to W" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math> is a linear map.
+Then we actually get a map</p>
+<table id="A5.S3.EGx47" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex1"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex1.m1" class="ltx_Math" alttext="\displaystyle T^{\vee}\colon W^{\vee}" display="inline"><mrow><msup><mi>T</mi><mo>∨</mo></msup><mo lspace="0.278em" rspace="0.278em">:</mo><msup><mi>W</mi><mo>∨</mo></msup></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex1.m2" class="ltx_Math" alttext="\displaystyle\to V^{\vee}" display="inline"><mrow><mi></mi><mo stretchy="false">→</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex2"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex2.m1" class="ltx_Math" alttext="\displaystyle f" display="inline"><mi>f</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex2.m2" class="ltx_Math" alttext="\displaystyle\mapsto f\circ T." display="inline"><mrow><mrow><mi></mi><mo stretchy="false">↦</mo><mrow><mi>f</mi><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>T</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This map is called the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> dual map</span>.</p>
+</div>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 15.1.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Example of a dual map)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Work over <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.
+Let’s consider <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> with basis <math id="S1.Thmtheorem2.p1.m3" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, <math id="S1.Thmtheorem2.p1.m4" class="ltx_Math" alttext="e_{2}" display="inline"><msub><mi>e</mi><mn>2</mn></msub></math>, <math id="S1.Thmtheorem2.p1.m5" class="ltx_Math" alttext="e_{3}" display="inline"><msub><mi>e</mi><mn>3</mn></msub></math>
+and <math id="S1.Thmtheorem2.p1.m6" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> with basis <math id="S1.Thmtheorem2.p1.m7" class="ltx_Math" alttext="f_{1}" display="inline"><msub><mi>f</mi><mn>1</mn></msub></math>, <math id="S1.Thmtheorem2.p1.m8" class="ltx_Math" alttext="f_{2}" display="inline"><msub><mi>f</mi><mn>2</mn></msub></math>.
+Suppose that</p>
+<table id="A5.S3.EGx48" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex3"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex3.m1" class="ltx_Math" alttext="\displaystyle T(e_{1})" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex3.m2" class="ltx_Math" alttext="\displaystyle=f_{1}+2f_{2}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><msub><mi>f</mi><mn>1</mn></msub><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex4"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex4.m1" class="ltx_Math" alttext="\displaystyle T(e_{2})" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex4.m2" class="ltx_Math" alttext="\displaystyle=3f_{1}+4f_{2}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mn>3</mn><mo>⁢</mo><msub><mi>f</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex5"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex5.m1" class="ltx_Math" alttext="\displaystyle T(e_{3})" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex5.m2" class="ltx_Math" alttext="\displaystyle=5f_{1}+6f_{2}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mn>5</mn><mo>⁢</mo><msub><mi>f</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mn>6</mn><mo>⁢</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Now consider <math id="S1.Thmtheorem2.p1.m9" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math> with its dual basis <math id="S1.Thmtheorem2.p1.m10" class="ltx_Math" alttext="e_{1}^{\vee}" display="inline"><msubsup><mi>e</mi><mn>1</mn><mo>∨</mo></msubsup></math>,
+<math id="S1.Thmtheorem2.p1.m11" class="ltx_Math" alttext="e_{2}^{\vee}" display="inline"><msubsup><mi>e</mi><mn>2</mn><mo>∨</mo></msubsup></math>, <math id="S1.Thmtheorem2.p1.m12" class="ltx_Math" alttext="e_{3}^{\vee}" display="inline"><msubsup><mi>e</mi><mn>3</mn><mo>∨</mo></msubsup></math>
+and <math id="S1.Thmtheorem2.p1.m13" class="ltx_Math" alttext="W^{\vee}" display="inline"><msup><mi>W</mi><mo>∨</mo></msup></math> with its dual basis <math id="S1.Thmtheorem2.p1.m14" class="ltx_Math" alttext="f_{1}^{\vee}" display="inline"><msubsup><mi>f</mi><mn>1</mn><mo>∨</mo></msubsup></math>, <math id="S1.Thmtheorem2.p1.m15" class="ltx_Math" alttext="f_{2}^{\vee}" display="inline"><msubsup><mi>f</mi><mn>2</mn><mo>∨</mo></msubsup></math>.
+Let’s compute <math id="S1.Thmtheorem2.p1.m16" class="ltx_Math" alttext="T^{\vee}(f_{1}^{\vee})=f_{1}^{\vee}\circ T" display="inline"><mrow><mrow><msup><mi>T</mi><mo>∨</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>f</mi><mn>1</mn><mo>∨</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msubsup><mi>f</mi><mn>1</mn><mo>∨</mo></msubsup><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>T</mi></mrow></mrow></math>:
+it is given by</p>
+<table id="A5.S3.EGx49" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex6"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex6.m1" class="ltx_Math" alttext="\displaystyle f_{1}^{\vee}\left(T(ae_{1}+be_{2}+ce_{3})\right)" display="inline"><mrow><msubsup><mi>f</mi><mn>1</mn><mo>∨</mo></msubsup><mo>⁢</mo><mrow><mo>(</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex6.m2" class="ltx_Math" alttext="\displaystyle=f_{1}^{\vee}\left((a+3b+5c)f_{1}+(2a+4b+6c)f_{2}\right)" display="inline"><mrow><mi></mi><mo>=</mo><mrow><msubsup><mi>f</mi><mn>1</mn><mo>∨</mo></msubsup><mo>⁢</mo><mrow><mo>(</mo><mrow><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>a</mi><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>b</mi></mrow><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><mi>c</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>f</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><mi>a</mi></mrow><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><mi>b</mi></mrow><mo>+</mo><mrow><mn>6</mn><mo>⁢</mo><mi>c</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>⁢</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></mrow><mo>)</mo></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex7"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex7.m1" class="ltx_Math" alttext="\displaystyle=a+3b+5c." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mi>a</mi><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>b</mi></mrow><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><mi>c</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">So accordingly we can write</p>
+<table id="Ex8" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex8.m1" class="ltx_Math" alttext="T^{\vee}(f_{1}^{\vee})=e_{1}^{\vee}+3e_{2}^{\vee}+5e_{3}^{\vee}" display="block"><mrow><mrow><msup><mi>T</mi><mo>∨</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>f</mi><mn>1</mn><mo>∨</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msubsup><mi>e</mi><mn>1</mn><mo>∨</mo></msubsup><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msubsup><mi>e</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><msubsup><mi>e</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Similarly,</p>
+<table id="Ex9" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex9.m1" class="ltx_Math" alttext="T^{\vee}(f_{2}^{\vee})=2e_{1}^{\vee}+4e_{2}^{\vee}+6e_{3}^{\vee}." display="block"><mrow><mrow><mrow><msup><mi>T</mi><mo>∨</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>f</mi><mn>2</mn><mo>∨</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mn>2</mn><mo>⁢</mo><msubsup><mi>e</mi><mn>1</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><msubsup><mi>e</mi><mn>2</mn><mo>∨</mo></msubsup></mrow><mo>+</mo><mrow><mn>6</mn><mo>⁢</mo><msubsup><mi>e</mi><mn>3</mn><mo>∨</mo></msubsup></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">This determines <math id="S1.Thmtheorem2.p1.m17" class="ltx_Math" alttext="T^{\vee}" display="inline"><msup><mi>T</mi><mo>∨</mo></msup></math> completely.</p>
+</div>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">If we write the matrices for <math id="S1.p3.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> and <math id="S1.p3.m2" class="ltx_Math" alttext="T^{\vee}" display="inline"><msup><mi>T</mi><mo>∨</mo></msup></math> in terms of our basis,
+we now see that</p>
+<table id="Ex10" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex10.m1" class="ltx_Math" alttext="T=\begin{bmatrix}1&amp;3&amp;5\\
+2&amp;4&amp;6\end{bmatrix}\quad\text{and}\quad T^{\vee}=\begin{bmatrix}1&amp;2\\
+3&amp;4\\
+5&amp;6\end{bmatrix}." display="block"><mrow><mrow><mrow><mi>T</mi><mo>=</mo><mrow><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd><mtd><mn>3</mn></mtd><mtd><mn>5</mn></mtd></mtr><mtr><mtd><mn>2</mn></mtd><mtd><mn>4</mn></mtd><mtd><mn>6</mn></mtd></mtr></mtable><mo>]</mo></mrow><mspace width="1em"></mspace><mtext>and</mtext></mrow></mrow><mspace width="1em"></mspace><mrow><msup><mi>T</mi><mo>∨</mo></msup><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mn>1</mn></mtd><mtd><mn>2</mn></mtd></mtr><mtr><mtd><mn>3</mn></mtd><mtd><mn>4</mn></mtd></mtr><mtr><mtd><mn>5</mn></mtd><mtd><mn>6</mn></mtd></mtr></mtable><mo>]</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">So in our selected basis,
+we find that the matrices are <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> transposes</span>:
+mirror images of each other over the diagonal.</p>
+</div>
+<div id="S1.p4" class="ltx_para">
+<p class="ltx_p">Of course, this should work in general.</p>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 15.1.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Transpose interpretation of <math id="S1.Thmtheorem3.m1" class="ltx_Math" alttext="T^{\vee}" display="inline"><msup><mi mathcolor="#191970">T</mi><mo mathcolor="#191970">∨</mo></msup></math>)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S1.Thmtheorem3.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="S1.Thmtheorem3.p1.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> be finite-dimensional <math id="S1.Thmtheorem3.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-vector spaces.
+Then, for any <math id="S1.Thmtheorem3.p1.m4" class="ltx_Math" alttext="T\colon V\to W" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math>,
+the following two matrices are transposes:</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The matrix for <math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="T\colon V\to W" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math>
+expressed in the basis <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="(e_{i})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></math>, <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="(f_{j})" display="inline"><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The matrix for <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="T^{\vee}\colon W^{\vee}\to V^{\vee}" display="inline"><mrow><msup><mi>T</mi><mo>∨</mo></msup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>W</mi><mo>∨</mo></msup><mo stretchy="false">→</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></mrow></math>
+expressed in the basis <math id="S1.I1.i2.p1.m2" class="ltx_Math" alttext="(f_{j}^{\vee})" display="inline"><mrow><mo stretchy="false">(</mo><msubsup><mi>f</mi><mi>j</mi><mo>∨</mo></msubsup><mo stretchy="false">)</mo></mrow></math>, <math id="S1.I1.i2.p1.m3" class="ltx_Math" alttext="(e_{i}^{\vee})" display="inline"><mrow><mo stretchy="false">(</mo><msubsup><mi>e</mi><mi>i</mi><mo>∨</mo></msubsup><mo stretchy="false">)</mo></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S1.p5" class="ltx_para">
+<p class="ltx_p">The <math id="S1.p5.m1" class="ltx_Math" alttext="(i,j)" display="inline"><mrow><mo stretchy="false">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow></math>th entry of the matrix <math id="S1.p5.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>
+corresponds to the coefficient of <math id="S1.p5.m3" class="ltx_Math" alttext="f_{i}" display="inline"><msub><mi>f</mi><mi>i</mi></msub></math> in <math id="S1.p5.m4" class="ltx_Math" alttext="T(e_{j})" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow></math>,
+which corresponds to the coefficient of <math id="S1.p5.m5" class="ltx_Math" alttext="e_{j}^{\vee}" display="inline"><msubsup><mi>e</mi><mi>j</mi><mo>∨</mo></msubsup></math>
+in <math id="S1.p5.m6" class="ltx_Math" alttext="f_{i}^{\vee}\circ T" display="inline"><mrow><msubsup><mi>f</mi><mi>i</mi><mo>∨</mo></msubsup><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>T</mi></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S1.p6" class="ltx_para">
+<p class="ltx_p">The nice part of this is that the definition of <math id="S1.p6.m1" class="ltx_Math" alttext="T^{\vee}" display="inline"><msup><mi>T</mi><mo>∨</mo></msup></math> is basis-free.
+So it means that if we start with any linear map <math id="S1.p6.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>,
+and then pick whichever basis we feel like,
+then <math id="S1.p6.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> and <math id="S1.p6.m4" class="ltx_Math" alttext="T^{\vee}" display="inline"><msup><mi>T</mi><mo>∨</mo></msup></math> will still be transposes.</p>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">15.2 </span>Identifying with the dual space</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">For the rest of this chapter, though,
+we’ll now bring inner products into the picture.</p>
+</div>
+<div id="S2.p2" class="ltx_para">
+<p class="ltx_p">Earlier I complained that there was no natural isomorphism <math id="S2.p2.m1" class="ltx_Math" alttext="V\cong V^{\vee}" display="inline"><mrow><mi>V</mi><mo>≅</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math>.
+But in fact, given an inner form
+we can actually make such an identification:
+that is we can naturally associate every linear map
+<math id="S2.p2.m2" class="ltx_Math" alttext="\xi\colon V\to k" display="inline"><mrow><mi>ξ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>k</mi></mrow></mrow></math> with a vector <math id="S2.p2.m3" class="ltx_Math" alttext="v\in V" display="inline"><mrow><mi>v</mi><mo>∈</mo><mi>V</mi></mrow></math>.</p>
+</div>
+<div id="S2.p3" class="ltx_para">
+<p class="ltx_p">To see how we might do this, suppose <math id="S2.p3.m1" class="ltx_Math" alttext="V=\mathbb{R}^{3}" display="inline"><mrow><mi>V</mi><mo>=</mo><msup><mi>ℝ</mi><mn>3</mn></msup></mrow></math>
+for now with an orthonormal basis <math id="S2.p3.m2" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, <math id="S2.p3.m3" class="ltx_Math" alttext="e_{2}" display="inline"><msub><mi>e</mi><mn>2</mn></msub></math>, <math id="S2.p3.m4" class="ltx_Math" alttext="e_{3}" display="inline"><msub><mi>e</mi><mn>3</mn></msub></math>.
+How might we use the inner product to
+represent a map from <math id="S2.p3.m5" class="ltx_Math" alttext="V\to\mathbb{R}" display="inline"><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></math>?
+For example, take <math id="S2.p3.m6" class="ltx_Math" alttext="\xi\in V^{\vee}" display="inline"><mrow><mi>ξ</mi><mo>∈</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math> by
+<math id="S2.p3.m7" class="ltx_Math" alttext="\xi(e_{1})=3" display="inline"><mrow><mrow><mi>ξ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>3</mn></mrow></math>, <math id="S2.p3.m8" class="ltx_Math" alttext="\xi(e_{2})=4" display="inline"><mrow><mrow><mi>ξ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>4</mn></mrow></math> and <math id="S2.p3.m9" class="ltx_Math" alttext="\xi(e_{3})=5" display="inline"><mrow><mrow><mi>ξ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>5</mn></mrow></math>.
+Actually, I claim that</p>
+<table id="Ex11" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex11.m1" class="ltx_Math" alttext="\xi(v)=\left&lt;v,3e_{1}+4e_{2}+5e_{3}\right&gt;" display="block"><mrow><mrow><mi>ξ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mrow><mrow><mn>3</mn><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></mrow><mo>⟩</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">for every <math id="S2.p3.m10" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math>.</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 15.2.1</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check this.</span></p>
+</div>
+</div>
+<div id="S2.p4" class="ltx_para">
+<p class="ltx_p">And this works beautifully in the real case.</p>
+</div>
+<div id="thm:real_dual_isomorphic" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 15.2.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(<math id="S2.Thmtheorem2.m1" class="ltx_Math" alttext="V\cong V^{\vee}" display="inline"><mrow><mi mathcolor="#191970">V</mi><mo mathcolor="#191970">≅</mo><msup><mi mathcolor="#191970">V</mi><mo mathcolor="#191970">∨</mo></msup></mrow></math> for real inner forms)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a finite-dimensional <em class="ltx_emph ltx_font_italic">real</em>
+inner product space and <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math> its dual.
+Then the map <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="V\to V^{\vee}" display="inline"><mrow><mi>V</mi><mo stretchy="false">→</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math> by</p>
+<table id="Ex12" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex12.m1" class="ltx_Math" alttext="v\mapsto\left&lt;-,v\right&gt;\in V^{\vee}" display="block"><mrow><mi>v</mi><mo stretchy="false">↦</mo><mrow><mo>⟨</mo><mo lspace="0em" rspace="0em">−</mo><mo>,</mo><mi>v</mi><mo>⟩</mo></mrow><mo>∈</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is an isomorphism of real vector spaces.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S2.p5" class="ltx_para">
+<p class="ltx_p">It suffices to show that the map is injective and surjective.</p>
+<ul id="S2.I1" class="ltx_itemize">
+<li id="S2.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Injective: suppose <math id="S2.I1.i1.p1.m1" class="ltx_Math" alttext="\left&lt;v,v_{1}\right&gt;=\left&lt;v,v_{2}\right&gt;" display="inline"><mrow><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><msub><mi>v</mi><mn>1</mn></msub><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><msub><mi>v</mi><mn>2</mn></msub><mo>⟩</mo></mrow></mrow></math>
+for every vector <math id="S2.I1.i1.p1.m2" class="ltx_Math" alttext="v\in V" display="inline"><mrow><mi>v</mi><mo>∈</mo><mi>V</mi></mrow></math>.
+This means <math id="S2.I1.i1.p1.m3" class="ltx_Math" alttext="\left&lt;v,v_{1}-v_{2}\right&gt;=0" display="inline"><mrow><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>−</mo><msub><mi>v</mi><mn>2</mn></msub></mrow><mo>⟩</mo></mrow><mo>=</mo><mn>0</mn></mrow></math> for every vector <math id="S2.I1.i1.p1.m4" class="ltx_Math" alttext="v\in V" display="inline"><mrow><mi>v</mi><mo>∈</mo><mi>V</mi></mrow></math>.
+This can only happen if <math id="S2.I1.i1.p1.m5" class="ltx_Math" alttext="v_{1}-v_{2}=0" display="inline"><mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>−</mo><msub><mi>v</mi><mn>2</mn></msub></mrow><mo>=</mo><mn>0</mn></mrow></math>; for example, take <math id="S2.I1.i1.p1.m6" class="ltx_Math" alttext="v=v_{1}-v_{2}" display="inline"><mrow><mi>v</mi><mo>=</mo><mrow><msub><mi>v</mi><mn>1</mn></msub><mo>−</mo><msub><mi>v</mi><mn>2</mn></msub></mrow></mrow></math>
+and use positive definiteness.</p>
+</div>
+</li>
+<li id="S2.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S2.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Surjective: take an orthonormal basis <math id="S2.I1.i2.p1.m1" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, …<math id="S2.I1.i2.p1.m2" class="ltx_Math" alttext="e_{n}" display="inline"><msub><mi>e</mi><mi>n</mi></msub></math>
+and let <math id="S2.I1.i2.p1.m3" class="ltx_Math" alttext="e_{1}^{\vee}" display="inline"><msubsup><mi>e</mi><mn>1</mn><mo>∨</mo></msubsup></math>, …, <math id="S2.I1.i2.p1.m4" class="ltx_Math" alttext="e_{n}^{\vee}" display="inline"><msubsup><mi>e</mi><mi>n</mi><mo>∨</mo></msubsup></math> be the dual basis on <math id="S2.I1.i2.p1.m5" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math>.
+Then <math id="S2.I1.i2.p1.m6" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math> maps to <math id="S2.I1.i2.p1.m7" class="ltx_Math" alttext="e_{1}^{\vee}" display="inline"><msubsup><mi>e</mi><mn>1</mn><mo>∨</mo></msubsup></math>, et cetera.
+∎</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S2.p6" class="ltx_para">
+<p class="ltx_p">Actually, since we already know <math id="S2.p6.m1" class="ltx_Math" alttext="\dim V=\dim V^{\vee}" display="inline"><mrow><mrow><mo rspace="0.167em">dim</mo><mi>V</mi></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></mrow></math>
+we only had to prove one of the above.
+As a matter of personal taste, I find the proof of injectivity more elegant,
+and the proof of surjectivity more enlightening,
+so I included both.
+Thus</p>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_moral">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;">Moral 15.2.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#186118;"> — </span>
+</h6>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">If a real inner product space <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is given an inner form,
+then <math id="S2.Thmtheorem3.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="S2.Thmtheorem3.p1.m3" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math> are canonically isomorphic.</p>
+</div>
+</div>
+<div id="S2.p7" class="ltx_para">
+<p class="ltx_p">Unfortunately, things go awry if <math id="S2.p7.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is complex.
+Here is the results:</p>
+</div>
+<div id="S2.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 15.2.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(<math id="S2.Thmtheorem4.m1" class="ltx_Math" alttext="V" display="inline"><mi mathcolor="#191970">V</mi></math> versus <math id="S2.Thmtheorem4.m2" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi mathcolor="#191970">V</mi><mo mathcolor="#191970">∨</mo></msup></math> for complex inner forms)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a finite-dimensional <em class="ltx_emph ltx_font_italic">complex</em>
+inner product space and <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math> its dual.
+Then the map <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="V\to V^{\vee}" display="inline"><mrow><mi>V</mi><mo stretchy="false">→</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math> by</p>
+<table id="Ex13" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex13.m1" class="ltx_Math" alttext="v\mapsto\left&lt;-,v\right&gt;\in V^{\vee}" display="block"><mrow><mi>v</mi><mo stretchy="false">↦</mo><mrow><mo>⟨</mo><mo lspace="0em" rspace="0em">−</mo><mo>,</mo><mi>v</mi><mo>⟩</mo></mrow><mo>∈</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is a bijection of sets.</p>
+</div>
+</div>
+<div id="S2.p8" class="ltx_para">
+<p class="ltx_p">Wait, what? Well, the proof above shows that it is both injective
+and surjective, but why is it not an isomorphism?
+The answer is that it is not a linear map:
+since the form is sesquilinear we have for example</p>
+<table id="Ex14" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex14.m1" class="ltx_Math" alttext="iv\mapsto\left&lt;-,iv\right&gt;=-i\left&lt;-,v\right&gt;" display="block"><mrow><mrow><mi>i</mi><mo>⁢</mo><mi>v</mi></mrow><mo stretchy="false">↦</mo><mrow><mo>⟨</mo><mo lspace="0em" rspace="0em">−</mo><mo>,</mo><mrow><mi>i</mi><mo>⁢</mo><mi>v</mi></mrow><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>−</mo><mrow><mi>i</mi><mo>⁢</mo><mrow><mo>⟨</mo><mo lspace="0em" rspace="0em">−</mo><mo>,</mo><mi>v</mi><mo>⟩</mo></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">which has introduced a minus sign!
+In fact, it is an <em class="ltx_emph ltx_font_italic">anti-linear</em> map, in the sense we defined before.</p>
+</div>
+<div id="S2.p9" class="ltx_para">
+<p class="ltx_p">Eager readers might try to fix this by defining
+the isomorphism <math id="S2.p9.m1" class="ltx_Math" alttext="v\mapsto\left&lt;v,-\right&gt;" display="inline"><mrow><mi>v</mi><mo stretchy="false">↦</mo><mrow><mo>⟨</mo><mi>v</mi><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">−</mo><mo>⟩</mo></mrow></mrow></math> instead.
+However, this also fails, because the right-hand side
+is not even an element of <math id="S2.p9.m2" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math>:
+it is an “anti-linear”, not linear.</p>
+</div>
+<div id="S2.p10" class="ltx_para">
+<p class="ltx_p">And so we are stuck.
+Fortunately, we will only need the “bijection” result
+for what follows, so we can continue on anyways.
+(If you want to fix this, <a href="#prob:complex_conj_space" title="Problem 15D (The complex conjugate spaces). ‣ 15.5 A few harder problems to think about ‣ Chapter 15 Duals, adjoint, and transposes ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">15D</span></a>
+gives a way to do so.)</p>
+</div>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">15.3 </span>The adjoint (conjugate transpose)</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p">We will see that, as a result of the flipping above,
+the <em class="ltx_emph ltx_font_italic">conjugate transpose</em> is actually the better concept
+for inner product spaces: since it can be defined using only the inner product
+without making mention to dual spaces at all.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 15.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> be finite-dimensional inner product spaces,
+and let <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="T\colon V\to W" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math>.
+The <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> adjoint</span> (or <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> conjugate transpose</span>)
+of <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>, denoted <math id="S3.Thmtheorem1.p1.m5" class="ltx_Math" alttext="T^{\dagger}\colon W\to V" display="inline"><mrow><msup><mi>T</mi><mo>†</mo></msup><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>W</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math>,
+is defined as follows: for every vector <math id="S3.Thmtheorem1.p1.m6" class="ltx_Math" alttext="w\in W" display="inline"><mrow><mi>w</mi><mo>∈</mo><mi>W</mi></mrow></math>,
+we let <math id="S3.Thmtheorem1.p1.m7" class="ltx_Math" alttext="T^{\dagger}(w)\in V" display="inline"><mrow><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow></mrow><mo>∈</mo><mi>V</mi></mrow></math> be the unique vector with</p>
+<table id="Ex15" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex15.m1" class="ltx_Math" alttext="\left&lt;v,T^{\dagger}(w)\right&gt;_{V}=\left&lt;T(v),w\right&gt;_{W}" display="block"><mrow><msub><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⟩</mo></mrow><mi>V</mi></msub><mo>=</mo><msub><mrow><mo>⟨</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>w</mi><mo>⟩</mo></mrow><mi>W</mi></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">for every <math id="S3.Thmtheorem1.p1.m8" class="ltx_Math" alttext="v\in V" display="inline"><mrow><mi>v</mi><mo>∈</mo><mi>V</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">Some immediate remarks about this definition:</p>
+<ul id="S3.I1" class="ltx_itemize">
+<li id="S3.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Our <math id="S3.I1.i1.p1.m1" class="ltx_Math" alttext="T^{\dagger}" display="inline"><msup><mi>T</mi><mo>†</mo></msup></math> is well-defined,
+because <math id="S3.I1.i1.p1.m2" class="ltx_Math" alttext="v\mapsto\left&lt;T(v),w\right&gt;_{W}" display="inline"><mrow><mi>v</mi><mo stretchy="false">↦</mo><msub><mrow><mo>⟨</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mi>w</mi><mo>⟩</mo></mrow><mi>W</mi></msub></mrow></math> is some function in <math id="S3.I1.i1.p1.m3" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math>,
+and hence by the bijection earlier
+it should be uniquely of the form <math id="S3.I1.i1.p1.m4" class="ltx_Math" alttext="\left&lt;-,v\right&gt;" display="inline"><mrow><mo>⟨</mo><mo lspace="0em" rspace="0em">−</mo><mo>,</mo><mi>v</mi><mo>⟩</mo></mrow></math> for some <math id="S3.I1.i1.p1.m5" class="ltx_Math" alttext="v\in V" display="inline"><mrow><mi>v</mi><mo>∈</mo><mi>V</mi></mrow></math>.</p>
+</div>
+</li>
+<li id="S3.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">This map <math id="S3.I1.i2.p1.m1" class="ltx_Math" alttext="T^{\dagger}" display="inline"><msup><mi>T</mi><mo>†</mo></msup></math> is indeed a linear map (why?).</p>
+</div>
+</li>
+<li id="S3.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S3.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">The niceness of this definition is that it doesn’t
+make reference to any basis or even <math id="S3.I1.i3.p1.m1" class="ltx_Math" alttext="V^{\vee}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math>,
+so it is the “right” definition for a inner product space.</p>
+</div>
+</li>
+</ul>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_example">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:#8C0000;">Example 15.3.2</span></span><span class="ltx_text ltx_font_bold" style="color:#8C0000;"> <span class="ltx_text ltx_font_medium">(Example of an adjoint map)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We’ll work over <math id="S3.Thmtheorem2.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>, so the conjugates are more visible.
+Let’s consider <math id="S3.Thmtheorem2.p1.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> with orthonormal basis <math id="S3.Thmtheorem2.p1.m3" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, <math id="S3.Thmtheorem2.p1.m4" class="ltx_Math" alttext="e_{2}" display="inline"><msub><mi>e</mi><mn>2</mn></msub></math>, <math id="S3.Thmtheorem2.p1.m5" class="ltx_Math" alttext="e_{3}" display="inline"><msub><mi>e</mi><mn>3</mn></msub></math>
+and <math id="S3.Thmtheorem2.p1.m6" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> with orthonormal basis <math id="S3.Thmtheorem2.p1.m7" class="ltx_Math" alttext="f_{1}" display="inline"><msub><mi>f</mi><mn>1</mn></msub></math>, <math id="S3.Thmtheorem2.p1.m8" class="ltx_Math" alttext="f_{2}" display="inline"><msub><mi>f</mi><mn>2</mn></msub></math>.
+We put</p>
+<table id="A5.S3.EGx50" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex16"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex16.m1" class="ltx_Math" alttext="\displaystyle T(e_{1})" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex16.m2" class="ltx_Math" alttext="\displaystyle=if_{1}+2f_{2}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>i</mi><mo>⁢</mo><msub><mi>f</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mn>2</mn><mo>⁢</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex17"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex17.m1" class="ltx_Math" alttext="\displaystyle T(e_{2})" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex17.m2" class="ltx_Math" alttext="\displaystyle=3f_{1}+4f_{2}" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mrow><mn>3</mn><mo>⁢</mo><msub><mi>f</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mn>4</mn><mo>⁢</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex18"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex18.m1" class="ltx_Math" alttext="\displaystyle T(e_{3})" display="inline"><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mn>3</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex18.m2" class="ltx_Math" alttext="\displaystyle=5f_{1}+6if_{2}." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mn>5</mn><mo>⁢</mo><msub><mi>f</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mn>6</mn><mo>⁢</mo><mi>i</mi><mo>⁢</mo><msub><mi>f</mi><mn>2</mn></msub></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">We compute <math id="S3.Thmtheorem2.p1.m9" class="ltx_Math" alttext="T^{\dagger}(f_{1})" display="inline"><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow></math>.
+It is the unique vector <math id="S3.Thmtheorem2.p1.m10" class="ltx_Math" alttext="x\in V" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>V</mi></mrow></math> such that</p>
+<table id="Ex19" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex19.m1" class="ltx_Math" alttext="\left&lt;v,x\right&gt;_{V}=\left&lt;T(v),f_{1}\right&gt;_{W}" display="block"><mrow><msub><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mi>x</mi><mo>⟩</mo></mrow><mi>V</mi></msub><mo>=</mo><msub><mrow><mo>⟨</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>f</mi><mn>1</mn></msub><mo>⟩</mo></mrow><mi>W</mi></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">for any <math id="S3.Thmtheorem2.p1.m11" class="ltx_Math" alttext="v\in V" display="inline"><mrow><mi>v</mi><mo>∈</mo><mi>V</mi></mrow></math>.
+If we expand <math id="S3.Thmtheorem2.p1.m12" class="ltx_Math" alttext="v=ae_{1}+be_{2}+ce_{3}" display="inline"><mrow><mi>v</mi><mo>=</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></mrow></mrow></math> the above equality becomes</p>
+<table id="A5.S3.EGx51" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex20"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex20.m1" class="ltx_Math" alttext="\displaystyle\left&lt;ae_{1}+be_{2}+ce_{3},x\right&gt;_{V}" display="inline"><msub><mrow><mo>⟨</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></mrow><mo>,</mo><mi>x</mi><mo>⟩</mo></mrow><mi>V</mi></msub></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex20.m2" class="ltx_Math" alttext="\displaystyle=\left&lt;T(ae_{1}+be_{2}+ce_{3}),f_{1}\right&gt;_{W}" display="inline"><mrow><mi></mi><mo>=</mo><msub><mrow><mo>⟨</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mrow><mrow><mi>a</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow><mo>+</mo><mrow><mi>b</mi><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><mi>c</mi><mo>⁢</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></mrow><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>f</mi><mn>1</mn></msub><mo>⟩</mo></mrow><mi>W</mi></msub></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex21"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex21.m1" class="ltx_Math" alttext="\displaystyle=ia+3b+5c." display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mrow><mi>i</mi><mo>⁢</mo><mi>a</mi></mrow><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><mi>b</mi></mrow><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><mi>c</mi></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">However, since <math id="S3.Thmtheorem2.p1.m13" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> is in the second argument,
+this means we actually want to take</p>
+<table id="Ex22" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex22.m1" class="ltx_Math" alttext="T^{\dagger}(f_{1})=-ie_{1}+3e_{2}+5e_{3}" display="block"><mrow><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>f</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mrow><mo>−</mo><mrow><mi>i</mi><mo>⁢</mo><msub><mi>e</mi><mn>1</mn></msub></mrow></mrow><mo>+</mo><mrow><mn>3</mn><mo>⁢</mo><msub><mi>e</mi><mn>2</mn></msub></mrow><mo>+</mo><mrow><mn>5</mn><mo>⁢</mo><msub><mi>e</mi><mn>3</mn></msub></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">so that the sesquilinearity will conjugate the <math id="S3.Thmtheorem2.p1.m14" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>.</p>
+</div>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">The pattern continues, though we remind the reader that
+we need the basis to be orthonormal to proceed.</p>
+</div>
+<div id="S3.Thmtheorem3" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 15.3.3</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Adjoints are conjugate transposes)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S3.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">Fix an <em class="ltx_emph ltx_font_italic">orthonormal</em> basis of a finite-dimensional inner product space <math id="S3.Thmtheorem3.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+Let <math id="S3.Thmtheorem3.p1.m2" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> be a linear map.
+If we write <math id="S3.Thmtheorem3.p1.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> as a matrix in this basis,
+then the matrix <math id="S3.Thmtheorem3.p1.m4" class="ltx_Math" alttext="T^{\dagger}" display="inline"><msup><mi>T</mi><mo>†</mo></msup></math> (in the same basis)
+is the <em class="ltx_emph ltx_font_italic">conjugate transpose</em> of the matrix of <math id="S3.Thmtheorem3.p1.m5" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>;
+that is, the <math id="S3.Thmtheorem3.p1.m6" class="ltx_Math" alttext="(i,j)" display="inline"><mrow><mo stretchy="false">(</mo><mi>i</mi><mo>,</mo><mi>j</mi><mo stretchy="false">)</mo></mrow></math>th entry of <math id="S3.Thmtheorem3.p1.m7" class="ltx_Math" alttext="T^{\vee}" display="inline"><msup><mi>T</mi><mo>∨</mo></msup></math>
+is the complex conjugate of the <math id="S3.Thmtheorem3.p1.m8" class="ltx_Math" alttext="(j,i)" display="inline"><mrow><mo stretchy="false">(</mo><mi>j</mi><mo>,</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></math>th entry of <math id="S3.Thmtheorem3.p1.m9" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">One-line version: take <math id="S3.p4.m1" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math> and <math id="S3.p4.m2" class="ltx_Math" alttext="w" display="inline"><mi>w</mi></math> to be basis elements,
+and this falls right out.</p>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">Full proof: let</p>
+<table id="Ex23" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex23.m1" class="ltx_Math" alttext="T=\begin{bmatrix}a_{11}&amp;\dots&amp;a_{1n}\\
+\vdots&amp;\ddots&amp;\vdots\\
+a_{n1}&amp;\dots&amp;a_{nn}\end{bmatrix}" display="block"><mrow><mi>T</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>a</mi><mn>11</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>a</mi><mrow><mn>1</mn><mo>⁢</mo><mi>n</mi></mrow></msub></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mn>1</mn></mrow></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>a</mi><mrow><mi>n</mi><mo>⁢</mo><mi>n</mi></mrow></msub></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">in this basis <math id="S3.p5.m1" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, …, <math id="S3.p5.m2" class="ltx_Math" alttext="e_{n}" display="inline"><msub><mi>e</mi><mi>n</mi></msub></math>.
+Then, letting <math id="S3.p5.m3" class="ltx_Math" alttext="w=e_{i}" display="inline"><mrow><mi>w</mi><mo>=</mo><msub><mi>e</mi><mi>i</mi></msub></mrow></math> and <math id="S3.p5.m4" class="ltx_Math" alttext="v=e_{j}" display="inline"><mrow><mi>v</mi><mo>=</mo><msub><mi>e</mi><mi>j</mi></msub></mrow></math> we deduce that</p>
+<table id="Ex24" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex24.m1" class="ltx_Math" alttext="\left&lt;e_{i},T^{\dagger}(e_{j})\right&gt;=\left&lt;T(e_{i}),e_{j}\right&gt;=a_{ji}%
+\implies\left&lt;T^{\dagger}(e_{j}),e_{i}\right&gt;=\overline{a_{ji}}" display="block"><mrow><mrow><mo>⟨</mo><msub><mi>e</mi><mi>i</mi></msub><mo>,</mo><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>⟨</mo><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>e</mi><mi>j</mi></msub><mo>⟩</mo></mrow><mo>=</mo><msub><mi>a</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mo stretchy="false">⟹</mo><mrow><mo>⟨</mo><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><msub><mi>e</mi><mi>i</mi></msub><mo>⟩</mo></mrow><mo>=</mo><mover accent="true"><msub><mi>a</mi><mrow><mi>j</mi><mo>⁢</mo><mi>i</mi></mrow></msub><mo>¯</mo></mover></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">for any <math id="S3.p5.m5" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>, which is enough to deduce the result.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">15.4 </span>Eigenvalues of normal maps</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p">We now come to the advertised theorem.
+Restrict to the situation where <math id="S4.p1.m1" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math>.
+You see, the world would be a very beautiful place if it turned out
+that we could pick a basis of eigenvectors that was also <em class="ltx_emph ltx_font_italic">orthonormal</em>.
+This is of course far too much to hope for;
+even without the orthonormal condition,
+we saw that Jordan form could still have <math id="S4.p1.m2" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>’s off the diagonal.</p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">However, it turns out that there is
+a complete characterization of exactly when our overzealous dream is true.</p>
+</div>
+<div id="def:hermitian" class="ltx_theorem ltx_theorem_definition">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 15.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We say a linear map <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>
+(from a finite-dimensional inner product space to itself)
+is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> normal</span> if <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="TT^{\dagger}=T^{\dagger}T" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><msup><mi>T</mi><mo>†</mo></msup></mrow><mo>=</mo><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mi>T</mi></mrow></mrow></math>.</p>
+</div>
+<div id="S4.Thmtheorem1.p2" class="ltx_para">
+<p class="ltx_p">We say a complex <math id="S4.Thmtheorem1.p2.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> self-adjoint</span> or <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> Hermitian</span> if <math id="S4.Thmtheorem1.p2.m2" class="ltx_Math" alttext="T=T^{\dagger}" display="inline"><mrow><mi>T</mi><mo>=</mo><msup><mi>T</mi><mo>†</mo></msup></mrow></math>;
+i.e. as a matrix in any orthonormal basis, <math id="S4.Thmtheorem1.p2.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is its own conjugate transpose.
+For real <math id="S4.Thmtheorem1.p2.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> we say “self-adjoint”, “Hermitian” or <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> symmetric</span>.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem2" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 15.4.2</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Normal <math id="S4.Thmtheorem2.m1" class="ltx_Math" alttext="\iff" display="inline"><mo mathcolor="#191970" stretchy="false">⇔</mo></math> diagonalizable with orthonormal basis)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.Thmtheorem2.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a finite-dimensional complex inner product space.
+A linear map <math id="S4.Thmtheorem2.p1.m2" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> is normal
+if and only if one can pick an orthonormal basis of eigenvectors.</p>
+</div>
+</div>
+<div id="S4.Thmtheorem3" class="ltx_theorem ltx_theorem_exercise">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 15.4.3</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S4.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that if there exists such an orthonormal basis
+then <math id="S4.Thmtheorem3.p1.m1" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> is normal,
+by writing <math id="S4.Thmtheorem3.p1.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> as a diagonal matrix in that basis.</span></p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">This is long, and maybe should be omitted on a first reading.
+If <math id="S4.p3.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> has an orthonormal basis of eigenvectors,
+this result is immediate.</p>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Now assume <math id="S4.p4.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is normal.
+We first prove <math id="S4.p4.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is diagonalizable; this is the hard part.</p>
+</div>
+<div id="S4.Thmtheorem4" class="ltx_theorem ltx_theorem_claim">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Claim 15.4.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="S4.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">If <math id="S4.Thmtheorem4.p1.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is normal, then <math id="S4.Thmtheorem4.p1.m2" class="ltx_Math" alttext="\ker T=\ker T^{r}=\ker T^{\dagger}" display="inline"><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow><mo>=</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><msup><mi>T</mi><mi>r</mi></msup></mrow><mo>=</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><msup><mi>T</mi><mo>†</mo></msup></mrow></mrow></math> for <math id="S4.Thmtheorem4.p1.m3" class="ltx_Math" alttext="r\geq 1" display="inline"><mrow><mi>r</mi><mo>≥</mo><mn>1</mn></mrow></math>.
+(Here <math id="S4.Thmtheorem4.p1.m4" class="ltx_Math" alttext="T^{r}" display="inline"><msup><mi>T</mi><mi>r</mi></msup></math> is <math id="S4.Thmtheorem4.p1.m5" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> applied <math id="S4.Thmtheorem4.p1.m6" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> times.)</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof of Claim.</h6>
+<div id="S4.p5" class="ltx_para">
+<p class="ltx_p">Let <math id="S4.p5.m1" class="ltx_Math" alttext="S=T^{\dagger}\circ T" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><msup><mi>T</mi><mo>†</mo></msup><mo lspace="0.222em" rspace="0.222em">∘</mo><mi>T</mi></mrow></mrow></math>, which is self-adjoint.
+We first note that <math id="S4.p5.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is Hermitian and <math id="S4.p5.m3" class="ltx_Math" alttext="\ker S=\ker T" display="inline"><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>S</mi></mrow><mo>=</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow></mrow></math>.
+To see it’s Hermitian, note
+<math id="S4.p5.m4" class="ltx_Math" alttext="\left&lt;Sv,w\right&gt;=\left&lt;Tv,Tw\right&gt;=\left&lt;v,Sw\right&gt;" display="inline"><mrow><mrow><mo>⟨</mo><mrow><mi>S</mi><mo>⁢</mo><mi>v</mi></mrow><mo>,</mo><mi>w</mi><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>⟨</mo><mrow><mi>T</mi><mo>⁢</mo><mi>v</mi></mrow><mo>,</mo><mrow><mi>T</mi><mo>⁢</mo><mi>w</mi></mrow><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mrow><mi>S</mi><mo>⁢</mo><mi>w</mi></mrow><mo>⟩</mo></mrow></mrow></math>.
+Taking <math id="S4.p5.m5" class="ltx_Math" alttext="v=w" display="inline"><mrow><mi>v</mi><mo>=</mo><mi>w</mi></mrow></math> also implies <math id="S4.p5.m6" class="ltx_Math" alttext="\ker S\subseteq\ker T" display="inline"><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>S</mi></mrow><mo>⊆</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow></mrow></math>
+(and hence equality since obviously <math id="S4.p5.m7" class="ltx_Math" alttext="\ker T\subseteq\ker S" display="inline"><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow><mo>⊆</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>S</mi></mrow></mrow></math>).</p>
+</div>
+<div id="S4.p6" class="ltx_para">
+<p class="ltx_p">First, since we have <math id="S4.p6.m1" class="ltx_Math" alttext="\left&lt;S^{r}(v),S^{r-2}(v)\right&gt;=\left&lt;S^{r-1}(v),S^{r-1}(v)\right&gt;" display="inline"><mrow><mrow><mo>⟨</mo><mrow><msup><mi>S</mi><mi>r</mi></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><msup><mi>S</mi><mrow><mi>r</mi><mo>−</mo><mn>2</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>⟨</mo><mrow><msup><mi>S</mi><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>,</mo><mrow><msup><mi>S</mi><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⟩</mo></mrow></mrow></math>,
+an induction shows that <math id="S4.p6.m2" class="ltx_Math" alttext="\ker S=\ker S^{r}" display="inline"><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>S</mi></mrow><mo>=</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><msup><mi>S</mi><mi>r</mi></msup></mrow></mrow></math> for <math id="S4.p6.m3" class="ltx_Math" alttext="r\geq 1" display="inline"><mrow><mi>r</mi><mo>≥</mo><mn>1</mn></mrow></math>.
+Now, since <math id="S4.p6.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is normal, we have <math id="S4.p6.m5" class="ltx_Math" alttext="S^{r}=(T^{\dagger})^{r}\circ T^{r}" display="inline"><mrow><msup><mi>S</mi><mi>r</mi></msup><mo>=</mo><mrow><msup><mrow><mo stretchy="false">(</mo><msup><mi>T</mi><mo>†</mo></msup><mo rspace="0.055em" stretchy="false">)</mo></mrow><mi>r</mi></msup><mo rspace="0.222em">∘</mo><msup><mi>T</mi><mi>r</mi></msup></mrow></mrow></math>,
+and thus we have the inclusion</p>
+<table id="Ex25" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex25.m1" class="ltx_Math" alttext="\ker T\subseteq\ker T^{r}\subseteq\ker S^{r}=\ker S=\ker T" display="block"><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow><mo>⊆</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><msup><mi>T</mi><mi>r</mi></msup></mrow><mo>⊆</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><msup><mi>S</mi><mi>r</mi></msup></mrow><mo>=</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>S</mi></mrow><mo>=</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">where the last equality follows from the first claim.
+Thus in fact <math id="S4.p6.m6" class="ltx_Math" alttext="\ker T=\ker T^{r}" display="inline"><mrow><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow><mo>=</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><msup><mi>T</mi><mi>r</mi></msup></mrow></mrow></math>.</p>
+</div>
+<div id="S4.p7" class="ltx_para">
+<p class="ltx_p">Finally, to show equality with <math id="S4.p7.m1" class="ltx_Math" alttext="\ker T^{\dagger}" display="inline"><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><msup><mi>T</mi><mo>†</mo></msup></mrow></math> we</p>
+<table id="A5.S3.EGx52" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex26"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex26.m1" class="ltx_Math" alttext="\displaystyle\left&lt;Tv,Tv\right&gt;" display="inline"><mrow><mo>⟨</mo><mrow><mi>T</mi><mo>⁢</mo><mi>v</mi></mrow><mo>,</mo><mrow><mi>T</mi><mo>⁢</mo><mi>v</mi></mrow><mo>⟩</mo></mrow></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex26.m2" class="ltx_Math" alttext="\displaystyle=\left&lt;v,T^{\dagger}Tv\right&gt;" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mi>T</mi><mo>⁢</mo><mi>v</mi></mrow><mo>⟩</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex27"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex27.m1" class="ltx_Math" alttext="\displaystyle=\left&lt;v,TT^{\dagger}v\right&gt;" display="inline"><mrow><mi></mi><mo>=</mo><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mi>v</mi></mrow><mo>⟩</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex28"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_eqn_cell"></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex28.m1" class="ltx_Math" alttext="\displaystyle=\left&lt;T^{\dagger}v,T^{\dagger}v\right&gt;.\qed" display="inline"><mrow><mrow><mi></mi><mo>=</mo><mrow><mo>⟨</mo><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mi>v</mi></mrow><mo>,</mo><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mi>v</mi></mrow><mo>⟩</mo></mrow></mrow><mo lspace="0em" rspace="0.0835em">.</mo><mo class="ltx_mathvariant_italic" lspace="0.0835em" mathvariant="italic" separator="true">∎</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+</div>
+</div>
+<div id="S4.p8" class="ltx_para">
+<p class="ltx_p">Now consider the given <math id="S4.p8.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>, and any <math id="S4.p8.m2" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math>.</p>
+</div>
+<div id="S4.Thmtheorem5" class="ltx_theorem ltx_theorem_ques">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 15.4.5</span></span>
+<br class="ltx_break">
+</h6>
+<div id="S4.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that <math id="S4.Thmtheorem5.p1.m1" class="ltx_Math" alttext="(T-\lambda\mathrm{id})^{\dagger}=T^{\dagger}-\overline{\lambda}\mathrm{id}" display="inline"><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>T</mi><mo>−</mo><mrow><mi>λ</mi><mo>⁢</mo><mi>id</mi></mrow></mrow><mo stretchy="false">)</mo></mrow><mo>†</mo></msup><mo>=</mo><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>−</mo><mrow><mover accent="true"><mi>λ</mi><mo>¯</mo></mover><mo>⁢</mo><mi>id</mi></mrow></mrow></mrow></math>.
+Thus if <math id="S4.Thmtheorem5.p1.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is normal, so is <math id="S4.Thmtheorem5.p1.m3" class="ltx_Math" alttext="T-\lambda\mathrm{id}" display="inline"><mrow><mi>T</mi><mo>−</mo><mrow><mi>λ</mi><mo>⁢</mo><mi>id</mi></mrow></mrow></math>.</span></p>
+</div>
+</div>
+<div id="S4.p9" class="ltx_para">
+<p class="ltx_p">In particular, for any eigenvalue <math id="S4.p9.m1" class="ltx_Math" alttext="\lambda" display="inline"><mi>λ</mi></math> of <math id="S4.p9.m2" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>,
+we find that <math id="S4.p9.m3" class="ltx_math_unparsed" alttext="\ker(T-\lambda\mathrm{id})=\ker(T-\lambda\mathrm{id})^{r}" display="inline"><mrow><mi>ker</mi><mrow><mo stretchy="false">(</mo><mi>T</mi><mo>−</mo><mi>λ</mi><mi>id</mi><mo stretchy="false">)</mo></mrow><mo>=</mo><mi>ker</mi><msup><mrow><mo stretchy="false">(</mo><mi>T</mi><mo>−</mo><mi>λ</mi><mi>id</mi><mo stretchy="false">)</mo></mrow><mi>r</mi></msup></mrow></math>.
+This implies that all the Jordan blocks of <math id="S4.p9.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> have size <math id="S4.p9.m5" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>;
+i.e. that <math id="S4.p9.m6" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is in fact diagonalizable.
+Finally, we conclude that the eigenvectors of <math id="S4.p9.m7" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> and <math id="S4.p9.m8" class="ltx_Math" alttext="T^{\dagger}" display="inline"><msup><mi>T</mi><mo>†</mo></msup></math> match,
+and the eigenvalues are complex conjugates.</p>
+</div>
+<div id="S4.p10" class="ltx_para">
+<p class="ltx_p">So, diagonalize <math id="S4.p10.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>.
+We just need to show that if <math id="S4.p10.m2" class="ltx_Math" alttext="v" display="inline"><mi>v</mi></math> and <math id="S4.p10.m3" class="ltx_Math" alttext="w" display="inline"><mi>w</mi></math> are eigenvectors of <math id="S4.p10.m4" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math>
+with distinct eigenvalues, then they are orthogonal.
+(We can use Gram-Schmidt on any eigenvalue that appears multiple times.)
+To do this, suppose <math id="S4.p10.m5" class="ltx_Math" alttext="T(v)=\lambda v" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>λ</mi><mo>⁢</mo><mi>v</mi></mrow></mrow></math> and <math id="S4.p10.m6" class="ltx_Math" alttext="T(w)=\mu w" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>μ</mi><mo>⁢</mo><mi>w</mi></mrow></mrow></math>
+(thus <math id="S4.p10.m7" class="ltx_Math" alttext="T^{\dagger}(w)=\overline{\mu}w" display="inline"><mrow><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>⁢</mo><mi>w</mi></mrow></mrow></math>).
+Then</p>
+<table id="Ex29" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex29.m1" class="ltx_Math" alttext="\lambda\left&lt;v,w\right&gt;=\left&lt;\lambda v,w\right&gt;=\left&lt;Tv,w\right&gt;=\left&lt;v,T^{%
+\dagger}(w)\right&gt;=\left&lt;v,\overline{\mu}w\right&gt;=\mu\left&lt;v,w\right&gt;." display="block"><mrow><mrow><mrow><mi>λ</mi><mo>⁢</mo><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mi>w</mi><mo>⟩</mo></mrow></mrow><mo>=</mo><mrow><mo>⟨</mo><mrow><mi>λ</mi><mo>⁢</mo><mi>v</mi></mrow><mo>,</mo><mi>w</mi><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>⟨</mo><mrow><mi>T</mi><mo>⁢</mo><mi>v</mi></mrow><mo>,</mo><mi>w</mi><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>w</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⟩</mo></mrow><mo>=</mo><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mrow><mover accent="true"><mi>μ</mi><mo>¯</mo></mover><mo>⁢</mo><mi>w</mi></mrow><mo>⟩</mo></mrow><mo>=</mo><mrow><mi>μ</mi><mo>⁢</mo><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mi>w</mi><mo>⟩</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Since <math id="S4.p10.m8" class="ltx_Math" alttext="\lambda\neq\mu" display="inline"><mrow><mi>λ</mi><mo>≠</mo><mi>μ</mi></mrow></math>, we conclude <math id="S4.p10.m9" class="ltx_Math" alttext="\left&lt;v,w\right&gt;=0" display="inline"><mrow><mrow><mo>⟨</mo><mi>v</mi><mo>,</mo><mi>w</mi><mo>⟩</mo></mrow><mo>=</mo><mn>0</mn></mrow></math>.
+∎</p>
+</div>
+</div>
+<div id="S4.p11" class="ltx_para">
+<p class="ltx_p">This means that not only can we write</p>
+<table id="Ex30" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex30.m1" class="ltx_Math" alttext="T=\begin{bmatrix}\lambda_{1}&amp;\dots&amp;\dots&amp;0\\
+0&amp;\lambda_{2}&amp;\dots&amp;0\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;\dots&amp;\lambda_{n}\end{bmatrix}" display="block"><mrow><mi>T</mi><mo>=</mo><mrow><mo>[</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>λ</mi><mn>1</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msub><mi>λ</mi><mn>2</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>λ</mi><mi>n</mi></msub></mtd></mtr></mtable><mo>]</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">but moreover that the basis associated with this matrix happens to be orthonormal vectors.</p>
+</div>
+<div id="S4.p12" class="ltx_para">
+<p class="ltx_p">As a corollary:</p>
+</div>
+<div id="S4.Thmtheorem6" class="ltx_theorem ltx_theorem_theorem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;">Theorem 15.4.6</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:#191970;"> <span class="ltx_text ltx_font_medium">(Hermitian matrices have real eigenvalues)
+<br class="ltx_break"></span></span>
+</h6>
+<div id="S4.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p">A Hermitian matrix <math id="S4.Thmtheorem6.p1.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is diagonalizable,
+and all its eigenvalues are real.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h6 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h6>
+<div id="S4.p13" class="ltx_para">
+<p class="ltx_p">Obviously Hermitian <math id="S4.p13.m1" class="ltx_Math" alttext="\implies" display="inline"><mo stretchy="false">⟹</mo></math> normal,
+so write it in the orthonormal basis of eigenvectors.
+To see that the eigenvalues are real, note that <math id="S4.p13.m2" class="ltx_Math" alttext="T=T^{\dagger}" display="inline"><mrow><mi>T</mi><mo>=</mo><msup><mi>T</mi><mo>†</mo></msup></mrow></math>
+means <math id="S4.p13.m3" class="ltx_Math" alttext="\lambda_{i}=\overline{\lambda_{i}}" display="inline"><mrow><msub><mi>λ</mi><mi>i</mi></msub><mo>=</mo><mover accent="true"><msub><mi>λ</mi><mi>i</mi></msub><mo>¯</mo></mover></mrow></math> for every <math id="S4.p13.m4" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>.
+∎</p>
+</div>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">15.5 </span>A few harder problems to think about</h2>
+
+<div id="prob:double_dual" class="ltx_theorem ltx_theorem_sproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 15A</span></span><span class="ltx_text ltx_font_bold"> </span>(Double dual)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem1.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem1.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem1.p2" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem1.p2.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a finite-dimensional vector space.
+Prove that</p>
+<table id="A5.S3.EGx53" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex31"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex31.m1" class="ltx_Math" alttext="\displaystyle V" display="inline"><mi>V</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex31.m2" class="ltx_Math" alttext="\displaystyle\to(V^{\vee})^{\vee}" display="inline"><mrow><mi></mi><mo stretchy="false">→</mo><msup><mrow><mo stretchy="false">(</mo><msup><mi>V</mi><mo>∨</mo></msup><mo stretchy="false">)</mo></mrow><mo>∨</mo></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex32"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex32.m1" class="ltx_Math" alttext="\displaystyle v" display="inline"><mi>v</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex32.m2" class="ltx_Math" alttext="\displaystyle\mapsto\left(\xi\mapsto\xi(v)\right)" display="inline"><mrow><mi></mi><mo stretchy="false">↦</mo><mrow><mo>(</mo><mrow><mi>ξ</mi><mo stretchy="false">↦</mo><mrow><mi>ξ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>v</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo>)</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">gives an isomorphism.
+(This is significant because the isomorphism is <em class="ltx_emph ltx_font_italic">canonical</em>,
+and in particular does not depend on the choice of basis.
+So this is more impressive.)
+
+You can <em class="ltx_emph ltx_font_italic">prove</em> the result just by taking a basis
+<math id="Thmproblem1.p2.m2" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, …, <math id="Thmproblem1.p2.m3" class="ltx_Math" alttext="e_{n}" display="inline"><msub><mi>e</mi><mi>n</mi></msub></math> of <math id="Thmproblem1.p2.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>
+and showing that it is a linear map sending <math id="Thmproblem1.p2.m5" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>
+to the basis <math id="Thmproblem1.p2.m6" class="ltx_Math" alttext="(e_{1}^{\vee})^{\vee}" display="inline"><msup><mrow><mo stretchy="false">(</mo><msubsup><mi>e</mi><mn>1</mn><mo>∨</mo></msubsup><mo stretchy="false">)</mo></mrow><mo>∨</mo></msup></math>.</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 15B</span></span><span class="ltx_text ltx_font_bold"> </span>(Fundamental theorem of linear algebra)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="T\colon V\to W" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math> be a map of finite-dimensional <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>-vector spaces.
+Prove that</p>
+<table id="Ex33" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex33.m1" class="ltx_Math" alttext="\dim\operatorname{im}T=\dim\operatorname{im}T^{\vee}=\dim V-\dim\ker T=\dim W-%
+\dim\ker T^{\vee}." display="block"><mrow><mrow><mrow><mo rspace="0.167em">dim</mo><mrow><mi>im</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mrow><mi>im</mi><mo lspace="0.167em">⁡</mo><msup><mi>T</mi><mo>∨</mo></msup></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mi>V</mi></mrow><mo>−</mo><mrow><mo lspace="0em" rspace="0.167em">dim</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow></mrow></mrow><mo rspace="0.1389em">=</mo><mrow><mrow><mo lspace="0.1389em" rspace="0.167em">dim</mo><mi>W</mi></mrow><mo>−</mo><mrow><mo lspace="0em" rspace="0.167em">dim</mo><mrow><mi>ker</mi><mo lspace="0.167em">⁡</mo><msup><mi>T</mi><mo>∨</mo></msup></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Use <a href="ch_vector_spaces.html#thm:linear_map_basis" title="Theorem 9.7.6 (Picking a basis for linear maps) ‣ 9.7 Subspaces and picking convenient bases ‣ Chapter 9 Vector spaces ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">9.7.6</span></a> and it will be immediate
+(the four quantities equal the <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math> in the theorem).
+
+
+By <a href="ch_vector_spaces.html#thm:linear_map_basis" title="Theorem 9.7.6 (Picking a basis for linear maps) ‣ 9.7 Subspaces and picking convenient bases ‣ Chapter 9 Vector spaces ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">9.7.6</span></a>,
+we may select <math id="Thmproblem2.p1.m4" class="ltx_Math" alttext="e_{1}" display="inline"><msub><mi>e</mi><mn>1</mn></msub></math>, …, <math id="Thmproblem2.p1.m5" class="ltx_Math" alttext="e_{n}" display="inline"><msub><mi>e</mi><mi>n</mi></msub></math> a basis of <math id="Thmproblem2.p1.m6" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>
+and <math id="Thmproblem2.p1.m7" class="ltx_Math" alttext="f_{1}" display="inline"><msub><mi>f</mi><mn>1</mn></msub></math>, …, <math id="Thmproblem2.p1.m8" class="ltx_Math" alttext="f_{m}" display="inline"><msub><mi>f</mi><mi>m</mi></msub></math> a basis of <math id="Thmproblem2.p1.m9" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math>
+such that <math id="Thmproblem2.p1.m10" class="ltx_Math" alttext="T(e_{i})=f_{i}" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msub><mi>f</mi><mi>i</mi></msub></mrow></math> for <math id="Thmproblem2.p1.m11" class="ltx_Math" alttext="i\leq k" display="inline"><mrow><mi>i</mi><mo>≤</mo><mi>k</mi></mrow></math>
+and <math id="Thmproblem2.p1.m12" class="ltx_Math" alttext="T(e_{i})=0" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>e</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> for <math id="Thmproblem2.p1.m13" class="ltx_Math" alttext="i&gt;k" display="inline"><mrow><mi>i</mi><mo>&gt;</mo><mi>k</mi></mrow></math>.
+Then <math id="Thmproblem2.p1.m14" class="ltx_Math" alttext="T^{\vee}(f_{i}^{\vee})=e_{i}^{\vee}" display="inline"><mrow><mrow><msup><mi>T</mi><mo>∨</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>f</mi><mi>i</mi><mo>∨</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msubsup><mi>e</mi><mi>i</mi><mo>∨</mo></msubsup></mrow></math> for <math id="Thmproblem2.p1.m15" class="ltx_Math" alttext="i\leq k" display="inline"><mrow><mi>i</mi><mo>≤</mo><mi>k</mi></mrow></math>
+and <math id="Thmproblem2.p1.m16" class="ltx_Math" alttext="T^{\vee}(f_{i}^{\vee})=0" display="inline"><mrow><mrow><msup><mi>T</mi><mo>∨</mo></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msubsup><mi>f</mi><mi>i</mi><mo>∨</mo></msubsup><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mn>0</mn></mrow></math> for <math id="Thmproblem2.p1.m17" class="ltx_Math" alttext="i&gt;k" display="inline"><mrow><mi>i</mi><mo>&gt;</mo><mi>k</mi></mrow></math>.
+All four quantities are above are then equal to <math id="Thmproblem2.p1.m18" class="ltx_Math" alttext="k" display="inline"><mi>k</mi></math>.</p>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_dproblem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 15C</span></span><span class="ltx_text ltx_font_bold"> </span>(Row rank is column rank)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">A <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="m\times n" display="inline"><mrow><mi>m</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>n</mi></mrow></math> matrix <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> of real numbers is given.
+The <em class="ltx_emph ltx_font_italic">column rank</em> of <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is the dimension of the span in <math id="Thmproblem3.p1.m4" class="ltx_Math" alttext="\mathbb{R}^{m}" display="inline"><msup><mi>ℝ</mi><mi>m</mi></msup></math>
+of its <math id="Thmproblem3.p1.m5" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> column vectors.
+The <em class="ltx_emph ltx_font_italic">row rank</em> of <math id="Thmproblem3.p1.m6" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is the dimension of the span in <math id="Thmproblem3.p1.m7" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math>
+of its <math id="Thmproblem3.p1.m8" class="ltx_Math" alttext="m" display="inline"><mi>m</mi></math> row vectors.
+Prove that the row rank and column rank are equal.
+
+This actually is just the previous problem in disguise!
+The row rank is <math id="Thmproblem3.p1.m9" class="ltx_Math" alttext="\dim\operatorname{im}T^{\vee}" display="inline"><mrow><mo rspace="0.167em">dim</mo><mrow><mi>im</mi><mo lspace="0.167em">⁡</mo><msup><mi>T</mi><mo>∨</mo></msup></mrow></mrow></math>
+and the column rank is <math id="Thmproblem3.p1.m10" class="ltx_Math" alttext="\dim\operatorname{im}T" display="inline"><mrow><mo rspace="0.167em">dim</mo><mrow><mi>im</mi><mo lspace="0.167em">⁡</mo><mi>T</mi></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="prob:complex_conj_space" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 15D</span></span><span class="ltx_text ltx_font_bold"> </span>(The complex conjugate spaces)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="V=(V,+,\cdot)" display="inline"><mrow><mi>V</mi><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">+</mo><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">⋅</mo><mo stretchy="false">)</mo></mrow></mrow></math> be a complex vector space.
+Define the <span class="ltx_text ltx_font_bold" style="color:#0000FF;"> complex conjugate vector space</span>,
+denoted <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="\overline{V}=(V,+,\ast)" display="inline"><mrow><mover accent="true"><mi>V</mi><mo>¯</mo></mover><mo>=</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">+</mo><mo rspace="0em">,</mo><mo lspace="0em" rspace="0em">∗</mo><mo stretchy="false">)</mo></mrow></mrow></math>
+by changing just the multiplication:</p>
+<table id="Ex34" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex34.m1" class="ltx_Math" alttext="c\ast v=\overline{c}\cdot v." display="block"><mrow><mrow><mrow><mi>c</mi><mo lspace="0.222em" rspace="0.222em">∗</mo><mi>v</mi></mrow><mo>=</mo><mrow><mover accent="true"><mi>c</mi><mo>¯</mo></mover><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>v</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">Show that for any sesquilinear form on <math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>,
+if <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is finite-dimensional, then</p>
+<table id="A5.S3.EGx54" class="ltx_equationgroup ltx_eqn_align ltx_eqn_table">
+
+<tbody id="Ex35"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex35.m1" class="ltx_Math" alttext="\displaystyle\overline{V}" display="inline"><mover accent="true"><mi>V</mi><mo>¯</mo></mover></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex35.m2" class="ltx_Math" alttext="\displaystyle\to V^{\vee}" display="inline"><mrow><mi></mi><mo stretchy="false">→</mo><msup><mi>V</mi><mo>∨</mo></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+<tbody id="Ex36"><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_td ltx_align_right ltx_eqn_cell"><math id="Ex36.m1" class="ltx_Math" alttext="\displaystyle v" display="inline"><mi>v</mi></math></td>
+<td class="ltx_td ltx_align_left ltx_eqn_cell"><math id="Ex36.m2" class="ltx_Math" alttext="\displaystyle\mapsto\left&lt;-,v\right&gt;" display="inline"><mrow><mi></mi><mo stretchy="false">↦</mo><mrow><mo>⟨</mo><mo lspace="0em" rspace="0em">−</mo><mo>,</mo><mi>v</mi><mo>⟩</mo></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">is an isomorphism of complex vector spaces.</p>
+</div>
+</div>
+<div id="Thmproblem5" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 15E</span></span><span class="ltx_text ltx_font_bold"> </span>(<math id="Thmproblem5.m1" class="ltx_Math" alttext="T^{\dagger}" display="inline"><msup><mi>T</mi><mo>†</mo></msup></math> vs <math id="Thmproblem5.m2" class="ltx_Math" alttext="T^{\vee}" display="inline"><msup><mi>T</mi><mo>∨</mo></msup></math>)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> and <math id="Thmproblem5.p1.m2" class="ltx_Math" alttext="W" display="inline"><mi>W</mi></math> be real inner product spaces
+and let <math id="Thmproblem5.p1.m3" class="ltx_Math" alttext="T\colon V\to W" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>W</mi></mrow></mrow></math> be a linear map.
+Show that the following diagram commutes:</p>
+<svg id="Thmproblem5.p1.pic1" class="ltx_picture ltx_centering" height="77.16" overflow="visible" version="1.1" width="93.51"><g transform="translate(0,77.16) matrix(1 0 0 -1 0 0) translate(46.75,0) translate(0,44.04)" fill="#000000" stroke="#000000"><g stroke-width="0.4pt" transform="matrix(1.0 0.0 0.0 1.0 -46.75 -33.11)"><g class="ltx_tikzmatrix" transform="matrix(1 0 0 -1 0 55.36)"><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 14.52)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 2.58 0) translate(13.45,0) matrix(1.0 0.0 0.0 1.0 -7.5 0)" fill="#000000" stroke="#000000"><foreignObject width="14.99" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem5.p1.pic1.m1" class="ltx_Math" alttext="{W}" display="inline"><mi>W</mi></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 34.65 0) translate(44.74,0) matrix(1.0 0.0 0.0 1.0 -5.57 0)" fill="#000000" stroke="#000000"><foreignObject width="11.15" height="9.46" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem5.p1.pic1.m2" class="ltx_Math" alttext="{V}" display="inline"><mi>V</mi></math></foreignObject></g></g><g class="ltx_tikzmatrix_row" transform="matrix(1 0 0 1 0 61.16)"><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 0 0) translate(16.04,0) matrix(1.0 0.0 0.0 1.0 -10.08 0)" fill="#000000" stroke="#000000"><foreignObject width="20.16" height="11.61" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem5.p1.pic1.m3" class="ltx_Math" alttext="{W^{\vee}}" display="inline"><msup><mi>W</mi><mo>∨</mo></msup></math></foreignObject></g><g class="ltx_tikzmatrix_col ltx_nopad_l ltx_nopad_r" transform="matrix(1 0 0 -1 32.07 0) translate(47.32,0) matrix(1.0 0.0 0.0 1.0 -8.16 0)" fill="#000000" stroke="#000000"><foreignObject width="16.31" height="11.61" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem5.p1.pic1.m4" class="ltx_Math" alttext="{V^{\vee}}" display="inline"><msup><mi>V</mi><mo>∨</mo></msup></math></foreignObject></g></g></g></g><g stroke-width="0.39998pt"><path d="M -16.99 16.99 L 14.47 16.99" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 14.47 16.99)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -2.81 20.24)" fill="#000000" stroke="#000000"><foreignObject width="9.47" height="8.54" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem5.p1.pic1.m5" class="ltx_Math" alttext="\scriptstyle{T^{\dagger}}" display="inline"><msup><mi mathsize="70%">T</mi><mo mathsize="71%">†</mo></msup></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -30.72 8.19 L -30.72 -9.8" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 -30.72 -9.8)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -41.24 -6.41)" fill="#000000" stroke="#000000"><foreignObject width="7.26" height="8.72" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem5.p1.pic1.m6" class="ltx_Math" alttext="\scriptstyle{\cong}" display="inline"><mo mathsize="70%">≅</mo></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M 32.64 8.19 L 32.64 -9.8" style="fill:none"></path><g transform="matrix(0.0 -1.0 1.0 0.0 32.64 -9.8)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 35.9 -6.41)" fill="#000000" stroke="#000000"><foreignObject width="7.26" height="8.72" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem5.p1.pic1.m7" class="ltx_Math" alttext="\scriptstyle{\cong}" display="inline"><mo mathsize="70%">≅</mo></math></foreignObject></g></g><g stroke-width="0.39998pt"><path d="M -14.41 -29.65 L 11.88 -29.65" style="fill:none"></path><g transform="matrix(1.0 0.0 0.0 1.0 11.88 -29.65)" stroke-dasharray="none" stroke-dashoffset="0.0pt" stroke-linejoin="miter"><path d="M 5.26 0 C 4.61 0.16 1.77 1.04 0 2.01 L 0 -2.01 C 1.77 -1.04 4.61 -0.16 5.26 0 Z"></path></g><g transform="matrix(1.0 0.0 0.0 1.0 -3.43 -41.07)" fill="#000000" stroke="#000000"><foreignObject width="10.7" height="8.16" transform="matrix(1 0 0 -1 0 16.6)" overflow="visible"><math id="Thmproblem5.p1.pic1.m8" class="ltx_Math" alttext="\scriptstyle{T^{\vee}}" display="inline"><msup><mi mathsize="70%">T</mi><mo mathsize="71%">∨</mo></msup></math></foreignObject></g></g></g></svg>
+<p class="ltx_p">Here the isomorphisms are <math id="Thmproblem5.p1.m4" class="ltx_Math" alttext="v\mapsto\left&lt;-,v\right&gt;" display="inline"><mrow><mi>v</mi><mo stretchy="false">↦</mo><mrow><mo>⟨</mo><mo lspace="0em" rspace="0em">−</mo><mo>,</mo><mi>v</mi><mo>⟩</mo></mrow></mrow></math>.
+Thus, for real inner product spaces,
+<math id="Thmproblem5.p1.m5" class="ltx_Math" alttext="T^{\dagger}" display="inline"><msup><mi>T</mi><mo>†</mo></msup></math> is just <math id="Thmproblem5.p1.m6" class="ltx_Math" alttext="T^{\vee}" display="inline"><msup><mi>T</mi><mo>∨</mo></msup></math> with the duals eliminated
+(by <a href="#thm:real_dual_isomorphic" title="Theorem 15.2.2 (𝑉≅𝑉^∨ for real inner forms) ‣ 15.2 Identifying with the dual space ‣ Chapter 15 Duals, adjoint, and transposes ‣ Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">15.2.2</span></a>).</p>
+</div>
+</div>
+<div id="Thmproblem6" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 15F</span></span><span class="ltx_text ltx_font_bold"> </span>(Polynomial criteria for normality)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<div id="Thmproblem6.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem6.p1.m1" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> be a complex inner product space and let <math id="Thmproblem6.p1.m2" class="ltx_Math" alttext="T\colon V\to V" display="inline"><mrow><mi>T</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>V</mi><mo stretchy="false">→</mo><mi>V</mi></mrow></mrow></math> be a linear map.
+Show that <math id="Thmproblem6.p1.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is normal if and only if there is a polynomial<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>Here,
+we mean <math id="footnote1.m1" class="ltx_Math" alttext="p(T)" display="inline"><mrow><mi>p</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></math> in the same composition sense as in Cayley-Hamilton.</span></span></span>
+<math id="Thmproblem6.p1.m4" class="ltx_Math" alttext="p\in\mathbb{C}[t]" display="inline"><mrow><mi>p</mi><mo>∈</mo><mrow><mi>ℂ</mi><mo>⁢</mo><mrow><mo stretchy="false">[</mo><mi>t</mi><mo stretchy="false">]</mo></mrow></mrow></mrow></math> such that</p>
+<table id="Ex37" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex37.m1" class="ltx_Math" alttext="T^{\dagger}=p(T)." display="block"><mrow><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>=</mo><mrow><mi>p</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">If there is a polynomial, check <math id="Thmproblem6.p1.m5" class="ltx_Math" alttext="TT^{\dagger}=T^{\dagger}T" display="inline"><mrow><mrow><mi>T</mi><mo>⁢</mo><msup><mi>T</mi><mo>†</mo></msup></mrow><mo>=</mo><mrow><msup><mi>T</mi><mo>†</mo></msup><mo>⁢</mo><mi>T</mi></mrow></mrow></math> directly.
+If <math id="Thmproblem6.p1.m6" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is normal, diagonalize it.
+
+
+First, suppose <math id="Thmproblem6.p1.m7" class="ltx_Math" alttext="T^{\ast}=p(T)" display="inline"><mrow><msup><mi>T</mi><mo>∗</mo></msup><mo>=</mo><mrow><mi>p</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.
+Then <math id="Thmproblem6.p1.m8" class="ltx_Math" alttext="T^{\ast}T=p(T)\cdot T=T\cdot p(T)=TT^{\ast}" display="inline"><mrow><mrow><msup><mi>T</mi><mo>∗</mo></msup><mo>⁢</mo><mi>T</mi></mrow><mo>=</mo><mrow><mrow><mi>p</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⋅</mo><mi>T</mi></mrow><mo>=</mo><mrow><mrow><mi>T</mi><mo lspace="0.222em" rspace="0.222em">⋅</mo><mi>p</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>T</mi><mo>⁢</mo><msup><mi>T</mi><mo>∗</mo></msup></mrow></mrow></math> and we’re done.</p>
+</div>
+<div id="Thmproblem6.p2" class="ltx_para">
+<p class="ltx_p">Conversely, suppose <math id="Thmproblem6.p2.m1" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> is diagonalizable
+in a way compatible with the inner form
+(OK since <math id="Thmproblem6.p2.m2" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> is finite dimensional).
+Consider the orthonormal basis.
+Then <math id="Thmproblem6.p2.m3" class="ltx_Math" alttext="T" display="inline"><mi>T</mi></math> consists of eigenvalues on the main diagonals
+and zeros elsewhere, say</p>
+<table id="Ex38" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex38.m1" class="ltx_Math" alttext="T=\left(\begin{array}[]{cccc}\lambda_{1}&amp;0&amp;\dots&amp;0\\
+0&amp;\lambda_{2}&amp;\dots&amp;0\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;\dots&amp;\lambda_{n}\end{array}\right)." display="block"><mrow><mrow><mi>T</mi><mo>=</mo><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><msub><mi>λ</mi><mn>1</mn></msub></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><msub><mi>λ</mi><mn>2</mn></msub></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><msub><mi>λ</mi><mi>n</mi></msub></mtd></mtr></mtable><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">In that case, we find that for any polynomial <math id="Thmproblem6.p2.m4" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> we have</p>
+<table id="Ex39" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex39.m1" class="ltx_Math" alttext="q(T)=\left(\begin{array}[]{cccc}q(\lambda_{1})&amp;0&amp;\dots&amp;0\\
+0&amp;q(\lambda_{2})&amp;\dots&amp;0\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;\dots&amp;q(\lambda_{n})\end{array}\right)." display="block"><mrow><mrow><mrow><mi>q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>T</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mrow><mi>q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>λ</mi><mn>1</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mrow><mi>q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>λ</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mrow><mi>q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>λ</mi><mi>n</mi></msub><mo stretchy="false">)</mo></mrow></mrow></mtd></mtr></mtable><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">and</p>
+<table id="Ex40" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex40.m1" class="ltx_Math" alttext="T^{\ast}=\left(\begin{array}[]{cccc}\overline{\lambda_{1}}&amp;0&amp;\dots&amp;0\\
+0&amp;\overline{\lambda_{2}}&amp;\dots&amp;0\\
+\vdots&amp;\vdots&amp;\ddots&amp;\vdots\\
+0&amp;0&amp;\dots&amp;\overline{\lambda_{n}}\end{array}\right)." display="block"><mrow><mrow><msup><mi>T</mi><mo>∗</mo></msup><mo>=</mo><mrow><mo>(</mo><mtable columnspacing="5pt" displaystyle="true" rowspacing="0pt"><mtr><mtd><mover accent="true"><msub><mi>λ</mi><mn>1</mn></msub><mo>¯</mo></mover></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mover accent="true"><msub><mi>λ</mi><mn>2</mn></msub><mo>¯</mo></mover></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd><mtd><mi mathvariant="normal">⋱</mi></mtd><mtd><mi mathvariant="normal">⋮</mi></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mi mathvariant="normal">…</mi></mtd><mtd><mover accent="true"><msub><mi>λ</mi><mi>n</mi></msub><mo>¯</mo></mover></mtd></mtr></mtable><mo>)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table>
+<p class="ltx_p">So we simply require a polynomial <math id="Thmproblem6.p2.m5" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>
+such that <math id="Thmproblem6.p2.m6" class="ltx_Math" alttext="q(\lambda_{i})=\overline{\lambda_{i}}" display="inline"><mrow><mrow><mi>q</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>λ</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mover accent="true"><msub><mi>λ</mi><mi>i</mi></msub><mo>¯</mo></mover></mrow></math> for every <math id="Thmproblem6.p2.m7" class="ltx_Math" alttext="i" display="inline"><mi>i</mi></math>.
+Since there are finitely many <math id="Thmproblem6.p2.m8" class="ltx_Math" alttext="\lambda_{i}" display="inline"><msub><mi>λ</mi><mi>i</mi></msub></math>,
+we can construct such a polynomial using Lagrange interpolation.</p>
+</div>
+</div>
+<div id="Thmproblem7" class="ltx_theorem ltx_theorem_problem">
+<h6 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 15G</span></span><span class="ltx_text ltx_font_bold"> </span>(Kronecker product of matrices)<span class="ltx_text ltx_font_bold">.</span>
+</h6>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem7.p1" class="ltx_para"><img src="external/venhance-napkin/media/chili.png" id="Thmproblem7.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem7.p2" class="ltx_para">
+<p class="ltx_p">Find an equivalence between the following two definitions of the
+<a href="https://en.wikipedia.org/wiki/Kronecker_product" title="" class="ltx_ref ltx_href">Kronecker product</a>,
+the former from a mathematician and the latter from a computer scientist:</p>
+<ul id="S5.I1" class="ltx_itemize">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S5.I1.i1.p1.m1" class="ltx_Math" alttext="A\colon V_{1}\to W_{1}" display="inline"><mrow><mi>A</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>V</mi><mn>1</mn></msub><mo stretchy="false">→</mo><msub><mi>W</mi><mn>1</mn></msub></mrow></mrow></math> and <math id="S5.I1.i1.p1.m2" class="ltx_Math" alttext="B\colon V_{2}\to W_{2}" display="inline"><mrow><mi>B</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msub><mi>V</mi><mn>2</mn></msub><mo stretchy="false">→</mo><msub><mi>W</mi><mn>2</mn></msub></mrow></mrow></math>
+are linear maps of finite-dimensional vector spaces over <math id="S5.I1.i1.p1.m3" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.
+Then we define <math id="S5.I1.i1.p1.m4" class="ltx_Math" alttext="A\otimes B\colon V_{1}\otimes V_{2}\to W_{1}\otimes W_{2}" display="inline"><mrow><mrow><mi>A</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>B</mi></mrow><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><msub><mi>V</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>V</mi><mn>2</mn></msub></mrow><mo stretchy="false">→</mo><mrow><msub><mi>W</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>W</mi><mn>2</mn></msub></mrow></mrow></mrow></math>
+on simple tensors by <math id="S5.I1.i1.p1.m5" class="ltx_Math" alttext="v_{1}\otimes v_{2}\mapsto A(v_{1})\otimes B(v_{2})" display="inline"><mrow><mrow><msub><mi>v</mi><mn>1</mn></msub><mo lspace="0.222em" rspace="0.222em">⊗</mo><msub><mi>v</mi><mn>2</mn></msub></mrow><mo stretchy="false">↦</mo><mrow><mrow><mrow><mi>A</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mn>1</mn></msub><mo rspace="0.055em" stretchy="false">)</mo></mrow></mrow><mo rspace="0.222em">⊗</mo><mi>B</mi></mrow><mo>⁢</mo><mrow><mo stretchy="false">(</mo><msub><mi>v</mi><mn>2</mn></msub><mo stretchy="false">)</mo></mrow></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Suppose <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="A" display="inline"><mi>A</mi></math> is an <math id="S5.I1.i2.p1.m2" class="ltx_Math" alttext="m\times n" display="inline"><mrow><mi>m</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>n</mi></mrow></math> matrix and <math id="S5.I1.i2.p1.m3" class="ltx_Math" alttext="B" display="inline"><mi>B</mi></math> is a <math id="S5.I1.i2.p1.m4" class="ltx_Math" alttext="p\times q" display="inline"><mrow><mi>p</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>q</mi></mrow></math> matrix.
+Then <math id="S5.I1.i2.p1.m5" class="ltx_Math" alttext="A\otimes B" display="inline"><mrow><mi>A</mi><mo lspace="0.222em" rspace="0.222em">⊗</mo><mi>B</mi></mrow></math> is an operator which takes a <math id="S5.I1.i2.p1.m6" class="ltx_Math" alttext="q\times n" display="inline"><mrow><mi>q</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>n</mi></mrow></math> matrix <math id="S5.I1.i2.p1.m7" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+and returns the <math id="S5.I1.i2.p1.m8" class="ltx_Math" alttext="p\times m" display="inline"><mrow><mi>p</mi><mo lspace="0.222em" rspace="0.222em">×</mo><mi>m</mi></mrow></math> matrix <math id="S5.I1.i2.p1.m9" class="ltx_Math" alttext="BXA^{\top}" display="inline"><mrow><mi>B</mi><mo>⁢</mo><mi>X</mi><mo>⁢</mo><msup><mi>A</mi><mo>⊤</mo></msup></mrow></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+</div>
+<footer class="ltx_page_footer">
+<div class="ltx_align_center">
+<a href="ch_fourier.html" title="In Part IV Linear Algebra ‣ An Infinitely Large Napkin" class="ltx_ref" rel="prev"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">14 </span>Bonus: Fourier analysis</span></a><a href="../part_groups/" title="In An Infinitely Large Napkin" class="ltx_ref" rel="next"><span class="ltx_text ltx_ref_title"><span class="ltx_tag ltx_tag_ref">V </span>More on Groups</span></a>
+</div>
+<div class="ltx_page_logo">Generated  on Thu Feb 20 17:33:51 2025 by <a href="http://dlmf.nist.gov/LaTeXML/" class="ltx_LaTeXML_logo"><span style="letter-spacing:-0.2em; margin-right:0.1em;">L<span class="ltx_font_smallcaps" style="position:relative; bottom:2.2pt;">a</span>T<span class="ltx_font_smallcaps" style="font-size:120%;position:relative; bottom:-0.2ex;">e</span></span><span style="font-size:90%; position:relative; bottom:-0.2ex;">XML</span><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg==" alt="Mascot Sammy"></a>
+</div></footer>
+</div>
+</body>
+</html>

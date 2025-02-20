@@ -1,0 +1,1411 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, interactive-widget=resizes-content, viewport-fit=cover" />
+		<meta name="robots" content="all" />
+		<meta name="referrer" content="no-referrer" />
+		<meta name="author" content="Benjamin Aster" />
+		<meta name="description" content="An infinitely large napkin" />
+		<!-- <meta property="og:image" content="https://benjaminaster.com/NAME/assets/icon.png" /> -->
+		<!-- <meta name="twitter:card" content="summary_large_image" /> -->
+		<!-- <link rel="code-repository" href="https://github.com/BenjaminAster/NAME" /> -->
+		<!-- <link rel="canonical" href="https://benjaminaster.com/NAME/" /> -->
+
+		<title>Topological spaces</title>
+		<meta property="og:title" content="Topological spaces" />
+
+		<!-- <link rel="icon" href="https://venhance.github.io/napkin/cover-art.png" /> -->
+		<link rel="icon" href="../assets/icon.png" />
+		<!-- <link rel="aster:icon-dark" href="../assets/icon-dark.svg" /> -->
+		<!-- <link rel="icon" href="../assets/icon.png" type="image/png" media="not (prefers-color-scheme: light)" sizes="512x512" /> -->
+		<!-- <link rel="icon" href="../assets/icon-light.png" type="image/png" media="(prefers-color-scheme: light)" sizes="512x512" /> -->
+		<meta name="color-scheme" content="dark light" />
+		<!-- <meta name="theme-color" content="#111" /> -->
+		<link rel="manifest" href="../_src/app.webmanifest" />
+
+		<link rel="stylesheet" href="../_src/style.css" />
+		<link rel="preload" as="style" href="../_src/latexml.css" />
+
+		<script type="module" src="../_src/script.js"></script>
+
+		<!-- <link rel="preload" as="font" crossorigin="anonymous" href="../assets/latinmodern-math/regular.otf" /> -->
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/regular.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bold.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/italic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/bolditalic.otf" />
+		<link rel="preload" as="font" crossorigin="anonymous" href="../assets/newcomputermodern/math.otf" />
+	</head>
+	<body>
+		<main>
+			
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../basictop/metric-properties.html">Previous chapter: Properties of metric spaces</a><br />
+<a href="../basictop/compactness.html">Next chapter: Compactness</a>
+</nav>
+<div class="ltx_page_content">
+<section class="ltx_chapter">
+<h1 class="ltx_title ltx_title_chapter">
+<span class="ltx_tag ltx_tag_chapter">Chapter 7 </span>Topological spaces</h1>
+
+<div id="p1" class="ltx_para">
+<p class="ltx_p">In <a href="../startout/metric-space.html" title="Chapter 2 Metric spaces ‣ Part I Starting Out ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Chapter</span> <span class="ltx_text ltx_ref_tag">2</span></a> we introduced the notion
+of space by describing metrics on them.
+This gives you a lot of examples, and nice intuition,
+and tells you how you should draw pictures of open and closed sets.</p>
+</div>
+<div id="p2" class="ltx_para">
+<p class="ltx_p">However, moving forward, it will be useful to begin
+thinking about topological spaces in terms of just their <em class="ltx_emph ltx_font_italic">open sets</em>.
+(One motivation is that our fishy <a href="ch_metric_properties.html#ex:fishy" title="Example 6.3.1 (Something fishy is going on here) ‣ 6.3 Let the buyer beware ‣ Chapter 6 Properties of metric spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Example</span> <span class="ltx_text ltx_ref_tag">6.3.1</span></a> shows that
+in some ways the notion of homeomorphism really wants
+to be phrased in terms of open sets, not in terms of the metric.)
+As we are going to see, the open sets manage to actually retain
+nearly all the information we need, but are simpler.<span id="footnote1" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">1</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">1</sup><span class="ltx_tag ltx_tag_note">1</span>The
+reason I adamantly introduce metric spaces first
+is because I think otherwise the examples make much less sense.</span></span></span>
+This will be done in just a few sections,
+and after that we will start describing more adjectives
+that we can apply to topological (and hence metric) spaces.</p>
+</div>
+<div id="p3" class="ltx_para">
+<p class="ltx_p">The most important topological notion is missing from this chapter:
+that of a <em class="ltx_emph ltx_font_italic">compact</em> space.
+It is so important that I have dedicated a separate chapter just for it.</p>
+</div>
+<div id="p4" class="ltx_para">
+<p class="ltx_p">Quick note for those who care:
+the adjectives “Hausdorff”, “connected”,
+and later “compact” are all absolute adjectives.</p>
+</div>
+<section id="S1" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.1 </span>Forgetting the metric</h2>
+
+<div id="S1.p1" class="ltx_para">
+<p class="ltx_p">Recall <a href="../startout/metric-space.html#thm:open_set" title="Theorem 2.6.11 (Open set condition) ‣ 2.6 Open sets ‣ Chapter 2 Metric spaces ‣ Part I Starting Out ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Theorem</span> <span class="ltx_text ltx_ref_tag">2.6.11</span></a>:</p>
+<blockquote class="ltx_quote">
+<p class="ltx_p">A function <math id="S1.p1.m1" class="ltx_Math" alttext="f\colon M\to N" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>M</mi><mo stretchy="false">→</mo><mi>N</mi></mrow></mrow></math> of metric spaces is continuous
+if and only if the pre-image of every open set in <math id="S1.p1.m2" class="ltx_Math" alttext="N" display="inline"><mi>N</mi></math> is open in <math id="S1.p1.m3" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</blockquote>
+<p class="ltx_p">Despite us having defined this in the context of metric spaces,
+this nicely doesn’t refer to the metric at all,
+only the open sets.
+As alluded to at the start of this chapter,
+this is a great motivation for how we can forget
+about the fact that we had a metric to begin with,
+and rather <em class="ltx_emph ltx_font_italic">start</em> with the open sets instead.</p>
+</div>
+<div id="S1.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.1.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> topological space</span> is a pair <math id="S1.Thmtheorem1.p1.m1" class="ltx_Math" alttext="(X,\mathcal{T})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi class="ltx_font_mathcaligraphic">𝒯</mi><mo stretchy="false">)</mo></mrow></math>,
+where <math id="S1.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is a set of points,
+and <math id="S1.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math> is the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> topology</span>,
+which consists of several subsets of <math id="S1.Thmtheorem1.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> open sets</span> of <math id="S1.Thmtheorem1.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+The topology must obey the following axioms.</p>
+<ul id="S1.I1" class="ltx_itemize">
+<li id="S1.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S1.I1.i1.p1.m1" class="ltx_Math" alttext="\varnothing" display="inline"><mi mathvariant="normal">∅</mi></math> and <math id="S1.I1.i1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> are both in <math id="S1.I1.i1.p1.m3" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Finite intersections of open sets are also in <math id="S1.I1.i2.p1.m1" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math>.</p>
+</div>
+</li>
+<li id="S1.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S1.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">Arbitrary unions (possibly infinite) of open sets are also in <math id="S1.I1.i3.p1.m1" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math>.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div id="S1.p2" class="ltx_para">
+<p class="ltx_p">So this time, the open sets are <em class="ltx_emph ltx_font_italic">given</em>.
+Rather than defining a metric and getting open sets from the metric,
+we instead start from just the open sets.</p>
+</div>
+<div id="S1.Thmtheorem2" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 7.1.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">We abbreviate <math id="S1.Thmtheorem2.p1.m1" class="ltx_Math" alttext="(X,\mathcal{T})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><mi class="ltx_font_mathcaligraphic">𝒯</mi><mo stretchy="false">)</mo></mrow></math> by just <math id="S1.Thmtheorem2.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>,
+leaving the topology <math id="S1.Thmtheorem2.p1.m3" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math> implicit.
+(Do you see a pattern here?)</p>
+</div>
+</div>
+<div id="S1.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 7.1.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of topologies)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S1.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S1.I2" class="ltx_enumerate">
+<li id="S1.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S1.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">Given a metric space <math id="S1.I2.i1.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>, we can let <math id="S1.I2.i1.p1.m2" class="ltx_Math" alttext="\mathcal{T}" display="inline"><mi class="ltx_font_mathcaligraphic">𝒯</mi></math> be
+the open sets in the metric sense.
+The point is that the axioms are satisfied.</p>
+</div>
+</li>
+<li id="S1.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S1.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">In particular, <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> discrete space</span>
+is a topological space in which every set is open. (Why?)</p>
+</div>
+</li>
+<li id="S1.I2.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S1.I2.i3.p1" class="ltx_para">
+<p class="ltx_p">Given <math id="S1.I2.i3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, we can let <math id="S1.I2.i3.p1.m2" class="ltx_Math" alttext="\mathcal{T}=\left\{\varnothing,X\right\}" display="inline"><mrow><mi class="ltx_font_mathcaligraphic">𝒯</mi><mo>=</mo><mrow><mo>{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mi>X</mi><mo>}</mo></mrow></mrow></math>,
+the opposite extreme of the discrete space.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="S1.p3" class="ltx_para">
+<p class="ltx_p">Now we can port over our metric definitions.</p>
+</div>
+<div id="S1.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.1.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">An <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> open neighborhood<span id="footnote2" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">2</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">2</sup><span class="ltx_tag ltx_tag_note"><span class="ltx_text ltx_font_medium" style="color:var(--latex-color-000000);">2</span></span><span class="ltx_text ltx_font_medium" style="color:var(--latex-color-000000);">In literature,
+a “neighborhood” refers to a set
+which contains some open set around </span><math id="footnote2.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math><span class="ltx_text ltx_font_medium" style="color:var(--latex-color-000000);">.
+We will not use this term,
+and exclusively refer to “open neighborhoods”.</span></span></span></span></span>
+of a point <math id="S1.Thmtheorem4.p1.m1" class="ltx_Math" alttext="x\in X" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>X</mi></mrow></math> is an
+open set <math id="S1.Thmtheorem4.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> which contains <math id="S1.Thmtheorem4.p1.m3" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math> (see figure).</p>
+</div>
+</div>
+<div id="S1.p4" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='113.385827pt' height='78.530742pt' viewBox='111.57289 92.316767 113.385827 78.530742'>
+<defs>
+<path id='asymptote-7-1-g0-85' d='M6.927271-6.305453C7.036362-6.752725 7.232725-7.079998 8.105452-7.112725C8.159998-7.112725 8.290907-7.123634 8.290907-7.330907C8.290907-7.341816 8.290907-7.450907 8.149089-7.450907C7.789089-7.450907 7.407271-7.41818 7.036362-7.41818S6.261816-7.450907 5.901817-7.450907C5.836362-7.450907 5.705453-7.450907 5.705453-7.232725C5.705453-7.112725 5.814544-7.112725 5.901817-7.112725C6.523635-7.101816 6.643635-6.872725 6.643635-6.632725C6.643635-6.599998 6.621816-6.436362 6.610907-6.403635L5.629089-2.50909C5.25818-1.047272 4.003635-.098182 2.912726-.098182C2.170908-.098182 1.581818-.578182 1.581818-1.516363C1.581818-1.538181 1.581818-1.887272 1.701818-2.367272L2.759999-6.610907C2.858181-7.003634 2.879999-7.112725 3.676363-7.112725C3.959999-7.112725 4.047272-7.112725 4.047272-7.330907C4.047272-7.450907 3.927272-7.450907 3.894544-7.450907C3.58909-7.450907 2.803636-7.41818 2.498181-7.41818C2.181818-7.41818 1.407272-7.450907 1.090909-7.450907C1.003636-7.450907 .883636-7.450907 .883636-7.232725C.883636-7.112725 .981818-7.112725 1.189091-7.112725C1.210909-7.112725 1.418181-7.112725 1.603636-7.090907C1.799999-7.069089 1.898181-7.05818 1.898181-6.916362C1.898181-6.850907 1.778181-6.392725 1.712727-6.141816L1.472727-5.181817C1.374545-4.756362 .850909-2.694545 .807273-2.487272C.730909-2.181818 .730909-2.018181 .730909-1.854545C.730909-.523636 1.723636 .24 2.86909 .24C4.243635 .24 5.596362-.992727 5.956362-2.432727L6.927271-6.305453Z'/>
+<path id='asymptote-7-1-g0-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+<path id='asymptote-7-1-g0-120' d='M3.643635-3.294545C3.70909-3.578181 3.959999-4.581817 4.723635-4.581817C4.77818-4.581817 5.039999-4.581817 5.269089-4.439999C4.963635-4.385453 4.745453-4.112726 4.745453-3.850908C4.745453-3.676363 4.865453-3.46909 5.159999-3.46909C5.399998-3.46909 5.749089-3.665454 5.749089-4.101817C5.749089-4.66909 5.105453-4.821817 4.734544-4.821817C4.101817-4.821817 3.719999-4.243635 3.58909-3.992726C3.316363-4.712726 2.727272-4.821817 2.410908-4.821817C1.276363-4.821817 .654545-3.414545 .654545-3.141817C.654545-3.032726 .763636-3.032726 .785454-3.032726C.872727-3.032726 .905454-3.054545 .927272-3.152726C1.298181-4.30909 2.018181-4.581817 2.38909-4.581817C2.596363-4.581817 2.978181-4.483635 2.978181-3.850908C2.978181-3.512726 2.792726-2.781817 2.38909-1.254545C2.214545-.578182 1.832727-.12 1.352727-.12C1.287272-.12 1.036363-.12 .807273-.261818C1.08-.316364 1.32-.545454 1.32-.850909C1.32-1.145454 1.08-1.232727 .916363-1.232727C.589091-1.232727 .316364-.949091 .316364-.6C.316364-.098182 .861818 .12 1.341818 .12C2.061818 .12 2.454545-.643636 2.487272-.709091C2.618181-.305454 3.010908 .12 3.665454 .12C4.78909 .12 5.410908-1.287272 5.410908-1.56C5.410908-1.66909 5.312726-1.66909 5.279999-1.66909C5.181817-1.66909 5.159999-1.625454 5.13818-1.54909C4.77818-.381818 4.036363-.12 3.687272-.12C3.261817-.12 3.087272-.469091 3.087272-.84C3.087272-1.08 3.152726-1.32 3.272726-1.799999L3.643635-3.294545Z'/>
+</defs>
+<g id='asymptote-7-1-page1'>
+<g transform='translate(111.573 92.3168)scale(.996264)'>
+<path d='M11.58 5.75999C2.64157 7.61179-1.00789 17.8841 .632426 27.6551C1.26512 31.4239 2.51762 35.0484 3.9167 38.6027C6.72836 45.7457 10.1739 52.8073 10.4852 60.4979C10.6352 64.2017 10.0627 68.043 11.58 71.4454C16.5418 82.5723 31.4519 78.2146 44.4227 74.7297C51.5586 72.8125 59.021 72.4751 66.3179 73.635C78.0773 75.5041 91.1156 80.0547 99.1606 71.4454C104.479 65.7538 103.971 57.2903 102.445 49.5503C101.373 44.1104 99.9516 38.6743 100.255 33.1289C100.782 23.5072 105.819 12.9651 99.1606 5.75999C93.8429 .005875 85.1427 1.38091 77.2655 2.47572C69.9984 3.48571 62.6504 3.75702 55.3703 4.66523C44.4121 6.0323 33.4263 8.82824 22.5276 6.85475C18.8814 6.19452 15.223 5.00526 11.58 5.75999Z' fill="var(--asymptote-color-8080ff)" opacity='0.2'/>
+</g>
+<g transform='translate(111.573 92.3168)scale(.996264)'>
+<path d='M11.58 5.75999C2.64157 7.61179-1.00789 17.8841 .632426 27.6551C1.26512 31.4239 2.51762 35.0484 3.9167 38.6027C6.72836 45.7457 10.1739 52.8073 10.4852 60.4979C10.6352 64.2017 10.0627 68.043 11.58 71.4454C16.5418 82.5723 31.4519 78.2146 44.4227 74.7297C51.5586 72.8125 59.021 72.4751 66.3179 73.635C78.0773 75.5041 91.1156 80.0547 99.1606 71.4454C104.479 65.7538 103.971 57.2903 102.445 49.5503C101.373 44.1104 99.9516 38.6743 100.255 33.1289C100.782 23.5072 105.819 12.9651 99.1606 5.75999C93.8429 .005875 85.1427 1.38091 77.2655 2.47572C69.9984 3.48571 62.6504 3.75702 55.3703 4.66523C44.4121 6.0323 33.4263 8.82824 22.5276 6.85475C18.8814 6.19452 15.223 5.00526 11.58 5.75999Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='213.672711' y='101.107131' href='#asymptote-7-1-g0-88'/>
+<use x='166.894744' y='137.640024' href='#asymptote-7-1-g0-120'/>
+<g transform='translate(111.573 92.3168)scale(.996264)'>
+<circle cx='58.6546' cy='37.508' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(111.573 92.3168)scale(.996264)'>
+<path d='M76.1707 37.508C76.1707 30.2525 68.3285 24.3709 58.6546 24.3709S41.1385 30.2525 41.1385 37.508C41.1385 44.7634 48.9807 50.6451 58.6546 50.6451S76.1707 44.7634 76.1707 37.508Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-dasharray='4.03356,4.03356' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='184.312566' y='115.324172' href='#asymptote-7-1-g0-85'/>
+</g>
+</svg>
+</div>
+</div>
+<div id="S1.Thmtheorem5" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 7.1.5</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S1.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p">Just to be perfectly clear:
+by an “open neighborhood” I mean <em class="ltx_emph ltx_font_italic">any</em> open set containing <math id="S1.Thmtheorem5.p1.m1" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>.
+But by an “<math id="S1.Thmtheorem5.p1.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhood” I always mean the
+points with distance less than <math id="S1.Thmtheorem5.p1.m3" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> from <math id="S1.Thmtheorem5.p1.m4" class="ltx_Math" alttext="x" display="inline"><mi>x</mi></math>,
+and so I can only use this term if my space is a metric space.</p>
+</div>
+</div>
+</section>
+<section id="S2" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.2 </span>Re-definitions</h2>
+
+<div id="S2.p1" class="ltx_para">
+<p class="ltx_p">Now that we’ve defined a topological space,
+for nearly all of our metric notions we can write down
+as the definition the one that required only open sets
+(which will of course agree with our old definitions
+when we have a metric space).</p>
+</div>
+<section id="S2.SS1" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">7.2.i </span>Continuity</h3>
+
+<div id="S2.SS1.p1" class="ltx_para">
+<p class="ltx_p">Here was our motivating example, continuity:</p>
+</div>
+<div id="S2.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.2.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">We say function <math id="S2.Thmtheorem1.p1.m1" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> of topological spaces
+is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> continuous</span> at a point <math id="S2.Thmtheorem1.p1.m2" class="ltx_Math" alttext="p\in X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>X</mi></mrow></math> if the pre-image of any
+open neighborhood of <math id="S2.Thmtheorem1.p1.m3" class="ltx_Math" alttext="f(p)" display="inline"><mrow><mi>f</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo stretchy="false">)</mo></mrow></mrow></math> is an open neighborhood of <math id="S2.Thmtheorem1.p1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+The function is continuous if it is continuous at every point.</p>
+</div>
+</div>
+<div id="S2.SS1.p2" class="ltx_para">
+<p class="ltx_p">Thus homeomorphism carries over:
+a bijection which is continuous in both directions.</p>
+</div>
+<div id="S2.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.2.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> homeomorphism</span> of topological spaces
+<math id="S2.Thmtheorem2.p1.m1" class="ltx_Math" alttext="(X,\tau_{X})" display="inline"><mrow><mo stretchy="false">(</mo><mi>X</mi><mo>,</mo><msub><mi>τ</mi><mi>X</mi></msub><mo stretchy="false">)</mo></mrow></math> and <math id="S2.Thmtheorem2.p1.m2" class="ltx_Math" alttext="(Y,\tau_{Y})" display="inline"><mrow><mo stretchy="false">(</mo><mi>Y</mi><mo>,</mo><msub><mi>τ</mi><mi>Y</mi></msub><mo stretchy="false">)</mo></mrow></math>
+is a bijection <math id="S2.Thmtheorem2.p1.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math>
+which induces a bijection from <math id="S2.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\tau_{X}" display="inline"><msub><mi>τ</mi><mi>X</mi></msub></math> to <math id="S2.Thmtheorem2.p1.m5" class="ltx_Math" alttext="\tau_{Y}" display="inline"><msub><mi>τ</mi><mi>Y</mi></msub></math>:
+i.e. the bijection preserves open sets.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.2.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that this is equivalent to <math id="S2.Thmtheorem3.p1.m1" class="ltx_Math" alttext="f" display="inline"><mi>f</mi></math> and its inverse
+both being continuous.</span></p>
+</div>
+</div>
+<div id="S2.SS1.p3" class="ltx_para">
+<p class="ltx_p">Therefore, any property defined only in
+terms of open sets is preserved by homeomorphism.
+Such a property is called a <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> topological property</span>.
+The later adjectives we define
+(“connected”, “Hausdorff”, “compact”) will all be defined
+only in terms of open sets, so they will be topological properties.</p>
+</div>
+</section>
+<section id="S2.SS2" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">7.2.ii </span>Closed sets</h3>
+
+<div id="S2.SS2.p1" class="ltx_para">
+<p class="ltx_p">We saw last time there were two equivalent definitions
+for closed sets, but one of them relies only on open sets, and we use it:</p>
+</div>
+<div id="def:closure" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.2.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S2.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">In a general topological space <math id="S2.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, we say that <math id="S2.Thmtheorem4.p1.m2" class="ltx_Math" alttext="S\subseteq X" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>X</mi></mrow></math> is
+<span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> closed</span> in <math id="S2.Thmtheorem4.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> if the complement <math id="S2.Thmtheorem4.p1.m4" class="ltx_Math" alttext="X\setminus S" display="inline"><mrow><mi>X</mi><mo>∖</mo><mi>S</mi></mrow></math> is open in <math id="S2.Thmtheorem4.p1.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.</p>
+</div>
+<div id="S2.Thmtheorem4.p2" class="ltx_para">
+<p class="ltx_p">If <math id="S2.Thmtheorem4.p2.m1" class="ltx_Math" alttext="S\subseteq X" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>X</mi></mrow></math> is any set, the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> closure</span> of <math id="S2.Thmtheorem4.p2.m2" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>,
+denoted <math id="S2.Thmtheorem4.p2.m3" class="ltx_Math" alttext="\overline{S}" display="inline"><mover accent="true"><mi>S</mi><mo>¯</mo></mover></math>,
+is defined as the smallest closed set containing <math id="S2.Thmtheorem4.p2.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.</p>
+</div>
+</div>
+<div id="S2.SS2.p2" class="ltx_para">
+<p class="ltx_p">Thus for general topological spaces,
+open and closed sets carry the same information,
+and it is entirely a matter of taste whether we define everything in terms
+of open sets or closed sets.
+In particular, you can translate axioms and properties of open sets to closed ones:</p>
+</div>
+<div id="S2.Thmtheorem5" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.2.5</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that the (possibly infinite) intersection of closed sets is closed
+while the union of finitely many closed sets is closed.
+(Look at complements.)</span></p>
+</div>
+</div>
+<div id="S2.Thmtheorem6" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 7.2.6</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S2.Thmtheorem6.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that a function is continuous if and only if the pre-image
+of every closed set is closed.</span></p>
+</div>
+</div>
+<div id="S2.SS2.p3" class="ltx_para">
+<p class="ltx_p">Mathematicians seem to have agreed that they like open sets better.</p>
+</div>
+</section>
+<section id="S2.SS3" class="ltx_subsection">
+<h3 class="ltx_title ltx_title_subsection">
+<span class="ltx_tag ltx_tag_subsection">7.2.iii </span>Properties that don’t carry over</h3>
+
+<div id="S2.SS3.p1" class="ltx_para">
+<p class="ltx_p">Not everything works:</p>
+</div>
+<div id="S2.Thmtheorem7" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 7.2.7</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Complete and (totally) bounded are metric properties)</span> — </span>
+</h5>
+<div id="S2.Thmtheorem7.p1" class="ltx_para">
+<p class="ltx_p">The two metric properties we have seen,
+“complete” and “(totally) bounded”,
+are not topological properties.
+They rely on a metric,
+so as written we cannot apply them to topological spaces.
+One might hope that maybe,
+there is some alternate definition (like we saw for “continuous function”)
+that is just open-set based.
+But <a href="ch_metric_properties.html#ex:fishy" title="Example 6.3.1 (Something fishy is going on here) ‣ 6.3 Let the buyer beware ‣ Chapter 6 Properties of metric spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">Example</span> <span class="ltx_text ltx_ref_tag">6.3.1</span></a> showing <math id="S2.Thmtheorem7.p1.m1" class="ltx_Math" alttext="(0,1)\cong\mathbb{R}" display="inline"><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>≅</mo><mi>ℝ</mi></mrow></math>
+tells us that it is hopeless.</p>
+</div>
+</div>
+<div id="S2.Thmtheorem8" class="ltx_theorem ltx_theorem_remark">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);">Remark 7.2.8</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-186118);"> <span class="ltx_text ltx_font_medium" style="color:var(--latex-color-186118);">(Sequences don’t work well)</span> — </span>
+</h5>
+<div id="S2.Thmtheorem8.p1" class="ltx_para">
+<p class="ltx_p">You could also try to port over the notion
+of sequences and convergent sequences.
+However, this turns out to break a lot of desirable properties.
+Therefore I won’t bother to do so,
+and thus if we are discussing sequences you should
+assume that we are working with a metric space.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="S3" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.3 </span>Hausdorff spaces</h2>
+
+<div id="S3.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Every space that’s not the Zariski topology (defined much later).</em></p>
+</div>
+<div id="S3.p2" class="ltx_para">
+<p class="ltx_p">As you might have guessed,
+there exist topological spaces which cannot be realized
+as metric spaces (in other words, are not <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> metrizable</span>).
+One example is just to take <math id="S3.p2.m1" class="ltx_Math" alttext="X=\{a,b,c\}" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mo stretchy="false">{</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo stretchy="false">}</mo></mrow></mrow></math> and the topology
+<math id="S3.p2.m2" class="ltx_Math" alttext="\tau_{X}=\left\{\varnothing,\{a,b,c\}\right\}" display="inline"><mrow><msub><mi>τ</mi><mi>X</mi></msub><mo>=</mo><mrow><mo>{</mo><mi mathvariant="normal">∅</mi><mo>,</mo><mrow><mo stretchy="false">{</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo>,</mo><mi>c</mi><mo stretchy="false">}</mo></mrow><mo>}</mo></mrow></mrow></math>.
+This topology is fairly “stupid”:
+it can’t tell apart any of the points <math id="S3.p2.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math>, <math id="S3.p2.m4" class="ltx_Math" alttext="b" display="inline"><mi>b</mi></math>, <math id="S3.p2.m5" class="ltx_Math" alttext="c" display="inline"><mi>c</mi></math>!
+But any metric space can tell its points apart (because <math id="S3.p2.m6" class="ltx_Math" alttext="d(x,y)&gt;0" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>&gt;</mo><mn>0</mn></mrow></math> when <math id="S3.p2.m7" class="ltx_Math" alttext="x\neq y" display="inline"><mrow><mi>x</mi><mo>≠</mo><mi>y</mi></mrow></math>).</p>
+</div>
+<div id="S3.p3" class="ltx_para">
+<p class="ltx_p">We’ll see less trivial examples later,
+but for now we want to add a little more sanity condition onto our spaces.
+There is a whole hierarchy of such axioms, labelled <math id="S3.p3.m1" class="ltx_Math" alttext="T_{n}" display="inline"><msub><mi>T</mi><mi>n</mi></msub></math> for
+integers <math id="S3.p3.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> (with <math id="S3.p3.m3" class="ltx_Math" alttext="n=0" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>0</mn></mrow></math> being the weakest and <math id="S3.p3.m4" class="ltx_Math" alttext="n=6" display="inline"><mrow><mi>n</mi><mo>=</mo><mn>6</mn></mrow></math> the strongest);
+these axioms are called <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> separation axioms</span>.</p>
+</div>
+<div id="S3.p4" class="ltx_para">
+<p class="ltx_p">By far the most common hypothesis is the <math id="S3.p4.m1" class="ltx_Math" alttext="T_{2}" display="inline"><msub><mi>T</mi><mn>2</mn></msub></math> axiom,
+which bears a special name.</p>
+</div>
+<div id="S3.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.3.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S3.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A topological space <math id="S3.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> Hausdorff</span> if
+for any two distinct points <math id="S3.Thmtheorem1.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S3.Thmtheorem1.p1.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> in <math id="S3.Thmtheorem1.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>,
+there exists an open neighborhood <math id="S3.Thmtheorem1.p1.m5" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> of <math id="S3.Thmtheorem1.p1.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>
+and an open neighborhood <math id="S3.Thmtheorem1.p1.m7" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math> of <math id="S3.Thmtheorem1.p1.m8" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> such that</p>
+<div class="table-container"><table id="Ex1" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex1.m1" class="ltx_Math" alttext="U\cap V=\varnothing." display="block"><mrow><mrow><mrow><mi>U</mi><mo>∩</mo><mi>V</mi></mrow><mo>=</mo><mi mathvariant="normal">∅</mi></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+</div>
+<div id="S3.p5" class="ltx_para">
+<p class="ltx_p">In other words, around any two distinct points we should be
+able to draw disjoint open neighborhoods.
+Here’s a picture to go with above,
+but not much going on.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='141.732283pt' height='56.992914pt' viewBox='127.275591 82.354724 141.732283 56.992914'>
+<defs>
+<path id='asymptote-7-2-g0-112' d='M.490909 1.330909C.403636 1.701818 .381818 1.778181-.098182 1.778181C-.229091 1.778181-.349091 1.778181-.349091 1.985454C-.349091 2.072727-.294545 2.116363-.207273 2.116363C.087273 2.116363 .403636 2.083636 .709091 2.083636C1.069091 2.083636 1.44 2.116363 1.78909 2.116363C1.843636 2.116363 1.985454 2.116363 1.985454 1.898181C1.985454 1.778181 1.876363 1.778181 1.723636 1.778181C1.178181 1.778181 1.178181 1.701818 1.178181 1.603636C1.178181 1.472727 1.636363-.305454 1.712727-.578182C1.854545-.261818 2.159999 .12 2.716363 .12C3.981817 .12 5.345453-1.472727 5.345453-3.076363C5.345453-4.101817 4.723635-4.821817 3.894544-4.821817C3.34909-4.821817 2.825454-4.42909 2.465454-4.003635C2.356363-4.592726 1.887272-4.821817 1.483636-4.821817C.981818-4.821817 .774545-4.396362 .676363-4.199999C.48-3.82909 .338182-3.174545 .338182-3.141817C.338182-3.032726 .447273-3.032726 .469091-3.032726C.578182-3.032726 .589091-3.043636 .654545-3.283635C.84-4.058181 1.058182-4.581817 1.450909-4.581817C1.636363-4.581817 1.78909-4.494544 1.78909-4.079999C1.78909-3.82909 1.756363-3.70909 1.712727-3.523635L.490909 1.330909ZM2.410908-3.403635C2.487272-3.698181 2.781817-4.003635 2.978181-4.167272C3.359999-4.505453 3.676363-4.581817 3.861817-4.581817C4.298181-4.581817 4.559999-4.199999 4.559999-3.556363S4.199999-1.658181 4.003635-1.243636C3.632726-.48 3.10909-.12 2.705454-.12C1.985454-.12 1.843636-1.025454 1.843636-1.090909C1.843636-1.112727 1.843636-1.134545 1.876363-1.265454L2.410908-3.403635Z'/>
+<path id='asymptote-7-2-g0-113' d='M4.930908-4.701817C4.930908-4.745453 4.89818-4.810908 4.821817-4.810908C4.701817-4.810908 4.265453-4.374544 4.079999-4.058181C3.839999-4.647271 3.414545-4.821817 3.065454-4.821817C1.778181-4.821817 .436364-3.207272 .436364-1.625454C.436364-.556363 1.08 .12 1.876363 .12C2.345454 .12 2.770908-.141818 3.163635-.534545C3.065454-.152727 2.705454 1.32 2.672727 1.418181C2.585454 1.723636 2.498181 1.767272 1.887272 1.778181C1.745454 1.778181 1.636363 1.778181 1.636363 1.996363C1.636363 2.007272 1.636363 2.116363 1.778181 2.116363C2.127272 2.116363 2.50909 2.083636 2.86909 2.083636C3.239999 2.083636 3.632726 2.116363 3.992726 2.116363C4.047272 2.116363 4.18909 2.116363 4.18909 1.898181C4.18909 1.778181 4.079999 1.778181 3.905453 1.778181C3.381817 1.778181 3.381817 1.701818 3.381817 1.603636C3.381817 1.527272 3.403635 1.461818 3.425454 1.363636L4.930908-4.701817ZM1.90909-.12C1.254545-.12 1.210909-.96 1.210909-1.145454C1.210909-1.66909 1.527272-2.858181 1.712727-3.316363C2.050909-4.123635 2.618181-4.581817 3.065454-4.581817C3.774544-4.581817 3.927272-3.698181 3.927272-3.621817C3.927272-3.556363 3.327272-1.167272 3.294545-1.123636C3.130908-.818182 2.519999-.12 1.90909-.12Z'/>
+</defs>
+<g id='asymptote-7-2-page1'>
+<g transform='translate(127.276 82.3547)scale(.996264)'>
+<path d='M56.9557 28.6033C56.9557 12.9447 44.2619 .250938 28.6033 .250937C12.9447 .250937 .250937 12.9447 .250937 28.6033S12.9447 56.9557 28.6033 56.9557S56.9557 44.2619 56.9557 28.6033Z' fill="var(--asymptote-color-80ffff)" opacity='0.1'/>
+</g>
+<g transform='translate(127.276 82.3547)scale(.996264)'>
+<path d='M56.9557 28.6033C56.9557 12.9447 44.2619 .250938 28.6033 .250937C12.9447 .250937 .250937 12.9447 .250937 28.6033S12.9447 56.9557 28.6033 56.9557S56.9557 44.2619 56.9557 28.6033Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-dasharray='4.04928,4.04928' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(127.276 82.3547)scale(.996264)'>
+<path d='M142.013 28.6033C142.013 12.9447 129.319 .250938 113.66 .250937C98.0019 .250937 85.3081 12.9447 85.3081 28.6033S98.0019 56.9557 113.66 56.9557C129.319 56.9557 142.013 44.2619 142.013 28.6033Z' fill="var(--asymptote-color-ff8080)" opacity='0.1'/>
+</g>
+<g transform='translate(127.276 82.3547)scale(.996264)'>
+<path d='M142.013 28.6033C142.013 12.9447 129.319 .250938 113.66 .250937C98.0019 .250937 85.3081 12.9447 85.3081 28.6033S98.0019 56.9557 113.66 56.9557C129.319 56.9557 142.013 44.2619 142.013 28.6033Z' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-dasharray='4.04928,4.04928' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(127.276 82.3547)scale(.996264)'>
+<circle cx='28.6033' cy='28.6033' fill="var(--asymptote-color-0000ff)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-00f)">
+<use x='153.031555' y='118.806611' href='#asymptote-7-2-g0-112'/>
+</g>
+<g transform='translate(127.276 82.3547)scale(.996264)'>
+<circle cx='113.66' cy='28.6033' fill="var(--asymptote-color-ff0000)" r='1.50562'/>
+</g>
+<g fill="var(--asymptote-color-f00)">
+<use x='237.884559' y='118.806611' href='#asymptote-7-2-g0-113'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S3.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.3.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S3.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that all metric spaces are Hausdorff.</span></p>
+</div>
+</div>
+<div id="S3.p6" class="ltx_para">
+<p class="ltx_p">I just want to define this here so that I can use this word later.
+In any case, basically any space we will encounter other than
+the Zariski topology is Hausdorff.</p>
+</div>
+</section>
+<section id="S4" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.4 </span>Subspaces</h2>
+
+<div id="S4.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S4.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> is a subspace of <math id="S4.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>.</em></p>
+</div>
+<div id="S4.p2" class="ltx_para">
+<p class="ltx_p">One can also take subspaces of general topological spaces.</p>
+</div>
+<div id="S4.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.4.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S4.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Given a topological space <math id="S4.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>, and a subset <math id="S4.Thmtheorem1.p1.m2" class="ltx_Math" alttext="S\subseteq X" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>X</mi></mrow></math>,
+we can make <math id="S4.Thmtheorem1.p1.m3" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> into a topological space
+by declaring that the open subsets of <math id="S4.Thmtheorem1.p1.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> are <math id="S4.Thmtheorem1.p1.m5" class="ltx_Math" alttext="U\cap S" display="inline"><mrow><mi>U</mi><mo>∩</mo><mi>S</mi></mrow></math> for open <math id="S4.Thmtheorem1.p1.m6" class="ltx_Math" alttext="U\subseteq X" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>X</mi></mrow></math>.
+This is called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> subspace topology</span>.</p>
+</div>
+</div>
+<div id="S4.p3" class="ltx_para">
+<p class="ltx_p">So for example, if we view <math id="S4.p3.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> as a subspace of <math id="S4.p3.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>,
+then any open arc is an open set,
+because you can view it as the intersection of an open disk with <math id="S4.p3.m3" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math>.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='85.039371pt' height='80.352649pt' viewBox='88.492127 94.574583 85.039371 80.352649'>
+<defs>
+<clipPath id='asymptote-7-3-Clip1'>
+<path clip-rule='evenodd' d='M-.501875 81.1558H85.8601V-.501875H-.501875V81.1558ZM55.3404 16.5845C55.3404 15.0601 54.1046 13.8242 52.5801 13.8242S49.8198 15.0601 49.8198 16.5845C49.8198 18.109 51.0556 19.3449 52.5801 19.3449S55.3404 18.109 55.3404 16.5845Z' transform='matrix(0.996264 0 0 0.996264 88.4921 94.5746)'/>
+</clipPath>
+
+<clipPath clip-path='url(#asymptote-7-3-Clip1)' id='asymptote-7-3-Clip2'>
+<path clip-rule='evenodd' d='M-.501875 81.1558H85.8601V-.501875H-.501875V81.1558ZM62.4173 56.7196C62.4173 55.1951 61.1814 53.9592 59.657 53.9592C58.1325 53.9592 56.8966 55.1951 56.8966 56.7196C56.8966 58.244 58.1325 59.4799 59.657 59.4799C61.1814 59.4799 62.4173 58.244 62.4173 56.7196Z' transform='matrix(0.996264 0 0 0.996264 88.4921 94.5746)'/>
+</clipPath>
+<path id='asymptote-7-3-g0-82' d='M2.936986-3.441096H3.331507L4.975342-.89863C5.084932-.723288 5.347945-.29589 5.468493-.131507C5.545205 0 5.578082 0 5.830137 0H7.342466C7.539726 0 7.70411 0 7.70411-.19726C7.70411-.284932 7.638356-.361644 7.539726-.383562C7.134247-.471233 6.59726-1.194521 6.334247-1.545205C6.257534-1.654795 5.709589-2.378082 4.975342-3.561644C5.950685-3.736986 6.893151-4.153425 6.893151-5.457534C6.893151-6.980822 5.282192-7.506849 3.989041-7.506849H.547945C.350685-7.506849 .175342-7.506849 .175342-7.309589C.175342-7.123288 .383562-7.123288 .471233-7.123288C1.09589-7.123288 1.150685-7.046575 1.150685-6.49863V-1.008219C1.150685-.460274 1.09589-.383562 .471233-.383562C.383562-.383562 .175342-.383562 .175342-.19726C.175342 0 .350685 0 .547945 0H3.550685C3.747945 0 3.912329 0 3.912329-.19726C3.912329-.383562 3.726027-.383562 3.605479-.383562C2.980822-.383562 2.936986-.471233 2.936986-1.008219V-3.441096ZM5.052055-3.978082C5.358904-4.383562 5.391781-4.964384 5.391781-5.446575C5.391781-5.972603 5.326027-6.553425 4.975342-7.00274C5.424658-6.90411 6.509589-6.564384 6.509589-5.457534C6.509589-4.745205 6.180822-4.186301 5.052055-3.978082ZM2.936986-6.531507C2.936986-6.761644 2.936986-7.123288 3.616438-7.123288C4.547945-7.123288 5.008219-6.739726 5.008219-5.446575C5.008219-4.032877 4.668493-3.824658 2.936986-3.824658V-6.531507ZM1.446575-.383562C1.534247-.580822 1.534247-.887671 1.534247-.986301V-6.520548C1.534247-6.630137 1.534247-6.926027 1.446575-7.123288H2.69589C2.553425-6.947945 2.553425-6.728767 2.553425-6.564384V-.986301C2.553425-.876712 2.553425-.580822 2.641096-.383562H1.446575ZM3.780822-3.441096C3.857534-3.452055 3.90137-3.463014 3.989041-3.463014C4.153425-3.463014 4.394521-3.484932 4.558904-3.506849C4.723288-3.243836 5.906849-1.293151 6.816438-.383562H5.753425L3.780822-3.441096Z'/>
+<path id='asymptote-7-3-g2-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-7-3-g2-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-7-3-g1-83' d='M7.036362-7.581816C7.036362-7.614543 7.014543-7.690907 6.916362-7.690907C6.861816-7.690907 6.850907-7.679998 6.719998-7.527271L6.196362-6.905453C5.912726-7.41818 5.345453-7.690907 4.636362-7.690907C3.250908-7.690907 1.941818-6.436362 1.941818-5.116362C1.941818-4.232726 2.519999-3.730908 3.076363-3.567272L4.243635-3.261817C4.647271-3.163635 5.247271-2.999999 5.247271-2.105454C5.247271-1.123636 4.352726-.098182 3.283635-.098182C2.585454-.098182 1.374545-.338182 1.374545-1.690909C1.374545-1.952727 1.429091-2.214545 1.44-2.279999C1.450909-2.323636 1.461818-2.334545 1.461818-2.356363C1.461818-2.465454 1.385454-2.476363 1.330909-2.476363S1.254545-2.465454 1.221818-2.432727C1.178181-2.38909 .567273 .098182 .567273 .130909C.567273 .196364 .621818 .24 .687273 .24C.741818 .24 .752727 .229091 .883636 .076364L1.418181-.545454C1.887272 .087273 2.62909 .24 3.261817 .24C4.745453 .24 6.032726-1.210909 6.032726-2.563636C6.032726-3.316363 5.661817-3.687272 5.49818-3.839999C5.247271-4.090908 5.083635-4.134544 4.112726-4.385453C3.872726-4.450908 3.479999-4.559999 3.381817-4.581817C3.087272-4.679999 2.716363-4.996362 2.716363-5.574544C2.716363-6.45818 3.58909-7.385452 4.625453-7.385452C5.530908-7.385452 6.196362-6.916362 6.196362-5.694544C6.196362-5.345453 6.152726-5.149089 6.152726-5.083635C6.152726-5.072726 6.152726-4.974544 6.283635-4.974544C6.392725-4.974544 6.403635-5.007271 6.447271-5.192726L7.036362-7.581816Z'/>
+</defs>
+<g id='asymptote-7-3-page1'>
+<g clip-path='url(#asymptote-7-3-Clip2)'>
+<g transform='translate(88.4921 94.5746)scale(.996264)'>
+<path d='M63.9041 40.869C63.9041 23.361 49.711 9.16789 32.203 9.16789C14.6949 9.16789 .501875 23.361 .501875 40.869S14.6949 72.5701 32.203 72.5701C49.711 72.5701 63.9041 58.377 63.9041 40.869Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='1.00375'/>
+</g>
+<use x='135.482723' y='105.005597' href='#asymptote-7-3-g1-83'/>
+<use x='142.800902' y='101.04678' href='#asymptote-7-3-g2-49'/>
+<use x='149.723951' y='173.471339' href='#asymptote-7-3-g0-82'/>
+<use x='157.638737' y='169.512521' href='#asymptote-7-3-g2-50'/>
+<g transform='translate(88.4921 94.5746)scale(.996264)'>
+<path d='M85.1073 35.3642C85.1073 23.388 75.3987 13.6793 63.4225 13.6793S41.7377 23.388 41.7377 35.3642S51.4463 57.049 63.4225 57.049S85.1073 47.3404 85.1073 35.3642Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-dasharray='0,2.00396' stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(88.4921 94.5746)scale(.996264)'>
+<path d='M59.6615 56.7222C62.3598 52.0588 63.9041 46.6442 63.9041 40.869C63.9041 31.1202 59.5036 22.3992 52.5805 16.584' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='2.0075'/>
+</g>
+</g>
+<g clip-path='url(#asymptote-7-3-Clip1)'>
+<g transform='translate(88.4921 94.5746)scale(.996264)'>
+<path d='M62.4173 56.7196C62.4173 55.1951 61.1814 53.9592 59.657 53.9592C58.1325 53.9592 56.8966 55.1951 56.8966 56.7196C56.8966 58.244 58.1325 59.4799 59.657 59.4799C61.1814 59.4799 62.4173 58.244 62.4173 56.7196Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(88.4921 94.5746)scale(.996264)'>
+<path d='M62.4173 56.7196C62.4173 55.1951 61.1814 53.9592 59.657 53.9592C58.1325 53.9592 56.8966 55.1951 56.8966 56.7196C56.8966 58.244 58.1325 59.4799 59.657 59.4799C61.1814 59.4799 62.4173 58.244 62.4173 56.7196Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(88.4921 94.5746)scale(.996264)'>
+<path d='M62.4173 56.7196C62.4173 55.1951 61.1814 53.9592 59.657 53.9592C58.1325 53.9592 56.8966 55.1951 56.8966 56.7196C56.8966 58.244 58.1325 59.4799 59.657 59.4799C61.1814 59.4799 62.4173 58.244 62.4173 56.7196Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+<g transform='translate(88.4921 94.5746)scale(.996264)'>
+<path d='M55.3404 16.5845C55.3404 15.0601 54.1046 13.8242 52.5801 13.8242S49.8198 15.0601 49.8198 16.5845C49.8198 18.109 51.0556 19.3449 52.5801 19.3449S55.3404 18.109 55.3404 16.5845Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(88.4921 94.5746)scale(.996264)'>
+<path d='M55.3404 16.5845C55.3404 15.0601 54.1046 13.8242 52.5801 13.8242S49.8198 15.0601 49.8198 16.5845C49.8198 18.109 51.0556 19.3449 52.5801 19.3449S55.3404 18.109 55.3404 16.5845Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(88.4921 94.5746)scale(.996264)'>
+<path d='M55.3404 16.5845C55.3404 15.0601 54.1046 13.8242 52.5801 13.8242S49.8198 15.0601 49.8198 16.5845C49.8198 18.109 51.0556 19.3449 52.5801 19.3449S55.3404 18.109 55.3404 16.5845Z' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S4.p4" class="ltx_para">
+<p class="ltx_p">Needless to say, for metric spaces it doesn’t matter
+which of these definitions I choose.
+(Proving this turns out to be surprisingly annoying, so I won’t do so.)</p>
+</div>
+</section>
+<section id="S5" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.5 </span>Connected spaces</h2>
+
+<div id="S5.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S5.p1.m1" class="ltx_Math" alttext="[0,1]\cup[2,3]" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow></mrow></math> is disconnected.</em></p>
+</div>
+<div id="S5.p2" class="ltx_para">
+<p class="ltx_p">Even in metric spaces, it is possible for a set to be both open and closed.</p>
+</div>
+<div id="S5.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.5.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S5.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A subset <math id="S5.Thmtheorem1.p1.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> of a topological space <math id="S5.Thmtheorem1.p1.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> clopen</span> if it is both closed and open in <math id="S5.Thmtheorem1.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+(Equivalently, both <math id="S5.Thmtheorem1.p1.m4" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> and its complement are open.)</p>
+</div>
+</div>
+<div id="S5.p3" class="ltx_para">
+<p class="ltx_p">For example <math id="S5.p3.m1" class="ltx_Math" alttext="\varnothing" display="inline"><mi mathvariant="normal">∅</mi></math> and the entire space are examples of clopen sets.
+In fact, the presence of a nontrivial clopen set other
+than these two leads to a so-called <em class="ltx_emph ltx_font_italic">disconnected</em> space.</p>
+</div>
+<div id="S5.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.5.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S5.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Show that a space <math id="S5.Thmtheorem2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> has a nontrivial clopen set (one other than <math id="S5.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\varnothing" display="inline"><mi mathvariant="normal">∅</mi></math> and <math id="S5.Thmtheorem2.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>)
+if and only if <math id="S5.Thmtheorem2.p1.m4" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> can be written as a disjoint union of two nonempty open sets.</span></p>
+</div>
+</div>
+<div id="S5.p4" class="ltx_para">
+<p class="ltx_p">We say <math id="S5.p4.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> disconnected</span> if there are nontrivial clopen sets,
+and <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> connected</span> otherwise.
+To see why this should be a reasonable definition,
+it might help to solve <a href="#prob:disconnected_better_def" title="Problem 7A. ‣ 7.9 A few harder problems to think about ‣ Chapter 7 Topological spaces ‣ Part III Basic Topology ‣ An Infinitely Large Napkin" class="ltx_ref"><span class="ltx_text ltx_ref_tag">7A</span></a>.</p>
+</div>
+<div id="S5.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 7.5.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Disconnected and connected spaces)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S5.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ol id="S5.I1" class="ltx_enumerate">
+<li id="S5.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S5.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">The metric space</p>
+<div class="table-container"><table id="Ex2" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex2.m1" class="ltx_Math" alttext="\{(x,y)\mid x^{2}+y^{2}\leq 1\}\cup\{(x,y)\mid(x-4)^{2}+y^{2}\leq 1\}\subseteq%
+\mathbb{R}^{2}" display="block"><mrow><mrow><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>≤</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">{</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mrow><msup><mrow><mo stretchy="false">(</mo><mrow><mi>x</mi><mo>−</mo><mn>4</mn></mrow><mo stretchy="false">)</mo></mrow><mn>2</mn></msup><mo>+</mo><msup><mi>y</mi><mn>2</mn></msup></mrow><mo>≤</mo><mn>1</mn></mrow><mo stretchy="false">}</mo></mrow></mrow><mo>⊆</mo><msup><mi>ℝ</mi><mn>2</mn></msup></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is disconnected (it consists of two disks).</p>
+</div>
+</li>
+<li id="S5.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S5.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The space <math id="S5.I1.i2.p1.m1" class="ltx_Math" alttext="[0,1]\cup[2,3]" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">[</mo><mn>2</mn><mo>,</mo><mn>3</mn><mo stretchy="false">]</mo></mrow></mrow></math> is disconnected:
+it consists of two segments,
+each of which is a clopen set.</p>
+</div>
+</li>
+<li id="S5.I1.i3" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(c)</span> 
+<div id="S5.I1.i3.p1" class="ltx_para">
+<p class="ltx_p">A discrete space on more than one point is disconnected,
+since <em class="ltx_emph ltx_font_italic">every</em> set is clopen in the discrete space.</p>
+</div>
+</li>
+<li id="S5.I1.i4" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(d)</span> 
+<div id="S5.I1.i4.p1" class="ltx_para">
+<p class="ltx_p">Convince yourself that the set</p>
+<div class="table-container"><table id="Ex3" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex3.m1" class="ltx_Math" alttext="\left\{x\in\mathbb{Q}\mid x^{2}&lt;2014\right\}" display="block"><mrow><mo>{</mo><mrow><mi>x</mi><mo>∈</mo><mi>ℚ</mi></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><msup><mi>x</mi><mn>2</mn></msup><mo>&lt;</mo><mn>2014</mn></mrow><mo>}</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">is a clopen subset of <math id="S5.I1.i4.p1.m1" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>.
+Hence <math id="S5.I1.i4.p1.m2" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math> is disconnected too – it has <em class="ltx_emph ltx_font_italic">gaps</em>.</p>
+</div>
+</li>
+<li id="S5.I1.i5" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(e)</span> 
+<div id="S5.I1.i5.p1" class="ltx_para">
+<p class="ltx_p"><math id="S5.I1.i5.p1.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is connected.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+</section>
+<section id="S6" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.6 </span>Path-connected spaces</h2>
+
+<div id="S6.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> Walking around in <math id="S6.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>.</em></p>
+</div>
+<div id="S6.p2" class="ltx_para">
+<p class="ltx_p">A stronger and perhaps more intuitive notion
+of a connected space is a <em class="ltx_emph ltx_font_italic">path-connected</em> space.
+The short description: “walk around in the space”.</p>
+</div>
+<div id="S6.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.6.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S6.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> path</span> in the space <math id="S6.Thmtheorem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is a continuous function</p>
+<div class="table-container"><table id="Ex4" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex4.m1" class="ltx_Math" alttext="\gamma\colon[0,1]\to X." display="block"><mrow><mrow><mi>γ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">Its <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> endpoints</span> are the two points <math id="S6.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\gamma(0)" display="inline"><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow></math> and <math id="S6.Thmtheorem1.p1.m3" class="ltx_Math" alttext="\gamma(1)" display="inline"><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</div>
+<div id="S6.p3" class="ltx_para">
+<p class="ltx_p">You can think of <math id="S6.p3.m1" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> as measuring “time”, and so we’ll often write <math id="S6.p3.m2" class="ltx_Math" alttext="\gamma(t)" display="inline"><mrow><mi>γ</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math>
+for <math id="S6.p3.m3" class="ltx_Math" alttext="t\in[0,1]" display="inline"><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math> (with <math id="S6.p3.m4" class="ltx_Math" alttext="t" display="inline"><mi>t</mi></math> standing for “time”).
+Here’s a picture of a path.</p>
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='170.078741pt' height='121.468759pt' viewBox='143.166135 112.343928 170.078741 121.468759'>
+<defs>
+<path id='asymptote-7-4-g1-40' d='M3.610908 2.618181C3.610908 2.585454 3.610908 2.563636 3.425454 2.378181C2.061818 1.003636 1.712727-1.058182 1.712727-2.727272C1.712727-4.625453 2.127272-6.523635 3.46909-7.887271C3.610908-8.01818 3.610908-8.039998 3.610908-8.072725C3.610908-8.149089 3.567272-8.181816 3.501817-8.181816C3.392726-8.181816 2.410908-7.439998 1.767272-6.054544C1.210909-4.854544 1.08-3.643635 1.08-2.727272C1.08-1.876363 1.2-.556363 1.799999 .676363C2.454545 2.018181 3.392726 2.727272 3.501817 2.727272C3.567272 2.727272 3.610908 2.694545 3.610908 2.618181Z'/>
+<path id='asymptote-7-4-g1-41' d='M3.152726-2.727272C3.152726-3.578181 3.032726-4.89818 2.432727-6.130907C1.778181-7.472725 .84-8.181816 .730909-8.181816C.665454-8.181816 .621818-8.13818 .621818-8.072725C.621818-8.039998 .621818-8.01818 .829091-7.821816C1.898181-6.741816 2.519999-5.007271 2.519999-2.727272C2.519999-.861818 2.116363 1.058182 .763636 2.432727C.621818 2.563636 .621818 2.585454 .621818 2.618181C.621818 2.683636 .665454 2.727272 .730909 2.727272C.84 2.727272 1.821818 1.985454 2.465454 .6C3.021817-.6 3.152726-1.810909 3.152726-2.727272Z'/>
+<path id='asymptote-7-4-g1-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-7-4-g1-49' d='M3.207272-6.981816C3.207272-7.243634 3.207272-7.265453 2.956363-7.265453C2.279999-6.567271 1.32-6.567271 .970909-6.567271V-6.229089C1.189091-6.229089 1.832727-6.229089 2.399999-6.512725V-.861818C2.399999-.469091 2.367272-.338182 1.385454-.338182H1.036363V0C1.418181-.032727 2.367272-.032727 2.803636-.032727S4.18909-.032727 4.570908 0V-.338182H4.221817C3.239999-.338182 3.207272-.458182 3.207272-.861818V-6.981816Z'/>
+<path id='asymptote-7-4-g0-13' d='M.447273-2.770908C.872727-4.025453 2.061818-4.036363 2.181818-4.036363C3.82909-4.036363 3.94909-2.127272 3.94909-1.265454C3.94909-.6 3.894544-.414545 3.818181-.196364C3.578181 .6 3.250908 1.865454 3.250908 2.14909C3.250908 2.26909 3.305454 2.345454 3.392726 2.345454C3.534544 2.345454 3.621817 2.105454 3.741817 1.690909C3.992726 .774545 4.101817 .152727 4.145453-.185454C4.167272-.327273 4.18909-.469091 4.232726-.610909C4.581817-1.690909 5.279999-3.316363 5.716362-4.178181C5.792726-4.30909 5.923635-4.54909 5.923635-4.592726C5.923635-4.701817 5.814544-4.701817 5.792726-4.701817C5.759998-4.701817 5.694544-4.701817 5.661817-4.625453C5.094544-3.58909 4.658181-2.498181 4.221817-1.396363C4.210908-1.734545 4.199999-2.563636 3.774544-3.621817C3.512726-4.287272 3.076363-4.821817 2.323636-4.821817C.96-4.821817 .196364-3.163635 .196364-2.825454C.196364-2.716363 .294545-2.716363 .403636-2.716363L.447273-2.770908Z'/>
+<path id='asymptote-7-4-g0-88' d='M5.290908-4.483635L4.374544-6.654544C4.341817-6.741816 4.319999-6.785453 4.319999-6.796362C4.319999-6.861816 4.505453-7.069089 4.963635-7.112725C5.072726-7.123634 5.181817-7.134543 5.181817-7.319998C5.181817-7.450907 5.050908-7.450907 5.01818-7.450907C4.570908-7.450907 4.101817-7.41818 3.643635-7.41818C3.370908-7.41818 2.694545-7.450907 2.421818-7.450907C2.356363-7.450907 2.225454-7.450907 2.225454-7.232725C2.225454-7.112725 2.334545-7.112725 2.476363-7.112725C3.130908-7.112725 3.196363-7.003634 3.294545-6.763634L4.581817-3.719999L2.279999-1.243636L2.138181-1.123636C1.603636-.545454 1.090909-.370909 .534545-.338182C.392727-.327273 .294545-.327273 .294545-.12C.294545-.109091 .294545 0 .436364 0C.763636 0 1.123636-.032727 1.461818-.032727C1.865454-.032727 2.290908 0 2.683636 0C2.74909 0 2.879999 0 2.879999-.218182C2.879999-.327273 2.770908-.338182 2.74909-.338182C2.650908-.349091 2.312727-.370909 2.312727-.676363C2.312727-.850909 2.476363-1.025454 2.607272-1.167272L3.719999-2.345454L4.701817-3.414545L5.803635-.807273C5.847271-.687273 5.85818-.676363 5.85818-.654545C5.85818-.567273 5.650908-.381818 5.225453-.338182C5.105453-.327273 5.007271-.316364 5.007271-.130909C5.007271 0 5.127271 0 5.170908 0C5.476362 0 6.239998-.032727 6.545453-.032727C6.81818-.032727 7.483634 0 7.756361 0C7.832725 0 7.963634 0 7.963634-.207273C7.963634-.338182 7.854543-.338182 7.767271-.338182C7.036362-.349091 7.014543-.381818 6.829089-.818182C6.403635-1.832727 5.672726-3.534544 5.421817-4.18909C6.163635-4.952726 7.309089-6.250907 7.65818-6.556362C7.974543-6.81818 8.389089-7.079998 9.043634-7.112725C9.185452-7.123634 9.283634-7.123634 9.283634-7.330907C9.283634-7.341816 9.283634-7.450907 9.141816-7.450907C8.814543-7.450907 8.454543-7.41818 8.116361-7.41818C7.712725-7.41818 7.29818-7.450907 6.905453-7.450907C6.839998-7.450907 6.69818-7.450907 6.69818-7.232725C6.69818-7.156362 6.752725-7.123634 6.829089-7.112725C6.927271-7.101816 7.265453-7.079998 7.265453-6.774544C7.265453-6.621816 7.145453-6.479998 7.05818-6.381816L5.290908-4.483635Z'/>
+</defs>
+<g id='asymptote-7-4-page1'>
+<g transform='translate(143.166 112.344)scale(.996264)'>
+<path d='M18.0979 6.96691C4.01697 9.88411-1.73213 26.0664 .851907 41.459C1.8486 47.3961 3.8217 53.1057 6.02571 58.705C10.455 69.9575 15.8828 81.0818 16.3733 93.197C16.6096 99.0318 15.7077 105.083 18.0979 110.443C25.9145 127.972 49.4027 121.107 69.836 115.617C81.0774 112.597 92.8331 112.065 104.328 113.892C122.853 116.837 143.393 124.005 156.066 110.443C164.445 101.477 163.643 88.144 161.24 75.951C159.551 67.3813 157.312 58.8178 157.791 50.082C158.621 34.9246 166.556 18.3174 156.066 6.96691C147.689-2.09771 133.983 .068425 121.574 1.7931C110.126 3.38417 98.5505 3.81157 87.082 5.24231C69.8193 7.39589 52.513 11.8004 35.344 8.69151C29.6001 7.65144 23.8368 5.77796 18.0979 6.96691Z' fill="var(--asymptote-color-8080ff)" opacity='0.2'/>
+</g>
+<g transform='translate(143.166 112.344)scale(.996264)'>
+<path d='M18.0979 6.96691C4.01697 9.88411-1.73213 26.0664 .851907 41.459C1.8486 47.3961 3.8217 53.1057 6.02571 58.705C10.455 69.9575 15.8828 81.0818 16.3733 93.197C16.6096 99.0318 15.7077 105.083 18.0979 110.443C25.9145 127.972 49.4027 121.107 69.836 115.617C81.0774 112.597 92.8331 112.065 104.328 113.892C122.853 116.837 143.393 124.005 156.066 110.443C164.445 101.477 163.643 88.144 161.24 75.951C159.551 67.3813 157.312 58.8178 157.791 50.082C158.621 34.9246 166.556 18.3174 156.066 6.96691C147.689-2.09771 133.983 .068425 121.574 1.7931C110.126 3.38417 98.5505 3.81157 87.082 5.24231C69.8193 7.39589 52.513 11.8004 35.344 8.69151C29.6001 7.65144 23.8368 5.77796 18.0979 6.96691Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='301.958871' y='122.336724' href='#asymptote-7-4-g0-88'/>
+<use x='168.285145' y='199.451459' href='#asymptote-7-4-g0-13'/>
+<use x='174.539164' y='199.451459' href='#asymptote-7-4-g1-40'/>
+<use x='178.781602' y='199.451459' href='#asymptote-7-4-g1-48'/>
+<use x='184.236167' y='199.451459' href='#asymptote-7-4-g1-41'/>
+<g transform='translate(143.166 112.344)scale(.996264)'>
+<circle cx='35.344' cy='75.951' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='254.193108' y='147.542237' href='#asymptote-7-4-g0-13'/>
+<use x='260.447127' y='147.542237' href='#asymptote-7-4-g1-40'/>
+<use x='264.689565' y='147.542237' href='#asymptote-7-4-g1-49'/>
+<use x='270.14413' y='147.542237' href='#asymptote-7-4-g1-41'/>
+<g transform='translate(143.166 112.344)scale(.996264)'>
+<circle cx='121.574' cy='41.459' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(143.166 112.344)scale(.996264)'>
+<path d='M122.678 48.798C121.498 56.7332 112.804 62.612 104.328 58.705C91.172 52.6408 99.074 31.2854 87.082 24.2129C70.8728 14.6533 62.1564 39.1924 52.59 58.705C48.9122 66.2066 42.8456 72.2732 35.344 75.951' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(143.166 112.344)scale(.996264)'>
+<path d='M121.574 41.459C122.059 44.0334 121.793 46.437 120.981 48.5454L124.481 49.0663C124.384 46.4717 123.48 43.8279 121.574 41.459Z' fill="var(--asymptote-color-000000)"/>
+</g>
+<g transform='translate(143.166 112.344)scale(.996264)'>
+<path d='M121.574 41.459C122.059 44.0334 121.793 46.437 120.981 48.5454L124.481 49.0663C124.384 46.4717 123.48 43.8279 121.574 41.459Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='223.136733' y='129.334788' href='#asymptote-7-4-g0-13'/>
+</g>
+</svg>
+</div>
+</div>
+<div id="S6.Thmtheorem2" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.6.2</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S6.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Why does this agree with your intuitive notion of what a “path” is?</span></p>
+</div>
+</div>
+<div id="S6.Thmtheorem3" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.6.3</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S6.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">A space <math id="S6.Thmtheorem3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> path-connected</span> if
+any two points in it are connected by some path.</p>
+</div>
+</div>
+<div id="S6.Thmtheorem4" class="ltx_theorem ltx_theorem_exercise">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Exercise 7.6.4</span></span><span class="ltx_text ltx_font_bold"> </span>(Path-connected implies connected)
+<br class="ltx_break">
+</h5>
+<div id="S6.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Let <math id="S6.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X=U\sqcup V" display="inline"><mrow><mi>X</mi><mo>=</mo><mrow><mi>U</mi><mo>⊔</mo><mi>V</mi></mrow></mrow></math> be a disconnected space.
+Show that there is no path
+from a point of <math id="S6.Thmtheorem4.p1.m2" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> to point <math id="S6.Thmtheorem4.p1.m3" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+(If <math id="S6.Thmtheorem4.p1.m4" class="ltx_Math" alttext="\gamma\colon[0,1]\to X" display="inline"><mrow><mi>γ</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math>, then we get
+<math id="S6.Thmtheorem4.p1.m5" class="ltx_Math" alttext="[0,1]=\gamma^{\text{pre}}(U)\sqcup\gamma^{\text{pre}}(V)" display="inline"><mrow><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mo>=</mo><mrow><mrow><msup><mi>γ</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>U</mi><mo stretchy="false">)</mo></mrow></mrow><mo>⊔</mo><mrow><msup><mi>γ</mi><mtext>pre</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>V</mi><mo stretchy="false">)</mo></mrow></mrow></mrow></mrow></math>,
+but <math id="S6.Thmtheorem4.p1.m6" class="ltx_Math" alttext="[0,1]" display="inline"><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></math> is connected.)</span></p>
+</div>
+</div>
+<div id="S6.Thmtheorem5" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 7.6.5</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Examples of path-connected spaces)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S6.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"></p>
+<ul id="S6.I1" class="ltx_itemize">
+<li id="S6.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i1.p1" class="ltx_para">
+<p class="ltx_p"><math id="S6.I1.i1.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> is path-connected,
+since we can “connect” any two points with a straight line.</p>
+</div>
+</li>
+<li id="S6.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">•</span> 
+<div id="S6.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">The unit circle <math id="S6.I1.i2.p1.m1" class="ltx_Math" alttext="S^{1}" display="inline"><msup><mi>S</mi><mn>1</mn></msup></math> is path-connected, since
+we can just draw the major or minor arc to connect two points.</p>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sec:meteor" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.7 </span>Homotopy and simply connected spaces</h2>
+
+<div id="S7.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S7.p1.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> and <math id="S7.p1.m2" class="ltx_Math" alttext="\mathbb{C}\setminus\{0\}" display="inline"><mrow><mi>ℂ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo stretchy="false">}</mo></mrow></mrow></math>.</em></p>
+</div>
+<div id="S7.p2" class="ltx_para">
+<p class="ltx_p">Now let’s motivate the idea of homotopy.
+Consider the example of the complex plane <math id="S7.p2.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> (which you can
+think of just as <math id="S7.p2.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math>) with two points <math id="S7.p2.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S7.p2.m4" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>.
+There’s a whole bunch of paths from <math id="S7.p2.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S7.p2.m6" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> but somehow
+they’re not very different from one another.
+If I told you “walk from <math id="S7.p2.m7" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S7.p2.m8" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>” you wouldn’t have too many questions.</p>
+</div>
+<div id="S7.p3" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='193.324522pt' height='136.562992pt' viewBox='147.36811 122.139764 193.324522 136.562992'>
+<defs>
+<path id='asymptote-7-5-g1-112' d='M.490909 1.330909C.403636 1.701818 .381818 1.778181-.098182 1.778181C-.229091 1.778181-.349091 1.778181-.349091 1.985454C-.349091 2.072727-.294545 2.116363-.207273 2.116363C.087273 2.116363 .403636 2.083636 .709091 2.083636C1.069091 2.083636 1.44 2.116363 1.78909 2.116363C1.843636 2.116363 1.985454 2.116363 1.985454 1.898181C1.985454 1.778181 1.876363 1.778181 1.723636 1.778181C1.178181 1.778181 1.178181 1.701818 1.178181 1.603636C1.178181 1.472727 1.636363-.305454 1.712727-.578182C1.854545-.261818 2.159999 .12 2.716363 .12C3.981817 .12 5.345453-1.472727 5.345453-3.076363C5.345453-4.101817 4.723635-4.821817 3.894544-4.821817C3.34909-4.821817 2.825454-4.42909 2.465454-4.003635C2.356363-4.592726 1.887272-4.821817 1.483636-4.821817C.981818-4.821817 .774545-4.396362 .676363-4.199999C.48-3.82909 .338182-3.174545 .338182-3.141817C.338182-3.032726 .447273-3.032726 .469091-3.032726C.578182-3.032726 .589091-3.043636 .654545-3.283635C.84-4.058181 1.058182-4.581817 1.450909-4.581817C1.636363-4.581817 1.78909-4.494544 1.78909-4.079999C1.78909-3.82909 1.756363-3.70909 1.712727-3.523635L.490909 1.330909ZM2.410908-3.403635C2.487272-3.698181 2.781817-4.003635 2.978181-4.167272C3.359999-4.505453 3.676363-4.581817 3.861817-4.581817C4.298181-4.581817 4.559999-4.199999 4.559999-3.556363S4.199999-1.658181 4.003635-1.243636C3.632726-.48 3.10909-.12 2.705454-.12C1.985454-.12 1.843636-1.025454 1.843636-1.090909C1.843636-1.112727 1.843636-1.134545 1.876363-1.265454L2.410908-3.403635Z'/>
+<path id='asymptote-7-5-g1-113' d='M4.930908-4.701817C4.930908-4.745453 4.89818-4.810908 4.821817-4.810908C4.701817-4.810908 4.265453-4.374544 4.079999-4.058181C3.839999-4.647271 3.414545-4.821817 3.065454-4.821817C1.778181-4.821817 .436364-3.207272 .436364-1.625454C.436364-.556363 1.08 .12 1.876363 .12C2.345454 .12 2.770908-.141818 3.163635-.534545C3.065454-.152727 2.705454 1.32 2.672727 1.418181C2.585454 1.723636 2.498181 1.767272 1.887272 1.778181C1.745454 1.778181 1.636363 1.778181 1.636363 1.996363C1.636363 2.007272 1.636363 2.116363 1.778181 2.116363C2.127272 2.116363 2.50909 2.083636 2.86909 2.083636C3.239999 2.083636 3.632726 2.116363 3.992726 2.116363C4.047272 2.116363 4.18909 2.116363 4.18909 1.898181C4.18909 1.778181 4.079999 1.778181 3.905453 1.778181C3.381817 1.778181 3.381817 1.701818 3.381817 1.603636C3.381817 1.527272 3.403635 1.461818 3.425454 1.363636L4.930908-4.701817ZM1.90909-.12C1.254545-.12 1.210909-.96 1.210909-1.145454C1.210909-1.66909 1.527272-2.858181 1.712727-3.316363C2.050909-4.123635 2.618181-4.581817 3.065454-4.581817C3.774544-4.581817 3.927272-3.698181 3.927272-3.621817C3.927272-3.556363 3.327272-1.167272 3.294545-1.123636C3.130908-.818182 2.519999-.12 1.90909-.12Z'/>
+<path id='asymptote-7-5-g0-67' d='M7.2-7.353425C7.2-7.539726 7.2-7.715068 7.013699-7.715068C7.00274-7.715068 6.838356-7.715068 6.816438-7.517808C6.783562-7.210959 6.531507-7.210959 6.454795-7.210959C6.071233-7.210959 5.687671-7.375342 5.468493-7.473973C4.909589-7.715068 4.438356-7.715068 4.263014-7.715068C2.432877-7.715068 .405479-6.564384 .405479-3.758904C.405479-.964384 2.389041 .208219 4.284932 .208219C4.865753 .208219 5.643836 .087671 6.443836-.394521C6.947945-.712329 7.506849-1.260274 7.506849-1.413699S7.342466-1.632877 7.276712-1.632877C7.2-1.632877 7.156164-1.6 7.046575-1.479452C6.410959-.756164 5.435616-.317808 4.460274-.317808C2.761644-.317808 2.334247-2.038356 2.334247-3.736986C2.334247-5.89589 3.123288-7.331507 4.29589-7.331507C5.117808-7.331507 6.432877-6.531507 6.805479-5.369863C6.838356-5.271233 6.871233-5.161644 7.013699-5.161644C7.2-5.161644 7.2-5.336986 7.2-5.523288V-7.353425ZM6.816438-6.224658C6.684932-6.410959 6.542466-6.553425 6.268493-6.838356C6.323288-6.827397 6.410959-6.827397 6.465753-6.827397C6.586301-6.827397 6.728767-6.849315 6.816438-6.90411V-6.224658ZM2.926027-7.079452C2.673973-6.827397 1.950685-5.884932 1.950685-3.736986C1.950685-2.652055 2.115068-1.139726 3.10137-.350685C1.30411-.931507 .789041-2.410959 .789041-3.747945C.789041-5.764384 1.89589-6.739726 2.926027-7.090411V-7.079452Z'/>
+</defs>
+<g id='asymptote-7-5-page1'>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M.250937 .250937H182.349V136.824H.250937V.250937Z' fill="var(--asymptote-color-8080ff)" opacity='0.2'/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M.250937 .250937H182.349V136.824H.250937V.250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='331.385782' y='132.225742' href='#asymptote-7-5-g0-67'/>
+<use x='161.49197' y='191.649114' href='#asymptote-7-5-g1-112'/>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<circle cx='23.0131' cy='68.5376' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='309.680586' y='191.649114' href='#asymptote-7-5-g1-113'/>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<circle cx='159.586' cy='68.5376' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M158.566 68.2751C141.43 63.7643 125.966 54.3691 114.062 41.2229C107.339 33.7987 101.168 24.9375 91.2998 23.0131C70.743 19.0046 60.8089 43.2649 45.7753 57.1564C39.4192 63.0297 31.5254 66.9766 23.0131 68.5376' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M158.628 68.0321C157.889 67.1294 157.747 66.0178 157.772 65.9205C157.8 65.8112 157.907 65.7997 157.992 65.8216C158.125 65.8559 158.134 65.923 158.155 65.9931C158.231 66.4531 158.392 67.4402 159.46 68.3237C159.587 68.4341 159.608 68.4525 159.586 68.5376C159.565 68.6226 159.537 68.6285 159.373 68.6639C158.011 68.9227 157.394 69.7098 157.105 70.0761C157.053 70.1274 157.013 70.182 156.879 70.1476C156.794 70.1257 156.707 70.0643 156.735 69.9549C156.76 69.8577 157.42 68.9522 158.503 68.5182L158.628 68.0321Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M158.532 68.5376H23.0131' fill='none' stroke="var(--asymptote-color-40ff40)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M158.532 68.2866C157.591 67.5965 157.177 66.5551 157.177 66.4548C157.177 66.3418 157.278 66.3042 157.366 66.3042C157.504 66.3042 157.529 66.3669 157.566 66.4297C157.755 66.8563 158.156 67.7722 159.411 68.3619C159.561 68.4372 159.586 68.4497 159.586 68.5376C159.586 68.6254 159.561 68.6379 159.411 68.7132C158.156 69.3029 157.755 70.2188 157.566 70.6454C157.529 70.7082 157.504 70.7709 157.366 70.7709C157.278 70.7709 157.177 70.7333 157.177 70.6203C157.177 70.52 157.591 69.4786 158.532 68.7885V68.2866Z' fill="var(--asymptote-color-40ff40)"/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M158.841 69.2828L136.824 91.2998H68.5376L23.0131 68.5376' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M158.664 69.1054C157.51 69.2828 156.481 68.8392 156.41 68.7682C156.33 68.6884 156.375 68.5908 156.437 68.5287C156.534 68.4311 156.597 68.4577 156.667 68.4754C157.102 68.644 158.034 69.0078 159.338 68.5376C159.498 68.4843 159.524 68.4754 159.586 68.5376C159.648 68.5997 159.64 68.6263 159.586 68.786C159.116 70.0901 159.48 71.0217 159.648 71.4564C159.666 71.5274 159.693 71.5895 159.595 71.6871C159.533 71.7492 159.436 71.7936 159.356 71.7137C159.285 71.6427 158.841 70.6136 159.019 69.4602L158.664 69.1054Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S7.p4" class="ltx_para">
+<p class="ltx_p">So we’re living happily in <math id="S7.p4.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> until a meteor strikes the origin,
+blowing it out of existence.
+Then suddenly to get from <math id="S7.p4.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S7.p4.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>, people might tell you two different things:
+“go left around the meteor” or “go right around the meteor”.</p>
+</div>
+<div id="S7.p5" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='219.991122pt' height='136.562992pt' viewBox='147.36811 122.139764 219.991122 136.562992'>
+<defs>
+<path id='asymptote-7-6-g2-112' d='M.490909 1.330909C.403636 1.701818 .381818 1.778181-.098182 1.778181C-.229091 1.778181-.349091 1.778181-.349091 1.985454C-.349091 2.072727-.294545 2.116363-.207273 2.116363C.087273 2.116363 .403636 2.083636 .709091 2.083636C1.069091 2.083636 1.44 2.116363 1.78909 2.116363C1.843636 2.116363 1.985454 2.116363 1.985454 1.898181C1.985454 1.778181 1.876363 1.778181 1.723636 1.778181C1.178181 1.778181 1.178181 1.701818 1.178181 1.603636C1.178181 1.472727 1.636363-.305454 1.712727-.578182C1.854545-.261818 2.159999 .12 2.716363 .12C3.981817 .12 5.345453-1.472727 5.345453-3.076363C5.345453-4.101817 4.723635-4.821817 3.894544-4.821817C3.34909-4.821817 2.825454-4.42909 2.465454-4.003635C2.356363-4.592726 1.887272-4.821817 1.483636-4.821817C.981818-4.821817 .774545-4.396362 .676363-4.199999C.48-3.82909 .338182-3.174545 .338182-3.141817C.338182-3.032726 .447273-3.032726 .469091-3.032726C.578182-3.032726 .589091-3.043636 .654545-3.283635C.84-4.058181 1.058182-4.581817 1.450909-4.581817C1.636363-4.581817 1.78909-4.494544 1.78909-4.079999C1.78909-3.82909 1.756363-3.70909 1.712727-3.523635L.490909 1.330909ZM2.410908-3.403635C2.487272-3.698181 2.781817-4.003635 2.978181-4.167272C3.359999-4.505453 3.676363-4.581817 3.861817-4.581817C4.298181-4.581817 4.559999-4.199999 4.559999-3.556363S4.199999-1.658181 4.003635-1.243636C3.632726-.48 3.10909-.12 2.705454-.12C1.985454-.12 1.843636-1.025454 1.843636-1.090909C1.843636-1.112727 1.843636-1.134545 1.876363-1.265454L2.410908-3.403635Z'/>
+<path id='asymptote-7-6-g2-113' d='M4.930908-4.701817C4.930908-4.745453 4.89818-4.810908 4.821817-4.810908C4.701817-4.810908 4.265453-4.374544 4.079999-4.058181C3.839999-4.647271 3.414545-4.821817 3.065454-4.821817C1.778181-4.821817 .436364-3.207272 .436364-1.625454C.436364-.556363 1.08 .12 1.876363 .12C2.345454 .12 2.770908-.141818 3.163635-.534545C3.065454-.152727 2.705454 1.32 2.672727 1.418181C2.585454 1.723636 2.498181 1.767272 1.887272 1.778181C1.745454 1.778181 1.636363 1.778181 1.636363 1.996363C1.636363 2.007272 1.636363 2.116363 1.778181 2.116363C2.127272 2.116363 2.50909 2.083636 2.86909 2.083636C3.239999 2.083636 3.632726 2.116363 3.992726 2.116363C4.047272 2.116363 4.18909 2.116363 4.18909 1.898181C4.18909 1.778181 4.079999 1.778181 3.905453 1.778181C3.381817 1.778181 3.381817 1.701818 3.381817 1.603636C3.381817 1.527272 3.403635 1.461818 3.425454 1.363636L4.930908-4.701817ZM1.90909-.12C1.254545-.12 1.210909-.96 1.210909-1.145454C1.210909-1.66909 1.527272-2.858181 1.712727-3.316363C2.050909-4.123635 2.618181-4.581817 3.065454-4.581817C3.774544-4.581817 3.927272-3.698181 3.927272-3.621817C3.927272-3.556363 3.327272-1.167272 3.294545-1.123636C3.130908-.818182 2.519999-.12 1.90909-.12Z'/>
+<path id='asymptote-7-6-g3-48' d='M5.01818-3.490908C5.01818-4.363635 4.963635-5.236362 4.581817-6.043635C4.079999-7.090907 3.185454-7.265453 2.727272-7.265453C2.072727-7.265453 1.276363-6.981816 .829091-5.967271C.48-5.214544 .425454-4.363635 .425454-3.490908C.425454-2.672727 .469091-1.690909 .916363-.861818C1.385454 .021818 2.181818 .24 2.716363 .24C3.305454 .24 4.134544 .010909 4.614544-1.025454C4.963635-1.778181 5.01818-2.62909 5.01818-3.490908ZM2.716363 0C2.290908 0 1.647272-.272727 1.450909-1.32C1.330909-1.974545 1.330909-2.978181 1.330909-3.621817C1.330909-4.319999 1.330909-5.039999 1.418181-5.629089C1.625454-6.927271 2.443636-7.025453 2.716363-7.025453C3.076363-7.025453 3.796363-6.829089 4.003635-5.749089C4.112726-5.13818 4.112726-4.30909 4.112726-3.621817C4.112726-2.803636 4.112726-2.061818 3.992726-1.363636C3.82909-.327273 3.207272 0 2.716363 0Z'/>
+<path id='asymptote-7-6-g1-102' d='M3.087272-6.730907C3.087272-7.167271 3.370908-7.865452 4.559999-7.941816C4.614544-7.952725 4.658181-7.996361 4.658181-8.061816C4.658181-8.181816 4.570908-8.181816 4.450908-8.181816C3.359999-8.181816 2.367272-7.625452 2.356363-6.81818V-4.330908C2.356363-3.905453 2.356363-3.556363 1.919999-3.196363C1.538181-2.879999 1.123636-2.858181 .883636-2.847272C.829091-2.836363 .785454-2.792726 .785454-2.727272C.785454-2.618181 .850909-2.618181 .96-2.607272C1.68-2.563636 2.203636-2.170908 2.323636-1.636363C2.356363-1.516363 2.356363-1.494545 2.356363-1.101818V1.058182C2.356363 1.516363 2.356363 1.865454 2.879999 2.279999C3.305454 2.607272 4.025453 2.727272 4.450908 2.727272C4.570908 2.727272 4.658181 2.727272 4.658181 2.607272C4.658181 2.498181 4.592726 2.498181 4.483635 2.487272C3.796363 2.443636 3.261817 2.094545 3.119999 1.538181C3.087272 1.44 3.087272 1.418181 3.087272 1.025454V-1.265454C3.087272-1.767272 2.999999-1.952727 2.650908-2.301818C2.421818-2.530908 2.105454-2.639999 1.799999-2.727272C2.694545-2.978181 3.087272-3.479999 3.087272-4.112726V-6.730907Z'/>
+<path id='asymptote-7-6-g1-103' d='M2.356363 1.276363C2.356363 1.712727 2.072727 2.410908 .883636 2.487272C.829091 2.498181 .785454 2.541817 .785454 2.607272C.785454 2.727272 .905454 2.727272 1.003636 2.727272C2.061818 2.727272 3.076363 2.192727 3.087272 1.363636V-1.123636C3.087272-1.54909 3.087272-1.898181 3.523635-2.258181C3.905453-2.574545 4.319999-2.596363 4.559999-2.607272C4.614544-2.618181 4.658181-2.661817 4.658181-2.727272C4.658181-2.836363 4.592726-2.836363 4.483635-2.847272C3.763635-2.890908 3.239999-3.283635 3.119999-3.818181C3.087272-3.938181 3.087272-3.959999 3.087272-4.352726V-6.512725C3.087272-6.970907 3.087272-7.319998 2.563636-7.734543C2.127272-8.072725 1.374545-8.181816 1.003636-8.181816C.905454-8.181816 .785454-8.181816 .785454-8.061816C.785454-7.952725 .850909-7.952725 .96-7.941816C1.647272-7.89818 2.181818-7.549089 2.323636-6.992725C2.356363-6.894544 2.356363-6.872725 2.356363-6.479998V-4.18909C2.356363-3.687272 2.443636-3.501817 2.792726-3.152726C3.021817-2.923636 3.338181-2.814545 3.643635-2.727272C2.74909-2.476363 2.356363-1.974545 2.356363-1.341818V1.276363Z'/>
+<path id='asymptote-7-6-g1-110' d='M4.374544 2.465454C4.42909 2.618181 4.483635 2.727272 4.625453 2.727272C4.745453 2.727272 4.843635 2.62909 4.843635 2.50909C4.843635 2.487272 4.843635 2.465454 4.78909 2.334545L1.058182-7.919998C.992727-8.105452 .96-8.181816 .818182-8.181816C.698182-8.181816 .6-8.083634 .6-7.963634C.6-7.941816 .6-7.919998 .654545-7.789089L4.374544 2.465454Z'/>
+<path id='asymptote-7-6-g0-67' d='M7.2-7.353425C7.2-7.539726 7.2-7.715068 7.013699-7.715068C7.00274-7.715068 6.838356-7.715068 6.816438-7.517808C6.783562-7.210959 6.531507-7.210959 6.454795-7.210959C6.071233-7.210959 5.687671-7.375342 5.468493-7.473973C4.909589-7.715068 4.438356-7.715068 4.263014-7.715068C2.432877-7.715068 .405479-6.564384 .405479-3.758904C.405479-.964384 2.389041 .208219 4.284932 .208219C4.865753 .208219 5.643836 .087671 6.443836-.394521C6.947945-.712329 7.506849-1.260274 7.506849-1.413699S7.342466-1.632877 7.276712-1.632877C7.2-1.632877 7.156164-1.6 7.046575-1.479452C6.410959-.756164 5.435616-.317808 4.460274-.317808C2.761644-.317808 2.334247-2.038356 2.334247-3.736986C2.334247-5.89589 3.123288-7.331507 4.29589-7.331507C5.117808-7.331507 6.432877-6.531507 6.805479-5.369863C6.838356-5.271233 6.871233-5.161644 7.013699-5.161644C7.2-5.161644 7.2-5.336986 7.2-5.523288V-7.353425ZM6.816438-6.224658C6.684932-6.410959 6.542466-6.553425 6.268493-6.838356C6.323288-6.827397 6.410959-6.827397 6.465753-6.827397C6.586301-6.827397 6.728767-6.849315 6.816438-6.90411V-6.224658ZM2.926027-7.079452C2.673973-6.827397 1.950685-5.884932 1.950685-3.736986C1.950685-2.652055 2.115068-1.139726 3.10137-.350685C1.30411-.931507 .789041-2.410959 .789041-3.747945C.789041-5.764384 1.89589-6.739726 2.926027-7.090411V-7.079452Z'/>
+</defs>
+<g id='asymptote-7-6-page1'>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M.250937 .250937H182.349V136.824H.250937V.250937Z' fill="var(--asymptote-color-8080ff)" opacity='0.2'/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M.250937 .250937H182.349V136.824H.250937V.250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='331.385782' y='132.858075' href='#asymptote-7-6-g0-67'/>
+<use x='341.724766' y='132.858075' href='#asymptote-7-6-g1-110'/>
+<use x='349.603529' y='132.858075' href='#asymptote-7-6-g1-102'/>
+<use x='355.058094' y='132.858075' href='#asymptote-7-6-g3-48'/>
+<use x='360.512658' y='132.858075' href='#asymptote-7-6-g1-103'/>
+<use x='161.49197' y='191.649114' href='#asymptote-7-6-g2-112'/>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<circle cx='23.0131' cy='68.5376' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='309.680586' y='191.649114' href='#asymptote-7-6-g2-113'/>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<circle cx='159.586' cy='68.5376' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M158.566 68.2751C141.43 63.7643 125.966 54.3691 114.062 41.2229C107.339 33.7987 101.168 24.9375 91.2998 23.0131C70.743 19.0046 60.8089 43.2649 45.7753 57.1564C39.4192 63.0297 31.5254 66.9766 23.0131 68.5376' fill='none' stroke="var(--asymptote-color-ff0000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M158.628 68.0321C157.889 67.1294 157.747 66.0178 157.772 65.9205C157.8 65.8112 157.907 65.7997 157.992 65.8216C158.125 65.8559 158.134 65.923 158.155 65.9931C158.231 66.4531 158.392 67.4402 159.46 68.3237C159.587 68.4341 159.608 68.4525 159.586 68.5376C159.565 68.6226 159.537 68.6285 159.373 68.6639C158.011 68.9227 157.394 69.7098 157.105 70.0761C157.053 70.1274 157.013 70.182 156.879 70.1476C156.794 70.1257 156.707 70.0643 156.735 69.9549C156.76 69.8577 157.42 68.9522 158.503 68.5182L158.628 68.0321Z' fill="var(--asymptote-color-ff0000)"/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M158.841 69.2828L136.824 91.2998H68.5376L23.0131 68.5376' fill='none' stroke="var(--asymptote-color-0000ff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M158.664 69.1054C157.51 69.2828 156.481 68.8392 156.41 68.7682C156.33 68.6884 156.375 68.5908 156.437 68.5287C156.534 68.4311 156.597 68.4577 156.667 68.4754C157.102 68.644 158.034 69.0078 159.338 68.5376C159.498 68.4843 159.524 68.4754 159.586 68.5376C159.648 68.5997 159.64 68.6263 159.586 68.786C159.116 70.0901 159.48 71.0217 159.648 71.4564C159.666 71.5274 159.693 71.5895 159.595 71.6871C159.533 71.7492 159.436 71.7936 159.356 71.7137C159.285 71.6427 158.841 70.6136 159.019 69.4602L158.664 69.1054Z' fill="var(--asymptote-color-0000ff)"/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M102.681 68.5376C102.681 62.2519 97.5854 57.1564 91.2998 57.1564C85.0141 57.1564 79.9187 62.2519 79.9187 68.5376C79.9187 74.8232 85.0141 79.9187 91.2998 79.9187C97.5854 79.9187 102.681 74.8232 102.681 68.5376Z' fill="var(--asymptote-color-808080)"/>
+</g>
+<g transform='translate(147.368 122.14)scale(.996264)'>
+<path d='M102.681 68.5376C102.681 62.2519 97.5854 57.1564 91.2998 57.1564C85.0141 57.1564 79.9187 62.2519 79.9187 68.5376C79.9187 74.8232 85.0141 79.9187 91.2998 79.9187C97.5854 79.9187 102.681 74.8232 102.681 68.5376Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S7.p6" class="ltx_para">
+<p class="ltx_p">So what’s happening?
+In the first picture, the red, green, and blue paths somehow all looked
+the same: if you imagine them as pieces of elastic string pinned down
+at <math id="S7.p6.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S7.p6.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>, you can stretch each one to any other one.</p>
+</div>
+<div id="S7.p7" class="ltx_para">
+<p class="ltx_p">But in the second picture,
+you can’t move the red string to match with the blue string:
+there’s a meteor in the way.
+The paths are actually different.<span id="footnote3" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">3</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">3</sup><span class="ltx_tag ltx_tag_note">3</span>If you know about winding numbers,
+you might feel this is familiar.
+We’ll talk more about this in the chapter on the fundamental group.</span></span></span></p>
+</div>
+<div id="S7.p8" class="ltx_para">
+<p class="ltx_p">The formal notion we’ll use to capture this is <em class="ltx_emph ltx_font_italic">homotopy equivalence</em>.
+We want to write a definition such that in the first picture,
+the three paths are all <em class="ltx_emph ltx_font_italic">homotopic</em>, but the two paths in the
+second picture are somehow not homotopic.
+And the idea is just continuous deformation.</p>
+</div>
+<div id="S7.Thmtheorem1" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.7.1</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S7.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="S7.Thmtheorem1.p1.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and <math id="S7.Thmtheorem1.p1.m2" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math> be paths in <math id="S7.Thmtheorem1.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> whose endpoints coincide.
+A (path) <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> homotopy</span> from <math id="S7.Thmtheorem1.p1.m4" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> to <math id="S7.Thmtheorem1.p1.m5" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math> is a continuous function
+<math id="S7.Thmtheorem1.p1.m6" class="ltx_Math" alttext="F\colon[0,1]^{2}\to X" display="inline"><mrow><mi>F</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow><mn>2</mn></msup><mo stretchy="false">→</mo><mi>X</mi></mrow></mrow></math>, which we’ll write <math id="S7.Thmtheorem1.p1.m7" class="ltx_Math" alttext="F_{s}(t)" display="inline"><mrow><msub><mi>F</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow></math> for <math id="S7.Thmtheorem1.p1.m8" class="ltx_Math" alttext="s,t\in[0,1]" display="inline"><mrow><mrow><mi>s</mi><mo>,</mo><mi>t</mi></mrow><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></math>,
+such that</p>
+<div class="table-container"><table id="Ex5" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex5.m1" class="ltx_Math" alttext="F_{0}(t)=\alpha(t)\text{ and }F_{1}(t)=\beta(t)\text{ for all $t\in[0,1]$}" display="block"><mrow><mrow><msub><mi>F</mi><mn>0</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><msub><mi>F</mi><mn>1</mn></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mtext> for all </mtext><mrow><mi>t</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">and moreover</p>
+<div class="table-container"><table id="Ex6" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex6.m1" class="ltx_Math" alttext="\alpha(0)=\beta(0)=F_{s}(0)\text{ and }\alpha(1)=\beta(1)=F_{s}(1)\text{ for %
+all $s\in[0,1]$}." display="block"><mrow><mrow><mrow><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>F</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mtext> and </mtext><mo>⁢</mo><mi>α</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><mi>β</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><mrow><msub><mi>F</mi><mi>s</mi></msub><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>⁢</mo><mrow><mtext> for all </mtext><mrow><mi>s</mi><mo>∈</mo><mrow><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo></mrow></mrow></mrow></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+<p class="ltx_p">If a path homotopy exists, we say <math id="S7.Thmtheorem1.p1.m9" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and <math id="S7.Thmtheorem1.p1.m10" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>
+are path <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> homotopic</span> and write <math id="S7.Thmtheorem1.p1.m11" class="ltx_Math" alttext="\alpha\simeq\beta" display="inline"><mrow><mi>α</mi><mo>≃</mo><mi>β</mi></mrow></math>.</p>
+</div>
+</div>
+<div id="S7.Thmtheorem2" class="ltx_theorem ltx_theorem_abuse">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Abuse of Notation 7.7.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S7.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">While I strictly should say “path homotopy” to describe this relation
+between two paths, I will shorten this to just “homotopy” instead.
+Similarly I will shorten “path homotopic” to “homotopic”.</p>
+</div>
+</div>
+<div id="S7.p9" class="ltx_para">
+<p class="ltx_p">Animated picture: <a href="https://commons.wikimedia.org/wiki/File:HomotopySmall.gif" title="" class="ltx_ref ltx_url ltx_font_typewriter">https://commons.wikimedia.org/wiki/File:HomotopySmall.gif</a>.
+Needless to say, <math id="S7.p9.m1" class="ltx_Math" alttext="\simeq" display="inline"><mo>≃</mo></math> is an equivalence relation.</p>
+</div>
+<div id="S7.p10" class="ltx_para">
+<p class="ltx_p">What this definition is doing is taking <math id="S7.p10.m1" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and “continuously deforming” it to <math id="S7.p10.m2" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>, while keeping the endpoints fixed.
+Note that for each particular <math id="S7.p10.m3" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math>, <math id="S7.p10.m4" class="ltx_Math" alttext="F_{s}" display="inline"><msub><mi>F</mi><mi>s</mi></msub></math> is itself a function.
+So <math id="S7.p10.m5" class="ltx_Math" alttext="s" display="inline"><mi>s</mi></math> represents time as we deform <math id="S7.p10.m6" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> to <math id="S7.p10.m7" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>:
+it goes from <math id="S7.p10.m8" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> to <math id="S7.p10.m9" class="ltx_Math" alttext="1" display="inline"><mn>1</mn></math>, starting at <math id="S7.p10.m10" class="ltx_Math" alttext="\alpha" display="inline"><mi>α</mi></math> and ending at <math id="S7.p10.m11" class="ltx_Math" alttext="\beta" display="inline"><mi>β</mi></math>.</p>
+</div>
+<div id="S7.p11" class="ltx_para">
+<div class="asymptote-drawing">
+<!-- This file was generated by dvisvgm 3.0.3 -->
+<svg version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='255.118111pt' height='182.908184pt' viewBox='178.264904 145.312359 255.118111 182.908184'>
+<defs>
+<path id='asymptote-7-7-g1-58' d='M1.617933-.438356C1.617933-.70934 1.39477-.884682 1.179577-.884682C.924533-.884682 .73325-.67746 .73325-.446326C.73325-.175342 .956413 0 1.171606 0C1.42665 0 1.617933-.207223 1.617933-.438356Z'/>
+<path id='asymptote-7-7-g3-48' d='M3.897385-2.542466C3.897385-3.395268 3.809714-3.913325 3.5467-4.423412C3.196015-5.124782 2.550436-5.300125 2.11208-5.300125C1.107846-5.300125 .74122-4.550934 .629639-4.327771C.342715-3.745953 .326775-2.956912 .326775-2.542466C.326775-2.016438 .350685-1.211457 .73325-.573848C1.099875 .01594 1.689664 .167372 2.11208 .167372C2.494645 .167372 3.180075 .047821 3.57858-.74122C3.873474-1.315068 3.897385-2.024408 3.897385-2.542466ZM2.11208-.055791C1.841096-.055791 1.291158-.183313 1.123786-1.020174C1.036115-1.474471 1.036115-2.223661 1.036115-2.638107C1.036115-3.188045 1.036115-3.745953 1.123786-4.184309C1.291158-4.99726 1.912827-5.076961 2.11208-5.076961C2.383064-5.076961 2.933001-4.941469 3.092403-4.216189C3.188045-3.777833 3.188045-3.180075 3.188045-2.638107C3.188045-2.16787 3.188045-1.45056 3.092403-1.004234C2.925031-.167372 2.375093-.055791 2.11208-.055791Z'/>
+<path id='asymptote-7-7-g3-49' d='M2.502615-5.076961C2.502615-5.292154 2.486675-5.300125 2.271482-5.300125C1.944707-4.98132 1.522291-4.790037 .765131-4.790037V-4.527024C.980324-4.527024 1.41071-4.527024 1.872976-4.742217V-.653549C1.872976-.358655 1.849066-.263014 1.091905-.263014H.812951V0C1.139726-.02391 1.825156-.02391 2.183811-.02391S3.235866-.02391 3.56264 0V-.263014H3.283686C2.526526-.263014 2.502615-.358655 2.502615-.653549V-5.076961Z'/>
+<path id='asymptote-7-7-g3-50' d='M2.247572-1.625903C2.375093-1.745455 2.709838-2.008468 2.83736-2.12005C3.331507-2.574346 3.801743-3.012702 3.801743-3.737983C3.801743-4.686426 3.004732-5.300125 2.008468-5.300125C1.052055-5.300125 .422416-4.574844 .422416-3.865504C.422416-3.474969 .73325-3.419178 .844832-3.419178C1.012204-3.419178 1.259278-3.53873 1.259278-3.841594C1.259278-4.25604 .860772-4.25604 .765131-4.25604C.996264-4.837858 1.530262-5.037111 1.920797-5.037111C2.662017-5.037111 3.044583-4.407472 3.044583-3.737983C3.044583-2.909091 2.462765-2.303362 1.522291-1.338979L.518057-.302864C.422416-.215193 .422416-.199253 .422416 0H3.57061L3.801743-1.42665H3.55467C3.53076-1.267248 3.466999-.868742 3.371357-.71731C3.323537-.653549 2.717808-.653549 2.590286-.653549H1.171606L2.247572-1.625903Z'/>
+<path id='asymptote-7-7-g3-53' d='M1.115816-4.479203C1.219427-4.447323 1.538232-4.367621 1.872976-4.367621C2.86924-4.367621 3.474969-5.068991 3.474969-5.188543C3.474969-5.276214 3.419178-5.300125 3.379328-5.300125C3.363387-5.300125 3.347447-5.300125 3.275716-5.260274C2.964882-5.140722 2.598257-5.045081 2.16787-5.045081C1.697634-5.045081 1.307098-5.164633 1.060025-5.260274C.980324-5.300125 .964384-5.300125 .956413-5.300125C.852802-5.300125 .852802-5.212453 .852802-5.068991V-2.733748C.852802-2.590286 .852802-2.494645 .980324-2.494645C1.044085-2.494645 1.067995-2.526526 1.107846-2.590286C1.203487-2.709838 1.506351-3.116314 2.183811-3.116314C2.630137-3.116314 2.84533-2.749689 2.917061-2.598257C3.052553-2.311333 3.068493-1.944707 3.068493-1.633873C3.068493-1.338979 3.060523-.908593 2.83736-.557908C2.685928-.318804 2.367123-.071731 1.944707-.071731C1.42665-.071731 .916563-.398506 .73325-.916563C.757161-.908593 .804981-.908593 .812951-.908593C1.036115-.908593 1.211457-1.052055 1.211457-1.299128C1.211457-1.594022 .980324-1.697634 .820922-1.697634C.67746-1.697634 .422416-1.617933 .422416-1.275218C.422416-.557908 1.044085 .167372 1.960648 .167372C2.956912 .167372 3.801743-.605729 3.801743-1.594022C3.801743-2.518555 3.132254-3.339477 2.191781-3.339477C1.793275-3.339477 1.41868-3.211955 1.115816-2.940971V-4.479203Z'/>
+<path id='asymptote-7-7-g3-55' d='M4.032877-4.853798C4.104608-4.941469 4.104608-4.95741 4.104608-5.132752H2.080199C1.880946-5.132752 1.633873-5.140722 1.43462-5.156663C1.020174-5.188543 1.012204-5.260274 .988294-5.387796H.74122L.470237-3.706102H.71731C.73325-3.825654 .820922-4.375592 .932503-4.439352C1.020174-4.479203 1.617933-4.479203 1.737484-4.479203H3.427148L2.606227-3.379328C1.697634-2.16787 1.506351-.908593 1.506351-.278954C1.506351-.199253 1.506351 .167372 1.880946 .167372S2.255542-.191283 2.255542-.286924V-.669489C2.255542-1.817186 2.446824-2.757659 2.83736-3.275716L4.032877-4.853798Z'/>
+<path id='asymptote-7-7-g2-11' d='M5.203635-2.574545C5.203635-4.287272 4.18909-4.821817 3.381817-4.821817C1.887272-4.821817 .447273-3.261817 .447273-1.723636C.447273-.709091 1.101818 .12 2.214545 .12C2.901817 .12 3.687272-.130909 4.516362-.796363C4.658181-.218182 5.01818 .12 5.509089 .12C6.087271 .12 6.425453-.48 6.425453-.654545C6.425453-.730909 6.359998-.763636 6.294544-.763636C6.21818-.763636 6.185453-.730909 6.152726-.654545C5.956362-.12 5.563635-.12 5.541817-.12C5.203635-.12 5.203635-.970909 5.203635-1.232727C5.203635-1.461818 5.203635-1.483636 5.312726-1.614545C6.33818-2.901817 6.567271-4.167272 6.567271-4.178181C6.567271-4.199999 6.556362-4.287272 6.436362-4.287272C6.327271-4.287272 6.327271-4.254544 6.272726-4.058181C6.076362-3.370908 5.716362-2.541817 5.203635-1.898181V-2.574545ZM4.472726-1.08C3.512726-.24 2.672727-.12 2.236363-.12C1.581818-.12 1.254545-.610909 1.254545-1.309091C1.254545-1.843636 1.538181-3.021817 1.887272-3.578181C2.399999-4.374544 2.98909-4.581817 3.370908-4.581817C4.450908-4.581817 4.450908-3.152726 4.450908-2.301818C4.450908-1.898181 4.450908-1.265454 4.472726-1.08Z'/>
+<path id='asymptote-7-7-g2-12' d='M6.272726-6.207271C6.272726-7.025453 5.672726-7.701816 4.78909-7.701816C4.156362-7.701816 3.850908-7.527271 3.46909-7.243634C2.86909-6.807271 2.26909-5.749089 2.061818-4.919999L.327273 2.007272C.316364 2.050909 .370909 2.116363 .458182 2.116363S.578182 2.094545 .589091 2.061818L1.352727-.949091C1.56-.294545 2.039999 .109091 2.836363 .109091S4.450908-.272727 4.941817-.752727C5.465453-1.254545 5.814544-1.952727 5.814544-2.759999C5.814544-3.545454 5.410908-4.112726 5.01818-4.385453C5.650908-4.745453 6.272726-5.421817 6.272726-6.207271ZM4.30909-4.396362C4.167272-4.341817 4.047272-4.319999 3.785453-4.319999C3.632726-4.319999 3.414545-4.30909 3.305454-4.363635C3.327272-4.472726 3.719999-4.450908 3.839999-4.450908C4.06909-4.450908 4.167272-4.450908 4.30909-4.396362ZM5.661817-6.45818C5.661817-5.694544 5.247271-4.90909 4.679999-4.570908C4.385453-4.679999 4.167272-4.701817 3.839999-4.701817C3.610908-4.701817 2.999999-4.712726 2.999999-4.352726C2.98909-4.047272 3.556363-4.079999 3.752726-4.079999C4.156362-4.079999 4.319999-4.090908 4.647271-4.221817C5.061817-3.82909 5.116362-3.490908 5.127271-2.98909C5.149089-2.356363 4.887271-1.538181 4.581817-1.112727C4.156362-.523636 3.425454-.130909 2.803636-.130909C1.974545-.130909 1.56-.763636 1.56-1.538181C1.56-1.647272 1.56-1.810909 1.614545-2.018181L2.312727-4.77818C2.552727-5.716362 3.338181-7.450907 4.647271-7.450907C5.279999-7.450907 5.661817-7.112725 5.661817-6.45818Z'/>
+<path id='asymptote-7-7-g2-70' d='M3.305454-3.545454H4.363635C5.181817-3.545454 5.269089-3.370908 5.269089-3.054545C5.269089-2.978181 5.269089-2.847272 5.192726-2.519999C5.170908-2.465454 5.159999-2.421818 5.159999-2.399999C5.159999-2.312727 5.225453-2.26909 5.290908-2.26909C5.399998-2.26909 5.399998-2.301818 5.454544-2.498181L6.054544-4.865453C6.087271-4.985453 6.087271-5.007271 6.087271-5.039999C6.087271-5.061817 6.065453-5.159999 5.956362-5.159999S5.836362-5.105453 5.792726-4.930908C5.563635-4.079999 5.312726-3.883635 4.385453-3.883635H3.392726L4.090908-6.654544C4.18909-7.036362 4.199999-7.079998 4.679999-7.079998H6.119998C7.461816-7.079998 7.712725-6.719998 7.712725-5.879998C7.712725-5.629089 7.712725-5.585453 7.679998-5.290908C7.65818-5.149089 7.65818-5.127271 7.65818-5.094544C7.65818-5.039999 7.690907-4.963635 7.789089-4.963635C7.909089-4.963635 7.919998-5.02909 7.941816-5.236362L8.159998-7.123634C8.192725-7.41818 8.13818-7.41818 7.865452-7.41818H2.519999C2.301818-7.41818 2.192727-7.41818 2.192727-7.199998C2.192727-7.079998 2.290908-7.079998 2.498181-7.079998C2.901817-7.079998 3.207272-7.079998 3.207272-6.883634C3.207272-6.839998 3.207272-6.81818 3.152726-6.621816L1.712727-.850909C1.603636-.425454 1.581818-.338182 .72-.338182C.534545-.338182 .414545-.338182 .414545-.130909C.414545 0 .545454 0 .578182 0C.894545 0 1.701818-.032727 2.018181-.032727C2.378181-.032727 3.283635 0 3.643635 0C3.741817 0 3.872726 0 3.872726-.207273C3.872726-.294545 3.807272-.316364 3.807272-.327273C3.774544-.338182 3.752726-.338182 3.501817-.338182C3.261817-.338182 3.207272-.338182 2.934545-.36C2.618181-.392727 2.585454-.436364 2.585454-.578182C2.585454-.6 2.585454-.665454 2.62909-.829091L3.305454-3.545454Z'/>
+<path id='asymptote-7-7-g2-112' d='M.490909 1.330909C.403636 1.701818 .381818 1.778181-.098182 1.778181C-.229091 1.778181-.349091 1.778181-.349091 1.985454C-.349091 2.072727-.294545 2.116363-.207273 2.116363C.087273 2.116363 .403636 2.083636 .709091 2.083636C1.069091 2.083636 1.44 2.116363 1.78909 2.116363C1.843636 2.116363 1.985454 2.116363 1.985454 1.898181C1.985454 1.778181 1.876363 1.778181 1.723636 1.778181C1.178181 1.778181 1.178181 1.701818 1.178181 1.603636C1.178181 1.472727 1.636363-.305454 1.712727-.578182C1.854545-.261818 2.159999 .12 2.716363 .12C3.981817 .12 5.345453-1.472727 5.345453-3.076363C5.345453-4.101817 4.723635-4.821817 3.894544-4.821817C3.34909-4.821817 2.825454-4.42909 2.465454-4.003635C2.356363-4.592726 1.887272-4.821817 1.483636-4.821817C.981818-4.821817 .774545-4.396362 .676363-4.199999C.48-3.82909 .338182-3.174545 .338182-3.141817C.338182-3.032726 .447273-3.032726 .469091-3.032726C.578182-3.032726 .589091-3.043636 .654545-3.283635C.84-4.058181 1.058182-4.581817 1.450909-4.581817C1.636363-4.581817 1.78909-4.494544 1.78909-4.079999C1.78909-3.82909 1.756363-3.70909 1.712727-3.523635L.490909 1.330909ZM2.410908-3.403635C2.487272-3.698181 2.781817-4.003635 2.978181-4.167272C3.359999-4.505453 3.676363-4.581817 3.861817-4.581817C4.298181-4.581817 4.559999-4.199999 4.559999-3.556363S4.199999-1.658181 4.003635-1.243636C3.632726-.48 3.10909-.12 2.705454-.12C1.985454-.12 1.843636-1.025454 1.843636-1.090909C1.843636-1.112727 1.843636-1.134545 1.876363-1.265454L2.410908-3.403635Z'/>
+<path id='asymptote-7-7-g2-113' d='M4.930908-4.701817C4.930908-4.745453 4.89818-4.810908 4.821817-4.810908C4.701817-4.810908 4.265453-4.374544 4.079999-4.058181C3.839999-4.647271 3.414545-4.821817 3.065454-4.821817C1.778181-4.821817 .436364-3.207272 .436364-1.625454C.436364-.556363 1.08 .12 1.876363 .12C2.345454 .12 2.770908-.141818 3.163635-.534545C3.065454-.152727 2.705454 1.32 2.672727 1.418181C2.585454 1.723636 2.498181 1.767272 1.887272 1.778181C1.745454 1.778181 1.636363 1.778181 1.636363 1.996363C1.636363 2.007272 1.636363 2.116363 1.778181 2.116363C2.127272 2.116363 2.50909 2.083636 2.86909 2.083636C3.239999 2.083636 3.632726 2.116363 3.992726 2.116363C4.047272 2.116363 4.18909 2.116363 4.18909 1.898181C4.18909 1.778181 4.079999 1.778181 3.905453 1.778181C3.381817 1.778181 3.381817 1.701818 3.381817 1.603636C3.381817 1.527272 3.403635 1.461818 3.425454 1.363636L4.930908-4.701817ZM1.90909-.12C1.254545-.12 1.210909-.96 1.210909-1.145454C1.210909-1.66909 1.527272-2.858181 1.712727-3.316363C2.050909-4.123635 2.618181-4.581817 3.065454-4.581817C3.774544-4.581817 3.927272-3.698181 3.927272-3.621817C3.927272-3.556363 3.327272-1.167272 3.294545-1.123636C3.130908-.818182 2.519999-.12 1.90909-.12Z'/>
+<path id='asymptote-7-7-g4-61' d='M7.494543-3.567272C7.65818-3.567272 7.865452-3.567272 7.865452-3.785453S7.65818-4.003635 7.505452-4.003635H.970909C.818182-4.003635 .610909-4.003635 .610909-3.785453S.818182-3.567272 .981818-3.567272H7.494543ZM7.505452-1.450909C7.65818-1.450909 7.865452-1.450909 7.865452-1.66909S7.65818-1.887272 7.494543-1.887272H.981818C.818182-1.887272 .610909-1.887272 .610909-1.66909S.818182-1.450909 .970909-1.450909H7.505452Z'/>
+<path id='asymptote-7-7-g0-67' d='M7.2-7.353425C7.2-7.539726 7.2-7.715068 7.013699-7.715068C7.00274-7.715068 6.838356-7.715068 6.816438-7.517808C6.783562-7.210959 6.531507-7.210959 6.454795-7.210959C6.071233-7.210959 5.687671-7.375342 5.468493-7.473973C4.909589-7.715068 4.438356-7.715068 4.263014-7.715068C2.432877-7.715068 .405479-6.564384 .405479-3.758904C.405479-.964384 2.389041 .208219 4.284932 .208219C4.865753 .208219 5.643836 .087671 6.443836-.394521C6.947945-.712329 7.506849-1.260274 7.506849-1.413699S7.342466-1.632877 7.276712-1.632877C7.2-1.632877 7.156164-1.6 7.046575-1.479452C6.410959-.756164 5.435616-.317808 4.460274-.317808C2.761644-.317808 2.334247-2.038356 2.334247-3.736986C2.334247-5.89589 3.123288-7.331507 4.29589-7.331507C5.117808-7.331507 6.432877-6.531507 6.805479-5.369863C6.838356-5.271233 6.871233-5.161644 7.013699-5.161644C7.2-5.161644 7.2-5.336986 7.2-5.523288V-7.353425ZM6.816438-6.224658C6.684932-6.410959 6.542466-6.553425 6.268493-6.838356C6.323288-6.827397 6.410959-6.827397 6.465753-6.827397C6.586301-6.827397 6.728767-6.849315 6.816438-6.90411V-6.224658ZM2.926027-7.079452C2.673973-6.827397 1.950685-5.884932 1.950685-3.736986C1.950685-2.652055 2.115068-1.139726 3.10137-.350685C1.30411-.931507 .789041-2.410959 .789041-3.747945C.789041-5.764384 1.89589-6.739726 2.926027-7.090411V-7.079452Z'/>
+</defs>
+<g id='asymptote-7-7-page1'>
+<g transform='translate(178.265 145.312)scale(.996264)'>
+<path d='M.250937 .250937H244.374V183.343H.250937V.250937Z' fill="var(--asymptote-color-8080ff)" opacity='0.2'/>
+</g>
+<g transform='translate(178.265 145.312)scale(.996264)'>
+<path d='M.250937 .250937H244.374V183.343H.250937V.250937Z' fill='none' stroke="var(--asymptote-color-000000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='424.076157' y='155.398335' href='#asymptote-7-7-g0-67'/>
+<use x='200.112964' y='237.994301' href='#asymptote-7-7-g2-112'/>
+<g transform='translate(178.265 145.312)scale(.996264)'>
+<circle cx='30.7663' cy='91.797' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='394.646768' y='237.994301' href='#asymptote-7-7-g2-113'/>
+<g transform='translate(178.265 145.312)scale(.996264)'>
+<circle cx='213.859' cy='91.797' fill="var(--asymptote-color-000000)" r='1.50562'/>
+</g>
+<use x='302.470715' y='171.920894' href='#asymptote-7-7-g2-70'/>
+<use x='309.485879' y='173.557244' href='#asymptote-7-7-g3-48'/>
+<use x='317.248441' y='171.920894' href='#asymptote-7-7-g4-61'/>
+<use x='328.763565' y='171.920894' href='#asymptote-7-7-g2-11'/>
+<g transform='translate(178.265 145.312)scale(.996264)'>
+<path d='M30.7663 91.797C46.1652 54.8398 82.2754 30.7663 122.312 30.7663C162.349 30.7663 198.46 54.8398 213.859 91.797' fill='none' stroke="var(--asymptote-color-00c000)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='302.470715' y='202.322255' href='#asymptote-7-7-g2-70'/>
+<use x='309.485879' y='203.958605' href='#asymptote-7-7-g3-48'/>
+<use x='313.720062' y='203.958605' href='#asymptote-7-7-g1-58'/>
+<use x='316.072386' y='203.958605' href='#asymptote-7-7-g3-50'/>
+<use x='320.306569' y='203.958605' href='#asymptote-7-7-g3-53'/>
+<g transform='translate(178.265 145.312)scale(.996264)'>
+<path d='M30.7663 91.797C57.1768 71.9892 89.2993 61.2817 122.312 61.2817C155.325 61.2817 187.448 71.9892 213.859 91.797' fill='none' stroke="var(--asymptote-color-40ff40)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='290.957205' y='231.751659' href='#asymptote-7-7-g2-70'/>
+<use x='297.972368' y='233.388009' href='#asymptote-7-7-g3-48'/>
+<use x='302.206551' y='233.388009' href='#asymptote-7-7-g1-58'/>
+<use x='304.558875' y='233.388009' href='#asymptote-7-7-g3-53'/>
+<g transform='translate(178.265 145.312)scale(.996264)'>
+<path d='M30.7663 91.797C61.2817 91.797 91.797 91.797 122.312 91.797C152.828 91.797 183.343 91.797 213.859 91.797' fill='none' stroke="var(--asymptote-color-c0ffff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='302.470715' y='276.908903' href='#asymptote-7-7-g2-70'/>
+<use x='309.485879' y='278.545253' href='#asymptote-7-7-g3-48'/>
+<use x='313.720062' y='278.545253' href='#asymptote-7-7-g1-58'/>
+<use x='316.072386' y='278.545253' href='#asymptote-7-7-g3-55'/>
+<use x='320.306569' y='278.545253' href='#asymptote-7-7-g3-53'/>
+<g transform='translate(178.265 145.312)scale(.996264)'>
+<path d='M30.7663 91.797C57.1768 111.605 89.2993 122.312 122.312 122.312C155.325 122.312 187.448 111.605 213.859 91.797' fill='none' stroke="var(--asymptote-color-40ffff)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+<use x='302.470715' y='307.431437' href='#asymptote-7-7-g2-70'/>
+<use x='309.485879' y='309.067787' href='#asymptote-7-7-g3-49'/>
+<use x='317.248441' y='307.431437' href='#asymptote-7-7-g4-61'/>
+<use x='328.763565' y='307.431437' href='#asymptote-7-7-g2-12'/>
+<g transform='translate(178.265 145.312)scale(.996264)'>
+<path d='M30.7663 91.797C46.1652 128.754 82.2754 152.828 122.312 152.828C162.349 152.828 198.46 128.754 213.859 91.797' fill='none' stroke="var(--asymptote-color-00c0c0)" stroke-linecap='round' stroke-linejoin='round' stroke-miterlimit='10.0375' stroke-width='0.501875'/>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<div id="S7.Thmtheorem3" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.7.3</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S7.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself the above definition is right.
+What goes wrong when the meteor strikes?</span></p>
+</div>
+</div>
+<div id="S7.p12" class="ltx_para">
+<p class="ltx_p">So now I can tell you what makes <math id="S7.p12.m1" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math> special:</p>
+</div>
+<div id="S7.Thmtheorem4" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.7.4</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S7.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">A space <math id="S7.Thmtheorem4.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> simply connected</span> if it’s path-connected and
+for any points <math id="S7.Thmtheorem4.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> and <math id="S7.Thmtheorem4.p1.m3" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math>, all paths from <math id="S7.Thmtheorem4.p1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S7.Thmtheorem4.p1.m5" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> are homotopic.</p>
+</div>
+</div>
+<div id="S7.p13" class="ltx_para">
+<p class="ltx_p">That’s why you don’t ask questions when walking from <math id="S7.p13.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> to <math id="S7.p13.m2" class="ltx_Math" alttext="q" display="inline"><mi>q</mi></math> in <math id="S7.p13.m3" class="ltx_Math" alttext="\mathbb{C}" display="inline"><mi>ℂ</mi></math>:
+there’s really only one way to walk. Hence the term “simply” connected.</p>
+</div>
+<div id="S7.Thmtheorem5" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.7.5</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S7.Thmtheorem5.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Convince yourself that <math id="S7.Thmtheorem5.p1.m1" class="ltx_Math" alttext="\mathbb{R}^{n}" display="inline"><msup><mi>ℝ</mi><mi>n</mi></msup></math> is simply connected for all <math id="S7.Thmtheorem5.p1.m2" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math>.</span></p>
+</div>
+</div>
+</section>
+<section id="S8" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.8 </span>Bases of spaces</h2>
+
+<div id="S8.p1" class="ltx_para">
+<p class="ltx_p"><em class="ltx_emph ltx_font_italic"><span class="ltx_text" style="color:var(--latex-color-FF0000);">Prototypical example for this section:</span> <math id="S8.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> has a basis of open intervals, and <math id="S8.p1.m2" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> has a basis of open disks.</em></p>
+</div>
+<div id="S8.p2" class="ltx_para">
+<p class="ltx_p">You might have noticed that the open sets of <math id="S8.p2.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math> are a little annoying to describe:
+the prototypical example of an open set is <math id="S8.p2.m2" class="ltx_Math" alttext="(0,1)" display="inline"><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow></math>,
+but there are other open sets like</p>
+<div class="table-container"><table id="Ex7" class="ltx_equation ltx_eqn_table">
+
+<tbody><tr class="ltx_equation ltx_eqn_row ltx_align_baseline">
+<td class="ltx_eqn_cell ltx_eqn_center_padleft"></td>
+<td class="ltx_eqn_cell ltx_align_center"><math id="Ex7.m1" class="ltx_Math" alttext="(0,1)\cup\left(1,\frac{3}{2}\right)\cup\left(2,\frac{7}{3}\right)\cup(2014,201%
+5)." display="block"><mrow><mrow><mrow><mo stretchy="false">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">)</mo></mrow><mo>∪</mo><mrow><mo>(</mo><mn>1</mn><mo>,</mo><mfrac linethickness="0.6px"><mn>3</mn><mn>2</mn></mfrac><mo>)</mo></mrow><mo>∪</mo><mrow><mo>(</mo><mn>2</mn><mo>,</mo><mfrac linethickness="0.6px"><mn>7</mn><mn>3</mn></mfrac><mo>)</mo></mrow><mo>∪</mo><mrow><mo stretchy="false">(</mo><mn>2014</mn><mo>,</mo><mn>2015</mn><mo stretchy="false">)</mo></mrow></mrow><mo lspace="0em">.</mo></mrow></math></td>
+<td class="ltx_eqn_cell ltx_eqn_center_padright"></td>
+</tr></tbody>
+</table></div>
+</div>
+<div id="S8.Thmtheorem1" class="ltx_theorem ltx_theorem_ques">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Question 7.8.1</span></span>
+<br class="ltx_break">
+</h5>
+<div id="S8.Thmtheorem1.p1" class="ltx_para">
+<p class="ltx_p"><span class="ltx_text" style="font-size:90%;">Check this is an open set.</span></p>
+</div>
+</div>
+<div id="S8.p3" class="ltx_para">
+<p class="ltx_p">But okay, this isn’t <em class="ltx_emph ltx_font_italic">that</em> different.
+All I’ve done is taken a bunch of my prototypes and threw a bunch of <math id="S8.p3.m1" class="ltx_Math" alttext="\cup" display="inline"><mo>∪</mo></math> signs at it.
+And that’s the idea behind a basis.</p>
+</div>
+<div id="S8.Thmtheorem2" class="ltx_theorem ltx_theorem_definition">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Definition 7.8.2</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="S8.Thmtheorem2.p1" class="ltx_para">
+<p class="ltx_p">A <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> basis</span> for a topological space <math id="S8.Thmtheorem2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+is a subset <math id="S8.Thmtheorem2.p1.m2" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic">ℬ</mi></math> of the open sets such that every open set in <math id="S8.Thmtheorem2.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>
+is a union of some (possibly infinite) number of elements in <math id="S8.Thmtheorem2.p1.m4" class="ltx_Math" alttext="\mathcal{B}" display="inline"><mi class="ltx_font_mathcaligraphic">ℬ</mi></math>.</p>
+</div>
+</div>
+<div id="S8.p4" class="ltx_para">
+<p class="ltx_p">And all we’re doing is saying:</p>
+</div>
+<div id="S8.Thmtheorem3" class="ltx_theorem ltx_theorem_example">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);">Example 7.8.3</span></span><span class="ltx_text ltx_font_bold" style="color:var(--latex-color-8C0000);"> <span class="ltx_text ltx_font_medium">(Basis of <math id="S8.Thmtheorem3.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S8.Thmtheorem3.p1" class="ltx_para">
+<p class="ltx_p">The open intervals form a basis of <math id="S8.Thmtheorem3.p1.m1" class="ltx_Math" alttext="\mathbb{R}" display="inline"><mi>ℝ</mi></math>.</p>
+</div>
+</div>
+<div id="S8.p5" class="ltx_para">
+<p class="ltx_p">In fact, more generally we have:</p>
+</div>
+<div id="S8.Thmtheorem4" class="ltx_theorem ltx_theorem_theorem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);">Theorem 7.8.4</span></span><span class="ltx_text ltx_font_sansserif ltx_font_bold" style="color:var(--latex-color-191970);"> <span class="ltx_text ltx_font_medium">(Basis of metric spaces)
+<br class="ltx_break"></span></span>
+</h5>
+<div id="S8.Thmtheorem4.p1" class="ltx_para">
+<p class="ltx_p">The <math id="S8.Thmtheorem4.p1.m1" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhoods form a basis of any metric space <math id="S8.Thmtheorem4.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math>.</p>
+</div>
+</div>
+<div class="ltx_proof">
+<h5 class="ltx_title ltx_runin ltx_font_italic ltx_title_proof">Proof.</h5>
+<div id="S8.p6" class="ltx_para">
+<p class="ltx_p">Kind of silly – given an open set <math id="S8.p6.m1" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>, for every point <math id="S8.p6.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> inside <math id="S8.p6.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>,
+draw an <math id="S8.p6.m4" class="ltx_Math" alttext="r_{p}" display="inline"><msub><mi>r</mi><mi>p</mi></msub></math>-neighborhood <math id="S8.p6.m5" class="ltx_Math" alttext="U_{p}" display="inline"><msub><mi>U</mi><mi>p</mi></msub></math> contained entirely inside <math id="S8.p6.m6" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math>.
+Then <math id="S8.p6.m7" class="ltx_Math" alttext="\bigcup_{p}U_{p}" display="inline"><mrow><msub><mo>⋃</mo><mi>p</mi></msub><msub><mi>U</mi><mi>p</mi></msub></mrow></math> is contained in <math id="S8.p6.m8" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> and covers every point inside it.
+<sub title="End of proof">◻︎</sub></p>
+</div>
+</div>
+<div id="S8.p7" class="ltx_para">
+<p class="ltx_p">Hence, an open set in <math id="S8.p7.m1" class="ltx_Math" alttext="\mathbb{R}^{2}" display="inline"><msup><mi>ℝ</mi><mn>2</mn></msup></math> is nothing more than a union
+of a bunch of open disks, and so on.
+The point is that in a metric space, the only open sets you really
+ever have to worry too much about are the <math id="S8.p7.m2" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhoods.</p>
+</div>
+</section>
+<section id="S9" class="ltx_section">
+<h2 class="ltx_title ltx_title_section">
+<span class="ltx_tag ltx_tag_section">7.9 </span>A few harder problems to think about</h2>
+
+<div id="prob:disconnected_better_def" class="ltx_theorem ltx_theorem_dproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7A</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem1.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a topological space.
+Show that there exists a nonconstant continuous function <math id="Thmproblem1.p1.m2" class="ltx_Math" alttext="X\to\{0,1\}" display="inline"><mrow><mi>X</mi><mo stretchy="false">→</mo><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></math> if and
+only if <math id="Thmproblem1.p1.m3" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is disconnected (here <math id="Thmproblem1.p1.m4" class="ltx_Math" alttext="\{0,1\}" display="inline"><mrow><mo stretchy="false">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></math> is given the discrete topology).</p>
+</div>
+</div>
+<div id="Thmproblem2" class="ltx_theorem ltx_theorem_sproblem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7B</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem2.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> and <math id="Thmproblem2.p1.m2" class="ltx_Math" alttext="Y" display="inline"><mi>Y</mi></math> be topological spaces
+and let <math id="Thmproblem2.p1.m3" class="ltx_Math" alttext="f\colon X\to Y" display="inline"><mrow><mi>f</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><mi>X</mi><mo stretchy="false">→</mo><mi>Y</mi></mrow></mrow></math> be a continuous function.</p>
+<ol id="S9.I1" class="ltx_enumerate">
+<li id="S9.I1.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S9.I1.i1.p1" class="ltx_para">
+<p class="ltx_p">Show that if <math id="S9.I1.i1.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is connected then so is <math id="S9.I1.i1.p1.m2" class="ltx_Math" alttext="f^{\text{img}}(X)" display="inline"><mrow><msup><mi>f</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+<li id="S9.I1.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S9.I1.i2.p1" class="ltx_para">
+<p class="ltx_p">Show that if <math id="S9.I1.i2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> is path-connected then so is <math id="S9.I1.i2.p1.m2" class="ltx_Math" alttext="f^{\text{img}}(X)" display="inline"><mrow><msup><mi>f</mi><mtext>img</mtext></msup><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow></mrow></math>.</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+<div id="Thmproblem3" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7C</span></span><span class="ltx_text ltx_font_bold"> </span>(Hausdorff implies <math id="Thmproblem3.m1" class="ltx_Math" alttext="T_{1}" display="inline"><msub><mi>T</mi><mn>1</mn></msub></math> axiom)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem3.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem3.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a Hausdorff topological space.
+Prove that for any point <math id="Thmproblem3.p1.m2" class="ltx_Math" alttext="p\in X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>X</mi></mrow></math> the set <math id="Thmproblem3.p1.m3" class="ltx_Math" alttext="\{p\}" display="inline"><mrow><mo stretchy="false">{</mo><mi>p</mi><mo stretchy="false">}</mo></mrow></math> is closed.</p>
+</div>
+</div>
+<div id="Thmproblem4" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7D</span></span><span class="ltx_text ltx_font_bold"> </span>(<cite class="ltx_cite ltx_citemacro_cite">[<span class="ltx_ref ltx_missing_citation ltx_ref_self">ref:pugh</span>]</cite>, Exercise 2.56)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem4.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem4.p1.m1" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> be a metric space with more than one point
+but at most countably infinitely many points.
+Show that <math id="Thmproblem4.p1.m2" class="ltx_Math" alttext="M" display="inline"><mi>M</mi></math> is disconnected.
+
+Let <math id="Thmproblem4.p1.m3" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> be any point.
+If there is a real number <math id="Thmproblem4.p1.m4" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math> such that <math id="Thmproblem4.p1.m5" class="ltx_Math" alttext="d(p,q)\neq r" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>p</mi><mo>,</mo><mi>q</mi><mo stretchy="false">)</mo></mrow></mrow><mo>≠</mo><mi>r</mi></mrow></math> for any <math id="Thmproblem4.p1.m6" class="ltx_Math" alttext="q\in M" display="inline"><mrow><mi>q</mi><mo>∈</mo><mi>M</mi></mrow></math>,
+then the <math id="Thmproblem4.p1.m7" class="ltx_Math" alttext="r" display="inline"><mi>r</mi></math>-neighborhood of <math id="Thmproblem4.p1.m8" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is clopen.</p>
+</div>
+</div>
+<div id="Thmproblem5" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7E</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem5.p1" class="ltx_para">
+<p class="ltx_p">Let <math id="Thmproblem5.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> be a topological space.
+The <em class="ltx_emph ltx_font_italic">connected component</em> of a point <math id="Thmproblem5.p1.m2" class="ltx_Math" alttext="p\in X" display="inline"><mrow><mi>p</mi><mo>∈</mo><mi>X</mi></mrow></math>
+is the union of all subspaces <math id="Thmproblem5.p1.m3" class="ltx_Math" alttext="S\subseteq X" display="inline"><mrow><mi>S</mi><mo>⊆</mo><mi>X</mi></mrow></math> which are connected and contain <math id="Thmproblem5.p1.m4" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+<ol id="S9.I2" class="ltx_enumerate">
+<li id="S9.I2.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S9.I2.i1.p1" class="ltx_para">
+<p class="ltx_p">Does the connected component of a point have to be itself connected?</p>
+</div>
+</li>
+<li id="S9.I2.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S9.I2.i2.p1" class="ltx_para">
+<p class="ltx_p">Does the connected component of a point have to be an open subset of <math id="S9.I2.i2.p1.m1" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>?</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">(a) is yes, and (b) is no even for metric spaces.
+In fact, a <em class="ltx_emph ltx_font_italic">totally disconnected</em> space is one for which
+every connected component consists of only a single point,
+and there are examples of totally disconnected metric spaces with
+non-discrete topologies.
+
+
+Part (a) is straightforward:
+assume for contradiction that the connected component of <math id="Thmproblem5.p1.m5" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math> is
+a disjoint union <math id="Thmproblem5.p1.m6" class="ltx_Math" alttext="U\sqcup V" display="inline"><mrow><mi>U</mi><mo>⊔</mo><mi>V</mi></mrow></math> of two nonempty sets open in <math id="Thmproblem5.p1.m7" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>.
+WLOG, assume <math id="Thmproblem5.p1.m8" class="ltx_Math" alttext="x\in U" display="inline"><mrow><mi>x</mi><mo>∈</mo><mi>U</mi></mrow></math>
+Let <math id="Thmproblem5.p1.m9" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> be one of the subspaces containing <math id="Thmproblem5.p1.m10" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> that intersects <math id="Thmproblem5.p1.m11" class="ltx_Math" alttext="V" display="inline"><mi>V</mi></math>.
+Then <math id="Thmproblem5.p1.m12" class="ltx_Math" alttext="S=(S\cap U)\sqcup(S\cap V)" display="inline"><mrow><mi>S</mi><mo>=</mo><mrow><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo>∩</mo><mi>U</mi></mrow><mo stretchy="false">)</mo></mrow><mo>⊔</mo><mrow><mo stretchy="false">(</mo><mrow><mi>S</mi><mo>∩</mo><mi>V</mi></mrow><mo stretchy="false">)</mo></mrow></mrow></mrow></math> rewrites <math id="Thmproblem5.p1.m13" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> as the disjoint union
+of two sets which are open in <math id="Thmproblem5.p1.m14" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>, contradicting the connectedness of <math id="Thmproblem5.p1.m15" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math>.</p>
+</div>
+<div id="Thmproblem5.p2" class="ltx_para">
+<p class="ltx_p">(Though note that as <math id="Thmproblem5.p2.m1" class="ltx_Math" alttext="S" display="inline"><mi>S</mi></math> is not necessarily open in <math id="Thmproblem5.p2.m2" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math>,
+the sets <math id="Thmproblem5.p2.m3" class="ltx_Math" alttext="S\cap U" display="inline"><mrow><mi>S</mi><mo>∩</mo><mi>U</mi></mrow></math> and <math id="Thmproblem5.p2.m4" class="ltx_Math" alttext="S\cap V" display="inline"><mrow><mi>S</mi><mo>∩</mo><mi>V</mi></mrow></math> are not necessarily open in <math id="Thmproblem5.p2.m5" class="ltx_Math" alttext="X" display="inline"><mi>X</mi></math> either.)</p>
+</div>
+<div id="Thmproblem5.p3" class="ltx_para">
+<p class="ltx_p">For (b), a counterexample is to take any <em class="ltx_emph ltx_font_italic">totally disconnected</em> space
+like the Cantor set or the <math id="Thmproblem5.p3.m1" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>-adic numbers.</p>
+</div>
+</div>
+<div id="Thmproblem6" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7F</span></span><span class="ltx_text ltx_font_bold"> </span>(Furstenberg)<span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<div id="Thmproblem6.p1" class="ltx_para">
+<p class="ltx_p">We declare a subset of <math id="Thmproblem6.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> to be open if it’s the union (possibly empty or infinite)
+of arithmetic sequences <math id="Thmproblem6.p1.m2" class="ltx_Math" alttext="\left\{a+nd\mid n\in\mathbb{Z}\right\}" display="inline"><mrow><mo>{</mo><mrow><mi>a</mi><mo>+</mo><mrow><mi>n</mi><mo>⁢</mo><mi>d</mi></mrow></mrow><mo fence="true" lspace="0em" rspace="0em">∣</mo><mrow><mi>n</mi><mo>∈</mo><mi>ℤ</mi></mrow><mo>}</mo></mrow></math>,
+where <math id="Thmproblem6.p1.m3" class="ltx_Math" alttext="a" display="inline"><mi>a</mi></math> and <math id="Thmproblem6.p1.m4" class="ltx_Math" alttext="d" display="inline"><mi>d</mi></math> are positive integers.</p>
+<ol id="S9.I3" class="ltx_enumerate">
+<li id="S9.I3.i1" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(a)</span> 
+<div id="S9.I3.i1.p1" class="ltx_para">
+<p class="ltx_p">Verify this forms a topology on <math id="S9.I3.i1.p1.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math>,
+called the <span class="ltx_text ltx_font_bold" style="color:var(--latex-color-0000FF);"> evenly spaced integer topology</span>.</p>
+</div>
+</li>
+<li id="S9.I3.i2" class="ltx_item" style="list-style-type:none;">
+<span class="ltx_tag ltx_tag_item">(b)</span> 
+<div id="S9.I3.i2.p1" class="ltx_para">
+<p class="ltx_p">Prove there are infinitely many primes by considering <math id="S9.I3.i2.p1.m1" class="ltx_Math" alttext="\bigcup_{p}p\mathbb{Z}" display="inline"><mrow><msub><mo>⋃</mo><mi>p</mi></msub><mrow><mi>p</mi><mo>⁢</mo><mi>ℤ</mi></mrow></mrow></math>
+for primes <math id="S9.I3.i2.p1.m2" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.</p>
+</div>
+</li>
+</ol>
+<p class="ltx_p">Note that <math id="Thmproblem6.p1.m5" class="ltx_Math" alttext="p\mathbb{Z}" display="inline"><mrow><mi>p</mi><mo>⁢</mo><mi>ℤ</mi></mrow></math> is closed for each <math id="Thmproblem6.p1.m6" class="ltx_Math" alttext="p" display="inline"><mi>p</mi></math>.
+If there were finitely many primes, then
+<math id="Thmproblem6.p1.m7" class="ltx_Math" alttext="\bigcup p\mathbb{Z}=\mathbb{Z}\setminus\{-1,1\}" display="inline"><mrow><mrow><mo>⋃</mo><mrow><mi>p</mi><mo>⁢</mo><mi>ℤ</mi></mrow></mrow><mo>=</mo><mrow><mi>ℤ</mi><mo>∖</mo><mrow><mo stretchy="false">{</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></mrow></mrow></math> would have to be closed;
+i.e. <math id="Thmproblem6.p1.m8" class="ltx_Math" alttext="\{-1,1\}" display="inline"><mrow><mo stretchy="false">{</mo><mrow><mo>−</mo><mn>1</mn></mrow><mo>,</mo><mn>1</mn><mo stretchy="false">}</mo></mrow></math> would be open, but all open sets here are infinite.</p>
+</div>
+</div>
+<div id="Thmproblem7" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7G</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem7.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem7.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem7.p2" class="ltx_para">
+<p class="ltx_p">Prove that the evenly spaced integer topology on <math id="Thmproblem7.p2.m1" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> is metrizable.
+In other words, show that one can impose a metric <math id="Thmproblem7.p2.m2" class="ltx_Math" alttext="d\colon\mathbb{Z}^{2}\to\mathbb{R}" display="inline"><mrow><mi>d</mi><mo lspace="0.278em" rspace="0.278em">:</mo><mrow><msup><mi>ℤ</mi><mn>2</mn></msup><mo stretchy="false">→</mo><mi>ℝ</mi></mrow></mrow></math>
+which makes <math id="Thmproblem7.p2.m3" class="ltx_Math" alttext="\mathbb{Z}" display="inline"><mi>ℤ</mi></math> into a metric space whose open sets are those described above.
+
+The balls at <math id="Thmproblem7.p2.m4" class="ltx_Math" alttext="0" display="inline"><mn>0</mn></math> should be of the form <math id="Thmproblem7.p2.m5" class="ltx_Math" alttext="n!\cdot\mathbb{Z}" display="inline"><mrow><mrow><mi>n</mi><mo rspace="0.055em">!</mo></mrow><mo rspace="0.222em">⋅</mo><mi>ℤ</mi></mrow></math>.
+
+
+Let <math id="Thmproblem7.p2.m6" class="ltx_Math" alttext="d(x,y)=2017^{-n}" display="inline"><mrow><mrow><mi>d</mi><mo>⁢</mo><mrow><mo stretchy="false">(</mo><mi>x</mi><mo>,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow></mrow><mo>=</mo><msup><mn>2017</mn><mrow><mo>−</mo><mi>n</mi></mrow></msup></mrow></math>, where <math id="Thmproblem7.p2.m7" class="ltx_Math" alttext="n" display="inline"><mi>n</mi></math> is the largest integer
+such that <math id="Thmproblem7.p2.m8" class="ltx_Math" alttext="n!" display="inline"><mrow><mi>n</mi><mo>!</mo></mrow></math> divides <math id="Thmproblem7.p2.m9" class="ltx_Math" alttext="\left\lvert x-y\right\rvert" display="inline"><mrow><mo>|</mo><mrow><mi>x</mi><mo>−</mo><mi>y</mi></mrow><mo>|</mo></mrow></math>.</p>
+</div>
+</div>
+<div id="Thmproblem8" class="ltx_theorem ltx_theorem_problem">
+<h5 class="ltx_title ltx_runin ltx_title_theorem">
+<span class="ltx_tag ltx_tag_theorem"><span class="ltx_text ltx_font_bold">Problem 7H</span></span><span class="ltx_text ltx_font_bold">.</span>
+</h5>
+<span class="ltx_note ltx_marginpar ltx_role_margin"><sup class="ltx_note_mark">†</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">†</sup><span class="ltx_note_type">margin: </span><span class="ltx_inline-logical-block">
+<span id="Thmproblem8.p1" class="ltx_para"><img loading="lazy" src="../external/venhance-napkin/media/chili.png" id="Thmproblem8.p1.g1" class="ltx_graphics ltx_img_square" width="21" height="21" alt="[Uncaptioned image]">
+</span></span></span></span></span>
+<div id="Thmproblem8.p2" class="ltx_para">
+<p class="ltx_p">We know that any open set <math id="Thmproblem8.p2.m1" class="ltx_Math" alttext="U\subseteq\mathbb{R}" display="inline"><mrow><mi>U</mi><mo>⊆</mo><mi>ℝ</mi></mrow></math>
+is a union of open intervals (allowing <math id="Thmproblem8.p2.m2" class="ltx_Math" alttext="\pm\infty" display="inline"><mrow><mo>±</mo><mi mathvariant="normal">∞</mi></mrow></math> as endpoints).
+One can show that it’s actually possible to write <math id="Thmproblem8.p2.m3" class="ltx_Math" alttext="U" display="inline"><mi>U</mi></math> as the
+union of <em class="ltx_emph ltx_font_italic">pairwise disjoint</em> open intervals.<span id="footnote4" class="ltx_note ltx_role_footnote"><sup class="ltx_note_mark">4</sup><span class="ltx_note_outer"><span class="ltx_note_content"><sup class="ltx_note_mark">4</sup><span class="ltx_tag ltx_tag_note">4</span>You are invited to try
+and prove this, but I personally found the proof quite boring.</span></span></span>
+Prove that there exists such a disjoint union with at most <em class="ltx_emph ltx_font_italic">countably many</em>
+intervals in it.
+
+Appeal to <math id="Thmproblem8.p2.m4" class="ltx_Math" alttext="\mathbb{Q}" display="inline"><mi>ℚ</mi></math>.
+
+
+You can pick a rational number in each interval and
+there are only countably many rational numbers. Done!</p>
+</div>
+</div>
+</section>
+</section>
+</div>
+<nav>
+<a href="../">Table of Contents</a><br />
+<a href="../basictop/metric-properties.html">Previous chapter: Properties of metric spaces</a><br />
+<a href="../basictop/compactness.html">Next chapter: Compactness</a>
+</nav>
+
+		</main>
+	</body>
+</html>
